@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { X, Users, Trophy, Swords, Calendar, ExternalLink, Edit3, Save, Plus, Trash2 } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { X, Users, Trophy, Swords, Calendar, Edit3, Save, Plus, Trash2, ImagePlus, Link as LinkIcon } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 interface GuildData {
@@ -7,7 +7,7 @@ interface GuildData {
   subtitle: string;
   motto: string;
   description: string;
-  discordUrl: string;
+  avatar: string;
   info: { label: string; value: string }[];
   activities: string[];
 }
@@ -17,7 +17,7 @@ const defaultGuild: GuildData = {
   subtitle: 'Гильдия Where Winds Meet',
   motto: '«Во тьме мы обретаем силу»',
   description: 'Nocthra — русскоязычная гильдия в Where Winds Meet, объединяющая странников Цзянху. Мы помогаем новичкам, проходим рейды, участвуем в PvP и развиваем сообщество.',
-  discordUrl: 'https://discord.gg/nocthra',
+  avatar: '',
   info: [
     { label: 'Сообщество', value: 'Русскоязычное' },
     { label: 'Активности', value: 'PvE, PvP, Рейды' },
@@ -60,6 +60,7 @@ function GuildInfoPopup({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
   const [guild, setGuild] = useState<GuildData>(loadGuild);
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState<GuildData>(guild);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => { setGuild(loadGuild()); }, [isOpen]);
 
@@ -90,7 +91,7 @@ function GuildInfoPopup({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
 
         <div className="bg-ink-800 flex flex-col overflow-hidden">
           {/* Header */}
-          <div className="relative px-5 pt-4 pb-3 text-center border-b border-purple-500/20 shrink-0">
+          <div className="relative px-4 pt-4 pb-4 text-center border-b border-purple-500/20 shrink-0">
             <div className="absolute top-3 right-3 flex items-center gap-1 z-10">
               {canEditGuild && !editing && (
                 <button onClick={startEdit} className="p-2 text-purple-400 hover:text-white transition-colors rounded-lg hover:bg-purple-500/20 cursor-pointer">
@@ -102,20 +103,98 @@ function GuildInfoPopup({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
               </button>
             </div>
 
-            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500/20 to-purple-900/40 flex items-center justify-center mx-auto mb-2 border-2 border-purple-400/30 guild-glow">
-              <span className="text-2xl">🌙</span>
+            {/* Guild Banner Avatar */}
+            <div className="relative w-full h-28 sm:h-36 mb-3 rounded-2xl overflow-hidden border border-purple-400/25 group/avatar guild-glow">
+              {(editing ? draft.avatar : guild.avatar) ? (
+                <img
+                  src={editing ? draft.avatar : guild.avatar}
+                  alt="Guild Avatar"
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-purple-950 via-purple-800/70 to-purple-950 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,130,255,0.22),transparent_60%)]" />
+                  <span className="relative text-5xl sm:text-6xl">🌙</span>
+                </div>
+              )}
+
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-900/55 via-transparent to-transparent pointer-events-none" />
+
+              {editing && (
+                <label className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-black/45 opacity-0 group-hover/avatar:opacity-100 transition-opacity cursor-pointer">
+                  <ImagePlus className="w-5 h-5 text-white" />
+                  <span className="text-white text-[11px] font-medium">Сменить изображение</span>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={e => {
+                      const file = e.target.files?.[0];
+                      if (!file) return;
+                      if (file.size > 512000) {
+                        alert('Максимальный размер: 500 КБ');
+                        return;
+                      }
+                      const reader = new FileReader();
+                      reader.onload = () => {
+                        setDraft(prev => ({ ...prev, avatar: reader.result as string }));
+                      };
+                      reader.readAsDataURL(file);
+                    }}
+                  />
+                </label>
+              )}
             </div>
 
+            {editing && (
+              <div className="mb-3 space-y-2">
+                <div className="flex items-center gap-2 justify-center">
+                  <button
+                    onClick={() => fileInputRef.current?.click()}
+                    className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs hover:bg-purple-500/25 hover:border-purple-500/50 transition-all cursor-pointer"
+                  >
+                    <ImagePlus className="w-3.5 h-3.5" />
+                    Загрузить аватарку
+                  </button>
+                  {draft.avatar && (
+                    <button
+                      onClick={() => setDraft(prev => ({ ...prev, avatar: '' }))}
+                      className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-crimson-400/10 border border-crimson-400/20 text-crimson-400 text-xs hover:bg-crimson-400/20 transition-all cursor-pointer"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                      Удалить
+                    </button>
+                  )}
+                </div>
+                <div className="relative">
+                  <LinkIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-ink-500" />
+                  <input
+                    value={draft.avatar}
+                    onChange={e => setDraft(prev => ({ ...prev, avatar: e.target.value }))}
+                    placeholder="Вставьте URL изображения или загрузите файл"
+                    className="bg-ink-700 border border-ink-600/30 rounded-lg pl-9 pr-3 py-2 text-[11px] text-ink-300 w-full focus:outline-none focus:border-purple-400/60 text-center"
+                  />
+                </div>
+              </div>
+            )}
+
             {editing ? (
-              <input value={draft.name} onChange={e => setDraft(prev => ({ ...prev, name: e.target.value }))}
-                className="bg-ink-700 border border-purple-500/30 rounded-lg px-3 py-1.5 text-center font-serif text-xl font-bold text-white w-full focus:outline-none focus:border-purple-400/60" />
+              <input
+                value={draft.name}
+                onChange={e => setDraft(prev => ({ ...prev, name: e.target.value }))}
+                className="bg-ink-700 border border-purple-500/30 rounded-lg px-3 py-1.5 text-center font-serif text-xl font-bold text-white w-full focus:outline-none focus:border-purple-400/60"
+              />
             ) : (
               <h2 className="font-serif text-2xl font-bold tracking-wider guild-text-shimmer mb-0.5">{guild.name}</h2>
             )}
 
             {editing ? (
-              <input value={draft.subtitle} onChange={e => setDraft(prev => ({ ...prev, subtitle: e.target.value }))}
-                className="bg-ink-700 border border-ink-600/30 rounded-lg px-3 py-1 text-center text-xs text-purple-300 w-full mt-1 focus:outline-none focus:border-purple-400/60" />
+              <input
+                value={draft.subtitle}
+                onChange={e => setDraft(prev => ({ ...prev, subtitle: e.target.value }))}
+                className="bg-ink-700 border border-ink-600/30 rounded-lg px-3 py-1 text-center text-xs text-purple-300 w-full mt-1 focus:outline-none focus:border-purple-400/60"
+              />
             ) : (
               <p className="text-purple-300/60 text-xs tracking-widest uppercase">{guild.subtitle}</p>
             )}
@@ -204,25 +283,7 @@ function GuildInfoPopup({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
               )}
             </div>
 
-            {/* Discord */}
-            {editing ? (
-              <div>
-                <label className="text-ink-400 text-[10px] mb-1 block">Discord URL</label>
-                <input value={draft.discordUrl} onChange={e => setDraft(prev => ({ ...prev, discordUrl: e.target.value }))}
-                  className="w-full bg-ink-700 border border-ink-600/30 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-purple-400/60" />
-              </div>
-            ) : (
-              <a href={guild.discordUrl} target="_blank" rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 w-full px-4 py-3 rounded-xl bg-[#5865F2]/20 border border-[#5865F2]/40 hover:bg-[#5865F2]/30 hover:border-[#5865F2]/60 transition-all duration-300 group">
-                <svg className="w-5 h-5 text-[#5865F2] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
-                </svg>
-                <div className="text-left">
-                  <div className="text-white font-semibold text-sm">Присоединиться к {guild.name}</div>
-                  <div className="text-[#5865F2]/70 text-xs flex items-center gap-1">Открыть Discord <ExternalLink className="w-3 h-3" /></div>
-                </div>
-              </a>
-            )}
+
 
             {/* Save / Cancel buttons */}
             {editing && (
@@ -301,42 +362,46 @@ export function GuildBadgeCompact() {
 }
 
 export function GuildBadgeFooter() {
-  const [showInfo, setShowInfo] = useState(false);
   const [guild, setGuild] = useState<GuildData>(defaultGuild);
   useEffect(() => { setGuild(loadGuild()); }, []);
 
   return (
-    <>
-      <div className="relative mt-8 pt-8 border-t border-purple-500/10">
-        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-purple-500/5 to-transparent pointer-events-none" />
-        <div className="relative text-center cursor-pointer group" onClick={() => setShowInfo(true)}>
+    <div className="relative mt-8 pt-8 border-t border-purple-500/10">
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-purple-500/5 to-transparent pointer-events-none" />
+
+      <div className="relative w-full rounded-3xl overflow-hidden border border-purple-500/20 bg-gradient-to-r from-purple-950/70 via-purple-900/55 to-purple-950/70 shadow-xl shadow-purple-950/20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,130,255,0.12),transparent_60%)] pointer-events-none" />
+
+        <div className="relative text-center px-6 py-8 sm:px-8 sm:py-10">
           <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="h-px w-16 bg-gradient-to-r from-transparent to-purple-400/30" />
+            <div className="h-px flex-1 max-w-24 bg-gradient-to-r from-transparent to-purple-400/30" />
             <div className="flex gap-1.5">
               <span className="text-purple-400/40 text-[6px] star-twinkle-1">✦</span>
               <span className="text-purple-400/60 text-[8px] star-twinkle-2">✧</span>
               <span className="text-purple-400/40 text-[6px] star-twinkle-3">✦</span>
             </div>
-            <div className="h-px w-16 bg-gradient-to-l from-transparent to-purple-400/30" />
+            <div className="h-px flex-1 max-w-24 bg-gradient-to-l from-transparent to-purple-400/30" />
           </div>
-          <p className="text-purple-300/50 text-xs tracking-[0.2em] uppercase mb-1 group-hover:text-purple-300/80 transition-colors duration-300">
+
+          <p className="text-purple-300/55 text-xs tracking-[0.2em] uppercase mb-1">
             База знаний принадлежит гильдии
           </p>
-          <h3 className="font-serif text-2xl sm:text-3xl font-bold tracking-widest guild-text-shimmer guild-glow">{guild.name}</h3>
+
+          <h3 className="font-serif text-2xl sm:text-3xl font-bold tracking-widest guild-text-shimmer guild-glow">
+            {guild.name}
+          </h3>
+
           <div className="flex items-center justify-center gap-3 mt-2">
             <div className="h-px w-10 bg-gradient-to-r from-transparent to-purple-400/30" />
-            <span className="text-purple-400/50 text-sm">🌙</span>
+            <span className="text-purple-400/55 text-sm">🌙</span>
             <div className="h-px w-10 bg-gradient-to-l from-transparent to-purple-400/30" />
           </div>
-          <p className="text-purple-400/30 text-[10px] tracking-widest uppercase mt-3 group-hover:text-purple-400/60 transition-colors duration-300">
+
+          <p className="text-purple-400/35 text-[10px] tracking-widest uppercase mt-3">
             {guild.motto ? `✦ ${guild.motto.replace(/[«»]/g, '')} ✦` : ''}
-          </p>
-          <p className="text-purple-400/0 group-hover:text-purple-400/50 text-[10px] mt-1 transition-all duration-300">
-            нажмите, чтобы узнать о гильдии
           </p>
         </div>
       </div>
-      <GuildInfoPopup isOpen={showInfo} onClose={() => { setShowInfo(false); setGuild(loadGuild()); }} />
-    </>
+    </div>
   );
 }
