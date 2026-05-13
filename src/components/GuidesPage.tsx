@@ -254,8 +254,6 @@ function GuideEditor({ guide, onSave, onCancel }: {
 }) {
   const [title, setTitle] = useState(guide?.title || '');
   const [category, setCategory] = useState(guide?.category || 'Новичкам');
-  const [difficulty, setDifficulty] = useState(guide?.difficulty || 'Начальный');
-  const [readTime, setReadTime] = useState(guide?.readTime || '10 мин');
   const [summary, setSummary] = useState(guide?.summary || '');
   const [content, setContent] = useState(guide?.content || '');
   const [icon, setIcon] = useState(guide?.icon || '📖');
@@ -265,7 +263,15 @@ function GuideEditor({ guide, onSave, onCancel }: {
 
   const handleSubmit = () => {
     if (!title.trim() || !content.trim()) return;
-    onSave({ title, category, difficulty, readTime, summary, content, icon });
+    onSave({
+      title,
+      category,
+      difficulty: guide?.difficulty || 'Средний',
+      readTime: guide?.readTime || '10 мин',
+      summary,
+      content,
+      icon,
+    });
   };
 
   return (
@@ -335,29 +341,15 @@ function GuideEditor({ guide, onSave, onCancel }: {
                 className="w-full bg-ink-800 border border-ink-700/50 rounded-lg px-4 py-2.5 text-white placeholder:text-ink-500 focus:outline-none focus:border-gold-400/50" />
             </div>
 
-            {/* Row: Category, Difficulty, ReadTime */}
-            <div className="grid grid-cols-3 gap-3">
-              <div>
-                <label className="text-ink-400 text-xs mb-1.5 block">Категория</label>
-                <select value={category} onChange={e => setCategory(e.target.value)}
-                  className="w-full bg-ink-800 border border-ink-700/50 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-gold-400/50 cursor-pointer">
-                  {['Новичкам', 'Бой', 'Механики', 'Кооператив', 'PvP', 'Профессии', 'Экипировка', 'Прочее'].map(c =>
-                    <option key={c} value={c}>{c}</option>
-                  )}
-                </select>
-              </div>
-              <div>
-                <label className="text-ink-400 text-xs mb-1.5 block">Сложность</label>
-                <select value={difficulty} onChange={e => setDifficulty(e.target.value)}
-                  className="w-full bg-ink-800 border border-ink-700/50 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-gold-400/50 cursor-pointer">
-                  {['Начальный', 'Средний', 'Продвинутый'].map(d => <option key={d} value={d}>{d}</option>)}
-                </select>
-              </div>
-              <div>
-                <label className="text-ink-400 text-xs mb-1.5 block">Время чтения</label>
-                <input type="text" value={readTime} onChange={e => setReadTime(e.target.value)} placeholder="10 мин"
-                  className="w-full bg-ink-800 border border-ink-700/50 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-gold-400/50" />
-              </div>
+            {/* Category */}
+            <div>
+              <label className="text-ink-400 text-xs mb-1.5 block">Категория</label>
+              <select value={category} onChange={e => setCategory(e.target.value)}
+                className="w-full bg-ink-800 border border-ink-700/50 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-gold-400/50 cursor-pointer">
+                {['Новичкам', 'Бой', 'Механики', 'Кооператив', 'PvP', 'Профессии', 'Экипировка', 'Прочее'].map(c =>
+                  <option key={c} value={c}>{c}</option>
+                )}
+              </select>
             </div>
 
             {/* Content */}
