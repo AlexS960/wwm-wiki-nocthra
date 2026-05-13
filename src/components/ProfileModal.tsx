@@ -90,7 +90,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                   );
                 })()}
               </div>
-              <p className="text-ink-400 text-sm">{user.email || 'Локальный аккаунт'}</p>
+              {user.email && <p className="text-ink-400 text-sm">{user.email}</p>}
               {user.isDemo && (
                 <span className="inline-block mt-1 text-xs bg-gold-400/10 text-gold-400 px-2 py-0.5 rounded-full">
                   Демо-аккаунт
