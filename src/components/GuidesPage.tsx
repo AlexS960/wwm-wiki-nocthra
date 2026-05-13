@@ -1,0 +1,387 @@
+import { useState } from 'react';
+import { useAuth, type GuideArticle } from '../context/AuthContext';
+import {
+  ArrowLeft, Plus, Search, Clock, BookOpen, Edit3, Trash2,
+  X, Save, Star, CheckCircle, Shield
+} from 'lucide-react';
+
+interface GuidesPageProps {
+  onBack: () => void;
+}
+
+export default function GuidesPage({ onBack }: GuidesPageProps) {
+  const { user, guides, isEditor, addGuide, updateGuide, deleteGuide, progress, toggleCompletedGuide } = useAuth();
+  const [filterCategory, setFilterCategory] = useState('Все');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [openGuide, setOpenGuide] = useState<GuideArticle | null>(null);
+  const [showEditor, setShowEditor] = useState(false);
+  const [editingGuide, setEditingGuide] = useState<GuideArticle | null>(null);
+  const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+
+  const categories = ['Все', ...new Set(guides.map(g => g.category))];
+
+  let filtered = filterCategory === 'Все' ? guides : guides.filter(g => g.category === filterCategory);
+  if (searchQuery.trim()) {
+    const q = searchQuery.toLowerCase();
+    filtered = filtered.filter(g =>
+      g.title.toLowerCase().includes(q) || g.summary.toLowerCase().includes(q) || g.category.toLowerCase().includes(q)
+    );
+  }
+
+  const handleNewGuide = () => { setEditingGuide(null); setShowEditor(true); };
+  const handleEditGuide = (guide: GuideArticle) => { setEditingGuide(guide); setShowEditor(true); setOpenGuide(null); };
+  const handleDeleteGuide = (id: string) => { deleteGuide(id); setDeleteConfirm(null); setOpenGuide(null); };
+
+  const diffColor: Record<string, string> = {
+    'Начальный': 'text-jade-400 bg-jade-400/10 border-jade-400/30',
+    'Средний': 'text-gold-400 bg-gold-400/10 border-gold-400/30',
+    'Продвинутый': 'text-crimson-400 bg-crimson-400/10 border-crimson-400/30',
+  };
+
+  // Reading a single guide
+  if (openGuide) {
+    const isCompleted = progress.completedGuides.includes(openGuide.id);
+    return (
+      <div className="min-h-screen bg-ink-900 pt-20 pb-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Back */}
+          <button onClick={() => setOpenGuide(null)} className="flex items-center gap-2 text-ink-400 hover:text-gold-400 transition-colors mb-6 cursor-pointer">
+            <ArrowLeft className="w-4 h-4" /> Назад к списку гайдов
+          </button>
+
+          {/* Header */}
+          <div className="mb-8">
+            <div className="flex items-start gap-4 mb-4">
+              <span className="text-4xl">{openGuide.icon}</span>
+              <div className="flex-1">
+                <h1 className="font-serif text-2xl md:text-3xl font-bold text-white">{openGuide.title}</h1>
+                <p className="text-ink-300 mt-1">{openGuide.summary}</p>
+                <div className="flex items-center gap-3 mt-3 flex-wrap">
+                  <span className={`text-xs px-2 py-1 rounded-full border ${diffColor[openGuide.difficulty] || 'text-ink-300 bg-ink-700/50 border-ink-600/30'}`}>
+                    {openGuide.difficulty}
+                  </span>
+                  <span className="flex items-center gap-1 text-xs text-ink-400"><Clock className="w-3 h-3" /> {openGuide.readTime}</span>
+                  <span className="text-xs text-ink-500">Автор: {openGuide.authorName}</span>
+                  <span className="text-xs text-ink-500">{openGuide.updatedAt}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div className="flex items-center gap-2 flex-wrap">
+              {user && (
+                <button
+                  onClick={() => toggleCompletedGuide(openGuide.id)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm cursor-pointer transition-all ${
+                    isCompleted
+                      ? 'bg-jade-400/20 text-jade-400 border border-jade-400/40'
+                      : 'bg-ink-700/50 text-ink-300 border border-ink-600/30 hover:text-gold-400 hover:border-gold-400/40'
+                  }`}
+                >
+                  <CheckCircle className="w-4 h-4" />
+                  {isCompleted ? 'Прочитано' : 'Отметить прочитанным'}
+                </button>
+              )}
+              {isEditor() && (
+                <>
+                  <button onClick={() => handleEditGuide(openGuide)} className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm bg-gold-400/10 text-gold-400 border border-gold-400/30 hover:bg-gold-400/20 cursor-pointer transition-all">
+                    <Edit3 className="w-4 h-4" /> Редактировать
+                  </button>
+                  <button onClick={() => setDeleteConfirm(openGuide.id)} className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm bg-crimson-400/10 text-crimson-400 border border-crimson-400/30 hover:bg-crimson-400/20 cursor-pointer transition-all">
+                    <Trash2 className="w-4 h-4" /> Удалить
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* Content — render markdown-like */}
+          <div className="bg-ink-800/50 border border-ink-700/30 rounded-xl p-6 md:p-8">
+            <div className="prose-custom space-y-4">
+              {openGuide.content.split('\n').map((line, i) => {
+                if (line.startsWith('## ')) return <h2 key={i} className="font-serif text-xl font-bold text-gold-400 mt-6 mb-2">{line.replace('## ', '')}</h2>;
+                if (line.startsWith('**') && line.endsWith('**')) return <p key={i} className="text-white font-semibold">{line.replace(/\*\*/g, '')}</p>;
+                if (line.startsWith('- ')) return <div key={i} className="flex items-start gap-2 text-sm text-ink-200"><Star className="w-3 h-3 text-gold-400 mt-1 shrink-0" /><span>{line.replace('- ', '')}</span></div>;
+                if (line.trim() === '') return <div key={i} className="h-2" />;
+                return <p key={i} className="text-ink-200 text-sm leading-relaxed">{line}</p>;
+              })}
+            </div>
+          </div>
+
+          {/* Delete Confirmation */}
+          {deleteConfirm && (
+            <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 animate-fadeIn">
+              <div className="absolute inset-0 bg-black/70" onClick={() => setDeleteConfirm(null)} />
+              <div className="relative bg-ink-800 border border-crimson-400/30 rounded-xl p-6 max-w-sm w-full">
+                <h3 className="font-serif text-lg text-white font-bold mb-2">Удалить гайд?</h3>
+                <p className="text-ink-300 text-sm mb-4">Это действие нельзя отменить.</p>
+                <div className="flex gap-2">
+                  <button onClick={() => handleDeleteGuide(deleteConfirm)} className="flex-1 bg-crimson-400/20 text-crimson-400 py-2 rounded-lg font-medium hover:bg-crimson-400/30 cursor-pointer">Удалить</button>
+                  <button onClick={() => setDeleteConfirm(null)} className="flex-1 bg-ink-700 text-ink-300 py-2 rounded-lg hover:bg-ink-600 cursor-pointer">Отмена</button>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  // Editor modal
+  if (showEditor) {
+    return <GuideEditor guide={editingGuide} onSave={(data) => {
+      if (editingGuide) updateGuide(editingGuide.id, data);
+      else addGuide(data);
+      setShowEditor(false);
+    }} onCancel={() => setShowEditor(false)} />;
+  }
+
+  // Guides list
+  return (
+    <div className="min-h-screen bg-ink-900 pt-20 pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center gap-4">
+            <button onClick={onBack} className="p-2 rounded-lg text-ink-400 hover:text-gold-400 hover:bg-ink-800/50 cursor-pointer transition-colors">
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+            <div>
+              <h1 className="font-serif text-2xl md:text-3xl font-bold text-white flex items-center gap-3">
+                <BookOpen className="w-7 h-7 text-gold-400" /> Гайды и Руководства
+              </h1>
+              <p className="text-ink-400 text-sm mt-1">{guides.length} гайдов · Написаны редакторами Nocthra</p>
+            </div>
+          </div>
+
+          {isEditor() && (
+            <button
+              onClick={handleNewGuide}
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gold-400/20 text-gold-400 border border-gold-400/40
+                       hover:bg-gold-400/30 transition-all cursor-pointer font-medium text-sm"
+            >
+              <Plus className="w-4 h-4" /> Новый гайд
+            </button>
+          )}
+        </div>
+
+        {/* Editor badge */}
+        {isEditor() && (
+          <div className="mb-6 flex items-center gap-2 bg-gold-400/5 border border-gold-400/20 rounded-lg px-4 py-2.5 text-sm">
+            <Shield className="w-4 h-4 text-gold-400" />
+            <span className="text-gold-400 font-medium">Редактор</span>
+            <span className="text-ink-400">— вы можете добавлять, редактировать и удалять гайды</span>
+          </div>
+        )}
+
+        {/* Search & Filters */}
+        <div className="flex flex-col sm:flex-row gap-3 mb-6">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-400" />
+            <input type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
+              placeholder="Поиск гайдов..." className="w-full bg-ink-800 border border-ink-700/50 rounded-lg pl-10 pr-4 py-2.5 text-sm text-white placeholder:text-ink-500 focus:outline-none focus:border-gold-400/50" />
+          </div>
+          <div className="flex gap-2 flex-wrap">
+            {categories.map(cat => (
+              <button key={cat} onClick={() => setFilterCategory(cat)}
+                className={`px-3 py-2 rounded-lg text-xs font-medium cursor-pointer transition-all ${
+                  filterCategory === cat ? 'bg-gold-400/20 text-gold-400 border border-gold-400/40' : 'bg-ink-800/50 text-ink-300 border border-ink-700/30 hover:text-gold-300'
+                }`}>{cat}</button>
+            ))}
+          </div>
+        </div>
+
+        {/* Guides Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {filtered.map(guide => {
+            const isCompleted = progress.completedGuides.includes(guide.id);
+            return (
+              <div
+                key={guide.id}
+                onClick={() => setOpenGuide(guide)}
+                className={`bg-ink-800/60 border rounded-xl p-5 cursor-pointer transition-all card-hover ${
+                  isCompleted ? 'border-jade-400/30' : 'border-ink-700/30 hover:border-gold-700/30'
+                }`}
+              >
+                <div className="flex items-start gap-3 mb-3">
+                  <span className="text-2xl relative">
+                    {guide.icon}
+                    {isCompleted && (
+                      <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-jade-400 rounded-full flex items-center justify-center">
+                        <CheckCircle className="w-2.5 h-2.5 text-white" />
+                      </span>
+                    )}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <h3 className={`font-serif font-bold text-sm ${isCompleted ? 'text-jade-400' : 'text-white'}`}>{guide.title}</h3>
+                    <p className="text-ink-400 text-xs mt-1 line-clamp-2">{guide.summary}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className={`text-[10px] px-2 py-0.5 rounded-full border ${diffColor[guide.difficulty] || 'text-ink-300 bg-ink-700/50 border-ink-600/30'}`}>
+                    {guide.difficulty}
+                  </span>
+                  <span className="text-[10px] text-ink-500 flex items-center gap-1"><Clock className="w-3 h-3" /> {guide.readTime}</span>
+                  <span className="text-[10px] text-ink-500 bg-ink-700/50 px-2 py-0.5 rounded-full">{guide.category}</span>
+                </div>
+
+                <div className="mt-3 pt-3 border-t border-ink-700/30 flex items-center justify-between">
+                  <span className="text-[10px] text-ink-500">{guide.authorName}</span>
+                  <span className="text-[10px] text-ink-500">{guide.updatedAt}</span>
+                </div>
+              </div>
+            );
+          })}
+
+          {filtered.length === 0 && (
+            <div className="md:col-span-2 lg:col-span-3 text-center py-16">
+              <BookOpen className="w-12 h-12 text-ink-600 mx-auto mb-3" />
+              <p className="text-ink-400">Гайды не найдены</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ======================== GUIDE EDITOR ========================
+function GuideEditor({ guide, onSave, onCancel }: {
+  guide: GuideArticle | null;
+  onSave: (data: Omit<GuideArticle, 'id' | 'authorId' | 'authorName' | 'createdAt' | 'updatedAt'>) => void;
+  onCancel: () => void;
+}) {
+  const [title, setTitle] = useState(guide?.title || '');
+  const [category, setCategory] = useState(guide?.category || 'Новичкам');
+  const [difficulty, setDifficulty] = useState(guide?.difficulty || 'Начальный');
+  const [readTime, setReadTime] = useState(guide?.readTime || '10 мин');
+  const [summary, setSummary] = useState(guide?.summary || '');
+  const [content, setContent] = useState(guide?.content || '');
+  const [icon, setIcon] = useState(guide?.icon || '📖');
+  const [showPreview, setShowPreview] = useState(false);
+
+  const icons = ['📖', '⚔️', '🛡️', '🥷', '👥', '🏆', '🎯', '🎭', '💡', '🗺️', '🔥', '💎', '🎮', '📜', '⚡'];
+
+  const handleSubmit = () => {
+    if (!title.trim() || !content.trim()) return;
+    onSave({ title, category, difficulty, readTime, summary, content, icon });
+  };
+
+  return (
+    <div className="min-h-screen bg-ink-900 pt-20 pb-16">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-6">
+          <h1 className="font-serif text-xl md:text-2xl font-bold text-white flex items-center gap-3">
+            <Edit3 className="w-5 h-5 text-gold-400" />
+            {guide ? 'Редактировать гайд' : 'Новый гайд'}
+          </h1>
+          <div className="flex items-center gap-2">
+            <button onClick={() => setShowPreview(!showPreview)}
+              className="px-3 py-2 rounded-lg text-xs text-ink-300 border border-ink-700/30 hover:text-gold-400 hover:border-gold-400/40 cursor-pointer transition-all">
+              {showPreview ? 'Редактор' : 'Превью'}
+            </button>
+            <button onClick={onCancel} className="p-2 text-ink-400 hover:text-white cursor-pointer"><X className="w-5 h-5" /></button>
+          </div>
+        </div>
+
+        {showPreview ? (
+          /* Preview */
+          <div className="bg-ink-800/50 border border-ink-700/30 rounded-xl p-6 mb-4">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-3xl">{icon}</span>
+              <div>
+                <h2 className="font-serif text-xl font-bold text-white">{title || 'Без названия'}</h2>
+                <p className="text-ink-400 text-sm">{summary}</p>
+              </div>
+            </div>
+            <div className="space-y-3">
+              {content.split('\n').map((line, i) => {
+                if (line.startsWith('## ')) return <h2 key={i} className="font-serif text-lg font-bold text-gold-400 mt-4 mb-2">{line.replace('## ', '')}</h2>;
+                if (line.startsWith('- ')) return <div key={i} className="flex items-start gap-2 text-sm text-ink-200"><Star className="w-3 h-3 text-gold-400 mt-1 shrink-0" /><span>{line.replace('- ', '')}</span></div>;
+                if (line.trim() === '') return <div key={i} className="h-2" />;
+                return <p key={i} className="text-ink-200 text-sm leading-relaxed">{line}</p>;
+              })}
+            </div>
+          </div>
+        ) : (
+          /* Editor Form */
+          <div className="space-y-4">
+            {/* Icon */}
+            <div>
+              <label className="text-ink-400 text-xs mb-1.5 block">Иконка</label>
+              <div className="flex gap-1.5 flex-wrap">
+                {icons.map(ic => (
+                  <button key={ic} onClick={() => setIcon(ic)}
+                    className={`w-9 h-9 rounded-lg text-lg flex items-center justify-center cursor-pointer transition-all ${
+                      icon === ic ? 'bg-gold-400/20 border border-gold-400/40' : 'bg-ink-800 border border-ink-700/30 hover:border-ink-600'
+                    }`}>{ic}</button>
+                ))}
+              </div>
+            </div>
+
+            {/* Title */}
+            <div>
+              <label className="text-ink-400 text-xs mb-1.5 block">Заголовок *</label>
+              <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="Название гайда"
+                className="w-full bg-ink-800 border border-ink-700/50 rounded-lg px-4 py-2.5 text-white placeholder:text-ink-500 focus:outline-none focus:border-gold-400/50" />
+            </div>
+
+            {/* Summary */}
+            <div>
+              <label className="text-ink-400 text-xs mb-1.5 block">Краткое описание</label>
+              <input type="text" value={summary} onChange={e => setSummary(e.target.value)} placeholder="Описание в 1-2 предложения"
+                className="w-full bg-ink-800 border border-ink-700/50 rounded-lg px-4 py-2.5 text-white placeholder:text-ink-500 focus:outline-none focus:border-gold-400/50" />
+            </div>
+
+            {/* Row: Category, Difficulty, ReadTime */}
+            <div className="grid grid-cols-3 gap-3">
+              <div>
+                <label className="text-ink-400 text-xs mb-1.5 block">Категория</label>
+                <select value={category} onChange={e => setCategory(e.target.value)}
+                  className="w-full bg-ink-800 border border-ink-700/50 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-gold-400/50 cursor-pointer">
+                  {['Новичкам', 'Бой', 'Механики', 'Кооператив', 'PvP', 'Профессии', 'Экипировка', 'Прочее'].map(c =>
+                    <option key={c} value={c}>{c}</option>
+                  )}
+                </select>
+              </div>
+              <div>
+                <label className="text-ink-400 text-xs mb-1.5 block">Сложность</label>
+                <select value={difficulty} onChange={e => setDifficulty(e.target.value)}
+                  className="w-full bg-ink-800 border border-ink-700/50 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-gold-400/50 cursor-pointer">
+                  {['Начальный', 'Средний', 'Продвинутый'].map(d => <option key={d} value={d}>{d}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="text-ink-400 text-xs mb-1.5 block">Время чтения</label>
+                <input type="text" value={readTime} onChange={e => setReadTime(e.target.value)} placeholder="10 мин"
+                  className="w-full bg-ink-800 border border-ink-700/50 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-gold-400/50" />
+              </div>
+            </div>
+
+            {/* Content */}
+            <div>
+              <label className="text-ink-400 text-xs mb-1.5 block">
+                Содержание * <span className="text-ink-500">(## для заголовков, - для списков)</span>
+              </label>
+              <textarea value={content} onChange={e => setContent(e.target.value)} rows={16} placeholder={"## Введение\n\nТекст раздела...\n\n## Основная часть\n\n- Пункт 1\n- Пункт 2"}
+                className="w-full bg-ink-800 border border-ink-700/50 rounded-lg px-4 py-3 text-white text-sm placeholder:text-ink-500 focus:outline-none focus:border-gold-400/50 resize-y font-mono leading-relaxed" />
+            </div>
+
+            {/* Submit */}
+            <div className="flex gap-3 pt-2">
+              <button onClick={handleSubmit} disabled={!title.trim() || !content.trim()}
+                className="flex-1 flex items-center justify-center gap-2 bg-gold-400/20 text-gold-400 border border-gold-400/40 py-3 rounded-xl font-medium hover:bg-gold-400/30 cursor-pointer transition-all disabled:opacity-40 disabled:cursor-not-allowed">
+                <Save className="w-4 h-4" /> {guide ? 'Сохранить изменения' : 'Опубликовать гайд'}
+              </button>
+              <button onClick={onCancel} className="px-6 bg-ink-700 text-ink-300 py-3 rounded-xl hover:bg-ink-600 cursor-pointer transition-all">
+                Отмена
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
