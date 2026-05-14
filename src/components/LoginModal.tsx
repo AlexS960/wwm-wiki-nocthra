@@ -222,7 +222,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
         {/* Footer */}
         <div className="px-6 py-3 bg-ink-900/50 border-t border-ink-700/50">
           <p className="text-[10px] text-ink-500 text-center">
-            Данные хранятся локально в вашем браузере. Аккаунт <b className="text-ink-400">admin</b> / <b className="text-ink-400">admin</b> — для тестирования.
+            Данные хранятся локально в вашем браузере.
           </p>
         </div>
       </div>
