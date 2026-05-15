@@ -97,7 +97,9 @@ export default function Header({ activeSection, onNavigate, onLoginClick, onProf
                 className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gold-400/10 border border-gold-400/30 hover:bg-gold-400/20 transition-all cursor-pointer group">
                 {user.picture ? <img src={user.picture} alt={user.name} className="w-6 h-6 rounded-full" /> :
                   <div className="w-6 h-6 rounded-full bg-gold-400/20 flex items-center justify-center"><User className="w-3.5 h-3.5 text-gold-400" /></div>}
-                <span className="hidden sm:block text-sm font-medium text-gold-400 group-hover:text-gold-300 max-w-[100px] truncate">{user.name.split(' ')[0]}</span>
+                <span className="hidden sm:block text-sm font-medium text-gold-400 group-hover:text-gold-300 max-w-[100px] truncate">
+                  {user.gameNickname?.trim() || user.name.split(' ')[0]}
+                </span>
               </button>
             ) : (
               <button onClick={onLoginClick}
