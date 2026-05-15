@@ -11,7 +11,7 @@ import AdminPage from './components/AdminPage';
 import ContentPage from './components/ContentPage';
 import FloatingChat from './components/FloatingChat';
 import SupportWidget from './components/SupportWidget';
-import { ArrowUp, ChevronRight, Crown } from 'lucide-react';
+import { ArrowUp, Crown } from 'lucide-react';
 
 const contentPages = ['weapons', 'builds', 'sects', 'bosses', 'mystic', 'map', 'cooking', 'tips', 'lifeskills'];
 
@@ -165,22 +165,14 @@ function MainPage({ activeSection, onNavigate, onLoginClick, onProfileClick, mod
         {isAdmin() && (
           <button
             onClick={() => onNavigate('admin')}
-            className="fixed left-4 top-20 md:top-24 z-40 flex items-center gap-3 bg-ink-900/85 backdrop-blur-md
-                     border border-purple-500/35 rounded-xl px-4 py-3 shadow-xl shadow-black/40
+            className="fixed left-4 top-20 md:top-24 z-40 bg-ink-900/85 backdrop-blur-md
+                     border border-purple-500/35 rounded-xl p-3 shadow-xl shadow-black/40
                      hover:bg-purple-500/10 hover:border-purple-500/55 hover:-translate-y-0.5 transition-all cursor-pointer group"
+            title="Панель управления"
           >
-            <div className="w-9 h-9 rounded-xl bg-purple-500/20 flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
+            <div className="w-9 h-9 rounded-xl bg-purple-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
               <Crown className="w-4 h-4 text-purple-400" />
             </div>
-            <div className="text-left hidden sm:block">
-              <div className="font-serif text-sm font-bold text-white group-hover:text-purple-300 transition-colors">
-                Панель управления
-              </div>
-              <div className="text-ink-400 text-[10px]">
-                Администратор сайта
-              </div>
-            </div>
-            <ChevronRight className="w-4 h-4 text-ink-400 group-hover:text-purple-400 group-hover:translate-x-0.5 transition-all shrink-0 hidden sm:block" />
           </button>
         )}
       </main>
