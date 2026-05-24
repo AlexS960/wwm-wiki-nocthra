@@ -1,0 +1,243 @@
+[
+  {
+    "id": "pbc_1000000001",
+    "name": "accounts",
+    "type": "base",
+    "system": false,
+    "fields": [
+      {
+        "hidden": false,
+        "id": "text_wwm_username",
+        "max": 64,
+        "min": 2,
+        "name": "username",
+        "pattern": "",
+        "presentable": true,
+        "primaryKey": false,
+        "required": true,
+        "system": false,
+        "type": "text"
+      },
+      {
+        "hidden": false,
+        "id": "text_wwm_role",
+        "max": 32,
+        "min": 0,
+        "name": "role",
+        "pattern": "",
+        "presentable": false,
+        "primaryKey": false,
+        "required": true,
+        "system": false,
+        "type": "text"
+      },
+      {
+        "hidden": false,
+        "id": "text_wwm_picture",
+        "max": 500000,
+        "min": 0,
+        "name": "picture",
+        "pattern": "",
+        "presentable": false,
+        "primaryKey": false,
+        "required": false,
+        "system": false,
+        "type": "text"
+      },
+      {
+        "hidden": false,
+        "id": "text_wwm_gamenic",
+        "max": 64,
+        "min": 0,
+        "name": "game_nickname",
+        "pattern": "",
+        "presentable": false,
+        "primaryKey": false,
+        "required": false,
+        "system": false,
+        "type": "text"
+      },
+      {
+        "hidden": false,
+        "id": "text_wwm_passhash",
+        "max": 256,
+        "min": 0,
+        "name": "password_hash",
+        "pattern": "",
+        "presentable": false,
+        "primaryKey": false,
+        "required": true,
+        "system": false,
+        "type": "text"
+      },
+      {
+        "hidden": false,
+        "id": "date_wwm_created",
+        "name": "created_at",
+        "presentable": false,
+        "required": true,
+        "system": false,
+        "type": "date"
+      },
+      {
+        "hidden": false,
+        "id": "date_wwm_lastseen",
+        "name": "last_seen",
+        "presentable": false,
+        "required": false,
+        "system": false,
+        "type": "date"
+      }
+    ],
+    "indexes": [
+      "CREATE UNIQUE INDEX `idx_wwm_accounts_username` ON `accounts` (`username`)"
+    ],
+    "listRule": "id != ''",
+    "viewRule": "id != ''",
+    "createRule": "@request.body.username != ''",
+    "updateRule": "id != ''",
+    "deleteRule": "id != ''"
+  },
+  {
+    "id": "pbc_1000000002",
+    "name": "site_data",
+    "type": "base",
+    "system": false,
+    "fields": [
+      {
+        "hidden": false,
+        "id": "text_wwm_sd_key",
+        "max": 64,
+        "min": 1,
+        "name": "key",
+        "pattern": "",
+        "presentable": true,
+        "primaryKey": false,
+        "required": true,
+        "system": false,
+        "type": "text"
+      },
+      {
+        "hidden": false,
+        "id": "json_wwm_sd_data",
+        "maxSize": 0,
+        "name": "data",
+        "presentable": false,
+        "required": true,
+        "system": false,
+        "type": "json"
+      },
+      {
+        "hidden": false,
+        "id": "date_wwm_sd_upd",
+        "name": "updated_at",
+        "presentable": false,
+        "required": true,
+        "system": false,
+        "type": "date"
+      }
+    ],
+    "indexes": [
+      "CREATE UNIQUE INDEX `idx_wwm_site_data_key` ON `site_data` (`key`)"
+    ],
+    "listRule": "id != ''",
+    "viewRule": "id != ''",
+    "createRule": "@request.body.key != ''",
+    "updateRule": "id != ''",
+    "deleteRule": "id != ''"
+  },
+  {
+    "id": "pbc_1000000003",
+    "name": "user_progress",
+    "type": "base",
+    "system": false,
+    "fields": [
+      {
+        "hidden": false,
+        "id": "text_wwm_up_uid",
+        "max": 64,
+        "min": 1,
+        "name": "user_id",
+        "pattern": "",
+        "presentable": true,
+        "primaryKey": false,
+        "required": true,
+        "system": false,
+        "type": "text"
+      },
+      {
+        "hidden": false,
+        "id": "json_wwm_up_data",
+        "maxSize": 0,
+        "name": "data",
+        "presentable": false,
+        "required": true,
+        "system": false,
+        "type": "json"
+      },
+      {
+        "hidden": false,
+        "id": "date_wwm_up_upd",
+        "name": "updated_at",
+        "presentable": false,
+        "required": true,
+        "system": false,
+        "type": "date"
+      }
+    ],
+    "indexes": [
+      "CREATE UNIQUE INDEX `idx_wwm_user_progress_uid` ON `user_progress` (`user_id`)"
+    ],
+    "listRule": "id != ''",
+    "viewRule": "id != ''",
+    "createRule": "@request.body.user_id != ''",
+    "updateRule": "id != ''",
+    "deleteRule": "id != ''"
+  },
+  {
+    "id": "pbc_1000000004",
+    "name": "site_images",
+    "type": "base",
+    "system": false,
+    "fields": [
+      {
+        "hidden": false,
+        "id": "text_wwm_img_folder",
+        "max": 64,
+        "min": 1,
+        "name": "folder",
+        "pattern": "",
+        "presentable": false,
+        "primaryKey": false,
+        "required": true,
+        "system": false,
+        "type": "text"
+      },
+      {
+        "hidden": false,
+        "id": "file_wwm_img_file",
+        "maxSelect": 1,
+        "maxSize": 2097152,
+        "mimeTypes": [
+          "image/jpeg",
+          "image/png",
+          "image/webp",
+          "image/gif"
+        ],
+        "name": "file",
+        "presentable": false,
+        "protected": false,
+        "required": true,
+        "system": false,
+        "thumbs": [],
+        "type": "file"
+      }
+    ],
+    "indexes": [],
+    "listRule": "id != ''",
+    "viewRule": "id != ''",
+    "createRule": "@request.body.folder != ''",
+    "updateRule": "id != ''",
+    "deleteRule": "id != ''"
+  }
+]
