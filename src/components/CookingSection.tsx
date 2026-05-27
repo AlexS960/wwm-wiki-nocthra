@@ -1,0 +1,240 @@
+import { useState } from 'react';
+import WikiArticleCards from './wiki/WikiArticleCards';
+import { recipes, type Recipe } from '../data/extendedData';
+import { ChefHat, Heart, Zap, Clock, Edit3, Trash2 } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+import SectionEditorModal, { type SectionEditorValues } from './ui/SectionEditorModal';
+import { sectionEditorConfigs } from '../data/sectionEditorConfig';
+
+export default function CookingSection() {
+  const [filterCategory, setFilterCategory] = useState<'all' | 'healing' | 'buff'>('all');
+  const [items, setItems] = useState(recipes);
+  const [editId, setEditId] = useState<string | null>(null);
+  const { isEditor, isAdmin } = useAuth();
+  const canManage = isEditor() || isAdmin();
+  const cookingConfig = sectionEditorConfigs.cooking;
+  const editingItem = editId ? items.find(r => r.id === editId) : null;
+
+  const filtered = filterCategory === 'all' ? items : items.filter(r => r.category === filterCategory);
+
+  return (
+    <section id="cooking" className="py-20 bg-pattern">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="text-gold-400 text-3xl mb-3">🍳</div>
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-3">Кулинария и Рецепты</h2>
+          <p className="text-ink-300 max-w-xl mx-auto">
+            20+ блюд для восстановления здоровья и получения баффов. Готовьте у костров по всему миру
+          </p>
+          <div className="mt-4 h-px max-w-xs mx-auto bg-gradient-to-r from-transparent via-gold-400/40 to-transparent" />
+        </div>
+
+        {/* Info Card */}
+        <div className="bg-ink-800/50 border border-gold-400/20 rounded-xl p-5 mb-8 max-w-2xl mx-auto">
+          <h3 className="font-serif text-lg font-bold text-gold-400 mb-3 flex items-center gap-2">
+            <ChefHat className="w-5 h-5" /> Основы кулинарии
+          </h3>
+          <ul className="space-y-2 text-sm text-ink-200">
+            <li className="flex items-start gap-2">
+              <span className="text-gold-400">•</span>
+              <span><b>Костры с котлами</b> — ищите у поселений, точек отдыха и лагерей</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-gold-400">•</span>
+              <span><b>Выносливость:</b> максимум 2,500, восстановление 450/день в 5:00 утра</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-gold-400">•</span>
+              <span><b>Ингредиенты:</b> охота, собирательство, рыбалка, покупка у торговцев</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-gold-400">•</span>
+              <span><b>Рецепты разблокируются</b> через квесты, рыболовные конкурсы и достижение уровней</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Filter */}
+        <div className="flex justify-center gap-2 mb-8">
+          {[
+            { id: 'all', label: 'Все', icon: '🍽️' },
+            { id: 'healing', label: 'Исцеление', icon: '❤️' },
+            { id: 'buff', label: 'Баффы', icon: '⚡' },
+          ].map(f => (
+            <button
+              key={f.id}
+              onClick={() => setFilterCategory(f.id as typeof filterCategory)}
+              className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all cursor-pointer ${
+                filterCategory === f.id
+                  ? 'bg-gold-400/20 text-gold-400 border border-gold-400/40'
+                  : 'bg-ink-800/50 text-ink-300 border border-ink-700/30 hover:text-gold-300'
+              }`}
+            >
+              <span>{f.icon}</span>
+              {f.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Recipes Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {filtered.map(recipe => (
+            <RecipeCard
+              key={recipe.id}
+              recipe={recipe}
+              canManage={canManage}
+              onEdit={() => setEditId(recipe.id)}
+              onDelete={() => {
+                if (!confirm('Удалить рецепт?')) return;
+                setItems(prev => prev.filter(x => x.id !== recipe.id));
+              }}
+            />
+          ))}
+          <WikiArticleCards sectionId="cooking" />
+        </div>
+      </div>
+      {editingItem && cookingConfig && (
+        <SectionEditorModal
+          config={cookingConfig}
+          storageFolder="cooking"
+          isEdit
+          initial={{
+            title: editingItem.name,
+            summary: editingItem.effect,
+            category: editingItem.category === 'healing' ? 'Рецепт' : 'Бафф',
+            icon: editingItem.icon,
+            content: [
+              '## Уровень',
+              String(editingItem.level),
+              '',
+              '## Выносливость',
+              editingItem.stamina,
+              '',
+              '## Ингредиенты',
+              ...editingItem.ingredients.map(x => `- ${x}`),
+              '',
+              '## Разблокировка',
+              editingItem.howToUnlock,
+            ].join('\n'),
+            images: [],
+          }}
+          onSave={(values: SectionEditorValues) => {
+            const lines = values.content.split('\n').map(l => l.trim());
+            const line = (header: string) => {
+              const idx = lines.findIndex(l => l.toLowerCase() === header.toLowerCase());
+              return idx >= 0 ? (lines[idx + 1] || '') : '';
+            };
+            const list = (header: string) => {
+              const idx = lines.findIndex(l => l.toLowerCase() === header.toLowerCase());
+              if (idx < 0) return [];
+              const out: string[] = [];
+              for (let i = idx + 1; i < lines.length; i++) {
+                const cur = lines[i];
+                if (!cur) continue;
+                if (cur.startsWith('## ')) break;
+                if (cur.startsWith('- ')) out.push(cur.slice(2).trim());
+              }
+              return out;
+            };
+            setItems(prev => prev.map(r => (
+              r.id === editingItem.id
+                ? {
+                    ...r,
+                    name: values.title,
+                    effect: values.summary || r.effect,
+                    icon: values.icon || r.icon,
+                    level: Number(line('## Уровень')) || r.level,
+                    stamina: line('## Выносливость') || r.stamina,
+                    ingredients: list('## Ингредиенты').length ? list('## Ингредиенты') : r.ingredients,
+                    howToUnlock: line('## Разблокировка') || r.howToUnlock,
+                  }
+                : r
+            )));
+            setEditId(null);
+          }}
+          onCancel={() => setEditId(null)}
+        />
+      )}
+    </section>
+  );
+}
+
+function RecipeCard({
+  recipe,
+  canManage,
+  onEdit,
+  onDelete,
+}: {
+  recipe: Recipe;
+  canManage: boolean;
+  onEdit: () => void;
+  onDelete: () => void;
+}) {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div 
+      onClick={() => setExpanded(!expanded)}
+      className={`bg-ink-800/60 border rounded-xl p-4 transition-all cursor-pointer ${
+        expanded ? 'border-gold-400/40' : 'border-ink-700/30 hover:border-gold-700/30 card-hover'
+      }`}
+    >
+      <div className="flex items-start gap-3 mb-3">
+        <span className="text-3xl">{recipe.icon}</span>
+        <div className="flex-1 min-w-0">
+          <h3 className="font-serif font-bold text-white text-sm">{recipe.name}</h3>
+          <p className="text-ink-400 text-xs">{recipe.nameEn}</p>
+        </div>
+        {canManage && (
+          <div className="flex items-center gap-1" onClick={e => e.stopPropagation()}>
+            <button onClick={onEdit} className="px-2 py-1 rounded-lg text-[10px] text-gold-300 border border-gold-400/30 hover:bg-gold-400/10 cursor-pointer inline-flex items-center gap-1">
+              <Edit3 className="w-3 h-3" /> Редактировать
+            </button>
+            <button onClick={onDelete} className="px-2 py-1 rounded-lg text-[10px] text-crimson-300 border border-crimson-400/30 hover:bg-crimson-400/10 cursor-pointer inline-flex items-center gap-1">
+              <Trash2 className="w-3 h-3" /> Удалить
+            </button>
+          </div>
+        )}
+      </div>
+
+      <div className="flex items-center gap-2 flex-wrap mb-2">
+        <span className={`flex items-center gap-1 text-xs px-2 py-0.5 rounded-full ${
+          recipe.category === 'healing' 
+            ? 'bg-crimson-400/10 text-crimson-400' 
+            : 'bg-blue-400/10 text-blue-400'
+        }`}>
+          {recipe.category === 'healing' ? <Heart className="w-3 h-3" /> : <Zap className="w-3 h-3" />}
+          {recipe.category === 'healing' ? 'Исцеление' : 'Бафф'}
+        </span>
+        <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">
+          Ур. {recipe.level}
+        </span>
+        <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full flex items-center gap-1">
+          <Clock className="w-3 h-3" /> {recipe.stamina}
+        </span>
+      </div>
+
+      <p className="text-jade-400 text-sm font-medium mb-2">{recipe.effect}</p>
+
+      {expanded && (
+        <div className="mt-3 pt-3 border-t border-ink-700/30 space-y-2 animate-fadeIn">
+          <div>
+            <h4 className="text-gold-400 font-semibold text-xs mb-1">Ингредиенты:</h4>
+            <div className="flex flex-wrap gap-1">
+              {recipe.ingredients.map((ing, i) => (
+                <span key={i} className="text-xs bg-ink-700/50 text-ink-200 px-2 py-0.5 rounded-full">
+                  {ing}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h4 className="text-gold-400 font-semibold text-xs mb-1">Разблокировка:</h4>
+            <p className="text-ink-300 text-xs">{recipe.howToUnlock}</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

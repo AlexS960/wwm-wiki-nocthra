@@ -1,0 +1,129 @@
+import { useState } from 'react';
+import { ChevronDown, ChevronUp, Edit3, Trash2 } from 'lucide-react';
+import { useAuth, type WikiArticle } from '../../context/AuthContext';
+import MarkdownBody from '../MarkdownBody';
+import SectionEditorModal, { type SectionEditorValues } from '../ui/SectionEditorModal';
+import { sectionEditorConfigs } from '../../data/sectionEditorConfig';
+
+interface WikiArticleCardsProps {
+  sectionId: string;
+}
+
+function WikiExpandableCard({
+  article,
+  canEdit,
+  onEdit,
+  onDelete,
+}: {
+  article: WikiArticle;
+  canEdit: boolean;
+  onEdit: () => void;
+  onDelete: () => void;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const category = article.fields?.category;
+  const summary = article.fields?.summary || article.content.slice(0, 120);
+
+  return (
+    <div
+      onClick={() => setExpanded(!expanded)}
+      className={`bg-ink-800/60 border rounded-xl p-4 transition-all cursor-pointer ${
+        expanded ? 'border-gold-400/40' : 'border-ink-700/30 hover:border-gold-700/30 card-hover'
+      }`}
+    >
+      <div className="flex items-start gap-3 mb-2">
+        <span className="text-3xl shrink-0">{article.icon}</span>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-start justify-between gap-2">
+            <h3 className="font-serif font-bold text-white">{article.title}</h3>
+            <div className="flex items-center gap-1 shrink-0" onClick={e => e.stopPropagation()}>
+              {canEdit && (
+                <>
+                  <button type="button" onClick={onEdit} className="px-2 py-1 rounded-lg text-[11px] text-gold-400 border border-gold-400/30 hover:bg-gold-400/10 cursor-pointer inline-flex items-center gap-1">
+                    <Edit3 className="w-3 h-3" /> Редактировать
+                  </button>
+                  <button type="button" onClick={onDelete} className="px-2 py-1 rounded-lg text-[11px] text-crimson-300 border border-crimson-400/30 hover:bg-crimson-400/10 cursor-pointer inline-flex items-center gap-1">
+                    <Trash2 className="w-3 h-3" /> Удалить
+                  </button>
+                </>
+              )}
+              {expanded ? <ChevronUp className="w-5 h-5 text-gold-400" /> : <ChevronDown className="w-5 h-5 text-ink-400" />}
+            </div>
+          </div>
+          {category && (
+            <span className="inline-block mt-1 text-[10px] px-2 py-0.5 rounded-full bg-gold-400/10 text-gold-400 border border-gold-400/30">
+              {category}
+            </span>
+          )}
+          {!expanded && <p className="text-ink-400 text-xs mt-2 line-clamp-2">{summary}</p>}
+          <p className="text-ink-500 text-[10px] mt-2">{article.authorName} · {new Date(article.updatedAt).toLocaleDateString('ru-RU')}</p>
+        </div>
+      </div>
+
+      {expanded && (
+        <div className="mt-3 pt-3 border-t border-ink-700/30 animate-fadeIn" onClick={e => e.stopPropagation()}>
+          <MarkdownBody content={article.content} images={article.images} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function WikiArticleCards({ sectionId }: WikiArticleCardsProps) {
+  const { wikiArticles, isEditor, isAdmin, updateWikiArticle, deleteWikiArticle } = useAuth();
+  const [editId, setEditId] = useState<string | null>(null);
+  const [editInitial, setEditInitial] = useState<Partial<SectionEditorValues>>();
+
+  const articles = wikiArticles.filter(a => a.section === sectionId);
+  const canEdit = isEditor() || isAdmin();
+  const config = sectionEditorConfigs[sectionId];
+
+  if (articles.length === 0) return null;
+
+  return (
+    <>
+      {articles.map(article => (
+        <WikiExpandableCard
+          key={article.id}
+          article={article}
+          canEdit={canEdit}
+          onEdit={() => {
+            setEditId(article.id);
+            setEditInitial({
+              title: article.title,
+              summary: article.fields?.summary || '',
+              content: article.content,
+              category: article.fields?.category || config?.categories[0] || '',
+              icon: article.icon,
+              images: article.images || [],
+            });
+          }}
+          onDelete={() => {
+            if (confirm('Удалить эту запись?')) deleteWikiArticle(article.id);
+          }}
+        />
+      ))}
+
+      {editId && config && editInitial && (
+        <SectionEditorModal
+          config={config}
+          storageFolder={sectionId}
+          isEdit
+          initial={editInitial}
+          onSave={values => {
+            updateWikiArticle(editId, {
+              title: values.title,
+              content: values.content,
+              icon: values.icon,
+              images: values.images,
+              fields: { summary: values.summary, category: values.category },
+            });
+            setEditId(null);
+            setEditInitial(undefined);
+          }}
+          onCancel={() => { setEditId(null); setEditInitial(undefined); }}
+        />
+      )}
+    </>
+  );
+}
