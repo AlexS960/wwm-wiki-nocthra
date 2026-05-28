@@ -1,0 +1,389 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold-50: #fdf8e8;
+  --color-gold-100: #f9edc4;
+  --color-gold-200: #f3d88a;
+  --color-gold-300: #e8bf4a;
+  --color-gold-400: #d4a528;
+  --color-gold-500: #b8891a;
+  --color-gold-600: #956b13;
+  --color-gold-700: #6f4f10;
+  --color-gold-800: #4d370d;
+  --color-gold-900: #2e200a;
+
+  --color-ink-50: #f0ede8;
+  --color-ink-100: #d4cec3;
+  --color-ink-200: #b0a696;
+  --color-ink-300: #8c7e6a;
+  --color-ink-400: #6a5a44;
+  --color-ink-500: #4a3c28;
+  --color-ink-600: #3a2e1e;
+  --color-ink-700: #2a2016;
+  --color-ink-800: #1a140e;
+  --color-ink-900: #0f0b07;
+
+  --color-crimson-50: #fde8e8;
+  --color-crimson-100: #f9bfbf;
+  --color-crimson-200: #f28a8a;
+  --color-crimson-300: #e85555;
+  --color-crimson-400: #d42828;
+  --color-crimson-500: #b81a1a;
+  --color-crimson-600: #951313;
+  --color-crimson-700: #6f1010;
+  --color-crimson-800: #4d0d0d;
+  --color-crimson-900: #2e0a0a;
+
+  --color-jade-50: #e8f5ee;
+  --color-jade-100: #c4e8d4;
+  --color-jade-200: #8ad4b0;
+  --color-jade-300: #4abf85;
+  --color-jade-400: #28a55e;
+  --color-jade-500: #1a8947;
+  --color-jade-600: #136b35;
+  --color-jade-700: #104f28;
+  --color-jade-800: #0d371c;
+  --color-jade-900: #0a2012;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d4a528 #1a140e;
+}
+html {
+  scroll-behavior: smooth;
+  min-height: 100%;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #0f0b07;
+  /* Виньетка — только слой фона, контент не затрагивается */
+  background-image:
+    radial-gradient(
+      ellipse 90% 80% at 50% 38%,
+      transparent 32%,
+      rgba(15, 11, 7, 0.45) 68%,
+      rgba(15, 11, 7, 0.78) 100%
+    ),
+    url('/images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  color: #d4cec3;
+}
+
+@media (min-width: 1024px) {
+  body {
+    background-attachment: fixed;
+  }
+}
+
+:root {
+  --header-height: 4rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-height: 5rem;
+  }
+}
+
+html.mobile-nav-open {
+  overflow: hidden;
+}
+
+html.mobile-nav-open .announcement-bar,
+html.mobile-nav-open .admin-float-cluster {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.profile-modal-panel {
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(212, 165, 40, 0.12) inset;
+}
+
+.font-serif {
+  font-family: 'Noto Serif', Georgia, serif;
+}
+
+.text-shadow {
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+.text-shadow-glow {
+  text-shadow: 0 0 20px rgba(212, 165, 40, 0.5), 0 2px 10px rgba(0,0,0,0.8);
+}
+
+.bg-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a528' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; }
+.animate-fadeIn { animation: fadeIn 0.6s ease-out forwards; }
+.animate-slideInLeft { animation: slideInLeft 0.6s ease-out forwards; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(212, 165, 40, 0.15);
+}
+
+.border-ornament {
+  border-image: linear-gradient(135deg, #d4a528, #6f4f10, #d4a528) 1;
+}
+
+.gradient-border {
+  position: relative;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #d4a528, #6f4f10, #d4a528);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.map-pin {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.map-pin:hover {
+  transform: scale(1.3);
+  filter: drop-shadow(0 0 8px rgba(212, 165, 40, 0.8));
+}
+
+/* Guild Nocthra branding */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(168, 130, 255, 0.3)) drop-shadow(0 0 20px rgba(168, 130, 255, 0.1)); }
+  50% { filter: drop-shadow(0 0 12px rgba(168, 130, 255, 0.6)) drop-shadow(0 0 36px rgba(168, 130, 255, 0.2)); }
+}
+@keyframes borderFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.guild-text-shimmer {
+  background: linear-gradient(90deg, #a882ff 0%, #c4a8ff 15%, #e8d5ff 30%, #ffffff 50%, #e8d5ff 70%, #c4a8ff 85%, #a882ff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+.guild-glow { animation: glowPulse 3s ease-in-out infinite; }
+
+/* Guild banner with corner brackets */
+.guild-banner {
+  border: 1px solid rgba(168, 130, 255, 0.28);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  transition: border-color 0.35s ease, transform 0.35s ease, background-color 0.35s ease;
+  box-shadow: none;
+  background: rgba(76, 29, 149, 0.06);
+  backdrop-filter: blur(4px);
+}
+
+.guild-banner-label {
+  letter-spacing: 0.28em;
+  text-shadow: 0 0 20px rgba(168, 130, 255, 0.35);
+}
+
+.guild-banner-moon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  background: rgba(251, 191, 36, 0.06);
+}
+
+.guild-banner-bg {
+  border-radius: inherit;
+}
+
+.guild-banner:hover {
+  border-color: rgba(216, 180, 255, 0.45);
+  background: rgba(76, 29, 149, 0.1);
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guild-banner,
+  .guild-text-shimmer,
+  .guild-border-flow {
+    animation: none !important;
+  }
+  .guild-banner-bg .animate-\[shimmer_7s_linear_infinite\] {
+    animation: none !important;
+  }
+}
+.guild-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: rgba(196, 168, 255, 0.75);
+  pointer-events: none;
+}
+.guild-corner-tl {
+  top: 10px;
+  left: 10px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+  box-shadow: -2px -2px 8px rgba(168, 130, 255, 0.4);
+}
+.guild-corner-tr {
+  top: 10px;
+  right: 10px;
+  border-top: 2px solid;
+  border-right: 2px solid;
+  box-shadow: 2px -2px 8px rgba(168, 130, 255, 0.4);
+}
+.guild-corner-bl {
+  bottom: 10px;
+  left: 10px;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+  box-shadow: -2px 2px 8px rgba(168, 130, 255, 0.4);
+}
+.guild-corner-br {
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  box-shadow: 2px 2px 8px rgba(168, 130, 255, 0.4);
+}
+.guild-corner-tl::after,
+.guild-corner-tr::after,
+.guild-corner-bl::after,
+.guild-corner-br::after {
+  content: '✦';
+  position: absolute;
+  font-size: 7px;
+  color: rgba(216, 180, 255, 0.9);
+  text-shadow: 0 0 6px rgba(168, 130, 255, 0.8);
+}
+.guild-corner-tl::after { top: -4px; left: -2px; }
+.guild-corner-tr::after { top: -4px; right: -2px; }
+.guild-corner-bl::after { bottom: -4px; left: -2px; }
+.guild-corner-br::after { bottom: -4px; right: -2px; }
+.guild-border-flow {
+  background: linear-gradient(270deg, rgba(168, 130, 255, 0.0), rgba(168, 130, 255, 0.4), rgba(200, 170, 255, 0.7), rgba(168, 130, 255, 0.4), rgba(168, 130, 255, 0.0));
+  background-size: 300% 300%;
+  animation: borderFlow 6s ease infinite;
+}
+.star-twinkle-1 { animation: starTwinkle 2.5s ease-in-out infinite; }
+.star-twinkle-2 { animation: starTwinkle 3.2s ease-in-out 0.8s infinite; }
+.star-twinkle-3 { animation: starTwinkle 2.8s ease-in-out 1.5s infinite; }
+.star-twinkle-4 { animation: starTwinkle 3.5s ease-in-out 0.4s infinite; }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.33%); }
+}
+.animate-marquee {
+  display: inline-block;
+  animation: marquee 8s linear infinite;
+}
+.animate-marquee:hover { animation-play-state: paused; }
+
+/* Announcement ticker — в потоке страницы, сразу под шапкой */
+.announcement-bar {
+  position: sticky;
+  top: var(--header-height, 4rem);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 16px 4px;
+  background: transparent;
+}
+
+.announcement-bar__item {
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+/* Page transition */
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.page-enter {
+  animation: pageIn 0.35s ease-out forwards;
+}
+
+/* Admin slide-out buttons */
+.admin-btn-text {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: max-width 0.35s ease, opacity 0.35s ease, margin-left 0.35s ease;
+  opacity: 0;
+  margin-left: 0;
+}
+.admin-btn:hover .admin-btn-text,
+.admin-btn:focus-visible .admin-btn-text {
+  max-width: 200px;
+  opacity: 1;
+  margin-left: 8px;
+}
+
+.hover-glow-btn {
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+.hover-glow-btn:hover,
+.hover-glow-btn:focus-visible {
+  box-shadow: 0 0 16px rgba(212, 165, 40, 0.32), 0 0 34px rgba(212, 165, 40, 0.16);
+  transform: translateY(-1px);
+}
+.hover-glow-purple:hover,
+.hover-glow-purple:focus-visible {
+  box-shadow: 0 0 16px rgba(168, 130, 255, 0.45), 0 0 36px rgba(168, 130, 255, 0.24);
+}
+.hover-glow-blue:hover,
+.hover-glow-blue:focus-visible {
+  box-shadow: 0 0 16px rgba(96, 165, 250, 0.42), 0 0 34px rgba(96, 165, 250, 0.22);
+}
