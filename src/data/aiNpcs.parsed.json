@@ -1,0 +1,1496 @@
+[
+  {
+    "id": "an-lexi",
+    "nameEn": "An Lexi",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Lost Crossing",
+    "subregion": "Jade Gate Pass",
+    "locationDetail": "An Lexi is located close to the Karez boundary stone in Lost Crossing."
+  },
+  {
+    "id": "an-lingrong",
+    "nameEn": "An Lingrong",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Cleardew Terrace",
+    "subregion": "Liangzhou Town",
+    "locationDetail": "An Lingrong is located inside the cave southwest of the Chalice Peak boundary stone."
+  },
+  {
+    "id": "angler",
+    "nameEn": "Angler",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Harvestfall Village",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him sitting by the shoreline on the northeast side of the village."
+  },
+  {
+    "id": "auntie-tian",
+    "nameEn": "Auntie Tian",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Heaven's Pier",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "She can be seen inside the house at the back of Yuan Tiantian’s stall."
+  },
+  {
+    "id": "bailan",
+    "nameEn": "Bailan",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Lost Crossing",
+    "subregion": "Jade Gate Pass",
+    "locationDetail": "Bailan is located close to the Camel Station boundary stone in Lost Crossing."
+  },
+  {
+    "id": "barn-rat",
+    "nameEn": "Barn Rat",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Mercyheart Town",
+    "subregion": "Sundara Land",
+    "locationDetail": "Can be seen inside the house."
+  },
+  {
+    "id": "beggar-liu",
+    "nameEn": "Beggar Liu",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Heaven's Pier",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "He can be seen under a tree near the outskirts of the area."
+  },
+  {
+    "id": "bodhi",
+    "nameEn": "Bodhi",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Jadebrook Mountain",
+    "subregion": "Sundara Land",
+    "locationDetail": "Can be seen standing with cats surrounding him."
+  },
+  {
+    "id": "boss-qian",
+    "nameEn": "Boss Qian",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Palace of Annals",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "He can be found by heading south from the Back Mountain landmark, at a camp where he is with Zhang the Diviner."
+  },
+  {
+    "id": "bu-jiefeng",
+    "nameEn": "Bu Jiefeng",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Jade-Mirrored Spring",
+    "subregion": "Liangzhou Town",
+    "locationDetail": "Bu Jiefeng can be found on the curved island east of the Chalice Peak boundary stone."
+  },
+  {
+    "id": "bu-jiujie",
+    "nameEn": "Bu Jiujie",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Lost Crossing",
+    "subregion": "Jade Gate Pass",
+    "locationDetail": "Bu Jiujie can be found inside a house near a large broken ship east of the Karez boundary stone in Lost Crossing."
+  },
+  {
+    "id": "burrowing-rat",
+    "nameEn": "Burrowing Rat",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Mercyheart Town",
+    "subregion": "Sundara Land",
+    "locationDetail": "Can be seen hoeing at the northern part of the village near a destroyed house."
+  },
+  {
+    "id": "cao-jinyang",
+    "nameEn": "Cao Jinyang",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him beside Tao Jingjing on the ground floor of the Revelry Hall, on the north side of the building."
+  },
+  {
+    "id": "chai-bakun",
+    "nameEn": "Chai Bakun",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "General's Shrine",
+    "subregion": "Verdant Wilds",
+    "locationDetail": "Chopping a tree to the south of the General's Shrine."
+  },
+  {
+    "id": "chai-jiudui",
+    "nameEn": "Chai Jiudui",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Stonewash Strand",
+    "subregion": "Verdant Wilds",
+    "locationDetail": "Located on Stonewash Strand cutting trees to the south of the Boundary Stone."
+  },
+  {
+    "id": "chai-sansheng",
+    "nameEn": "Chai Sansheng",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Jadebrook Mountain",
+    "subregion": "Sundara Land",
+    "locationDetail": "Can be seen chopping wood near the Path of Karma landmark."
+  },
+  {
+    "id": "chai-shipi",
+    "nameEn": "Chai Shipi",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Crimson Cliff",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "He can be seen chopping wood at the far right side of Heaven Pier."
+  },
+  {
+    "id": "chu-yuan",
+    "nameEn": "Chu Yuan",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find her east of the Velvet Shade Landmark. Where she can be seen standing on the street."
+  },
+  {
+    "id": "cui-qingquan",
+    "nameEn": "Cui Qingquan",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Blissful Retreat",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "Cui Qingquan is sitting on a platform where a group of NPCs are gathered northeast of the Blissful Retreat Boundary, where the path to Flower Expanse begins."
+  },
+  {
+    "id": "daozheng",
+    "nameEn": "Daozheng",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Halo Peak",
+    "subregion": "Sundara Land",
+    "locationDetail": "This NPC is found near the table besides a house."
+  },
+  {
+    "id": "dog",
+    "nameEn": "Dog",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Encircling Lake",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "It can be seen digging near some pile of wood."
+  },
+  {
+    "id": "elder-zhou",
+    "nameEn": "Elder Zhou",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Palace of Annals",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him at the docks on the lower right of the Back Mountain Landmark."
+  },
+  {
+    "id": "embroidered-rat",
+    "nameEn": "Embroidered Rat",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Mercyheart Town",
+    "subregion": "Sundara Land",
+    "locationDetail": "Inside the house. Can be easily seen on the inside."
+  },
+  {
+    "id": "fan-qicha",
+    "nameEn": "Fan Qicha",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Nine Mortal Ways Base",
+    "subregion": "Kaifeng City",
+    "locationDetail": "This NPC will send you a message as you progress through the Nine Ways Mortal Base. Check your chat messages as you progress through your exploration."
+  },
+  {
+    "id": "fang-xu",
+    "nameEn": "Fang Xu",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "General's Shrine",
+    "subregion": "Verdant Wilds",
+    "locationDetail": "Fang Xu can be found resting on top of some scaffolding next to the arena. Spar with him a few times and then engage in conversation."
+  },
+  {
+    "id": "feng-rusong",
+    "nameEn": "Feng Rusong",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Mercyheart Monastery",
+    "subregion": "Sundara Land",
+    "locationDetail": "Located near the entrance of Divinecraft Dungeon."
+  },
+  {
+    "id": "feng-shishi",
+    "nameEn": "Feng Shishi",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Twinbeast Ridge",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find her at the side of the road with her companion, Xie Changgong"
+  },
+  {
+    "id": "fluffy-cat",
+    "nameEn": "Fluffy Cat",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Heaven's Pier",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "It can be seen behind a house where flower petals are being sun-dried"
+  },
+  {
+    "id": "fu-lubao",
+    "nameEn": "Fu Lubao",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "General's Shrine",
+    "subregion": "Verdant Wilds",
+    "locationDetail": "Upper left side beside a stone pillar"
+  },
+  {
+    "id": "fu-lushou",
+    "nameEn": "Fu Lushou",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "General's Shrine",
+    "subregion": "Verdant Wilds",
+    "locationDetail": "From the entrance of General's Shrine, go to the building on the right to meet Fu Lushou. He could also be outside the General's Shrine depending on the day."
+  },
+  {
+    "id": "gong-ge",
+    "nameEn": "Gong Ge",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Golden Sands River",
+    "subregion": "Jade Gate Pass",
+    "locationDetail": "Gong Ge is found brushing a camel west of the Poplar Bazaar Boundary Stone in Golden Sands River. You can only talk to her after completing the Land of Gold Encounter in the area."
+  },
+  {
+    "id": "gu-yuehu",
+    "nameEn": "Gu Yuehu",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Golden Sands River",
+    "subregion": "Jade Gate Pass",
+    "locationDetail": "Gu Yuehu can be found complaining to himself next to the tower in Poplar Bazaar. You can only talk to him after completing the Land of Gold Encounter."
+  },
+  {
+    "id": "guan-dayan",
+    "nameEn": "Guan Dayan",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Steed’s Pass",
+    "subregion": "Liangzhou Town",
+    "locationDetail": "Guan Dayan is located just east of the Crystal Shore boundary stone."
+  },
+  {
+    "id": "guan-wei",
+    "nameEn": "Guan Wei",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Marsh Plain",
+    "subregion": "Qinchuan Path",
+    "locationDetail": "Guan Wei is located in front of the broken house east of the Abandoned Shrine boundary stone."
+  },
+  {
+    "id": "hai-changchong",
+    "nameEn": "Hai Changchong",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Twinbeast Ridge",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "He can be seen standing near a cliff."
+  },
+  {
+    "id": "hao-jiu",
+    "nameEn": "Hao Jiu",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Blissful Retreat",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "Hao Jiu is found near Yan Ying's chess match and the general goods merchant."
+  },
+  {
+    "id": "he-ruiyang",
+    "nameEn": "He Ruiyang",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him beside Li Yushan on the ground floor of the Revelry Hall, on the southwest side of the building."
+  },
+  {
+    "id": "hong-yang",
+    "nameEn": "Hong Yang",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Encircling Lake",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him near a lake with Lu Ke"
+  },
+  {
+    "id": "hu-da",
+    "nameEn": "Hu Da",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Encircling Lake",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "From the Encircling Lake landmark, follow the path to the left, where you’ll find him standing near the left side of the outdoor dining area."
+  },
+  {
+    "id": "hunter",
+    "nameEn": "Hunter",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Twinbeast Ridge",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him behind a cluster of bamboo near the river."
+  },
+  {
+    "id": "jiang-li",
+    "nameEn": "Jiang Li",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him by going south of the Springwave Pavilion Landmark, then heading to your right, where he can be seen behind the house where Yiluo (Graceful Memory) resides."
+  },
+  {
+    "id": "jiang-nanyi",
+    "nameEn": "Jiang Nanyi",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Riverside Station",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him under a white blossom tree at the docks, behind some ladies."
+  },
+  {
+    "id": "jiang-shiqi",
+    "nameEn": "Jiang Shiqi",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Steed’s Pass",
+    "subregion": "Liangzhou Town",
+    "locationDetail": "Jiang Shiqi is located lying down on the frozen pond southwest of the Sparrow Sutra Hall boundary stone."
+  },
+  {
+    "id": "jiang-yulang",
+    "nameEn": "Jiang Yulang",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him by going north of the Springwave Pavilion Landmark, where he can be found inside the flower shop with Rong Xiaoxiao."
+  },
+  {
+    "id": "jin-chunniang",
+    "nameEn": "Jin Chunniang",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Bamboo Abode",
+    "subregion": "Verdant Wilds",
+    "locationDetail": "On the mudflat to the south of Verdant Wilds Wayfarer."
+  },
+  {
+    "id": "jin-nanshou",
+    "nameEn": "Jin Nanshou",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Peace Bell Tower",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him by using the Deerforage Grove Landmark. Follow the road north until you reach a fork, then turn right. You’ll see him at the side of the road."
+  },
+  {
+    "id": "jin-xiaobao",
+    "nameEn": "Jin Xiaobao",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Bamboo Abode",
+    "subregion": "Verdant Wilds",
+    "locationDetail": "On the mudflat to the south of Verdant Wilds Wayfarer."
+  },
+  {
+    "id": "jing-chaoyang",
+    "nameEn": "Jing Chaoyang",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him on the second floor of the Revelry Hall. He can be seen looking at the window."
+  },
+  {
+    "id": "jing-an",
+    "nameEn": "Jing’an",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Peace Bell Tower",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him by following the road, where he is located in the middle of the fork. You can either go south from the Porcelain Kiln Landmark or north from Deerforage Grove Landmark."
+  },
+  {
+    "id": "jingyi",
+    "nameEn": "Jingyi",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Halo Peak",
+    "subregion": "Sundara Land",
+    "locationDetail": "Can be seen standing near the path north of Halo Peak Landmark"
+  },
+  {
+    "id": "kang-bao",
+    "nameEn": "Kang Bao",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Straying Steed Sands",
+    "subregion": "Jade Gate Pass",
+    "locationDetail": "Kang Bao is located near the Peaceward Camp boundary stone in Straying Steed Sands."
+  },
+  {
+    "id": "kid-wei",
+    "nameEn": "Kid Wei",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Lost Crossing",
+    "subregion": "Jade Gate Pass",
+    "locationDetail": "Kid Wei can be found on a cliff near the large broken ship east of the Karez boundary stone in Lost Crossing."
+  },
+  {
+    "id": "lan-huahua",
+    "nameEn": "Lan Huahua",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Crimson Cliff",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "Move right from the Stillslope Landmark and you will see her dancing near a rock."
+  },
+  {
+    "id": "leng-dancui",
+    "nameEn": "Leng Dancui",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find her on the second floor of the Revelry Hall. She can be seen eating in a private room."
+  },
+  {
+    "id": "li-daniu",
+    "nameEn": "Li Daniu",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Battlecrest Slope",
+    "subregion": "Verdant Wilds",
+    "locationDetail": "Li Daniu can be seen chopping trees near the road of Battlecrest Scope and to the north of Starfall Spring Boundary Stone"
+  },
+  {
+    "id": "li-laizuo",
+    "nameEn": "Li Laizuo",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "General's Shrine",
+    "subregion": "Verdant Wilds",
+    "locationDetail": "Li Laizuo can be found with a group of subornidates next to the general's shrine in the compound."
+  },
+  {
+    "id": "li-shaokui",
+    "nameEn": "Li Shaokui",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Battlecrest Slope",
+    "subregion": "Verdant Wilds",
+    "locationDetail": "Li Shaokui is located at the front of a destroyed shack to the northeast of Starfall Spring Boundary Stone"
+  },
+  {
+    "id": "li-youxin",
+    "nameEn": "Li Youxin",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him near the Velvet Shade Landmark, where he can be seen near the docks."
+  },
+  {
+    "id": "li-yueniang",
+    "nameEn": "Li Yueniang",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Riverside Station",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find her with her beloved Yu Songfeng near the ferry station entrance."
+  },
+  {
+    "id": "li-yuerong",
+    "nameEn": "Li Yuerong",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find her near the Velvet Shade Landmark, where she can be seen outside an antique shop."
+  },
+  {
+    "id": "liang-chenghong",
+    "nameEn": "Liang Chenghong",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Blissful Retreat",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "Liang Chenghong is found drinking with another NPC on an islet northeast of the Blissful Retreat Boundary Stone, where the path to Flower Expanse begins."
+  },
+  {
+    "id": "lie-buxi",
+    "nameEn": "Lie Buxi",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "General's Shrine",
+    "subregion": "Verdant Wilds",
+    "locationDetail": "Lie Buxi can be found near the river south of the General's Shrine. She seeks ask aid in finding her brothers."
+  },
+  {
+    "id": "lin-jin",
+    "nameEn": "Lin Jin",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Witherwilds",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him by following the south road from the Porcelain Kiln Landmark. Where you can see him chopping wood near the side of the road."
+  },
+  {
+    "id": "liu-heiqui",
+    "nameEn": "Liu Heiqui",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Encircling Lake",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him on the side of the road."
+  },
+  {
+    "id": "liu-the-woodcutter",
+    "nameEn": "Liu the Woodcutter",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Peace Bell Tower",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can use the Moonveil Peak landmark and go right to see him chopping wood below the mountain"
+  },
+  {
+    "id": "liu-zhishuang",
+    "nameEn": "Liu Zhishuang",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "Liu Zhishuang is found east of Velvet Shade in the Springwave Pavilion area, standing past a gazebo with Yu Zimiao."
+  },
+  {
+    "id": "lu-kangge",
+    "nameEn": "Lu Kangge",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Blissful Retreat",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "Lu Kangge is found directly north of Evercare Clinic, gathered with some Blissful Retreat residents in front of a large white-leafed tree."
+  },
+  {
+    "id": "lu-sheng",
+    "nameEn": "Lu Sheng",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Heaven's Pier",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "Can be seen in front of the stall of Yuan Tiantian"
+  },
+  {
+    "id": "lu-zhuo",
+    "nameEn": "Lu Zhuo",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him on the second floor of the Revelry Hall beside Wu Peng, near the stairs to the third floor. (East side)"
+  },
+  {
+    "id": "ma-zhongwu",
+    "nameEn": "Ma Zhongwu",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Crimson Cliff",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "He can be seen a little north from the Stillwind Slope with the other refugees."
+  },
+  {
+    "id": "mao-the-miser",
+    "nameEn": "Mao the Miser",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Jiuquan",
+    "subregion": "Liangzhou Town",
+    "locationDetail": "Mao the Miser is located south of the Skybrim Market boundary stone."
+  },
+  {
+    "id": "matchmaker",
+    "nameEn": "Matchmaker",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Rustling Meadow",
+    "subregion": "Qinchuan Path",
+    "locationDetail": "Matchmaker is located southeast of the Pine Bend boundary stone."
+  },
+  {
+    "id": "mei-zhaole",
+    "nameEn": "Mei Zhaole",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Nine Mortal Ways Base",
+    "subregion": "Kaifeng City",
+    "locationDetail": "Mei Zhaole is found pacing around the wooden platform to the right of the bridge going to the Nine Mortal Ways Base from Ghostlight Market."
+  },
+  {
+    "id": "meng-da",
+    "nameEn": "Meng Da",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Harvestfall Village",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him northeast of the Harvest Village Landmark."
+  },
+  {
+    "id": "meng-zhixia",
+    "nameEn": "Meng Zhixia",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Riverside Station",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him in the red building besides Ren Shuiliu."
+  },
+  {
+    "id": "miaojue",
+    "nameEn": "Miaojue",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Halo Peak",
+    "subregion": "Sundara Land",
+    "locationDetail": "On top of a mountain near a temple"
+  },
+  {
+    "id": "mo-yuer",
+    "nameEn": "Mo Yuer",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Blissful Retreat",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "Mo Yu'er is crouching by the river directly west of the Blissful Retreat Boundary Stone."
+  },
+  {
+    "id": "mountain-dweller",
+    "nameEn": "Mountain Dweller",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Sage's Knoll",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "He can be found standing near the Deer Pond Landmark."
+  },
+  {
+    "id": "mr-qiao",
+    "nameEn": "Mr. Qiao",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Crimson Cliff",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him besides some wagons, near the docks."
+  },
+  {
+    "id": "mu-huaishan",
+    "nameEn": "Mu Huaishan",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him by going south of the Springwave Pavilion Landmark, where he can be seen talking with Huo Tinglan"
+  },
+  {
+    "id": "mu-laosan",
+    "nameEn": "Mu Laosan",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Crimson Cliff",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "Walk north from the Stillwind Slope Landmark. Then you will see him cutting a tree."
+  },
+  {
+    "id": "murong-chan",
+    "nameEn": "Murong Chan",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find her near some flower pot arrangements."
+  },
+  {
+    "id": "nan-zhibing",
+    "nameEn": "Nan Zhibing",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Rustling Meadow",
+    "subregion": "Qinchuan Path",
+    "locationDetail": "Nan Zhibing is located at the far end of the bridge south of the Mustard Hut boundary stone. Patients have lined up to have consultations with him."
+  },
+  {
+    "id": "niu-ma",
+    "nameEn": "Niu Ma",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Ayisu",
+    "subregion": "Jade Gate Pass",
+    "locationDetail": "Niu Ma is found along the Milky Way path heading south to Squarewall Hold in Ayisu."
+  },
+  {
+    "id": "niu-sanqi",
+    "nameEn": "Niu Sanqi",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Crimson Cliff",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "He can be seen a little north from the Stillwind Slope with the other refugees."
+  },
+  {
+    "id": "pan-faxin",
+    "nameEn": "Pan Faxin",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Mercyheart Town",
+    "subregion": "Sundara Land",
+    "locationDetail": "Sitting at the stairs near the river."
+  },
+  {
+    "id": "pan-xinniang",
+    "nameEn": "Pan Xinniang",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Mercyheart Town",
+    "subregion": "Sundara Land",
+    "locationDetail": "Can be seen plucking Buddhist Flowers"
+  },
+  {
+    "id": "pei-mao",
+    "nameEn": "Pei Mao",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Blissful Retreat",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "Pei Mao is on the roof of the house south of Blissful Retreat, on the tip of the southern path passing through Still Shore on the west and Kilnfire Ridge on the east."
+  },
+  {
+    "id": "pip-rat",
+    "nameEn": "Pip Rat",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Mercyheart Town",
+    "subregion": "Sundara Land",
+    "locationDetail": "Can be seen playing in the ground at the north part of town, near the pathway going to the Mercyheart Monastery."
+  },
+  {
+    "id": "qi-gai",
+    "nameEn": "Qi Gai",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Straying Steed Sands",
+    "subregion": "Jade Gate Pass",
+    "locationDetail": "Qi Gai is found begging at the center of Peaceward Camp, kneeling beside a box and a barrel."
+  },
+  {
+    "id": "qi-wuyu",
+    "nameEn": "Qi Wuyu",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him on the ground floor of the Revelry Hall, where he is watching the performance up close in the center."
+  },
+  {
+    "id": "qin-caiwei",
+    "nameEn": "Qin Caiwei",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Stonewash Strand",
+    "subregion": "Verdant Wilds",
+    "locationDetail": "Walk south of Stonewash Stand to find her sitting there"
+  },
+  {
+    "id": "qin-zhu",
+    "nameEn": "Qin Zhu",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him on the ground floor of the Revelry Hall, on the south side of the building."
+  },
+  {
+    "id": "qiu-fengxi",
+    "nameEn": "Qiu Fengxi",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him on the ground floor of the Revelry Hall, on the west side of the building."
+  },
+  {
+    "id": "rafter-rat",
+    "nameEn": "Rafter Rat",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Mercyheart Town",
+    "subregion": "Sundara Land",
+    "locationDetail": "Standing near the bridge behind some tall grasses."
+  },
+  {
+    "id": "ren-shuiliu",
+    "nameEn": "Ren Shuiliu",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Riverside Station",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him in the red building besides Meng Zhixia."
+  },
+  {
+    "id": "ruan-sese",
+    "nameEn": "Ruan Sese",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find her near the Velvet Shade Landmark, where she can be seen admiring a kite outside the shop."
+  },
+  {
+    "id": "shan-yinjiang",
+    "nameEn": "Shan Yinjiang",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Twinbeast Ridge",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him near some bamboos"
+  },
+  {
+    "id": "shen-moxuan",
+    "nameEn": "Shen Moxuan",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him on the other side of the bridge to the east of the Velvet Shade Landmark."
+  },
+  {
+    "id": "shen-weiqing",
+    "nameEn": "Shen Weiqing",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Twinbeast Ridge",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find her along the road with her Sword Servant."
+  },
+  {
+    "id": "shi-jingtian",
+    "nameEn": "Shi Jingtian",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Heaven's Pier",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him in the path between Peacebell Tower and Crimson Cliff"
+  },
+  {
+    "id": "shi-the-boatman",
+    "nameEn": "Shi the Boatman",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Heaven's Pier",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "Can be seen standing near the Heaven's Pier Landmark"
+  },
+  {
+    "id": "shui-changliu",
+    "nameEn": "Shui Changliu",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Twinbeast Ridge",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can see him standing near the river."
+  },
+  {
+    "id": "small-chisel",
+    "nameEn": "Small Chisel",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Mercyheart Town",
+    "subregion": "Sundara Land",
+    "locationDetail": "Can be found outside of his house."
+  },
+  {
+    "id": "song-shiheng",
+    "nameEn": "Song Shiheng",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him on the bridge to the east of the Velvet Shade Landmark. He can be seen talking with Yan Chuchu."
+  },
+  {
+    "id": "song-wu",
+    "nameEn": "Song Wu",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Heaven's Pier",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "He can be seen sweeping inside of the tavern."
+  },
+  {
+    "id": "su-xinlu",
+    "nameEn": "Su Xinlu",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find her by going south of the Springwave Pavilion Landmark, where she can be seen talking with Yang Chunnuan and three other NPCs"
+  },
+  {
+    "id": "sun-mang",
+    "nameEn": "Sun Mang",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Kilnfire Ridge",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him by following the south road from the Porcelain Kiln Boundary Stone. Where you can see him standing at the side of the fork."
+  },
+  {
+    "id": "tan-xiangchen",
+    "nameEn": "Tan Xiangchen",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find her on the second floor of the Revelry Hall beside Yin yan, near the stairs to the 1st floor. (West side)"
+  },
+  {
+    "id": "tang-lubao",
+    "nameEn": "Tang Lubao",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Battlecrest Slope",
+    "subregion": "Verdant Wilds",
+    "locationDetail": "On the side of the road south of the Tiger Fort in Battlecrest Slope"
+  },
+  {
+    "id": "tanxiang",
+    "nameEn": "Tanxiang",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Harvestfall Village",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "Tanxiang is found standing by a tree near the shore beyond the fields west of Harvestfall Village."
+  },
+  {
+    "id": "tao-jingjing",
+    "nameEn": "Tao Jingjing",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find her beside Cao Jinyang on the ground floor of the Revelry Hall, on the north side of the building."
+  },
+  {
+    "id": "tao-wang",
+    "nameEn": "Tao Wang",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Sage's Knoll",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "From the Back Mountain landmark, go north and climb the rocky wall until you find him at the top"
+  },
+  {
+    "id": "tian-heng",
+    "nameEn": "Tian Heng",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Riverside Station",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him sitting in one of the tables inside the red building."
+  },
+  {
+    "id": "tu-er",
+    "nameEn": "Tu Er",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him by going north of the Springwave Pavilion Landmark, where he can be seen talking with Tu Dakuan."
+  },
+  {
+    "id": "uncle-mi",
+    "nameEn": "Uncle Mi",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Heaven's Pier",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "He can be seen under a white petal tree."
+  },
+  {
+    "id": "wang-duobao",
+    "nameEn": "Wang Duobao",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Stonewash Strand",
+    "subregion": "Verdant Wilds",
+    "locationDetail": "Found sitting while fishing at the edge of the river at the left side of the General's Shrine and north of Stonewash Strand Boundary Stone."
+  },
+  {
+    "id": "wang-duoli",
+    "nameEn": "Wang Duoli",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Battlecrest Slope",
+    "subregion": "Verdant Wilds",
+    "locationDetail": "Wang Duoli is located to the south of the lake near the Starfall Spring Boundary Stone"
+  },
+  {
+    "id": "wang-duolu",
+    "nameEn": "Wang Duolu",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "General's Shrine",
+    "subregion": "Verdant Wilds",
+    "locationDetail": "By the lake fishing across the General's Shrine Boundary Stone"
+  },
+  {
+    "id": "wen-gao",
+    "nameEn": "Wen Gao",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Encircling Lake",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him in between a tree and a wagon."
+  },
+  {
+    "id": "wen-yuan",
+    "nameEn": "Wen Yuan",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Steed’s Pass",
+    "subregion": "Liangzhou Town",
+    "locationDetail": "Wen Yuan is located along the path towards the pagoda east of the Heavensreach Slope boundary stone."
+  },
+  {
+    "id": "wenwu",
+    "nameEn": "Wenwu",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Encircling Lake",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him standing near a lonely tree."
+  },
+  {
+    "id": "wobbly-tang",
+    "nameEn": "Wobbly Tang",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Battlecrest Slope",
+    "subregion": "Verdant Wilds",
+    "locationDetail": "On the side of the road south of the Tiger Fort in Battlecrest Slope"
+  },
+  {
+    "id": "wu-cezhi",
+    "nameEn": "Wu Cezhi",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Harvestfall Village",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him in the left-side toilet"
+  },
+  {
+    "id": "wu-dayong",
+    "nameEn": "Wu Dayong",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Encircling Lake",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him standing near a bandit camp."
+  },
+  {
+    "id": "wu-jing",
+    "nameEn": "Wu Jing",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Steed’s Pass",
+    "subregion": "Liangzhou Town",
+    "locationDetail": "Wu Jing is located along the path towards the pagoda east of the Heavensreach Slope boundary stone."
+  },
+  {
+    "id": "wu-jingming",
+    "nameEn": "Wu Jingming",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Halo Peak",
+    "subregion": "Sundara Land",
+    "locationDetail": "Can be seen standing along the path going to Halo Peak"
+  },
+  {
+    "id": "wu-qiwan",
+    "nameEn": "Wu Qiwan",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Crimson Cliff",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "He can be seen behind some tall grasses, near the edge of the cliff."
+  },
+  {
+    "id": "xi-daozhi",
+    "nameEn": "Xi Daozhi",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Jiuquan",
+    "subregion": "Liangzhou Town",
+    "locationDetail": "Xi Daozhi is located along the southeast path of the Skybrim Market."
+  },
+  {
+    "id": "xi-gema",
+    "nameEn": "Xi Gema",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Jade-Mirrored Spring",
+    "subregion": "Liangzhou Town",
+    "locationDetail": "Xi Gema can be found southeast of the Chalic Peak boundary stone near the edge of the water."
+  },
+  {
+    "id": "xiang-the-greedy",
+    "nameEn": "Xiang the Greedy",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Heaven's Pier",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "Can be seen beside numerous large containers."
+  },
+  {
+    "id": "xu-lijun",
+    "nameEn": "Xu Lijun",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find her beside Ye Zhiqiu on the ground floor of the Revelry Hall, on the east side of the building."
+  },
+  {
+    "id": "xu-yingyu",
+    "nameEn": "Xu Yingyu",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find her on the ground floor of the Revelry Hall, on the west side of the building."
+  },
+  {
+    "id": "xue-li",
+    "nameEn": "Xue Li",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him on the second floor of the Revelry Hall. He can be seen dining with Zhuang Zhengzi."
+  },
+  {
+    "id": "ya-zhou",
+    "nameEn": "Ya Zhou",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Encircling Lake",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him standing at the docks."
+  },
+  {
+    "id": "yan-chuchu",
+    "nameEn": "Yan Chuchu",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find her on the bridge to the right of the Velvet Shade Landmark. She can be seen talking with Song Shiheng."
+  },
+  {
+    "id": "yan-momo",
+    "nameEn": "Yan Momo",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Crimson Cliff",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "She can be found near the Crimson Cliff Landmark. Getting some leaves from a lonely red tree."
+  },
+  {
+    "id": "yan-ziyan",
+    "nameEn": "Yan Ziyan",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find her on the ground floor of the Revelry Hall, on the south side of the building."
+  },
+  {
+    "id": "yang-chunnuan",
+    "nameEn": "Yang Chunnuan",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him by going south of the Springwave Pavilion Landmark, where he can be seen talking with Su Xinlu and three other NPCs"
+  },
+  {
+    "id": "ye-zhiqiu",
+    "nameEn": "Ye Zhiqiu",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him beside Xu Lijun on the ground floor of the Revelry Hall, on the east side of the building."
+  },
+  {
+    "id": "yelu-longxian",
+    "nameEn": "Yelu Longxian",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "Yelu Longxian is seated by a table on the third floor of Revelry Hall, near the eastern stairway where a long queue of people can be found right beside him."
+  },
+  {
+    "id": "yi-xi",
+    "nameEn": "Yi Xi",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him on the second floor of the Revelry Hall. He can be seen dining with Guo Zhixiang."
+  },
+  {
+    "id": "yu-hui",
+    "nameEn": "Yu Hui",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him at the far end of the street, west of the Velvet Shade Landmark."
+  },
+  {
+    "id": "yu-nu",
+    "nameEn": "Yu Nu",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Riverside Station",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find her in the red building looking at the ocean."
+  },
+  {
+    "id": "yu-songfeng",
+    "nameEn": "Yu Songfeng",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Riverside Station",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find him with his beloved Li Yueniang near the ferry station entrance."
+  },
+  {
+    "id": "yuan-sheng",
+    "nameEn": "Yuan Sheng",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Blissful Retreat",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "Yuan Sheng is found outside the house where Ye Buxiu's chess game is located. It lies west of the path leading through Flower Expanse."
+  },
+  {
+    "id": "yueniang",
+    "nameEn": "Yueniang",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Heaven's Pier",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "She can be seen cleaning her laundry by the river."
+  },
+  {
+    "id": "zhang-dazhuang",
+    "nameEn": "Zhang Dazhuang",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Heaven's Pier",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "Can be seen in front of the Fire-forced brewing"
+  },
+  {
+    "id": "zhang-jiushu",
+    "nameEn": "Zhang Jiushu",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Heaven's Pier",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "Zhang Jiushu is lying on the floor inside a house east of the West Heaven's Pier Boundary Stone."
+  },
+  {
+    "id": "zhang-shuazi",
+    "nameEn": "Zhang Shuazi",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Nine Mortal Ways Base",
+    "subregion": "Kaifeng City",
+    "locationDetail": "Zhang Shuazi is standing in front of a mask stall in front of the entrance to the street with the large coin sign."
+  },
+  {
+    "id": "zhang-the-diviner",
+    "nameEn": "Zhang the Diviner",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Palace of Annals",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "She can be found by heading south from the Back Mountain landmark, at a camp where she is with Boss Qian."
+  },
+  {
+    "id": "zhao-dali",
+    "nameEn": "Zhao Dali",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "General's Shrine",
+    "subregion": "Verdant Wilds",
+    "locationDetail": "Zhao Dali can be found near the main shrine in General's Shrine, doing training exercises."
+  },
+  {
+    "id": "zhao-silu",
+    "nameEn": "Zhao Silu",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "Zhao Silu is talking to Huang Xiaoming on the northeast side of the first floor in Revelry Hall, where Fu Rong is found playing the pipa."
+  },
+  {
+    "id": "zhao-waibao",
+    "nameEn": "Zhao Waibao",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Rustling Meadow",
+    "subregion": "Qinchuan Path",
+    "locationDetail": "Zhao Waibao is located in front of the house just southeast of the Mustard Hut boundary stone."
+  },
+  {
+    "id": "zhao-weiye",
+    "nameEn": "Zhao Weiye",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Heaven's Pier",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "Can be seen drinking from a large container"
+  },
+  {
+    "id": "zhen-huo",
+    "nameEn": "Zhen Huo",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him on the ground floor of the Revelry Hall, on the south side of the building."
+  },
+  {
+    "id": "zheng-da-an",
+    "nameEn": "Zheng Da'an",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Jiuquan",
+    "subregion": "Liangzhou Town",
+    "locationDetail": "Zheng Da'an is located at the intersection south of the Skybrim Market boundary stone."
+  },
+  {
+    "id": "zhou-canying",
+    "nameEn": "Zhou Canying",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Riverside Station",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "You can find her sitting in one of the tables inside the red building ."
+  },
+  {
+    "id": "zhou-miaoxin",
+    "nameEn": "Zhou Miaoxin",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Mercyheart Town",
+    "subregion": "Sundara Land",
+    "locationDetail": "Can be seen dancing behind a statue."
+  },
+  {
+    "id": "zhou-yihang",
+    "nameEn": "Zhou Yihang",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Palace of Annals",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "He can be seen standing on the docks at the lower-left side of the Stillwind Slope Marker."
+  },
+  {
+    "id": "zhou-yizhou",
+    "nameEn": "Zhou Yizhou",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Mercyheart Town",
+    "subregion": "Sundara Land",
+    "locationDetail": "Standing at the docks at the far left side."
+  },
+  {
+    "id": "zhu-bawan",
+    "nameEn": "Zhu Bawan",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Stonewash Strand",
+    "subregion": "Verdant Wilds",
+    "locationDetail": "In the canopy on Stonewash Strand to the east of Moonveil Mountain Wayfarer"
+  },
+  {
+    "id": "zhu-jiuba",
+    "nameEn": "Zhu Jiuba",
+    "region": "qinghe",
+    "regionLabel": "Qinghe",
+    "locationTitle": "Crimson Cliff",
+    "subregion": "Moonveil Mountain",
+    "locationDetail": "He can be seen a little north from the Stillwind Slope with the other refugees."
+  },
+  {
+    "id": "zhuan-fei",
+    "nameEn": "Zhuan Fei",
+    "region": "hexi",
+    "regionLabel": "Hexi",
+    "locationTitle": "Liangzhou (Fallen)",
+    "subregion": "Liangzhou Town",
+    "locationDetail": "Zhuan Fei is located just west of the Skybrim Market boundary stone in Liangzhou (Fallen)."
+  },
+  {
+    "id": "zhuang-yingming",
+    "nameEn": "Zhuang Yingming",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "Zhuang Yingming is standing at the front dock of Revelry Hall, talking to He Zhao by the windows."
+  },
+  {
+    "id": "zhuang-zhengzhi",
+    "nameEn": "Zhuang Zhengzhi",
+    "region": "kaifeng",
+    "regionLabel": "Kaifeng",
+    "locationTitle": "Velvet Shade",
+    "subregion": "Kaifeng City",
+    "locationDetail": "You can find him on the second floor of the Revelry Hall. He can be seen dining with Xue Li."
+  }
+]
