@@ -1,0 +1,32 @@
+{
+  "name": "react-vite-tailwind",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "node scripts/generate-seo.mjs && vite build",
+    "seo:generate": "node scripts/generate-seo.mjs",
+    "preview": "vite preview",
+    "vercel:deploy": "npm run build && vercel deploy --prod -y",
+    "vercel:preview": "npm run build && vercel deploy -y",
+    "parse-riddles": "node scripts/parse-riddles.mjs",
+    "parse-inner-ways": "node scripts/parse-inner-ways.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.106.1",
+    "lucide-react": "^1.16.0",
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.1.17",
+    "@types/node": "22.19.17",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "5.1.1",
+    "tailwindcss": "4.1.17",
+    "typescript": "5.9.3",
+    "vite": "7.3.2"
+  }
+}
