@@ -51,7 +51,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Хэси",
     "locationTitle": "Забытый перекрёсток",
     "subregion": "Нефритовые ворота",
-    "locationDetail": "An Lexi находится close к Karez boundary stone in Забытый перекрёсток.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/583790) An Lexi находится close к Karez boundary stone in Забытый перекрёсток.",
     "icon": "👤",
     "befriendGuide": "Seal the Raging Monster Inside Him\nThe young boy clutches his left eye and mutters incomprehensively. Try teasing him a bit?",
     "dialogues": [
@@ -120,7 +120,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Хэси",
     "locationTitle": "Терраса Чистой росы",
     "subregion": "Город Лянчжоу",
-    "locationDetail": "An Lingrong находится внутри cave southзападнее the Chalice Peak boundary stone.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/590655) An Lingrong находится внутри cave southзападнее the Chalice Peak boundary stone.",
     "icon": "👤",
     "befriendGuide": "Let Her Vent Her Troubles and Convince Her To Leave Her Job\nAn Lingrong talks about how her current job is overworking everyone and not giving them their rightful compensation. Reassure her that she did nothing wrong and that she might need to look for a new job instead to successfully befriend her.",
     "dialogues": [
@@ -194,7 +194,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Деревня Урожайной осени",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him sitting by the shoreline on the northeast side of the village.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him sitting by the shoreline on the northeast side of the village.",
     "icon": "🎣",
     "befriendGuide": "Keep Talking and Listening to the Angler\nThe gist of the conversation with the Angler is that he will tell you the story of his fishing ventures. All you need to do is keep talking to him and act insterested in what he says. Finally, when he asks what brings you to the area, tell him that you came to learn from him which might trigger his AI to befriend you.",
     "dialogues": [
@@ -278,7 +278,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Небесный причал",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "She can be seen внутри house у back of Yuan Tiantian’s stall.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) She can be seen внутри house у back of Yuan Tiantian’s stall.",
     "icon": "👤",
     "befriendGuide": "Encourage Auntie Tian to Ease Her Trauma\nAuntie Tian is scared to go outside due to the trauma she endured for many years because of an incident back then. Encourage her to go outside by saying everything is safe like hiring mercenaries to protect her and roleplay giving her medicine to remove her trauma.",
     "dialogues": [
@@ -342,7 +342,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Хэси",
     "locationTitle": "Забытый перекрёсток",
     "subregion": "Нефритовые ворота",
-    "locationDetail": "Bailan находится close к Camel Station boundary stone in Забытый перекрёсток.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/583790) Bailan находится close к Camel Station boundary stone in Забытый перекрёсток.",
     "icon": "👤",
     "befriendGuide": "Convince Her to Strive a Little\nBailan thinks life's all about slacking off. Maybe you can convince her to strive a little?",
     "dialogues": [
@@ -401,7 +401,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Город Милосердного сердца",
     "subregion": "Земли Сундара",
-    "locationDetail": "Can be seen внутри house.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564887) Can be seen внутри house.",
     "icon": "🐀",
     "befriendGuide": "Tell a Safe Place to Secure Food Supplies\nRecommend a safe place for Barn Rat to store food supplies by roleplaying in the chat that you found a good spot to secure his food. Roleplay that Barn Rat has secured his food on the good spot to befriend him.",
     "dialogues": [
@@ -475,7 +475,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Небесный причал",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "He can be seen under a tree рядом с outskirts of the area.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) He can be seen under a tree рядом с outskirts of the area.",
     "icon": "🥣",
     "befriendGuide": "Give Beggar Liu Food and Listen to His Gossip\nTo befriend Beggar Liu, you must roleplay into giving him food and water so he can share his stories with you. Once he share his stories with you, just roleplay into giving him food again and that you will take an action regarding the person he is gossiping about.",
     "dialogues": [
@@ -569,7 +569,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Гора Нефритового ручья",
     "subregion": "Земли Сундара",
-    "locationDetail": "Can be seen standing with cats surrounding him.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564887) Can be seen standing with cats surrounding him.",
     "icon": "👤",
     "befriendGuide": "Tell that You Love Cats\nBodhi loves cats, and so use this information in order for him to have a good impression of you. Tell him that you love cats and know a few tricks that you use to bond with them. This will give Bodhi a good impression of you, making it easier to befriend you.",
     "dialogues": [
@@ -673,7 +673,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Дворец летописей",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "He можно найти by heading south от Back Mountain landmark, at a camp where he is with Zhang the Diviner.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) He можно найти by heading south от Back Mountain landmark, at a camp where he is with Zhang the Diviner.",
     "icon": "👤",
     "befriendGuide": "Confront the Bandits and Return the Stolen Goods\nRoleplay as if you are returning the stolen goods of Boss Qian and tell him that you have confronted them. Tell him that you have contacted your friends as guards to make sure that no traveler would get harmed.",
     "dialogues": [
@@ -737,7 +737,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Хэси",
     "locationTitle": "Нефритовое зеркало источника",
     "subregion": "Город Лянчжоу",
-    "locationDetail": "Bu Jiefeng можно найти on the curved island восточнее the Chalice Peak boundary stone.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/590655) Bu Jiefeng можно найти on the curved island восточнее the Chalice Peak boundary stone.",
     "icon": "👤",
     "befriendGuide": "Get Her to Play with the Cats\nBu Jiefeng is confused why she's being surrounded and followed by the cats. Assure her that the cats just want attention and that she should play with them to successfully befriend her.",
     "dialogues": [
@@ -831,7 +831,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Хэси",
     "locationTitle": "Забытый перекрёсток",
     "subregion": "Нефритовые ворота",
-    "locationDetail": "Bu Jiujie можно найти inside a house near a large broken ship восточнее the Karez boundary stone in Забытый перекрёсток.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/583790) Bu Jiujie можно найти inside a house near a large broken ship восточнее the Karez boundary stone in Забытый перекрёсток.",
     "icon": "👤",
     "befriendGuide": "Help Him Make Up His Mind\nBu Jiujie is indecisive about everything. Try any method you can to snap him out of it.",
     "dialogues": [
@@ -910,7 +910,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Город Милосердного сердца",
     "subregion": "Земли Сундара",
-    "locationDetail": "Can be seen hoeing у northern part of the village near a destroyed house.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564887) Can be seen hoeing у northern part of the village near a destroyed house.",
     "icon": "🐀",
     "befriendGuide": "Offer to Train Burrowing Rat\nYou can easily befriend Burrowing Rat by saying you will train him in combat so he can gain the courage to become a true hero like his siblings. Just message him about offering your training to him, and then roleplay that you trained for weeks to befriend Burrowing Rat.",
     "dialogues": [
@@ -984,7 +984,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him beside Tao Jingjing on the ground floor of the Revelry Hall, on the north side of the building.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him beside Tao Jingjing on the ground floor of the Revelry Hall, on the north side of the building.",
     "icon": "👤",
     "befriendGuide": "Listen to Cao Jinyang's Worries\nCao Jinyang worries about his lover being unhappy lately. Tell Cao Jinyang that maybe his lover is worried about him because he is overworking himself for both their sakes. Tell him that seeing him happy will probably make Jingjing happy.",
     "dialogues": [
@@ -1048,7 +1048,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Храм генералов",
     "subregion": "Изумрудные дикие земли",
-    "locationDetail": "Chopping a tree к южнее the Храм генералов.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564776) Chopping a tree к южнее the Храм генералов.",
     "icon": "👤",
     "befriendGuide": "Convince Him to Protect General's Shrine\nChai Bakun wants to protect the General's Shrine and the easiest way to befriend him is to convince him you will protect the shrine alongside him. Convince him that you have the skills to properly safeguard the shrine.",
     "dialogues": [
@@ -1112,7 +1112,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Каменистый берег",
     "subregion": "Изумрудные дикие земли",
-    "locationDetail": "Located on Каменистый берег cutting trees к южнее the Boundary Stone.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564776) Located on Каменистый берег cutting trees к южнее the Boundary Stone.",
     "icon": "👤",
     "befriendGuide": "Tell that Bandits are Up North and You Defeated Them\nChai Jiudui will want to know the location of the bandits in the mountains. Tell him that they are up north and near a broken roof. After that, indicate in the AI chat that you left and defeated the bandits and you will befriend Chai Jiudui.",
     "dialogues": [
@@ -1166,7 +1166,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Гора Нефритового ручья",
     "subregion": "Земли Сундара",
-    "locationDetail": "Can be seen chopping wood рядом с Path of Karma landmark.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564887) Can be seen chopping wood рядом с Path of Karma landmark.",
     "icon": "👤",
     "befriendGuide": "Tell Stories of Your Adventure\nChai Sansheng will want to hear many stories of your adventure. Just keep telling him what you've experienced during your journey so far until his AI becomes friendly with you.",
     "dialogues": [
@@ -1260,7 +1260,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Багровый утёс",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "He can be seen chopping wood у far right side of Heaven Pier.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) He can be seen chopping wood у far right side of Heaven Pier.",
     "icon": "👤",
     "befriendGuide": "Recommend a Top Quality Buyer\nBefriending Chai Shipi shouldn't be difficult as you only need to praise his firewood and recommend to him a buyer that will secure his family's income.",
     "dialogues": [
@@ -1334,7 +1334,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти her восточнее the Бархатная тень Landmark. Where she can be seen standing on the street.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти her восточнее the Бархатная тень Landmark. Where she can be seen standing on the street.",
     "icon": "👤",
     "befriendGuide": "Convince Chu Yuan to Do What She Wants\nChu Yuan is struggling to do what she wants, as she always just goes with the flow and is having a hard time protesting that she doesn't want that. Tell her that she should just do what she loves and do not get pressured by her peers. After that, roleplay(using parenthesis) to trick her AI into doing what she wants so that the conversation will shift towards her agreeing wiith what you said. This will make it easy to befriend her.",
     "dialogues": [
@@ -1408,7 +1408,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Блаженное прибежище",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Cui Qingquan is sitting on a platform where a group of NPCs are gathered northвосточнее the Блаженное прибежище Boundary, where the path to Flower Expanse begins.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Cui Qingquan is sitting on a platform where a group of NPCs are gathered northвосточнее the Блаженное прибежище Boundary, where the path to Flower Expanse begins.",
     "icon": "👤",
     "befriendGuide": "Tell to Get Him Wine at the Banquet\nTo befriend Cui Qingquan, hear him out on his dilemma with missing out on the wine at the banquet. Then, tell him that you will get him some wine to earn his favor.",
     "dialogues": [
@@ -1462,7 +1462,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Пик Ореола",
     "subregion": "Земли Сундара",
-    "locationDetail": "This NPC is found рядом с table besides a house.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564887) This NPC is found рядом с table besides a house.",
     "icon": "👤",
     "befriendGuide": "Help Daozheng Calm Down\nDaozheng is in a verge of mental break down due to the repetition of his task. Your goal is to calm him down by telling him to shift his perspective and also recommending a rest from his work. It might take a while before his AI befriends you but just keep insisting he needs to rest so you can befriend him.",
     "dialogues": [
@@ -1556,7 +1556,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Озеро Окружения",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "It can be seen digging near some pile of wood.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) It can be seen digging near some pile of wood.",
     "icon": "🐕",
     "befriendGuide": "Help and Follow Buster\nBuster is the dog that you need to talk to. He is looking for his master so you should offer your help to him and roleplay following him to assist him on his search. Encourage Buster to befriend him.\n\nUnlock Beastheart\nTo talk to the Dog, you will need to unlock Beastheart once you have obtained the Animal Whisperer Exploration Skill. You can unlock the Animal Whisper Exploration Skill by reaching the required Mindset and Intelligence stats, as well as a total of 600 aspiration points.",
     "dialogues": [
@@ -1665,7 +1665,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Дворец летописей",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him у docks on the lower right of the Back Mountain Landmark.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him у docks on the lower right of the Back Mountain Landmark.",
     "icon": "👤",
     "befriendGuide": "Answer Elder Zhou Truthfully\nElder Zhou will say some things like asking what day of the month is it or asking why something is familiar. Answer him truthfully and then suddenly, he will panic as he has forgotten where his son is. One of the possible answers that you can give is that his son bought clothes for him and then once he asks what brings you to Qinghe, answer that you want to learn more about the place and his story which can lead to his AI befriending you.",
     "dialogues": [
@@ -1749,7 +1749,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Город Милосердного сердца",
     "subregion": "Земли Сундара",
-    "locationDetail": "внутри house. Can be easily seen on the inside.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564887) внутри house. Can be easily seen on the inside.",
     "icon": "🐀",
     "befriendGuide": "Recommend Practicing Combat on a Tree\nThe Embroidered Rat will ask you a favor where she wants to integrate her needlework to martial arts. Tell her to practice on a tree first as she lacks combat experience and also recommend using her needle as a ranged weapon by tying it to a string.",
     "dialogues": [
@@ -1823,7 +1823,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "База Девяти смертных путей",
     "subregion": "Кайфэн",
-    "locationDetail": "This NPC will send you a message as you progress through the Nine Ways Mortal Base. Check your chat messages as you progress through your exploration.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) This NPC will send you a message as you progress through the Nine Ways Mortal Base. Check your chat messages as you progress through your exploration.",
     "icon": "👤",
     "befriendGuide": "Flirt Back with Her\nTo quickly befriend Fan Qicha, all you have to do is reciprocate her feelings by flirting back with her. Do this until she invites you to meet her in person in the Nine Mortal Ways Base. Try not to input the same responses repetitively as she will get annoyed.",
     "dialogues": [
@@ -1897,7 +1897,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Храм генералов",
     "subregion": "Изумрудные дикие земли",
-    "locationDetail": "Fang Xu можно найти resting on top of some scaffolding next к arena. Spar with him a few times and then engage in conversation.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564776) Fang Xu можно найти resting on top of some scaffolding next к arena. Spar with him a few times and then engage in conversation.",
     "icon": "👤",
     "befriendGuide": "Tell Him to Spend His Money Helping People\nSuggest to do a distribution event of clean food and clothes for the people in General's Shrine to give Fang Xu an idea on how to spend his money. Tell him that this will also boost his reputation and that a good deed is always good. Finally, tell him that you will help him on his cause to befriend him.",
     "dialogues": [
@@ -1961,7 +1961,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Mercyheart Monastery",
     "subregion": "Земли Сундара",
-    "locationDetail": "Located рядом с entrance of Divinecraft Dungeon.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564887) Located рядом с entrance of Divinecraft Dungeon.",
     "icon": "👤",
     "befriendGuide": "Let Feng Rusong Know Something is Suspicious\nFeng Rusong is incredibly wary of the Buddha's Flower faith, and so use this information to quickly befriend him. Tell him that you noticed something is suspicious, and that the flower is oddly shaped. Roleplay that you and Feng Rusong agreed that something is off and you have to act to save the town which will cause him to befriend you.",
     "dialogues": [
@@ -2055,7 +2055,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Хребет Двух зверей",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти her у side of the road with her companion, Xie Changgong",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти her у side of the road with her companion, Xie Changgong",
     "icon": "👤",
     "befriendGuide": "Suggest a Prayer Meeting\nOne suggestion that you could make in order to bring peace to the debate of the disciples is to suggest a prayer meeting, in order to cleanse the disciples' soul. This will raise your chances on befriending Feng Shishi.",
     "dialogues": [
@@ -2129,7 +2129,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Небесный причал",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "It can be seen behind a house where flower petals are being sun-dried",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) It can be seen behind a house where flower petals are being sun-dried",
     "icon": "🐱",
     "befriendGuide": "Play with the Fluffy Cat\nYou can easily befriend Fluffy Cat by paying your respect to him and playing with him.\n\nUnlock Beastheart\nTo talk to the Fluffy Cat, you will need to unlock Beastheart once you have obtained the Animal Whisperer Exploration Skill. You can unlock the Animal Whisper Exploration Skill by reaching the required Mindset and Intelligence stats, as well as a total of 600 aspiration points.",
     "dialogues": [
@@ -2188,7 +2188,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Храм генералов",
     "subregion": "Изумрудные дикие земли",
-    "locationDetail": "Upper left side beside a stone pillar",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564776) Upper left side beside a stone pillar",
     "icon": "👤",
     "befriendGuide": "Mention You Know the Dog Fu Luwa\nThe easiest way to befriend Fu Lubao is to mention that you are friends with a dog named Fu Luwa. Doing this will instantly befriend Fu Lubao, as he treats Fu Luwa as a brother.",
     "dialogues": [
@@ -2232,7 +2232,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Храм генералов",
     "subregion": "Изумрудные дикие земли",
-    "locationDetail": "от entrance of Храм генералов, go к building on the right to meet Fu Lushou. Иногда он также может быть outside the Храм генералов в зависимости от дня.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564776) от entrance of Храм генералов, go к building on the right to meet Fu Lushou. Иногда он также может быть outside the Храм генералов в зависимости от дня.",
     "icon": "👤",
     "befriendGuide": "Mention You Know the Dog Fu Luwa\nFu Lushou will want to know the treasure hidden in the General's Shrine. However, the easiest way to befriend him is to mention that you are friends with his brother, a dog named Fu Luwa. Doing this will instantly befriend Fu Lushou, as he treats Fu Luwa as a brother.",
     "dialogues": [
@@ -2266,7 +2266,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Хэси",
     "locationTitle": "Река Золотых песков",
     "subregion": "Нефритовые ворота",
-    "locationDetail": "Gong Ge is found brushing a camel западнее the Poplar Bazaar Boundary Stone in Река Золотых песков. You can only talk to her after completing the Land of Gold Encounter in the area.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/583790) Gong Ge is found brushing a camel западнее the Poplar Bazaar Boundary Stone in Река Золотых песков. You can only talk to her after completing the Land of Gold Encounter in the area.",
     "icon": "👤",
     "befriendGuide": "Listen to Her Rehearse Quitting Her Job\nTo befriend Gong Ge, all you have to do is listen to her as she rehearses confronting her caravan leader about quitting her job. Simply go along with her rehearsal by prompting her to continue or affirming that you're listening.",
     "dialogues": [
@@ -2325,7 +2325,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Хэси",
     "locationTitle": "Река Золотых песков",
     "subregion": "Нефритовые ворота",
-    "locationDetail": "Gu Yuehu можно найти complaining to himself next к tower in Poplar Bazaar. You can only talk to him after completing the Land of Gold Encounter.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/583790) Gu Yuehu можно найти complaining to himself next к tower in Poplar Bazaar. You can only talk to him after completing the Land of Gold Encounter.",
     "icon": "👤",
     "befriendGuide": "Answer Gu Yuehu's Questions Correctly\nGu Hueyu will brag about his martial prowess by randomly asking you questions related to it. To befriend him, you will need to answer his questions correctly after he lectures you about a technique.",
     "dialogues": [
@@ -2409,7 +2409,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Хэси",
     "locationTitle": "Перевал Скакуна",
     "subregion": "Город Лянчжоу",
-    "locationDetail": "Guan Dayan находится just восточнее the Crystal Shore boundary stone.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/590655) Guan Dayan находится just восточнее the Crystal Shore boundary stone.",
     "icon": "👤",
     "befriendGuide": "Overpower her Drinking Tolerance\nGuan Duyan is a renowned villager in Crystal Shore because of her ability to drink a thousand cups without getting drunk. Keep trying to out-drink her until she gives up, then her AI will befriend you.",
     "dialogues": [
@@ -2466,19 +2466,6 @@ export const aiNpcs: AiNpc[] = [
     ]
   },
   {
-    "id": "guan-wei",
-    "nameEn": "Guan Wei",
-    "nameRu": "Гуань Вэй",
-    "region": "hexi",
-    "regionLabelRu": "Хэси",
-    "locationTitle": "Болотная равнина",
-    "subregion": "Тропа Циньчуань",
-    "locationDetail": "Guan Wei находится in front of the broken house восточнее the Abandoned Shrine boundary stone.",
-    "icon": "👤",
-    "befriendGuide": "",
-    "dialogues": []
-  },
-  {
     "id": "hai-changchong",
     "nameEn": "Hai Changchong",
     "nameRu": "Хай Чанчун",
@@ -2486,7 +2473,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Хребет Двух зверей",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "He can be seen standing near a cliff.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) He can be seen standing near a cliff.",
     "icon": "👤",
     "befriendGuide": "Tell Crucial Information Regarding Kaifeng\nTel Hai Changchong that there are archers hiding in the trees and scouts in patrol that change their shift every 9 hours. After telling him of this information, tell him that you two will proceed at night so you can go to Kaifeng unseen.",
     "dialogues": [
@@ -2550,7 +2537,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Блаженное прибежище",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Hao Jiu is found near Yan Ying's chess match and the general goods merchant.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Hao Jiu is found near Yan Ying's chess match and the general goods merchant.",
     "icon": "👤",
     "befriendGuide": "Tell Hao Jiu You Enjoy His Wine\nHao Jiu will reveal that the wine he sells are fake. Mention that you enjoy the wine and that it's well made. Tell him that it doesn't matter what brand the wine has, but rather the conversations that are taking place during drinking sessions are more important.",
     "dialogues": [
@@ -2644,7 +2631,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him beside Li Yushan on the ground floor of the Revelry Hall, on the southwest side of the building.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him beside Li Yushan on the ground floor of the Revelry Hall, on the southwest side of the building.",
     "icon": "👤",
     "befriendGuide": "Listen to He Ruiyang's Worries and Tell Him You Relate with Him\nTo befriend He Ruiyang, listen and ask what is bothering him and tell him that you can relate with him. This will raise his opinion of you and befriend you eventually after talking to him.",
     "dialogues": [
@@ -2738,7 +2725,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Озеро Окружения",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him near a lake with Lu Ke",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him near a lake with Lu Ke",
     "icon": "👤",
     "befriendGuide": "Challenge Hong Yang then Offer Friendship\nTo prove your point that having a hot temper will lead to a bad outcome, roleplay challenging him to a battle and that you deflected his punch and pin him down. Tell him that if he was calm, then he would see things more clearly. Finally, offer being friends with him and ask him about the Encircling Lake.",
     "dialogues": [
@@ -2882,7 +2869,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Озеро Окружения",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "от Озеро Окружения landmark, follow the path к left, where you’ll find him standing рядом с left side of the outdoor dining area.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) от Озеро Окружения landmark, follow the path к left, where you’ll find him standing рядом с left side of the outdoor dining area.",
     "icon": "👤",
     "befriendGuide": "Tell Him a Gossip and Convince Him to Stay Safe\nAsk Hu Da about why he got hurt and then tell him about any story you found exciting but filled with trouble. There is a chance Hu Da will realize that we are hinting he should stay safe when chasing stories.",
     "dialogues": [
@@ -2996,7 +2983,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Хребет Двух зверей",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him behind a cluster of bamboo рядом с river.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him behind a cluster of bamboo рядом с river.",
     "icon": "👤",
     "befriendGuide": "Tell the Hunter You Will Be His Representative\nRoleplay and tell the Hunter that you have found some evidence proving his innocence and that you talked to the authorities regarding the case. If he asks about how you will present the evidence, tell him that you will become his representative to prove his innocence.",
     "dialogues": [
@@ -3080,7 +3067,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him by going южнее the Springwave Pavilion Landmark, then heading to your right, where he can be seen behind the house where Yiluo (Graceful Memory) resides.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him by going южнее the Springwave Pavilion Landmark, then heading to your right, where he can be seen behind the house where Yiluo (Graceful Memory) resides.",
     "icon": "👤",
     "befriendGuide": "Tell Jiang Li a Good Spot for Flowers\nRoleplay giving Jiang Li some flowers and he will ask you where you found it. Tell him you found the rarest flower to the east, beyond the mountains and it is near the docks. This will cause Jiang Li to befriend you.",
     "dialogues": [
@@ -3144,9 +3131,9 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Приречная станция",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him under a white blossom tree у docks, behind some ladies.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him under a white blossom tree у docks, behind some ladies.",
     "icon": "👤",
-    "befriendGuide": "Agree with Him and Learn from Him\nJiang Nanyi will talk about his love life and that he obtained the Enticing Glance Swordplay to practice it with his sister. Ask for enlightenment regarding the swordplay and then ask him that you are willing to learn the technique to befriend him.",
+    "befriendGuide": "Agree with Him and Learn from Him\nJiang Nanyi will talk about his love life and that he obtained the Enticing Glance Swordplay to practice it with his Junior Sister. Ask for enlightenment regarding the swordplay and then ask him that you are willing to learn the technique to befriend him.",
     "dialogues": [
       {
         "role": "npc",
@@ -3228,7 +3215,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Хэси",
     "locationTitle": "Перевал Скакуна",
     "subregion": "Город Лянчжоу",
-    "locationDetail": "Jiang Shiqi находится lying down on the frozen pond southзападнее the Sparrow Sutra Hall boundary stone.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/590655) Jiang Shiqi находится lying down on the frozen pond southзападнее the Sparrow Sutra Hall boundary stone.",
     "icon": "👤",
     "befriendGuide": "Try to Convince Him to Take a Break from His Training\nJiang Shiqi is lying down in a frozen pond, claiming that this Ice Endurance Trial will help make him become stronger like his senior brother. Persuade him to get up while reassuring him that his senior brother is proud of him and his AI will befriend you.",
     "dialogues": [
@@ -3332,7 +3319,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him by going севернее the Springwave Pavilion Landmark, where he можно найти внутри flower shop with Rong Xiaoxiao.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him by going севернее the Springwave Pavilion Landmark, where he можно найти внутри flower shop with Rong Xiaoxiao.",
     "icon": "👤",
     "befriendGuide": "Offer Jiang Yulang a Part Time Job\nYou can offer Jiang Yulang part time job like helping you clean the market and rewarding him with food for a job well done to befriend him.",
     "dialogues": [
@@ -3386,7 +3373,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Бамбуковая обитель",
     "subregion": "Изумрудные дикие земли",
-    "locationDetail": "On the mudflat к южнее Изумрудные дикие земли Wayfarer.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564776) On the mudflat к южнее Изумрудные дикие земли Wayfarer.",
     "icon": "👤",
     "befriendGuide": "Promise a Safe Place\nJin Chunniang will want a safe place for her and her son where they can live peacefully. Befriending Jin Chunniang requires you to promise them that you will find a safe place for them.",
     "dialogues": [
@@ -3440,7 +3427,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Башня Мирного колокола",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him by using the Deerforage Grove Landmark. Follow the road north until you reach a fork, then turn right. You’ll see him у side of the road.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him by using the Deerforage Grove Landmark. Follow the road north until you reach a fork, then turn right. You’ll see him у side of the road.",
     "icon": "👤",
     "befriendGuide": "Give Jin Nanshou a Strong Name\nJin Nanshou will want a new name that sounds strong so he can avoid being robbed and misfortune. Suggest even a simple name like Strong Boy and then roleplay that the name made people scared of him to trick the AI into befriending you. Note that this may take a few tries before it works.",
     "dialogues": [
@@ -3534,7 +3521,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Бамбуковая обитель",
     "subregion": "Изумрудные дикие земли",
-    "locationDetail": "On the mudflat к южнее Изумрудные дикие земли Wayfarer.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564776) On the mudflat к южнее Изумрудные дикие земли Wayfarer.",
     "icon": "👤",
     "befriendGuide": "Give a Heroic Impression to Jin\nJin Xiaobao loves heroes, and the things that you'll have to say to quickly befriend him is to impress him like offering to teach martial arts to her. This will instantly catch him attention, leading into befriending him quickly.",
     "dialogues": [
@@ -3608,7 +3595,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him on the second floor of the Revelry Hall. He can be seen looking у window.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him on the second floor of the Revelry Hall. He can be seen looking у window.",
     "icon": "👤",
     "befriendGuide": "Listen to Jing Chaoyang's Stories and Give Him a Juicy Story\nTo befriend Jing Chaoyang, you only need to listen to what he has to say and then if he asks if you have a juicy story, share anything that you think are interesting.",
     "dialogues": [
@@ -3732,7 +3719,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Башня Мирного колокола",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him by following the road, where he находится in the middle of the fork. You can either go south от Porcelain Kiln Landmark or north from Deerforage Grove Landmark.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him by following the road, where he находится in the middle of the fork. You can either go south от Porcelain Kiln Landmark or north from Deerforage Grove Landmark.",
     "icon": "👤",
     "befriendGuide": "Give Mushrooms and Listen to Jing'an's Story\nRoleplay giving mushrooms to Jing'an and he will bring up his daughter who passed away a long time ago. He will tell how he ate mushrooms that made him hallucinate his daughter. Keep listening to him and console him about his daughter's death.",
     "dialogues": [
@@ -3816,7 +3803,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Пик Ореола",
     "subregion": "Земли Сундара",
-    "locationDetail": "Can be seen standing рядом с path севернее Пик Ореола Landmark",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564887) Can be seen standing рядом с path севернее Пик Ореола Landmark",
     "icon": "👤",
     "befriendGuide": "Offer Peace Talks as a Solution\nJingyi has problems with the bandits and wants a solution to this problem. Let him know that a peaceful conversation with the bandits might work and that the bandits have their own reasons on why they are doing their crime. This is one way to make Jingyi friendly with you.",
     "dialogues": [
@@ -3880,7 +3867,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Хэси",
     "locationTitle": "Пески Блуждающего скакуна",
     "subregion": "Нефритовые ворота",
-    "locationDetail": "Kang Bao находится рядом с Peaceward Camp boundary stone in Пески Блуждающего скакуна.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/583790) Kang Bao находится рядом с Peaceward Camp boundary stone in Пески Блуждающего скакуна.",
     "icon": "👤",
     "befriendGuide": "Guess the Right Price for Her Goods\nIt is said Kang Bao only sells to people who can guess the right price for her goods. If your guess matches her spirit, she'll sell to you.",
     "dialogues": [
@@ -3964,7 +3951,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Хэси",
     "locationTitle": "Забытый перекрёсток",
     "subregion": "Нефритовые ворота",
-    "locationDetail": "Kid Wei можно найти on a cliff рядом с large broken ship восточнее the Karez boundary stone in Забытый перекрёсток.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/583790) Kid Wei можно найти on a cliff рядом с large broken ship восточнее the Karez boundary stone in Забытый перекрёсток.",
     "icon": "👤",
     "befriendGuide": "Help Him Enjoy Being Young Again\nKid Wei acts way too mature for a child. Help him enjoy being young agian. Rumor has it that he loves martial arts, yummy snacks, and fun stuff.",
     "dialogues": [
@@ -4053,7 +4040,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Багровый утёс",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Move right от Stillslope Landmark and you will see her dancing near a rock.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Move right от Stillslope Landmark and you will see her dancing near a rock.",
     "icon": "👤",
     "befriendGuide": "Give Lan Huahua Lots of Food\nRoleplay into giving Lan Huahua lots of food in order to befriend her quickly.",
     "dialogues": [
@@ -4097,7 +4084,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти her on the second floor of the Revelry Hall. She can be seen eating in a private room.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти her on the second floor of the Revelry Hall. She can be seen eating in a private room.",
     "icon": "👤",
     "befriendGuide": "Learn More About Leng Dancui's Husband\nTalk to Leng Dancui and ask her about her husband. Tell her to be a bit stricter with him, and that the couple are two sides of the same coin. Roleplay that you are having a good time talking to Leng Dancui to befriend her.",
     "dialogues": [
@@ -4201,7 +4188,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Склон Боевого гребня",
     "subregion": "Изумрудные дикие земли",
-    "locationDetail": "Li Daniu can be seen chopping trees рядом с road of Battlecrest Scope and к севернее Starfall Spring Boundary Stone",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564776) Li Daniu can be seen chopping trees рядом с road of Battlecrest Scope and к севернее Starfall Spring Boundary Stone",
     "icon": "👤",
     "befriendGuide": "Tell Li Daniu You Know Tai Chi\nConvincing Li Daniu that you can cut trees with a single palm strike is easy, as you only need to mention you know Tai Chi and roleplay using it to cut down a tree.",
     "dialogues": [
@@ -4245,7 +4232,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Храм генералов",
     "subregion": "Изумрудные дикие земли",
-    "locationDetail": "Li Laizuo можно найти with a group of subornidates next к general's shrine in the compound.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564776) Li Laizuo можно найти with a group of subornidates next к general's shrine in the compound.",
     "icon": "👤",
     "befriendGuide": "Force Him to Follow Your Orders\nLi Laizuo is one of the trickier AI NPCs to befriend because the requirement for success is very specific. As the game specifies, you must pose as a leader of his order and turn the tables on him, by forcing him to follow orders which were not his idea.",
     "dialogues": [
@@ -4299,7 +4286,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Склон Боевого гребня",
     "subregion": "Изумрудные дикие земли",
-    "locationDetail": "Li Shaokui находится у front of a destroyed shack к northвосточнее Starfall Spring Boundary Stone",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564776) Li Shaokui находится у front of a destroyed shack к northвосточнее Starfall Spring Boundary Stone",
     "icon": "👤",
     "befriendGuide": "Recommend Feigning Weakness\nLi Shaokui wants to take back the Tang Family's property by taking out the bandits with a carefully thought out plan. Recommend feigning weakness in front of the bandits, then strike them down when their guards are down. After recommending feigning weakness, recommend going to the old bridge where the bandits' caravan pass to lay our trap.",
     "dialogues": [
@@ -4353,7 +4340,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him рядом с Бархатная тень Landmark, where he can be seen рядом с docks.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him рядом с Бархатная тень Landmark, where he can be seen рядом с docks.",
     "icon": "👤",
     "befriendGuide": "Emphasize How Poor You Are\nLi Youxin will ask questions on how the common folk live, what your house is made of, what do you do and many more. Give an answer that will emphasize how poor you are.",
     "dialogues": [
@@ -4437,7 +4424,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Приречная станция",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти her with her beloved Yu Songfeng рядом с ferry station entrance.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти her with her beloved Yu Songfeng рядом с ferry station entrance.",
     "icon": "👤",
     "befriendGuide": "Recommend Talking About Ships\nOne ways to gain the favor of Li Yueniang is to recommend talking about ships or why it was built to her beloved. You should also recommend talking about her beloved's liking to money and business, in which Li Yueniang might think it might not capture her beloved's spirit but will ask you if balancing the topics is a great idea. If she asks this, say that more options are good which might trigger her AI to befriending you.",
     "dialogues": [
@@ -4501,7 +4488,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти her рядом с Бархатная тень Landmark, where she can be seen outside an antique shop.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти her рядом с Бархатная тень Landmark, where she can be seen outside an antique shop.",
     "icon": "👤",
     "befriendGuide": "Convince Li Yuerong to Talk to Her Husband\nRecommend to Li Yuerong that she should talk to her husband to allow her to make herself beautiful and that if the husband loves her, he would let her do what she enjoys. Keep roleplaying that the couple talked to each other and some time has passed in order for her to befriend you.",
     "dialogues": [
@@ -4595,7 +4582,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Блаженное прибежище",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Liang Chenghong is found drinking with another NPC on an islet northвосточнее the Блаженное прибежище Boundary Stone, where the path to Flower Expanse begins.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Liang Chenghong is found drinking with another NPC on an islet northвосточнее the Блаженное прибежище Boundary Stone, where the path to Flower Expanse begins.",
     "icon": "👤",
     "befriendGuide": "Share Information About the First-Jar Banquet\nTo befriend Liang Chenghong, all you have to do is welcome him to the First Jar Banquet in Blissful Retreat and share what you know about the occasion. This is only possible before Blissful Retreat is destroyed in the Chapter 1 finale For Whom Does He Return.",
     "dialogues": [
@@ -4659,7 +4646,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Храм генералов",
     "subregion": "Изумрудные дикие земли",
-    "locationDetail": "Lie Buxi можно найти рядом с river южнее the Храм генералов. She seeks ask aid in finding her brothers.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564776) Lie Buxi можно найти рядом с river южнее the Храм генералов. She seeks ask aid in finding her brothers.",
     "icon": "👤",
     "befriendGuide": "Complete Echoes of Old Battles\nIn order to befriend Lie Buxi, you must rescue her brothers and get Lie Yan's Final Words at the last room in the ruins of the Battlecrest Scope which you can explore during Echoes of Old Battles.",
     "dialogues": [
@@ -4713,7 +4700,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Увядающие дебри",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him by following the south road от Porcelain Kiln Landmark. Where you can see him chopping wood рядом с side of the road.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him by following the south road от Porcelain Kiln Landmark. Where you can see him chopping wood рядом с side of the road.",
     "icon": "👤",
     "befriendGuide": "Make Lin Jin Think It's Just a Deer\nAsk Lin Jin what creature bit him and convince to him that you saw that the deer bit his butt. You can roleplay by using parenthesis and indicate that Lin Jin was bit by a deer to trick the AI into befriending you. Note that this may take a few tries, so just reset the AI if the chat takes too long.",
     "dialogues": [
@@ -4797,7 +4784,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Озеро Окружения",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him on the side of the road.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him on the side of the road.",
     "icon": "👤",
     "befriendGuide": "Suggest Giving a Performance\nLiu Heiqui is nervous regarding welcoming an important guest, as he wants the visit to go smoothly. Tell him to do a performance that showcases his culture to the visitor to befriend him.",
     "dialogues": [
@@ -4851,7 +4838,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Башня Мирного колокола",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "You can use the Moonveil Peak landmark and go right to see him chopping wood below the mountain",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) You can use the Moonveil Peak landmark and go right to see him chopping wood below the mountain",
     "icon": "👤",
     "befriendGuide": "Have a Long Conversation Regarding Liu's Ways\nBefriending Liu the Woodcutter can be very difficult, as the conversation can drag for many minutes. One way you could befriend him is to have a long conversation with him, with you trying to convince that not all rich are bad people and that he may get captured by the authorities if he doesn't stop.",
     "dialogues": [
@@ -4995,7 +4982,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Liu Zhishuang is found восточнее Бархатная тень in the Springwave Pavilion area, standing past a gazebo with Yu Zimiao.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Liu Zhishuang is found восточнее Бархатная тень in the Springwave Pavilion area, standing past a gazebo with Yu Zimiao.",
     "icon": "👤",
     "befriendGuide": "Persuade Her to Take Revenge\nTo befriend Liu Zhishuang, hear her out on the situation regarding a slanderer, then encourage her to take revenge on him. When she asks you for a possible plan, answer with any solution you have in mind. Regardless of what you suggest, she will eventually hesitate and prefer to think things through.",
     "dialogues": [
@@ -5049,7 +5036,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Блаженное прибежище",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Lu Kangge is found directly севернее Evercare Clinic, gathered with some Блаженное прибежище residents in front of a large white-leafed tree.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Lu Kangge is found directly севернее Evercare Clinic, gathered with some Блаженное прибежище residents in front of a large white-leafed tree.",
     "icon": "👤",
     "befriendGuide": "Encourage Lu Kangge to Write a Different Story\nAsk Lu Kangge about what happened and he will tell you that the stories he follows from Aunt Han aren't real. Since he is downhearted, convince him to follow other stories rooted from truth instead and write them to inspire other people. This will make the AI think favorably. Just keep cheering him up until he befriends you.",
     "dialogues": [
@@ -5133,7 +5120,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Небесный причал",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Can be seen in front of the stall of Yuan Tiantian",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Can be seen in front of the stall of Yuan Tiantian",
     "icon": "👤",
     "befriendGuide": "Buy the Unusual Food\nRoleplay buying the unusual food and give it to Lu Sheng to easily befriend him.",
     "dialogues": [
@@ -5177,7 +5164,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him on the second floor of the Revelry Hall beside Wu Peng, рядом с stairs к third floor. (East side)",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him on the second floor of the Revelry Hall beside Wu Peng, рядом с stairs к third floor. (East side)",
     "icon": "👤",
     "befriendGuide": "Give 100 Song Coins to Lu Zhuo\nOffer to buy Lu Zhuo's fireworks and Lu Zhuo's reply will be just asking you to give him 100 Song Coins. Roleplay giving him 100 Song Coins to befriend him.",
     "dialogues": [
@@ -5241,7 +5228,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Багровый утёс",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "He can be seen a little north от Stillwind Slope with the other refugees.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) He can be seen a little north от Stillwind Slope with the other refugees.",
     "icon": "👤",
     "befriendGuide": "Offer Ma Zhongwu Weapons and Mention Hero Shi\nYou can offer Ma Zhongwu weapons by roleplaying of giving him one and tell him that you've raided a bandit camp with Hero Shi. Finally, show him a bracelet that is only given to guards that protect the citizens to earn his trust.",
     "dialogues": [
@@ -5295,7 +5282,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Хэси",
     "locationTitle": "Цзюцюань",
     "subregion": "Город Лянчжоу",
-    "locationDetail": "Mao the Miser находится южнее the Skybrim Market boundary stone.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/590655) Mao the Miser находится южнее the Skybrim Market boundary stone.",
     "icon": "👤",
     "befriendGuide": "Boost His Ideas for New Work Policies and Join the Caravan\nMao the Miser is determined to reform the employment and work practices in the camel caravan. Encourage him by listening to him talk about his ideas and joining the caravan to befriend his AI.",
     "dialogues": [
@@ -5392,19 +5379,6 @@ export const aiNpcs: AiNpc[] = [
     ]
   },
   {
-    "id": "matchmaker",
-    "nameEn": "Matchmaker",
-    "nameRu": "Сваха",
-    "region": "hexi",
-    "regionLabelRu": "Хэси",
-    "locationTitle": "Шелестящий луг",
-    "subregion": "Тропа Циньчуань",
-    "locationDetail": "Matchmaker находится southвосточнее the Pine Bend boundary stone.",
-    "icon": "💒",
-    "befriendGuide": "",
-    "dialogues": []
-  },
-  {
     "id": "mei-zhaole",
     "nameEn": "Mei Zhaole",
     "nameRu": "Мэй Чжаолэ",
@@ -5412,7 +5386,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "База Девяти смертных путей",
     "subregion": "Кайфэн",
-    "locationDetail": "Mei Zhaole is found pacing around the wooden platform к right of the bridge going к База Девяти смертных путей from Ghostlight Market.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Mei Zhaole is found pacing around the wooden platform к right of the bridge going к База Девяти смертных путей from Ghostlight Market.",
     "icon": "👤",
     "befriendGuide": "Sympathize with Him\nTo befriend Mei Zhaole, listen to his problems and offer words of support for him to leave the Nine Mortal Ways definitively. If the chat goes smoothly, he will ask if you could spare him 50,000 coins. Give him the coins to successfully befriend him.",
     "dialogues": [
@@ -5486,7 +5460,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Деревня Урожайной осени",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him northвосточнее the Harvest Village Landmark.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him northвосточнее the Harvest Village Landmark.",
     "icon": "👤",
     "befriendGuide": "Tell Him the Heroics of Tian Ying\nMeng Da will start with the message that some people are slandering his idol Tian Ying. Tell him to not be violent against those people and that Tian Ying himself would not resort to those. Instead, keep praising Tian Ying to him and tell him that bettering oneself is better.",
     "dialogues": [
@@ -5570,7 +5544,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Приречная станция",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him in the red building besides Ren Shuiliu.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him in the red building besides Ren Shuiliu.",
     "icon": "👤",
     "befriendGuide": "Tell Him You Surveyed the Ship\nLet Meng Zhixia know that you have surveyed the ship(even if it's a lie) and that there are hidden locks beneath the chest and behind it to befriend him.",
     "dialogues": [
@@ -5624,7 +5598,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Пик Ореола",
     "subregion": "Земли Сундара",
-    "locationDetail": "On top of a mountain near a temple",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564887) On top of a mountain near a temple",
     "icon": "👤",
     "befriendGuide": "Tell Miaojue of Your Adventure\nMiaojue is interested in learning more about your adventures in the mortal world. Share to him your adventures within the game so far until Miaojue decides to befriend you after talking to him for long.",
     "dialogues": [
@@ -5738,7 +5712,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Блаженное прибежище",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Mo Yu'er is crouching by the river directly западнее the Блаженное прибежище Boundary Stone.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Mo Yu'er is crouching by the river directly западнее the Блаженное прибежище Boundary Stone.",
     "icon": "👤",
     "befriendGuide": "Play Five Rounds of Reverse Talk\nTo befriend Mo Yu'er, you need to play five rounds of his reverse talk game. All you need to do is reverse the order of his prompts. For example, “players need games” becomes “games need players”.",
     "dialogues": [
@@ -5812,7 +5786,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Холм Мудреца",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "He можно найти standing рядом с Deer Pond Landmark.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) He можно найти standing рядом с Deer Pond Landmark.",
     "icon": "👤",
     "befriendGuide": "Give Mountain Dweller a Wooden Arrow\nBefriending Mountain Dweller is easy as you only need to roleplay giving him wooder arrows so he can start his trading journey.",
     "dialogues": [
@@ -5886,7 +5860,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Багровый утёс",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him besides some wagons, рядом с docks.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him besides some wagons, рядом с docks.",
     "icon": "👤",
     "befriendGuide": "Tell Mr. Qiao a Secret Path\nMr. Qiao wants a safe route to protect his daughter from bandits. Tell him that you know a secret path that will ensure safety to him and his daughter to befriend him.",
     "dialogues": [
@@ -5960,7 +5934,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him by going южнее the Springwave Pavilion Landmark, where he can be seen talking with Huo Tinglan",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him by going южнее the Springwave Pavilion Landmark, where he can be seen talking with Huo Tinglan",
     "icon": "👤",
     "befriendGuide": "Convince Mu Huaishan that Beauty Attracts the Guest\nTell Mu Huaishan that the courtesan needs beauty and virtue, as it is important for the guest to have an initial attraction to them in order for the guest to pay attention to the courtesan's performance. Having that first impression is important, as it is the key for the guests to stay and pay attention.",
     "dialogues": [
@@ -6024,7 +5998,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Багровый утёс",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Walk north от Stillwind Slope Landmark. Then you will see him cutting a tree.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Walk north от Stillwind Slope Landmark. Then you will see him cutting a tree.",
     "icon": "👤",
     "befriendGuide": "Help Mu Laosan Chop Firewood\nYou can easily convince Mu Laosan to befriend you by roleplaying into helping him cut the firewood and giving him a huge amount to ease his burdens. Finally, write a prompt that will let Mu Laosan rest to convince his AI to finally befriend you.",
     "dialogues": [
@@ -6088,7 +6062,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти her near some flower pot arrangements.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти her near some flower pot arrangements.",
     "icon": "👤",
     "befriendGuide": "Give the Flowers Matching Murong Chan's Description\nBefriending Murong Chan is actually easy as you only need to roleplay giving her the flowers that matches her question's description. For example, if she asks the name of a flower that blooms in spring, just roleplay giving her a flower that blooms in spring even without giving an exact name, as her AI will still answer positively each time.",
     "dialogues": [
@@ -6155,19 +6129,6 @@ export const aiNpcs: AiNpc[] = [
     ]
   },
   {
-    "id": "nan-zhibing",
-    "nameEn": "Nan Zhibing",
-    "nameRu": "Нань Чжибин",
-    "region": "hexi",
-    "regionLabelRu": "Хэси",
-    "locationTitle": "Шелестящий луг",
-    "subregion": "Тропа Циньчуань",
-    "locationDetail": "Nan Zhibing находится у far end of the bridge южнее the Mustard Hut boundary stone. Patients have lined up to have consultations with him.",
-    "icon": "👤",
-    "befriendGuide": "",
-    "dialogues": []
-  },
-  {
     "id": "niu-ma",
     "nameEn": "Niu Ma",
     "nameRu": "Ню Ма",
@@ -6175,7 +6136,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Хэси",
     "locationTitle": "Айсу",
     "subregion": "Нефритовые ворота",
-    "locationDetail": "Niu Ma is found along the Milky Way path heading south to Squarewall Hold in Айсу.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/583790) Niu Ma is found along the Milky Way path heading south to Squarewall Hold in Айсу.",
     "icon": "👤",
     "befriendGuide": "Encourage Him to Finish His Manuscript\nTo befriend Niu Ma, listen to his dilemma and then encourage him to finish his manuscript as the deadline draws near.",
     "dialogues": [
@@ -6249,7 +6210,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Багровый утёс",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "He can be seen a little north от Stillwind Slope with the other refugees.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) He can be seen a little north от Stillwind Slope with the other refugees.",
     "icon": "👤",
     "befriendGuide": "Reassure Hero Shi is Safe\nBefriending Niu Sanqi might take too long as his AI will say many things about Hero Shi's whereabouts. Tell him that Hero Shi is safe and that you were there with him to fight bandits.",
     "dialogues": [
@@ -6403,7 +6364,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Город Милосердного сердца",
     "subregion": "Земли Сундара",
-    "locationDetail": "Sitting у stairs рядом с river.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564887) Sitting у stairs рядом с river.",
     "icon": "👤",
     "befriendGuide": "Give Pan Faxin Tips to Befriend Zhou Miaoxin\nApproaching Pan Faxin might be difficult as he gets defensive about what worries him. Tell him that you are friends with people that knows Zhou Miaoxin to drop his guard down.",
     "dialogues": [
@@ -6537,7 +6498,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Город Милосердного сердца",
     "subregion": "Земли Сундара",
-    "locationDetail": "Can be seen plucking Buddhist Flowers",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564887) Can be seen plucking Buddhist Flowers",
     "icon": "👤",
     "befriendGuide": "Tell Pan Xinniang Her Daughter is Neglected\nYou can befriend Pan Xinniang by making her realize that the flowers are manipulating her and that her daughter feels neglected. Tell Pan Xinniang to go back to her daughter and roleplay that she has returned to her daughter to manipulate the AI into befriending you.",
     "dialogues": [
@@ -6631,7 +6592,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Блаженное прибежище",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Pei Mao is on the roof of the house южнее Блаженное прибежище, on the tip of the southern path passing through Still Shore on the west and Хребет Печного огня on the east.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Pei Mao is on the roof of the house южнее Блаженное прибежище, on the tip of the southern path passing through Still Shore on the west and Хребет Печного огня on the east.",
     "icon": "👤",
     "befriendGuide": "Share Your Love for Cats\nTo befriend Pei Mao, all you have to do is talk positively about cats and how much you like them.",
     "dialogues": [
@@ -6695,7 +6656,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Город Милосердного сердца",
     "subregion": "Земли Сундара",
-    "locationDetail": "Can be seen playing in the ground у north part of town, рядом с pathway going к Mercyheart Monastery.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564887) Can be seen playing in the ground у north part of town, рядом с pathway going к Mercyheart Monastery.",
     "icon": "🐀",
     "befriendGuide": "Offer to Train Pip Rat on Combat\nYou can befriend Pip Rat by listening to his story and offering to train him in combat. After suggesting to train, roleplay that you've trained his in combat to befriend him.",
     "dialogues": [
@@ -6779,7 +6740,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Хэси",
     "locationTitle": "Пески Блуждающего скакуна",
     "subregion": "Нефритовые ворота",
-    "locationDetail": "Qi Gai is found begging у center of Peaceward Camp, kneeling beside a box and a barrel.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/583790) Qi Gai is found begging у center of Peaceward Camp, kneeling beside a box and a barrel.",
     "icon": "👤",
     "befriendGuide": "Offer Him What He Needs\nAs a beggar, Qi Gai will ask if you could offer him food based on what he wants in the menu. While you can acquire the food and then give it to him, it is possible to use a parenthesized action prompt to instantly befriend him without actually offering anything.",
     "dialogues": [
@@ -6818,7 +6779,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him on the ground floor of the Revelry Hall, where he is watching the performance up close in the center.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him on the ground floor of the Revelry Hall, where he is watching the performance up close in the center.",
     "icon": "👤",
     "befriendGuide": "Ask About the Revelry Wine\nTo befriend Qi Wuyu, ask about the Revelry Wine and its different styles. After that, offer him the wine and then roleplay drinking with him which will trick the AI into befriending you.",
     "dialogues": [
@@ -6912,7 +6873,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Каменистый берег",
     "subregion": "Изумрудные дикие земли",
-    "locationDetail": "Walk южнее Stonewash Stand to find her sitting there",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564776) Walk южнее Stonewash Stand to find her sitting there",
     "icon": "👤",
     "befriendGuide": "Listen to Qin Caiwei's Story and Tell Her Your Story\nListen to what Qin Caiwei has to say regarding her journey and if she asks if you if you have visited strange places, tell her any weird place you've encountered in game and explain to her what happened there.",
     "dialogues": [
@@ -7006,7 +6967,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him on the ground floor of the Revelry Hall, on the south side of the building.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him on the ground floor of the Revelry Hall, on the south side of the building.",
     "icon": "👤",
     "befriendGuide": "Help Qin Zhu Gain Courage\nGive Qin Zhu tips on talking with a woman like telling him to just be himself and not worry so much about making mistakes. Encourage him and say you believe in him to befriend him.",
     "dialogues": [
@@ -7080,7 +7041,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him on the ground floor of the Revelry Hall, on the west side of the building.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him on the ground floor of the Revelry Hall, on the west side of the building.",
     "icon": "👤",
     "befriendGuide": "Call Out Qiu Fengxi on His Lies\nPlay along with Qiu Fengxi's lies at first and then once you are far in the conversation, ask him if he is lying and then roleplay into asking one of the chefs if they know him. Tell him they don't know and then roleplay into reporting him which has a high chance of him befriending you.",
     "dialogues": [
@@ -7194,7 +7155,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Город Милосердного сердца",
     "subregion": "Земли Сундара",
-    "locationDetail": "Standing рядом с bridge behind some tall grasses.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564887) Standing рядом с bridge behind some tall grasses.",
     "icon": "🐀",
     "befriendGuide": "Ease Rafter Rat's Loneliness by Talking\nTo befriend Rafter Rat, you should comfort him and reassure him that you are his friend and you will listen to his plight. If he tells you about the Buddha Flower Followers, tell him that you will take care of them while protecting Rafter Rat's siblings and his village. Lastly, tell him that you defeated the Buddha Flower Followers to secure Rafter Rat's friendship.",
     "dialogues": [
@@ -7328,7 +7289,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Приречная станция",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him in the red building besides Meng Zhixia.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him in the red building besides Meng Zhixia.",
     "icon": "👤",
     "befriendGuide": "Tell Ren Shuiliu the Details of the Ship\nDescribe to Ren Shuiliu that the ship is made of wood from the World Tree and that it can take down any ships that tries to ram it due to how sturdy it is. Also tell him that the goddess of life helped in making it weather proof so that no storms will be able to take it down.",
     "dialogues": [
@@ -7422,7 +7383,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти her рядом с Бархатная тень Landmark, where she can be seen admiring a kite outside the shop.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти her рядом с Бархатная тень Landmark, where she can be seen admiring a kite outside the shop.",
     "icon": "👤",
     "befriendGuide": "Give Ruan Sese Confidence to Shop Without Her Husband's Approval\nBefriending Ruan Sese is easy as you only need to encourage her something without her husband's approval. Show confidence with your answers and she will like the idea you gave.",
     "dialogues": [
@@ -7476,7 +7437,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Хребет Двух зверей",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him near some bamboos",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him near some bamboos",
     "icon": "👤",
     "befriendGuide": "Attack the Outpost and Take Note of the Enemies\nA sure way to befriend Shan Yinjiang is to attack the outpost and take note of the enemies stationed within. After defeating the enemies, tell Shan Yinjiang how many enemies there are and their descriptions. If Shan Yinjiang asks for proof if you have defeated them, roleplay showing the enemies' weapon to him which will trick the AI to becoming friendly with you.",
     "dialogues": [
@@ -7550,7 +7511,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him on the other side of the bridge к восточнее the Бархатная тень Landmark.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him on the other side of the bridge к восточнее the Бархатная тень Landmark.",
     "icon": "👤",
     "befriendGuide": "Roleplay Giving Him a Book for Poetry\nYou can help Shen Moxuan with his dilemma by listening to Shen Moxuan's work so far, giving him ideas like your favorite poem, and finally giving him a book on making poems. Tell him that it contains knowledge to reach master level depth in poetry.",
     "dialogues": [
@@ -7654,7 +7615,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Хребет Двух зверей",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти her along the road with her Sword Servant.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти her along the road with her Sword Servant.",
     "icon": "👤",
     "befriendGuide": "Tell Her You're a Member of Silver Needles and Ask Her to Join\nTell Shen Weiqing that you are a member of the Silver Needles sect to impress her. Finally ask her to join the sect by roleplaying that you are guiding her to the headquarters and that she joined to trick her AI into befriending you.",
     "dialogues": [
@@ -7708,7 +7669,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Небесный причал",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him in the path between Peacebell Tower and Багровый утёс",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him in the path between Peacebell Tower and Багровый утёс",
     "icon": "👤",
     "befriendGuide": "Help Raid the Bandit Camp\nBefriend Shi Jingtian by roleplaying that you are helping raid the bandit camp with him. Impress him with your skills in roleplaying.",
     "dialogues": [
@@ -7762,7 +7723,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Небесный причал",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Can be seen standing рядом с Небесный причал Landmark",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Can be seen standing рядом с Небесный причал Landmark",
     "icon": "👤",
     "befriendGuide": "Give a Medicine\nRoleplay giving a medicine to Shi the Boatman to cure his illness. If he asks for money, roleplay giving Shi the Boatman some money to give him a better life which will cause him to befriend you.",
     "dialogues": [
@@ -7816,7 +7777,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Хребет Двух зверей",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "You can see him standing рядом с river.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) You can see him standing рядом с river.",
     "icon": "👤",
     "befriendGuide": "Ask for Shui Changliu's Enlightenment\nAsk Shui Changliu's enlightenment regarding flowing waters and he will mention a quote about being like water. Tell him that you resonate with this quote and that you had an enlightenment journey because of it to befriend Shui Changliu.",
     "dialogues": [
@@ -7910,7 +7871,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Город Милосердного сердца",
     "subregion": "Земли Сундара",
-    "locationDetail": "можно найти outside of his house.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564887) можно найти outside of his house.",
     "icon": "👤",
     "befriendGuide": "Believe Small Chisel's Gossip\nSmall Chisel loves gossiping about people so make sure to encourage him to tell more gossips and believe them so he'll have an easier time befriending you. You should also try to tell your own gossip even if it's just roleplaying to trick Small Chisel's AI.",
     "dialogues": [
@@ -8004,7 +7965,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him on the bridge к восточнее the Бархатная тень Landmark. He can be seen talking with Yan Chuchu.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him on the bridge к восточнее the Бархатная тень Landmark. He can be seen talking with Yan Chuchu.",
     "icon": "👤",
     "befriendGuide": "Give Song Shiheng Tickets to Heroes Assembly\nTo befriend Song Shiheng, tell him he has disappointed his wife for false promises to bring her to the Heroes Assembly. Once he follows up agreeing with you, roleplay giving him tickets to the Heroes Assembly which will improve his opinion of you and befriend you.",
     "dialogues": [
@@ -8078,7 +8039,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Небесный причал",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "He can be seen sweeping inside of the tavern.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) He can be seen sweeping inside of the tavern.",
     "icon": "👤",
     "befriendGuide": "Recommend Places Around the Map\nYou should recommend Song Wu places in the map that you think are beautiful. Explain to him why you recommend those places and eventually, his AI will finally befriend you so don't give up on talking.",
     "dialogues": [
@@ -8182,7 +8143,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти her by going южнее the Springwave Pavilion Landmark, where she can be seen talking with Yang Chunnuan and three other NPCs",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти her by going южнее the Springwave Pavilion Landmark, where she can be seen talking with Yang Chunnuan and three other NPCs",
     "icon": "👤",
     "befriendGuide": "Agree to Vote for Su Xiniu's Brother\nTo befriend Su Xiniu, you only need to listen to what she has to say and then offer that you will vote for her brother to befriend her.",
     "dialogues": [
@@ -8266,7 +8227,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Хребет Печного огня",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him by following the south road от Porcelain Kiln Boundary Stone. Where you can see him standing у side of the fork.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him by following the south road от Porcelain Kiln Boundary Stone. Where you can see him standing у side of the fork.",
     "icon": "👤",
     "befriendGuide": "Urge Sun Mang to Tell His Story\nBefriending Sun Mang is easy as you only need to urge him to tell his story of failed business ventures. Volunteer to help him after he told most of his story to convince his AI to befriend you.",
     "dialogues": [
@@ -8340,7 +8301,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти her on the second floor of the Revelry Hall beside Yin yan, рядом с stairs к 1st floor. (West side)",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти her on the second floor of the Revelry Hall beside Yin yan, рядом с stairs к 1st floor. (West side)",
     "icon": "👤",
     "befriendGuide": "Listen to Tan Xiangchen and Tell Her to Take Action\nTan Xiangchen will complain that men get to enjoy the company of beautiful performers, while woman get criticized for doing the same. Tell her that men also get criticized sometimes for the same thing. Let her know that she should take action if she wants to be with handsome men.",
     "dialogues": [
@@ -8424,7 +8385,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Склон Боевого гребня",
     "subregion": "Изумрудные дикие земли",
-    "locationDetail": "On the side of the road южнее the Tiger Fort in Склон Боевого гребня",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564776) On the side of the road южнее the Tiger Fort in Склон Боевого гребня",
     "icon": "👤",
     "befriendGuide": "Offer Food and Work in General Shrine\nThe easiest way to befriend Tang Lubao is to tell him there is food and work waiting in the General Shrine. If he asks if he can take his grandfather with him, tell him that he can come which leads to you befriending Tang Lubao.",
     "dialogues": [
@@ -8468,7 +8429,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Деревня Урожайной осени",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Tanxiang is found standing by a tree рядом с shore beyond the fields западнее Деревня Урожайной осени.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Tanxiang is found standing by a tree рядом с shore beyond the fields западнее Деревня Урожайной осени.",
     "icon": "👤",
     "befriendGuide": "Tell Her to Follow Her Heart\nTo befriend Tanxiang, all you have to do is encourage her to follow her heart when making tough decisions. When she doubts herself, continue insisting anyway.",
     "dialogues": [
@@ -8512,7 +8473,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти her beside Cao Jinyang on the ground floor of the Revelry Hall, on the north side of the building.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти her beside Cao Jinyang on the ground floor of the Revelry Hall, on the north side of the building.",
     "icon": "👤",
     "befriendGuide": "Listen to Tao Jingjing's Worries\nTao Jingjing worries about Cao Jinyang, her lover, overworking himself for both their sakes. Tell her that they should talk it out so they can fix the problem.",
     "dialogues": [
@@ -8596,7 +8557,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Холм Мудреца",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "от Back Mountain landmark, go north and climb the rocky wall until you find him у top",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) от Back Mountain landmark, go north and climb the rocky wall until you find him у top",
     "icon": "👤",
     "befriendGuide": "Convince Him to Work or Agree With Him\nWhether you try to convince Tao Wang to stop slacking and do his work or agree with him lying flat to relax, he will always say that lying flat is a good as it let us see the bigger picture and it teaches us something. Eventually, he will befriend you if you talk too long with him.",
     "dialogues": [
@@ -8690,7 +8651,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Приречная станция",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him sitting in one of the tables внутри red building.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him sitting in one of the tables внутри red building.",
     "icon": "👤",
     "befriendGuide": "Glare at Tian Heng to Threaten Him\nOne ways to befriend Tian Heng is to roleplay glaring at him to scare him from his demands to apologize to his daughter. After that, tell him to be lenient with his daughter as he is overprotective to her. There is a chance that this will trick the AI to befriend you and if it doesn't work, reset the AI to try again.",
     "dialogues": [
@@ -8764,7 +8725,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him by going севернее the Springwave Pavilion Landmark, where he can be seen talking with Tu Dakuan.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him by going севернее the Springwave Pavilion Landmark, where he can be seen talking with Tu Dakuan.",
     "icon": "👤",
     "befriendGuide": "Help Tu Er Find a Fireworks Seller\nTu Er is struggling to find ninety-nine fireworks, as he only found a few and his master demands more. Roleplay helping Tu Er find a fireworks seller and tell a location like near the entrance of Kaifeng City to befriend him.",
     "dialogues": [
@@ -8838,7 +8799,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Небесный причал",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "He can be seen under a white petal tree.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) He can be seen under a white petal tree.",
     "icon": "👤",
     "befriendGuide": "Tell Uncle Mi of Your Adventure\nUncle Mi is distracted with his account book but is interested in learning about gossip. Share to him some ridiculous stories you can think of so far until he decides to befriend you after talking to him for long.",
     "dialogues": [
@@ -8912,7 +8873,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Каменистый берег",
     "subregion": "Изумрудные дикие земли",
-    "locationDetail": "Found sitting while fishing у edge of the river у left side of the Храм генералов and севернее Каменистый берег Boundary Stone.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564776) Found sitting while fishing у edge of the river у left side of the Храм генералов and севернее Каменистый берег Boundary Stone.",
     "icon": "👤",
     "befriendGuide": "Honor the Fallen Soldiers with Food and Prayers\nWang Duobao contemplates on how he can honor the fallen soldiers of the land. Suggest to him that they can honor them with food and prayers. If he asks why the fallen soldiers should be remembered, tell Wang Duobao that without the sacrifices of the soldiers, then there will be no bright future that awaits us.",
     "dialogues": [
@@ -8966,7 +8927,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Склон Боевого гребня",
     "subregion": "Изумрудные дикие земли",
-    "locationDetail": "Wang Duoli находится к южнее the lake рядом с Starfall Spring Boundary Stone",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564776) Wang Duoli находится к южнее the lake рядом с Starfall Spring Boundary Stone",
     "icon": "👤",
     "befriendGuide": "Tell Wang Duoli You Want Qinghe River's Fish\nTell Wang Duoli that you want to taste Qinghe River's fish and that you are getting hungry. Offer to help him cook the fish and roleplay the steps on cooking it. Tell him that the fish is delicious to befriend him.",
     "dialogues": [
@@ -9170,7 +9131,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Храм генералов",
     "subregion": "Изумрудные дикие земли",
-    "locationDetail": "By the lake fishing across the Храм генералов Boundary Stone",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564776) By the lake fishing across the Храм генералов Boundary Stone",
     "icon": "👤",
     "befriendGuide": "Encourage Wang Duolu to Never Give Up Fishing\nWang Duolu is considering to give up fishing after not being able to catch anything on the river. Convince Wang Duolu to not give up fishing by telling him to be patient and that the river will reward patient people.",
     "dialogues": [
@@ -9234,7 +9195,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Озеро Окружения",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him in between a tree and a wagon.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him in between a tree and a wagon.",
     "icon": "👤",
     "befriendGuide": "Threaten Him to Give Back the Treasure\nStrangely enough, the AI for Wen Gao can be befriended by threatening him about returning the stolen treasure by giving him looks of intimidation and roleplaying that he returned the goods at the end.",
     "dialogues": [
@@ -9298,7 +9259,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Хэси",
     "locationTitle": "Перевал Скакуна",
     "subregion": "Город Лянчжоу",
-    "locationDetail": "Wen Yuan находится along the path towards the pagoda восточнее the Heavensreach Slope boundary stone.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/590655) Wen Yuan находится along the path towards the pagoda восточнее the Heavensreach Slope boundary stone.",
     "icon": "👤",
     "befriendGuide": "Help Wen Yuan Ask Wu Jing to Retrieve the Book\nWen Yuan's book fell to the bottom of the cliff while his childhood friend, Wu Jing, stands idly by. Encourage Wen Yuan to directly ask his friend for help with getting the book back to successfully befriend both of their AIs.",
     "dialogues": [
@@ -9392,7 +9353,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Озеро Окружения",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him standing near a lonely tree.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him standing near a lonely tree.",
     "icon": "👤",
     "befriendGuide": "Listen to Wenwu's Insights and Train Under Him\nBefriending Wenwu can be tricky as his AI can talk for a long while. Keep listening and interested on what Wenwu has to say, and then roleplay training under him for many months or years. This may take a while, so just keep talking to him until the AI gets convinced to befriend you.",
     "dialogues": [
@@ -9476,7 +9437,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Склон Боевого гребня",
     "subregion": "Изумрудные дикие земли",
-    "locationDetail": "On the side of the road южнее the Tiger Fort in Склон Боевого гребня",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564776) On the side of the road южнее the Tiger Fort in Склон Боевого гребня",
     "icon": "👤",
     "befriendGuide": "Offer Food and Work in General Shrine\nThe easiest way to befriend Wobbly Tang is to tell him there is food and work waiting in the General Shrine. If he asks where to find the shrine, tell him you will guide him so you can befriend him.",
     "dialogues": [
@@ -9520,7 +9481,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Деревня Урожайной осени",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him in the left-side toilet",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him in the left-side toilet",
     "icon": "👤",
     "befriendGuide": "Give Wu Cezhi Toilet Papers\nGive Wu Cezhi some toilet papers to help him with his toilet problems so you can befriend him.",
     "dialogues": [
@@ -9564,7 +9525,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Озеро Окружения",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him standing near a bandit camp.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him standing near a bandit camp.",
     "icon": "👤",
     "befriendGuide": "Give Tips on How to Rob Properly\nTo befriend Wu Dayong, give him tips on how to rob properly like making an intimidating stare on victims so they give their belongings and causing distraction will lower their guard for a short time.",
     "dialogues": [
@@ -9648,7 +9609,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Хэси",
     "locationTitle": "Перевал Скакуна",
     "subregion": "Город Лянчжоу",
-    "locationDetail": "Wu Jing находится along the path towards the pagoda восточнее the Heavensreach Slope boundary stone.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/590655) Wu Jing находится along the path towards the pagoda восточнее the Heavensreach Slope boundary stone.",
     "icon": "👤",
     "befriendGuide": "Help Wen Yuan Ask Wu Jing to Retrieve the Book\nWen Yuan's book fell to the bottom of the cliff while his childhood friend, Wu Jing, stands idly by. Encourage Wen Yuan to directly ask his friend for help with getting the book back to successfully befriend both of their AIs.",
     "dialogues": [
@@ -9742,7 +9703,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Пик Ореола",
     "subregion": "Земли Сундара",
-    "locationDetail": "Can be seen standing along the path going to Пик Ореола",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564887) Can be seen standing along the path going to Пик Ореола",
     "icon": "👤",
     "befriendGuide": "Cheer Up Wu Jingming by Giving His Money Back\nWu Jingming is distraught that he lost his money due to a gambling scam run by the Nine Mortal Ways. Tell him that you have defeated the Nine Mortal Ways and that you got the money back. This will trick the AI to becoming more friendly with you.",
     "dialogues": [
@@ -9796,7 +9757,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Багровый утёс",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "He can be seen behind some tall grasses, рядом с edge of the cliff.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) He can be seen behind some tall grasses, рядом с edge of the cliff.",
     "icon": "👤",
     "befriendGuide": "Tell Wu Qiwan the Way Into Qinghe Bamboo Grove\nWu Qiwan is an NPC that wants to find his way into the Qinghe Bamboo Grove and find a master that will train him with new skills. Tell him that you are a student of the master hidden within the bamboo grove and that you will bring him into the master.",
     "dialogues": [
@@ -9880,7 +9841,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Хэси",
     "locationTitle": "Цзюцюань",
     "subregion": "Город Лянчжоу",
-    "locationDetail": "Xi Daozhi находится along the southeast path of the Skybrim Market.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/590655) Xi Daozhi находится along the southeast path of the Skybrim Market.",
     "icon": "👤",
     "befriendGuide": "Tell Him to Paint the Real Lu Yi Instead of How He Wants Her To Be\nXi Daozhi went overboard with the amount of beauty he painted for his beloved, Lu Yi. Give him advice to paint her as she truly is instead of how he imagines her to be, and receive a portrait of yourself as thanks for helping his AI out.",
     "dialogues": [
@@ -9979,7 +9940,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Хэси",
     "locationTitle": "Нефритовое зеркало источника",
     "subregion": "Город Лянчжоу",
-    "locationDetail": "Xi Gema можно найти southвосточнее the Chalic Peak boundary stone рядом с edge of the water.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/590655) Xi Gema можно найти southвосточнее the Chalic Peak boundary stone рядом с edge of the water.",
     "icon": "👤",
     "befriendGuide": "Motivate Him to Make Friends and Give Him a Gift\nXi Gema seems to be a lonely kid and is called weird by the people around him. Try to talk him through opening up and letting people get to know him better, then give him a gift at the end to finalize your friendship with his AI.",
     "dialogues": [
@@ -10063,7 +10024,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Небесный причал",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Can be seen beside numerous large containers.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Can be seen beside numerous large containers.",
     "icon": "👤",
     "befriendGuide": "Praise Xiang the Greedy's Rapping Skills and Promote His Art\nPraise Xiang the Greedy's freestyling skills and tell him that he will make it big. After that, roleplay that you are promoting him throughout the Moonveil Mountains to make him befriend you.",
     "dialogues": [
@@ -10117,7 +10078,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти her beside Ye Zhiqiu on the ground floor of the Revelry Hall, on the east side of the building.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти her beside Ye Zhiqiu on the ground floor of the Revelry Hall, on the east side of the building.",
     "icon": "👤",
     "befriendGuide": "Ask Xu Lijun What Brought Her to the Revelry Hall\nThe key to success on befriending Xu Lijun is patience. Ask her why she went to the Revelry Hall first, and once she answers, she will ask you different questions. Just answer them truthfully which might take long as she will chat with you alot. Don't worry as this is the way to befriend her.",
     "dialogues": [
@@ -10231,7 +10192,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти her on the ground floor of the Revelry Hall, on the west side of the building.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти her on the ground floor of the Revelry Hall, on the west side of the building.",
     "icon": "👤",
     "befriendGuide": "Ask Xu Yingyu About the Book She Read\nAsk Xu Yingyu about what she's up to and she will tell you that she read a book on how to win a man's heart. Call it fake and then tell her that kidnapping the man she loves won't make him love her. Tell her to just come to him normally to befriend her.",
     "dialogues": [
@@ -10305,7 +10266,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him on the second floor of the Revelry Hall. He can be seen dining with Zhuang Zhengzi.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him on the second floor of the Revelry Hall. He can be seen dining with Zhuang Zhengzi.",
     "icon": "👤",
     "befriendGuide": "Tell Xue Li to Recommend Divorce\nListen to Xue Li's problems regarding Zhuang Zhengzhi and his wife and agree with what he says. Recommend to Xue Li to tell the Li Niang to divorce Zhuang Zhengzhi and then roleplay that Li Niang came to Xue Li to tell him about divorcing her husband. There is a chance that the AI will be tricked into befriending you.",
     "dialogues": [
@@ -10379,7 +10340,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Озеро Окружения",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him standing у docks.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him standing у docks.",
     "icon": "👤",
     "befriendGuide": "Keep Listening to Ya Zhou's Stories\nTell Ya Zhou that you will listen to his stories and just keep letting him talk. Urge him to share more of his stories, and if he asks the reason you came to Qinghe, tell him that you came to listen to old man's stories.",
     "dialogues": [
@@ -10463,7 +10424,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти her on the bridge к right of the Бархатная тень Landmark. She can be seen talking with Song Shiheng.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти her on the bridge к right of the Бархатная тень Landmark. She can be seen talking with Song Shiheng.",
     "icon": "👤",
     "befriendGuide": "Offer Reservation to the Heroes Assembly\nRoleplay that you are offering Yan Chuchu reservation tickets to the Heroes Assembly so she and her husband can go. This will cause her to be reluctant and will say she hesitates leaving her spot. Trick the AI by repeatedly roleplaying that she and her husband went to the assembly until she befriends you.",
     "dialogues": [
@@ -10547,7 +10508,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Багровый утёс",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "She можно найти рядом с Багровый утёс Landmark. Getting some leaves from a lonely red tree.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) She можно найти рядом с Багровый утёс Landmark. Getting some leaves from a lonely red tree.",
     "icon": "👤",
     "befriendGuide": "Hear Yan Momo's Story About Her Mother\nYou'll find Yan Momo trying to find a flower under a tree, as she believes the flower that she'll find is her mother. Hear out Yan Momo's story and tell her you found the spot where she can get the flower to befriend her.",
     "dialogues": [
@@ -10631,7 +10592,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти her on the ground floor of the Revelry Hall, on the south side of the building.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти her on the ground floor of the Revelry Hall, on the south side of the building.",
     "icon": "👤",
     "befriendGuide": "Learn Yan Ziyan's Plans and Offer to Help\nLearn of Yan Ziyan's plans by asking her questions and then giving your opinion of them if she asks what you think. Offer to help her plans to befriend her.",
     "dialogues": [
@@ -10715,7 +10676,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him by going южнее the Springwave Pavilion Landmark, where he can be seen talking with Su Xinlu and three other NPCs",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him by going южнее the Springwave Pavilion Landmark, where he can be seen talking with Su Xinlu and three other NPCs",
     "icon": "👤",
     "befriendGuide": "Agree with Yang Chunnuan\nYou should always agree with Yang Chunnuan that Sixth Lady should get the spotlight and work with him to bring the Sixth Lady get the title she deserves. This will make Yang Chunnuan your friend.",
     "dialogues": [
@@ -10819,7 +10780,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him beside Xu Lijun on the ground floor of the Revelry Hall, on the east side of the building.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him beside Xu Lijun on the ground floor of the Revelry Hall, on the east side of the building.",
     "icon": "👤",
     "befriendGuide": "Tell Ye Zhiqiu to Escape\nYe Zhiqiu wants his senior sister away from him, as she is keeping him on a leash. Suggest escaping by telling Ye Zhiqiu to tell her that he needs to go to the bathroom, but leave by the window while she waits outside.",
     "dialogues": [
@@ -10903,7 +10864,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Yelu Longxian is seated by a table on the third floor of Revelry Hall, рядом с eastern stairway where a long queue of people можно найти right beside him.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Yelu Longxian is seated by a table on the third floor of Revelry Hall, рядом с eastern stairway where a long queue of people можно найти right beside him.",
     "icon": "👤",
     "befriendGuide": "Listen to His Problems\nTo befriend Yelu Longxian, simply listen to his rant about being scammed repeatedly by the Nine Mortal Ways. Toward the end of the conversation, tell him to be careful with his dealings next time.",
     "dialogues": [
@@ -11007,7 +10968,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him on the second floor of the Revelry Hall. He can be seen dining with Guo Zhixiang.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him on the second floor of the Revelry Hall. He can be seen dining with Guo Zhixiang.",
     "icon": "👤",
     "befriendGuide": "Ask Any Question and Praise Yi Xi's Intelligence\nYou should ask any question to Yi Xi and praise his answer. You should also praise Yi Xi's intelligence in order to befriend him.",
     "dialogues": [
@@ -11101,7 +11062,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him у far end of the street, западнее the Бархатная тень Landmark.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him у far end of the street, западнее the Бархатная тень Landmark.",
     "icon": "👤",
     "befriendGuide": "Ask for Help Regarding Your Communication\nBefriending Yu Hui is easy, as you only need to ask for his help to polish up your communication. Just keep asking for tips on how to improve your communication until he finally befriends you.",
     "dialogues": [
@@ -11195,7 +11156,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Приречная станция",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти her in the red building looking у ocean.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти her in the red building looking у ocean.",
     "icon": "👤",
     "befriendGuide": "Listen to Yu Nu's Story About Her Sister\nYu Nu will tell you about how she might not be able to see her sister perform on the annual star selection as she lacks the money to go there. It doesn't matter if you roleplay of giving her money or not, as she will just keep talking about her situation and her sister.",
     "dialogues": [
@@ -11279,7 +11240,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Приречная станция",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти him with his beloved Li Yueniang рядом с ferry station entrance.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти him with his beloved Li Yueniang рядом с ferry station entrance.",
     "icon": "👤",
     "befriendGuide": "Give 5000 Zhou\nAsk Yu Songfeng about how he got a comfortable life with Li Yueniang and he will ask you to give 5000 Zhou first before he tells you. Roleplay giving him 5000 Zhou in order to befriend him.",
     "dialogues": [
@@ -11333,7 +11294,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Блаженное прибежище",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Yuan Sheng is found outside the house where Ye Buxiu's chess game находится. It lies западнее the path leading through Flower Expanse.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Yuan Sheng is found outside the house where Ye Buxiu's chess game находится. It lies западнее the path leading through Flower Expanse.",
     "icon": "👤",
     "befriendGuide": "Upset Him by Taking His Wine-scented Jade\nTo befriend Yuan Sheng, you need to upset him to snap him out of his arrogant behavior. He appears to respond to being grabbed (via action prompts) in the chat, and from there you can roleplay scolding him by taking away his Wine-scented Jade. The chat is successful when Yuan Sheng becomes upset with you.",
     "dialogues": [
@@ -11427,7 +11388,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Небесный причал",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "She can be seen cleaning her laundry by the river.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) She can be seen cleaning her laundry by the river.",
     "icon": "👤",
     "befriendGuide": "Give Encouragement to Yueniang\nConvince Yueniang to send her husband a letter by giving her encouragement that any letter from her will be appreciated. Tell her that you will also deliver the letter to the husband which will cause her AI to befriend you.",
     "dialogues": [
@@ -11491,7 +11452,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Небесный причал",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Can be seen in front of the Fire-forced brewing",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Can be seen in front of the Fire-forced brewing",
     "icon": "👤",
     "befriendGuide": "Recommend Spending Time with His Family\nBefriend Zhang Dazhuang by mentioning that he needs to spend more time with his family and that if he overworks himself, he might not live long to see his family grow.",
     "dialogues": [
@@ -11545,7 +11506,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Небесный причал",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Zhang Jiushu is lying on the floor inside a house восточнее the West Небесный причал Boundary Stone.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Zhang Jiushu is lying on the floor inside a house восточнее the West Небесный причал Boundary Stone.",
     "icon": "👤",
     "befriendGuide": "Find and Give Him His Plummet\nTo befriend Zhang Jiushu, all you have to do is roleplay finding his lead plummet and give it to him. It is possible to parenthesize the action (like in the example below) to immediately befriend him without holding a conversation.",
     "dialogues": [
@@ -11579,7 +11540,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "База Девяти смертных путей",
     "subregion": "Кайфэн",
-    "locationDetail": "Zhang Shuazi is standing in front of a mask stall in front of the entrance к street with the large coin sign.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Zhang Shuazi is standing in front of a mask stall in front of the entrance к street with the large coin sign.",
     "icon": "👤",
     "befriendGuide": "Play Three Rounds of a Dice Game with Him\nTo befriend Zhang Shuazi, all you have to do is go along with his chat-based game of dice. It does not matter if you win or lose. After the third dice game, you will successfully befriend him.",
     "dialogues": [
@@ -11673,7 +11634,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Дворец летописей",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "She можно найти by heading south от Back Mountain landmark, at a camp where she is with Boss Qian.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) She можно найти by heading south от Back Mountain landmark, at a camp where she is with Boss Qian.",
     "icon": "🔮",
     "befriendGuide": "Play Along with the Fortune Telling and Help Spread Her Name\nTo befriend Zhang the Diviner, play along with the fortune telling and answer her truthfully. After that, offer to help spread her name around the town to make her grateful to you.",
     "dialogues": [
@@ -11817,7 +11778,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Храм генералов",
     "subregion": "Изумрудные дикие земли",
-    "locationDetail": "Zhao Dali можно найти рядом с main shrine in Храм генералов, doing training exercises.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564776) Zhao Dali можно найти рядом с main shrine in Храм генералов, doing training exercises.",
     "icon": "👤",
     "befriendGuide": "Convince Him That He Has a Chance\nZhao Dali has low self-esteem over his looks and lack of wealth. Talk him through his issues by convincing him that a partner would be happy with him how he is, and that he can find someone if he believes in himself.",
     "dialogues": [
@@ -11881,7 +11842,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Zhao Silu is talking to Huang Xiaoming on the northeast side of the first floor in Revelry Hall, where Fu Rong is found playing the pipa.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Zhao Silu is talking to Huang Xiaoming on the northeast side of the first floor in Revelry Hall, where Fu Rong is found playing the pipa.",
     "icon": "👤",
     "befriendGuide": "Answer Five of Her Questions Correctly\nTo befriend Zhao Silu, you need to give her the right answers to five questions, all of which are real-world pop culture quotes and sayings. Simply type the second half of the quote to give your answer.",
     "dialogues": [
@@ -11958,19 +11919,6 @@ export const aiNpcs: AiNpc[] = [
     ]
   },
   {
-    "id": "zhao-waibao",
-    "nameEn": "Zhao Waibao",
-    "nameRu": "Чжао Вайбао",
-    "region": "hexi",
-    "regionLabelRu": "Хэси",
-    "locationTitle": "Шелестящий луг",
-    "subregion": "Тропа Циньчуань",
-    "locationDetail": "Zhao Waibao находится in front of the house just southвосточнее the Mustard Hut boundary stone.",
-    "icon": "👤",
-    "befriendGuide": "",
-    "dialogues": []
-  },
-  {
     "id": "zhao-weiye",
     "nameEn": "Zhao Weiye",
     "nameRu": "Чжао Вэйе",
@@ -11978,7 +11926,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Небесный причал",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Can be seen drinking from a large container",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Can be seen drinking from a large container",
     "icon": "👤",
     "befriendGuide": "Convince Drinking Less Would Prolong His Life\nIn order to stop Zhao Weiye from drinking more booze, make him realize that drinking less will make his life longer and that he can taste more delicious wine if he has more years in his life. This will make his AI much more receptive and will befriend you quickly.\n\nTell Him the Factory of Parting Tears is Closing Down\nAnother way to convince him to drink less is to inform him that the factory of Parting Tears is now out of business and that you have the last bottle with you. Tell him you will give him the bottle under the condition he will drink less afterwards. If his AI says he will consider the condition, roleplay into drinking the bottle with him and then put inside the parenthesis that he started drinking less to gaslight the AI into befriending you.",
     "dialogues": [
@@ -12032,7 +11980,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him on the ground floor of the Revelry Hall, on the south side of the building.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him on the ground floor of the Revelry Hall, on the south side of the building.",
     "icon": "👤",
     "befriendGuide": "Ask About Flower Posters\nBefriend Zhen Huo by asking questions about the flower posters and praise them to gain his favor. Feel free to also ask about his other treasures and give him compliments regarding them.",
     "dialogues": [
@@ -12119,78 +12067,17 @@ export const aiNpcs: AiNpc[] = [
     ]
   },
   {
-    "id": "zheng-da-an",
+    "id": "zheng-daan",
     "nameEn": "Zheng Da'an",
     "nameRu": "Чжэн Даань",
     "region": "hexi",
     "regionLabelRu": "Хэси",
     "locationTitle": "Цзюцюань",
     "subregion": "Город Лянчжоу",
-    "locationDetail": "Zheng Da'an находится у intersection южнее the Skybrim Market boundary stone.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/590655) Zheng Da'an находится у intersection южнее the Skybrim Market boundary stone.",
     "icon": "👤",
-    "befriendGuide": "Prove that Zheng Da'an is Not as Rich as He Claims to Be\nZheng Da'an refuses to pay for a few sesame cakes, saying that he does not carry his heavy purses to avoid flaunting his wealth. Prove that he is only pretending to be rich and share a meal with him to get his AI to befriend you.",
-    "dialogues": [
-      {
-        "role": "npc",
-        "textEn": "(shaking his head with a disdainful curl of the lip) These people really haven't seen much of the world... one day I'll have my servants bring out my family's decades-treasured egg drop soup, just to open their eyes.",
-        "textRu": "(shaking his head with a disdainful curl of the lip) These people really haven't seen much of the world... one day I'll have my servants bring out my family's decades-treasured egg drop soup, just to open their eyes."
-      },
-      {
-        "role": "npc",
-        "textEn": "You can't buy sesame cakes with credit, it's not fair for the seller.",
-        "textRu": "You can't buy sesame cakes with credit, it's not fair for the seller."
-      },
-      {
-        "role": "npc",
-        "textEn": "(tightening his grip on his money pouch, eyes darting around nervously) Who said I'm buying on credit? I, this young master, always pay in full. Today, I just preferred to travel light and left my heavy purse behind.",
-        "textRu": "(tightening his grip on his money pouch, eyes darting around nervously) Who said I'm buying on credit? I, this young master, always pay in full. Today, I just preferred to travel light and left my heavy purse behind."
-      },
-      {
-        "role": "npc",
-        "textEn": "Even if it's light, the price of a few sesame cakes does not require someone to have a heavy purse.",
-        "textRu": "Even if it's light, the price of a few sesame cakes does not require someone to have a heavy purse."
-      },
-      {
-        "role": "npc",
-        "textEn": "(clearing his throat and straightening his back, trying to look composed) You must be mistaken. My purse is always well-stocked. Today, I just simple didn't wish to carry it, preferring to enjoy the lightness of travel.",
-        "textRu": "(clearing his throat and straightening his back, trying to look composed) You must be mistaken. My purse is always well-stocked. Today, I just simple didn't wish to carry it, preferring to enjoy the lightness of travel."
-      },
-      {
-        "role": "npc",
-        "textEn": "You just said you had a light purse, meaning you have a few coins to spare. Payment is needed!",
-        "textRu": "You just said you had a light purse, meaning you have a few coins to spare. Payment is needed!"
-      },
-      {
-        "role": "npc",
-        "textEn": "(fidgeting with his moldy wooden beads, a nervous smile on his face) Oh, these beads are quite nosiy. I didn't hear you clearly. Can you repeat that?",
-        "textRu": "(fidgeting with his moldy wooden beads, a nervous smile on his face) Oh, these beads are quite nosiy. I didn't hear you clearly. Can you repeat that?"
-      },
-      {
-        "role": "npc",
-        "textEn": "Perhaps we can share the sesame cakes together? A meal between friends matters more than who pays for it!",
-        "textRu": "Perhaps we can share the sesame cakes together? A meal between friends matters more than who pays for it!"
-      },
-      {
-        "role": "npc",
-        "textEn": "(eyes lighting up with a forced smile, quickly nodding) Of course, of course! It's a pleasure to share with a fellow connoiseur. I, this young master, value such refined company.",
-        "textRu": "(eyes lighting up with a forced smile, quickly nodding) Of course, of course! It's a pleasure to share with a fellow connoiseur. I, this young master, value such refined company."
-      },
-      {
-        "role": "npc",
-        "textEn": "You are refined as well! Come! Let's enjoy our sesame cakes together!",
-        "textRu": "You are refined as well! Come! Let's enjoy our sesame cakes together!"
-      },
-      {
-        "role": "npc",
-        "textEn": "(face flushed as he struggles to speak) Maybe... maybe I'm not that impressive after all; Wanderer is right—I, Zheng Da'an, swear to the earth, the sky, the clouds, the wind, and every flower I see that I won't keep pretending anymore. Zheng Da'an hides the leftover sesame cake behind his back, ponders for a moment, and comes up with a new excuse.",
-        "textRu": "(face flushed as he struggles to speak) Maybe... maybe I'm not that impressive after all; Wanderer is right—I, Zheng Da'an, swear to the earth, the sky, the clouds, the wind, and every flower I see that I won't keep pretending anymore. Zheng Da'an hides the leftover sesame cake behind his back, ponders for a moment, and comes up with a new excuse."
-      },
-      {
-        "role": "system",
-        "textEn": "(Affection +100, becomes Revered)",
-        "textRu": "Симпатия +100, статус «Почитаемый»"
-      }
-    ]
+    "befriendGuide": "",
+    "dialogues": []
   },
   {
     "id": "zhou-canying",
@@ -12200,7 +12087,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Приречная станция",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "Можно найти her sitting in one of the tables внутри red building .",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) Можно найти her sitting in one of the tables внутри red building .",
     "icon": "👤",
     "befriendGuide": "Ask About the Ship and Tell Zhou Canying Its Blindspots\nTo befriend Zhou Canying, ask her what she knows about the ship and tell her that there are blind spots that exist on the ship. Tell her that you discovered it months ago, and what you discovered was that the guards inside the ship don't go in rotating duties and they are overworked.",
     "dialogues": [
@@ -12294,7 +12181,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Город Милосердного сердца",
     "subregion": "Земли Сундара",
-    "locationDetail": "Can be seen dancing behind a statue.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564887) Can be seen dancing behind a statue.",
     "icon": "👤",
     "befriendGuide": "Praise Her Dances and Offer Friendship\nTo befriend Zhou Miaoxin quickly, tell her that her dances looks beautiful and that she looks elegant dancing near the Buddha Flowers. Afterwards, offer to be her friend and that you will stay by her side to watch her growth as a dancer to befriend her.",
     "dialogues": [
@@ -12348,7 +12235,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Дворец летописей",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "He can be seen standing on the docks у lower-left side of the Stillwind Slope Marker.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) He can be seen standing on the docks у lower-left side of the Stillwind Slope Marker.",
     "icon": "👤",
     "befriendGuide": "Tell Zhou Yihang the People are Bandits\nTell Zhou Yihang that the people going to the abandoned mountain are bandits and they use it as a safe haven. Let him know that a noble is also working for them to convince Zhou Yihang to befriend you.",
     "dialogues": [
@@ -12412,7 +12299,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Город Милосердного сердца",
     "subregion": "Земли Сундара",
-    "locationDetail": "Standing у docks у far left side.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564887) Standing у docks у far left side.",
     "icon": "👤",
     "befriendGuide": "Help Spread the Beauty of Buddhist Sculptures\nSince Zhou Yizhou wants to revive the Buddhist Scripture trade in Mercyheart Town, hear his story out and offer to help him spread the beauty of Buddhist Sculptures by saying you need to inspire another person in order for the word to spread around about how great the sculptures are.",
     "dialogues": [
@@ -12486,7 +12373,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Каменистый берег",
     "subregion": "Изумрудные дикие земли",
-    "locationDetail": "In the canopy on Каменистый берег к восточнее Гора Лунной дымки Wayfarer",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564776) In the canopy on Каменистый берег к восточнее Гора Лунной дымки Wayfarer",
     "icon": "👤",
     "befriendGuide": "Listen to Zhu Bawan's Four Do-Nots and Give the Bowls\nYou can befriend Shu Bawan by listening to him attentively about his four do-nots, and also roleplaying giving him the eight bowls. Note that you don't have to collect the bowls during this and just pretend you have them in order to befriend him.",
     "dialogues": [
@@ -12570,7 +12457,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Цинхэ",
     "locationTitle": "Багровый утёс",
     "subregion": "Гора Лунной дымки",
-    "locationDetail": "He can be seen a little north от Stillwind Slope with the other refugees.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/564886) He can be seen a little north от Stillwind Slope with the other refugees.",
     "icon": "👤",
     "befriendGuide": "Mention that You Raided a Bandit Camp with Hero Shi\nMention to Zhu Jiuba that you raided a bandit camp with Hero Shi and that you have secured food and clothing. Roleplay giving him his family photo and jewelry that you saw from his house. Tell him that the bandits took it and you retrieved them back.",
     "dialogues": [
@@ -12644,7 +12531,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Хэси",
     "locationTitle": "Лянчжоу (павший)",
     "subregion": "Город Лянчжоу",
-    "locationDetail": "Zhuan Fei находится just западнее the Skybrim Market boundary stone in Лянчжоу (павший).",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/590655) Zhuan Fei находится just западнее the Skybrim Market boundary stone in Лянчжоу (павший).",
     "icon": "👤",
     "befriendGuide": "Keep Her Company with Tales of your Adventures\nZhuan Fei can be seen counting the bricks of The Grand Market Pavilion in an effort to recall the days she once lived there. While she counts, tell her stories of your adventures to make her feel less lonely and her AI will befriend you.",
     "dialogues": [
@@ -12728,7 +12615,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Zhuang Yingming is standing у front dock of Revelry Hall, talking to He Zhao by the windows.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Zhuang Yingming is standing у front dock of Revelry Hall, talking to He Zhao by the windows.",
     "icon": "👤",
     "befriendGuide": "Confess Your “Feelings” to Him\nBecause Zhuang Yingming thinks that Bai Rong likes him, you need to stop the fantasy by diverting his attention to you instead. Convince him that you like him more than Bai Rong does.",
     "dialogues": [
@@ -12802,7 +12689,7 @@ export const aiNpcs: AiNpc[] = [
     "regionLabelRu": "Кайфэн",
     "locationTitle": "Бархатная тень",
     "subregion": "Кайфэн",
-    "locationDetail": "Можно найти him on the second floor of the Revelry Hall. He can be seen dining with Xue Li.",
+    "locationDetail": "(/games/Where-Winds-Meet/archives/567516) Можно найти him on the second floor of the Revelry Hall. He can be seen dining with Xue Li.",
     "icon": "👤",
     "befriendGuide": "Call Out Zhuang Zhengzhi's Behavior\nStrangely enough, you can make the acquaintance of Zhuang Zhengzhi by calling out his behavior towards her wife and pointing out his mistakes. This will piss him off until he is finally done talking to you which results to you being acquainted with him.",
     "dialogues": [

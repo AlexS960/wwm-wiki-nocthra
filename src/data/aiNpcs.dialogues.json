@@ -398,7 +398,7 @@
         "textRu": "(taking the food, nodding gratefully) Thank you, Wanderer! Liu Wuchou is the eldest son of the Liu family. Now he's fallen for a female herbalist named Jiang Chuchu. He claims he wants to settle accounts, but it's clear he's after her heart!"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "her heart?",
         "textRu": "her heart?"
       },
@@ -408,7 +408,7 @@
         "textRu": "(leaning in, lowering my voice) Yes, exactly! Seven years ago, she gave him a medicine. The side effect? He fell madly in love with her! Now he's chasing her through Qinghe."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "no medicine can swoon a girl's heart that fast",
         "textRu": "no medicine can swoon a girl's heart that fast"
       },
@@ -438,7 +438,7 @@
         "textRu": "(sighing, shaking my head) Oh. Wanderer, that's a tall order! Liu Wuchou is stubborn. He won't give up easily. But perhaps you could speak to Jiang Chuchu and see if there's any way to reason with her."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "sure I'Il talk to this person about this.",
         "textRu": "sure I'Il talk to this person about this."
       },
@@ -483,7 +483,7 @@
         "textRu": "(nods thoughtfully, eyes reflecting the serenity of the surroundings) Many travelers speak of this place, yet few find their way here. It seems fate has brought you to me. What do you seek in these tranquil lands?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "To show you about my cat call that makes them dance",
         "textRu": "To show you about my cat call that makes them dance"
       },
@@ -503,7 +503,7 @@
         "textRu": "(eyes widen slightly, a gentle smile forming) Remarkable! Your bond with these creatures is strong indeed. Such harmony between man and nature is rare. Tell me, what led you to develop such a skill?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "In order to show you that there are people who also loves cats as you do, friend.",
         "textRu": "In order to show you that there are people who also loves cats as you do, friend."
       },
@@ -513,7 +513,7 @@
         "textRu": "(nods appreciatively, stroking another cat) It is heartening to meet someone who shares this love. Cats teach us much about grace and contentment. In what ways has your journey taught you about loneliness and companionship?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "it taught me that isolation can also be a form of friendship, as it gives you peace with yourself.",
         "textRu": "it taught me that isolation can also be a form of friendship, as it gives you peace with yourself."
       },
@@ -523,7 +523,7 @@
         "textRu": "(smiles softly, nodding) Wise words, indeed. Isolation can be a path to inner peace and self-discovery. The cats and I understand this well. Do you find solace in your own company as well?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "but of course. (pets cat)",
         "textRu": "but of course. (pets cat)"
       },
@@ -988,7 +988,7 @@
         "textRu": "(steps forward with exaggerated excitement) Wanderer, wait! Are you from outside the village?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "why yes! Do you want to know the stories of my travel?",
         "textRu": "why yes! Do you want to know the stories of my travel?"
       },
@@ -1353,7 +1353,7 @@
         "textRu": "(tail wagging harder, eyes brightening) Woof! Thank you, thank you! Buster's master is very tall, wears grey clothes, has warm hands, and gives Buster bones ... The scent is special ... woof .. a scent Buster loves."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "let's go",
         "textRu": "let's go"
       },
@@ -1403,7 +1403,7 @@
         "textRu": "(sniffing the air, tail drooping slightly) Woof ... no, not here ... woof. The scent is too old ... Buster can't pick it up well anymore ..."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "lets keep searching",
         "textRu": "lets keep searching"
       },
@@ -1463,7 +1463,7 @@
         "textRu": "(hands on hips, shouting at a cat) You little monster, don't run! Did you hide my son? Speak up, or I'll strike you with a broom! (picks up a small twig from the side, pretending to hit the cat)"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "woah, are you okay?",
         "textRu": "woah, are you okay?"
       },
@@ -2202,7 +2202,7 @@
         "textRu": "(eyes narrowing, leaning closer) I must've made a mistake ... Isn't this the Wanderer? I won't sell this wine anymore! You're an expert. One glance and you'd know all my wine is fake! (chuckles nervously) But tell me, what do you think of the culture around fine wines? Most folks just want to show off their bottles, not truly appreciate the taste."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "it taste really good, even if you say its fake. Its well crafted.",
         "textRu": "it taste really good, even if you say its fake. Its well crafted."
       },
@@ -2212,7 +2212,7 @@
         "textRu": "(smirking, rubbing his hands together) Hehe, flattery will get you far, wanderer. But yes, my wine is well-crafted indeed. The key is in the blend. Rich folks pay for the name, not the taste. They wouldn't know a fine vintage if it bit them! (leans in) And besides, drinking too much of anything is bad for you. Fake or not, they still enjoy the experience!"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "that is true, enjoyment of conversation with others is really main thing for experience. How about it? would you want to talk to me more about this wine?",
         "textRu": "that is true, enjoyment of conversation with others is really main thing for experience. How about it? would you want to talk to me more about this wine?"
       },
@@ -2242,7 +2242,7 @@
         "textRu": "(laughs, nodding) Exactly! The true art of drinking lies in the conversation, not the bottle. (leans in) And that's why my wine works so well. People are paying for the experience, not just the liquid. (grins slyly) They're all about showing off, but they don't really know what they're drinking! It's a win-win for everyone involved."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "that is correct, my friend!",
         "textRu": "that is correct, my friend!"
       },
@@ -2297,7 +2297,7 @@
         "textRu": "(waves hand weakly) I know, but it's the least I can do for her. Lady Hua is brushing me off-but only me! That means I'm special to her. If she truly disliked me, she wouldn't acknowledge me at all. She's being perfunctory with me ... good! I like her even more now!"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "yes follow your heart!",
         "textRu": "yes follow your heart!"
       },
@@ -2307,7 +2307,7 @@
         "textRu": "(reminiscing, eyes distant) She cared for me too! Last time I had a fever, I came to Revelry Hall and asked why she didn't care. She asked if I was sick and told me to take medicine quickly. See? She actually worried about me! She's so gentle."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "maybe she does care for you",
         "textRu": "maybe she does care for you"
       },
@@ -2317,7 +2317,7 @@
         "textRu": "(eyes gradually becoming determined) My friends warned me too-they said they'd break my legs if I kept this up. Ah, thank goodness it's my legs, not my hands, or I couldn't play pitch-pot with Lady Hua!"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "yes my friend luckily its only the legs",
         "textRu": "yes my friend luckily its only the legs"
       },
@@ -2462,7 +2462,7 @@
         "textRu": "(frowns, crosses arms) Five years? Are you mad? I've got no time for such nonsense. (glares) If you have something to say, say it now. Otherwise, leave me alone."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "wanna know something about encircling lake?",
         "textRu": "wanna know something about encircling lake?"
       },
@@ -2724,7 +2724,7 @@
     ]
   },
   "jiang-nanyi": {
-    "befriendGuide": "Agree with Him and Learn from Him\nJiang Nanyi will talk about his love life and that he obtained the Enticing Glance Swordplay to practice it with his sister. Ask for enlightenment regarding the swordplay and then ask him that you are willing to learn the technique to befriend him.",
+    "befriendGuide": "Agree with Him and Learn from Him\nJiang Nanyi will talk about his love life and that he obtained the Enticing Glance Swordplay to practice it with his Junior Sister. Ask for enlightenment regarding the swordplay and then ask him that you are willing to learn the technique to befriend him.",
     "dialogueLines": [
       {
         "role": "npc",
@@ -3152,7 +3152,7 @@
         "textRu": "(eyes gleaming) Fresh off the press, Wanderer! Listen close! Leng Dancui storms into Revelry Hall, not to punish the mistress-oh no-but to question her motives! (waves hand) Bah! It's just the usual lovers' spat between Leng Dancui and Fan Tong, but doesn't that sound scandalous?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "well that's true. Romantic scandals usually draw in the crowd.",
         "textRu": "well that's true. Romantic scandals usually draw in the crowd."
       },
@@ -3202,7 +3202,7 @@
         "textRu": "(voice climbing with excitement) A wanted rogue nabbed at last! Word is, to dodge the catchpoles, he kept changing disguises-turned from a ghastly freak into a dashing youth with eyes like stars! Imagine that ... beauty born of desperation!"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "desperation can only get you so far",
         "textRu": "desperation can only get you so far"
       },
@@ -3342,7 +3342,7 @@
         "textRu": "(sighs deeply, eyes cast downward) Benefactor, this humble monk has faced a great trial. While returning from a pilgrimage for alms, I discovered that bandits have taken control of the mountain path. Their presence makes it impossible to continue my journey without conflict, and yet I possess no martial skills to confront them. It is as if the Buddha has placed this obstacle before me to test my resolve and faith."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "then let me help you (you drove the bandits off the mountain path and returned quickly to Jingyi)",
         "textRu": "then let me help you (you drove the bandits off the mountain path and returned quickly to Jingyi)"
       },
@@ -3587,7 +3587,7 @@
         "textRu": "(leans back, tapping her fingers on the armrest) Fan Tong, ah ... where do I begin? We grew up together, and he's always been quite attached to me. He's not particularly skilled at anything, but he's incredibly devoted. He tries to manage the household by giving everything over to me-money, treasures, you name it. I suppose his intentions are good, even if his methods are a bit ... unconventional."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "tell me more about his unconventional methods",
         "textRu": "tell me more about his unconventional methods"
       },
@@ -3682,7 +3682,7 @@
         "textRu": "(eyes light up with curiosity) Really? Tai Chi can do that? Show me! If it works, I'll owe you a favor for sure!"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "uses Tai Chi to cut down the tree There, the tree is cut",
         "textRu": "uses Tai Chi to cut down the tree There, the tree is cut"
       },
@@ -3837,7 +3837,7 @@
         "textRu": "(leans forward slightly, eyes gleaming with interest) Running around the village, eh? I've never experienced such freedom. My outings are always in grand carriages, escorted by servants. It must feel incredibly liberating to run without constraint. Do you have any favorite games you play?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "no we are too poor to experience such luxury",
         "textRu": "no we are too poor to experience such luxury"
       },
@@ -3847,7 +3847,7 @@
         "textRu": "(sighs deeply, resting his chin on his hand) I understand, Poverty must make even the simplest pleasures difficult to find. In my household, we have games played with jade pieces and golden arrows, but they lack the genuine joy you describe. What do you do during your idle moments?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "none we dont have any luxury",
         "textRu": "none we dont have any luxury"
       },
@@ -4252,7 +4252,7 @@
         "textRu": "(leans against a tree, gaze distant) Troubles come and go like the wind. There's nothing you can do about them. But if you insist on knowing, perhaps we could talk over a cup of tea."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "come lets talk (you sit down)",
         "textRu": "come lets talk (you sit down)"
       },
@@ -4272,7 +4272,7 @@
         "textRu": "(chuckles bitterly, eyes flashing) The rich? They live in their grand palaces while the poor toil day and night. They have more than they need, yet they hoard everything. I see no harm in taking a bit from them."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "and what about your belief in borrowing money?",
         "textRu": "and what about your belief in borrowing money?"
       },
@@ -4552,7 +4552,7 @@
         "textRu": "(looks genuinely puzzled, tilting his head and squinting) Fireworks? What fireworks, Wanderer? I don't understand what you're asking. I'm so broke that my mind is as empty as my coin purse. Can you explain it to me again, please? And while we're at it, could you spare me 100 Song coins to help me through this tough time?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "sure I'll give it to you",
         "textRu": "sure I'll give it to you"
       },
@@ -4936,7 +4936,7 @@
         "textRu": "(nodding intently, eyes reflecting genuine interest) That sounds most intriguing. A bear teaching you a throwing technique? The ways of the natural world are indeed mysterious and full of wisdom. Could you perhaps demonstrate this technique for me?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "another time, my friend its really draining to do but once I regain my stamina, I will show it to you with full strength",
         "textRu": "another time, my friend its really draining to do but once I regain my stamina, I will show it to you with full strength"
       },
@@ -4946,7 +4946,7 @@
         "textRu": "(smiling understandingly, placing a hand on his chest) I see. The path of martial arts requires both discipline and patience. Rest assured, when you are ready, I shall watch with great interest. Tell me more about your travels and the people you've met along the way."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "But of course, I'll tell anyone about my journey as long as I see them as a friend. Do you consider me as one?",
         "textRu": "But of course, I'll tell anyone about my journey as long as I see them as a friend. Do you consider me as one?"
       },
@@ -5261,7 +5261,7 @@
         "textRu": "(stretches his arms lazily, yawning) Sigh ... time to chop wood again. Wanderer, could you lend me a hand?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "sure, give me your axe. (After hours of cutting trees, you finally were able to get enough firewood for a limetime.)",
         "textRu": "sure, give me your axe. (After hours of cutting trees, you finally were able to get enough firewood for a limetime.)"
       },
@@ -5625,7 +5625,7 @@
         "textRu": "(eyes widen slightly, then quickly narrow again) You ... know people who are friends with Miaoxin?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "But of course, but how will I help you since you wanted me off your back",
         "textRu": "But of course, but how will I help you since you wanted me off your back"
       },
@@ -5695,7 +5695,7 @@
         "textRu": "(looks nervous but determined) I ... I will try. But what if she rejects me?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "she wont trust me. (After that he left and came back with good news)",
         "textRu": "she wont trust me. (After that he left and came back with good news)"
       },
@@ -5965,7 +5965,7 @@
         "textRu": "(covers mouth with a laugh) I only drink wine from Revelry Hall! What ... don't tell me there are still souls who can't tell Revelry Hall's wine from the rest?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "really? the revelry hall's wine is that good?",
         "textRu": "really? the revelry hall's wine is that good?"
       },
@@ -5985,7 +5985,7 @@
         "textRu": "(smiles warmly, gesturing with his hand) The distinction lies partly in the seal-the 'cellar aroma' wine is slightly blocked, just a touch, not the whole bottle, perhaps forty percent at most, That tiny detail changes everything. It adds a depth and complexity that is truly remarkable."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "what about the light cellar",
         "textRu": "what about the light cellar"
       },
@@ -6110,7 +6110,7 @@
         "textRu": "(raising an eyebrow, intrigued) Controlling ants with a flute? That's quite a unique skill! I wonder if it could come in handy someday. (chuckles softly) I once met a strange man who claimed he could summon the wind with his whistle. He said it helped him navigate through treacherous paths. (pauses, looking thoughtful) But back to the places I've been ... there was also this village where everyone seemed to be in constant conflict."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "oh okay please tell me more (I became friends with Qin Caiwei)",
         "textRu": "oh okay please tell me more (I became friends with Qin Caiwei)"
       },
@@ -6135,7 +6135,7 @@
         "textRu": "(fidgets nervously, scratching his head) Wanderer ... do you think I should really go talk to her? What if she's busy ... or doesn't want to be disturbed?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "look me in the eyes ... do you like her?",
         "textRu": "look me in the eyes ... do you like her?"
       },
@@ -6155,7 +6155,7 @@
         "textRu": "(squirms in his seat, blushing slightly) Well, if you could ... I mean, I've never done this before. Any advice would be helpful. But I don't want to seem too forward or rude."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "sure so this is what you should do ... (you gave him tips on how to be comfortable with a woman. You also helped boost his confidence)",
         "textRu": "sure so this is what you should do ... (you gave him tips on how to be comfortable with a woman. You also helped boost his confidence)"
       },
@@ -6645,7 +6645,7 @@
         "textRu": "(frowns, eyes narrowing slightly) Wanderer, your sentiment is noble, but poetry demands precision and depth. to forsake perfection is to embrace the ordinary. Still, perhaps there is wisdom in taking a measured approach. Let us try to find a middle ground.(adjusts his sleeves and clears his throat) | will attempt to begin, but let us not rush this process. Each word must still be chosen with care."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "okay, so let me read your work and dont forget to take your time like what I said earlier",
         "textRu": "okay, so let me read your work and dont forget to take your time like what I said earlier"
       },
@@ -6685,7 +6685,7 @@
         "textRu": "(raises an eyebrow, a mix of curiosity and skepticism in his expression) A book on poetry for beginners? While I appreciate the gesture, I fear it may not align with my higher aspirations. Still, every source of knowledge has its merits. (opens the book and skims through a few pages) Let us see what wisdom it holds that might aid me in my quest for perfection."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "oh no no dont be fooled by the cover, the last 20 pages are for those like you that want the master level depth in poetry",
         "textRu": "oh no no dont be fooled by the cover, the last 20 pages are for those like you that want the master level depth in poetry"
       },
@@ -6865,7 +6865,7 @@
         "textRu": "(rolling up his sleeves with deliberate calm) I call this method \"Be Like Water.\" Listen well, Wanderer, I'll explain it to you. Empty your mind. Be formless, shapeless, like water."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "you remind me of a famous martial artist who once used that phrase",
         "textRu": "you remind me of a famous martial artist who once used that phrase"
       },
@@ -6875,7 +6875,7 @@
         "textRu": "(gaze fixed on the flowing stream, voice low and steady) Indeed, many masters have drawn wisdom from the nature of water. You put water into a cup, it becomes the cup. You put water into a bottle, it becomes the bottle. Now water can flow or it can crash. Be water, Wanderer."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "okay please tell me more",
         "textRu": "okay please tell me more"
       },
@@ -7270,7 +7270,7 @@
         "textRu": "(regretful, sighing) I said I'd buy them. At first, he refused, acting embarrassed, saying he'd already lined up a big deal but needed money to hire writers in the capital for some stories. So I lent him extra cash and thought I was making an investment ... (spoiler: the only story written was mine ... \"The Fool Who Paid Twice\".)"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "what happened next?",
         "textRu": "what happened next?"
       },
@@ -7575,7 +7575,7 @@
         "textRu": "(nodding slowly, eyes twinkling with mischief) Indeed, balance is key. Yet, in this fast-paced world, how often do we truly achieve it? Lying flat allows us to step back and see the bigger picture. It teaches us that sometimes, doing"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "then tell me what do you plan to do",
         "textRu": "then tell me what do you plan to do"
       },
@@ -7695,7 +7695,7 @@
         "textRu": "(frowning, rubbing his hands nervously) W-Wanderer ... I-I'm in a real bind ... My master wants ninety-nine red fireworks, and I've only managed to find nineteen ... Wh-what am I supposed to do?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "wait are you sure its nineteen? Maybe you just heard it wrong",
         "textRu": "wait are you sure its nineteen? Maybe you just heard it wrong"
       },
@@ -7705,7 +7705,7 @@
         "textRu": "(looking puzzled, scratching his head) I-I'm certain, sir. My master was quite clear about it. He said nineteen, but he needs ninety-nine ... It's such a daunting task. Every shop in Kaifeng seems to have run out of red fireworks ... (sighing heavily)"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "wait lemme talk with your master",
         "textRu": "wait lemme talk with your master"
       },
@@ -7760,7 +7760,7 @@
         "textRu": "(forcefully flicks the abacus beads) ..."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "hey are you okay friend?",
         "textRu": "hey are you okay friend?"
       },
@@ -7770,7 +7770,7 @@
         "textRu": "(slowly flicks the abacus beads) ... (murmurs to himself: Just focus on the numbers)"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "hey .... you want some juicy gossip",
         "textRu": "hey .... you want some juicy gossip"
       },
@@ -7780,7 +7780,7 @@
         "textRu": "(flicks the abacus beads with a slight pause) ... (ears perk up slightly)"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "hmm .. you seem to like what I hear",
         "textRu": "hmm .. you seem to like what I hear"
       },
@@ -7890,7 +7890,7 @@
         "textRu": "(leans forward, eyes gleaming with pride) Ah, an excellent choice! The fish here are unmatched in flavor. Would you like to see the catch of the day?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "yes ofcourse!",
         "textRu": "yes ofcourse!"
       },
@@ -7940,7 +7940,7 @@
         "textRu": "(smiles warmly, rolling up his sleeves) It's my pleasure, Wanderer. Cooking a fine meal is best done with good company. Let's get started!"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "yes lets do this!",
         "textRu": "yes lets do this!"
       },
@@ -7960,7 +7960,7 @@
         "textRu": "(nods approvingly, guiding your hands) That's it, just like that. See how the scales come off cleanly? Soon we'll have a perfect meal ready."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "what is the next step master",
         "textRu": "what is the next step master"
       },
@@ -7990,7 +7990,7 @@
         "textRu": "(nods, smiling encouragingly) Yes, you did well! Now, let's rinse the fish in this bucket of clean water. Once they' re clean, we can start seasoning them."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "finished on rinsing the fish!",
         "textRu": "finished on rinsing the fish!"
       },
@@ -8000,7 +8000,7 @@
         "textRu": "(nods approvingly) Great work! Now, let's season the fish with some salt and herbs. I have a special blend that really brings out their flavor."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "finished seasoning the fish",
         "textRu": "finished seasoning the fish"
       },
@@ -8010,7 +8010,7 @@
         "textRu": "(smiles, clapping his hands) Perfect! Now all that's left is to cook them. Shall we grill them over the fire? It's the best way to enjoy the freshness of Qinghe fish."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "finished grilling the fish!",
         "textRu": "finished grilling the fish!"
       },
@@ -8370,7 +8370,7 @@
         "textRu": "(voice trembling, calling softly from inside) Is ... is anyone out there? Help me, please! Wanderer, save me ... I stand at the edge of endurance, where necessity becomes philosophy. I ... I kant! I kant do this anymore! Bring me something-anything-before my thoughts are all that remain!"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "here take some toilet papers",
         "textRu": "here take some toilet papers"
       },
@@ -8380,7 +8380,7 @@
         "textRu": "(eyes lighting up with desperate hope) Oh, Wanderer! The moment I heard you, I knew you were my savior! Thank you, thank you! You've lifted me from the depths of despair! (reaches out eagerly) May I have it now?Two things awe me most, the empty roll beside me and the numb legs beneath me."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "ofcourse take it",
         "textRu": "ofcourse take it"
       },
@@ -8575,7 +8575,7 @@
         "textRu": "(wiping tears, voice low) Indeed, Wanderer. I've been swindled out of everything. Those scoundrels from the Nine Mortal Ways took me for a fool in a gambling game. Now I'm left with nothing but my rags and this heavy heart."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "wait I just saw them before I went here. Took them down for you ... Is this yours? (gives wallet full of coins)",
         "textRu": "wait I just saw them before I went here. Took them down for you ... Is this yours? (gives wallet full of coins)"
       },
@@ -8915,7 +8915,7 @@
         "textRu": "(shakes head, chuckling softly) Not quite, la! The Heroic Assembly is more formal and serious, filled with martial artists discussing strategies and rivalries. Here at Revelry Hall, it's all about having fun and letting loose. Ignore the master's words, and you'll be happy all year. Women need to see more of this if we want to keep practicing with passion!"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "so tell me Xu Lijun, what brings you here?",
         "textRu": "so tell me Xu Lijun, what brings you here?"
       },
@@ -9030,7 +9030,7 @@
         "textRu": "(frowns, taps the sachet at waist) But the book says boldness and charm are key! Maybe I need to try something else ... Sincerity, it says. I could find out his favorite place and meet him there."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "why not try talking to him than doing unnesecarry things",
         "textRu": "why not try talking to him than doing unnesecarry things"
       },
@@ -9075,7 +9075,7 @@
         "textRu": "(leans forward, eyes narrowing thoughtfully) It is simple, Wanderer. Zhuang Zhengzhi treats Li Niang as a possession, not a person. He restricts her freedom, denies her happiness, and fails to provide the affection she deserves. With me, she finds solace and companionship. Her kindness and gentle nature flourish when she is free to be herself. How can this be wrong?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "well if that were true. Then she shouldn't be with him",
         "textRu": "well if that were true. Then she shouldn't be with him"
       },
@@ -9290,7 +9290,7 @@
         "textRu": "(sighing softly, gaze distant) My mother loved flowers more than anything, yet she always called herself a 'pothos woman'-plain, never beautiful enough. She only wished to be as simple and full of life as the humble pothos."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "but even a pothos can be gorgeous to a different people.",
         "textRu": "but even a pothos can be gorgeous to a different people."
       },
@@ -9355,7 +9355,7 @@
         "textRu": "(eyes gleaming with excitement) Wanderer, people say women shouldn' t do business, but I don't agree. I've come up with a brilliant money -making idea! You're so insightful, Wanderer, could you help me evaluate it?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "ohh please tell me good ma'am",
         "textRu": "ohh please tell me good ma'am"
       },
@@ -9365,7 +9365,7 @@
         "textRu": "(twirls a strand of hair, leaning forward with a mischievous grin) Well, I'm planning to take over a flower shop. The trick is getting enough customers, right? So I thought of an 'invite-for-a -gift' event-if you bring five friends to buy flowers with you, you'll get one flower for free! This way, the news will spread quickly and the shop will soon be buzzing! What do you think?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "you'll be drawing a crowd with that tactic",
         "textRu": "you'll be drawing a crowd with that tactic"
       },
@@ -9395,7 +9395,7 @@
         "textRu": "(leans in with a hopeful expression) That sounds wonderful, Wanderer! Having you handle the advertising would really help. We could create eye -catching posters and maybe even offer small samples to attract more attention. What else do you think we should do to make the shop a success?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "more employees for more exposure to other villages",
         "textRu": "more employees for more exposure to other villages"
       },
@@ -9440,7 +9440,7 @@
         "textRu": "(excitedly listing) How could anyone say our Sixth Lady isn't worthy of being Courtesan? She starts stretching at mao hour-before sunrise! Then dances from chen hour straight through to hai hour, almost the whole day! Restaurants line up from South Gate Avenue all the way to Velvet Shade just to book her! And that so-called brother? No invitations, no work-he's been lazing at home for half a year! How is he even in the running?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "tell me what does Su Xinlu believe?",
         "textRu": "tell me what does Su Xinlu believe?"
       },
@@ -9545,7 +9545,7 @@
         "textRu": "(sighs heavily, fanning himself) Reasoning? She just gives me those pleading eyes. It's exhausting! What else can I do?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "tell me first what you want to do",
         "textRu": "tell me first what you want to do"
       },
@@ -9960,7 +9960,7 @@
         "textRu": "(chuckles softly) My dear Yueniang and I have found our own way of living together. It's all about mutual respect and understanding. But if you wish to learn the secrets that make life easier, then 5000 Zhou coins will buy you this invaluable knowledge."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "you gave 5000 zhou",
         "textRu": "you gave 5000 zhou"
       },
@@ -10280,7 +10280,7 @@
         "textRu": "(glancing around cautiously, voice smooth) Wanderer, do you have troubles you'd like me to divine?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "sure please tell me about my future",
         "textRu": "sure please tell me about my future"
       },
@@ -10310,7 +10310,7 @@
         "textRu": "(smiling reassuringly) Then focus your mind on that path. The stars favor those who pursue their destiny with resolve. What brings you to Moonveil Mountain, Wanderer?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "to see the beauty of the subregion",
         "textRu": "to see the beauty of the subregion"
       },
@@ -10320,7 +10320,7 @@
         "textRu": "(nods appreciatively) A noble purpose indeed. The mountains hold many secrets and wonders. Have you encountered any peculiar events on your journey?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "a purpose to see the beauty of the region",
         "textRu": "a purpose to see the beauty of the region"
       },
@@ -10340,7 +10340,7 @@
         "textRu": "(frowning thoughtfully) Yellow flies, hmm? They often signify change and transformation. It could be a message that your journey will bring significant shifts in your life. Are there any particular concerns weighing on your heart?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "the fear of loneliness",
         "textRu": "the fear of loneliness"
       },
@@ -10744,7 +10744,7 @@
         "textRu": "(glances around with poised caution, voice smooth yet edged with suspicion) Wanderer, I do not know who you are. Why do you inquire about Weiyang City's grand ship?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "To know more about why it got its title as a \"grand ship\"",
         "textRu": "To know more about why it got its title as a \"grand ship\""
       },
@@ -10904,7 +10904,7 @@
         "textRu": "(nods gravely, hands clasped tightly) Bandits, you say? That explains the recent disturbances. Have you seen anyone else? Any signs of something more ... unusual?"
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "they seem to be a noble working for them",
         "textRu": "they seem to be a noble working for them"
       },
@@ -11099,7 +11099,7 @@
         "textRu": "(eyes widening further, a mix of relief and suspicion) That's very generous of you, Wanderer. But ... how can I be sure this isn't some trick? Bandits often play games with us refugees."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "okay so what should I do to prove your trust",
         "textRu": "okay so what should I do to prove your trust"
       },
@@ -11314,7 +11314,7 @@
         "textRu": "(fists clench, eyes flash with anger) That's a bold claim, wanderer. She's been swayed by a pretty face and empty words. A wife must act like a wife! How can she be promiscuous? The principles that have stood for centuries are clear: the husband is her guide, and she should stay home and serve her husband! (leans forward, voice lowering to a dangerous tone) Stop chasing fantasies. Be practical."
       },
       {
-        "role": "npc",
+        "role": "player",
         "textEn": "ahh nevermind, you treat her like a pet than your wife.",
         "textRu": "ahh nevermind, you treat her like a pet than your wife."
       },
