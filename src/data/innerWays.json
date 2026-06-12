@@ -1,0 +1,311 @@
+{
+  "sourceUrl": "https://game8.co/games/Where-Winds-Meet/archives/564726",
+  "intro": "Inner Ways, or Inner Arts, function as passive skills that grant bonuses in Where Winds Meet.",
+  "upgradeSteps": [
+    {
+      "title": "Reach Solo Mode Level 4",
+      "body": "The Inner Ways Breakthrough system unlocks after reaching Solo Mode Level 4. You can achieve this by progressing through your solo save file and completing specific challenges that prevent access to higher Roaming Levels."
+    },
+    {
+      "title": "Use Inner Way Advance Items",
+      "body": "To upgrade Tiers, Inner Ways require the use of Notes or Inner Way Advance Items specific to each Inner Way. For example, the Legendary Echoes of Oblivion Inner Way requires Echoes of Oblivion: Notes to upgrade. Use the Tips Exchange for More Notes One of the best ways to upgrade Inner Ways is to convert Upgrade Notes that you would not use and turn them into Vintage Bookplates. You can then use these Bookplates in the Tips Exchange for Chests that contain a more specific pool of Upgrade Notes. Use the Inner Way Conversion to Swap Tiers The Inner Way Conversion system allows you to transfer all existing upgrades from one Inner Way to another that you plan to use. You can take advantage of this feature if you are planning to swap builds, but note that this can only be done a limited number of times each season."
+    }
+  ],
+  "explained": [],
+  "innerWays": [
+    {
+      "id": "phantom-rally-bamboocut-dust",
+      "nameEn": "Phantom Rally Bamboocut - Dust",
+      "pathEn": "Dust",
+      "effect": "The First Umbrella from Scarlet Spin summons a Phantom Umbrella, then every 3rd throw summons another. Perfect Catch or summoning a Phantom Umbrella triggers Resonance on all Phantom Umbrellas, dealing area damage.",
+      "howToGet": ""
+    },
+    {
+      "id": "song-of-tang-bamboocut-dust",
+      "nameEn": "Song of Tang Bamboocut - Dust",
+      "pathEn": "Dust",
+      "effect": "Hitting with Martial Art Skills applies Tang Song for 4s (max 5 stacks, 1 stack per second). Each stack grants +2% Critical Damage when above 50% HP, or +2% Life Drain when below 50% HP (Life Drain capped art 2.5% Max HP per second).",
+      "howToGet": ""
+    },
+    {
+      "id": "light-anew-bamboocut-dust",
+      "nameEn": "Light Anew Bamboocut - Dust",
+      "pathEn": "Dust",
+      "effect": "When hitting 3 or more enemies at once, apply Candle Flicer for 3s, stacking up to 5. Each stack reduces Movement Speed by 4% and increases damage taken by 2%. Can apply once per 0.5s, enemies can gaine 1 stack per 0.5s from any source.",
+      "howToGet": ""
+    },
+    {
+      "id": "towline-sweep-bamboocut-dust",
+      "nameEn": "Towline Sweep Bamboocut - Dust",
+      "pathEn": "Dust",
+      "effect": "Gain 50 Tokens of Gratitude after casting Soul Sweep. In Soulbound state, each hit of Piercing Dart's sweeping combo applies 2 stacks of Soulbreak, and the first hit pulls enemies forward.",
+      "howToGet": ""
+    },
+    {
+      "id": "echoes-of-oblivion-bamboocut-wind",
+      "nameEn": "Echoes of Oblivion Bamboocut - Wind",
+      "pathEn": "Wind",
+      "effect": "Infernal Twinblades' normal Light Attacks apply Sin to enemies, while Light Attacks under Flamelash apply Karma. When attacking targets affected by Sin and Karma with Infernal Twinblades' Light Attacks, ignore their 10% Physical Defense and 10% Bamboocut Resistance respectively.",
+      "howToGet": ""
+    },
+    {
+      "id": "riptide-reflex-bamboocut-wind",
+      "nameEn": "Riptide Reflex Bamboocut - Wind",
+      "pathEn": "Wind",
+      "effect": "Hitting an Enemy with a Control Skill reduces the Cooldown of the current Martial Art Skill by 1s. This effect can only trigger once every 10s. Affected Control Skills include: Bladebound Thread, Coiled Dragon, Qiankun's Lock, Spring Sorrow, Moon Shatter Spring, Wayfarer's Drift, Peak's Springless Silence.",
+      "howToGet": ""
+    },
+    {
+      "id": "breaking-point-bamboocut-wind",
+      "nameEn": "Breaking Point Bamboocut - Wind",
+      "pathEn": "Wind",
+      "effect": "Dealing Critical Damage to an enemy under the Spirit Depletion state grants you 1 stack of Collapse. Each stack of Collapse increases your Physical Penetration by 5 and Critical Damage by 5%. Stacks up to 3 times, lasting 3 seconds.",
+      "howToGet": ""
+    },
+    {
+      "id": "vendetta-bamboocut-wind",
+      "nameEn": "Vendetta Bamboocut - Wind",
+      "pathEn": "Wind",
+      "effect": "Bladebound Thread's Vendetta Token lasts 5 seconds longer and restores 20 Tokens of Gratitude.",
+      "howToGet": ""
+    },
+    {
+      "id": "sword-morph-bellstrike-splendor",
+      "nameEn": "Sword Morph Bellstrike - Splendor",
+      "pathEn": "Bellstrike - Splendor",
+      "effect": "When Nameless Sword's Charged Skill, Vagrant Sword is charged while the Qi shield is present, it unleashes multiple additional sword energy attacks at the 2nd charging stage. You can consume bonus Endurance to increase the sword energy's damage; each Endurance increases damage by 1%, up to 20%.",
+      "howToGet": ""
+    },
+    {
+      "id": "battle-anthem-bellstrike-splendor",
+      "nameEn": "Battle Anthem Bellstrike - Splendor",
+      "pathEn": "Bellstrike - Splendor",
+      "effect": "Increases Charged Skills' damage against all bosses by 10%.",
+      "howToGet": ""
+    },
+    {
+      "id": "wildfire-spark-bellstrike-splendor",
+      "nameEn": "Wildfire Spark Bellstrike - Splendor",
+      "pathEn": "Bellstrike - Splendor",
+      "effect": "Refunds 3.5% of the Endurance consumed.",
+      "howToGet": ""
+    },
+    {
+      "id": "mountains-might-bellstrike-splendor",
+      "nameEn": "Mountain's Might Bellstrike - Splendor",
+      "pathEn": "Bellstrike - Splendor",
+      "effect": "Nameless Spear Martial Art Skill Mountain Sweep grants Endless Gale effect, increasing the Endurance cost reduction to 20% for 5 seconds.",
+      "howToGet": ""
+    },
+    {
+      "id": "sandswirl-tail-bellstrike-splendor",
+      "nameEn": "Sandswirl Tail Bellstrike - Splendor",
+      "pathEn": "Bellstrike - Splendor",
+      "effect": "When transformed into a brocade carp via Moonleap Morph, sprinting and jumping consume less endurance.",
+      "howToGet": ""
+    },
+    {
+      "id": "sword-horizon-bellstrike-umbra",
+      "nameEn": "Sword Horizon Bellstrike - Umbra",
+      "pathEn": "Bellstrike - Umbra",
+      "effect": "After casting Strategic Sword's Martial Art Skill, Special Skill, or Charged Skill, press the skill button at the perfect timing during the ending phase to cast Crisscrossing Swords and unleash follow-up attacks. If the target has 5 stacks of Bleed, remove all Bleed stacks and deal high Bleed damage once.",
+      "howToGet": ""
+    },
+    {
+      "id": "adaptive-steel-bellstrike-umbra",
+      "nameEn": "Adaptive Steel Bellstrike - Umbra",
+      "pathEn": "Bellstrike - Umbra",
+      "effect": "Gain a Weapon Mastery effect based on your current Blade Weapon. The Weapon Mastery effects (see below) have the following cooldowns: Sword - 6 seconds, Dual Blades - 10 seconds, Heng Blade - 20 seconds.",
+      "howToGet": ""
+    },
+    {
+      "id": "insightful-strike-bellstrike-umbra",
+      "nameEn": "Insightful Strike Bellstrike - Umbra",
+      "pathEn": "Bellstrike - Umbra",
+      "effect": "Dealing Affinity DMG generates Focus. When Focus is full, enter the Concentration state for 10 seconds. Concentration: Increases Affinity DMG by 10%. Upon hit, there is a 5% chance to reduce damage taken by 40%.",
+      "howToGet": ""
+    },
+    {
+      "id": "wolfchasers-art-bellstrike-umbra",
+      "nameEn": "Wolfchaser's Art Bellstrike - Umbra",
+      "pathEn": "Bellstrike - Umbra",
+      "effect": "For the Nine-Bend Spirit-Stealing Spear Martial Skill Sorrow Without Wine, the Combo count required to grant buff effects is reduced from 5/10 to 4/8. Each time Sorrow Without Wine hits any target afflicted with your own Bleed effect, based on the number of Bleed stacks, there is a 60%/70%/80%/90%/100% chance to add 1 extra Combo count.",
+      "howToGet": ""
+    },
+    {
+      "id": "seasonal-edge-general",
+      "nameEn": "Seasonal Edge General",
+      "pathEn": "General",
+      "effect": "After casting a Dual-Weapon Skill, gain one of the following effects (see below).",
+      "howToGet": ""
+    },
+    {
+      "id": "morale-chant-general",
+      "nameEn": "Morale Chant General",
+      "pathEn": "General",
+      "effect": "100% chance to gain one stack of Yi River when attacking or healing: Increases Physical Penetration by 2 and damage and healing by 1% for 12 seconds, stacking up to 5 times. The chance to gain Yi River is only calculated once every 2 seconds.",
+      "howToGet": ""
+    },
+    {
+      "id": "vital-leech-general",
+      "nameEn": "Vital Leech General",
+      "pathEn": "General",
+      "effect": "Casting Exhaustion Execution Skill restores HP equal to 8% of the damage dealt.",
+      "howToGet": ""
+    },
+    {
+      "id": "invigorated-warrior-general",
+      "nameEn": "Invigorated Warrior General",
+      "pathEn": "General",
+      "effect": "Increases all damage and healing done by 5%. This effect is disabled for 5 seconds after being hit. Taking a hit also grants a Cage effect, increasing all damage taken by 5%.",
+      "howToGet": ""
+    },
+    {
+      "id": "bitter-seasons-general",
+      "nameEn": "Bitter Seasons General",
+      "pathEn": "General",
+      "effect": "When dealing damage, there is a 10% chance to apply a Poison effect for 5 seconds, dealing damage once per second. The Poison reduces target's Physical Defense by 0.6% for 10 seconds, stacking up to 5 times (duration refreshed upon stacking).",
+      "howToGet": ""
+    },
+    {
+      "id": "evasive-charge-general",
+      "nameEn": "Evasive Charge General",
+      "pathEn": "General",
+      "effect": "After a Perfect Dodge, there is a 50% chance to refund 100% of the Endurance consumed.",
+      "howToGet": ""
+    },
+    {
+      "id": "fury-harvest-general",
+      "nameEn": "Fury Harvest General",
+      "pathEn": "General",
+      "effect": "Vitality is required to cast Mystic Skills. Certain recovery actions have a 50% chance to grant 1 bonus Vitality. No bonus Vitality is rewarded when you gain Vitality by attacking, taking a hit, or successfully deflecting an attack.",
+      "howToGet": ""
+    },
+    {
+      "id": "divine-roulette-general",
+      "nameEn": "Divine Roulette General",
+      "pathEn": "General",
+      "effect": "Upon a successful deflection, gain one of the following effects (see below). The effect lasts 10 seconds and can only trigger once every 30 seconds. It applies to Martial Arts Skills, Perception Skills, Special Skills, Charged Skills, and Varied Combos.",
+      "howToGet": ""
+    },
+    {
+      "id": "evening-snow-general",
+      "nameEn": "Evening Snow General",
+      "pathEn": "General",
+      "effect": "Within 12 seconds upon entering combat, if HP falls below 60%, gain Snow Vision for 4 seconds, restoring 3% HP +600 HP per second. This effect can trigger once every 300 seconds.",
+      "howToGet": ""
+    },
+    {
+      "id": "fivefold-bleed-general",
+      "nameEn": "Fivefold Bleed General",
+      "pathEn": "General",
+      "effect": "Dealing damage has a 10% chance to apply one stack of Weeping Blood for 5 seconds, damaging the target once per second (up to 5 stacks, duration refreshed upon stacking). At 5 stacks, Weeping Blood will be removed from the target and deal piercing damage once.",
+      "howToGet": ""
+    },
+    {
+      "id": "shadow-assault-general",
+      "nameEn": "Shadow Assault General",
+      "pathEn": "General",
+      "effect": "Enhances Touch of Death, increasing its range by 1.5m and damage by 10%. Upon successful hit, restores HP equal to 10% of the damage dealt.",
+      "howToGet": ""
+    },
+    {
+      "id": "steadfast-stance-general",
+      "nameEn": "Steadfast Stance General",
+      "pathEn": "General",
+      "effect": "Less likely to suffer stagger effect when attacked. Higher resistance when more enemy units are nearby. Invalid when the attack comes from a boss or player.",
+      "howToGet": ""
+    },
+    {
+      "id": "wind-beneath-wings-general",
+      "nameEn": "Wind Beneath Wings General",
+      "pathEn": "General",
+      "effect": "Reduces the Endurance cost of Movement Mystic Skill Skywalk Dash's dash while jumping by 40%. After landing, increases Movement Speed by 30% for 3 seconds. Restores bonus HP (1% Max HP +1,000) after defeating any enemy.",
+      "howToGet": ""
+    },
+    {
+      "id": "royal-remedy-silkbind-deluge",
+      "nameEn": "Royal Remedy Silkbind - Deluge",
+      "pathEn": "Silkbind - Deluge",
+      "effect": "The Mingchuan Medical Codex Martial Skill Sitting Watch Clouds Rise created Water Clone's healing effect is increased by 10%. If you are within the area of the healing over time effect, you also additionally restore 3 Dew points and 2 Essence points each time.",
+      "howToGet": ""
+    },
+    {
+      "id": "restoring-blossom-silkbind-deluge",
+      "nameEn": "Restoring Blossom Silkbind - Deluge",
+      "pathEn": "Silkbind - Deluge",
+      "effect": "Dealing Critical healing applies one stack of Nurturing for 3 seconds, increasing healing received by 2%, stacking up to 3 times.",
+      "howToGet": ""
+    },
+    {
+      "id": "esoteric-revival-silkbind-deluge",
+      "nameEn": "Esoteric Revival Silkbind - Deluge",
+      "pathEn": "Silkbind - Deluge",
+      "effect": "Increases the healing of Panacea Fan's Perception Skill, Resurrection, by 50% on the revived target.",
+      "howToGet": ""
+    },
+    {
+      "id": "mending-loom-silkbind-deluge",
+      "nameEn": "Mending Loom Silkbind - Deluge",
+      "pathEn": "Silkbind - Deluge",
+      "effect": "Casting Soulshade Umrella's Special Skill, Echoing Grow restores 5 Dew and additionally heals 10% of your Max HP for every 100 Dew consumed.",
+      "howToGet": ""
+    },
+    {
+      "id": "blossom-barrage-silkbind-jade",
+      "nameEn": "Blossom Barrage Silkbind - Jade",
+      "pathEn": "Silkbind - Jade",
+      "effect": "Vernal Umbrella's Martial Arts Skill Spring Sorrow can hold up to 2 stacks. Hitting a target applies the Combo effect: Increases Damage taken from the caster's Ballistic Skills by 10% for 10s. Affected Ballistic Skills include: Martial Arts Skill Let Spring Go, Special Skill Everbloom, Umbrella - Light Attack, and its Charged Skill Spring Away.",
+      "howToGet": ""
+    },
+    {
+      "id": "star-reacher-silkbind-jade",
+      "nameEn": "Star Reacher Silkbind - Jade",
+      "pathEn": "Silkbind - Jade",
+      "effect": "Gain 5% Physical Attack bonus for up to 8 seconds after applying Lingering Bone Mark to an enemy. This bonus can only be gained once per second, and gaining it again will refresh its duration. Knocking a target Airborne increases the Physical Attack bonus to 10%.",
+      "howToGet": ""
+    },
+    {
+      "id": "thunderous-bloom-silkbind-jade",
+      "nameEn": "Thunderous Bloom Silkbind - Jade",
+      "pathEn": "Silkbind - Jade",
+      "effect": "Moving a distance exceeding 15 meters within 3 seconds grants 3 stacks of Spring Thunder effect: Each time you use Heavy Attack, Aerial Heavy Attack, Light Attack, or Light Attack Charged Skill to deal damage, you can consume 1 stack of Spring Thunder to increase HP damage of that instance and the next 1 second of that skill type by 15%. Cannot stack. Gaining Spring Thunder from movement can only trigger once every 15 seconds. Spring Thunder can be retained for up to 12 seconds.",
+      "howToGet": ""
+    },
+    {
+      "id": "flying-gourds-silkbind-jade",
+      "nameEn": "Flying Gourds Silkbind - Jade",
+      "pathEn": "Silkbind - Jade",
+      "effect": "Grants 2 charges to Inkwell Fan's Peak's Springless Silence, but increases its cooldown by 3 seconds.",
+      "howToGet": ""
+    },
+    {
+      "id": "exquisite-scenery-stonesplit-might",
+      "nameEn": "Exquisite Scenery Stonesplit - Might",
+      "pathEn": "Stonesplit - Might",
+      "effect": "After a successful parry with Alas Blade Art, for a period of time, you can activate a special Parry Counter skill. Pressing the Perception Skill or Heavy Attack button allows you to release a charge-free, potency Tier 3 Heavy Attack Charged Skill (can chain into Heavy Attack Charged Follow-up Skill). Can only trigger once every 10 seconds.",
+      "howToGet": ""
+    },
+    {
+      "id": "rock-solid-stonesplit-might",
+      "nameEn": "Rock Solid Stonesplit - Might",
+      "pathEn": "Stonesplit - Might",
+      "effect": "Increases the DMG Reduction of Stormbreaker Spear's Storm Roar by 20% after taunting a boss unit, and by 5% after taunting a non-boss unit, up to 20% in total. While the DMG Reduction is active, reduces all damage dealt by 10%.",
+      "howToGet": ""
+    },
+    {
+      "id": "art-of-resistance-stonesplit-might",
+      "nameEn": "Art of Resistance Stonesplit - Might",
+      "pathEn": "Stonesplit - Might",
+      "effect": "Increases the duration of your own HP shield and the bonus effects of its source skill by 4 seconds.",
+      "howToGet": ""
+    },
+    {
+      "id": "trapped-beast-stonesplit-might",
+      "nameEn": "Trapped Beast Stonesplit - Might",
+      "pathEn": "Stonesplit - Might",
+      "effect": "Taking damage while HP is below 30% triggers Cornered Beast, generating a shield that absorbs up to 30% of Max HP. This effect lasts 4 seconds and can trigger once every 300 seconds.",
+      "howToGet": ""
+    }
+  ]
+}
