@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin
+Disallow: /staffchat
+
+Sitemap: https://wwm-wiki-nocthra-vnd6.vercel.app/sitemap.xml
