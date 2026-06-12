@@ -167,11 +167,28 @@ function RecipeCard({
         expanded ? 'border-gold-400/40' : 'border-ink-700/30 hover:border-gold-700/30 card-hover'
       }`}
     >
-      <div className="flex items-start gap-3 mb-3">
-        <span className="text-3xl">{recipe.icon}</span>
+      <div className="flex items-start gap-3">
+        <span className="text-3xl shrink-0 leading-none">{recipe.icon}</span>
         <div className="flex-1 min-w-0">
           <h3 className="font-serif font-bold text-white text-sm">{recipe.name}</h3>
-          <p className="text-ink-400 text-xs">{recipe.nameEn}</p>
+          <p className="text-ink-400 text-xs mt-0.5">{recipe.nameEn}</p>
+          <div className="flex items-center gap-1.5 flex-wrap mt-1.5">
+            <span className={`flex items-center gap-1 text-xs px-2 py-0.5 rounded-full ${
+              recipe.category === 'healing'
+                ? 'bg-crimson-400/10 text-crimson-400'
+                : 'bg-blue-400/10 text-blue-400'
+            }`}>
+              {recipe.category === 'healing' ? <Heart className="w-3 h-3" /> : <Zap className="w-3 h-3" />}
+              {recipe.category === 'healing' ? 'Исцеление' : 'Бафф'}
+            </span>
+            <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">
+              Ур. {recipe.level}
+            </span>
+            <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full flex items-center gap-1">
+              <Clock className="w-3 h-3" /> {recipe.stamina}
+            </span>
+          </div>
+          <p className="text-jade-400 text-sm font-medium mt-1.5">{recipe.effect}</p>
         </div>
       </div>
       {canManage && (
@@ -184,25 +201,6 @@ function RecipeCard({
           </button>
         </div>
       )}
-
-      <div className="flex items-center gap-2 flex-wrap mb-2">
-        <span className={`flex items-center gap-1 text-xs px-2 py-0.5 rounded-full ${
-          recipe.category === 'healing' 
-            ? 'bg-crimson-400/10 text-crimson-400' 
-            : 'bg-blue-400/10 text-blue-400'
-        }`}>
-          {recipe.category === 'healing' ? <Heart className="w-3 h-3" /> : <Zap className="w-3 h-3" />}
-          {recipe.category === 'healing' ? 'Исцеление' : 'Бафф'}
-        </span>
-        <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">
-          Ур. {recipe.level}
-        </span>
-        <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full flex items-center gap-1">
-          <Clock className="w-3 h-3" /> {recipe.stamina}
-        </span>
-      </div>
-
-      <p className="text-jade-400 text-sm font-medium mb-2">{recipe.effect}</p>
 
       {expanded && (
         <div className="mt-3 pt-3 border-t border-ink-700/30 space-y-2 animate-fadeIn">

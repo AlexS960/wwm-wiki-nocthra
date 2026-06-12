@@ -58,19 +58,36 @@ export default function BossesSection() {
                   : 'border-ink-700/30 hover:border-gold-700/30 card-hover'
               }`}
             >
-              <div className="flex items-start justify-between mb-3">
-                <div className="flex items-center gap-3">
-                  <span className="text-3xl">{boss.icon}</span>
-                  <div>
-                    <h3 className="font-serif font-bold text-white">{boss.name}</h3>
-                    <p className="text-ink-400 text-xs">{boss.nameEn}</p>
+              <div className="flex items-start gap-3">
+                <span className="text-3xl shrink-0 leading-none">{boss.icon}</span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="min-w-0">
+                      <h3 className="font-serif font-bold text-white">{boss.name}</h3>
+                      <p className="text-ink-400 text-xs mt-0.5">{boss.nameEn}</p>
+                    </div>
+                    {selectedBoss?.id === boss.id ? (
+                      <ChevronUp className={`w-5 h-5 text-gold-400 shrink-0 ${canManage ? 'mr-14' : ''}`} />
+                    ) : (
+                      <ChevronDown className={`w-5 h-5 text-ink-400 shrink-0 ${canManage ? 'mr-14' : ''}`} />
+                    )}
+                  </div>
+                  <div className="flex flex-wrap gap-1.5 mt-1.5">
+                    <span className={`text-xs px-2 py-0.5 rounded-full ${diffColor[boss.difficulty] || ''}`}>
+                      {boss.difficulty}
+                    </span>
+                    <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">
+                      Ур. {boss.level}
+                    </span>
+                    <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">
+                      {boss.type === 'campaign' ? '📖 Сюжет' : '🌍 Мировой'}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1 text-ink-400 text-xs mt-1.5">
+                    <MapPin className="w-3 h-3 shrink-0" />
+                    <span>{boss.region} — {boss.location}</span>
                   </div>
                 </div>
-                {selectedBoss?.id === boss.id ? (
-                  <ChevronUp className={`w-5 h-5 text-gold-400 ${canManage ? 'mr-14' : ''}`} />
-                ) : (
-                  <ChevronDown className={`w-5 h-5 text-ink-400 ${canManage ? 'mr-14' : ''}`} />
-                )}
               </div>
               {canManage && (
                 <div className="absolute top-3 right-3 flex items-center gap-1 z-10" onClick={e => e.stopPropagation()}>
@@ -90,23 +107,6 @@ export default function BossesSection() {
                   </button>
                 </div>
               )}
-
-              <div className="flex flex-wrap gap-2 mb-2">
-                <span className={`text-xs px-2 py-0.5 rounded-full ${diffColor[boss.difficulty] || ''}`}>
-                  {boss.difficulty}
-                </span>
-                <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">
-                  Ур. {boss.level}
-                </span>
-                <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">
-                  {boss.type === 'campaign' ? '📖 Сюжет' : '🌍 Мировой'}
-                </span>
-              </div>
-
-              <div className="flex items-center gap-1 text-ink-400 text-xs">
-                <MapPin className="w-3 h-3" />
-                <span>{boss.region} — {boss.location}</span>
-              </div>
 
               {/* Expanded Content */}
               {selectedBoss?.id === boss.id && (

@@ -5,6 +5,7 @@ import { wikiCardDomId } from '../../lib/buildLookup';
 import { useSectionCategories } from '../../hooks/useSectionCategories';
 import { getCustomSectionById } from '../../lib/sectionRegistry';
 import MarkdownBody from '../MarkdownBody';
+import { toContentPreview } from '../../lib/wikiContent';
 import SectionEditorModal, { type SectionEditorValues } from '../ui/SectionEditorModal';
 import DynamicSectionEditorModal, { type DynamicEditorValues } from '../ui/DynamicSectionEditorModal';
 import { sectionEditorConfigs } from '../../data/sectionEditorConfig';
@@ -46,7 +47,8 @@ function WikiExpandableCard({
   highlighted?: boolean;
 }) {
   const [expanded, setExpanded] = useState(false);
-  const summary = article.fields?.summary || article.content.slice(0, 120);
+  const rawPreview = article.fields?.summary || article.content;
+  const summary = toContentPreview(rawPreview, 140);
 
   useEffect(() => {
     if (highlighted) setExpanded(true);

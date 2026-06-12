@@ -153,11 +153,17 @@ function WeaponCard({
   return (
     <div onClick={() => setExpanded(!expanded)}
       className={`relative bg-ink-800/60 border rounded-xl p-4 transition-all cursor-pointer ${expanded ? 'border-gold-400/40' : 'border-ink-700/30 hover:border-gold-700/30 card-hover'}`}>
-      <div className="flex items-start gap-3 mb-3">
+      <div className="flex items-start gap-3">
         <span className="text-3xl shrink-0 leading-none">{weapon.icon}</span>
         <div className="flex-1 min-w-0">
-          <h3 className="font-serif font-bold text-white break-words leading-snug pr-1">{weapon.name}</h3>
+          <h3 className="font-serif font-bold text-white break-words leading-snug">{weapon.name}</h3>
           <p className="text-ink-400 text-xs break-words mt-0.5">{weapon.nameEn}</p>
+          <div className="flex flex-wrap gap-1.5 mt-1.5">
+            <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">{typeLabel}</span>
+            <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">{weapon.role}</span>
+            <span className="text-xs bg-gold-400/10 text-gold-400 px-2 py-0.5 rounded-full">{weapon.martialArt}</span>
+          </div>
+          <p className="text-ink-300 text-xs mt-1.5">{weapon.description}</p>
         </div>
         <div className="flex flex-col items-center gap-1 shrink-0" onClick={e => e.stopPropagation()}>
           {canManage && (
@@ -184,12 +190,6 @@ function WeaponCard({
           </button>
         </div>
       </div>
-      <div className="flex flex-wrap gap-2 mb-2">
-        <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">{typeLabel}</span>
-        <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">{weapon.role}</span>
-        <span className="text-xs bg-gold-400/10 text-gold-400 px-2 py-0.5 rounded-full">{weapon.martialArt}</span>
-      </div>
-      <p className="text-ink-300 text-xs mb-2">{weapon.description}</p>
       {expanded && (
         <div className="mt-3 pt-3 border-t border-ink-700/30 space-y-2 animate-fadeIn">
           <div><h4 className="text-gold-400 font-semibold text-xs mb-1 flex items-center gap-1"><Target className="w-3 h-3" /> Получение</h4><p className="text-ink-300 text-xs">{weapon.howToGet}</p></div>

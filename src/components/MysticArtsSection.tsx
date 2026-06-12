@@ -76,11 +76,25 @@ export default function MysticArtsSection() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filtered.map(art => (
             <div key={art.id} className="relative bg-ink-800/60 border border-ink-700/30 rounded-xl p-5 card-hover transition-all">
-              <div className="flex items-start gap-3 mb-3">
-                <span className="text-3xl">{art.icon}</span>
-                <div className="flex-1">
+              <div className="flex items-start gap-3">
+                <span className="text-3xl shrink-0 leading-none">{art.icon}</span>
+                <div className="flex-1 min-w-0">
                   <h3 className="font-serif font-bold text-white">{art.name}</h3>
-                  <p className="text-ink-400 text-xs">{art.nameEn}</p>
+                  <p className="text-ink-400 text-xs mt-0.5">{art.nameEn}</p>
+                  <div className="flex flex-wrap gap-1.5 mt-1.5">
+                    <span className={`text-xs px-2 py-0.5 rounded-full border ${elementColors[art.element] || ''}`}>
+                      {art.element}
+                    </span>
+                    <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full flex items-center gap-1">
+                      {typeIcons[art.type]} {art.type === 'attack' ? 'Атака' : art.type === 'defense' ? 'Защита' : art.type === 'support' ? 'Поддержка' : 'Движение'}
+                    </span>
+                  </div>
+                  <p className="text-ink-300 text-sm mt-1.5 mb-2">{art.description}</p>
+                  <div className="space-y-1 text-xs">
+                    <div className="flex items-center gap-2"><Sparkles className="w-3 h-3 text-gold-400" /><span className="text-gold-400">{art.effect}</span></div>
+                    <div className="flex items-center gap-2"><span className="text-ink-500">Перезарядка:</span><span className="text-ink-300">{art.cooldown}</span></div>
+                    <div className="flex items-center gap-2"><span className="text-ink-500">Получение:</span><span className="text-ink-300">{art.howToGet}</span></div>
+                  </div>
                 </div>
               </div>
               {canManage && (
@@ -100,23 +114,6 @@ export default function MysticArtsSection() {
                   </button>
                 </div>
               )}
-
-              <div className="flex flex-wrap gap-2 mb-2">
-                <span className={`text-xs px-2 py-0.5 rounded-full border ${elementColors[art.element] || ''}`}>
-                  {art.element}
-                </span>
-                <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full flex items-center gap-1">
-                  {typeIcons[art.type]} {art.type === 'attack' ? 'Атака' : art.type === 'defense' ? 'Защита' : art.type === 'support' ? 'Поддержка' : 'Движение'}
-                </span>
-              </div>
-
-              <p className="text-ink-300 text-sm mb-3">{art.description}</p>
-
-              <div className="space-y-1 text-xs">
-                <div className="flex items-center gap-2"><Sparkles className="w-3 h-3 text-gold-400" /><span className="text-gold-400">{art.effect}</span></div>
-                <div className="flex items-center gap-2"><span className="text-ink-500">Перезарядка:</span><span className="text-ink-300">{art.cooldown}</span></div>
-                <div className="flex items-center gap-2"><span className="text-ink-500">Получение:</span><span className="text-ink-300">{art.howToGet}</span></div>
-              </div>
             </div>
           ))}
           <WikiArticleCards sectionId="mystic" />
