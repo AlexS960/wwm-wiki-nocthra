@@ -62,46 +62,48 @@ function WikiExpandableCard({
           : 'border-ink-700/30 hover:border-gold-700/30 card-hover'
       }`}
     >
-      <div className="flex items-start gap-3 mb-2">
-        <span className="text-3xl shrink-0">{article.icon}</span>
+      <div className="flex items-start gap-3">
+        <span className="text-3xl shrink-0 leading-none">{article.icon}</span>
         <div className="flex-1 min-w-0">
-          <div className="flex items-start justify-between gap-2">
-            <h3 className="font-serif font-bold text-white">{article.title}</h3>
-            <div className="flex flex-col items-center gap-1 shrink-0" onClick={e => e.stopPropagation()}>
-              {canEdit && (
-                <>
-                  <button type="button" onClick={onEdit} className="p-1.5 rounded-md text-gold-400 border border-gold-400/30 hover:bg-gold-400/10 cursor-pointer" title="Редактировать">
-                    <Edit3 className="w-3.5 h-3.5" />
-                  </button>
-                  <button type="button" onClick={onDelete} className="p-1.5 rounded-md text-crimson-300 border border-crimson-400/30 hover:bg-crimson-400/10 cursor-pointer" title="Удалить">
-                    <Trash2 className="w-3.5 h-3.5" />
-                  </button>
-                </>
-              )}
-              {onToggleFavorite && (
-                <button
-                  type="button"
-                  onClick={onToggleFavorite}
-                  className={`p-1.5 rounded-md border transition-colors cursor-pointer ${
-                    isFavorite
-                      ? 'text-gold-400 border-gold-400/40 bg-gold-400/10'
-                      : 'text-ink-500 border-ink-600/40 hover:text-gold-400 hover:border-gold-400/30'
-                  }`}
-                  title={isFavorite ? favoriteRemoveTitle : favoriteAddTitle}
-                >
-                  <Star className={`w-3.5 h-3.5 ${isFavorite ? 'fill-current' : ''}`} />
-                </button>
-              )}
-              {expanded ? <ChevronUp className="w-5 h-5 text-gold-400" /> : <ChevronDown className="w-5 h-5 text-ink-400" />}
-            </div>
-          </div>
+          <h3 className="font-serif font-bold text-white leading-snug break-words">{article.title}</h3>
           {categoryLabel && (
             <span className="inline-block mt-1 text-[10px] px-2 py-0.5 rounded-full bg-gold-400/10 text-gold-400 border border-gold-400/30">
               {categoryLabel}
             </span>
           )}
-          {!expanded && <p className="text-ink-400 text-xs mt-2 line-clamp-2">{summary}</p>}
-          <p className="text-ink-500 text-[10px] mt-2">{article.authorName} · {new Date(article.updatedAt).toLocaleDateString('ru-RU')}</p>
+          {!expanded && summary && (
+            <p className="text-ink-400 text-xs mt-1.5 line-clamp-2">{summary}</p>
+          )}
+          <p className="text-ink-500 text-[10px] mt-1.5">
+            {article.authorName} · {new Date(article.updatedAt).toLocaleDateString('ru-RU')}
+          </p>
+        </div>
+        <div className="flex flex-col items-center gap-1 shrink-0" onClick={e => e.stopPropagation()}>
+          {canEdit && (
+            <>
+              <button type="button" onClick={onEdit} className="p-1.5 rounded-md text-gold-400 border border-gold-400/30 hover:bg-gold-400/10 cursor-pointer" title="Редактировать">
+                <Edit3 className="w-3.5 h-3.5" />
+              </button>
+              <button type="button" onClick={onDelete} className="p-1.5 rounded-md text-crimson-300 border border-crimson-400/30 hover:bg-crimson-400/10 cursor-pointer" title="Удалить">
+                <Trash2 className="w-3.5 h-3.5" />
+              </button>
+            </>
+          )}
+          {onToggleFavorite && (
+            <button
+              type="button"
+              onClick={onToggleFavorite}
+              className={`p-1.5 rounded-md border transition-colors cursor-pointer ${
+                isFavorite
+                  ? 'text-gold-400 border-gold-400/40 bg-gold-400/10'
+                  : 'text-ink-500 border-ink-600/40 hover:text-gold-400 hover:border-gold-400/30'
+              }`}
+              title={isFavorite ? favoriteRemoveTitle : favoriteAddTitle}
+            >
+              <Star className={`w-3.5 h-3.5 ${isFavorite ? 'fill-current' : ''}`} />
+            </button>
+          )}
+          {expanded ? <ChevronUp className="w-5 h-5 text-gold-400" /> : <ChevronDown className="w-5 h-5 text-ink-400" />}
         </div>
       </div>
 
