@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "riddles": {
+      "clues": 710,
+      "masters": 17,
+      "source": "D:\\Site\\Site\\v3\\uploads\\566908.md",
+      "syncedAt": "2026-06-12T19:13:30.417Z"
+    },
+    "npcs-locations": {
+      "count": 174,
+      "source": "D:\\Site\\Site\\v3\\uploads\\565812.md",
+      "syncedAt": "2026-06-12T19:00:47.018Z"
+    },
+    "npcs-dialogues": {
+      "count": 166,
+      "withDialogue": 0,
+      "source": "D:\\Site\\Site\\v3\\uploads\\565812-0.md",
+      "syncedAt": "2026-06-12T00:42:51.453Z"
+    },
+    "weapons": {
+      "count": 16,
+      "source": "D:\\Site\\Site\\v3\\uploads\\564704-0.md",
+      "syncedAt": "2026-06-12T10:13:21.550Z"
+    },
+    "innerpath": {
+      "count": 42,
+      "source": "D:\\Site\\Site\\v3\\uploads\\564726.md",
+      "syncedAt": "2026-06-12T19:17:29.906Z"
+    }
+  }
+}

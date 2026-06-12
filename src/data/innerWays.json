@@ -1,0 +1,311 @@
+{
+  "sourceUrl": "https://game8.co/games/Where-Winds-Meet/archives/564726",
+  "intro": "Inner Ways, or Inner Arts, function as passive skills that grant bonuses in Where Winds Meet.",
+  "upgradeSteps": [
+    {
+      "title": "Reach Solo Mode Level 4",
+      "body": "The Inner Ways Breakthrough system unlocks after reaching Solo Mode Level 4. You can achieve this by progressing through your solo save file and completing specific challenges that prevent access to higher Roaming Levels."
+    },
+    {
+      "title": "Use Inner Way Advance Items",
+      "body": "To upgrade Tiers, Inner Ways require the use of Notes or Inner Way Advance Items specific to each Inner Way. For example, the Legendary Echoes of Oblivion Inner Way requires Echoes of Oblivion: Notes to upgrade. Use the Tips Exchange for More Notes One of the best ways to upgrade Inner Ways is to convert Upgrade Notes that you would not use and turn them into Vintage Bookplates. You can then use these Bookplates in the Tips Exchange for Chests that contain a more specific pool of Upgrade Notes. Use the Inner Way Conversion to Swap Tiers The Inner Way Conversion system allows you to transfer all existing upgrades from one Inner Way to another that you plan to use. You can take advantage of this feature if you are planning to swap builds, but note that this can only be done a limited number of times each season."
+    }
+  ],
+  "explained": [],
+  "innerWays": [
+    {
+      "id": "phantom-rally",
+      "nameEn": "Phantom Rally",
+      "pathEn": "Bamboocut - Dust",
+      "effect": "The First Umbrella from Scarlet Spin summons a Phantom Umbrella, then every 3rd throw summons another. Perfect Catch or summoning a Phantom Umbrella triggers Resonance on all Phantom Umbrellas, dealing area damage.",
+      "howToGet": "Defeat Guo Xin in Whitecrown Fortress to claim the Call of Camps: Tome, which you can use to unlock Phantom Rally."
+    },
+    {
+      "id": "song-of-tang",
+      "nameEn": "Song of Tang",
+      "pathEn": "Bamboocut - Dust",
+      "effect": "Hitting with Martial Art Skills applies Tang Song for 4s (max 5 stacks, 1 stack per second). Each stack grants +2% Critical Damage when above 50% HP, or +2% Life Drain when below 50% HP (Life Drain capped art 2.5% Max HP per second).",
+      "howToGet": "Complete In the Quiet of Night Jianghu Legacy to unlock Song of Tang."
+    },
+    {
+      "id": "light-anew",
+      "nameEn": "Light Anew",
+      "pathEn": "Bamboocut - Dust",
+      "effect": "When hitting 3 or more enemies at once, apply Candle Flicer for 3s, stacking up to 5. Each stack reduces Movement Speed by 4% and increases damage taken by 2%. Can apply once per 0.5s, enemies can gaine 1 stack per 0.5s from any source.",
+      "howToGet": "Complete A Wellspring of Hope Jianghu Legacy to unlock Light Anew."
+    },
+    {
+      "id": "towline-sweep",
+      "nameEn": "Towline Sweep",
+      "pathEn": "Bamboocut - Dust",
+      "effect": "Gain 50 Tokens of Gratitude after casting Soul Sweep. In Soulbound state, each hit of Piercing Dart's sweeping combo applies 2 stacks of Soulbreak, and the first hit pulls enemies forward.",
+      "howToGet": "Obtain the Boat with Rope: Tome by completing Desert Without Sails to unlock Towline Sweep."
+    },
+    {
+      "id": "echoes-of-oblivion",
+      "nameEn": "Echoes of Oblivion",
+      "pathEn": "Bamboocut - Wind",
+      "effect": "Infernal Twinblades' normal Light Attacks apply Sin to enemies, while Light Attacks under Flamelash apply Karma. When attacking targets affected by Sin and Karma with Infernal Twinblades' Light Attacks, ignore their 10% Physical Defense and 10% Bamboocut Resistance respectively.",
+      "howToGet": "Complete the Qinghe storyline by defeating Qianye in the Chapter 1 finale For Whom Does He Return. The tome is rewarded after completing the quest."
+    },
+    {
+      "id": "riptide-reflex",
+      "nameEn": "Riptide Reflex",
+      "pathEn": "Bamboocut - Wind",
+      "effect": "Hitting an Enemy with a Control Skill reduces the Cooldown of the current Martial Art Skill by 1s. This effect can only trigger once every 10s. Affected Control Skills include: Bladebound Thread, Coiled Dragon, Qiankun's Lock, Spring Sorrow, Moon Shatter Spring, Wayfarer's Drift, Peak's Springless Silence.",
+      "howToGet": "Complete the Veiled Blades Jianghu Legacy quest to obtain Riptide Reflex. You can start the quest by going to the southeast direction of the Goldwater Street Boundary Stone."
+    },
+    {
+      "id": "breaking-point",
+      "nameEn": "Breaking Point",
+      "pathEn": "Bamboocut - Wind",
+      "effect": "Dealing Critical Damage to an enemy under the Spirit Depletion state grants you 1 stack of Collapse. Each stack of Collapse increases your Physical Penetration by 5 and Critical Damage by 5%. Stacks up to 3 times, lasting 3 seconds.",
+      "howToGet": "Defeat Yi Dao in Dreamscape: Blissful Retreat to obtain the Breaking Point tome. You can access the Dreamscape by touching Yi Dao's sword after defeating Qianye in Blissful Retreat."
+    },
+    {
+      "id": "vendetta",
+      "nameEn": "Vendetta",
+      "pathEn": "Bamboocut - Wind",
+      "effect": "Bladebound Thread's Vendetta Token lasts 5 seconds longer and restores 20 Tokens of Gratitude.",
+      "howToGet": "Complete the Jinming Pool campaign in Kaifeng to obtain the Vendetta tome. Track the quest in your Journal to initiate it in North Imperial Garden."
+    },
+    {
+      "id": "sword-morph",
+      "nameEn": "Sword Morph",
+      "pathEn": "Bellstrike - Splendor",
+      "effect": "When Nameless Sword's Charged Skill, Vagrant Sword is charged while the Qi shield is present, it unleashes multiple additional sword energy attacks at the 2nd charging stage. You can consume bonus Endurance to increase the sword energy's damage; each Endurance increases damage by 1%, up to 20%.",
+      "howToGet": "Log in for day 3 straight days and claim the Sword Morph Tome in A Warrior's Journey."
+    },
+    {
+      "id": "battle-anthem",
+      "nameEn": "Battle Anthem",
+      "pathEn": "Bellstrike - Splendor",
+      "effect": "Increases Charged Skills' damage against all bosses by 10%.",
+      "howToGet": "Head to Buddha fort and take down all guards then free the hostage the complete the fort. Upon first completion you'll be rewarded with the Battle Anthem tome."
+    },
+    {
+      "id": "wildfire-spark",
+      "nameEn": "Wildfire Spark",
+      "pathEn": "Bellstrike - Splendor",
+      "effect": "Refunds 3.5% of the Endurance consumed.",
+      "howToGet": "The Wildfire Spark: Tome is obtained as a quest reward for completing the Deerforage's Remedy Encounter. Shi Yimo is first found in a camp east of Blissful Retreat, then she can randomly be encountered in Deerforage Grove."
+    },
+    {
+      "id": "mountains-might",
+      "nameEn": "Mountain's Might",
+      "pathEn": "Bellstrike - Splendor",
+      "effect": "Nameless Spear Martial Art Skill Mountain Sweep grants Endless Gale effect, increasing the Endurance cost reduction to 20% for 5 seconds.",
+      "howToGet": "Open 5 chests in the Palace of Annals to complete the pages for Mountain's Might. You can access the Palace of Annals by speaking to Long Wu in Moonveil Mountain."
+    },
+    {
+      "id": "sandswirl-tail",
+      "nameEn": "Sandswirl Tail",
+      "pathEn": "Bellstrike - Splendor",
+      "effect": "When transformed into a brocade carp via Moonleap Morph, sprinting and jumping consume less endurance.",
+      "howToGet": "Accomplish the Divinecraft Corridor, Blink Acre, to unlock Sandswirl Tail."
+    },
+    {
+      "id": "sword-horizon",
+      "nameEn": "Sword Horizon",
+      "pathEn": "Bellstrike - Umbra",
+      "effect": "After casting Strategic Sword's Martial Art Skill, Special Skill, or Charged Skill, press the skill button at the perfect timing during the ending phase to cast Crisscrossing Swords and unleash follow-up attacks. If the target has 5 stacks of Bleed, remove all Bleed stacks and deal high Bleed damage once.",
+      "howToGet": "The Sword Horizon: Tomes can be obtained by purchasing Unknown Old Books from Ni Laoshan in Ghostlight Market. With a stock of 30 on these books, you can expect to spend at most 375,000 Coins."
+    },
+    {
+      "id": "adaptive-steel",
+      "nameEn": "Adaptive Steel",
+      "pathEn": "Bellstrike - Umbra",
+      "effect": "Gain a Weapon Mastery effect based on your current Blade Weapon. The Weapon Mastery effects (see below) have the following cooldowns: Sword - 6 seconds, Dual Blades - 10 seconds, Heng Blade - 20 seconds.",
+      "howToGet": "Trade Oddities with Qi Sheng in Quinghe to obtain the Adaptive Steel Inner Way. You can find Qi Sheng near the tree where you learned Tai Chi from the Bear."
+    },
+    {
+      "id": "insightful-strike",
+      "nameEn": "Insightful Strike",
+      "pathEn": "Bellstrike - Umbra",
+      "effect": "Dealing Affinity DMG generates Focus. When Focus is full, enter the Concentration state for 10 seconds. Concentration: Increases Affinity DMG by 10%. Upon hit, there is a 5% chance to reduce damage taken by 40%.",
+      "howToGet": "The Insightful Strike: Tome is awarded for completing Feng's Archery Challenge with a Grade A rank, achieved by maintaining a lead of four or more birds hunted."
+    },
+    {
+      "id": "wolfchasers-art",
+      "nameEn": "Wolfchaser's Art",
+      "pathEn": "Bellstrike - Umbra",
+      "effect": "For the Nine-Bend Spirit-Stealing Spear Martial Skill Sorrow Without Wine, the Combo count required to grant buff effects is reduced from 5/10 to 4/8. Each time Sorrow Without Wine hits any target afflicted with your own Bleed effect, based on the number of Bleed stacks, there is a 60%/70%/80%/90%/100% chance to add 1 extra Combo count.",
+      "howToGet": "The Wolfchaser's Art: Tome is found in a chest near the end of the Heavenquaker Spear - Sanctum, where you can also obtain a new Spear Martial Art. The hidden entrance to this area is located east of Wildmane Ranch and requires a Dragon Key to open."
+    },
+    {
+      "id": "seasonal-edge",
+      "nameEn": "Seasonal Edge",
+      "pathEn": "General",
+      "effect": "After casting a Dual-Weapon Skill, gain one of the following effects (see below).",
+      "howToGet": "The Merchant Cao Sheng sells the ten pages you need to learn Seasonal Edge. You'll find him south of the Grand Imperial Temple boundary stone and a total of 5000 Echo Jade is required to purchase the whole set. Chests, quests, events, achievements, or challanges can earn you the required Echo Jade."
+    },
+    {
+      "id": "morale-chant",
+      "nameEn": "Morale Chant",
+      "pathEn": "General",
+      "effect": "100% chance to gain one stack of Yi River when attacking or healing: Increases Physical Penetration by 2 and damage and healing by 1% for 12 seconds, stacking up to 5 times. The chance to gain Yi River is only calculated once every 2 seconds.",
+      "howToGet": "Weiyang Merchant Tang Bao sells the ten tomes you need to learn Morale Chant. You'll find him beside the Blissful Retreat Boundary Stone and a total of 5000 Echo Jade is required to purchase the whole set. Chests, quests, events, achievements, or challanges can earn you the required Echo Jade."
+    },
+    {
+      "id": "vital-leech",
+      "nameEn": "Vital Leech",
+      "pathEn": "General",
+      "effect": "Casting Exhaustion Execution Skill restores HP equal to 8% of the damage dealt.",
+      "howToGet": "Start the Palace of Annals campaign and reach its depths to fight Lucky Seventeen. Defeat Lucky Seventeen to complete the campaign and recieve the Vital Leech tome."
+    },
+    {
+      "id": "invigorated-warrior",
+      "nameEn": "Invigorated Warrior",
+      "pathEn": "General",
+      "effect": "Increases all damage and healing done by 5%. This effect is disabled for 5 seconds after being hit. Taking a hit also grants a Cage effect, increasing all damage taken by 5%.",
+      "howToGet": "The Invigorated Warrior tome is a obtained by defeating Heartseeker as part of the Still Shore campaign. You are directed to the campaign by default in the A Horse Neighs in the Forest main quest."
+    },
+    {
+      "id": "bitter-seasons",
+      "nameEn": "Bitter Seasons",
+      "pathEn": "General",
+      "effect": "When dealing damage, there is a 10% chance to apply a Poison effect for 5 seconds, dealing damage once per second. The Poison reduces target's Physical Defense by 0.6% for 10 seconds, stacking up to 5 times (duration refreshed upon stacking).",
+      "howToGet": "Start the Gleaming Abyss campaign and defeat the Void King to access the Mist Gate. Pass through the gate and follow the path upwards until you reach a house in front of a lake. The chest containing the Bitter Seasons tome is inside the house."
+    },
+    {
+      "id": "evasive-charge",
+      "nameEn": "Evasive Charge",
+      "pathEn": "General",
+      "effect": "After a Perfect Dodge, there is a 50% chance to refund 100% of the Endurance consumed.",
+      "howToGet": "Complete the Jianghu Legacy - Streetwise Sage in Kaifeng. You can start the quest by eavesdropping on the Nine Mortal Ways Disciples at the entrance to Beast Reverie in Fairgrounds to trigger an interaction with Xue Chou."
+    },
+    {
+      "id": "fury-harvest",
+      "nameEn": "Fury Harvest",
+      "pathEn": "General",
+      "effect": "Vitality is required to cast Mystic Skills. Certain recovery actions have a 50% chance to grant 1 bonus Vitality. No bonus Vitality is rewarded when you gain Vitality by attacking, taking a hit, or successfully deflecting an attack.",
+      "howToGet": "Track the Bodhi Sea campaign in your Journal and head to Bodhi Sea itself in Sundara Land. You'll need to beat Ye Wanshan at the very end of the campaign to obtain the Fury Harvest tome."
+    },
+    {
+      "id": "divine-roulette",
+      "nameEn": "Divine Roulette",
+      "pathEn": "General",
+      "effect": "Upon a successful deflection, gain one of the following effects (see below). The effect lasts 10 seconds and can only trigger once every 30 seconds. It applies to Martial Arts Skills, Perception Skills, Special Skills, Charged Skills, and Varied Combos.",
+      "howToGet": "Start the Gleaming Abyss campaign and defeat the Void King to obtain the Divine Roulette tome."
+    },
+    {
+      "id": "evening-snow",
+      "nameEn": "Evening Snow",
+      "pathEn": "General",
+      "effect": "Within 12 seconds upon entering combat, if HP falls below 60%, gain Snow Vision for 4 seconds, restoring 3% HP +600 HP per second. This effect can trigger once every 300 seconds.",
+      "howToGet": "Obtain all 10 pages of Evening Snow to obtain the Inner Way. The first set of pages is found in a house near the mountain path in Blissful Retreat, while the second set of pages is found in a treasure room in the Still Shore campaign."
+    },
+    {
+      "id": "fivefold-bleed",
+      "nameEn": "Fivefold Bleed",
+      "pathEn": "General",
+      "effect": "Dealing damage has a 10% chance to apply one stack of Weeping Blood for 5 seconds, damaging the target once per second (up to 5 stacks, duration refreshed upon stacking). At 5 stacks, Weeping Blood will be removed from the target and deal piercing damage once.",
+      "howToGet": "The Fivefold Bleed: Tome is a reward for completing the A Faltering Flame Wandering Tale and Exploration quest in Kaifeng."
+    },
+    {
+      "id": "shadow-assault",
+      "nameEn": "Shadow Assault",
+      "pathEn": "General",
+      "effect": "Enhances Touch of Death, increasing its range by 1.5m and damage by 10%. Upon successful hit, restores HP equal to 10% of the damage dealt.",
+      "howToGet": "Trade Oddities with Qi Sheng in Qinghe to obtain the Shadow Assault Inner Way. You can find Qi Sheng near the tree where you learned Tai Chi from the black bear."
+    },
+    {
+      "id": "steadfast-stance",
+      "nameEn": "Steadfast Stance",
+      "pathEn": "General",
+      "effect": "Less likely to suffer stagger effect when attacked. Higher resistance when more enemy units are nearby. Invalid when the attack comes from a boss or player.",
+      "howToGet": "You can obtain the Steadfast Stance Inner Way by completing the cave under the General's Shrine and bowing to the statue three times to reveal the chest containing the Inner Way."
+    },
+    {
+      "id": "wind-beneath-wings",
+      "nameEn": "Wind Beneath Wings",
+      "pathEn": "General",
+      "effect": "Reduces the Endurance cost of Movement Mystic Skill Skywalk Dash's dash while jumping by 40%. After landing, increases Movement Speed by 30% for 3 seconds. Restores bonus HP (1% Max HP +1,000) after defeating any enemy.",
+      "howToGet": "Complete Jianghu Legacy - Echoes of Old Battles and Tiger Fort Outpost to obtain all pages of Wind Beneath Wings. You get the pages from both locations through your first completion."
+    },
+    {
+      "id": "royal-remedy",
+      "nameEn": "Royal Remedy",
+      "pathEn": "Silkbind - Deluge",
+      "effect": "The Mingchuan Medical Codex Martial Skill Sitting Watch Clouds Rise created Water Clone's healing effect is increased by 10%. If you are within the area of the healing over time effect, you also additionally restore 3 Dew points and 2 Essence points each time.",
+      "howToGet": "Royal Remedy is located in the same sanctum as the Panacea Fan martial art. Make your way into the depths of the cave and look for an isolated room with two braziers at the entrance; the chest containing the Royal Remedy tome is inside."
+    },
+    {
+      "id": "restoring-blossom",
+      "nameEn": "Restoring Blossom",
+      "pathEn": "Silkbind - Deluge",
+      "effect": "Dealing Critical healing applies one stack of Nurturing for 3 seconds, increasing healing received by 2%, stacking up to 3 times.",
+      "howToGet": "The Restoring Blossom: Tome is rewarded for joining the Healer's Union by completing the Legacy: Healer's Calling quest. This quest unlocks at level 13 and can be started in Mercyheart Town, located in the northwest section of Qinghe."
+    },
+    {
+      "id": "esoteric-revival",
+      "nameEn": "Esoteric Revival",
+      "pathEn": "Silkbind - Deluge",
+      "effect": "Increases the healing of Panacea Fan's Perception Skill, Resurrection, by 50% on the revived target.",
+      "howToGet": "Defeat the Sleeping Daoist in Quinghe to obtain the Esoteric Revival tome for the Inner Way. You can find the Sleeping Daoist in Jadebrook Mountain, near the Path of Karma Boundary Stone."
+    },
+    {
+      "id": "mending-loom",
+      "nameEn": "Mending Loom",
+      "pathEn": "Silkbind - Deluge",
+      "effect": "Casting Soulshade Umrella's Special Skill, Echoing Grow restores 5 Dew and additionally heals 10% of your Max HP for every 100 Dew consumed.",
+      "howToGet": "Defeat Zheng the Frostwing at the end of the Ever-Normal Granary campaign in Kaifeng. You'll need to speak to the woman arguing with the guard at the granary to start the quest."
+    },
+    {
+      "id": "blossom-barrage",
+      "nameEn": "Blossom Barrage",
+      "pathEn": "Silkbind - Jade",
+      "effect": "Vernal Umbrella's Martial Arts Skill Spring Sorrow can hold up to 2 stacks. Hitting a target applies the Combo effect: Increases Damage taken from the caster's Ballistic Skills by 10% for 10s. Affected Ballistic Skills include: Martial Arts Skill Let Spring Go, Special Skill Everbloom, Umbrella - Light Attack, and its Charged Skill Spring Away.",
+      "howToGet": "Once at the Velvet Shade Boundary Stone, approach the crowd gathered around a man. Follow through with the quest once prompted to follow the Nine Mortal Ways Disciple."
+    },
+    {
+      "id": "star-reacher",
+      "nameEn": "Star Reacher",
+      "pathEn": "Silkbind - Jade",
+      "effect": "Gain 5% Physical Attack bonus for up to 8 seconds after applying Lingering Bone Mark to an enemy. This bonus can only be gained once per second, and gaining it again will refresh its duration. Knocking a target Airborne increases the Physical Attack bonus to 10%.",
+      "howToGet": "Defeat the Snake Doctor World Boss located in the cave just north of the Encircling Lake in Qinghe to obtain the Star Reacher Inner Way. The cave entrance is found west of the boss's map pin location."
+    },
+    {
+      "id": "thunderous-bloom",
+      "nameEn": "Thunderous Bloom",
+      "pathEn": "Silkbind - Jade",
+      "effect": "Moving a distance exceeding 15 meters within 3 seconds grants 3 stacks of Spring Thunder effect: Each time you use Heavy Attack, Aerial Heavy Attack, Light Attack, or Light Attack Charged Skill to deal damage, you can consume 1 stack of Spring Thunder to increase HP damage of that instance and the next 1 second of that skill type by 15%. Cannot stack. Gaining Spring Thunder from movement can only trigger once every 15 seconds. Spring Thunder can be retained for up to 12 seconds.",
+      "howToGet": "Head to Mercyheart Monastery Outpost then take down all guards and destroy all Daturas (purple plants) to complete the fort. Upon first completion you'll be rewarded with the Thunderous Bloom tome."
+    },
+    {
+      "id": "flying-gourds",
+      "nameEn": "Flying Gourds",
+      "pathEn": "Silkbind - Jade",
+      "effect": "Grants 2 charges to Inkwell Fan's Peak's Springless Silence, but increases its cooldown by 3 seconds.",
+      "howToGet": "The Flying Gourds tome is found within the Inkwell Fan Sanctum area near the Floral Expanse Beyond. Accessing the cave entrance to it requires a Dragon Key."
+    },
+    {
+      "id": "exquisite-scenery",
+      "nameEn": "Exquisite Scenery",
+      "pathEn": "Stonesplit - Might",
+      "effect": "After a successful parry with Alas Blade Art, for a period of time, you can activate a special Parry Counter skill. Pressing the Perception Skill or Heavy Attack button allows you to release a charge-free, potency Tier 3 Heavy Attack Charged Skill (can chain into Heavy Attack Charged Follow-up Skill). Can only trigger once every 10 seconds.",
+      "howToGet": "Head over to the marsh area northeast of Battlecrest Slope on the map to trigger a cutscene with Puppeteer - Sheng Wu. Defeating him rewards you with the Exquisite Scenery Inner Way."
+    },
+    {
+      "id": "rock-solid",
+      "nameEn": "Rock Solid",
+      "pathEn": "Stonesplit - Might",
+      "effect": "Increases the DMG Reduction of Stormbreaker Spear's Storm Roar by 20% after taunting a boss unit, and by 5% after taunting a non-boss unit, up to 20% in total. While the DMG Reduction is active, reduces all damage dealt by 10%.",
+      "howToGet": "Defeat the Dao Lord at the end of the Unbound Cavern campaign. You unlock the campaign as you progress through the main quest Accident in Chapter 2: Universal Furnace."
+    },
+    {
+      "id": "art-of-resistance",
+      "nameEn": "Art of Resistance",
+      "pathEn": "Stonesplit - Might",
+      "effect": "Increases the duration of your own HP shield and the bonus effects of its source skill by 4 seconds.",
+      "howToGet": "The Art of Resistance: Tome is a reward for completing the Scammer Victims encounter. To unlock this encounter, you will need to complete the Exploration Quest Initiation: Well of Heaven Elder."
+    },
+    {
+      "id": "trapped-beast",
+      "nameEn": "Trapped Beast",
+      "pathEn": "Stonesplit - Might",
+      "effect": "Taking damage while HP is below 30% triggers Cornered Beast, generating a shield that absorbs up to 30% of Max HP. This effect lasts 4 seconds and can trigger once every 300 seconds.",
+      "howToGet": "Obtain all three pieces of the armor of the dead during the March of the Dead quest in Kaifeng then speak to Liu Changsheng to receive the tome for Trapped Beast. You'll find Liu Changsheng after opening the gate, just before fighting Zhu Yousheng."
+    }
+  ]
+}
