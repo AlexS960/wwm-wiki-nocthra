@@ -2,14 +2,37 @@ import path from "path";
 import { fileURLToPath } from "url";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+function syncApiDevPlugin(env: Record<string, string>) {
+  return {
+    name: "sync-api-dev",
+    configureServer(server: { middlewares: { use: (fn: (req: import('http').IncomingMessage, res: import('http').ServerResponse, next: () => void) => void) => void } }) {
+      server.middlewares.use(async (req, res, next) => {
+        const url = req.url?.split("?")[0];
+        if (url !== "/api/sync-content") return next();
+        try {
+          if (env.SYNC_API_SECRET) process.env.SYNC_API_SECRET = env.SYNC_API_SECRET;
+          const { handleSyncRequest } = await import("./api/sync-content.mjs");
+          await handleSyncRequest(req, res);
+        } catch (e) {
+          res.statusCode = 500;
+          res.setHeader("Content-Type", "application/json");
+          res.end(JSON.stringify({ error: e instanceof Error ? e.message : String(e) }));
+        }
+      });
+    },
+  };
+}
+
 // https://vite.dev/config/
-export default defineConfig(({ mode }) => ({
-  plugins: [react(), tailwindcss()],
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+  return {
+  plugins: [react(), tailwindcss(), syncApiDevPlugin(env)],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
@@ -42,4 +65,5 @@ export default defineConfig(({ mode }) => ({
   define: {
     'process.env.NODE_ENV': mode === 'production' ? '"production"' : '"development"',
   },
-}));
+};
+});

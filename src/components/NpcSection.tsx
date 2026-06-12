@@ -7,7 +7,7 @@ import { aiChatGlobalTips, aiNpcRegionLabels, type AiNpc } from '../data/aiNpcs.
 import { mergeNpcList } from '../lib/npcList';
 
 export default function NpcSection() {
-  const { wikiArticles } = useAuth();
+  const { wikiArticles, siteSettings } = useAuth();
   const [modalNpc, setModalNpc] = useState<AiNpc | null>(null);
   const [filterRegion, setFilterRegion] = useState<string>('all');
   const [search, setSearch] = useState('');
@@ -15,11 +15,11 @@ export default function NpcSection() {
 
   useEffect(() => {
     let active = true;
-    void mergeNpcList(wikiArticles).then(list => {
+    void mergeNpcList(wikiArticles, siteSettings.parsedContent?.npcLocations).then(list => {
       if (active) setAllNpcs(list);
     });
     return () => { active = false; };
-  }, [wikiArticles]);
+  }, [wikiArticles, siteSettings.parsedContent?.npcLocations]);
 
   const regions: { id: string; label: string }[] = [
     { id: 'all', label: 'Все регионы' },

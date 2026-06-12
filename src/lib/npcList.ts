@@ -64,13 +64,64 @@ export function wikiArticleToNpc(article: WikiArticle): AiNpc {
   };
 }
 
-export async function mergeNpcList(wikiArticles: WikiArticle[]): Promise<AiNpc[]> {
+const REGION_RU: Record<string, string> = {
+  qinghe: 'Цинхэ',
+  kaifeng: 'Кайфэн',
+  hexi: 'Хэси',
+};
+
+function applyNpcLocationOverrides(
+  builtins: AiNpc[],
+  overrides: NonNullable<import('../types/site').ParsedContent['npcLocations']>['items'],
+): AiNpc[] {
+  if (!overrides?.length) return builtins;
+  const map = new Map(overrides.map(o => [o.id, o]));
+  const seen = new Set<string>();
+  const merged = builtins.map(n => {
+    const o = map.get(n.id);
+    if (!o) return n;
+    seen.add(n.id);
+    const region = (o.region as AiNpcRegion) || n.region;
+    return {
+      ...n,
+      nameEn: o.nameEn || n.nameEn,
+      region,
+      regionLabelRu: REGION_RU[region] || n.regionLabelRu,
+      locationTitle: o.locationTitle || n.locationTitle,
+      subregion: o.subregion || n.subregion,
+      locationDetail: o.locationDetail || n.locationDetail,
+    };
+  });
+  for (const o of overrides) {
+    if (seen.has(o.id)) continue;
+    const region = (o.region as AiNpcRegion) || 'qinghe';
+    merged.push({
+      id: o.id,
+      nameEn: o.nameEn,
+      nameRu: o.nameEn,
+      region,
+      regionLabelRu: REGION_RU[region] || o.regionLabel || region,
+      locationTitle: o.locationTitle,
+      subregion: o.subregion,
+      locationDetail: o.locationDetail,
+      icon: '👤',
+      dialogues: [],
+    });
+  }
+  return merged;
+}
+
+export async function mergeNpcList(
+  wikiArticles: WikiArticle[],
+  parsedLocations?: import('../types/site').ParsedContent['npcLocations'],
+): Promise<AiNpc[]> {
   const builtinNpcs = await loadBuiltinNpcs();
+  const withLocations = applyNpcLocationOverrides(builtinNpcs, parsedLocations?.items || []);
   const wikiNpcs = wikiArticles
     .filter(a => a.section === 'npcs')
     .map(wikiArticleToNpc);
   const wikiIds = new Set(wikiNpcs.map(n => n.wikiId));
-  const builtins = builtinNpcs.filter(n => !n.wikiId);
+  const builtins = withLocations.filter(n => !n.wikiId);
   return [...builtins, ...wikiNpcs].sort((a, b) =>
     a.nameRu.localeCompare(b.nameRu, 'ru'),
   );

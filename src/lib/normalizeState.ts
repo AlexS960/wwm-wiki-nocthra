@@ -46,5 +46,6 @@ export function mergeSiteSettingsSafe(s: SiteSettings | null | undefined): SiteS
     hero: mergeHeroSettings(s.hero),
     footer: mergeFooterSettings(s.footer, s.discordUrl || defS.discordUrl, s.lolkaUrl || defS.lolkaUrl),
     homeBlocks: mergeHomeBlocks(s.homeBlocks),
+    parsedContent: s.parsedContent && typeof s.parsedContent === 'object' ? s.parsedContent : undefined,
   };
 }

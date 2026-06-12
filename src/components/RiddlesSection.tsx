@@ -55,12 +55,12 @@ export default function RiddlesSection() {
   const hiddenIds = siteSettings.riddlesHiddenIds ?? [];
 
   const masters = useMemo(
-    () => mergeRiddleMasters(wikiArticles, hiddenIds),
-    [wikiArticles, hiddenIds],
+    () => mergeRiddleMasters(wikiArticles, hiddenIds, siteSettings.parsedContent?.riddles?.masters),
+    [wikiArticles, hiddenIds, siteSettings.parsedContent?.riddles?.masters],
   );
   const clues = useMemo(
-    () => mergeRiddleClues(wikiArticles, hiddenIds),
-    [wikiArticles, hiddenIds],
+    () => mergeRiddleClues(wikiArticles, hiddenIds, siteSettings.parsedContent?.riddles?.clues),
+    [wikiArticles, hiddenIds, siteSettings.parsedContent?.riddles?.clues],
   );
 
   const hideBuiltin = useCallback((id: string) => {

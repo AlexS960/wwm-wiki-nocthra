@@ -75,25 +75,29 @@ export function isWikiMasterArticle(article: WikiArticle): boolean {
 export function mergeRiddleMasters(
   wikiArticles: WikiArticle[],
   hiddenIds: string[] = [],
+  parsedMasters?: RiddleMaster[],
 ): RiddleMaster[] {
   const hidden = new Set(hiddenIds);
+  const baseMasters = parsedMasters?.length ? parsedMasters : builtinMasters;
   const custom = wikiArticles
     .filter(a => a.section === 'riddles' && isWikiMasterArticle(a))
     .map(wikiArticleToRiddleMaster);
   const wikiIds = new Set(custom.map(m => m.wikiId));
-  const builtins = builtinMasters.filter(m => !wikiIds.has(m.wikiId) && !hidden.has(m.id));
+  const builtins = baseMasters.filter(m => !wikiIds.has(m.wikiId) && !hidden.has(m.id));
   return [...builtins, ...custom].sort((a, b) => a.nameRu.localeCompare(b.nameRu, 'ru'));
 }
 
 export function mergeRiddleClues(
   wikiArticles: WikiArticle[],
   hiddenIds: string[] = [],
+  parsedClues?: RiddleClue[],
 ): RiddleClue[] {
   const hidden = new Set(hiddenIds);
+  const baseClues = parsedClues?.length ? parsedClues : builtinClues;
   const custom = wikiArticles
     .filter(a => a.section === 'riddles' && !isWikiMasterArticle(a))
     .map(wikiArticleToRiddleClue);
   const wikiIds = new Set(custom.map(c => c.wikiId));
-  const builtins = builtinClues.filter(c => !wikiIds.has(c.wikiId) && !hidden.has(c.id));
+  const builtins = baseClues.filter(c => !wikiIds.has(c.wikiId) && !hidden.has(c.id));
   return [...builtins, ...custom].sort((a, b) => a.clueEn.localeCompare(b.clueEn, 'en'));
 }

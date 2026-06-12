@@ -236,6 +236,39 @@ export interface SiteSettings {
   hero?: HeroSettings;
   footer?: FooterSettings;
   homeBlocks?: HomeBlockConfig[];
+  /** Данные парсеров Game8 (синхронизация из админки) */
+  parsedContent?: ParsedContent;
+}
+
+export interface ParsedContentMeta {
+  syncedAt: string;
+  count?: number;
+}
+
+export interface ParsedContent {
+  riddles?: {
+    clues: import('../data/riddles').RiddleClue[];
+    masters: import('../data/riddles').RiddleMaster[];
+    syncedAt?: string;
+  };
+  innerpath?: {
+    items: unknown[];
+    meta?: Record<string, unknown>;
+    syncedAt?: string;
+  };
+  npcLocations?: {
+    items: Array<{
+      id: string;
+      nameEn: string;
+      region: string;
+      regionLabel?: string;
+      locationTitle: string;
+      subregion: string;
+      locationDetail: string;
+    }>;
+    syncedAt?: string;
+  };
+  meta?: Record<string, ParsedContentMeta>;
 }
 
 export interface WikiArticle {

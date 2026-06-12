@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { ArrowLeft, Users, Settings, ShieldAlert, Crown, Tag, Wrench, Shield, LayoutTemplate } from 'lucide-react';
+import { ArrowLeft, Users, Settings, ShieldAlert, Crown, Tag, Wrench, Shield, LayoutTemplate, RefreshCw } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import UsersPanel from './UsersPanel';
 import RolesPanel from './RolesPanel';
@@ -7,12 +7,13 @@ import SectionsPanel from './SectionsPanel';
 import SettingsPanel from './SettingsPanel';
 import GuildsPanel from './GuildsPanel';
 import ConstructorPanel from './ConstructorPanel';
+import ParsersPanel from './ParsersPanel';
 
 interface AdminPageProps {
   onBack: () => void;
 }
 
-type Tab = 'users' | 'roles' | 'sections' | 'settings' | 'guilds' | 'constructor';
+type Tab = 'users' | 'roles' | 'sections' | 'settings' | 'guilds' | 'constructor' | 'parsers';
 
 const tabs: { id: Tab; label: string; icon: React.ReactNode }[] = [
   { id: 'users', label: 'Пользователи', icon: <Users className="w-4 h-4" /> },
@@ -20,6 +21,7 @@ const tabs: { id: Tab; label: string; icon: React.ReactNode }[] = [
   { id: 'guilds', label: 'Гильдии', icon: <Shield className="w-4 h-4" /> },
   { id: 'roles', label: 'Роли и Звания', icon: <Tag className="w-4 h-4" /> },
   { id: 'sections', label: 'Разделы сайта', icon: <Wrench className="w-4 h-4" /> },
+  { id: 'parsers', label: 'Парсеры', icon: <RefreshCw className="w-4 h-4" /> },
   { id: 'settings', label: 'Настройки', icon: <Settings className="w-4 h-4" /> },
 ];
 
@@ -91,6 +93,7 @@ export default function AdminPage({ onBack }: AdminPageProps) {
         {activeTab === 'guilds' && <GuildsPanel />}
         {activeTab === 'roles' && <RolesPanel />}
         {activeTab === 'sections' && <SectionsPanel />}
+        {activeTab === 'parsers' && <ParsersPanel />}
         {activeTab === 'settings' && <SettingsPanel />}
       </div>
     </div>
