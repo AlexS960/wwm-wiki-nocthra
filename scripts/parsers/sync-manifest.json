@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "riddles": {
+      "clues": 0,
+      "masters": 0,
+      "source": "D:\\Site\\Site\\v3\\uploads\\566908-0.md",
+      "syncedAt": "2026-06-12T00:42:51.429Z"
+    },
+    "npcs-locations": {
+      "count": 162,
+      "source": "D:\\Site\\wwm-wiki-nocthra\\wwm-wiki-nocthra\\uploads\\565812-0.md",
+      "syncedAt": "2026-06-12T00:07:24.124Z"
+    },
+    "npcs-dialogues": {
+      "count": 166,
+      "withDialogue": 0,
+      "source": "D:\\Site\\Site\\v3\\uploads\\565812-0.md",
+      "syncedAt": "2026-06-12T00:42:51.453Z"
+    },
+    "weapons": {
+      "count": 16,
+      "source": "D:\\Site\\Site\\v3\\uploads\\564704-0.md",
+      "syncedAt": "2026-06-12T10:13:21.550Z"
+    }
+  }
+}
