@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, Edit3, Trash2 } from 'lucide-react';
+import { ChevronDown, ChevronUp, Edit3, Star, Trash2 } from 'lucide-react';
 import { useAuth, type WikiArticle } from '../../context/AuthContext';
 import { useSectionCategories } from '../../hooks/useSectionCategories';
 import { getCustomSectionById } from '../../lib/sectionRegistry';
@@ -12,6 +12,11 @@ interface WikiArticleCardsProps {
   sectionId: string;
   /** 'all' или id категории */
   categoryFilter?: string;
+  /** Если передано — показываем кнопку «В избранное» (как у дефолтных карточек секции) */
+  isFavorite?: (articleId: string) => boolean;
+  onToggleFavorite?: (articleId: string) => void;
+  favoriteAddTitle?: string;
+  favoriteRemoveTitle?: string;
 }
 
 function WikiExpandableCard({
@@ -20,12 +25,20 @@ function WikiExpandableCard({
   canEdit,
   onEdit,
   onDelete,
+  isFavorite,
+  onToggleFavorite,
+  favoriteAddTitle = 'В избранное',
+  favoriteRemoveTitle = 'Убрать из избранного',
 }: {
   article: WikiArticle;
   categoryLabel?: string;
   canEdit: boolean;
   onEdit: () => void;
   onDelete: () => void;
+  isFavorite?: boolean;
+  onToggleFavorite?: () => void;
+  favoriteAddTitle?: string;
+  favoriteRemoveTitle?: string;
 }) {
   const [expanded, setExpanded] = useState(false);
   const summary = article.fields?.summary || article.content.slice(0, 120);
@@ -42,7 +55,7 @@ function WikiExpandableCard({
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2">
             <h3 className="font-serif font-bold text-white">{article.title}</h3>
-            <div className="flex items-center gap-1 shrink-0" onClick={e => e.stopPropagation()}>
+            <div className="flex flex-col items-center gap-1 shrink-0" onClick={e => e.stopPropagation()}>
               {canEdit && (
                 <>
                   <button type="button" onClick={onEdit} className="p-1.5 rounded-md text-gold-400 border border-gold-400/30 hover:bg-gold-400/10 cursor-pointer" title="Редактировать">
@@ -52,6 +65,20 @@ function WikiExpandableCard({
                     <Trash2 className="w-3.5 h-3.5" />
                   </button>
                 </>
+              )}
+              {onToggleFavorite && (
+                <button
+                  type="button"
+                  onClick={onToggleFavorite}
+                  className={`p-1.5 rounded-md border transition-colors cursor-pointer ${
+                    isFavorite
+                      ? 'text-gold-400 border-gold-400/40 bg-gold-400/10'
+                      : 'text-ink-500 border-ink-600/40 hover:text-gold-400 hover:border-gold-400/30'
+                  }`}
+                  title={isFavorite ? favoriteRemoveTitle : favoriteAddTitle}
+                >
+                  <Star className={`w-3.5 h-3.5 ${isFavorite ? 'fill-current' : ''}`} />
+                </button>
               )}
               {expanded ? <ChevronUp className="w-5 h-5 text-gold-400" /> : <ChevronDown className="w-5 h-5 text-ink-400" />}
             </div>
@@ -75,7 +102,14 @@ function WikiExpandableCard({
   );
 }
 
-export default function WikiArticleCards({ sectionId, categoryFilter = 'all' }: WikiArticleCardsProps) {
+export default function WikiArticleCards({
+  sectionId,
+  categoryFilter = 'all',
+  isFavorite,
+  onToggleFavorite,
+  favoriteAddTitle,
+  favoriteRemoveTitle,
+}: WikiArticleCardsProps) {
   const { wikiArticles, isEditor, isAdmin, updateWikiArticle, deleteWikiArticle, siteSettings } = useAuth();
   const [editId, setEditId] = useState<string | null>(null);
   const [editInitial, setEditInitial] = useState<Partial<SectionEditorValues>>();
@@ -102,6 +136,10 @@ export default function WikiArticleCards({ sectionId, categoryFilter = 'all' }: 
           article={article}
           categoryLabel={article.fields?.category ? getLabel(article.fields.category) : undefined}
           canEdit={canEdit}
+          isFavorite={isFavorite?.(article.id)}
+          onToggleFavorite={onToggleFavorite ? () => onToggleFavorite(article.id) : undefined}
+          favoriteAddTitle={favoriteAddTitle}
+          favoriteRemoveTitle={favoriteRemoveTitle}
           onEdit={() => {
             setEditId(article.id);
             if (customDef) {

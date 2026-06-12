@@ -11,7 +11,7 @@ import { sectionEditorConfigs } from '../data/sectionEditorConfig';
 export default function BuildsSection() {
   const [expandedBuild, setExpandedBuild] = useState<string | null>(null);
   const [editId, setEditId] = useState<string | null>(null);
-  const { user, progress, setSelectedBuild } = useAuth();
+  const { user, progress, setSelectedBuild, wikiArticles } = useAuth();
   const { items, persistItems, canManage } = useSectionOverrides('builds', buildPaths);
   const buildConfig = sectionEditorConfigs.builds;
   const editingBuild = editId ? items.find(b => b.id === editId) : null;
@@ -32,7 +32,10 @@ export default function BuildsSection() {
         />
         {user && progress.selectedBuild && (
           <p className="text-gold-400 text-sm text-center -mt-8 mb-8">
-            ⭐ Мой билд: {buildPaths.find(b => b.id === progress.selectedBuild)?.name}
+            ⭐ Мой билд:{' '}
+            {items.find(b => b.id === progress.selectedBuild)?.name
+              ?? wikiArticles.find(a => a.section === 'builds' && a.id === progress.selectedBuild)?.title
+              ?? progress.selectedBuild}
           </p>
         )}
 
@@ -55,7 +58,14 @@ export default function BuildsSection() {
               }}
             />
           ))}
-          <WikiArticleCards sectionId="builds" />
+          <WikiArticleCards
+            sectionId="builds"
+            {...(user ? {
+              isFavorite: (id: string) => progress.selectedBuild === id,
+              onToggleFavorite: (id: string) => setSelectedBuild(progress.selectedBuild === id ? null : id),
+              favoriteAddTitle: 'Выбрать как мой билд',
+            } : {})}
+          />
         </div>
 
         {/* Comparison hint */}

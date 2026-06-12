@@ -70,7 +70,12 @@ export default function WeaponsSection() {
               }}
             />
           ))}
-          <WikiArticleCards sectionId="weapons" categoryFilter={filterType} />
+          <WikiArticleCards
+            sectionId="weapons"
+            categoryFilter={filterType}
+            isFavorite={id => progress.favoriteWeapons.includes(id)}
+            onToggleFavorite={toggleFavoriteWeapon}
+          />
         </div>
       </div>
       {editingWeapon && weaponEditorConfig && (
