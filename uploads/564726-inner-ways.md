@@ -1,11 +1,11 @@
-Source URL: https://game8.co/games/Where-Winds-Meet/archives/565800
+Source URL: https://game8.co/games/Where-Winds-Meet/archives/564726
 
-<!DOCTYPE html><html lang="en-US"><head><meta charset="utf-8" /><meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport" /><title>All Chess Locations and How to Play | Where Winds Meet｜Game8</title><meta content="This is a guide on how to play chess in Where Winds Meet. Learn more about how chess works in the game and general strategies on how to win!" name="description" /><meta content="Where Winds MeetWalkthrough Team" name="author" /><meta content="max-image-preview:large" name="robots" /><meta content="Game8｜The Top Gaming and App Walkthroughs Straight from Japan!" property="og:site_name" /><meta content="All Chess Locations and How to Play | Where Winds Meet｜Game8" property="og:title" /><meta content="This is a guide on how to play chess in Where Winds Meet. Learn more about how chess works in the game and general strategies on how to win!" property="og:description" /><meta content="article" property="og:type" /><meta content="https://img.game8.co/4323150/5ad7c57cab52f7158604f3dc3f39e3c9.png/show" property="og:image" /><meta content="https://game8.co/games/Where-Winds-Meet/archives/565800" property="og:url" /><meta content="1377134715881745" property="fb:app_id" /><meta content="summary" name="twitter:card" /><meta content="All Chess Locations and How to Play | Where Winds Meet｜Game8" name="twitter:title" /><meta content="This is a guide on how to play chess in Where Winds Meet. Learn more about how chess works in the game and general strategies on how to win!" name="twitter:description" /><meta content="https://img.game8.co/4323150/5ad7c57cab52f7158604f3dc3f39e3c9.png/show" name="twitter:image" /><meta content="@game8co" name="twitter:site" /><link href="https://game8.co/games/Where-Winds-Meet/archives/565800" rel="canonical" /><link href="https://assets.game8.jp/favicon/favicon.ico" rel="icon" /><link rel="apple-touch-icon" type="image/png" href="https://assets.game8.jp/favicon/apple-touch-icon-57x57.png" sizes="57x57" /><link rel="apple-touch-icon" type="image/png" href="https://assets.game8.jp/favicon/apple-touch-icon-60x60.png" sizes="60x60" /><link rel="apple-touch-icon" type="image/png" href="https://assets.game8.jp/favicon/apple-touch-icon-72x72.png" sizes="72x72" /><link rel="apple-touch-icon" type="image/png" href="https://assets.game8.jp/favicon/apple-touch-icon-76x76.png" sizes="76x76" /><link rel="apple-touch-icon" type="image/png" href="https://assets.game8.jp/favicon/apple-touch-icon-114x114.png" sizes="114x114" /><link rel="apple-touch-icon" type="image/png" href="https://assets.game8.jp/favicon/apple-touch-icon-120x120.png" sizes="120x120" /><link rel="apple-touch-icon" type="image/png" href="https://assets.game8.jp/favicon/apple-touch-icon-144x144.png" sizes="144x144" /><link rel="apple-touch-icon" type="image/png" href="https://assets.game8.jp/favicon/apple-touch-icon-152x152.png" sizes="152x152" /><link rel="apple-touch-icon" type="image/png" href="https://assets.game8.jp/favicon/apple-touch-icon-180x180.png" sizes="180x180" /><link rel="icon" type="image/png" href="https://assets.game8.jp/favicon/favicon-16x16.png" sizes="16x16" /><link rel="icon" type="image/png" href="https://assets.game8.jp/favicon/favicon-32x32.png" sizes="32x32" /><link rel="icon" type="image/png" href="https://assets.game8.jp/favicon/favicon-96x96.png" sizes="96x96" /><link rel="icon" type="image/png" href="https://assets.game8.jp/favicon/favicon-194x194.png" sizes="194x194" /><link rel="icon" type="image/png" href="https://assets.game8.jp/favicon/android-chrome-192x192.png" sizes="192x192" /><meta content="#00aba9" name="msapplication-TileColor" /><meta content="https://assets.game8.jp/favicon/mstile-144x144.png" name="msapplication-TileImage" /><meta content="#ffffff" name="theme-color" /><meta content="telephone=no" name="format-detection" /><script>
+<!DOCTYPE html><html lang="en-US"><head><meta charset="utf-8" /><meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport" /><title>List of All Inner Ways | Where Winds Meet｜Game8</title><meta content="Inner Ways, or Internal Arts, function as passive skills that grant bonuses in Where Winds Meet. See all the Internal Arts and their effects, along with an explanation of what they are here." name="description" /><meta content="Where Winds MeetWalkthrough Team" name="author" /><meta content="max-image-preview:large" name="robots" /><meta content="Game8｜The Top Gaming and App Walkthroughs Straight from Japan!" property="og:site_name" /><meta content="List of All Inner Ways | Where Winds Meet｜Game8" property="og:title" /><meta content="Inner Ways, or Internal Arts, function as passive skills that grant bonuses in Where Winds Meet. See all the Internal Arts and their effects, along with an explanation of what they are here." property="og:description" /><meta content="article" property="og:type" /><meta content="https://img.game8.co/4334410/95f3a29584ce3314879541fbec951bec.png/show" property="og:image" /><meta content="https://game8.co/games/Where-Winds-Meet/archives/564726" property="og:url" /><meta content="1377134715881745" property="fb:app_id" /><meta content="summary_large_image" name="twitter:card" /><meta content="List of All Inner Ways | Where Winds Meet｜Game8" name="twitter:title" /><meta content="Inner Ways, or Internal Arts, function as passive skills that grant bonuses in Where Winds Meet. See all the Internal Arts and their effects, along with an explanation of what they are here." name="twitter:description" /><meta content="https://img.game8.co/4334410/95f3a29584ce3314879541fbec951bec.png/show" name="twitter:image" /><meta content="@game8co" name="twitter:site" /><link href="https://game8.co/games/Where-Winds-Meet/archives/564726" rel="canonical" /><link href="https://assets.game8.jp/favicon/favicon.ico" rel="icon" /><link rel="apple-touch-icon" type="image/png" href="https://assets.game8.jp/favicon/apple-touch-icon-57x57.png" sizes="57x57" /><link rel="apple-touch-icon" type="image/png" href="https://assets.game8.jp/favicon/apple-touch-icon-60x60.png" sizes="60x60" /><link rel="apple-touch-icon" type="image/png" href="https://assets.game8.jp/favicon/apple-touch-icon-72x72.png" sizes="72x72" /><link rel="apple-touch-icon" type="image/png" href="https://assets.game8.jp/favicon/apple-touch-icon-76x76.png" sizes="76x76" /><link rel="apple-touch-icon" type="image/png" href="https://assets.game8.jp/favicon/apple-touch-icon-114x114.png" sizes="114x114" /><link rel="apple-touch-icon" type="image/png" href="https://assets.game8.jp/favicon/apple-touch-icon-120x120.png" sizes="120x120" /><link rel="apple-touch-icon" type="image/png" href="https://assets.game8.jp/favicon/apple-touch-icon-144x144.png" sizes="144x144" /><link rel="apple-touch-icon" type="image/png" href="https://assets.game8.jp/favicon/apple-touch-icon-152x152.png" sizes="152x152" /><link rel="apple-touch-icon" type="image/png" href="https://assets.game8.jp/favicon/apple-touch-icon-180x180.png" sizes="180x180" /><link rel="icon" type="image/png" href="https://assets.game8.jp/favicon/favicon-16x16.png" sizes="16x16" /><link rel="icon" type="image/png" href="https://assets.game8.jp/favicon/favicon-32x32.png" sizes="32x32" /><link rel="icon" type="image/png" href="https://assets.game8.jp/favicon/favicon-96x96.png" sizes="96x96" /><link rel="icon" type="image/png" href="https://assets.game8.jp/favicon/favicon-194x194.png" sizes="194x194" /><link rel="icon" type="image/png" href="https://assets.game8.jp/favicon/android-chrome-192x192.png" sizes="192x192" /><meta content="#00aba9" name="msapplication-TileColor" /><meta content="https://assets.game8.jp/favicon/mstile-144x144.png" name="msapplication-TileImage" /><meta content="#ffffff" name="theme-color" /><meta content="telephone=no" name="format-detection" /><script>
 //<![CDATA[
-window.gon={};gon.rails_env="production";gon.url="https://game8.co/games/Where-Winds-Meet/archives/565800";gon.cookie_consent=false;gon.device="pc";gon.is_signed_in=false;gon.beacon_track_path="https://tracking.game8.co/track_access";gon.beacon_click_path="https://tracking.game8.co/track_nier";gon.beacon_load_path="https://tracking.game8.co/track_mario";gon.beacon_event_path="https://tracking.game8.co/track_event";gon.beacon_feedback_path="https://tracking.game8.co/track_feedback";gon.game_id=1466;gon.game_name="Where Winds Meet";gon.category_ids=[1025];gon.comsumer_game=0;gon.is_sales=false;gon.is_focus=false;gon.game8=1;gon.archive_id=565800;gon.title="All Chess Locations and How to Play | Where Winds Meet｜Game8";gon.is_bbs=false;gon.ballots=[];gon.prohibited_words=[];gon.archive_category_id=20950;
+window.gon={};gon.rails_env="production";gon.url="https://game8.co/games/Where-Winds-Meet/archives/564726";gon.cookie_consent=false;gon.device="pc";gon.is_signed_in=false;gon.beacon_track_path="https://tracking.game8.co/track_access";gon.beacon_click_path="https://tracking.game8.co/track_nier";gon.beacon_load_path="https://tracking.game8.co/track_mario";gon.beacon_event_path="https://tracking.game8.co/track_event";gon.beacon_feedback_path="https://tracking.game8.co/track_feedback";gon.game_id=1466;gon.game_name="Where Winds Meet";gon.category_ids=[1025];gon.comsumer_game=0;gon.is_sales=false;gon.is_focus=false;gon.game8=1;gon.archive_id=564726;gon.title="List of All Inner Ways | Where Winds Meet｜Game8";gon.is_bbs=false;gon.ballots=[];gon.prohibited_words=[];gon.archive_category_id=null;
 //]]>
 </script><meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="9ts1A9g5Bzk87sT3IfhPR735w2zROi08LmTHzh7QZjwdjc3tO_cq_Xl3gqcSrW7u1Nj0Mn9wjJ1xpQeh6hn6zQ" /><script src="https://assets.game8.co/assets/shared/head/themeInitializer-4ed3610935d8af30d7abe4195b60088bc3a42b2e60d1d38b7429b06d55ba4e75.js"></script><script src="https://assets.game8.co/assets/pc/head/application-a5d1fc3bd9f783ace245836ba8764f1bf983c6cbfc36977caa2a2325d4955eeb.js"></script><link rel="stylesheet" href="https://assets.game8.co/assets/pc/new/application-034cb808a5bc3e7238ef30ded557283095ca9c7013d2265d380574d8c486c76f.css" media="all" /><link crossorigin="" href="https://ads.adthrive.com" rel="preconnect" /><link href="https://ads.adthrive.com" rel="dns-prefetch" /><!-- Raptive Head Tag (immediate load: CO-3303 full-site rollout) -->
+<meta name="csrf-token" content="IXnwVaNOITimLpMGOGtEAKGYy_HIgzoV7uII5x80_dua4gFFJP78f3rnFqQaDif3P1cq_yKBKO148yVY6x5OTg" /><script src="https://assets.game8.co/assets/shared/head/themeInitializer-4ed3610935d8af30d7abe4195b60088bc3a42b2e60d1d38b7429b06d55ba4e75.js"></script><script src="https://assets.game8.co/assets/pc/head/application-a5d1fc3bd9f783ace245836ba8764f1bf983c6cbfc36977caa2a2325d4955eeb.js"></script><link rel="stylesheet" href="https://assets.game8.co/assets/pc/new/application-034cb808a5bc3e7238ef30ded557283095ca9c7013d2265d380574d8c486c76f.css" media="all" /><link crossorigin="" href="https://ads.adthrive.com" rel="preconnect" /><link href="https://ads.adthrive.com" rel="dns-prefetch" /><!-- Raptive Head Tag (immediate load: CO-3303 full-site rollout) -->
 <script data-no-optimize="1" data-cfasync="false">
 (function(w, d) {
   w.adthrive = w.adthrive || {};
@@ -63,7 +63,7 @@ window.gon={};gon.rails_env="production";gon.url="https://game8.co/games/Where-W
     DD_RUM.startSessionReplayRecording();
   });
 </script>
-</head><body class="archives-controller show-action signed-out  device-pc custom_wiki_1466  is-ads-enabled"><img height="1" src="https://tracking.game8.co/image.gif?ad_count=0&amp;archive_id=565800&amp;archive_revision=20260603034402&amp;game_id=1466" style="display:none" width="1" /><script>
+</head><body class="archives-controller show-action signed-out  device-pc custom_wiki_1466  is-ads-enabled"><img height="1" src="https://tracking.game8.co/image.gif?ad_count=0&amp;archive_id=564726&amp;archive_revision=20260220041115&amp;game_id=1466" style="display:none" width="1" /><script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
 gtag('consent','default',{'ad_storage':'granted','analytics_storage':'granted','ad_user_data':'granted','ad_personalization':'granted'});
 gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','wait_for_update':5000,'region':['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IS','IT','LV','LI','LT','LU','MT','NL','NO','PL','PT','RO','SK','SI','ES','SE','GB','CH']});
@@ -75,20 +75,11 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-W55286Z');</script>
-<header class="p-rootHeaderWrapper fixed"><div class="p-rootHeaderContainer"><div class="p-rootHeader__catch p-archiveRootHeader__catch"><h1><a aria-label="Your Go-To Walkthrough Site for All Games and Apps - Game8" class="p-rootHeader__icon" href="https://game8.co/"></a></h1><div class="p-rootHeader__mypage"><a class="p-rootHeader__button p-rootHeader__button--signup js-open-membership-modal" data-track-action="signup" data-track-placement="gamewiki_header" data-track-nier-keyword="user_registration_flow" data-track-nier-value="gamewiki_header" rel="nofollow" href="#">Sign Up</a><a class="p-rootHeader__button p-rootHeader__button--login" rel="nofollow" href="/users/sign_in">Log In</a></div></div></div></header><dialog aria-labelledby="membership-modal-title" class="p-membershipModal" id="membership-modal"><div class="p-membershipModal__backdrop"><div class="p-membershipModal__container"><div class="p-membershipModal__scrollContainer"><main class="p-membershipModal__content"><h2 class="p-membershipModal__title" id="membership-modal-title">What can you do as a free member?</h2><div class="p-membershipModal__defaultContent"><div class="p-membershipModal__image"><img alt="Member benefits illustration" width="210" data-src="https://assets.game8.co/assets/new/membership_modal/member_default-032c013a814ebf599ea89543ae1d3fcd98fe3e43a0e27ac5a761a67664f38aec.png" class="lazy lazy-fadeIn" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /></div><h3 class="p-membershipModal__subtitle">Create your free account today and unlock all our premium features and tools to enhance your gaming experience.</h3></div><div class="p-membershipModal__watchlistContent"><div class="p-membershipModal__image"><img alt="Member benefits illustration" width="300" data-src="https://assets.game8.co/assets/new/membership_modal/member_watchlist-43dbf5a956a47ac39a26b7f63937768af488117e5f77311febef2c4c792d0a6d.png" class="lazy lazy-fadeIn" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /></div><h3 class="p-membershipModal__subtitle">Create your free account today and save articles to your watchlist and get notified when they&#39;re updated with new information.</h3></div><div class="p-membershipModal__bookmarkContent"><div class="p-membershipModal__image"><img alt="Member benefits illustration" width="300" data-src="https://assets.game8.co/assets/new/membership_modal/member_bookmark-c067f0e184106be006a239be53b88187d1ebba454c197e859c37a0e9d5d1d04f.png" class="lazy lazy-fadeIn" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /></div><h3 class="p-membershipModal__subtitle">Create your free account today and save your favorite games for quick access later, synced across all your devices.</h3></div><div class="p-membershipModal__notificationContent"><div class="p-membershipModal__image"><img alt="Member benefits illustration" width="403" data-src="https://assets.game8.co/assets/new/membership_modal/member_notification-5cda02107a345fb65a7fe21571833add9b03407b4df49c5d0f327aa7d931934a.png" class="lazy lazy-fadeIn" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /></div><h3 class="p-membershipModal__subtitle">By creating a Game8 account and logging in, you&#39;ll receive instant notifications when someone replies to your posts.</h3></div><div class="p-membershipModal__ratingContent"><div class="p-membershipModal__image"><img alt="Comment rating feature illustration" width="451" data-src="https://assets.game8.co/assets/new/membership_modal/member_rating-d6ab999137cba3453c9083dd18d92eca6ab42bffb3f9dbe87a80fb10fb3c4251.png" class="lazy lazy-fadeIn" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /></div><h3 class="p-membershipModal__subtitle">By creating a Game8 account and logging in, you can make use of convenient features in the comments section, such as rating and sorting comments.</h3></div><div class="p-membershipModal__premiumArchiveContent"><div class="p-membershipModal__image"><img alt="Premium archive feature illustration" width="480" data-src="https://assets.game8.co/assets/new/membership_modal/member_premium_archive-dbdb5e37c01f5a78df9ac22c5cd22257576bd021936301b48901e65b7320ba77.png" class="lazy lazy-fadeIn" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /></div><h3 class="p-membershipModal__subtitle">By creating a Game8 account and logging in, you can access Premium articles that are exclusively available to members.</h3></div><div class="p-membershipModal__mapToolContent"><div class="p-membershipModal__image"><img alt="Map tool feature illustration" width="328" data-src="https://assets.game8.co/assets/new/membership_modal/member_map_tool-4bca3588be4c1f02c46287ea9ff532fca9613711a7931534d7ec80c3cac9e32a.png" class="lazy lazy-fadeIn" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /></div><h3 class="p-membershipModal__subtitle">By creating a Game8 account and logging in, the items you checked on the map tool will be saved.</h3></div><div class="membersFeatureTable"><div class="featureCategory" data-category="site_interface"><div class="featureHeader"><h3 class="featureName">Site Interface</h3><div class="tierColumn guest">Guest</div><div class="tierColumn registered">Free Member</div></div><dl class="featureList"><div class="featureItem" data-feature-key="article_watchlist"><dt class="featureName"><span>Article Watchlist</span><span aria-describedby="tooltip-article-watchlist" aria-label="Article Watchlist feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-article-watchlist">Get notifications on the latest updates to any article</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="game_bookmarks"><dt class="featureName"><span>Game Bookmarks</span><span aria-describedby="tooltip-game-bookmarks" aria-label="Game Bookmarks feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-game-bookmarks">Bookmark a game for quick access from any page</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="cross_device_sync"><dt class="featureName"><span>Cross-device Sync</span><span aria-describedby="tooltip-cross-device-sync" aria-label="Cross-device Sync feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-cross-device-sync">Data retention across devices</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="theme_toggle"><dt class="featureName"><span>Light/Dark Theme Toggle</span><span aria-describedby="tooltip-theme-toggle" aria-label="Light/Dark Theme Toggle feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-theme-toggle">Optional toggle for light/dark theme</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="user_profiles"><dt class="featureName"><span>User Profiles</span><span aria-describedby="tooltip-user-profiles" aria-label="User Profiles feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-user-profiles">Save your username and profile image</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="direct_feedback"><dt class="featureName"><span>Direct Feedback</span><span aria-describedby="tooltip-direct-feedback" aria-label="Direct Feedback feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-direct-feedback">Send feedback on any article directly to Game8</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="comment_rating"><dt class="featureName"><span>Comment Rating</span><span aria-describedby="tooltip-comment-rating" aria-label="Comment Rating feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-comment-rating">Use convenient features in the comments section, such as rating and sorting comments</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="comment_notification"><dt class="featureName"><span>Comment Notification</span><span aria-describedby="tooltip-comment-notification" aria-label="Comment Notification feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-comment-notification">Receive real-time notifications about updates and replies to your comments</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="premium_articles"><dt class="featureName"><span>Premium Articles</span><span aria-describedby="tooltip-premium-archive" aria-label="Premium Articles feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-premium-archive">Access exclusive members-only content</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div></dl></div><div class="featureCategory" data-category="game_tools"><div class="featureHeader"><h3 class="featureName">Game Tools</h3><div class="tierColumn guest">Guest</div><div class="tierColumn registered">Free Member</div></div><dl class="featureList"><div class="featureItem" data-feature-key="interactive_map_access"><dt class="featureName"><span>Interactive Map Access</span><span aria-describedby="tooltip-map-access" aria-label="Interactive Map Access feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-map-access">Navigate interactive maps</div></template></span></dt><dd class="tierColumn check"><i class="fa fa-check"></i></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="interactive_map_pins"><dt class="featureName"><span>Interactive Map Pins</span><span aria-describedby="tooltip-map-pins" aria-label="Interactive Map Pins feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-map-pins">Save pin progress on interactive maps</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="interactive_map_comments"><dt class="featureName"><span>Interactive Map Comments</span><span aria-describedby="tooltip-map-comments" aria-label="Interactive Map Comments feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-map-comments">Comment on pins in the interactive map</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="interactive_map_pins_cross_device"><dt class="featureName"><span>Interactive Map Pins Cross-Device</span><span aria-describedby="tooltip-map-pins-sync" aria-label="Interactive Map Pins Cross-Device feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-map-pins-sync">Sync interactive map progress across devices</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="check_list"><dt class="featureName"><span>Check List</span><span aria-describedby="tooltip-check-list" aria-label="Check List feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-check-list">Check off characters, items, and more as collected or completed</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="event_choice_checker"><dt class="featureName"><span>Event Choice Checker</span><span aria-describedby="tooltip-event-choice-checker" aria-label="Event Choice Checker feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-event-choice-checker">Save loadouts for easy event checking in Umamusume Pretty Derby</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="deck_builder_cross_device"><dt class="featureName"><span>Deck Builder Cross-Device</span><span aria-describedby="tooltip-deck-builder-sync" aria-label="Deck Builder Cross-Device feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-deck-builder-sync">Sync decks in Deck Builder across devices for Pokemon TCG Pocket, etc.</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="message_board_notification"><dt class="featureName"><span>Message Board Notification</span><span aria-describedby="tooltip-message-board-notification" aria-label="Message Board Notification feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-message-board-notification">Receive real-time notifications about updates and replies on your message board.</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="message_board_cross_device"><dt class="featureName"><span>Message Board Cross-Device</span><span aria-describedby="tooltip-message-board-sync" aria-label="Message Board Cross-Device feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-message-board-sync">Sync threads in Message Boards across devices</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="build_planner"><dt class="featureName"><span>Build Planner</span><span aria-describedby="tooltip-build-planner" aria-label="Build Planner feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-build-planner">Enter ideal skills to generate builds for Monster Hunter, etc.</div></template></span></dt><dd class="tierColumn check"><i class="fa fa-check"></i></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="stat_calculator"><dt class="featureName"><span>Stat Calculator</span><span aria-describedby="tooltip-stat-calculator" aria-label="Stat Calculator feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-stat-calculator">Calculate stats and damage in ranked battles for Pokemon, etc.</div></template></span></dt><dd class="tierColumn check"><i class="fa fa-check"></i></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="diagnostic_tool"><dt class="featureName"><span>Diagnostic Tool</span><span aria-describedby="tooltip-diagnostic-tool" aria-label="Diagnostic Tool feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-diagnostic-tool">Answer questions to find your ideal class or weapon</div></template></span></dt><dd class="tierColumn check"><i class="fa fa-check"></i></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="weapon_armor_wishlist"><dt class="featureName"><span>Weapon/Armor Wishlist</span><span aria-describedby="tooltip-wishlist" aria-label="Weapon/Armor Wishlist feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-wishlist">Wishlist feature for craftable weapons and armor</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="team_builder"><dt class="featureName"><span>Team Builder</span><span aria-describedby="tooltip-team-builder" aria-label="Team Builder feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-team-builder">Save your teams for Pokemon Champions, etc.</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="character_scoring"><dt class="featureName"><span>Character Scoring</span><span aria-describedby="tooltip-character-scoring" aria-label="Character Scoring feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-character-scoring">Score your favorite characters</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="tier_list_maker"><dt class="featureName"><span>Tier List Maker</span><span aria-describedby="tooltip-tier-list-maker" aria-label="Tier List Maker feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-tier-list-maker">Create your ideal tier list</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div></dl></div></div><p class="p-membershipModal__learnMore">Want more information?<a class="p-membershipModal__learnMoreLink track_nier" data-track-nier-keyword="membership_modal_learnmore" data-track-nier-value="gamewiki_header" data-track-action="learnmore" href="/members">Learn more</a></p></main></div><footer class="p-membershipModal__footer"><button class="p-membershipModal__button p-membershipModal__buttonClose track_nier js-continue-as-guest" data-action="guest" data-track-nier-keyword="user_registration_guest" data-track-nier-value="gamewiki_header" type="button">Continue as a guest</button><a class="p-membershipModal__registration p-membershipModal__button track_nier" data-track-nier-keyword="user_registration_flow" data-track-nier-value="gamewiki_header" data-track-action="signup" href="/users/sign_up">Join now</a></footer></div></div></dialog><div class="p-archiveBody__container"><div class="p-archiveBody__overlay js-sidebar-overlay"></div><button aria-controls="gameMenuScrollArea" aria-expanded="false" aria-label="Toggle sidebar" class="p-archiveBody__sidebar-toggle js-sidebar-toggle" type="button"><span class="p-archiveBody__sidebar-toggle-icon"></span></button><div class="p-archiveBody__main"><script src="https://assets.game8.co/assets/pc/social/comments/application-cbc76ffde23f32e72c8684a714474e7398b05d5c4f2e4adf3493e79a0ad20d43.js" defer="defer"></script><script src="https://assets.game8.co/assets/pc/social/common/application-2715b5ad08cc3f43c487182791cc4e0cb666e79b4eb5ea770ecceb4cd0407e56.js" defer="defer"></script><script src="https://assets.game8.co/vite/assets/entrypoints/templates/new_map_tool.js-Cql4GNeK.js" crossorigin="" type="module" defer="defer"></script><link rel="modulepreload" href="https://assets.game8.co/vite/assets/preload-helper-BR-490FY.js" as="script" crossorigin="" defer="defer">
-<link rel="modulepreload" href="https://assets.game8.co/vite/assets/vendor-react-BmSaz25n.js" as="script" crossorigin="" defer="defer">
-<link rel="modulepreload" href="https://assets.game8.co/vite/assets/index-eVUlU1KE.js" as="script" crossorigin="" defer="defer">
-<link rel="modulepreload" href="https://assets.game8.co/vite/assets/ErrorBoundary-Ci9e7CIZ.js" as="script" crossorigin="" defer="defer">
-<link rel="modulepreload" href="https://assets.game8.co/vite/assets/userStatus-Cu54wYUX.js" as="script" crossorigin="" defer="defer">
-<link rel="modulepreload" href="https://assets.game8.co/vite/assets/server-data-kcNcsRWg.js" as="script" crossorigin="" defer="defer">
-<link rel="modulepreload" href="https://assets.game8.co/vite/assets/vendor-leaflet-CTkoUypN.js" as="script" crossorigin="" defer="defer">
-<link rel="modulepreload" href="https://assets.game8.co/vite/assets/axios-DkARwza1.js" as="script" crossorigin="" defer="defer">
-<link rel="modulepreload" href="https://assets.game8.co/vite/assets/index-7wWd90iJ.js" as="script" crossorigin="" defer="defer"><link rel="stylesheet" crossorigin="" href="https://assets.game8.co/vite/assets/index-UYUT1ULv.css" media="screen" defer="defer" />
-<link rel="stylesheet" crossorigin="" href="https://assets.game8.co/vite/assets/vendor-leaflet-Dgihpmma.css" media="screen" defer="defer" />  <script type="application/ld+json">
+<header class="p-rootHeaderWrapper fixed"><div class="p-rootHeaderContainer"><div class="p-rootHeader__catch p-archiveRootHeader__catch"><h1><a aria-label="Your Go-To Walkthrough Site for All Games and Apps - Game8" class="p-rootHeader__icon" href="https://game8.co/"></a></h1><div class="p-rootHeader__mypage"><a class="p-rootHeader__button p-rootHeader__button--signup js-open-membership-modal" data-track-action="signup" data-track-placement="gamewiki_header" data-track-nier-keyword="user_registration_flow" data-track-nier-value="gamewiki_header" rel="nofollow" href="#">Sign Up</a><a class="p-rootHeader__button p-rootHeader__button--login" rel="nofollow" href="/users/sign_in">Log In</a></div></div></div></header><dialog aria-labelledby="membership-modal-title" class="p-membershipModal" id="membership-modal"><div class="p-membershipModal__backdrop"><div class="p-membershipModal__container"><div class="p-membershipModal__scrollContainer"><main class="p-membershipModal__content"><h2 class="p-membershipModal__title" id="membership-modal-title">What can you do as a free member?</h2><div class="p-membershipModal__defaultContent"><div class="p-membershipModal__image"><img alt="Member benefits illustration" width="210" data-src="https://assets.game8.co/assets/new/membership_modal/member_default-032c013a814ebf599ea89543ae1d3fcd98fe3e43a0e27ac5a761a67664f38aec.png" class="lazy lazy-fadeIn" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /></div><h3 class="p-membershipModal__subtitle">Create your free account today and unlock all our premium features and tools to enhance your gaming experience.</h3></div><div class="p-membershipModal__watchlistContent"><div class="p-membershipModal__image"><img alt="Member benefits illustration" width="300" data-src="https://assets.game8.co/assets/new/membership_modal/member_watchlist-43dbf5a956a47ac39a26b7f63937768af488117e5f77311febef2c4c792d0a6d.png" class="lazy lazy-fadeIn" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /></div><h3 class="p-membershipModal__subtitle">Create your free account today and save articles to your watchlist and get notified when they&#39;re updated with new information.</h3></div><div class="p-membershipModal__bookmarkContent"><div class="p-membershipModal__image"><img alt="Member benefits illustration" width="300" data-src="https://assets.game8.co/assets/new/membership_modal/member_bookmark-c067f0e184106be006a239be53b88187d1ebba454c197e859c37a0e9d5d1d04f.png" class="lazy lazy-fadeIn" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /></div><h3 class="p-membershipModal__subtitle">Create your free account today and save your favorite games for quick access later, synced across all your devices.</h3></div><div class="p-membershipModal__notificationContent"><div class="p-membershipModal__image"><img alt="Member benefits illustration" width="403" data-src="https://assets.game8.co/assets/new/membership_modal/member_notification-5cda02107a345fb65a7fe21571833add9b03407b4df49c5d0f327aa7d931934a.png" class="lazy lazy-fadeIn" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /></div><h3 class="p-membershipModal__subtitle">By creating a Game8 account and logging in, you&#39;ll receive instant notifications when someone replies to your posts.</h3></div><div class="p-membershipModal__ratingContent"><div class="p-membershipModal__image"><img alt="Comment rating feature illustration" width="451" data-src="https://assets.game8.co/assets/new/membership_modal/member_rating-d6ab999137cba3453c9083dd18d92eca6ab42bffb3f9dbe87a80fb10fb3c4251.png" class="lazy lazy-fadeIn" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /></div><h3 class="p-membershipModal__subtitle">By creating a Game8 account and logging in, you can make use of convenient features in the comments section, such as rating and sorting comments.</h3></div><div class="p-membershipModal__premiumArchiveContent"><div class="p-membershipModal__image"><img alt="Premium archive feature illustration" width="480" data-src="https://assets.game8.co/assets/new/membership_modal/member_premium_archive-dbdb5e37c01f5a78df9ac22c5cd22257576bd021936301b48901e65b7320ba77.png" class="lazy lazy-fadeIn" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /></div><h3 class="p-membershipModal__subtitle">By creating a Game8 account and logging in, you can access Premium articles that are exclusively available to members.</h3></div><div class="p-membershipModal__mapToolContent"><div class="p-membershipModal__image"><img alt="Map tool feature illustration" width="328" data-src="https://assets.game8.co/assets/new/membership_modal/member_map_tool-4bca3588be4c1f02c46287ea9ff532fca9613711a7931534d7ec80c3cac9e32a.png" class="lazy lazy-fadeIn" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /></div><h3 class="p-membershipModal__subtitle">By creating a Game8 account and logging in, the items you checked on the map tool will be saved.</h3></div><div class="membersFeatureTable"><div class="featureCategory" data-category="site_interface"><div class="featureHeader"><h3 class="featureName">Site Interface</h3><div class="tierColumn guest">Guest</div><div class="tierColumn registered">Free Member</div></div><dl class="featureList"><div class="featureItem" data-feature-key="article_watchlist"><dt class="featureName"><span>Article Watchlist</span><span aria-describedby="tooltip-article-watchlist" aria-label="Article Watchlist feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-article-watchlist">Get notifications on the latest updates to any article</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="game_bookmarks"><dt class="featureName"><span>Game Bookmarks</span><span aria-describedby="tooltip-game-bookmarks" aria-label="Game Bookmarks feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-game-bookmarks">Bookmark a game for quick access from any page</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="cross_device_sync"><dt class="featureName"><span>Cross-device Sync</span><span aria-describedby="tooltip-cross-device-sync" aria-label="Cross-device Sync feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-cross-device-sync">Data retention across devices</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="theme_toggle"><dt class="featureName"><span>Light/Dark Theme Toggle</span><span aria-describedby="tooltip-theme-toggle" aria-label="Light/Dark Theme Toggle feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-theme-toggle">Optional toggle for light/dark theme</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="user_profiles"><dt class="featureName"><span>User Profiles</span><span aria-describedby="tooltip-user-profiles" aria-label="User Profiles feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-user-profiles">Save your username and profile image</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="direct_feedback"><dt class="featureName"><span>Direct Feedback</span><span aria-describedby="tooltip-direct-feedback" aria-label="Direct Feedback feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-direct-feedback">Send feedback on any article directly to Game8</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="comment_rating"><dt class="featureName"><span>Comment Rating</span><span aria-describedby="tooltip-comment-rating" aria-label="Comment Rating feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-comment-rating">Use convenient features in the comments section, such as rating and sorting comments</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="comment_notification"><dt class="featureName"><span>Comment Notification</span><span aria-describedby="tooltip-comment-notification" aria-label="Comment Notification feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-comment-notification">Receive real-time notifications about updates and replies to your comments</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="premium_articles"><dt class="featureName"><span>Premium Articles</span><span aria-describedby="tooltip-premium-archive" aria-label="Premium Articles feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-premium-archive">Access exclusive members-only content</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div></dl></div><div class="featureCategory" data-category="game_tools"><div class="featureHeader"><h3 class="featureName">Game Tools</h3><div class="tierColumn guest">Guest</div><div class="tierColumn registered">Free Member</div></div><dl class="featureList"><div class="featureItem" data-feature-key="interactive_map_access"><dt class="featureName"><span>Interactive Map Access</span><span aria-describedby="tooltip-map-access" aria-label="Interactive Map Access feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-map-access">Navigate interactive maps</div></template></span></dt><dd class="tierColumn check"><i class="fa fa-check"></i></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="interactive_map_pins"><dt class="featureName"><span>Interactive Map Pins</span><span aria-describedby="tooltip-map-pins" aria-label="Interactive Map Pins feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-map-pins">Save pin progress on interactive maps</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="interactive_map_comments"><dt class="featureName"><span>Interactive Map Comments</span><span aria-describedby="tooltip-map-comments" aria-label="Interactive Map Comments feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-map-comments">Comment on pins in the interactive map</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="interactive_map_pins_cross_device"><dt class="featureName"><span>Interactive Map Pins Cross-Device</span><span aria-describedby="tooltip-map-pins-sync" aria-label="Interactive Map Pins Cross-Device feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-map-pins-sync">Sync interactive map progress across devices</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="check_list"><dt class="featureName"><span>Check List</span><span aria-describedby="tooltip-check-list" aria-label="Check List feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-check-list">Check off characters, items, and more as collected or completed</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="event_choice_checker"><dt class="featureName"><span>Event Choice Checker</span><span aria-describedby="tooltip-event-choice-checker" aria-label="Event Choice Checker feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-event-choice-checker">Save loadouts for easy event checking in Umamusume Pretty Derby</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="deck_builder_cross_device"><dt class="featureName"><span>Deck Builder Cross-Device</span><span aria-describedby="tooltip-deck-builder-sync" aria-label="Deck Builder Cross-Device feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-deck-builder-sync">Sync decks in Deck Builder across devices for Pokemon TCG Pocket, etc.</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="message_board_notification"><dt class="featureName"><span>Message Board Notification</span><span aria-describedby="tooltip-message-board-notification" aria-label="Message Board Notification feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-message-board-notification">Receive real-time notifications about updates and replies on your message board.</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="message_board_cross_device"><dt class="featureName"><span>Message Board Cross-Device</span><span aria-describedby="tooltip-message-board-sync" aria-label="Message Board Cross-Device feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-message-board-sync">Sync threads in Message Boards across devices</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="build_planner"><dt class="featureName"><span>Build Planner</span><span aria-describedby="tooltip-build-planner" aria-label="Build Planner feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-build-planner">Enter ideal skills to generate builds for Monster Hunter, etc.</div></template></span></dt><dd class="tierColumn check"><i class="fa fa-check"></i></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="stat_calculator"><dt class="featureName"><span>Stat Calculator</span><span aria-describedby="tooltip-stat-calculator" aria-label="Stat Calculator feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-stat-calculator">Calculate stats and damage in ranked battles for Pokemon, etc.</div></template></span></dt><dd class="tierColumn check"><i class="fa fa-check"></i></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="diagnostic_tool"><dt class="featureName"><span>Diagnostic Tool</span><span aria-describedby="tooltip-diagnostic-tool" aria-label="Diagnostic Tool feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-diagnostic-tool">Answer questions to find your ideal class or weapon</div></template></span></dt><dd class="tierColumn check"><i class="fa fa-check"></i></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="weapon_armor_wishlist"><dt class="featureName"><span>Weapon/Armor Wishlist</span><span aria-describedby="tooltip-wishlist" aria-label="Weapon/Armor Wishlist feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-wishlist">Wishlist feature for craftable weapons and armor</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="team_builder"><dt class="featureName"><span>Team Builder</span><span aria-describedby="tooltip-team-builder" aria-label="Team Builder feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-team-builder">Save your teams for Pokemon Champions, etc.</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="character_scoring"><dt class="featureName"><span>Character Scoring</span><span aria-describedby="tooltip-character-scoring" aria-label="Character Scoring feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-character-scoring">Score your favorite characters</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div><div class="featureItem" data-feature-key="tier_list_maker"><dt class="featureName"><span>Tier List Maker</span><span aria-describedby="tooltip-tier-list-maker" aria-label="Tier List Maker feature information" class="js-discription-tooltip c-tooltip__btn" role="button"><i aria-hidden="true" class="fa fa-question"></i><template class="js-tooltip-content"><div class="tooltip-content" id="tooltip-tier-list-maker">Create your ideal tier list</div></template></span></dt><dd class="tierColumn check"></dd><dd class="tierColumn check"><i class="fa fa-check"></i></dd></div></dl></div></div><p class="p-membershipModal__learnMore">Want more information?<a class="p-membershipModal__learnMoreLink track_nier" data-track-nier-keyword="membership_modal_learnmore" data-track-nier-value="gamewiki_header" data-track-action="learnmore" href="/members">Learn more</a></p></main></div><footer class="p-membershipModal__footer"><button class="p-membershipModal__button p-membershipModal__buttonClose track_nier js-continue-as-guest" data-action="guest" data-track-nier-keyword="user_registration_guest" data-track-nier-value="gamewiki_header" type="button">Continue as a guest</button><a class="p-membershipModal__registration p-membershipModal__button track_nier" data-track-nier-keyword="user_registration_flow" data-track-nier-value="gamewiki_header" data-track-action="signup" href="/users/sign_up">Join now</a></footer></div></div></dialog><div class="p-archiveBody__container"><div class="p-archiveBody__overlay js-sidebar-overlay"></div><button aria-controls="gameMenuScrollArea" aria-expanded="false" aria-label="Toggle sidebar" class="p-archiveBody__sidebar-toggle js-sidebar-toggle" type="button"><span class="p-archiveBody__sidebar-toggle-icon"></span></button><div class="p-archiveBody__main"><script src="https://assets.game8.co/assets/pc/social/comments/application-cbc76ffde23f32e72c8684a714474e7398b05d5c4f2e4adf3493e79a0ad20d43.js" defer="defer"></script><script src="https://assets.game8.co/assets/pc/social/common/application-2715b5ad08cc3f43c487182791cc4e0cb666e79b4eb5ea770ecceb4cd0407e56.js" defer="defer"></script>  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "All Chess Locations and How to Play | Where Winds Meet",
+      "headline": "List of All Inner Ways | Where Winds Meet",
       "author":{
         "@type": "Organization",
         "name": "Where Winds Meet Walkthrough Team",
@@ -103,950 +94,838 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             "url": "https://assets.game8.co/public/logo.png"
         }
       },
-      "datePublished": "2025-11-16 10:55:43 -0500",
-      "dateModified": "2026-06-03 05:58:08 -0400",
+      "datePublished": "2025-11-14 17:04:45 -0500",
+      "dateModified": "2026-04-01 08:34:34 -0400",
       "mainEntityOfPage":{
         "@type": "WebPage",
-        "@id": "https://game8.co/games/Where-Winds-Meet/archives/565800"
+        "@id": "https://game8.co/games/Where-Winds-Meet/archives/564726"
       },
-      "name": "All Chess Locations and How to Play | Where Winds Meet",
-      "url": "https://game8.co/games/Where-Winds-Meet/archives/565800",
+      "name": "List of All Inner Ways | Where Winds Meet",
+      "url": "https://game8.co/games/Where-Winds-Meet/archives/564726",
       "image": "https://img.game8.co/4323150/5ad7c57cab52f7158604f3dc3f39e3c9.png/show",
       "thumbnailUrl": "https://img.game8.co/4323150/5ad7c57cab52f7158604f3dc3f39e3c9.png/show",
-      "description": "This is a guide on how to play chess in Where Winds Meet. Learn more about how chess works in the game and general strategies on how to win!"
+      "description": "Inner Ways, or Internal Arts, function as passive skills that grant bonuses in Where Winds Meet. See all the Internal Arts and their effects, along with an explanation of what they are here."
     }
   </script>
-<div class="p-archiveContent__header"><div class="l-breadcrumb"><div class="l-breadcrumb__mask"></div><ul class="l-breadcrumb__list" itemscope="" itemtype="http://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a class="track_nier" itemprop="item" data-track-nier-keyword="click_breadcrumb" data-track-nier-value="Game8" href="https://game8.co/"><span itemprop="name">Game8</span></a><meta content="1" itemprop="position" /></li><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a class="track_nier" itemprop="item" data-track-nier-keyword="click_breadcrumb" data-track-nier-value="Where Winds Meet Walkthrough &amp; Guides Wiki" href="https://game8.co/games/Where-Winds-Meet"><span itemprop="name">Where Winds Meet Walkthrough &amp; Guides Wiki</span></a><meta content="https://game8.co/games/Where-Winds-Meet" itemprop="item" /><meta content="2" itemprop="position" /></li><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a class="track_nier" itemprop="item" data-track-nier-keyword="click_breadcrumb" data-track-nier-value="Sentient Beings" href="https://game8.co/games/Where-Winds-Meet/archives/564718"><span itemprop="name">Sentient Beings</span></a><meta content="https://game8.co/games/Where-Winds-Meet/archives/564718" itemprop="item" /><meta content="3" itemprop="position" /></li><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><span itemprop="name">All Chess Locations and How to Play</span><meta content="" itemprop="item" /><meta content="4" itemprop="position" /></li></ul></div><div class="p-archiveHeader"><div class="p-archiveHeader__gameTitle">Where Winds Meet</div><h1 class="p-archiveHeader__title" itemprop="name">All Chess Locations and How to Play</h1><div class="p-archiveHeader__content"><div class="p-archiveHeader__buttons"><div class="p-archiveHeader__count"><a class="c-count" href="https://game8.co/games/Where-Winds-Meet/archives/565800/comments#anchor_comment_top"><span class="c-count__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="currentColor">
-<path d="M22 3v13h-11.643l-4.357 3.105v-3.105h-4v-13h20zm2-2h-24v16.981h4v5.019l7-5.019h13v-16.981z"></path>
-</svg>
-</span><span class="c-count__count">7</span></a></div><div class="p-archiveHeader__notification js-open-membership-modal" data-modal-content-type="watchlist" data-track-nier-keyword="user_registration_flow" data-track-nier-value="watchlist_button" data-utm-medium="notification_button"><div class="p-archiveHeader__notification-label"><svg width="20" height="14" viewbox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<div class="p-archiveContent__header"><div class="l-breadcrumb"><div class="l-breadcrumb__mask"></div><ul class="l-breadcrumb__list" itemscope="" itemtype="http://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a class="track_nier" itemprop="item" data-track-nier-keyword="click_breadcrumb" data-track-nier-value="Game8" href="https://game8.co/"><span itemprop="name">Game8</span></a><meta content="1" itemprop="position" /></li><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a class="track_nier" itemprop="item" data-track-nier-keyword="click_breadcrumb" data-track-nier-value="Where Winds Meet Walkthrough &amp; Guides Wiki" href="https://game8.co/games/Where-Winds-Meet"><span itemprop="name">Where Winds Meet Walkthrough &amp; Guides Wiki</span></a><meta content="https://game8.co/games/Where-Winds-Meet" itemprop="item" /><meta content="2" itemprop="position" /></li><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><span itemprop="name">List of All Inner Ways</span><meta content="" itemprop="item" /><meta content="3" itemprop="position" /></li></ul></div><div class="p-archiveHeader"><div class="p-archiveHeader__gameTitle">Where Winds Meet</div><h1 class="p-archiveHeader__title" itemprop="name">List of All Inner Ways</h1><div class="p-archiveHeader__content"><div class="p-archiveHeader__buttons"><div class="p-archiveHeader__notification js-open-membership-modal" data-modal-content-type="watchlist" data-track-nier-keyword="user_registration_flow" data-track-nier-value="watchlist_button" data-utm-medium="notification_button"><div class="p-archiveHeader__notification-label"><svg width="20" height="14" viewbox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M10.0007 2.41667C13.159 2.41667 15.9756 4.19167 17.3506 7C15.9756 9.80833 13.1673 11.5833 10.0007 11.5833C6.83398 11.5833 4.02565 9.80833 2.65065 7C4.02565 4.19167 6.84232 2.41667 10.0007 2.41667ZM10.0007 0.75C5.83398 0.75 2.27565 3.34167 0.833984 7C2.27565 10.6583 5.83398 13.25 10.0007 13.25C14.1673 13.25 17.7256 10.6583 19.1673 7C17.7256 3.34167 14.1673 0.75 10.0007 0.75ZM10.0007 4.91667C11.1507 4.91667 12.084 5.85 12.084 7C12.084 8.15 11.1507 9.08333 10.0007 9.08333C8.85065 9.08333 7.91732 8.15 7.91732 7C7.91732 5.85 8.85065 4.91667 10.0007 4.91667ZM10.0007 3.25C7.93398 3.25 6.25065 4.93333 6.25065 7C6.25065 9.06667 7.93398 10.75 10.0007 10.75C12.0673 10.75 13.7506 9.06667 13.7506 7C13.7506 4.93333 12.0673 3.25 10.0007 3.25Z"></path>
 </svg>
-<span class="add">Add to Watchlist</span></div></div></div><div class="p-archiveHeader__author"><i class="fa fa-pencil" style="margin-right: 5px;"></i><span itemprop="author">Where Winds Meet Walkthrough Team</span></div><div class="p-archiveHeader__info"><div class="p-archiveHeader__date"><i class="fa fa-clock-o" style="margin-right: 5px;"></i><time datetime="2026-06-03T05:58:08-04:00" itemprop="dateModified">Last updated on: June 3, 2026 05:56 AM</time></div></div></div></div></div><div class="p-archiveContent__container"><div class="p-archiveContent__main"><div class="a-announce"><div class="a-announce__inner">
+<span class="add">Add to Watchlist (13)</span></div></div></div><div class="p-archiveHeader__author"><i class="fa fa-pencil" style="margin-right: 5px;"></i><span itemprop="author">Where Winds Meet Walkthrough Team</span></div><div class="p-archiveHeader__info"><div class="p-archiveHeader__date"><i class="fa fa-clock-o" style="margin-right: 5px;"></i><time datetime="2026-04-01T08:34:34-04:00" itemprop="dateModified">Last updated on: April 1, 2026 08:34 AM</time></div></div></div></div></div><div class="p-archiveContent__container"><div class="p-archiveContent__main"><div class="a-announce"><div class="a-announce__inner">
 <p class='a-paragraph'>NEW: <a class='a-link track_nier' data-track-nier-keyword='announce_link' data-track-nier-value='Version 1.7' href='/games/Where-Winds-Meet/archives/602517' >Version 1.7</a> - <a class='a-link track_nier' data-track-nier-keyword='announce_link' data-track-nier-value='Imperial Palace Guide' href='/games/Where-Winds-Meet/archives/602736' >Imperial Palace Guide</a><br>┗ Redeem New <a class='a-link track_nier' data-track-nier-keyword='announce_link' data-track-nier-value='Codes' href='/games/Where-Winds-Meet/archives/564660' >Codes</a>!<br>✪ Updated: <a class='a-link track_nier' data-track-nier-keyword='announce_link' data-track-nier-value='Best Weapon' href='/games/Where-Winds-Meet/archives/564706' >Best Weapon</a> | <a class='a-link track_nier' data-track-nier-keyword='announce_link' data-track-nier-value='Best Builds' href='/games/Where-Winds-Meet/archives/564672' >Best Builds</a><br>☆ <a class='a-link' href=https://x.com/Game8_WWM target='_blank'>WWM Game8 Twitter</a>: New tips daily!<br>Recruit using our <a class='a-link track_nier' data-track-nier-keyword='announce_link' data-track-nier-value='Guild Recruitment Board' href='/games/Where-Winds-Meet/archives/565793' >Guild Recruitment Board</a>!</p>
 <svg viewbox="0 0 24 24" class="a-announce__icon"><path d="M12 24c6.627 0 12-5.373 12-12s-5.373-12-12-12-12 5.373-12 12 5.373 12 12 12zm1-6h-2v-8h2v8zm-1-12.25c.69 0 1.25.56 1.25 1.25s-.56 1.25-1.25 1.25-1.25-.56-1.25-1.25.56-1.25 1.25-1.25z"></path></svg>
-</div></div><div class="archive-style-wrapper"><p class='a-paragraph'>This is a guide on how to play chess in Where Winds Meet. Learn more about how chess works in the game and general strategies on how to win!</p>
+</div></div><div class="archive-style-wrapper"><p class='a-paragraph'><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Where Winds Meet - Inner Ways' data-src='https://img.game8.co/4334410/95f3a29584ce3314879541fbec951bec.png/show' width='728' style='height: 0; padding-bottom: calc(px*370/728); padding-bottom: calc(min(100%,728px)*370/728);' /><br>Inner Ways, or Inner Arts, function as passive skills that grant bonuses in Where Winds Meet. See all the Inner Ways and their effects, along with an explanation of what they are here.</p>
 
+<p><div class='a-outline'><p><svg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='list-ul' class='svg-inline--fa fa-list-ul fa-w-16' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='currentColor' d='M48 48a48 48 0 1 0 48 48 48 48 0 0 0-48-48zm0 160a48 48 0 1 0 48 48 48 48 0 0 0-48-48zm0 160a48 48 0 1 0 48 48 48 48 0 0 0-48-48zm448 16H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z'></path></svg>List of Contents</p><ul><li><a class='list_contents track_nier' data-track-nier-keyword='contents-index' data-track-nier-value='All Inner Ways' href='#hl_1'>All Inner Ways</a></li><li><a class='list_contents track_nier' data-track-nier-keyword='contents-index' data-track-nier-value='How to Upgrade' href='#hl_2'>How to Upgrade</a></li><li><a class='list_contents track_nier' data-track-nier-keyword='contents-index' data-track-nier-value='Inner Ways Explained' href='#hl_3'>Inner Ways Explained</a></li><li><a class='list_contents track_nier' data-track-nier-keyword='contents-index' data-track-nier-value='Related Guides' href='#hl_4'>Related Guides</a></li></ul></div></p>
+<h2 class='a-header--2' id='hl_1'>List of All Inner Ways</h2>
+<table class='a-table a-table a-table' style=''>
+  <tr>
+    <th width="30%">Inner Way</th>
+    <th width="70%">Effects and How to Get</th>
+  </tr>
+<tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/582990><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Phantom Rally Icon' data-src='https://img.game8.co/4424711/471e91ca0fc441c2fac8f67958d78bb2.png/show' width='50' height='50' /> Phantom Rally</a><br>
+
+
+
+
+<hr class="a-table__line">
+Bamboocut - Dust
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>The First Umbrella from Scarlet Spin summons a Phantom Umbrella, then every 3rd throw summons another. Perfect Catch or summoning a Phantom Umbrella triggers Resonance on all Phantom Umbrellas, dealing area damage.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Defeat Guo Xin in Whitecrown Fortress to claim the Call of Camps: Tome, which you can use to unlock Phantom Rally.
+
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/582991><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Song of Tang Icon' data-src='https://img.game8.co/4424710/e1a424a1f57b78a2e5c74498727bf581.png/show' width='50' height='50' /> Song of Tang</a><br>
+
+
+
+
+<hr class="a-table__line">
+Bamboocut - Dust
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Hitting with Martial Art Skills applies Tang Song for 4s (max 5 stacks, 1 stack per second). Each stack grants +2% Critical Damage when above 50% HP, or +2% Life Drain when below 50% HP (Life Drain capped art 2.5% Max HP per second).
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Complete In the Quiet of Night Jianghu Legacy to unlock Song of Tang.
+
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/582966><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Light Anew Icon' data-src='https://img.game8.co/4424655/a71e804bb878ac91aed5ac51bc2e57f8.png/show' width='50' height='50' /> Light Anew</a><br>
+
+
+
+
+<hr class="a-table__line">
+Bamboocut - Dust
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>When hitting 3 or more enemies at once, apply Candle Flicer for 3s, stacking up to 5. Each stack reduces Movement Speed by 4% and increases damage taken by 2%. Can apply once per 0.5s, enemies can gaine 1 stack per 0.5s from any source.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Complete A Wellspring of Hope Jianghu Legacy to unlock Light Anew.
+
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/582362><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Towline Sweep Icon' data-src='https://img.game8.co/4424643/2ec3259ccfa86e3b32f703e89e7e8883.png/show' width='50' height='50' /> Towline Sweep</a><br>
+
+
+
+
+<hr class="a-table__line">
+Bamboocut - Dust
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Gain 50 Tokens of Gratitude after casting Soul Sweep. In Soulbound state, each hit of Piercing Dart's sweeping combo applies 2 stacks of Soulbreak, and the first hit pulls enemies forward.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Obtain the Boat with Rope: Tome by completing Desert Without Sails to unlock Towline Sweep.
+
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/566019><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Echoes of Oblivion Icon' data-src='https://img.game8.co/4334812/96f034b5cd2520dd24a6f041f4d91dcc.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Echoes of Oblivion</a><br>
+
+
+
+
+<hr class="a-table__line">
+Bamboocut - Wind
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Infernal Twinblades' normal Light Attacks apply Sin to enemies, while Light Attacks under Flamelash apply Karma. When attacking targets affected by Sin and Karma with Infernal Twinblades' Light Attacks, ignore their 10% Physical Defense and 10% Bamboocut Resistance respectively.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Complete the Qinghe storyline by defeating Qianye in the Chapter 1 finale For Whom Does He Return. The tome is rewarded after completing the quest.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/568817><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Riptide Reflex Icon' data-src='https://img.game8.co/4334816/aff124cd130ef07951d99f0ee10d6571.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Riptide Reflex</a><br>
+
+
+
+
+<hr class="a-table__line">
+Bamboocut - Wind
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Hitting an Enemy with a Control Skill reduces the Cooldown of the current Martial Art Skill by 1s. This effect can only trigger once every 10s. Affected Control Skills include: Bladebound Thread, Coiled Dragon, Qiankun's Lock, Spring Sorrow, Moon Shatter Spring, Wayfarer's Drift, Peak's Springless Silence.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Complete the Veiled Blades Jianghu Legacy quest to obtain Riptide Reflex. You can start the quest by going to the southeast direction of the Goldwater Street Boundary Stone.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565906><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Breaking Point Icon' data-src='https://img.game8.co/4334817/fa34b66332b41cfa625af24874fec8bc.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Breaking Point</a><br>
+
+
+
+
+<hr class="a-table__line">
+Bamboocut - Wind
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Dealing Critical Damage to an enemy under the Spirit Depletion state grants you 1 stack of Collapse. Each stack of Collapse increases your Physical Penetration by 5 and Critical Damage by 5%. Stacks up to 3 times, lasting 3 seconds.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Defeat Yi Dao in Dreamscape: Blissful Retreat to obtain the Breaking Point tome. You can access the Dreamscape by touching Yi Dao's sword after defeating Qianye in Blissful Retreat.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/566416><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Vendetta Icon' data-src='https://img.game8.co/4334809/8c70707b8ed4bb057c155e27933307d3.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Vendetta</a><br>
+
+
+
+
+<hr class="a-table__line">
+Bamboocut - Wind
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Bladebound Thread's Vendetta Token lasts 5 seconds longer and restores 20 Tokens of Gratitude.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Complete the Jinming Pool campaign in Kaifeng to obtain the Vendetta tome. Track the quest in your Journal to initiate it in North Imperial Garden.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565690><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Sword Morph Icon' data-src='https://img.game8.co/4334791/32d0935a65167ec80978cde7534d5897.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Sword Morph</a><br>
+
+
+
+
+<hr class="a-table__line">
+Bellstrike - Splendor
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>When Nameless Sword's Charged Skill, Vagrant Sword is charged while the Qi shield is present, it unleashes multiple additional sword energy attacks at the 2nd charging stage. You can consume bonus Endurance to increase the sword energy's damage; each Endurance increases damage by 1%, up to 20%.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Log in for day 3 straight days and claim the Sword Morph Tome in A Warrior's Journey.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565788><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Battle Anthem Icon' data-src='https://img.game8.co/4334811/56976828770273ca5feaf39d8ef2f18f.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Battle Anthem</a><br>
+
+
+
+
+<hr class="a-table__line">
+Bellstrike - Splendor
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Increases Charged Skills' damage against all bosses by 10%.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Head to Buddha fort and take down all guards then free the hostage the complete the fort. Upon first completion you'll be rewarded with the Battle Anthem tome.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/566094><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Wildfire Spark Icon' data-src='https://img.game8.co/4334818/72599b286e620b803d88a78e2ee999cb.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Wildfire Spark</a><br>
+
+
+
+
+<hr class="a-table__line">
+Bellstrike - Splendor
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Refunds 3.5% of the Endurance consumed.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>The Wildfire Spark: Tome is obtained as a quest reward for completing the Deerforage's Remedy Encounter. Shi Yimo is first found in a camp east of Blissful Retreat, then she can randomly be encountered in Deerforage Grove.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565789><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Mountain's Might Icon' data-src='https://img.game8.co/4334819/f0d4e23a8a255839604679e46eb4f8b2.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Mountain's Might</a><br>
+
+
+
+
+<hr class="a-table__line">
+Bellstrike - Splendor
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Nameless Spear Martial Art Skill Mountain Sweep grants Endless Gale effect, increasing the Endurance cost reduction to 20% for 5 seconds.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Open 5 chests in the Palace of Annals to complete the pages for Mountain's Might. You can access the Palace of Annals by speaking to Long Wu in Moonveil Mountain.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/582994><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Sandswirl Tail Icon' data-src='https://img.game8.co/4434428/59188383f6248396439e4beea25dee6a.png/show' width='50' height='50' /> Sandswirl Tail</a><br>
+
+
+
+
+<hr class="a-table__line">
+Bellstrike - Splendor
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>When transformed into a brocade carp via Moonleap Morph, sprinting and jumping consume less endurance.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Accomplish the Divinecraft Corridor, Blink Acre, to unlock Sandswirl Tail.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565907><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Sword Horizon Icon' data-src='https://img.game8.co/4334802/28d27630a01133703457698f6c426f5a.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Sword Horizon</a><br>
+
+
+
+
+<hr class="a-table__line">
+Bellstrike - Umbra
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>After casting Strategic Sword's Martial Art Skill, Special Skill, or Charged Skill, press the skill button at the perfect timing during the ending phase to cast Crisscrossing Swords and unleash follow-up attacks. If the target has 5 stacks of Bleed, remove all Bleed stacks and deal high Bleed damage once.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>The Sword Horizon: Tomes can be obtained by purchasing Unknown Old Books from Ni Laoshan in Ghostlight Market. With a stock of 30 on these books, you can expect to spend at most 375,000 Coins.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565786><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Adaptive Steel Icon' data-src='https://img.game8.co/4334813/6110621b39fff6c7a98fa3e2060845ee.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Adaptive Steel</a><br>
+
+
+
+
+<hr class="a-table__line">
+Bellstrike - Umbra
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Gain a Weapon Mastery effect based on your current Blade Weapon. The Weapon Mastery effects (see below) have the following cooldowns: Sword - 6 seconds, Dual Blades - 10 seconds, Heng Blade - 20 seconds.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Trade Oddities with Qi Sheng in Quinghe to obtain the Adaptive Steel Inner Way. You can find Qi Sheng near the tree where you learned Tai Chi from the Bear.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565785><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Insightful Strike Icon' data-src='https://img.game8.co/4334800/720d3749a4e09b5bf02d4fe3b1c0edb7.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Insightful Strike</a><br>
+
+
+
+
+<hr class="a-table__line">
+Bellstrike - Umbra
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Dealing Affinity DMG generates Focus. When Focus is full, enter the Concentration state for 10 seconds. Concentration: Increases Affinity DMG by 10%. Upon hit, there is a 5% chance to reduce damage taken by 40%.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>The Insightful Strike: Tome is awarded for completing Feng's Archery Challenge with a Grade A rank, achieved by maintaining a lead of four or more birds hunted.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565787><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Wolfchaser's Art Icon' data-src='https://img.game8.co/4334794/2c15c1cfcc18792a22052ea510ca88b0.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Wolfchaser's Art</a><br>
+
+
+
+
+<hr class="a-table__line">
+Bellstrike - Umbra
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>For the Nine-Bend Spirit-Stealing Spear Martial Skill Sorrow Without Wine, the Combo count required to grant buff effects is reduced from 5/10 to 4/8. Each time Sorrow Without Wine hits any target afflicted with your own Bleed effect, based on the number of Bleed stacks, there is a 60%/70%/80%/90%/100% chance to add 1 extra Combo count.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>The Wolfchaser's Art: Tome is found in a chest near the end of the Heavenquaker Spear - Sanctum, where you can also obtain a new Spear Martial Art. The hidden entrance to this area is located east of Wildmane Ranch and requires a Dragon Key to open.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/566421><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Seasonal Edge Icon' data-src='https://img.game8.co/4334790/f09eaba19eaca075765e8de703b8cdfb.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Seasonal Edge</a><br>
+
+
+
+
+<hr class="a-table__line">
+General
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>After casting a Dual-Weapon Skill, gain one of the following effects (see below).
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>The Merchant Cao Sheng sells the ten pages you need to learn Seasonal Edge. You'll find him south of the Grand Imperial Temple boundary stone and a total of 5000 Echo Jade is required to purchase the whole set. Chests, quests, events, achievements, or challanges can earn you the required Echo Jade.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/566020><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Morale Chant Icon' data-src='https://img.game8.co/4334789/7135b8745ec2f9ef52a86579d864f4b3.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Morale Chant</a><br>
+
+
+
+
+<hr class="a-table__line">
+General
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>100% chance to gain one stack of Yi River when attacking or healing: Increases Physical Penetration by 2 and damage and healing by 1% for 12 seconds, stacking up to 5 times. The chance to gain Yi River is only calculated once every 2 seconds.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Weiyang Merchant Tang Bao sells the ten tomes you need to learn Morale Chant. You'll find him beside the Blissful Retreat Boundary Stone and a total of 5000 Echo Jade is required to purchase the whole set. Chests, quests, events, achievements, or challanges can earn you the required Echo Jade.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565791><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Vital Leech Icon' data-src='https://img.game8.co/4334795/b4659845640595d2f984073bee0eaac7.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Vital Leech</a><br>
+
+
+
+
+<hr class="a-table__line">
+General
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Casting Exhaustion Execution Skill restores HP equal to 8% of the damage dealt.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Start the Palace of Annals campaign and reach its depths to fight Lucky Seventeen. Defeat Lucky Seventeen to complete the campaign and recieve the Vital Leech tome.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565689><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Invigorated Warrior Icon' data-src='https://img.game8.co/4334792/ed0863cc0aee8cd51721795a887f8d19.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Invigorated Warrior</a><br>
+
+
+
+
+<hr class="a-table__line">
+General
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Increases all damage and healing done by 5%. This effect is disabled for 5 seconds after being hit. Taking a hit also grants a Cage effect, increasing all damage taken by 5%.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>The Invigorated Warrior tome is a obtained by defeating Heartseeker as part of the Still Shore campaign. You are directed to the campaign by default in the A Horse Neighs in the Forest main quest.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565688><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Bitter Seasons Icon' data-src='https://img.game8.co/4334797/c02dde5219da1ff5d38edeea3a924f1c.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Bitter Seasons</a><br>
+
+
+
+
+<hr class="a-table__line">
+General
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>When dealing damage, there is a 10% chance to apply a Poison effect for 5 seconds, dealing damage once per second. The Poison reduces target's Physical Defense by 0.6% for 10 seconds, stacking up to 5 times (duration refreshed upon stacking).
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Start the Gleaming Abyss campaign and defeat the Void King to access the Mist Gate. Pass through the gate and follow the path upwards until you reach a house in front of a lake. The chest containing the Bitter Seasons tome is inside the house.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/566419><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Evasive Charge Icon' data-src='https://img.game8.co/4334820/17502b44d15768f3e1fb184452526338.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Evasive Charge</a><br>
+
+
+
+
+<hr class="a-table__line">
+General
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>After a Perfect Dodge, there is a 50% chance to refund 100% of the Endurance consumed.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Complete the Jianghu Legacy - Streetwise Sage in Kaifeng. You can start the quest by eavesdropping on the Nine Mortal Ways Disciples at the entrance to Beast Reverie in Fairgrounds to trigger an interaction with Xue Chou.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565790><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Fury Harvest Icon' data-src='https://img.game8.co/4334796/198631b0b9aced6954089503b9a70351.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Fury Harvest</a><br>
+
+
+
+
+<hr class="a-table__line">
+General
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Vitality is required to cast Mystic Skills. Certain recovery actions have a 50% chance to grant 1 bonus Vitality. No bonus Vitality is rewarded when you gain Vitality by attacking, taking a hit, or successfully deflecting an attack.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Track the Bodhi Sea campaign in your Journal and head to Bodhi Sea itself in Sundara Land. You'll need to beat Ye Wanshan at the very end of the campaign to obtain the Fury Harvest tome.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565687><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Divine Roulette Icon' data-src='https://img.game8.co/4334804/92c97b153a66cabaf5be8b1f7c2343ef.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Divine Roulette</a><br>
+
+
+
+
+<hr class="a-table__line">
+General
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Upon a successful deflection, gain one of the following effects (see below). The effect lasts 10 seconds and can only trigger once every 30 seconds. It applies to Martial Arts Skills, Perception Skills, Special Skills, Charged Skills, and Varied Combos.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Start the Gleaming Abyss campaign and defeat the Void King to obtain the Divine Roulette tome.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565686><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Evening Snow Icon' data-src='https://img.game8.co/4334806/82f49f1e4563ae52a9dc0ef03ccd6f94.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Evening Snow</a><br>
+
+
+
+
+<hr class="a-table__line">
+General
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Within 12 seconds upon entering combat, if HP falls below 60%, gain Snow Vision for 4 seconds, restoring 3% HP +600 HP per second. This effect can trigger once every 300 seconds.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Obtain all 10 pages of Evening Snow to obtain the Inner Way. The first set of pages is found in a house near the mountain path in Blissful Retreat, while the second set of pages is found in a treasure room in the Still Shore campaign.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/566415><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Fivefold Bleed Icon' data-src='https://img.game8.co/4334788/dde223a328e0e2e467f9c6bde1dc0e8f.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Fivefold Bleed</a><br>
+
+
+
+
+<hr class="a-table__line">
+General
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Dealing damage has a 10% chance to apply one stack of Weeping Blood for 5 seconds, damaging the target once per second (up to 5 stacks, duration refreshed upon stacking). At 5 stacks, Weeping Blood will be removed from the target and deal piercing damage once.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>The Fivefold Bleed: Tome is a reward for completing the A Faltering Flame Wandering Tale and Exploration quest in Kaifeng.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565792><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Shadow Assault Icon' data-src='https://img.game8.co/4334793/a747b3777d9ca980a98e61cfe98ebd95.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Shadow Assault</a><br>
+
+
+
+
+<hr class="a-table__line">
+General
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Enhances Touch of Death, increasing its range by 1.5m and damage by 10%. Upon successful hit, restores HP equal to 10% of the damage dealt.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Trade Oddities with Qi Sheng in Qinghe to obtain the Shadow Assault Inner Way. You can find Qi Sheng near the tree where you learned Tai Chi from the black bear.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565685><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Steadfast Stance Icon' data-src='https://img.game8.co/4334801/47be40cb84171d18ca53bcabdea51b8a.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Steadfast Stance</a><br>
+
+
+
+
+<hr class="a-table__line">
+General
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Less likely to suffer stagger effect when attacked. Higher resistance when more enemy units are nearby. Invalid when the attack comes from a boss or player.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>You can obtain the Steadfast Stance Inner Way by completing the cave under the General's Shrine and bowing to the statue three times to reveal the chest containing the Inner Way.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565781><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Wind Beneath Wings Icon' data-src='https://img.game8.co/4334808/06a55691675e4523647f5b9b1e75fca4.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Wind Beneath Wings</a><br>
+
+
+
+
+<hr class="a-table__line">
+General
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Reduces the Endurance cost of Movement Mystic Skill Skywalk Dash's dash while jumping by 40%. After landing, increases Movement Speed by 30% for 3 seconds. Restores bonus HP (1% Max HP +1,000) after defeating any enemy.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Complete Jianghu Legacy - Echoes of Old Battles and Tiger Fort Outpost to obtain all pages of Wind Beneath Wings. You get the pages from both locations through your first completion.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565692><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Royal Remedy Icon' data-src='https://img.game8.co/4334799/4e55b249fb943ad572a5c8af5371670b.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Royal Remedy</a><br>
+
+
+
+
+<hr class="a-table__line">
+Silkbind - Deluge
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>The Mingchuan Medical Codex Martial Skill Sitting Watch Clouds Rise created Water Clone's healing effect is increased by 10%. If you are within the area of the healing over time effect, you also additionally restore 3 Dew points and 2 Essence points each time.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Royal Remedy is located in the same sanctum as the Panacea Fan martial art. Make your way into the depths of the cave and look for an isolated room with two braziers at the entrance; the chest containing the Royal Remedy tome is inside.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565782><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Restoring Blossom Icon' data-src='https://img.game8.co/4334815/bd43824aef23313596ca3528449f90b0.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Restoring Blossom</a><br>
+
+
+
+
+<hr class="a-table__line">
+Silkbind - Deluge
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Dealing Critical healing applies one stack of Nurturing for 3 seconds, increasing healing received by 2%, stacking up to 3 times.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>The Restoring Blossom: Tome is rewarded for joining the Healer's Union by completing the Legacy: Healer's Calling quest. This quest unlocks at level 13 and can be started in Mercyheart Town, located in the northwest section of Qinghe.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/566511><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Esoteric Revival Icon' data-src='https://img.game8.co/4334824/9ed3db4fde24f11170fbd166b3896fe8.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Esoteric Revival</a><br>
+
+
+
+
+<hr class="a-table__line">
+Silkbind - Deluge
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Increases the healing of Panacea Fan's Perception Skill, Resurrection, by 50% on the revived target.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Defeat the Sleeping Daoist in Quinghe to obtain the Esoteric Revival tome for the Inner Way. You can find the Sleeping Daoist in Jadebrook Mountain, near the Path of Karma Boundary Stone.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/566422><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Mending Loom Icon' data-src='https://img.game8.co/4334803/21c7f5d88258f25941f6b8dbc8f854d8.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Mending Loom</a><br>
+
+
+
+
+<hr class="a-table__line">
+Silkbind - Deluge
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Casting Soulshade Umrella's Special Skill, Echoing Grow restores 5 Dew and additionally heals 10% of your Max HP for every 100 Dew consumed.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Defeat Zheng the Frostwing at the end of the Ever-Normal Granary campaign in Kaifeng. You'll need to speak to the woman arguing with the guard at the granary to start the quest.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/566420><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Blossom Barrage Icon' data-src='https://img.game8.co/4334798/9e2d8bc72ec72b82069fed4dcbfd1b6e.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Blossom Barrage</a><br>
+
+
+
+
+<hr class="a-table__line">
+Silkbind - Jade
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Vernal Umbrella's Martial Arts Skill Spring Sorrow can hold up to 2 stacks. Hitting a target applies the Combo effect: Increases Damage taken from the caster's Ballistic Skills by 10% for 10s. Affected Ballistic Skills include: Martial Arts Skill Let Spring Go, Special Skill Everbloom, Umbrella - Light Attack, and its Charged Skill Spring Away.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Once at the Velvet Shade Boundary Stone, approach the crowd gathered around a man. Follow through with the quest once prompted to follow the Nine Mortal Ways Disciple.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/568818><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Star Reacher Icon' data-src='https://img.game8.co/4334807/4fa9de14b34f09e436ff775f73483ee3.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Star Reacher</a><br>
+
+
+
+
+<hr class="a-table__line">
+Silkbind - Jade
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Gain 5% Physical Attack bonus for up to 8 seconds after applying Lingering Bone Mark to an enemy. This bonus can only be gained once per second, and gaining it again will refresh its duration. Knocking a target Airborne increases the Physical Attack bonus to 10%.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Defeat the Snake Doctor World Boss located in the cave just north of the Encircling Lake in Qinghe to obtain the Star Reacher Inner Way. The cave entrance is found west of the boss's map pin location.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565783><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Thunderous Bloom Icon' data-src='https://img.game8.co/4334823/ef937c97b6669675dc0475b5a5a21dde.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Thunderous Bloom</a><br>
+
+
+
+
+<hr class="a-table__line">
+Silkbind - Jade
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Moving a distance exceeding 15 meters within 3 seconds grants 3 stacks of Spring Thunder effect: Each time you use Heavy Attack, Aerial Heavy Attack, Light Attack, or Light Attack Charged Skill to deal damage, you can consume 1 stack of Spring Thunder to increase HP damage of that instance and the next 1 second of that skill type by 15%. Cannot stack. Gaining Spring Thunder from movement can only trigger once every 15 seconds. Spring Thunder can be retained for up to 12 seconds.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Head to Mercyheart Monastery Outpost then take down all guards and destroy all Daturas (purple plants) to complete the fort. Upon first completion you'll be rewarded with the Thunderous Bloom tome.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565784><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Flying Gourds Icon' data-src='https://img.game8.co/4334810/faaaf649eb570f9ad9beaca5dca4a7a7.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Flying Gourds</a><br>
+
+
+
+
+<hr class="a-table__line">
+Silkbind - Jade
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Grants 2 charges to Inkwell Fan's Peak's Springless Silence, but increases its cooldown by 3 seconds.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>The Flying Gourds tome is found within the Inkwell Fan Sanctum area near the Floral Expanse Beyond. Accessing the cave entrance to it requires a Dragon Key.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/565691><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Exquisite Scenery Icon' data-src='https://img.game8.co/4334805/fd675ade5a2e9aa4b03406328dc46f0a.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Exquisite Scenery</a><br>
+
+
+
+
+<hr class="a-table__line">
+Stonesplit - Might
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>After a successful parry with Alas Blade Art, for a period of time, you can activate a special Parry Counter skill. Pressing the Perception Skill or Heavy Attack button allows you to release a charge-free, potency Tier 3 Heavy Attack Charged Skill (can chain into Heavy Attack Charged Follow-up Skill). Can only trigger once every 10 seconds.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Head over to the marsh area northeast of Battlecrest Slope on the map to trigger a cutscene with Puppeteer - Sheng Wu. Defeating him rewards you with the Exquisite Scenery Inner Way.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/566417><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Rock Solid Icon' data-src='https://img.game8.co/4334822/00f83f28bb07efc3743de5e511034948.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Rock Solid</a><br>
+
+
+
+
+<hr class="a-table__line">
+Stonesplit - Might
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Increases the DMG Reduction of Stormbreaker Spear's Storm Roar by 20% after taunting a boss unit, and by 5% after taunting a non-boss unit, up to 20% in total. While the DMG Reduction is active, reduces all damage dealt by 10%.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Defeat the Dao Lord at the end of the Unbound Cavern campaign. You unlock the campaign as you progress through the main quest Accident in Chapter 2: Universal Furnace.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/566093><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Art of Resistance Icon' data-src='https://img.game8.co/4334821/1c73eab11c29fb921551efb4b46316ad.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Art of Resistance</a><br>
+
+
+
+
+<hr class="a-table__line">
+Stonesplit - Might
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Increases the duration of your own HP shield and the bonus effects of its source skill by 4 seconds.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>The Art of Resistance: Tome is a reward for completing the Scammer Victims encounter. To unlock this encounter, you will need to complete the Exploration Quest Initiation: Well of Heaven Elder.
+</td><tr>
+<td class="center">
+
+<a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/566418><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Trapped Beast Icon' data-src='https://img.game8.co/4334814/533460fff3320ad4745613867b42504a.png/show' width='50' style='height: 0; padding-bottom: calc(50px*67/50); padding-bottom: calc(min(100%,50px)*67/50);' /> Trapped Beast</a><br>
+
+
+
+
+<hr class="a-table__line">
+Stonesplit - Might
+</td>
+<td >
+<b class='a-bold'>Effect</b>:
+<br>Taking damage while HP is below 30% triggers Cornered Beast, generating a shield that absorbs up to 30% of Max HP. This effect lasts 4 seconds and can trigger once every 300 seconds.
+<hr class="a-table__line">
+<b class='a-bold'>How to Get</b>:
+<br>Obtain all three pieces of the armor of the dead during the March of the Dead quest in Kaifeng then speak to Liu Changsheng to receive the tome for Trapped Beast. You'll find Liu Changsheng after opening the gate, just before fighting Zhu Yousheng.
+</td>
+</table>
+<h2 class='a-header--2' id='hl_2'>How to Upgrade Inner Ways</h2>
 <table class='a-table a-table ' style=''>
   <tr>
-    <th colspan=2>Chess Guides</th>
+    <th width="10%">1</th>
+    <td width="90%" class="center"><a class='a-link' href=#hm_201>Reach Solo Mode Level 4</a></td>
   </tr>
   <tr>
-    <td width="50%" class="center"><b class='a-bold'>All Chess Locations and How to Play</b></td>
-    <td width="50%" class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/566972>How to Get and Use Chess Manuals</a></td>
+    <th>2</th>
+    <td class="center"><a class='a-link' href=#hm_202>Use Notes or Inner Way Advance Items</a></td>
   </tr>
 </table>
-
-<p><div class='a-outline'><p><svg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='list-ul' class='svg-inline--fa fa-list-ul fa-w-16' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='currentColor' d='M48 48a48 48 0 1 0 48 48 48 48 0 0 0-48-48zm0 160a48 48 0 1 0 48 48 48 48 0 0 0-48-48zm0 160a48 48 0 1 0 48 48 48 48 0 0 0-48-48zm448 16H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z'></path></svg>List of Contents</p><ul><li><a class='list_contents track_nier' data-track-nier-keyword='contents-index' data-track-nier-value='All Chess Locations' href='#hl_1'>All Chess Locations</a></li><li><a class='list_contents track_nier' data-track-nier-keyword='contents-index' data-track-nier-value='How to Play Chess' href='#hl_2'>How to Play Chess</a></li><li><a class='list_contents track_nier' data-track-nier-keyword='contents-index' data-track-nier-value='Rewards' href='#hl_3'>Rewards</a></li><li><a class='list_contents track_nier' data-track-nier-keyword='contents-index' data-track-nier-value='Related Guides' href='#hl_4'>Related Guides</a></li></ul></div></p>
-<h2 class='a-header--2' id='hl_1'>All Chess Locations</h2>
-<table class='a-table ' style=''>
-  <tr>
-    <td width="100%">・Click on the arrow in the upper left corner to access our sidebar to check all other pins and even search for individual pins.
-    <br> ・Pins checked off the map will reflect in the list below.
-    <br> ・Use the Regions dropdown menu and the Search Bar to filter the pins by subregion (e.g. Bamboo Abode, Heaven's Pier, etc.).
-    <br> ・For map pin suggestions, please list down as much information as you can including reward data or complex acquisition methods.  
-    <br> ┣ For images, uploading a <b class='a-bold'>full rectangular screenshot</b> with a resolution of  at least <span class='a-red'>728 x 410 pixels</span> will be highly appreciated.
-    <br> ┗ Do not forget to mention which Map Layer you are suggesting a pin for.
-    <hr class="a-table__line"> We encourage users to <a class='a-link' href=https://game8.co/users/sign_up?utm_source=game8&utm_medium=link&utm_campaign=mapblurb>sign up</a> and <span class='a-red'>log in</span> to save your progress with the map. </td>
-  </tr>
-</table>
-
-<div id='react-new_map_tool-wrapper' class='a-catalog__bg react-new_map_tool-wrapper' data-react-props='{"view":"default","toolStructuralMappingId":"603","options":"{\"selectedTargets\":\"Chess Match\", \"closesSidebarDefault\":\"true\", \"useSuggestedPin\":true}","toolStructuralMapping":{"id":"603","updatedAt":1780476282}}' style='min-height: 732px;'></div>
-
-<p class='a-paragraph'>Note that some NPCs require manuals to play against. You can obtain these manuals by playing against more beginner-friendly NPCs, who are designed to introduce you to the game.</p>
-<h3 class='a-header--3' id='hm_200'>Qinghe Chess Matches </h3>
-<table class='a-table a-table center' style=''>
-  <tr>
-    <th colspan=2 class="center">Chess Match List</th>
-    </tr>
-    <tr>
-    <td width="50%" class="center"><a class='a-link' href=#hm_200>Qinghe</a></td>
-    <td width="50%" class="center"><a class='a-link' href=#hm_201>Kaifeng</a></td>
-  </tr>
-    <tr>
-    <td width="50%" class="center"><a class='a-link' href=#hm_202>Hexi</a></td>
-    <td width="50%" class="center"><a class='a-link' href=#hm_203>Imperial Palace</a></td>
-  </tr>
-</table>
-
-<table class='a-table a-table table--fixed flexible-cell a-table' style=''>
-    <thead>
-<tr>
-<th width="30%" data-cell="Checkbox">✔️</th>
-<th width="70%" data-cell="World">World View</th>
-</tr>
-</thead>
-<tbody>
-<tr>
- <td class="center" data-cell="Checkbox">
-
-
-
-<b class='a-bold'>Qi Sheng</b> 
- 
-<hr class="a-table__line">
-<label class="a-circleCheckbox"> <input type="checkbox" class="js-map-marker-check a-circleCheckbox__input" data-tool-structural-mapping-id="603" value="1341329" disabled> <span class="a-circleCheckbox__icon"> <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M3 10L8 15L17 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> </span> </label>
-</td>
-    <td class="center"> <div class='imageLink js-archive-open-image-modal' data-image-url='https://img.game8.co/4348065/e4ca6967e9d53c23df0421a5e86ec18e.png/original' data-micromodal-trigger='js-archive-open-image-modal' data-archive-url=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Qi Sheng' data-src='https://img.game8.co/4348065/e4ca6967e9d53c23df0421a5e86ec18e.png/show' width='728' style='height: 0; padding-bottom: calc(px*409/728); padding-bottom: calc(min(100%,728px)*409/728);' /><span class='imageLink__icon'></span></div> <hr class="a-table__line">  
-<div class='align-left'> <b class='a-bold'>Location:</b> Finesteed Hamlet, 
-
-
-
-
-
-<a class='a-link' href=/games/Where-Winds-Meet/archives/564887>Sundara Land</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   <br> Qi Sheng is found near the Finesteed Hamlet Bounty billboard. She is seated in an area with a large house. </div>
-
-  <div class='align-left'> <b class='a-bold'>Unique Reward:</b> <br>・Chariot Breaker x1 <br> ・Kunshan Jade Seal </div> 
-
-</td>
-</tr><tr>
- <td class="center" data-cell="Checkbox">
-
-
-
-<b class='a-bold'>Wang Dayan</b> 
- 
-<hr class="a-table__line">
-<label class="a-circleCheckbox"> <input type="checkbox" class="js-map-marker-check a-circleCheckbox__input" data-tool-structural-mapping-id="603" value="1341353" disabled> <span class="a-circleCheckbox__icon"> <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M3 10L8 15L17 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> </span> </label>
-</td>
-    <td class="center"> <div class='imageLink js-archive-open-image-modal' data-image-url='https://img.game8.co/4330647/c7deecaf8de4ffb3a336022382f5d6a5.png/original' data-micromodal-trigger='js-archive-open-image-modal' data-archive-url=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Wang Dayan' data-src='https://img.game8.co/4330647/c7deecaf8de4ffb3a336022382f5d6a5.png/show' width='728' style='height: 0; padding-bottom: calc(px*409/728); padding-bottom: calc(min(100%,728px)*409/728);' /><span class='imageLink__icon'></span></div> <hr class="a-table__line">  
-<div class='align-left'> <b class='a-bold'>Location:</b> Heaven's Pier, 
-
-
-
-<a class='a-link' href=/games/Where-Winds-Meet/archives/564886>Moonveil Mountain</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   <br> Wang Dayan is found near a hut with Auntie Tian close to the Heaven's Pier Boundary Stone. </div>
-
-  <div class='align-left'> <b class='a-bold'>Unique Reward:</b> <br>・Momentum Follower x1 <br> ・Red Clay Tea Set x1 </div> 
-
-</td>
-</tr><tr>
- <td class="center" data-cell="Checkbox">
-
-
-
-<b class='a-bold'>Yan Ying</b> 
- 
-<hr class="a-table__line">
-<label class="a-circleCheckbox"> <input type="checkbox" class="js-map-marker-check a-circleCheckbox__input" data-tool-structural-mapping-id="603" value="1341354" disabled> <span class="a-circleCheckbox__icon"> <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M3 10L8 15L17 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> </span> </label>
-</td>
-    <td class="center"> <div class='imageLink js-archive-open-image-modal' data-image-url='https://img.game8.co/4338616/d4b140601e84cb917a2e5bf30f95841d.png/original' data-micromodal-trigger='js-archive-open-image-modal' data-archive-url=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Yan Ying' data-src='https://img.game8.co/4338616/d4b140601e84cb917a2e5bf30f95841d.png/show' width='728' style='height: 0; padding-bottom: calc(px*410/728); padding-bottom: calc(min(100%,728px)*410/728);' /><span class='imageLink__icon'></span></div> <hr class="a-table__line">  
-<div class='align-left'> <b class='a-bold'>Location:</b> Harvestfall Village, 
-
-
-
-<a class='a-link' href=/games/Where-Winds-Meet/archives/564886>Moonveil Mountain</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   <br> Yan Ying is found near the Harvestfall Village general goods merchant. </div>
-
-  <div class='align-left'> <b class='a-bold'>Unique Reward:</b> <br>・Emerging Loongs x1 <br> ・Lady Xu's Dagger x1 </div> 
-
-</td>
-</tr><tr>
- <td class="center" data-cell="Checkbox">
-
-
-
-<b class='a-bold'>Ye Buxiu - Dreamscape</b> 
- 
-<hr class="a-table__line">
-<label class="a-circleCheckbox"> <input type="checkbox" class="js-map-marker-check a-circleCheckbox__input" data-tool-structural-mapping-id="603" value="1347360" disabled> <span class="a-circleCheckbox__icon"> <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M3 10L8 15L17 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> </span> </label>
-</td>
-    <td class="center"> <div class='imageLink js-archive-open-image-modal' data-image-url='https://img.game8.co/4367143/db0b8b2977d2a7ff8842eb8c2b70abb9.png/original' data-micromodal-trigger='js-archive-open-image-modal' data-archive-url=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Ye Buxiu - Dreamscape' data-src='https://img.game8.co/4367143/db0b8b2977d2a7ff8842eb8c2b70abb9.png/show' width='728' style='height: 0; padding-bottom: calc(px*409/728); padding-bottom: calc(min(100%,728px)*409/728);' /><span class='imageLink__icon'></span></div> <hr class="a-table__line">  
-<div class='align-left'> <b class='a-bold'>Location:</b> Blissful Retreat, 
-
-
-
-<a class='a-link' href=/games/Where-Winds-Meet/archives/564886>Moonveil Mountain</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   <br> You need to enter the dreamscape by interacting with Yi Dao's sword on the ground at Blissful Retreat to enter the dreamscape. NOTE: This is after the attack on Blissful Retreat. </div>
-
- 
-
-</td>
-</tr>
-</tbody>
-</table>
-<h3 class='a-header--3' id='hm_201'>Kaifeng Chess Matches </h3>
-<table class='a-table a-table center' style=''>
-  <tr>
-    <th colspan=2 class="center">Chess Match List</th>
-    </tr>
-    <tr>
-    <td width="50%" class="center"><a class='a-link' href=#hm_200>Qinghe</a></td>
-    <td width="50%" class="center"><a class='a-link' href=#hm_201>Kaifeng</a></td>
-  </tr>
-    <tr>
-    <td width="50%" class="center"><a class='a-link' href=#hm_202>Hexi</a></td>
-    <td width="50%" class="center"><a class='a-link' href=#hm_203>Imperial Palace</a></td>
-  </tr>
-</table>
-
-<table class='a-table a-table table--fixed flexible-cell a-table' style=''>
-    <thead>
-<tr>
-<th width="30%" data-cell="Checkbox">✔️</th>
-<th width="70%" data-cell="World">World View</th>
-</tr>
-</thead>
-<tbody>
-<tr>
- <td class="center" data-cell="Checkbox">
-
-
-
-<b class='a-bold'>Bai Yunsheng</b> 
- 
-<hr class="a-table__line">
-<label class="a-circleCheckbox"> <input type="checkbox" class="js-map-marker-check a-circleCheckbox__input" data-tool-structural-mapping-id="603" value="1348589" disabled> <span class="a-circleCheckbox__icon"> <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M3 10L8 15L17 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> </span> </label>
-</td>
-    <td class="center"> <div class='imageLink js-archive-open-image-modal' data-image-url='https://img.game8.co/4346875/7c15828d33d583c1b3b99628b4a08b12.png/original' data-micromodal-trigger='js-archive-open-image-modal' data-archive-url=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Bai Yunsheng' data-src='https://img.game8.co/4346875/7c15828d33d583c1b3b99628b4a08b12.png/show' width='728' style='height: 0; padding-bottom: calc(px*409/728); padding-bottom: calc(min(100%,728px)*409/728);' /><span class='imageLink__icon'></span></div> <hr class="a-table__line">  
-<div class='align-left'> <b class='a-bold'>Location:</b> Kaifeng Prefecture, 
-
-
-
-
-
-
-
-<a class='a-link' href=/games/Where-Winds-Meet/archives/567516>Kaifeng City</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   <br> Bai Yunsheng is sitting by a stone table in a courtyard where Chan Yi's riddles can also be played. </div>
-
- 
-
-</td>
-</tr><tr>
- <td class="center" data-cell="Checkbox">
-
-
-
-<b class='a-bold'>Wan Zhi'an</b> 
- 
-<hr class="a-table__line">
-<label class="a-circleCheckbox"> <input type="checkbox" class="js-map-marker-check a-circleCheckbox__input" data-tool-structural-mapping-id="603" value="1348651" disabled> <span class="a-circleCheckbox__icon"> <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M3 10L8 15L17 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> </span> </label>
-</td>
-    <td class="center"> <div class='imageLink js-archive-open-image-modal' data-image-url='https://img.game8.co/4346864/a49728db402c74339cff0a50c7f08be6.png/original' data-micromodal-trigger='js-archive-open-image-modal' data-archive-url=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Wan Zhi'an' data-src='https://img.game8.co/4346864/a49728db402c74339cff0a50c7f08be6.png/show' width='728' style='height: 0; padding-bottom: calc(px*409/728); padding-bottom: calc(min(100%,728px)*409/728);' /><span class='imageLink__icon'></span></div> <hr class="a-table__line">  
-<div class='align-left'> <b class='a-bold'>Location:</b> Fairgrounds, 
-
-
-
-
-
-
-
-<a class='a-link' href=/games/Where-Winds-Meet/archives/567516>Kaifeng City</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   <br> Wan Zhi'an is found on the eastern side of Fairgrounds near Hu Ni'er's general goods shop. </div>
-
-  <div class='align-left'> <b class='a-bold'>Unique Reward:</b> <br>・Seven Poets x1 <br> ・Red Clay Tea Set </div> 
-
-</td>
-</tr><tr>
- <td class="center" data-cell="Checkbox">
-
-
-
-<b class='a-bold'>Li JiaoJiao</b> 
- 
-<hr class="a-table__line">
-<label class="a-circleCheckbox"> <input type="checkbox" class="js-map-marker-check a-circleCheckbox__input" data-tool-structural-mapping-id="603" value="1348685" disabled> <span class="a-circleCheckbox__icon"> <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M3 10L8 15L17 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> </span> </label>
-</td>
-    <td class="center"> <div class='imageLink js-archive-open-image-modal' data-image-url='https://img.game8.co/4346924/75e8a52a1f2bdfeb039ea8925850be4c.png/original' data-micromodal-trigger='js-archive-open-image-modal' data-archive-url=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Li JiaoJiao' data-src='https://img.game8.co/4346924/75e8a52a1f2bdfeb039ea8925850be4c.png/show' width='728' style='height: 0; padding-bottom: calc(px*409/728); padding-bottom: calc(min(100%,728px)*409/728);' /><span class='imageLink__icon'></span></div> <hr class="a-table__line">  
-<div class='align-left'> <b class='a-bold'>Location:</b> Velvet Shade, 
-
-
-
-
-
-
-
-<a class='a-link' href=/games/Where-Winds-Meet/archives/567516>Kaifeng City</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   <br> Li Jiaojiao is in a gazebo west of the large building in front of the Pearlglow Lake Boundary Stone. </div>
-
- 
-
-</td>
-</tr><tr>
- <td class="center" data-cell="Checkbox">
-
-
-
-<b class='a-bold'>Jin Lanke</b> 
- 
-<hr class="a-table__line">
-<label class="a-circleCheckbox"> <input type="checkbox" class="js-map-marker-check a-circleCheckbox__input" data-tool-structural-mapping-id="603" value="1348741" disabled> <span class="a-circleCheckbox__icon"> <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M3 10L8 15L17 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> </span> </label>
-</td>
-    <td class="center"> <div class='imageLink js-archive-open-image-modal' data-image-url='https://img.game8.co/4347010/aa144e84bcb72e67ffe36546aa9ca776.png/original' data-micromodal-trigger='js-archive-open-image-modal' data-archive-url=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Jin Lanke' data-src='https://img.game8.co/4347010/aa144e84bcb72e67ffe36546aa9ca776.png/show' width='728' style='height: 0; padding-bottom: calc(px*409/728); padding-bottom: calc(min(100%,728px)*409/728);' /><span class='imageLink__icon'></span></div> <hr class="a-table__line">  
-<div class='align-left'> <b class='a-bold'>Location:</b> Prosperity Haven, 
-
-
-
-
-
-
-
-<a class='a-link' href=/games/Where-Winds-Meet/archives/567516>Kaifeng City</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   <br> Jin Lanke is playing chess in a building west of Li Manor. </div>
-
- 
-
-</td>
-</tr><tr>
- <td class="center" data-cell="Checkbox">
-
-
-
-<b class='a-bold'>Mao Tianyou</b> 
- 
-<hr class="a-table__line">
-<label class="a-circleCheckbox"> <input type="checkbox" class="js-map-marker-check a-circleCheckbox__input" data-tool-structural-mapping-id="603" value="1348786" disabled> <span class="a-circleCheckbox__icon"> <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M3 10L8 15L17 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> </span> </label>
-</td>
-    <td class="center"> <div class='imageLink js-archive-open-image-modal' data-image-url='https://img.game8.co/4346933/af8decc9b369dea5321b91ba841714b5.png/original' data-micromodal-trigger='js-archive-open-image-modal' data-archive-url=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Mao Tianyou' data-src='https://img.game8.co/4346933/af8decc9b369dea5321b91ba841714b5.png/show' width='728' style='height: 0; padding-bottom: calc(px*409/728); padding-bottom: calc(min(100%,728px)*409/728);' /><span class='imageLink__icon'></span></div> <hr class="a-table__line">  
-<div class='align-left'> <b class='a-bold'>Location:</b> Forsaken Quarter, 
-
-
-
-
-
-
-
-<a class='a-link' href=/games/Where-Winds-Meet/archives/567516>Kaifeng City</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   <br> Mao Tianyou is found sitting on the side of the road north of the Ash Pit. </div>
-
-  <div class='align-left'> <b class='a-bold'>Unique Reward:</b> <br>・Determined Stride x1 <br> ・Kunshan Jade Seal </div> 
-
-</td>
-</tr><tr>
- <td class="center" data-cell="Checkbox">
-
-
-
-<b class='a-bold'>Wang Shisan</b> 
- 
-<hr class="a-table__line">
-<label class="a-circleCheckbox"> <input type="checkbox" class="js-map-marker-check a-circleCheckbox__input" data-tool-structural-mapping-id="603" value="1348816" disabled> <span class="a-circleCheckbox__icon"> <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M3 10L8 15L17 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> </span> </label>
-</td>
-    <td class="center"> <div class='imageLink js-archive-open-image-modal' data-image-url='https://img.game8.co/4346963/cc733ea5ff70e455953a8011ea0d9439.png/original' data-micromodal-trigger='js-archive-open-image-modal' data-archive-url=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Wang Shisan' data-src='https://img.game8.co/4346963/cc733ea5ff70e455953a8011ea0d9439.png/show' width='728' style='height: 0; padding-bottom: calc(px*409/728); padding-bottom: calc(min(100%,728px)*409/728);' /><span class='imageLink__icon'></span></div> <hr class="a-table__line">  
-<div class='align-left'> <b class='a-bold'>Location:</b> Ghostlight Market, 
-
-
-
-
-
-
-
-<a class='a-link' href=/games/Where-Winds-Meet/archives/567516>Kaifeng City</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   <br> Wang Shisan is found on an elevated floor with a leafless tree. </div>
-
-  <div class='align-left'> <b class='a-bold'>Unique Reward:</b> <br>・Hidden Edges x1 <br> ・Lady Xu's Dagger </div> 
-
-</td>
-</tr><tr>
- <td class="center" data-cell="Checkbox">
-
-
-
-<b class='a-bold'>Ma Sizhong</b> 
- 
-<hr class="a-table__line">
-<label class="a-circleCheckbox"> <input type="checkbox" class="js-map-marker-check a-circleCheckbox__input" data-tool-structural-mapping-id="603" value="1348980" disabled> <span class="a-circleCheckbox__icon"> <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M3 10L8 15L17 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> </span> </label>
-</td>
-    <td class="center"> <div class='imageLink js-archive-open-image-modal' data-image-url='https://img.game8.co/4347566/9f23271e8b825299c3043f2a179ec140.png/original' data-micromodal-trigger='js-archive-open-image-modal' data-archive-url=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Ma Sizhong' data-src='https://img.game8.co/4347566/9f23271e8b825299c3043f2a179ec140.png/show' width='728' style='height: 0; padding-bottom: calc(px*409/728); padding-bottom: calc(min(100%,728px)*409/728);' /><span class='imageLink__icon'></span></div> <hr class="a-table__line">  
-<div class='align-left'> <b class='a-bold'>Location:</b> Masterwood Hamlet, 
-
-
-
-
-
-
-
-
-
-
-
-<a class='a-link' href=/games/Where-Winds-Meet/archives/567518>Jadewood Court</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   <br> Ma Shizong is at a pavilion further southeast of Masterwood Hamlet, going to the Grand Canal. </div>
-
- 
-
-</td>
-</tr><tr>
- <td class="center" data-cell="Checkbox">
-
-
-
-<b class='a-bold'>Shen Liuniang</b> 
- 
-<hr class="a-table__line">
-<label class="a-circleCheckbox"> <input type="checkbox" class="js-map-marker-check a-circleCheckbox__input" data-tool-structural-mapping-id="603" value="1361627" disabled> <span class="a-circleCheckbox__icon"> <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M3 10L8 15L17 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> </span> </label>
-</td>
-    <td class="center"> <div class='imageLink js-archive-open-image-modal' data-image-url='https://img.game8.co/4363625/b471d9090f74a12744cacb2a1d9cf32b.png/original' data-micromodal-trigger='js-archive-open-image-modal' data-archive-url=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Shen Liuniang' data-src='https://img.game8.co/4363625/b471d9090f74a12744cacb2a1d9cf32b.png/show' width='728' style='height: 0; padding-bottom: calc(px*409/728); padding-bottom: calc(min(100%,728px)*409/728);' /><span class='imageLink__icon'></span></div> <hr class="a-table__line">  
-<div class='align-left'> <b class='a-bold'>Location:</b> Wansheng Town, 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class='a-link' href=/games/Where-Winds-Meet/archives/570671>Roaring Sands</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-   <br> Shen Liuniang is found along the main road passing through South Wansheng Town. </div>
-
- 
-
-</td>
-</tr><tr>
- <td class="center" data-cell="Checkbox">
-
-
-
-<b class='a-bold'>Che Xixi</b> 
- 
-<hr class="a-table__line">
-<label class="a-circleCheckbox"> <input type="checkbox" class="js-map-marker-check a-circleCheckbox__input" data-tool-structural-mapping-id="603" value="1381169" disabled> <span class="a-circleCheckbox__icon"> <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M3 10L8 15L17 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> </span> </label>
-</td>
-    <td class="center"> <div class='imageLink js-archive-open-image-modal' data-image-url='https://img.game8.co/4393188/b167c4661ce89ea42376ac6ab06dee8f.png/original' data-micromodal-trigger='js-archive-open-image-modal' data-archive-url=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Che Xixi' data-src='https://img.game8.co/4393188/b167c4661ce89ea42376ac6ab06dee8f.png/show' width='728' style='height: 0; padding-bottom: calc(px*409/728); padding-bottom: calc(min(100%,728px)*409/728);' /><span class='imageLink__icon'></span></div> <hr class="a-table__line">  
-<div class='align-left'> <b class='a-bold'>Location:</b> Nine Mortal Ways Base, 
-
-
-
-
-
-
-
-<a class='a-link' href=/games/Where-Winds-Meet/archives/567516>Kaifeng City</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   <br> Chen Xixi is found southeast of the Loyalty Hall. </div>
-
- 
-
-</td>
-</tr>
-</tbody>
-</table>
-<h3 class='a-header--3' id='hm_202'>Hexi Chess Matches </h3>
-<table class='a-table a-table center' style=''>
-  <tr>
-    <th colspan=2 class="center">Chess Match List</th>
-    </tr>
-    <tr>
-    <td width="50%" class="center"><a class='a-link' href=#hm_200>Qinghe</a></td>
-    <td width="50%" class="center"><a class='a-link' href=#hm_201>Kaifeng</a></td>
-  </tr>
-    <tr>
-    <td width="50%" class="center"><a class='a-link' href=#hm_202>Hexi</a></td>
-    <td width="50%" class="center"><a class='a-link' href=#hm_203>Imperial Palace</a></td>
-  </tr>
-</table>
-
-<table class='a-table a-table table--fixed flexible-cell a-table' style=''>
-    <thead>
-<tr>
-<th width="30%" data-cell="Checkbox">✔️</th>
-<th width="70%" data-cell="World">World View</th>
-</tr>
-</thead>
-<tbody>
-<tr>
- <td class="center" data-cell="Checkbox">
-
-
-
-<b class='a-bold'>Wang Xiaoshou</b> 
- 
-<hr class="a-table__line">
-<label class="a-circleCheckbox"> <input type="checkbox" class="js-map-marker-check a-circleCheckbox__input" data-tool-structural-mapping-id="603" value="1454882" disabled> <span class="a-circleCheckbox__icon"> <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M3 10L8 15L17 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> </span> </label>
-</td>
-    <td class="center"> <div class='imageLink js-archive-open-image-modal' data-image-url='https://img.game8.co/4487743/1e13b6071fc4b484cc159b228e25912f.png/original' data-micromodal-trigger='js-archive-open-image-modal' data-archive-url=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Wang Xiaoshou' data-src='https://img.game8.co/4487743/1e13b6071fc4b484cc159b228e25912f.png/show' width='728' style='height: 0; padding-bottom: calc(px*410/728); padding-bottom: calc(min(100%,728px)*410/728);' /><span class='imageLink__icon'></span></div> <hr class="a-table__line">  
-<div class='align-left'> <b class='a-bold'>Location:</b> Huayin North, 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class='a-link' href=/games/Where-Winds-Meet/archives/564654>Qinchuan Path</a>
-
-
-
-
-
-
-
-   <br> Wang Xiaoshou next to the house west of the Brokegate Village boundary stone. </div>
-
- 
-
-</td>
-</tr>
-</tbody>
-</table>
-<h3 class='a-header--3' id='hm_203'>Kaifeng Imperial Palace </h3>
-<table class='a-table a-table center' style=''>
-  <tr>
-    <th colspan=2 class="center">Chess Match List</th>
-    </tr>
-    <tr>
-    <td width="50%" class="center"><a class='a-link' href=#hm_200>Qinghe</a></td>
-    <td width="50%" class="center"><a class='a-link' href=#hm_201>Kaifeng</a></td>
-  </tr>
-    <tr>
-    <td width="50%" class="center"><a class='a-link' href=#hm_202>Hexi</a></td>
-    <td width="50%" class="center"><a class='a-link' href=#hm_203>Imperial Palace</a></td>
-  </tr>
-</table>
-
-<table class='a-table a-table table--fixed flexible-cell a-table' style=''>
-    <thead>
-<tr>
-<th width="30%" data-cell="Checkbox">✔️</th>
-<th width="70%" data-cell="World">World View</th>
-</tr>
-</thead>
-<tbody>
-<tr>
- <td class="center" data-cell="Checkbox">
-
-
-
-<b class='a-bold'>Mingqi</b> 
- 
-<hr class="a-table__line">
-<label class="a-circleCheckbox"> <input type="checkbox" class="js-map-marker-check a-circleCheckbox__input" data-tool-structural-mapping-id="603" value="1475898" disabled> <span class="a-circleCheckbox__icon"> <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M3 10L8 15L17 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> </span> </label>
-</td>
-    <td class="center"> <div class='imageLink js-archive-open-image-modal' data-image-url='https://img.game8.co/4523010/b4a5aaa7442f02cbaa409b8406545dae.png/original' data-micromodal-trigger='js-archive-open-image-modal' data-archive-url=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Mingqi' data-src='https://img.game8.co/4523010/b4a5aaa7442f02cbaa409b8406545dae.png/show' width='728' style='height: 0; padding-bottom: calc(px*410/728); padding-bottom: calc(min(100%,728px)*410/728);' /><span class='imageLink__icon'></span></div> <hr class="a-table__line">  
-<div class='align-left'> <b class='a-bold'>Location:</b> Shengping Tower, 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class='a-link' href=/games/Where-Winds-Meet/archives/603667>Inner Chambers</a>
-
-
-
-   <br> Mingqi is located in a gazebo east of the Shengping Tower area. </div>
-
- 
-
-</td>
-</tr>
-</tbody>
-</table>
-<h2 class='a-header--2' id='hl_2'>How to Play Chess</h2>
-<table class='a-table a-table ' style=''>
-  <tr>
-    <td>
-    <div class='align'><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Check icon' data-src='https://img.game8.co/3503370/cc8283abff3f7bc4493a9d3e216f5355.png/show' width='15' height='15' /><a class='a-link' href=#hm_100>Take Down the Enemy General</a> </div><hr class="a-table__line">
-    <div class='align'><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Check icon' data-src='https://img.game8.co/3503370/cc8283abff3f7bc4493a9d3e216f5355.png/show' width='15' height='15' /><a class='a-link' href=#hm_101>Generals Cannot Be in Each Other's Line of Sight</a> </div><hr class="a-table__line">
-    <div class='align'><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Check icon' data-src='https://img.game8.co/3503370/cc8283abff3f7bc4493a9d3e216f5355.png/show' width='15' height='15' /><a class='a-link' href=#hm_102>Use Pieces that Cannot Cross the River for Defense</a> </div><hr class="a-table__line">   
-    <div class='align'><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Check icon' data-src='https://img.game8.co/3503370/cc8283abff3f7bc4493a9d3e216f5355.png/show' width='15' height='15' /><a class='a-link' href=#hm_103>Pieces are Given Randomly</a> </div>
-        <div class='align'><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Check icon' data-src='https://img.game8.co/3503370/cc8283abff3f7bc4493a9d3e216f5355.png/show' width='15' height='15' /><a class='a-link' href=#hm_104>Change Icons on Mobile</a> </div>
-    </td>
-  </tr>
-</table>
-<h3 class='a-header--3' id='hm_100'>Take Down the Enemy General </h3>
-<figure class='a-figure'><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Winning in Chess' data-src='https://img.game8.co/4337295/af4a3d042a840555d13b4b49c528c490.png/show' width='728' style='height: 0; padding-bottom: calc(px*409/728); padding-bottom: calc(min(100%,728px)*409/728);' /></figure>
-
-<p class='a-paragraph'>Your main goal when playing chess is to take down the enemy&#39;s General. You can do this by using pieces that can cross the River (middle of the board) and reach the enemy side. Each chess piece has defined spaces it can move to, which are indicated by the green dots on the board.</p>
-<h4 class='a-header--4' id='hs_1'>You can Change the Icons of the Chess Pieces</h4>
-<p class='a-paragraph'><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Changing Icons in Chess' data-src='https://img.game8.co/4337296/3bdb57a93fde7ea760536378b5e105a7.png/show' width='728' style='height: 0; padding-bottom: calc(px*409/728); padding-bottom: calc(min(100%,728px)*409/728);' /><br>If you prefer to have pieces with chess icons, <b class='a-bold'>press F on the keyboard or Triangle on the PS5</b> to swap between text or chess icons.</p>
-<h3 class='a-header--3' id='hm_101'>Generals Cannot Be in Each Other&#39;s Line of Sight </h3>
-<p class='a-paragraph'><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='General Line of Sight' data-src='https://img.game8.co/4337298/30fe502cfe19aefb0a8f0a42d601b096.png/show' width='728' style='height: 0; padding-bottom: calc(px*409/728); padding-bottom: calc(min(100%,728px)*409/728);' /><br>One of the rules in this game is that <b class='a-bold'>both Generals cannot face each other</b> in a straight line. The player who makes that move <span class='a-red'>will automatically lose the game</span>. Use your other chess pieces to cover your General, or make sure to avoid moving your General unless dodging an enemy chess piece coming after you.</p>
-<h3 class='a-header--3' id='hm_102'>Use Pieces that Cannot Cross the River for Defense </h3>
-<p class='a-paragraph'><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Pieces that Cannot Cross the River' data-src='https://img.game8.co/4337297/dd151d10d7fb134348c140e9cb640f63.png/show' width='728' style='height: 0; padding-bottom: calc(px*409/728); padding-bottom: calc(min(100%,728px)*409/728);' /><br>Some chess pieces are designated to be on the defensive as they cannot cross the River and target the enemy&#39;s General. <b class='a-bold'>Use these pieces as guards</b> to cover your General&#39;s line of sight or to dispose of any enemy pieces that cross your side of the River.</p>
-<h3 class='a-header--3' id='hm_103'>Pieces are Given Randomly </h3>
-<p class='a-paragraph'>Whenever a round starts, chess pieces are given at random to every player. Plan ahead and make sure not to let your offensive pieces go to waste, as you cannot win if all of your remaining pieces are unable to cross the River and reach the enemy&#39;s side of the board.</p>
-<h3 class='a-header--3' id='hm_104'>Change Icons on Mobile </h3>
-<div class='imageLink js-archive-open-image-modal' data-image-url='https://img.game8.co/4400615/5bde892557cf565f0b6d367c5a593e60.png/original' data-micromodal-trigger='js-archive-open-image-modal' data-archive-url=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Icons' data-src='https://img.game8.co/4400615/5bde892557cf565f0b6d367c5a593e60.png/show' width='728' style='height: 0; padding-bottom: calc(px*329/728); padding-bottom: calc(min(100%,728px)*329/728);' /><span class='imageLink__icon'></span></div>
-
-<p class='a-paragraph'>On mobile, you can change the icons by pressing the button on your lower left screen. </p>
-<h2 class='a-header--2' id='hl_3'>Chess Match Rewards</h2><h3 class='a-header--3' id='hm_1'>Currency</h3>
-<table class='a-table a-table ' style=''>
-  <tr>
-    <td class=center width="100%"><a class='a-link' href=/games/Where-Winds-Meet/archives/574376>Coin</a></td>
-  </tr>
-</table>
-
-<p class='a-paragraph'>The main reward you get from winning chess matches is <b class='a-bold'>Coin</b>, however, some NPCs may through in an additional reward. </p>
+<h3 class='a-header--3' id='hm_201'>Reach Solo Mode Level 4 </h3>
+<p class='a-paragraph'>The Inner Ways Breakthrough system unlocks after reaching Solo Mode Level 4. You can achieve this by progressing through your solo save file and completing specific challenges that prevent access to higher Roaming Levels.</p>
+<h3 class='a-header--3' id='hm_202'>Use Inner Way Advance Items </h3>
+<p class='a-paragraph'>To upgrade Tiers, Inner Ways require the use of Notes or Inner Way Advance Items specific to each Inner Way. For example, the Legendary Echoes of Oblivion Inner Way requires Echoes of Oblivion: Notes to upgrade.</p>
+<h4 class='a-header--4' id='hs_1'>Use the Tips Exchange for More Notes</h4>
+<p class='a-paragraph'>One of the best ways to upgrade Inner Ways is to convert Upgrade Notes that you would not use and turn them into Vintage Bookplates. You can then use these Bookplates in the Tips Exchange for Chests that contain a more specific pool of Upgrade Notes.</p>
+<h4 class='a-header--4' id='hs_2'>Use the Inner Way Conversion to Swap Tiers</h4>
+<p class='a-paragraph'>The Inner Way Conversion system allows you to transfer all existing upgrades from one Inner Way to another that you plan to use. You can take advantage of this feature if you are planning to swap builds, but note that this can only be done a limited number of times each season.</p>
+<h2 class='a-header--2' id='hl_3'>Inner Ways Explained</h2><h3 class='a-header--3' id='hm_1'>Passive Skills That Grant Buffs</h3>
+<p class='a-paragraph'>Inner Ways function as passive skills that are equipped to provide various effects. These effects either grant passive buffs or trigger when performing certain actions.</p>
+<h3 class='a-header--3' id='hm_2'>Synergizes With Martial Arts of the Same Path</h3>
+<p class='a-paragraph'>Each Inner Way is labeled with a Path that it primarily synergizes with. These Inner Ways enable new mechanics and further enhance the Martial Arts of the same Path.</p>
+
+<p class='a-paragraph'>Additionally, some Inner Ways belong to the General Path, which does not synergize with any specific Path and can be used with any character build.</p>
 <h2 class='a-header--2' id='hl_4'>Where Winds Meet Related Guides</h2>
-<figure class='a-figure'><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='WWM Sentient Beings Partial' data-src='https://img.game8.co/4330174/e2bca5fc11eaaf29dada4489de14a5d9.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' /></figure>
+<p class='a-paragraph'><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Wiki and Guide Partial' data-src='https://img.game8.co/4326201/c6433b5fed6bda5bf2a1329f1c28ef8c.png/show' width='728' style='height: 0; padding-bottom: calc(728px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' /><br><a class='a-btn' href='https://game8.co/games/Where-Winds-Meet' style='border-color: ; background-color: ; color: ;'><span>Where Winds Meet Guides</span></a></p>
 
-<p class='a-paragraph'><a class='a-btn' href='/games/Where-Winds-Meet/archives/564718' style='border-color: ; background-color: ; color: ;'><span>Sentient Beings</span></a></p>
-<h3 class='a-header--3' id='hm_2'>Sentient Being Types</h3>
 <table class='a-table ' style=''>
   <tr>
-   <td width="25%" class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564794><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Boundary Stone.png' data-src='https://img.game8.co/4324076/2bf2e05e360dfe8c81e685793760de2c.png/show' width='35' height='35' /> Boundary Stone</a></td>
-   <td width="25%" class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564643><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Oddity Type 1.png' data-src='https://img.game8.co/4329069/3b4f1fdfbdf0a194ef694f378b98146a.png/show' width='35' height='35' /> Oddity Collection</a></td>
-   <td width="25%" class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564812><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Meow Meow Treasure.png' data-src='https://img.game8.co/4324299/be5fce2b604439e75f93836f51158972.png/show' width='35' height='35' /> Meow Meow</a></td>
+    <th class="center" colspan=2>Where Winds Meet Wiki Contents</th>
   </tr>
-  
-    <tr>
-   <td width="25%" class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564890><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Archery Competition.png' data-src='https://img.game8.co/4324264/a8138c44f219f01bc7671af732c88acb.png/show' width='35' height='35' /> Archery Contest</a></td>      
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564828><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Martial Fellowship.png' data-src='https://img.game8.co/4324403/8facbfbd7dc8124e3984fbed39259b63.png/show' width='35' height='35' /> Martial Fellowship</a></td>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564880><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Healer Healing.png' data-src='https://img.game8.co/4324280/d693b5bbe5243e620a0834cce9f59577.png/show' width='35' height='35' /> Healer Healing</a></td>
+  <tr>
+    <td width="50%" class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/562614><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='News Partial' data-src='https://img.game8.co/4327028/3b40ab92d87939bd5c223fc717fd8327.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />News</a></td>
+    <td width="50%" class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564704><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='List of Weapons' data-src='https://img.game8.co/4330652/b9324dfd78b0e3b4cc5fa945fb7452cc.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Weapons</a></td>
   </tr>
-  
   <tr>
-      <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564823><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Gift of Gab.png' data-src='https://img.game8.co/4324282/efa49f1f15c1b56ae3885ce6eb801648.png/show' width='35' height='35' /> Gift of Gab Debate</a></td>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564885><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Fishing Contest.png' data-src='https://img.game8.co/4324291/9459352226296a3df2750bba6087d14c.png/show' width='35' height='35' /> Fishing Contest</a></td>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/565758><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Universal Harmony' data-src='https://img.game8.co/4330906/71dc8fd0ad7a0ae46ab064d02c687c38.png/show' width='35' height='35' />Universal Harmony</a></td>
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564076><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Martial Arts Partial' data-src='https://img.game8.co/4329488/dc1e7dd597d8acd4cdead13b2be06723.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Martial Arts</a></td>
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564103><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Side Quest' data-src='https://img.game8.co/4329260/5fea13ef9a6f24bf9d05d8e21d278142.png/show' width='728' style='height: 0; padding-bottom: calc(728px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Side Quests</a></td>
   </tr>
-  
   <tr>
-      <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/565765><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Hidden Paths' data-src='https://img.game8.co/4330907/0583e6f3d2669ecb6c6dad2b801d5973.png/show' width='35' height='35' />Hidden Path</a></td>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/565768><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Wild Ritual Ghost Fire' data-src='https://img.game8.co/4330905/313b632847929e187ad440b4e930bfb4.png/show' width='35' height='35' />Wild Ritual Ghost Fire</a></td>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/565795><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Chest.png' data-src='https://img.game8.co/4324408/de3c40297e57d568e255d648b1cd20c0.png/show' width='35' height='35' /> Chest Collection</a></td>
-   </tr>
-  
-  <tr>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/565754><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Graceful Melody.png' data-src='https://img.game8.co/4350035/b84007c9e2f9763fff2a8674852669f2.png/show' width='35' height='35' /> Graceful Melody</a></td>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/565756><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Pitch Pot.png' data-src='https://img.game8.co/4329238/89002d2e8375ab4789836661df6113ea.png/show' width='35' height='35' /> Pitch Pot</a></td>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/565780><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Camp' data-src='https://img.game8.co/4335333/7e97daffa8f4c805089d8aff03554a51.png/show' width='35' height='35' /> Camp</a></td>
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/563680><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Bosses' data-src='https://img.game8.co/4327016/0b3c97e81a334c8f6021a6fb8a621692.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Bosses</a></td>
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564672><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Builds' data-src='https://img.game8.co/4330014/07d0a36eee4bd712921a91aa0e040913.png/show' width='728' style='height: 0; padding-bottom: calc(728px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Builds</a></td>
   </tr>
-  
   <tr>
-    <td class="top center"><b class='a-bold'><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Chess Match.png' data-src='https://img.game8.co/4329603/ec95122da17e02fadb8dd855137442f1.png/show' width='35' height='35' /> Chess</b></td>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/565776><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Cat Play.png' data-src='https://img.game8.co/4335458/cc339044831eb6f6a71f23db8ab9da31.png/show' width='35' height='35' />Cat Play</a></td>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/565825><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Madiao.png' data-src='https://img.game8.co/4329942/a65f8717f39374711dc1ca60dfa3de72.png/show' width='35' height='35' /> Madiao</a></td>
-     </tr>
-  
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564080><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Map Partial' data-src='https://img.game8.co/4329259/661a9e71dbf22d047d9c40171ad06711.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Map</a></td>
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564718><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Sentient Beings Partial' data-src='https://img.game8.co/4330174/e2bca5fc11eaaf29dada4489de14a5d9.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Sentient Beings</a>
+      </td>
+  </tr>
   <tr>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/566908><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Riddle.png' data-src='https://img.game8.co/4330039/bc69145db7768f9a21db30d006e3d462.png/show' width='35' height='35' /> Riddle</a></td>
-    <td class="top center"><a class='a-link' href=https://game8.co/games/Where-Winds-Meet/archives/572079><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Antique.png' data-src='https://img.game8.co/4329801/41b985fcc3e62f38c5784f2e729c4883.png/show' width='35' height='35' /> Antiques</a></td>    
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564669><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Encounter' data-src='https://img.game8.co/4331122/bd7034a17cf8acd31db456608d7bc9a9.png/show' width='35' height='35' />Encounter</a></td>
-   </tr>
-  
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/563484><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Walkthrough Partial Banner' data-src='https://img.game8.co/4328832/6720853337064349aa6b85a9be5f86f1.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Walkthrough</a></td>
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564723><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Where Winds Meet - Mystic Arts' data-src='https://img.game8.co/4334411/1491d1a3aa8fb6b80d94e6b737317ca3.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' /> Mystic Arts</a></td>
+  </tr>
+  <tr>
+    <td class="center"><b class='a-bold'><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Internal Arts' data-src='https://img.game8.co/4334412/e914f06c7841fda4bc9581c712f091da.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' /> Internal Arts</b></td>
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564878><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='List of Sects' data-src='https://img.game8.co/4331091/1245d199f38c4b7f2d339b7cd751500f.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Sects</a></td>
+  </tr>
+  <tr>
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564743><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='List of All Armor' data-src='https://img.game8.co/4330653/c73b246f7eb96ba1e27bfd1b26e67f17.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Armor</a></td>
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564767><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='List of Accessories' data-src='https://img.game8.co/4330654/6e42af170bc1d475d452a736ecd75937.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Accessories</a></td>
+  </tr>
+  <tr>
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564877><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Items Partial' data-src='https://img.game8.co/4335310/cf4e2e4e49eae85c9af2c997332e0369.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Items</a></td>
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564814><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Cosmetics Partial' data-src='https://img.game8.co/4334467/1113fc63997a0c302da933de8f138d4b.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Cosmetics</a></td>
+  </tr>
+  <tr>
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/564897><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Professions' data-src='https://img.game8.co/4341072/14b336106ff19b738beb24fcaef1ccc9.png/show' width='728' style='height: 0; padding-bottom: calc(728px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Profession</a></td>
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/565812><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='List of NPCs' data-src='https://img.game8.co/4337525/d29c39ddf0349ba131d9f049f9cdde47.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />NPC</a></td>
+  </tr>
    <tr>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/575291><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Anecdotes' data-src='https://img.game8.co/4383964/a72b8e4309f1bd2dca04a04a693762c0.png/show' width='35' height='35' />Anecdotes</a></td>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/577692><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Injustice' data-src='https://img.game8.co/4335328/64199981f583e72b3d56b1d13602fab3.png/show' width='35' height='35' />Injustice</a></td>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/577446><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Exploration Guide' data-src='https://img.game8.co/4336565/d5017e4483502bf2a05c34bde9900505.png/show' width='35' height='35' />Exploration Guide</a></td>
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/565898><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Divinecraft Dungeon Partial' data-src='https://img.game8.co/4338130/b606ccaf2c2df1d35d2f0bdabf511d25.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Divinecraft Dungeons</a></td>
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/566282><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Compendium' data-src='https://img.game8.co/4339771/8bb38a4b5f519ba75b178006e4cacd10.png/show' width='728' style='height: 0; padding-bottom: calc(728px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Compendium</a></td>
   </tr>
-  
-  <tr>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/584389><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Wrestling' data-src='https://img.game8.co/4337310/bfcf2800710f06d81fd12201634b4841.png/show' width='35' height='35' />Wrestling</a></td>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/583128><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Piaoyao Battleboard' data-src='https://img.game8.co/4424640/e1487b4f380b28cbb6cdc0b328a21100.png/show' width='35' height='35' />Piaoyao Battleboard</a></td>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/584458><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Foes of the Outer Realms' data-src='https://img.game8.co/4424558/3085c891ee0bb5734c97c4736a3bc75f.png/show' width='35' height='35' />Foes of the Outer Realms</a></td>
-  </tr>
-  <tr>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/584381><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Old Friend' data-src='https://img.game8.co/4335386/8956d6e5f4f0ce7213479ecdaf4fe5b7.png/show' width='35' height='35' />Old Friends</a></td>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/590933><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Chasing Moonlight' data-src='https://img.game8.co/4459102/baf62bef630bb2b1f7071ef2bdfd6ba7.png/show' width='35' height='35' />Chasing Moonlight</a></td>
-    <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/591055><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Overlapping Moonlight Shadows' data-src='https://img.game8.co/4459940/2b4c198b630da7ea6c5868a74ac1a7f6.png/show' width='30' height='30' />Overlapping Moonlight Shadows</a></td>
-  </tr>
-<tr>
-      <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/597748><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Heroes of the Four Seas' data-src='https://img.game8.co/4486245/00248a36414d3544d4ab14f64df6ffa1.png/show' width='30' height='30' />Heroes of the Four Seas</a></td>
-      <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/602764><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Ultimate Slap' data-src='https://img.game8.co/4517196/fa3541c65f096827cc9d4c5da8385bac.png/show' width='30' height='30' />Ultimate Slap</a></td>
-      <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/602923><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Cricket Fighting' data-src='https://img.game8.co/4517396/38786401711c1789c148a2166c11ee74.png/show' width='30' height='30' />Cricket Fighting</a></td>
-  </tr>
-<tr>
-      <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/602979><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Bloomworks' data-src='https://img.game8.co/4517539/51704f66d5e07ed9ef20c26949bbddaa.png/show' width='30' height='30' />Bloomworks</a></td>
-      <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/603025><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Bloomworks' data-src='https://img.game8.co/4517872/5e417c2c673ea5752bc9739a2b14337a.png/show' width='30' height='30' />Ice Sculpture</a></td>
-      <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/603019><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Mounted Archery Challenge' data-src='https://img.game8.co/4517685/5c17e0a93f0311c0342a43ba6ec0d702.png/show' width='30' height='30' />Mounted Archery Challenge</a></td>
-  </tr>
-  <tr>
-      <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/603066><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Imperial Decree Icon' data-src='https://img.game8.co/4518036/4b92dccfdda8abf29231783df1fb382c.png/show' width='30' height='30' />Imperial Decree</a></td>
-      <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/603046><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Inscribing Peachwood Talisman' data-src='https://img.game8.co/4518170/410d83ec746828e71b83583007a8633c.png/show' width='30' height='30' />Inscribing Peachwood Talisman</a>
+   <tr>
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/568663><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Events' data-src='https://img.game8.co/4350036/555764bc481c710bf791858e7d6ba8d6.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Events</a>
 </td>
-      <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/603061><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Winter Meow Meow' data-src='https://img.game8.co/4518017/8290f27aa2fff170b7310f5a96c9f498.png/show' width='30' height='30' />Winter Meow Meow</a></td>
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/568656><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Talents' data-src='https://img.game8.co/4352637/62df12e024ee178d5c1d0485c4e9d66b.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Talents</a></td>
   </tr>
   <tr>
-      <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/603313><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Canine Capers Icon' data-src='https://img.game8.co/4519579/6ea13f64def42684ce5165f0e4077933.png/show' width='30' height='30' />Canine Capers</a></td>
-      <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/603354><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Winter Treasure Chest Icon' data-src='https://img.game8.co/4519900/f197b9a855b1caac7559ba16a6131bff.png/show' width='30' height='30' />Winter Treasure Chest</a></td>
-      <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/603495><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Ice Games Icon' data-src='https://img.game8.co/4518018/75446cd3035d2806e74171ed7ff9aec8.png/show' width='30' height='30' />Ice Games</a></td>
-  </tr>
-  <tr>
-      <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/603468><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Chef Cleaver Icon' data-src='https://img.game8.co/4519753/54d0242866f1a67695bf57f8212122c5.png/show' width='30' height='30' />Chef Cleaver</a></td>
-      <td class="top center"><a class='a-link' href=/games/Where-Winds-Meet/archives/603608><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy' alt='Rogue Champion Icon' data-src='https://img.game8.co/4521001/fb95346ca2078c7c68194e3ecef6c9e7.png/show' width='30' height='30' />Rogue Champion</a></td>
-      <td class="top center">-</td>
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/571353><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='Enemies Partial' data-src='https://img.game8.co/4367492/b1c8538ef7b051e57f084033aa8d4c53.png/show' width='728' style='height: 0; padding-bottom: calc(728px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Enemies</a></td>
+    <td class="center"><a class='a-link' href=/games/Where-Winds-Meet/archives/574476><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' class='a-img lazy lazy-non-square' alt='WWM - Tales and Echoes' data-src='https://img.game8.co/4385170/c534adfe2c32ff44a4424a458f1d07c3.png/show' width='728' style='height: 0; padding-bottom: calc(px*180/728); padding-bottom: calc(min(100%,728px)*180/728);' />Tales and Echoes</a></td>
   </tr>
 </table>
-</div><div class="track_mario" data-track-mario-keyword="comment_top" data-track-mario-value="565800"></div><div class="c-container"><h2 class="a-header--2">Comment</h2><div class="c-row"><div class="c-commentItem c-container--padding-sp"><div class="c-commentItem__header"><span class="c-commentItem__userName"><span>7</span></span>&nbsp;<span class="c-commentItem__userIcon"><img alt="Anonymous" class="c-commentItem__avatar" src="https://assets.game8.co/assets/icon/comment_default_2-45f686dad805cd04a0b8efbe2aafe9202e7722fa45faa5c034833f42b940f033.svg" /></span>&nbsp;<span class="c-commentItem__userName"><span>Anonymous</span></span>&nbsp;<span class="c-commentItem__date">5 months</span></div><div class="c-commentItem__body"><p>im on mobile. you didnt say what to press to change the logos.</p></div></div><div class="c-commentItem c-container--padding-sp"><div class="c-commentItem__header"><span class="c-commentItem__userName"><span>6</span></span>&nbsp;<span class="c-commentItem__userIcon"><img alt="yanni" class="c-commentItem__avatar" src="https://assets.game8.co/assets/icon/comment_default_2-45f686dad805cd04a0b8efbe2aafe9202e7722fa45faa5c034833f42b940f033.svg" /></span>&nbsp;<span class="c-commentItem__userName"><span>yanni</span></span>&nbsp;<span class="c-commentItem__date">6 months</span></div><div class="c-commentItem__body"><p><button class='js-open-reply-modal c-commentItem__anchor c-commentItem__btn' data-micromodal-trigger='js-reply-modal' data-anchor='{"id":565800,"response_number":6,"reply_num":"3"}')'> >>3 </button> 
-The F button doesn&#39;t work when entering chess mini game while trying to win an item from NPCs inventory :(</p></div></div></div><div class="c-row"><a class="a-btn track_nier" data-track-nier-keyword="archive.comment_more_link.click" data-track-nier-value="abtest_pc_1" href="https://game8.co/games/Where-Winds-Meet/archives/565800/comments">See more comments (7 Comments)</a></div></div><div class="c-container c-container--top20"><div class="c-share"><div class="c-share__text">Share:</div><div class="c-share__links"><a class="c-share__link c-share__link--fb track_nier" data-track-nier-keyword="share_btn_click" data-track-nier-value="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgame8.co%2Fgames%2FWhere-Winds-Meet%2Farchives%2F565800" target="_blank"><i class="icon-facebook"></i></a><a class="c-share__link c-share__link--tw track_nier" data-track-nier-keyword="share_btn_click" data-track-nier-value="twitter" href="https://twitter.com/share?url=https%3A%2F%2Fgame8.co%2Fgames%2FWhere-Winds-Meet%2Farchives%2F565800&amp;text=All%20Chess%20Locations%20and%20How%20to%20Play%20%7C%20Where%20Winds%20Meet%20%EF%BD%9CGame8&amp;hashtags=WhereWindsMeet,WWM" target="_blank"><i class="icon-twitter"></i></a><a class="c-share__link c-share__link--pn track_nier" data-track-nier-keyword="share_btn_click" data-track-nier-value="pinterest" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fgame8.co%2Fgames%2FWhere-Winds-Meet%2Farchives%2F565800" target="_blank"><i class="icon-pinterest"></i></a><a class="c-share__link track_nier" data-track-nier-keyword="share_btn_click" data-track-nier-value="reddit" href="https://www.reddit.com/submit?url=https%3A%2F%2Fgame8.co%2Fgames%2FWhere-Winds-Meet%2Farchives%2F565800" target="_blank"><img class="c-share__link--image" alt="share on reddit" src="https://assets.game8.co/assets/reddit-logo-8613ebbbb7ea55b1958b6503f2a6f55846aac8a0153029bf9bdba8fc8dc085a1.png" /></a><a class="c-share__link track_nier" data-track-nier-keyword="share_btn_click" data-track-nier-value="whatsapp" href="https://api.whatsapp.com/send?text=https%3A%2F%2Fgame8.co%2Fgames%2FWhere-Winds-Meet%2Farchives%2F565800" target="_blank"><img class="c-share__link--image" alt="share on whatsapp" src="https://assets.game8.co/assets/whatsapp-logo-7088e96c6c862b4db7eab40705ab8e8fde278cfc2db6e9318402445b0b53c68d.png" /></a><a class="c-share__link track_nier" data-track-nier-keyword="share_btn_click" data-track-nier-value="messenger" href="https://m.me/?text=https%3A%2F%2Fgame8.co%2Fgames%2FWhere-Winds-Meet%2Farchives%2F565800" target="_blank"><img class="c-share__link--image" alt="share on messenger" src="https://assets.game8.co/assets/messenger-logo-c32947f5cf72fcb1fdad369d9c0969d1f6e1258f05edebd235c8815b3f602f22.png" /></a></div></div></div><div class="c-container"><h2 class="a-header--2">Author</h2><div class="p-article__author" itemscope="" itemtype="https://schema.org/author"><div class="p-article__author__item"><div class="p-article__author__thumb"><img data-src="https://img.game8.co/4323150/5ad7c57cab52f7158604f3dc3f39e3c9.png/show" class="lazy lazy-fadeIn" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /></div><div class="p-article__author__text"><div class="p-authorListItem__title archive" itemprop="name">Where Winds Meet Walkthrough Team</div><div class="p-authorListItem__lead archive" itemprop="description">This article was created by Game8&#39;s elite team of writers and gamers.</div></div></div></div></div><div class="c-micromodal c-micromodal-slide" id="js-reply-modal"><div class="c-micromodal__overlay" data-micromodal-close=""><div class="c-micromodal__container"><button class="c-micromodal__close" data-micromodal-close=""></button><div class="c-micromodal__content"><ul id="js-reply-modal-content"></ul></div><div class="button-container-center"><button class="button button-sm button-gray" data-micromodal-close="">Close</button></div></div></div></div><div class="c-micromodal c-micromodal-slide" id="js-event-modal"><div class="c-micromodal__overlay" data-micromodal-close=""><div class="c-micromodal__container"><button class="c-micromodal__close" data-micromodal-close=""></button><div class="c-micromodal__header" id="js-event-modal-header"></div><div class="c-micromodal__content"><div id="js-event-modal-content"></div><div id="js-event-modal-footer"></div><div class="button-container-center"><button class="button button-sm button-gray" data-micromodal-close="">Close</button></div></div></div></div></div><div class="p-archiveFeedback"><a class="p-archiveFeedback__link js-open-membership-modal" data-track-action="signup" data-track-placement="archive_feedback" data-track-nier-keyword="user_registration_flow" data-track-nier-value="signup_to_feedback" rel="nofollow" href="#"><i class="fa fa-exclamation-triangle p-archiveFeedback__icon"></i><span>Leave feedback</span><small>(Login required)</small></a></div><ul class="p-archiveBreadcrumb"><li class="p-archiveBreadcrumbItem"><p class="p-archiveBreadcrumbItem__inner"><a class="p-archiveBreadcrumbItem__elem p-archiveBreadcrumbItem__elem--first" href="https://game8.co/games/Where-Winds-Meet">Where Winds Meet Walkthrough &amp; Guides Wiki</a></p></li><li class="p-archiveBreadcrumbItem"><p class="p-archiveBreadcrumbItem__inner"><a class="p-archiveBreadcrumbItem__elem" href="https://game8.co/games/Where-Winds-Meet/archives/564718">Sentient Beings</a></p></li><li class="p-archiveBreadcrumbItem"><p class="p-archiveBreadcrumbItem__inner"><span class="p-archiveBreadcrumbItem__elem p-archiveBreadcrumbItem__elem--last">All Chess Locations and How to Play</span></p></li></ul></div><div class="p-archiveContent__side"><div class="drawer_survey track_nier" data-track-nier-keyword="drawer_survey.click" data-track-nier-value="pc"><div class="drawer_survey--item"><div class="drawer_survey--item__bee"><img src="https://assets.game8.co/assets/bee_apology-84546d6a279c09db3b80b10b236471df46e8565b0741061ddec26407c3683be7.png" width="36" height="32" /><div class="drawer_survey--item__bee--badge"></div></div><div class="drawer_survey--item__title"><div class="drawer_survey--item__title--main">Please participate in our site<br />improvement survey <br /><span class="drawer_survey--item__title--date" >06/2026</span></div></div><div class="drawer_survey--item__date"></div></div></div><div class="survey_modal"><form name="nps_survey_form"><input name="answer" type="hidden" value="" /><input name="advertisement" type="hidden" value="0,0,0,0,0,0" /><input name="quality" type="hidden" value="0,0,0,0,0,0" /><input name="usability" type="hidden" value="0,0,0,0,0,0" /><input name="board" type="hidden" value="0,0,0,0,0,0" /><input name="design" type="hidden" value="0,0,0,0,0" /><input name="archive_id" type="hidden" value="565800" /><input name="game_id" type="hidden" value="1466" /><input name="step" type="hidden" value="0" /></form><div class="survey_modal_top"><div class="survey_modal_top-header"><div class="survey_modal_top-header__content"><div class="survey_modal_top-header__title">Would you assist in<br />improving Game8's site?</div><img class="survey_modal_top-header__bee" src="https://assets.game8.co/assets/new/nps_survey/bee_june-909341aff7e53af9c9a6dfac79f2980ff40cd9ec99b2adc5c0ea28ac0f33c2b3.png" /></div></div><div class="survey_modal__close"><span>&times</span></div><div class="survey_modal-top-body"><div class="survey_modal_top-body-text">This survey will take about 1 minute.<br />Your answers will help us to improve our website.</div><div class="survey_modal_top-body-info"><div class="survey_modal_top-body-info-icon"><svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="survey_modal_top-body-info-icon">
+</div><div class="track_mario" data-track-mario-keyword="comment_top" data-track-mario-value="564726"></div><div class="c-container"><h2 class="a-header--2">Comment</h2><div class="c-row"><div class="c-commentItem c-container--padding-sp"><div class="c-commentItem__header"><span class="c-commentItem__userName"><span>2</span></span>&nbsp;<span class="c-commentItem__userIcon"><img alt="caph" class="c-commentItem__avatar" src="https://api.dicebear.com/7.x/pixel-art/svg?seed=caph&amp;size=150" /></span>&nbsp;<span class="c-commentItem__userName"><span>caph</span></span>&nbsp;<span class="c-commentItem__date">7 months</span></div><div class="c-commentItem__body"><p><button class='js-open-reply-modal c-commentItem__anchor c-commentItem__btn' data-micromodal-trigger='js-reply-modal' data-anchor='{"id":564726,"response_number":2,"reply_num":"1"}')'> >>1 </button> </p><button class="js-open-image-modal p-commentImageModalButton" data-image-url="https://img.game8.co/4348791/b12628d2886c2c21cf7ecde1c636cdd3.jpeg/show" data-micromodal-trigger="js-open-image-modal"><i class="fa fa-camera fa--btn"></i>View image</button></div></div><div class="c-commentItem c-container--padding-sp"><div class="c-commentItem__header"><span class="c-commentItem__userName"><span>1</span></span>&nbsp;<span class="c-commentItem__userIcon"><img alt="caph" class="c-commentItem__avatar" src="https://api.dicebear.com/7.x/pixel-art/svg?seed=caph&amp;size=150" /></span>&nbsp;<span class="c-commentItem__userName"><span>caph</span></span>&nbsp;<span class="c-commentItem__date">7 months</span></div><div class="c-commentItem__body"><p>HI where I have circled in red, I cannot click to see more information, for example the levels Effects</p><button class="js-open-image-modal p-commentImageModalButton" data-image-url="https://img.game8.co/4348790/fdf277ded0644b27c93c379a27fa02c2.jpeg/show" data-micromodal-trigger="js-open-image-modal"><i class="fa fa-camera fa--btn"></i>View image</button></div></div></div><div class="c-row"><a class="a-btn track_nier" data-track-nier-keyword="archive.comment_more_link.click" data-track-nier-value="abtest_pc_1" href="https://game8.co/games/Where-Winds-Meet/archives/564726/comments">Post (2 Comments)</a></div></div><div class="c-container c-container--top20"><div class="c-share"><div class="c-share__text">Share:</div><div class="c-share__links"><a class="c-share__link c-share__link--fb track_nier" data-track-nier-keyword="share_btn_click" data-track-nier-value="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgame8.co%2Fgames%2FWhere-Winds-Meet%2Farchives%2F564726" target="_blank"><i class="icon-facebook"></i></a><a class="c-share__link c-share__link--tw track_nier" data-track-nier-keyword="share_btn_click" data-track-nier-value="twitter" href="https://twitter.com/share?url=https%3A%2F%2Fgame8.co%2Fgames%2FWhere-Winds-Meet%2Farchives%2F564726&amp;text=List%20of%20All%20Inner%20Ways%20%7C%20Where%20Winds%20Meet%20%EF%BD%9CGame8&amp;hashtags=WhereWindsMeet,WWM" target="_blank"><i class="icon-twitter"></i></a><a class="c-share__link c-share__link--pn track_nier" data-track-nier-keyword="share_btn_click" data-track-nier-value="pinterest" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fgame8.co%2Fgames%2FWhere-Winds-Meet%2Farchives%2F564726" target="_blank"><i class="icon-pinterest"></i></a><a class="c-share__link track_nier" data-track-nier-keyword="share_btn_click" data-track-nier-value="reddit" href="https://www.reddit.com/submit?url=https%3A%2F%2Fgame8.co%2Fgames%2FWhere-Winds-Meet%2Farchives%2F564726" target="_blank"><img class="c-share__link--image" alt="share on reddit" src="https://assets.game8.co/assets/reddit-logo-8613ebbbb7ea55b1958b6503f2a6f55846aac8a0153029bf9bdba8fc8dc085a1.png" /></a><a class="c-share__link track_nier" data-track-nier-keyword="share_btn_click" data-track-nier-value="whatsapp" href="https://api.whatsapp.com/send?text=https%3A%2F%2Fgame8.co%2Fgames%2FWhere-Winds-Meet%2Farchives%2F564726" target="_blank"><img class="c-share__link--image" alt="share on whatsapp" src="https://assets.game8.co/assets/whatsapp-logo-7088e96c6c862b4db7eab40705ab8e8fde278cfc2db6e9318402445b0b53c68d.png" /></a><a class="c-share__link track_nier" data-track-nier-keyword="share_btn_click" data-track-nier-value="messenger" href="https://m.me/?text=https%3A%2F%2Fgame8.co%2Fgames%2FWhere-Winds-Meet%2Farchives%2F564726" target="_blank"><img class="c-share__link--image" alt="share on messenger" src="https://assets.game8.co/assets/messenger-logo-c32947f5cf72fcb1fdad369d9c0969d1f6e1258f05edebd235c8815b3f602f22.png" /></a></div></div></div><div class="c-container"><h2 class="a-header--2">Author</h2><div class="p-article__author" itemscope="" itemtype="https://schema.org/author"><div class="p-article__author__item"><div class="p-article__author__thumb"><img data-src="https://img.game8.co/4323150/5ad7c57cab52f7158604f3dc3f39e3c9.png/show" class="lazy lazy-fadeIn" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /></div><div class="p-article__author__text"><div class="p-authorListItem__title archive" itemprop="name">Where Winds Meet Walkthrough Team</div><div class="p-authorListItem__lead archive" itemprop="description">This article was created by Game8&#39;s elite team of writers and gamers.</div></div></div></div></div><div class="c-micromodal c-micromodal-slide" id="js-reply-modal"><div class="c-micromodal__overlay" data-micromodal-close=""><div class="c-micromodal__container"><button class="c-micromodal__close" data-micromodal-close=""></button><div class="c-micromodal__content"><ul id="js-reply-modal-content"></ul></div><div class="button-container-center"><button class="button button-sm button-gray" data-micromodal-close="">Close</button></div></div></div></div><div class="c-micromodal c-micromodal-slide" id="js-event-modal"><div class="c-micromodal__overlay" data-micromodal-close=""><div class="c-micromodal__container"><button class="c-micromodal__close" data-micromodal-close=""></button><div class="c-micromodal__header" id="js-event-modal-header"></div><div class="c-micromodal__content"><div id="js-event-modal-content"></div><div id="js-event-modal-footer"></div><div class="button-container-center"><button class="button button-sm button-gray" data-micromodal-close="">Close</button></div></div></div></div></div><div class="p-archiveFeedback"><a class="p-archiveFeedback__link js-open-membership-modal" data-track-action="signup" data-track-placement="archive_feedback" data-track-nier-keyword="user_registration_flow" data-track-nier-value="signup_to_feedback" rel="nofollow" href="#"><i class="fa fa-exclamation-triangle p-archiveFeedback__icon"></i><span>Leave feedback</span><small>(Login required)</small></a></div><ul class="p-archiveBreadcrumb"><li class="p-archiveBreadcrumbItem"><p class="p-archiveBreadcrumbItem__inner"><a class="p-archiveBreadcrumbItem__elem p-archiveBreadcrumbItem__elem--first" href="https://game8.co/games/Where-Winds-Meet">Where Winds Meet Walkthrough &amp; Guides Wiki</a></p></li><li class="p-archiveBreadcrumbItem"><p class="p-archiveBreadcrumbItem__inner"><span class="p-archiveBreadcrumbItem__elem p-archiveBreadcrumbItem__elem--last">List of All Inner Ways</span></p></li></ul></div><div class="p-archiveContent__side"><div class="drawer_survey track_nier" data-track-nier-keyword="drawer_survey.click" data-track-nier-value="pc"><div class="drawer_survey--item"><div class="drawer_survey--item__bee"><img src="https://assets.game8.co/assets/bee_apology-84546d6a279c09db3b80b10b236471df46e8565b0741061ddec26407c3683be7.png" width="36" height="32" /><div class="drawer_survey--item__bee--badge"></div></div><div class="drawer_survey--item__title"><div class="drawer_survey--item__title--main">Please participate in our site<br />improvement survey <br /><span class="drawer_survey--item__title--date" >06/2026</span></div></div><div class="drawer_survey--item__date"></div></div></div><div class="survey_modal"><form name="nps_survey_form"><input name="answer" type="hidden" value="" /><input name="advertisement" type="hidden" value="0,0,0,0,0,0" /><input name="quality" type="hidden" value="0,0,0,0,0,0" /><input name="usability" type="hidden" value="0,0,0,0,0,0" /><input name="board" type="hidden" value="0,0,0,0,0,0" /><input name="design" type="hidden" value="0,0,0,0,0" /><input name="archive_id" type="hidden" value="564726" /><input name="game_id" type="hidden" value="1466" /><input name="step" type="hidden" value="0" /></form><div class="survey_modal_top"><div class="survey_modal_top-header"><div class="survey_modal_top-header__content"><div class="survey_modal_top-header__title">Would you assist in<br />improving Game8's site?</div><img class="survey_modal_top-header__bee" src="https://assets.game8.co/assets/new/nps_survey/bee_june-909341aff7e53af9c9a6dfac79f2980ff40cd9ec99b2adc5c0ea28ac0f33c2b3.png" /></div></div><div class="survey_modal__close"><span>&times</span></div><div class="survey_modal-top-body"><div class="survey_modal_top-body-text">This survey will take about 1 minute.<br />Your answers will help us to improve our website.</div><div class="survey_modal_top-body-info"><div class="survey_modal_top-body-info-icon"><svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="survey_modal_top-body-info-icon">
 <path d="M15.8333 4.16667V11.6667H11.6667V15.8333H4.16667V4.16667H15.8333ZM15.8333 2.5H4.16667C3.25 2.5 2.5 3.25 2.5 4.16667V15.8333C2.5 16.75 3.25 17.5 4.16667 17.5H12.5L17.5 12.5V4.16667C17.5 3.25 16.75 2.5 15.8333 2.5ZM10 11.6667H5.83333V10H10V11.6667ZM14.1667 8.33333H5.83333V6.66667H14.1667V8.33333Z" fill="#FFB800"></path>
 </svg>
 </div><div class="survey_modal_top-body-info-text">We are listening to our users' valuable opinions and discussing how to act on them.</div></div><div class="survey_modal_top-body-description">The information collected through this survey will be used for the purpose of improving our services. In addition, the information will only be disclosed a part of a statistic in a format that will not allow identification of personal information.</div></div><div class="survey_modal_top__start"><span>Begin Survey</span></div><div class="survey_modal__close-link">Not Now</div></div><div class="survey_modal_steps survey_modal_step1 modal_display_none"><div class="survey_modal-header"><div class="survey_modal_steps__progress"></div><div class="survey_modal_steps__progress_bar step1"></div><div class="survey_modal__close"><span>&times</span></div></div><div class="survey_modal-body"><div class="survey_modal-body__question">Please rate each item regarding Game8.co's Advertisements.</div><div class="survey_modal-body__answers"><div class="survey_modal-body__answers-detail-container"><div class="survey_modal-body__answers-detail-description">Amount of Ads</div><div class="survey_modal-body__answers-detail-answers"><div class="survey_modal-body__answers-detail-answers-item" index="0" question="0" value="1"><div class="survey_icon-container"><div class="survey_modal-body__answers-detail-answers-item-description">Very Dissatisfied</div><div class="survey_circle-container"><div class="survey_circle-inliner"><div class="survey_modal-body__answers-detail-answers-item-circle"><svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="survey_modal-body__answers-detail-answers-item-icon">
@@ -1788,7 +1667,7 @@ The F button doesn&#39;t work when entering chess mini game while trying to win 
 	L22,8.3L20.6,10C20.6,10,22,11.7,22,11.7z M19,10c0-3.9-3.1-7-7-7s-7,3.1-7,7s3.1,7,7,7S19,13.9,19,10z M17.1,20.3l2.4,3.7l1.1-2H23
 	l-2.7-4.1C19.4,18.9,18.3,19.7,17.1,20.3z M3.7,17.9L1,22h2.3l1.1,2l2.4-3.7C5.7,19.7,4.6,18.9,3.7,17.9z"></path>
 </svg>
-<h2 class="c-heading__title">Rankings</h2></div><div class="c-tabContainer"><div class="c-tabs"><div class="c-tab"><button class="c-tab__link is-active track_nier" data-track-nier-keyword="ranking_tab_a_1_pc" type="button">Popular Articles</button></div><div class="c-tab"><button class="c-tab__link track_nier" data-track-nier-keyword="ranking_tab_a_2_pc" type="button">Message Board</button></div></div><div class="c-tabPanels"><div class="c-tabPanel is-active"><ul class="c-tabList"><li class="c-tabListItem"><span class="c-tabListItem__rank c-tabListItem__rank--1">1</span><a class="c-tabListItem__link track_nier" data-track-nier-keyword="popular_articles_pc" data-track-nier-value="To Scorn the Frost Walkthrough and Rewards" href="https://game8.co/games/Where-Winds-Meet/archives/594014">To Scorn the Frost Walkthrough a...</a></li><li class="c-tabListItem"><span class="c-tabListItem__rank c-tabListItem__rank--2">2</span><a class="c-tabListItem__link track_nier" data-track-nier-keyword="popular_articles_pc" data-track-nier-value="Where Winds Meet Interactive Map" href="https://game8.co/games/Where-Winds-Meet/archives/564080">Where Winds Meet Interactive Map</a></li><li class="c-tabListItem"><span class="c-tabListItem__rank c-tabListItem__rank--3">3</span><a class="c-tabListItem__link track_nier" data-track-nier-keyword="popular_articles_pc" data-track-nier-value="Tiny Adventure: Part 1 Walkthrough and Rewards" href="https://game8.co/games/Where-Winds-Meet/archives/579432">Tiny Adventure: Part 1 Walkthrou...</a></li><li class="c-tabListItem"><span class="c-tabListItem__rank c-tabListItem__rank--4">4</span><a class="c-tabListItem__link track_nier" data-track-nier-keyword="popular_articles_pc" data-track-nier-value="How to Increase Constitution" href="https://game8.co/games/Where-Winds-Meet/archives/574485">How to Increase Constitution</a></li><li class="c-tabListItem"><span class="c-tabListItem__rank c-tabListItem__rank--5">5</span><a class="c-tabListItem__link track_nier" data-track-nier-keyword="popular_articles_pc" data-track-nier-value="Drinking Poison to Quench the Thirst Walkthrough and Rewards" href="https://game8.co/games/Where-Winds-Meet/archives/574286">Drinking Poison to Quench the Th...</a></li><li class="c-tabListItem"><a class="c-tabListItem__link c-tabListItem__more track_nier" data-track-nier-keyword="popular_articles_pc" data-track-nier-value="see more" href="https://game8.co/games/Where-Winds-Meet/ranking">See more</a></li></ul></div><div class="c-tabPanel"><ul class="c-tabList"><li class="c-tabListItem"><div class="c-tabListItem__link">We could not find the message board you were looking for.</div></li></ul></div></div></div></div><div class="c-sideContainer"></div><div class="c-sideContainer"><div class="c-heading c-heading--orange"><svg viewbox="0 0 24 24" class="c-heading__icon">
+<h2 class="c-heading__title">Rankings</h2></div><div class="c-tabContainer"><div class="c-tabs"><div class="c-tab"><button class="c-tab__link is-active track_nier" data-track-nier-keyword="ranking_tab_a_1_pc" type="button">Popular Articles</button></div><div class="c-tab"><button class="c-tab__link track_nier" data-track-nier-keyword="ranking_tab_a_2_pc" type="button">Message Board</button></div></div><div class="c-tabPanels"><div class="c-tabPanel is-active"><ul class="c-tabList"><li class="c-tabListItem"><span class="c-tabListItem__rank c-tabListItem__rank--1">1</span><a class="c-tabListItem__link track_nier" data-track-nier-keyword="popular_articles_pc" data-track-nier-value="All Redeem Codes" href="https://game8.co/games/Where-Winds-Meet/archives/564660">All Redeem Codes</a></li><li class="c-tabListItem"><span class="c-tabListItem__rank c-tabListItem__rank--2">2</span><a class="c-tabListItem__link track_nier" data-track-nier-keyword="popular_articles_pc" data-track-nier-value="How to Get Goose Eggs and What Do They Do?" href="https://game8.co/games/Where-Winds-Meet/archives/567102">How to Get Goose Eggs and What D...</a></li><li class="c-tabListItem"><span class="c-tabListItem__rank c-tabListItem__rank--3">3</span><a class="c-tabListItem__link track_nier" data-track-nier-keyword="popular_articles_pc" data-track-nier-value="All Chess Locations and How to Play" href="https://game8.co/games/Where-Winds-Meet/archives/565800">All Chess Locations and How to Play</a></li><li class="c-tabListItem"><span class="c-tabListItem__rank c-tabListItem__rank--4">4</span><a class="c-tabListItem__link track_nier" data-track-nier-keyword="popular_articles_pc" data-track-nier-value="Best Builds and Class Tier List" href="https://game8.co/games/Where-Winds-Meet/archives/564672">Best Builds and Class Tier List</a></li><li class="c-tabListItem"><span class="c-tabListItem__rank c-tabListItem__rank--5">5</span><a class="c-tabListItem__link track_nier" data-track-nier-keyword="popular_articles_pc" data-track-nier-value="The Lone Tyrant Location and How to Beat" href="https://game8.co/games/Where-Winds-Meet/archives/604796">The Lone Tyrant Location and How...</a></li><li class="c-tabListItem"><a class="c-tabListItem__link c-tabListItem__more track_nier" data-track-nier-keyword="popular_articles_pc" data-track-nier-value="see more" href="https://game8.co/games/Where-Winds-Meet/ranking">See more</a></li></ul></div><div class="c-tabPanel"><ul class="c-tabList"><li class="c-tabListItem"><div class="c-tabListItem__link">We could not find the message board you were looking for.</div></li></ul></div></div></div></div><div class="c-sideContainer"></div><div class="c-sideContainer"><div class="c-heading c-heading--orange"><svg viewbox="0 0 24 24" class="c-heading__icon">
 <path d="M19,2c1.7,0,3,1.3,3,3v14c0,1.7-1.3,3-3,3H5c-1.7,0-3-1.3-3-3V5c0-1.7,1.3-3,3-3H19z M19,0H5C2.2,0,0,2.2,0,5
 	v14c0,2.8,2.2,5,5,5h14c2.8,0,5-2.2,5-5V5C24,2.2,21.8,0,19,0z M10,9H8v2H6V9H4V7h2V5h2v2h2V9z M17,5c-0.6,0-1,0.4-1,1s0.4,1,1,1
 	s1-0.4,1-1S17.6,5,17,5z M17,9c-0.6,0-1,0.4-1,1s0.4,1,1,1s1-0.4,1-1S17.6,9,17,9z M15,7c-0.6,0-1,0.4-1,1s0.4,1,1,1s1-0.4,1-1
@@ -1814,7 +1693,7 @@ The F button doesn&#39;t work when entering chess mini game while trying to win 
 <link rel="modulepreload" href="https://assets.game8.co/vite/assets/vendor-leaflet-CTkoUypN.js" as="script" crossorigin=""><link rel="stylesheet" crossorigin="" href="https://assets.game8.co/vite/assets/vendor-leaflet-Dgihpmma.css" media="screen" /><script src="https://assets.game8.co/assets/pc/main/application-c3cbb7d2bd860d0e942b40ddbb7938e75d31c0ad6a9d6271b00a3eddddd3e21c.js"></script><div class="p-gameNavText js-p-gameNavText" style="display:none;position:fixed;top:0;z-index:1000;"><div class="p-gameNavText_inner"><ul class="p-gameNavText_list p-gameNavText_list--grow"><li class="p-gameNavText_list_item"><a class="p-gameNavText_list_item_link" href="https://game8.co/games/Where-Winds-Meet/ranking">Popular Articles</a></li><li class="p-gameNavText_list_item"><a class="p-gameNavText_list_item_link" href="https://game8.co/games/Where-Winds-Meet/archives/602736">Imperial Palace</a></li><li class="p-gameNavText_list_item"><a class="p-gameNavText_list_item_link" href="https://game8.co/games/Where-Winds-Meet/archives/566908">Riddles</a></li><li class="p-gameNavText_list_item"><a class="p-gameNavText_list_item_link" href="https://game8.co/games/Where-Winds-Meet/archives/564706">Tier List</a></li><li class="p-gameNavText_list_item"><a class="p-gameNavText_list_item_link" href="https://game8.co/games/Where-Winds-Meet/archives/564672">Builds</a></li><li class="p-gameNavText_list_item"><a class="p-gameNavText_list_item_link" href="https://game8.co/games/Where-Winds-Meet/archives/564103">Side Quests</a></li><li class="p-gameNavText_list_item"><a class="p-gameNavText_list_item_link" href="https://game8.co/games/Where-Winds-Meet/archives/565812">NPCs</a></li><li class="p-gameNavText_list_item"><a class="p-gameNavText_list_item_link" href="https://game8.co/games/Where-Winds-Meet/archives/564080">Interactive Map</a></li><li class="p-gameNavText_list_item"><a class="p-gameNavText_list_item_link" href="https://game8.co/games/Where-Winds-Meet/archives/563680">Bosses</a></li><li class="p-gameNavText_list_item"><a class="p-gameNavText_list_item_link" href="https://game8.co/games/Where-Winds-Meet/archives/564076">Martial Arts</a></li><li class="p-gameNavText_list_item"><a class="p-gameNavText_list_item_link" href="https://game8.co/games/Where-Winds-Meet/archives/564726">Inner Ways</a></li><li class="p-gameNavText_list_item"><a class="p-gameNavText_list_item_link" href="https://game8.co/games/Where-Winds-Meet/archives/564723">Mystic Skills</a></li><li class="p-gameNavText_list_item"><a class="p-gameNavText_list_item_link" href="https://game8.co/games/Where-Winds-Meet/archives/564878">Sects</a></li></ul></div></div><div aria-hidden="true" class="c-micromodal c-micromodal-slide" id="js-open-image-modal"><div class="c-micromodal__overlay" data-micromodal-close="" tabindex="-1"><div aria-labelledby="open image modal" aria-modal="true" class="c-micromodal__container" role="dialog"><button aria-label="Close modal" class="c-micromodal__close" data-micromodal-close=""></button><div class="c-micromodal__content"><img class="a-img" id="js-open-image" src="" /></div></div></div></div><div aria-hidden="true" class="c-micromodal c-micromodal-slide" id="js-archive-open-image-modal"><div class="c-micromodal__overlay" data-micromodal-close="" tabindex="-1"><div aria-labelledby="open image modal" aria-modal="true" class="c-micromodal__container c-micromodal__container--image" role="dialog"><button aria-label="Close modal" class="c-micromodal__close" data-micromodal-close=""></button><div class="c-micromodal__content"><img class="a-img" id="js-archive-open-image" src="" /><a class="c-micromodal__button" href="" id="js-archive-open-image-button"></a></div></div></div></div></div><div class="p-archiveBody__side"><div class="p-archiveBody__side-inner" id="gameMenuScrollArea"><div class="p-gameHeader"><a class="p-gameHeader__game" href="https://game8.co/games/Where-Winds-Meet"><div class="p-gameHeader__game_logo"><img alt="Where Winds Meet" src="https://img.game8.co/4323150/5ad7c57cab52f7158604f3dc3f39e3c9.png/show" /></div><p class="p-gameHeader__game_title">Where Winds Meet Walkthrough &amp; Guides Wiki</p></a><button class="p-gameHeader__bookmark js-bookmark-toggle" data-game-id="1466" data-logged-in="false" data-modal-content-type="bookmark" data-track-nier-keyword="user_registration_flow" data-track-nier-value="bookmark_to_register" type="button"><i class="fa fa-bookmark-o"></i><span>Bookmark</span><span class="c-count__count">(1853)</span></button></div><div class="p-gameHeader__search"><div class="p-gameSearch__container"><form class="p-gameSearch__form" action="https://game8.co/games/Where-Winds-Meet/search" accept-charset="UTF-8" method="get"><button type="submit" class="p-gameSearch__button" tabindex="-1"><svg viewbox="0 0 24 24">
 <path d="M23.809 21.646l-6.205-6.205c1.167-1.605 1.857-3.579 1.857-5.711 0-5.365-4.365-9.73-9.731-9.73-5.365 0-9.73 4.365-9.73 9.73 0 5.366 4.365 9.73 9.73 9.73 2.034 0 3.923-.627 5.487-1.698l6.238 6.238 2.354-2.354zm-20.955-11.916c0-3.792 3.085-6.877 6.877-6.877s6.877 3.085 6.877 6.877-3.085 6.877-6.877 6.877c-3.793 0-6.877-3.085-6.877-6.877z"></path>
 </svg>
-</button><input type="text" name="q" id="q" class="p-gameSearch__input" placeholder="Search in Game8" /></form><div class="c-search-suggestions" data-game-id="1466" style="display: none;"><div class="c-suggestion-item__header js-ranking-header">Popular Articles</div><div class="js-suggestions-list" data-directory-name="Where-Winds-Meet"><div class="c-suggestion-item track_nier" data-track-nier-keyword="search_suggestions_click" data-track-nier-value="1466"><a href="/games/Where-Winds-Meet/archives/:id"><div class="c-suggestion-item__title">:title</div><div class="c-suggestion-item__date">:date</div></a></div></div></div></div><div class="c-search-suggestions" data-game-id="1466" style="display: none;"><div class="c-suggestion-item__header js-ranking-header">Popular Articles</div><div class="js-suggestions-list" data-directory-name="Where-Winds-Meet"><div class="c-suggestion-item track_nier" data-track-nier-keyword="search_suggestions_click" data-track-nier-value="1466"><a href="/games/Where-Winds-Meet/archives/:id"><div class="c-suggestion-item__title">:title</div><div class="c-suggestion-item__date">:date</div></a></div></div></div></div><div class="p-gameNavText"><div class="p-gameNavText__title">Quick Access</div><ul class="p-gameNavText__list"><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Imperial Palace" href="https://game8.co/games/Where-Winds-Meet/archives/602736">Imperial Palace</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Riddles" href="https://game8.co/games/Where-Winds-Meet/archives/566908">Riddles</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Tier List" href="https://game8.co/games/Where-Winds-Meet/archives/564706">Tier List</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Builds" href="https://game8.co/games/Where-Winds-Meet/archives/564672">Builds</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Side Quests" href="https://game8.co/games/Where-Winds-Meet/archives/564103">Side Quests</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="NPCs" href="https://game8.co/games/Where-Winds-Meet/archives/565812">NPCs</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Interactive Map" href="https://game8.co/games/Where-Winds-Meet/archives/564080">Interactive Map</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Bosses" href="https://game8.co/games/Where-Winds-Meet/archives/563680">Bosses</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Martial Arts" href="https://game8.co/games/Where-Winds-Meet/archives/564076">Martial Arts</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Inner Ways" href="https://game8.co/games/Where-Winds-Meet/archives/564726">Inner Ways</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Mystic Skills" href="https://game8.co/games/Where-Winds-Meet/archives/564723">Mystic Skills</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Sects" href="https://game8.co/games/Where-Winds-Meet/archives/564878">Sects</a></p></div></li></ul></div><div class="p-game-menu" id="gameMenuContainer"><div class="p-gameMenu__title">Guide Index</div><ul class='menuItem-list'>
+</button><input type="text" name="q" id="q" class="p-gameSearch__input" placeholder="Search in Game8" /></form><div class="c-search-suggestions" data-game-id="1466" style="display: none;"><div class="c-suggestion-item__header js-ranking-header">Popular Articles</div><div class="js-suggestions-list" data-directory-name="Where-Winds-Meet"><div class="c-suggestion-item track_nier" data-track-nier-keyword="search_suggestions_click" data-track-nier-value="1466"><a href="/games/Where-Winds-Meet/archives/:id"><div class="c-suggestion-item__title">:title</div><div class="c-suggestion-item__date">:date</div></a></div></div></div></div><div class="c-search-suggestions" data-game-id="1466" style="display: none;"><div class="c-suggestion-item__header js-ranking-header">Popular Articles</div><div class="js-suggestions-list" data-directory-name="Where-Winds-Meet"><div class="c-suggestion-item track_nier" data-track-nier-keyword="search_suggestions_click" data-track-nier-value="1466"><a href="/games/Where-Winds-Meet/archives/:id"><div class="c-suggestion-item__title">:title</div><div class="c-suggestion-item__date">:date</div></a></div></div></div></div><div class="p-gameNavText"><div class="p-gameNavText__title">Quick Access</div><ul class="p-gameNavText__list"><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Imperial Palace" href="https://game8.co/games/Where-Winds-Meet/archives/602736">Imperial Palace</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Riddles" href="https://game8.co/games/Where-Winds-Meet/archives/566908">Riddles</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Tier List" href="https://game8.co/games/Where-Winds-Meet/archives/564706">Tier List</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Builds" href="https://game8.co/games/Where-Winds-Meet/archives/564672">Builds</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Side Quests" href="https://game8.co/games/Where-Winds-Meet/archives/564103">Side Quests</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="NPCs" href="https://game8.co/games/Where-Winds-Meet/archives/565812">NPCs</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Interactive Map" href="https://game8.co/games/Where-Winds-Meet/archives/564080">Interactive Map</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Bosses" href="https://game8.co/games/Where-Winds-Meet/archives/563680">Bosses</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Martial Arts" href="https://game8.co/games/Where-Winds-Meet/archives/564076">Martial Arts</a></p></div></li><li class="p-gameNavText__list_item p-gameNavText__list_item--current"><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Inner Ways" href="https://game8.co/games/Where-Winds-Meet/archives/564726">Inner Ways</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Mystic Skills" href="https://game8.co/games/Where-Winds-Meet/archives/564723">Mystic Skills</a></p></div></li><li class="p-gameNavText__list_item "><div class="p-gameNavText__list_item_inner"><p class="p-gameNavText__list_item_link"><a class="track_nier" data-track-nier-keyword="global-menu.item.click" data-track-nier-value="Sects" href="https://game8.co/games/Where-Winds-Meet/archives/564878">Sects</a></p></div></li></ul></div><div class="p-game-menu" id="gameMenuContainer"><div class="p-gameMenu__title">Guide Index</div><ul class='menuItem-list'>
   <li class='menuItem-listItem'><a class='menuItem-link track_nier' data-track-nier-keyword='game_menu_link' data-track-nier-value='Where Winds Meet Wiki Front' href='https://game8.co/games/Where-Winds-Meet' >Where Winds Meet Wiki Front</a></li>
   <li class='menuItem-listItem'><a class='menuItem-link track_nier' data-track-nier-keyword='game_menu_link' data-track-nier-value='Where Winds Meet Review' href='https://game8.co/articles/reviews/where-winds-meet-review' >Where Winds Meet Review</a></li>
   <li class='menuItem-listItem'><a class='menuItem-link' href=https://twitter.com/Game8_WWM target='_blank'>Game8 WWM Twitter</a></li>
