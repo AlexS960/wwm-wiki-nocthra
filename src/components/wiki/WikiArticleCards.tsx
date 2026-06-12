@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ChevronDown, ChevronUp, Edit3, Star, Trash2 } from 'lucide-react';
 import { useAuth, type WikiArticle } from '../../context/AuthContext';
+import { wikiCardDomId } from '../../lib/buildLookup';
 import { useSectionCategories } from '../../hooks/useSectionCategories';
 import { getCustomSectionById } from '../../lib/sectionRegistry';
 import MarkdownBody from '../MarkdownBody';
@@ -17,6 +18,8 @@ interface WikiArticleCardsProps {
   onToggleFavorite?: (articleId: string) => void;
   favoriteAddTitle?: string;
   favoriteRemoveTitle?: string;
+  /** Раскрыть и подсветить карточку (например, при переходе из профиля) */
+  highlightId?: string | null;
 }
 
 function WikiExpandableCard({
@@ -29,6 +32,7 @@ function WikiExpandableCard({
   onToggleFavorite,
   favoriteAddTitle = 'В избранное',
   favoriteRemoveTitle = 'Убрать из избранного',
+  highlighted = false,
 }: {
   article: WikiArticle;
   categoryLabel?: string;
@@ -39,15 +43,23 @@ function WikiExpandableCard({
   onToggleFavorite?: () => void;
   favoriteAddTitle?: string;
   favoriteRemoveTitle?: string;
+  highlighted?: boolean;
 }) {
   const [expanded, setExpanded] = useState(false);
   const summary = article.fields?.summary || article.content.slice(0, 120);
 
+  useEffect(() => {
+    if (highlighted) setExpanded(true);
+  }, [highlighted]);
+
   return (
     <div
+      id={wikiCardDomId(article.id)}
       onClick={() => setExpanded(!expanded)}
       className={`bg-ink-800/60 border rounded-xl p-4 transition-all cursor-pointer ${
-        expanded ? 'border-gold-400/40' : 'border-ink-700/30 hover:border-gold-700/30 card-hover'
+        expanded || highlighted
+          ? 'border-gold-400/40'
+          : 'border-ink-700/30 hover:border-gold-700/30 card-hover'
       }`}
     >
       <div className="flex items-start gap-3 mb-2">
@@ -109,6 +121,7 @@ export default function WikiArticleCards({
   onToggleFavorite,
   favoriteAddTitle,
   favoriteRemoveTitle,
+  highlightId,
 }: WikiArticleCardsProps) {
   const { wikiArticles, isEditor, isAdmin, updateWikiArticle, deleteWikiArticle, siteSettings } = useAuth();
   const [editId, setEditId] = useState<string | null>(null);
@@ -140,6 +153,7 @@ export default function WikiArticleCards({
           onToggleFavorite={onToggleFavorite ? () => onToggleFavorite(article.id) : undefined}
           favoriteAddTitle={favoriteAddTitle}
           favoriteRemoveTitle={favoriteRemoveTitle}
+          highlighted={highlightId === article.id}
           onEdit={() => {
             setEditId(article.id);
             if (customDef) {

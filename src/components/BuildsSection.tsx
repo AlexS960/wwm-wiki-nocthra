@@ -1,14 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { buildPaths, type BuildPath } from '../data/gameData';
 import { ChevronDown, ChevronUp, Check, X as XIcon, Zap, Star, Edit3, Trash2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useSectionOverrides } from '../hooks/useSectionOverrides';
+import { buildCardDomId, findBuildCardElement, resolveBuildName } from '../lib/buildLookup';
 import WikiArticleCards from './wiki/WikiArticleCards';
 import SectionHeader from './ui/SectionHeader';
 import SectionEditorModal, { type SectionEditorValues } from './ui/SectionEditorModal';
 import { sectionEditorConfigs } from '../data/sectionEditorConfig';
 
-export default function BuildsSection() {
+interface BuildsSectionProps {
+  focusBuildId?: string | null;
+  onBuildFocused?: () => void;
+}
+
+export default function BuildsSection({ focusBuildId, onBuildFocused }: BuildsSectionProps = {}) {
   const [expandedBuild, setExpandedBuild] = useState<string | null>(null);
   const [editId, setEditId] = useState<string | null>(null);
   const { user, progress, setSelectedBuild, wikiArticles } = useAuth();
@@ -21,6 +27,21 @@ export default function BuildsSection() {
     setSelectedBuild(progress.selectedBuild === buildId ? null : buildId);
   };
 
+  useEffect(() => {
+    if (!focusBuildId) return;
+    if (items.some(b => b.id === focusBuildId)) {
+      setExpandedBuild(focusBuildId);
+    }
+    const timer = window.setTimeout(() => {
+      const el = findBuildCardElement(focusBuildId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        onBuildFocused?.();
+      }
+    }, 150);
+    return () => window.clearTimeout(timer);
+  }, [focusBuildId, items, onBuildFocused]);
+
   return (
     <section id="builds" className="py-20 bg-pattern">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -32,10 +53,7 @@ export default function BuildsSection() {
         />
         {user && progress.selectedBuild && (
           <p className="text-gold-400 text-sm text-center -mt-8 mb-8">
-            ⭐ Мой билд:{' '}
-            {items.find(b => b.id === progress.selectedBuild)?.name
-              ?? wikiArticles.find(a => a.section === 'builds' && a.id === progress.selectedBuild)?.title
-              ?? progress.selectedBuild}
+            ⭐ Мой билд: {resolveBuildName(progress.selectedBuild, items, wikiArticles)}
           </p>
         )}
 
@@ -60,6 +78,7 @@ export default function BuildsSection() {
           ))}
           <WikiArticleCards
             sectionId="builds"
+            highlightId={focusBuildId}
             {...(user ? {
               isFavorite: (id: string) => progress.selectedBuild === id,
               onToggleFavorite: (id: string) => setSelectedBuild(progress.selectedBuild === id ? null : id),
@@ -159,7 +178,9 @@ function BuildCard({ build, canManage, isExpanded, onToggle, isSelected, onSelec
   };
 
   return (
-    <div className={`relative bg-ink-800/60 border rounded-xl overflow-hidden transition-all duration-300 ${
+    <div
+      id={buildCardDomId(build.id)}
+      className={`relative bg-ink-800/60 border rounded-xl overflow-hidden transition-all duration-300 ${
       isSelected 
         ? 'border-gold-400/60 ring-1 ring-gold-400/30' 
         : isExpanded 

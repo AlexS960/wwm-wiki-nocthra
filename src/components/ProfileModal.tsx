@@ -1,26 +1,32 @@
 import { useState, useRef, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { buildPaths } from '../data/gameData';
+import { useSectionOverrides } from '../hooks/useSectionOverrides';
+import { resolveBuildName } from '../lib/buildLookup';
+import type { NavigatePayload } from './Header';
 import { compressImageFileToBlob } from '../lib/imageUpload';
 import { uploadSiteImage, deleteSiteImageByUrl, isStorageUrl } from '../lib/storage';
 import { useUserSettings } from '../hooks/useUserSettings';
 import {
   X, User, LogOut, Edit3, Save, Camera, Shield, Star, BookOpen,
   Swords, MapPin, FileText, Plus, Trash2, Check, ImagePlus, Link as LinkIcon,
-  Circle, Download, Upload, RotateCcw, Settings, Users
+  Circle, Download, Upload, RotateCcw, Settings, Users, ChevronRight
 } from 'lucide-react';
 
 interface ProfileModalProps {
   isOpen: boolean;
   onClose: () => void;
   anchor?: { top: number; right: number } | null;
+  onNavigate?: (section: string, payload?: NavigatePayload) => void;
 }
 
-export default function ProfileModal({ isOpen, onClose, anchor }: ProfileModalProps) {
+export default function ProfileModal({ isOpen, onClose, anchor, onNavigate }: ProfileModalProps) {
   const {
     user, logout, progress, updateUserPicture, updateUserGameNickname, updateUserGuild,
     getRoleConfig, addNote, deleteNote, isUserOnline,
-    registeredGuilds, ensureGuildsLoaded, getGuildName,
+    registeredGuilds, ensureGuildsLoaded, getGuildName, wikiArticles, ensureWikiLoaded,
   } = useAuth();
+  const { items: buildItems } = useSectionOverrides('builds', buildPaths);
   const { exportSettings, importSettings, resetSettings, canExport } = useUserSettings();
   const [editing, setEditing] = useState(false);
   const [nickname, setNickname] = useState(user?.gameNickname || '');
@@ -38,8 +44,11 @@ export default function ProfileModal({ isOpen, onClose, anchor }: ProfileModalPr
   const settingsInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
-    if (isOpen) void ensureGuildsLoaded();
-  }, [isOpen, ensureGuildsLoaded]);
+    if (isOpen) {
+      void ensureGuildsLoaded();
+      void ensureWikiLoaded();
+    }
+  }, [isOpen, ensureGuildsLoaded, ensureWikiLoaded]);
 
   useEffect(() => {
     setGuildId(user?.guildId || '');
@@ -48,6 +57,9 @@ export default function ProfileModal({ isOpen, onClose, anchor }: ProfileModalPr
   if (!isOpen || !user) return null;
   const rc = getRoleConfig(user.role);
   const guildLabel = getGuildName(user.guildId) || 'не указана';
+  const selectedBuildName = progress.selectedBuild
+    ? resolveBuildName(progress.selectedBuild, buildItems, wikiArticles)
+    : null;
 
   const handleSaveGuild = () => {
     updateUserGuild(guildId);
@@ -249,10 +261,22 @@ export default function ProfileModal({ isOpen, onClose, anchor }: ProfileModalPr
               <ProgressRow label="Оружие в избранном" done={progress.favoriteWeapons.length} total={12} icon="⚔️" />
               <ProgressRow label="Секты изучены" done={progress.favoriteSects.length} total={8} icon="🏛️" />
               <ProgressRow label="Регионов посещено" done={progress.visitedRegions.length} total={5} icon="🗺️" />
-              {progress.selectedBuild && (
-                <div className="bg-gold-400/5 border border-gold-400/20 rounded-lg p-3 flex items-center gap-2">
-                  <span className="text-lg">⭐</span><div><p className="text-gold-400 text-sm font-medium">Выбранный билд</p><p className="text-white text-xs">{progress.selectedBuild}</p></div>
-                </div>
+              {progress.selectedBuild && selectedBuildName && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    onNavigate?.('builds', { wikiId: progress.selectedBuild! });
+                    onClose();
+                  }}
+                  className="w-full bg-gold-400/5 border border-gold-400/20 rounded-lg p-3 flex items-center gap-2 hover:bg-gold-400/10 hover:border-gold-400/30 cursor-pointer transition-colors text-left group"
+                >
+                  <span className="text-lg shrink-0">⭐</span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-gold-400 text-sm font-medium">Выбранный билд</p>
+                    <p className="text-white text-xs truncate">{selectedBuildName}</p>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-gold-400/60 group-hover:text-gold-400 shrink-0 transition-colors" />
+                </button>
               )}
             </div>
           )}

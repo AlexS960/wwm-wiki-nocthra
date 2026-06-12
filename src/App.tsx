@@ -66,6 +66,7 @@ function AppContent() {
     () => pageFromPath(window.location.pathname) || 'main',
   );
   const [pendingGuideId, setPendingGuideId] = useState<string | null>(null);
+  const [pendingWikiId, setPendingWikiId] = useState<string | null>(null);
 
   usePageSeo(currentPage);
   usePmBrowserNotifications();
@@ -120,6 +121,7 @@ function AppContent() {
 
   const handleNavigate = useCallback((section: string, payload?: NavigatePayload) => {
     if (payload?.guideId) setPendingGuideId(payload.guideId);
+    if (payload?.wikiId) setPendingWikiId(payload.wikiId);
     const page = section === 'home' ? 'main' : section;
     window.history.pushState({ page }, '', pathFromPage(page));
     setCurrentPage(page);
@@ -170,6 +172,7 @@ function AppContent() {
         isOpen={showProfileModal}
         onClose={() => setShowProfileModal(false)}
         anchor={profileAnchor}
+        onNavigate={handleNavigate}
       />
       <FloatingChat onLoginClick={() => setShowLoginModal(true)} />
       <SupportWidget onLoginClick={() => setShowLoginModal(true)} />
@@ -297,7 +300,12 @@ function AppContent() {
     return (
       <PageShell headerProps={headerProps} modals={modals}>
         <Suspense fallback={<PageLoader />}>
-          <ContentPage pageId={currentPage} onBack={goBack} />
+          <ContentPage
+            pageId={currentPage}
+            onBack={goBack}
+            focusWikiId={pendingWikiId}
+            onWikiFocused={() => setPendingWikiId(null)}
+          />
         </Suspense>
       </PageShell>
     );

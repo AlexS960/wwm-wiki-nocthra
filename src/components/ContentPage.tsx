@@ -24,6 +24,8 @@ import WikiEditorBar from './wiki/WikiEditorBar';
 interface ContentPageProps {
   pageId: string;
   onBack: () => void;
+  focusWikiId?: string | null;
+  onWikiFocused?: () => void;
 }
 
 const SECTION_COMPONENTS: Record<string, ComponentType> = {
@@ -40,7 +42,7 @@ const SECTION_COMPONENTS: Record<string, ComponentType> = {
   innerpath: InnerPathSection,
 };
 
-export default function ContentPage({ pageId, onBack }: ContentPageProps) {
+export default function ContentPage({ pageId, onBack, focusWikiId, onWikiFocused }: ContentPageProps) {
   const { siteSettings, ensureWikiLoaded } = useAuth();
   const info = getSectionMetaResolved(pageId, siteSettings);
   const customDef = getCustomSectionById(pageId, siteSettings);
@@ -81,7 +83,13 @@ export default function ContentPage({ pageId, onBack }: ContentPageProps) {
         </div>
       )}
 
-      {SectionComponent ? <SectionComponent /> : customDef ? <GenericSection definition={customDef} /> : null}
+      {pageId === 'builds' ? (
+        <BuildsSection focusBuildId={focusWikiId} onBuildFocused={onWikiFocused} />
+      ) : SectionComponent ? (
+        <SectionComponent />
+      ) : customDef ? (
+        <GenericSection definition={customDef} />
+      ) : null}
     </div>
   );
 }
