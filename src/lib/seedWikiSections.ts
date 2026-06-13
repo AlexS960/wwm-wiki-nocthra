@@ -2,6 +2,15 @@ import type { WikiArticle } from '../types/site';
 import { convertOverrideSection, getAllSeedArticles } from './sectionSeeds';
 import { contentStoreUpsertWiki, contentStoreUsesNormalized } from './contentStore';
 
+const UPSERT_BATCH = 8;
+
+async function upsertWikiBatch(articles: WikiArticle[]): Promise<void> {
+  for (let i = 0; i < articles.length; i += UPSERT_BATCH) {
+    const batch = articles.slice(i, i + UPSERT_BATCH);
+    await Promise.all(batch.map(a => contentStoreUpsertWiki(a)));
+  }
+}
+
 export interface SeedResult {
   inserted: number;
   updated: number;
@@ -43,19 +52,21 @@ export async function seedWikiSections(
   const usesNormalized = await contentStoreUsesNormalized('wiki');
   let inserted = 0;
   let updated = 0;
+  const toPersist: WikiArticle[] = [];
 
   for (const article of toUpsert) {
     const exists = byId.has(article.id);
     const isOverride = article.fields?.source === 'override';
     if (exists && !isOverride) continue;
 
-    if (usesNormalized) {
-      await contentStoreUpsertWiki(article);
-    }
-
     byId.set(article.id, article);
+    if (usesNormalized) toPersist.push(article);
     if (exists) updated++;
     else inserted++;
+  }
+
+  if (usesNormalized && toPersist.length > 0) {
+    await upsertWikiBatch(toPersist);
   }
 
   const articles = [...byId.values()];

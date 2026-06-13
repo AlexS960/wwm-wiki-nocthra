@@ -7,9 +7,10 @@ import {
   contentStoreUpdateWiki,
   contentStoreDeleteWiki,
 } from '../../lib/contentStore';
-import { mergeWikiWithSeeds } from '../../lib/sectionSeeds';
+import { buildWikiCatalog } from '../../lib/sectionSeeds';
 import { seedWikiSections } from '../../lib/seedWikiSections';
 import { sanitizeWiki } from '../../lib/siteImages';
+import { logger } from '../../lib/logger';
 import type { MutableRefObject } from 'react';
 import type { NormalizedDomains } from './types';
 
@@ -41,27 +42,45 @@ export function useAuthWiki({
     if (wikiLoaded) return;
     if (!wikiLoadRef.current) {
       wikiLoadRef.current = (async () => {
-        normalizedRef.current.wiki = await contentStoreUsesNormalized('wiki');
-        let articles = sanitizeWiki(await contentStoreLoadWiki());
+        let dbArticles: WikiArticle[] = [];
 
-        if (!seededRef.current) {
-          const seedResult = await seedWikiSections(
-            articles,
-            getSectionOverrides(),
-            async all => { await persist('wiki', all); },
-          );
-          articles = sanitizeWiki(mergeWikiWithSeeds(seedResult.articles));
-          seededRef.current = true;
-          if (seedResult.migratedSections.length > 0) {
-            onOverridesMigrated(seedResult.migratedSections);
-          }
-        } else {
-          articles = sanitizeWiki(mergeWikiWithSeeds(articles));
+        try {
+          normalizedRef.current.wiki = await contentStoreUsesNormalized('wiki');
+          dbArticles = sanitizeWiki(await contentStoreLoadWiki());
+        } catch (err) {
+          logger.warn('Wiki DB load skipped, using local catalog', 'wiki', String(err));
+          normalizedRef.current.wiki = false;
         }
 
-        setWikiArticles(articles);
+        const overrides = seededRef.current ? undefined : getSectionOverrides();
+        const catalog = sanitizeWiki(buildWikiCatalog(dbArticles, overrides));
+
+        setWikiArticles(catalog);
         setWikiLoaded(true);
-      })();
+
+        if (!seededRef.current) {
+          seededRef.current = true;
+          void seedWikiSections(
+            dbArticles,
+            overrides,
+            async all => { await persist('wiki', all); },
+          )
+            .then(seedResult => {
+              if (seedResult.migratedSections.length > 0) {
+                onOverridesMigrated(seedResult.migratedSections);
+              }
+              setWikiArticles(sanitizeWiki(buildWikiCatalog(seedResult.articles)));
+            })
+            .catch(err => {
+              logger.warn('Background wiki seed failed', 'wiki', String(err));
+            });
+        }
+      })().catch(err => {
+        wikiLoadRef.current = null;
+        logger.error('Wiki load failed', 'wiki', String(err));
+        setWikiArticles(sanitizeWiki(buildWikiCatalog([])));
+        setWikiLoaded(true);
+      });
     }
     await wikiLoadRef.current;
   }, [wikiLoaded, normalizedRef, getSectionOverrides, onOverridesMigrated, persist]);

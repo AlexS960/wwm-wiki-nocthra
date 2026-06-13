@@ -1,4 +1,4 @@
-import { getSupabase } from './supabase';
+import { getSupabase, isSupabaseConfigured } from './supabase';
 
 const cache = new Map<string, boolean>();
 
@@ -9,6 +9,10 @@ function isMissingTableError(message: string): boolean {
 
 /** Проверяет, доступна ли нормализованная таблица в Supabase (с кэшем). */
 export async function isTableReady(table: string): Promise<boolean> {
+  if (!isSupabaseConfigured) {
+    cache.set(table, false);
+    return false;
+  }
   if (cache.has(table)) return cache.get(table)!;
 
   const { error } = await getSupabase().from(table).select('id').limit(1);
