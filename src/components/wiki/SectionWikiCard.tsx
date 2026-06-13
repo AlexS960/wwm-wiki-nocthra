@@ -12,7 +12,7 @@ import { bossDiffColor, buildDiffColor, mysticElementColors, mysticTypeLabels } 
 import RichText, { RichInline } from '../ui/RichText';
 import MarkdownBody from '../MarkdownBody';
 import ContentImages from '../ContentImages';
-import { wikiCardLinkBbcode } from '../../lib/wikiLinks';
+import { wikiCardLinkMarkdown } from '../../lib/wikiLinks';
 import { asText } from '../../lib/asText';
 
 interface SectionWikiCardProps {
@@ -40,7 +40,7 @@ function CopyWikiLinkButton({
   const handleCopy = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     try {
-      await navigator.clipboard.writeText(wikiCardLinkBbcode(sectionId, article.id, article.title));
+      await navigator.clipboard.writeText(wikiCardLinkMarkdown(sectionId, article.id, article.title));
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -393,8 +393,10 @@ function BuildWikiCard(props: SectionWikiCardProps) {
 
         {weapons.length > 0 && (
           <div className="mt-3 flex flex-wrap gap-1.5">
-            {weapons.map(w => (
-              <span key={w} className="text-xs bg-ink-700/50 text-ink-200 px-2 py-0.5 rounded-full">{w}</span>
+            {weapons.map((w, i) => (
+              <span key={i} className="text-xs bg-ink-700/50 text-ink-200 px-2 py-0.5 rounded-full">
+                <RichInline content={w} />
+              </span>
             ))}
           </div>
         )}

@@ -40,7 +40,7 @@ export const sectionSchemas: Record<string, SectionSchema> = {
       { id: 'difficulty', label: 'Сложность', placeholder: 'Низкая / Средняя / Высокая' },
     ],
     contentFields: [
-      { id: 'weapons', label: 'Оружие', kind: 'list', header: '## Оружие', placeholder: 'Одна строка — одно оружие' },
+      { id: 'weapons', label: 'Оружие', kind: 'list', header: '## Оружие', placeholder: 'Одна строка — одно оружие. Ссылка: [Название](/weapons#wiki-card-id)' },
       { id: 'strengths', label: 'Сильные стороны', kind: 'list', header: '## Сильные стороны', placeholder: 'Одна строка — один пункт' },
       { id: 'weaknesses', label: 'Слабые стороны', kind: 'list', header: '## Слабые стороны', placeholder: 'Одна строка — один пункт' },
     ],

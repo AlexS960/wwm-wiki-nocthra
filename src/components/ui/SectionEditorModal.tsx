@@ -8,6 +8,7 @@ import AppModal, { type ModalLayer } from './AppModal';
 import ImageUploader from './ImageUploader';
 import ContentImages from '../ContentImages';
 import ContentRichEditor from './ContentRichEditor';
+import { RichInline } from './RichText';
 import { asText, trimText } from '../../lib/asText';
 
 export interface SectionEditorValues {
@@ -240,7 +241,9 @@ export default function SectionEditorModal({
                     <label className="text-gold-400/70 text-xs mb-1.5 block tracking-wide">{field.label}</label>
                     {field.kind === 'list' ? (
                       <>
-                        <p className="text-ink-500 text-[10px] mb-2">Одна строка — один пункт</p>
+                        <p className="text-ink-500 text-[10px] mb-2">
+                          Одна строка — один пункт. Вставьте скопированную ссылку на карточку — она станет кликабельной после сохранения.
+                        </p>
                         <textarea
                           value={structuredLists[field.id] || ''}
                           onChange={e => setStructuredLists(prev => ({ ...prev, [field.id]: e.target.value }))}
@@ -248,6 +251,16 @@ export default function SectionEditorModal({
                           placeholder={field.placeholder}
                           className="w-full bg-ink-900/80 border border-ink-600/50 rounded-xl px-4 py-2.5 text-white placeholder:text-ink-500 focus:outline-none focus:border-gold-400/50 text-sm resize-y min-h-[80px]"
                         />
+                        {structuredLists[field.id]?.trim() && (
+                          <div className="mt-2 p-2.5 rounded-lg bg-ink-900/50 border border-ink-700/40 space-y-1">
+                            <p className="text-[10px] text-ink-500 mb-1">Предпросмотр:</p>
+                            {asText(structuredLists[field.id]).split('\n').map(l => l.trim()).filter(Boolean).map((line, i) => (
+                              <div key={i} className="text-xs text-ink-200">
+                                <RichInline content={line} />
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </>
                     ) : field.kind === 'textarea' ? (
                       <ContentRichEditor
