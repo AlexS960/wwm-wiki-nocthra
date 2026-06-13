@@ -138,13 +138,14 @@ export function renderWikiContent(content: string, opts: RenderOpts = {}): React
   return nodes;
 }
 
-/** Plain text for card previews — strips BBCode, markdown headers and list markers. */
-export function toContentPreview(text: string, maxLen = 160): string {
+/** Убирает BBCode и markdown-разметку, оставляя plain text. */
+export function stripContentMarkup(text: string): string {
   let s = text;
-  for (let pass = 0; pass < 6; pass++) {
-    s = s.replace(/\[(?:\/)?(?:b|i|u|s|quote|code|url(?:=[^\]]*)?|color=[^\]]+|align=[^\]]+)\]/gi, '');
+  for (let pass = 0; pass < 8; pass++) {
+    s = s.replace(/\[(?:url|color|align)=[^\]]+\]/gi, '');
+    s = s.replace(/\[\/?(?:b|i|u|s|quote|code|url|color|align)\]/gi, '');
   }
-  s = s
+  return s
     .replace(/^#{1,6}\s+/gm, '')
     .replace(/^>>(left|center|right)\s+/gim, '')
     .replace(/^[-*•]\s+/gm, '')
@@ -153,6 +154,11 @@ export function toContentPreview(text: string, maxLen = 160): string {
     .replace(/\n+/g, ' ')
     .replace(/\s{2,}/g, ' ')
     .trim();
+}
+
+/** Plain text for card previews — strips BBCode, markdown headers and list markers. */
+export function toContentPreview(text: string, maxLen = 160): string {
+  const s = stripContentMarkup(text);
   if (s.length <= maxLen) return s;
   return `${s.slice(0, maxLen).trimEnd()}…`;
 }

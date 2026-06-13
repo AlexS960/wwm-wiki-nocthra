@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import WikiArticleCards from './wiki/WikiArticleCards';
+import RichText, { RichInline } from './ui/RichText';
 import { bosses, type Boss } from '../data/extendedData';
 import { MapPin, ChevronDown, ChevronUp, Target, Gift, Lightbulb, Edit3, Trash2 } from 'lucide-react';
 import { useSectionOverrides } from '../hooks/useSectionOverrides';
@@ -120,7 +121,7 @@ export default function BossesSection() {
                       {boss.strategy.map((s, i) => (
                         <li key={i} className="flex items-start gap-2 text-sm text-ink-200">
                           <span className="text-gold-400 mt-0.5">•</span>
-                          <span>{s}</span>
+                          <RichInline content={s} />
                         </li>
                       ))}
                     </ul>
@@ -134,7 +135,7 @@ export default function BossesSection() {
                     <div className="flex flex-wrap gap-1.5">
                       {boss.rewards.map((r, i) => (
                         <span key={i} className="text-xs bg-jade-400/10 text-jade-400 px-2 py-0.5 rounded-full">
-                          {r}
+                          <RichInline content={r} />
                         </span>
                       ))}
                     </div>
@@ -147,7 +148,7 @@ export default function BossesSection() {
                     </h4>
                     <ul className="space-y-1">
                       {boss.tips.map((t, i) => (
-                        <li key={i} className="text-sm text-ink-200">★ {t}</li>
+                        <li key={i} className="text-sm text-ink-200">★ <RichInline content={t} /></li>
                       ))}
                     </ul>
                   </div>
@@ -155,7 +156,7 @@ export default function BossesSection() {
               )}
             </div>
           ))}
-          <WikiArticleCards sectionId="bosses" />
+          <WikiArticleCards sectionId="bosses" categoryFilter={filterType} />
         </div>
       </div>
       {editingBoss && bossConfig && (

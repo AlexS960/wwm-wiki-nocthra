@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import WikiArticleCards from './wiki/WikiArticleCards';
+import RichText, { RichInline } from './ui/RichText';
 import { recipes, type Recipe } from '../data/extendedData';
 import { ChefHat, Heart, Zap, Clock, Edit3, Trash2 } from 'lucide-react';
 import { useSectionOverrides } from '../hooks/useSectionOverrides';
@@ -77,7 +78,7 @@ export default function CookingSection() {
               }}
             />
           ))}
-          <WikiArticleCards sectionId="cooking" />
+          <WikiArticleCards sectionId="cooking" categoryFilter={filterCategory} />
         </div>
       </div>
       {editingItem && cookingConfig && (
@@ -188,7 +189,7 @@ function RecipeCard({
               <Clock className="w-3 h-3" /> {recipe.stamina}
             </span>
           </div>
-          <p className="text-jade-400 text-sm font-medium mt-1.5">{recipe.effect}</p>
+          <RichText content={recipe.effect} variant="compact" className="mt-1.5 text-jade-400 [&_p]:text-jade-400 [&_p]:font-medium" />
         </div>
       </div>
       {canManage && (
@@ -216,7 +217,7 @@ function RecipeCard({
           </div>
           <div>
             <h4 className="text-gold-400 font-semibold text-xs mb-1">Разблокировка:</h4>
-            <p className="text-ink-300 text-xs">{recipe.howToUnlock}</p>
+            <RichText content={recipe.howToUnlock} />
           </div>
         </div>
       )}

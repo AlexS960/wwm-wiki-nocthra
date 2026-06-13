@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { useSectionOverrides } from '../hooks/useSectionOverrides';
 import { useSectionCategories } from '../hooks/useSectionCategories';
 import WikiArticleCards from './wiki/WikiArticleCards';
+import RichText from './ui/RichText';
 import SectionHeader from './ui/SectionHeader';
 import SectionFilterBar from './ui/SectionFilterBar';
 import SectionEditorModal, { type SectionEditorValues } from './ui/SectionEditorModal';
@@ -163,7 +164,7 @@ function WeaponCard({
             <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">{weapon.role}</span>
             <span className="text-xs bg-gold-400/10 text-gold-400 px-2 py-0.5 rounded-full">{weapon.martialArt}</span>
           </div>
-          <p className="text-ink-300 text-xs mt-1.5">{weapon.description}</p>
+          <RichText content={weapon.description} variant="compact" className="mt-1.5" />
         </div>
         <div className="flex flex-col items-center gap-1 shrink-0" onClick={e => e.stopPropagation()}>
           {canManage && (
@@ -192,9 +193,9 @@ function WeaponCard({
       </div>
       {expanded && (
         <div className="mt-3 pt-3 border-t border-ink-700/30 space-y-2 animate-fadeIn">
-          <div><h4 className="text-gold-400 font-semibold text-xs mb-1 flex items-center gap-1"><Target className="w-3 h-3" /> Получение</h4><p className="text-ink-300 text-xs">{weapon.howToGet}</p></div>
-          <div><h4 className="text-gold-400 font-semibold text-xs mb-1 flex items-center gap-1"><Sparkles className="w-3 h-3" /> Секта</h4><p className="text-ink-300 text-xs">{weapon.sect}</p></div>
-          <div><h4 className="text-gold-400 font-semibold text-xs mb-1">Пара</h4><p className="text-ink-300 text-xs">{weapon.pair}</p></div>
+          <div><h4 className="text-gold-400 font-semibold text-xs mb-1 flex items-center gap-1"><Target className="w-3 h-3" /> Получение</h4><RichText content={weapon.howToGet} /></div>
+          <div><h4 className="text-gold-400 font-semibold text-xs mb-1 flex items-center gap-1"><Sparkles className="w-3 h-3" /> Секта</h4><RichText content={weapon.sect} /></div>
+          <div><h4 className="text-gold-400 font-semibold text-xs mb-1">Пара</h4><RichText content={weapon.pair} /></div>
         </div>
       )}
     </div>

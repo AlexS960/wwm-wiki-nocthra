@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Edit3, Save, X, Eye } from 'lucide-react';
 import type { SectionEditorConfig } from '../../data/sectionEditorConfig';
+import type { SectionSchema } from '../../data/sectionSchemas';
+import { buildSectionContent } from '../../lib/sectionContent';
 import { renderWikiContent } from '../../lib/wikiContent';
 import AppModal, { type ModalLayer } from './AppModal';
 import ImageUploader from './ImageUploader';
@@ -14,22 +16,27 @@ export interface SectionEditorValues {
   category: string;
   icon: string;
   images: string[];
+  nameEn?: string;
+  tagValues?: Record<string, string>;
+  structuredText?: Record<string, string>;
+  structuredLists?: Record<string, string>;
 }
 
 interface SectionEditorModalProps {
   config: SectionEditorConfig;
+  schema?: SectionSchema;
   initial?: Partial<SectionEditorValues>;
   isEdit?: boolean;
   onSave: (values: SectionEditorValues) => void;
   onCancel: () => void;
   layer?: ModalLayer;
   storageFolder?: string;
-  /** Категории раздела (id + label). Если не задано — из config.categories */
   categoryOptions?: { id: string; label: string; icon?: string }[];
 }
 
 export default function SectionEditorModal({
   config,
+  schema,
   initial,
   isEdit,
   onSave,
@@ -44,21 +51,60 @@ export default function SectionEditorModal({
   const defaultCategory = initial?.category || resolvedCategories[0]?.id || '';
   const [title, setTitle] = useState(initial?.title || '');
   const [summary, setSummary] = useState(initial?.summary || '');
-  const [content, setContent] = useState(initial?.content || '');
+  const [content, setContent] = useState(initial?.content || schema?.defaultContentTemplate || '');
   const [category, setCategory] = useState(defaultCategory);
   const [icon, setIcon] = useState(initial?.icon || config.icons[0]);
   const [images, setImages] = useState<string[]>(initial?.images || []);
+  const [nameEn, setNameEn] = useState(initial?.nameEn || '');
+  const [tagValues, setTagValues] = useState<Record<string, string>>(() => {
+    const base: Record<string, string> = {};
+    schema?.tagFields?.forEach(f => { base[f.id] = initial?.tagValues?.[f.id] || ''; });
+    return base;
+  });
+  const [structuredText, setStructuredText] = useState<Record<string, string>>(() => {
+    const base: Record<string, string> = {};
+    schema?.contentFields.filter(f => f.kind !== 'list').forEach(f => {
+      base[f.id] = initial?.structuredText?.[f.id] || '';
+    });
+    return base;
+  });
+  const [structuredLists, setStructuredLists] = useState<Record<string, string>>(() => {
+    const base: Record<string, string> = {};
+    schema?.contentFields.filter(f => f.kind === 'list').forEach(f => {
+      base[f.id] = initial?.structuredLists?.[f.id] || '';
+    });
+    return base;
+  });
   const [showPreview, setShowPreview] = useState(false);
 
+  const structured = !!schema && schema.contentFields.length > 0;
+
+  const previewContent = useMemo(() => {
+    if (!structured || !schema) return content;
+    const sections = schema.contentFields.map(field => ({
+      header: field.header,
+      body: field.kind === 'list'
+        ? (structuredLists[field.id] || '').split('\n').map(l => l.trim()).filter(Boolean)
+        : (structuredText[field.id] || ''),
+    }));
+    return buildSectionContent(sections);
+  }, [structured, schema, content, structuredText, structuredLists]);
+
+  const isValid = title.trim() && (structured ? true : content.trim());
+
   const handleSubmit = () => {
-    if (!title.trim() || !content.trim()) return;
+    if (!isValid) return;
     onSave({
       title: title.trim(),
       summary: summary.trim(),
-      content: content.trim(),
+      content: structured ? previewContent : content.trim(),
       category,
       icon,
       images,
+      nameEn: nameEn.trim() || undefined,
+      tagValues: schema?.tagFields?.length ? tagValues : undefined,
+      structuredText: structured ? structuredText : undefined,
+      structuredLists: structured ? structuredLists : undefined,
     });
   };
 
@@ -94,13 +140,14 @@ export default function SectionEditorModal({
                 <span className="text-3xl">{icon}</span>
                 <div>
                   <h3 className="font-serif text-xl font-bold text-white">{title || 'Без названия'}</h3>
+                  {nameEn && <p className="text-ink-400 text-sm">{nameEn}</p>}
                   {summary && <p className="text-ink-400 text-sm mt-0.5">{summary}</p>}
                   <span className="inline-block mt-2 text-[10px] px-2 py-0.5 rounded-full bg-gold-400/10 text-gold-400 border border-gold-400/30">
                     {resolvedCategories.find(c => c.id === category)?.label || category}
                   </span>
                 </div>
               </div>
-              <div className="space-y-2 pt-2">{renderWikiContent(content)}</div>
+              <div className="space-y-2 pt-2">{renderWikiContent(previewContent)}</div>
               <ContentImages images={images} />
             </div>
           ) : (
@@ -134,6 +181,19 @@ export default function SectionEditorModal({
                 />
               </div>
 
+              {schema?.showNameEn && (
+                <div>
+                  <label className="text-gold-400/70 text-xs mb-1.5 block">Название (EN)</label>
+                  <input
+                    type="text"
+                    value={nameEn}
+                    onChange={e => setNameEn(e.target.value)}
+                    placeholder="English name…"
+                    className="w-full bg-ink-900/80 border border-ink-600/50 rounded-xl px-4 py-2.5 text-white placeholder:text-ink-500 focus:outline-none focus:border-gold-400/50"
+                  />
+                </div>
+              )}
+
               <div>
                 <label className="text-gold-400/70 text-xs mb-1.5 block">{config.summaryLabel}</label>
                 <input
@@ -158,24 +218,72 @@ export default function SectionEditorModal({
                 </select>
               </div>
 
+              {schema?.tagFields?.map(field => (
+                <div key={field.id}>
+                  <label className="text-gold-400/70 text-xs mb-1.5 block">{field.label}</label>
+                  <input
+                    type="text"
+                    value={tagValues[field.id] || ''}
+                    onChange={e => setTagValues(prev => ({ ...prev, [field.id]: e.target.value }))}
+                    placeholder={field.placeholder}
+                    className="w-full bg-ink-900/80 border border-ink-600/50 rounded-xl px-4 py-2.5 text-white placeholder:text-ink-500 focus:outline-none focus:border-gold-400/50"
+                  />
+                </div>
+              ))}
+
               <ImageUploader images={images} onChange={setImages} storageFolder={storageFolder} />
 
-              <div data-content-editor="v2">
-                <label className="text-gold-400/70 text-xs mb-1.5 block tracking-wide">
-                  Содержание *{' '}
-                  {config.contentHint && <span className="text-ink-500 font-normal">{config.contentHint}</span>}
-                </label>
-                <p className="text-ink-500 text-[10px] mb-2">
-                  Выделите текст и используйте панель форматирования над полем
-                </p>
-                <ContentRichEditor
-                  value={content}
-                  onChange={setContent}
-                  rows={12}
-                  placeholder={config.contentPlaceholder}
-                  emphasized
-                />
-              </div>
+              {structured && schema ? (
+                schema.contentFields.map(field => (
+                  <div key={field.id}>
+                    <label className="text-gold-400/70 text-xs mb-1.5 block tracking-wide">{field.label}</label>
+                    {field.kind === 'list' ? (
+                      <>
+                        <p className="text-ink-500 text-[10px] mb-2">Одна строка — один пункт</p>
+                        <textarea
+                          value={structuredLists[field.id] || ''}
+                          onChange={e => setStructuredLists(prev => ({ ...prev, [field.id]: e.target.value }))}
+                          rows={4}
+                          placeholder={field.placeholder}
+                          className="w-full bg-ink-900/80 border border-ink-600/50 rounded-xl px-4 py-2.5 text-white placeholder:text-ink-500 focus:outline-none focus:border-gold-400/50 text-sm resize-y min-h-[80px]"
+                        />
+                      </>
+                    ) : field.kind === 'textarea' ? (
+                      <ContentRichEditor
+                        value={structuredText[field.id] || ''}
+                        onChange={v => setStructuredText(prev => ({ ...prev, [field.id]: v }))}
+                        rows={4}
+                        placeholder={field.placeholder}
+                      />
+                    ) : (
+                      <input
+                        type="text"
+                        value={structuredText[field.id] || ''}
+                        onChange={e => setStructuredText(prev => ({ ...prev, [field.id]: e.target.value }))}
+                        placeholder={field.placeholder}
+                        className="w-full bg-ink-900/80 border border-ink-600/50 rounded-xl px-4 py-2.5 text-white placeholder:text-ink-500 focus:outline-none focus:border-gold-400/50"
+                      />
+                    )}
+                  </div>
+                ))
+              ) : (
+                <div data-content-editor="v2">
+                  <label className="text-gold-400/70 text-xs mb-1.5 block tracking-wide">
+                    Содержание *{' '}
+                    {config.contentHint && <span className="text-ink-500 font-normal">{config.contentHint}</span>}
+                  </label>
+                  <p className="text-ink-500 text-[10px] mb-2">
+                    Выделите текст и используйте панель форматирования над полем
+                  </p>
+                  <ContentRichEditor
+                    value={content}
+                    onChange={setContent}
+                    rows={12}
+                    placeholder={config.contentPlaceholder}
+                    emphasized
+                  />
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -191,7 +299,7 @@ export default function SectionEditorModal({
           <button
             type="button"
             onClick={handleSubmit}
-            disabled={!title.trim() || !content.trim()}
+            disabled={!isValid}
             className="sm:order-1 flex-1 flex items-center justify-center gap-2 bg-ink-900 text-gold-400 border border-gold-400/50 py-3 rounded-xl font-medium hover:bg-gold-400/10 cursor-pointer disabled:opacity-40"
           >
             <Save className="w-4 h-4" />

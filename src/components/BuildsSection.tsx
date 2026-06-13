@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { useSectionOverrides } from '../hooks/useSectionOverrides';
 import { buildCardDomId, findBuildCardElement, resolveBuildName } from '../lib/buildLookup';
 import WikiArticleCards from './wiki/WikiArticleCards';
+import RichText, { RichInline } from './ui/RichText';
 import SectionHeader from './ui/SectionHeader';
 import SectionEditorModal, { type SectionEditorValues } from './ui/SectionEditorModal';
 import { sectionEditorConfigs } from '../data/sectionEditorConfig';
@@ -21,6 +22,9 @@ export default function BuildsSection({ focusBuildId, onBuildFocused }: BuildsSe
   const { items, persistItems, canManage } = useSectionOverrides('builds', buildPaths);
   const buildConfig = sectionEditorConfigs.builds;
   const editingBuild = editId ? items.find(b => b.id === editId) : null;
+  const selectedBuildName = progress.selectedBuild
+    ? resolveBuildName(progress.selectedBuild, items, wikiArticles)
+    : null;
 
   const handleSelectBuild = (e: React.MouseEvent, buildId: string) => {
     e.stopPropagation();
@@ -51,9 +55,9 @@ export default function BuildsSection({ focusBuildId, onBuildFocused }: BuildsSe
           title="Пути Развития (Build Paths)"
           subtitle="6 уникальных путей боя — от ближнего DPS до целителя. Выберите свой стиль"
         />
-        {user && progress.selectedBuild && (
+        {user && selectedBuildName && (
           <p className="text-gold-400 text-sm text-center -mt-8 mb-8">
-            ⭐ Мой билд: {resolveBuildName(progress.selectedBuild, items, wikiArticles)}
+            ⭐ Мой билд: {selectedBuildName}
           </p>
         )}
 
@@ -72,6 +76,7 @@ export default function BuildsSection({ focusBuildId, onBuildFocused }: BuildsSe
               onEdit={() => setEditId(build.id)}
               onDelete={() => {
                 if (!confirm('Удалить этот билд?')) return;
+                if (progress.selectedBuild === build.id) setSelectedBuild(null);
                 persistItems(items.filter(x => x.id !== build.id));
               }}
             />
@@ -260,7 +265,7 @@ function BuildCard({ build, canManage, isExpanded, onToggle, isSelected, onSelec
         <div className="px-5 pb-5 animate-fadeIn">
           <div className="border-t border-ink-700/30 pt-4 space-y-4">
             {/* Description */}
-            <p className="text-ink-200 text-sm leading-relaxed">{build.description}</p>
+            <RichText content={build.description} variant="normal" />
 
             {/* Strengths */}
             <div>
@@ -269,7 +274,7 @@ function BuildCard({ build, canManage, isExpanded, onToggle, isSelected, onSelec
                 {build.strengths.map((s, i) => (
                   <div key={i} className="flex items-center gap-2 text-sm text-ink-200">
                     <Check className="w-3 h-3 text-jade-400 shrink-0" />
-                    <span>{s}</span>
+                    <RichInline content={s} />
                   </div>
                 ))}
               </div>
@@ -282,7 +287,7 @@ function BuildCard({ build, canManage, isExpanded, onToggle, isSelected, onSelec
                 {build.weaknesses.map((w, i) => (
                   <div key={i} className="flex items-center gap-2 text-sm text-ink-200">
                     <XIcon className="w-3 h-3 text-crimson-400 shrink-0" />
-                    <span>{w}</span>
+                    <RichInline content={w} />
                   </div>
                 ))}
               </div>

@@ -15,6 +15,7 @@ import { useSectionCategories } from '../hooks/useSectionCategories';
 import SectionHeader from './ui/SectionHeader';
 import SectionFilterBar from './ui/SectionFilterBar';
 import SectionEditorModal, { type SectionEditorValues } from './ui/SectionEditorModal';
+import RichText, { RichInline } from './ui/RichText';
 import { sectionEditorConfigs } from '../data/sectionEditorConfig';
 
 function InfoBlock({ title, body }: { title: string; body: string }) {
@@ -75,7 +76,7 @@ function InnerWayCard({
           <ChevronDown className={`w-5 h-5 text-gold-400 shrink-0 transition-transform ${expanded ? 'rotate-180' : ''} ${canManage ? 'mr-14' : ''}`} />
         </div>
         {!expanded && (
-          <p className="text-ink-400 text-xs mt-2 line-clamp-2">{item.effectRu || item.effect}</p>
+          <p className="text-ink-400 text-xs mt-2 line-clamp-2"><RichInline content={item.effectRu || item.effect} /></p>
         )}
       </div>
       {canManage && (
@@ -95,13 +96,13 @@ function InnerWayCard({
             <div className="flex items-center gap-1.5 text-gold-400 text-xs font-semibold uppercase tracking-wide mb-1">
               <Sparkles className="w-3.5 h-3.5" /> Эффект
             </div>
-            <p className="text-ink-200 text-sm leading-relaxed">{item.effectRu || item.effect}</p>
+            <RichText content={item.effectRu || item.effect} variant="normal" />
           </div>
           <div>
             <div className="flex items-center gap-1.5 text-jade-400 text-xs font-semibold uppercase tracking-wide mb-1">
               <BookOpen className="w-3.5 h-3.5" /> Как получить
             </div>
-            <p className="text-ink-300 text-sm leading-relaxed">{item.howToGetRu || item.howToGet}</p>
+            <RichText content={item.howToGetRu || item.howToGet} variant="normal" />
           </div>
         </div>
       )}

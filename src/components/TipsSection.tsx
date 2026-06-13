@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Lightbulb, Code, Copy, Check, Edit3, Trash2 } from 'lucide-react';
 import WikiArticleCards from './wiki/WikiArticleCards';
+import { RichInline } from './ui/RichText';
 import { useSectionOverrides } from '../hooks/useSectionOverrides';
 import { useSectionCategories } from '../hooks/useSectionCategories';
 import SectionHeader from './ui/SectionHeader';
@@ -86,7 +87,7 @@ export default function TipsSection() {
           {filteredTips.map(tip => (
             <div key={tip.id} className="relative bg-ink-800/50 border border-ink-700/30 rounded-xl p-4 flex items-start gap-3">
               <span className="text-lg shrink-0">{resolveCategory(tip.category).icon || categoryLabels[tip.category]?.icon || '💡'}</span>
-              <p className="text-ink-200 text-sm flex-1">{tip.text}</p>
+              <p className="text-ink-200 text-sm flex-1"><RichInline content={tip.text} /></p>
               {canManage && (
                 <div className="absolute top-2 right-2 flex items-center gap-1 shrink-0">
                   <button onClick={() => setEditId(tip.id)} className="p-1.5 rounded-md text-gold-300 border border-gold-400/30 hover:bg-gold-400/10 cursor-pointer" title="Редактировать">

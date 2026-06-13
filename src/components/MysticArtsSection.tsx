@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import WikiArticleCards from './wiki/WikiArticleCards';
+import RichText, { RichInline } from './ui/RichText';
 import { Sparkles, Zap, Shield, Heart, Wind, Edit3, Trash2 } from 'lucide-react';
 import { useSectionOverrides } from '../hooks/useSectionOverrides';
 import { useSectionCategories } from '../hooks/useSectionCategories';
@@ -89,11 +90,11 @@ export default function MysticArtsSection() {
                       {typeIcons[art.type]} {art.type === 'attack' ? 'Атака' : art.type === 'defense' ? 'Защита' : art.type === 'support' ? 'Поддержка' : 'Движение'}
                     </span>
                   </div>
-                  <p className="text-ink-300 text-sm mt-1.5 mb-2">{art.description}</p>
+                  <RichText content={art.description} variant="normal" className="mt-1.5 mb-2" />
                   <div className="space-y-1 text-xs">
-                    <div className="flex items-center gap-2"><Sparkles className="w-3 h-3 text-gold-400" /><span className="text-gold-400">{art.effect}</span></div>
-                    <div className="flex items-center gap-2"><span className="text-ink-500">Перезарядка:</span><span className="text-ink-300">{art.cooldown}</span></div>
-                    <div className="flex items-center gap-2"><span className="text-ink-500">Получение:</span><span className="text-ink-300">{art.howToGet}</span></div>
+                    <div className="flex items-center gap-2"><Sparkles className="w-3 h-3 text-gold-400" /><RichInline content={art.effect} className="text-gold-400" /></div>
+                    <div className="flex items-center gap-2"><span className="text-ink-500">Перезарядка:</span><RichInline content={art.cooldown} className="text-ink-300" /></div>
+                    <div className="flex items-center gap-2"><span className="text-ink-500">Получение:</span><RichInline content={art.howToGet} className="text-ink-300" /></div>
                   </div>
                 </div>
               </div>
@@ -116,7 +117,7 @@ export default function MysticArtsSection() {
               )}
             </div>
           ))}
-          <WikiArticleCards sectionId="mystic" />
+          <WikiArticleCards sectionId="mystic" categoryFilter={filterElement} />
         </div>
       </div>
       {editingItem && mysticConfig && (

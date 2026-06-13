@@ -16,6 +16,8 @@ import { useAuthChat } from '../hooks/auth/useAuthChat';
 import { useAuthSupport } from '../hooks/auth/useAuthSupport';
 import { useAuthSuggestions } from '../hooks/auth/useAuthSuggestions';
 import { useAuthRealtime } from '../hooks/auth/useAuthRealtime';
+import { buildPaths } from '../data/gameData';
+import { isKnownBuild } from '../lib/buildLookup';
 import {
   contentStoreUpdateGuide,
   contentStoreUpdateWiki,
@@ -164,6 +166,31 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     () => mergeSiteSettingsSafe(siteCore.siteSettings),
     [siteCore.siteSettings],
   );
+
+  const buildItems = useMemo(() => {
+    const overrides = safeSiteSettings.sectionOverrides?.builds;
+    return Array.isArray(overrides) ? overrides : buildPaths;
+  }, [safeSiteSettings.sectionOverrides]);
+
+  useEffect(() => {
+    const id = progress.selectedBuild;
+    if (!id) return;
+    if (isKnownBuild(id, buildItems, wikiHook.wikiArticles)) return;
+    // Wiki-статьи могут ещё грузиться — не сбрасываем, пока не убедимся
+    if (id.startsWith('w') && !wikiHook.wikiLoaded) return;
+    setSelectedBuild(null);
+  }, [
+    progress.selectedBuild,
+    buildItems,
+    wikiHook.wikiArticles,
+    wikiHook.wikiLoaded,
+    setSelectedBuild,
+  ]);
+
+  const deleteWikiArticle = useCallback((id: string) => {
+    wikiHook.deleteWikiArticle(id);
+    if (progress.selectedBuild === id) setSelectedBuild(null);
+  }, [wikiHook.deleteWikiArticle, progress.selectedBuild, setSelectedBuild]);
 
   const safeChatState = useMemo(
     () => normalizeChatState(chatHook.chatState),
@@ -358,7 +385,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }),
     addWikiArticle: wikiHook.addWikiArticle,
     updateWikiArticle: wikiHook.updateWikiArticle,
-    deleteWikiArticle: wikiHook.deleteWikiArticle,
+    deleteWikiArticle,
     createTicket: supportHook.createTicket,
     replyToTicket: supportHook.replyToTicket,
     closeTicket: supportHook.closeTicket,

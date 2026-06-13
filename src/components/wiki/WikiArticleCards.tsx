@@ -1,121 +1,26 @@
-import { useEffect, useState } from 'react';
-import { ChevronDown, ChevronUp, Edit3, Star, Trash2 } from 'lucide-react';
-import { useAuth, type WikiArticle } from '../../context/AuthContext';
-import { wikiCardDomId } from '../../lib/buildLookup';
+import { useState } from 'react';
+import { useAuth } from '../../context/AuthContext';
 import { useSectionCategories } from '../../hooks/useSectionCategories';
 import { getCustomSectionById } from '../../lib/sectionRegistry';
-import MarkdownBody from '../MarkdownBody';
-import { toContentPreview } from '../../lib/wikiContent';
+import {
+  defaultStructuredInitial,
+  editorValuesToWikiPayload,
+  wikiArticleToEditorInitial,
+} from '../../lib/sectionArticleHelpers';
+import { getSectionSchema } from '../../data/sectionSchemas';
 import SectionEditorModal, { type SectionEditorValues } from '../ui/SectionEditorModal';
 import DynamicSectionEditorModal, { type DynamicEditorValues } from '../ui/DynamicSectionEditorModal';
 import { sectionEditorConfigs } from '../../data/sectionEditorConfig';
+import SectionWikiCard from './SectionWikiCard';
 
 interface WikiArticleCardsProps {
   sectionId: string;
-  /** 'all' или id категории */
   categoryFilter?: string;
-  /** Если передано — показываем кнопку «В избранное» (как у дефолтных карточек секции) */
   isFavorite?: (articleId: string) => boolean;
   onToggleFavorite?: (articleId: string) => void;
   favoriteAddTitle?: string;
   favoriteRemoveTitle?: string;
-  /** Раскрыть и подсветить карточку (например, при переходе из профиля) */
   highlightId?: string | null;
-}
-
-function WikiExpandableCard({
-  article,
-  categoryLabel,
-  canEdit,
-  onEdit,
-  onDelete,
-  isFavorite,
-  onToggleFavorite,
-  favoriteAddTitle = 'В избранное',
-  favoriteRemoveTitle = 'Убрать из избранного',
-  highlighted = false,
-}: {
-  article: WikiArticle;
-  categoryLabel?: string;
-  canEdit: boolean;
-  onEdit: () => void;
-  onDelete: () => void;
-  isFavorite?: boolean;
-  onToggleFavorite?: () => void;
-  favoriteAddTitle?: string;
-  favoriteRemoveTitle?: string;
-  highlighted?: boolean;
-}) {
-  const [expanded, setExpanded] = useState(false);
-  const rawPreview = article.fields?.summary || article.content;
-  const summary = toContentPreview(rawPreview, 140);
-
-  useEffect(() => {
-    if (highlighted) setExpanded(true);
-  }, [highlighted]);
-
-  return (
-    <div
-      id={wikiCardDomId(article.id)}
-      onClick={() => setExpanded(!expanded)}
-      className={`bg-ink-800/60 border rounded-xl p-4 transition-all cursor-pointer ${
-        expanded || highlighted
-          ? 'border-gold-400/40'
-          : 'border-ink-700/30 hover:border-gold-700/30 card-hover'
-      }`}
-    >
-      <div className="flex items-start gap-3">
-        <span className="text-3xl shrink-0 leading-none">{article.icon}</span>
-        <div className="flex-1 min-w-0">
-          <h3 className="font-serif font-bold text-white leading-snug break-words">{article.title}</h3>
-          {categoryLabel && (
-            <span className="inline-block mt-1 text-[10px] px-2 py-0.5 rounded-full bg-gold-400/10 text-gold-400 border border-gold-400/30">
-              {categoryLabel}
-            </span>
-          )}
-          {!expanded && summary && (
-            <p className="text-ink-400 text-xs mt-1.5 line-clamp-2">{summary}</p>
-          )}
-          <p className="text-ink-500 text-[10px] mt-1.5">
-            {article.authorName} · {new Date(article.updatedAt).toLocaleDateString('ru-RU')}
-          </p>
-        </div>
-        <div className="flex flex-col items-center gap-1 shrink-0" onClick={e => e.stopPropagation()}>
-          {canEdit && (
-            <>
-              <button type="button" onClick={onEdit} className="p-1.5 rounded-md text-gold-400 border border-gold-400/30 hover:bg-gold-400/10 cursor-pointer" title="Редактировать">
-                <Edit3 className="w-3.5 h-3.5" />
-              </button>
-              <button type="button" onClick={onDelete} className="p-1.5 rounded-md text-crimson-300 border border-crimson-400/30 hover:bg-crimson-400/10 cursor-pointer" title="Удалить">
-                <Trash2 className="w-3.5 h-3.5" />
-              </button>
-            </>
-          )}
-          {onToggleFavorite && (
-            <button
-              type="button"
-              onClick={onToggleFavorite}
-              className={`p-1.5 rounded-md border transition-colors cursor-pointer ${
-                isFavorite
-                  ? 'text-gold-400 border-gold-400/40 bg-gold-400/10'
-                  : 'text-ink-500 border-ink-600/40 hover:text-gold-400 hover:border-gold-400/30'
-              }`}
-              title={isFavorite ? favoriteRemoveTitle : favoriteAddTitle}
-            >
-              <Star className={`w-3.5 h-3.5 ${isFavorite ? 'fill-current' : ''}`} />
-            </button>
-          )}
-          {expanded ? <ChevronUp className="w-5 h-5 text-gold-400" /> : <ChevronDown className="w-5 h-5 text-ink-400" />}
-        </div>
-      </div>
-
-      {expanded && (
-        <div className="mt-3 pt-3 border-t border-ink-700/30 animate-fadeIn" onClick={e => e.stopPropagation()}>
-          <MarkdownBody content={article.content} images={article.images} />
-        </div>
-      )}
-    </div>
-  );
 }
 
 export default function WikiArticleCards({
@@ -133,6 +38,7 @@ export default function WikiArticleCards({
   const [dynamicInitial, setDynamicInitial] = useState<Partial<DynamicEditorValues>>();
   const { categories, getLabel, matchesFilter, normalizeId } = useSectionCategories(sectionId);
   const customDef = getCustomSectionById(sectionId, siteSettings);
+  const schema = getSectionSchema(sectionId);
 
   const articles = wikiArticles.filter(a => {
     if (a.section !== sectionId) return false;
@@ -145,11 +51,26 @@ export default function WikiArticleCards({
 
   if (articles.length === 0) return null;
 
+  const handleSave = (values: SectionEditorValues) => {
+    if (!editId) return;
+    const payload = editorValuesToWikiPayload(values, schema, normalizeId);
+    updateWikiArticle(editId, {
+      title: payload.title,
+      content: payload.content,
+      icon: payload.icon,
+      images: payload.images,
+      fields: payload.fields,
+    });
+    setEditId(null);
+    setEditInitial(undefined);
+  };
+
   return (
     <>
       {articles.map(article => (
-        <WikiExpandableCard
+        <SectionWikiCard
           key={article.id}
+          sectionId={sectionId}
           article={article}
           categoryLabel={article.fields?.category ? getLabel(article.fields.category) : undefined}
           canEdit={canEdit}
@@ -168,14 +89,14 @@ export default function WikiArticleCards({
                 fields: { ...article.fields, content: article.content },
               });
             } else {
-              setEditInitial({
-                title: article.title,
-                summary: article.fields?.summary || '',
-                content: article.content,
-                category: normalizeId(article.fields?.category) || categories[0]?.id || '',
-                icon: article.icon,
-                images: article.images || [],
-              });
+              setEditInitial(
+                wikiArticleToEditorInitial(
+                  article,
+                  schema,
+                  normalizeId,
+                  categories[0]?.id || '',
+                ),
+              );
             }
           }}
           onDelete={() => {
@@ -210,21 +131,12 @@ export default function WikiArticleCards({
         <SectionEditorModal
           key={editId}
           config={config}
+          schema={schema}
           storageFolder={sectionId}
           categoryOptions={categories}
           isEdit
           initial={editInitial}
-          onSave={values => {
-            updateWikiArticle(editId, {
-              title: values.title,
-              content: values.content,
-              icon: values.icon,
-              images: values.images,
-              fields: { summary: values.summary, category: normalizeId(values.category) },
-            });
-            setEditId(null);
-            setEditInitial(undefined);
-          }}
+          onSave={handleSave}
           onCancel={() => { setEditId(null); setEditInitial(undefined); }}
         />
       )}

@@ -1,15 +1,26 @@
 import type { BuildPath } from '../data/gameData';
 import type { WikiArticle } from '../context/AuthContext';
 
+export function isKnownBuild(
+  buildId: string,
+  items: Pick<BuildPath, 'id'>[],
+  wikiArticles: WikiArticle[],
+): boolean {
+  return (
+    items.some(b => b.id === buildId)
+    || wikiArticles.some(a => a.section === 'builds' && a.id === buildId)
+  );
+}
+
 export function resolveBuildName(
   buildId: string,
   items: Pick<BuildPath, 'id' | 'name'>[],
   wikiArticles: WikiArticle[],
-): string {
+): string | null {
   return (
     items.find(b => b.id === buildId)?.name
     ?? wikiArticles.find(a => a.section === 'builds' && a.id === buildId)?.title
-    ?? buildId
+    ?? null
   );
 }
 

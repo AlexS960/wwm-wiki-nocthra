@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { sects } from '../data/gameData';
 import { ChevronDown, ChevronUp, Check, Edit3, Trash2 } from 'lucide-react';
 import WikiArticleCards from './wiki/WikiArticleCards';
+import RichText, { RichInline } from './ui/RichText';
 import { useSectionOverrides } from '../hooks/useSectionOverrides';
 import SectionHeader from './ui/SectionHeader';
 import SectionEditorModal, { type SectionEditorValues } from './ui/SectionEditorModal';
@@ -52,21 +53,21 @@ export default function SectsSection() {
                   </button>
                 </div>
               )}
-              <p className="text-ink-300 text-sm mb-3">{sect.description}</p>
+              <RichText content={sect.description} variant="normal" className="mb-3" />
               <div className="flex items-center gap-2 text-xs text-ink-400 mb-2">
-                <span className="text-purple-400">{sect.theme}</span>
+                <RichInline content={sect.theme} className="text-purple-400" />
               </div>
-              <div className="text-sm text-purple-400 font-medium mb-1">Оружие: {sect.weapon}</div>
-              <p className="text-xs text-ink-400 mt-1">{sect.howToJoin}</p>
+              <div className="text-sm text-purple-400 font-medium mb-1">Оружие: <RichInline content={sect.weapon} /></div>
+              <RichText content={sect.howToJoin} variant="compact" className="mt-1" />
               {expandedSect === sect.id && (
                 <div className="mt-4 pt-4 border-t border-ink-700/30 space-y-3 animate-fadeIn">
                   <div>
                     <h4 className="text-jade-400 font-semibold text-sm mb-1 flex items-center gap-1"><Check className="w-3 h-3" /> Преимущества</h4>
-                    <ul className="space-y-1">{sect.benefits.map((b, i) => <li key={i} className="text-sm text-ink-200 flex items-start gap-2"><span className="text-jade-400">•</span>{b}</li>)}</ul>
+                    <ul className="space-y-1">{sect.benefits.map((b, i) => <li key={i} className="text-sm text-ink-200 flex items-start gap-2"><span className="text-jade-400">•</span><RichInline content={b} /></li>)}</ul>
                   </div>
                   <div>
                     <h4 className="text-gold-400 font-semibold text-sm mb-1">📜 Правила</h4>
-                    <ul className="space-y-1">{sect.rules.map((r, i) => <li key={i} className="text-sm text-ink-200 flex items-start gap-2"><span className="text-gold-400">•</span>{r}</li>)}</ul>
+                    <ul className="space-y-1">{sect.rules.map((r, i) => <li key={i} className="text-sm text-ink-200 flex items-start gap-2"><span className="text-gold-400">•</span><RichInline content={r} /></li>)}</ul>
                   </div>
                 </div>
               )}

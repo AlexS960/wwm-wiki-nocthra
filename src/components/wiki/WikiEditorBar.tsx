@@ -4,6 +4,8 @@ import { useSectionCategories } from '../../hooks/useSectionCategories';
 import { Edit3, Plus } from 'lucide-react';
 import SectionEditorModal, { type SectionEditorValues } from '../ui/SectionEditorModal';
 import { sectionEditorConfigs } from '../../data/sectionEditorConfig';
+import { getSectionSchema } from '../../data/sectionSchemas';
+import { defaultStructuredInitial, editorValuesToWikiPayload } from '../../lib/sectionArticleHelpers';
 
 interface WikiEditorBarProps {
   sectionId: string;
@@ -17,34 +19,45 @@ export default function WikiEditorBar({ sectionId }: WikiEditorBarProps) {
   const [editInitial, setEditInitial] = useState<Partial<SectionEditorValues> | undefined>();
 
   const config = sectionEditorConfigs[sectionId];
+  const schema = getSectionSchema(sectionId);
   const { categories, normalizeId } = useSectionCategories(sectionId);
   const canEdit = (isEditor() || isAdmin()) && config;
 
   if (!canEdit) return null;
 
   const handleSave = (values: SectionEditorValues) => {
-    const categoryId = normalizeId(values.category);
+    const payload = editorValuesToWikiPayload(values, schema, normalizeId);
     if (editingId) {
       updateWikiArticle(editingId, {
-        title: values.title,
-        content: values.content,
-        icon: values.icon,
-        images: values.images,
-        fields: { summary: values.summary, category: categoryId },
+        title: payload.title,
+        content: payload.content,
+        icon: payload.icon,
+        images: payload.images,
+        fields: payload.fields,
       });
     } else {
       addWikiArticle({
         section: sectionId,
-        title: values.title,
-        content: values.content,
-        icon: values.icon,
-        images: values.images,
-        fields: { summary: values.summary, category: categoryId },
+        title: payload.title,
+        content: payload.content,
+        icon: payload.icon,
+        images: payload.images,
+        fields: payload.fields,
       });
     }
     setShowModal(false);
     setEditingId(null);
     setEditInitial(undefined);
+  };
+
+  const openCreate = () => {
+    setEditingId(null);
+    setEditInitial({
+      images: [],
+      category: categories[0]?.id || '',
+      ...(schema ? defaultStructuredInitial(schema) : {}),
+    });
+    setShowModal(true);
   };
 
   return (
@@ -56,7 +69,7 @@ export default function WikiEditorBar({ sectionId }: WikiEditorBarProps) {
         </div>
         <button
           type="button"
-          onClick={() => { setEditingId(null); setEditInitial({ images: [] }); setShowModal(true); }}
+          onClick={openCreate}
           className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-gold-400/20 text-gold-400 text-xs font-medium hover:bg-gold-400/30 cursor-pointer shrink-0"
         >
           <Plus className="w-3.5 h-3.5" /> Добавить
@@ -66,6 +79,7 @@ export default function WikiEditorBar({ sectionId }: WikiEditorBarProps) {
       {showModal && (
         <SectionEditorModal
           config={config}
+          schema={schema}
           storageFolder={sectionId}
           categoryOptions={categories}
           isEdit={!!editingId}
