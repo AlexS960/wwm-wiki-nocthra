@@ -32,7 +32,7 @@ export function usesLabelAsCategoryId(sectionKey: string): boolean {
 }
 
 export function createCategoryId(sectionKey: string, label: string): string {
-  const trimmed = label.trim();
+  const trimmed = String(label ?? '').trim();
   if (!trimmed) return `cat-${Date.now()}`;
   if (usesLabelAsCategoryId(sectionKey)) return trimmed;
   return trimmed

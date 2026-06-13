@@ -1,5 +1,7 @@
 /** Встроенные base64 в site_data сильно увеличивают egress — только URL Storage или https */
 
+import { normalizeWikiArticles } from './wikiNormalize';
+
 export function isEmbeddedImageUrl(url: unknown): boolean {
   return typeof url === 'string' && url.startsWith('data:image');
 }
@@ -28,7 +30,7 @@ export function sanitizeGuides<T extends WithImages>(guides: T[]): T[] {
 }
 
 export function sanitizeWiki<T extends WithImages>(items: T[]): T[] {
-  return items.map(w => ({ ...w, images: sanitizeImageList(w.images) }));
+  return normalizeWikiArticles(items as import('../types/site').WikiArticle[]) as T[];
 }
 
 export function sanitizeSiteNews<T extends WithImages>(items: T[]): T[] {

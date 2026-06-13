@@ -1,4 +1,4 @@
-// Адаптеры типов для совместимости между DB и Frontend
+import { normalizeWikiArticle } from './wikiNormalize';
 
 import type {
   DbGuide,
@@ -36,7 +36,7 @@ export function adaptGuide(db: DbGuide): GuideArticle {
 
 // Адаптер для вики-статей
 export function adaptWikiArticle(db: DbWikiArticle): WikiArticle {
-  return {
+  return normalizeWikiArticle({
     id: db.id,
     section: db.section,
     title: db.title,
@@ -46,7 +46,7 @@ export function adaptWikiArticle(db: DbWikiArticle): WikiArticle {
     updatedAt: db.updated_at,
     fields: db.fields || {},
     images: db.images,
-  };
+  });
 }
 
 // Адаптер для чат-сообщений

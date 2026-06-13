@@ -7,6 +7,7 @@ import {
   parseSectionContent,
   textareaToList,
 } from './sectionContent';
+import { asWikiText } from './wikiNormalize';
 
 export type StructuredEditorValues = SectionEditorValues & {
   nameEn: string;
@@ -19,7 +20,7 @@ export function wikiArticleToStructured(article: WikiArticle, schema: SectionSch
   const parsed = parseSectionContent(article.content);
   const tagValues: Record<string, string> = {};
   schema.tagFields?.forEach(f => {
-    tagValues[f.id] = article.fields?.[f.id] || '';
+    tagValues[f.id] = asWikiText(article.fields?.[f.id]);
   });
   if (!tagValues.theme) tagValues.theme = parsed.getLine('## Тема');
   if (!tagValues.weapon) tagValues.weapon = parsed.getLine('## Оружие');
@@ -48,13 +49,13 @@ export function wikiArticleToStructured(article: WikiArticle, schema: SectionSch
   }
 
   return {
-    title: article.title,
-    summary: article.fields?.summary || '',
-    content: article.content,
-    category: article.fields?.category || '',
-    icon: article.icon,
+    title: asWikiText(article.title),
+    summary: asWikiText(article.fields?.summary),
+    content: asWikiText(article.content),
+    category: asWikiText(article.fields?.category),
+    icon: asWikiText(article.icon),
     images: article.images || [],
-    nameEn: article.fields?.nameEn || '',
+    nameEn: asWikiText(article.fields?.nameEn),
     tagValues,
     structuredText,
     structuredLists,

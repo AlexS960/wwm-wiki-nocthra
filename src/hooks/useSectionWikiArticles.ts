@@ -1,6 +1,7 @@
 import { useAuth } from '../context/AuthContext';
 import { useSectionCategories } from './useSectionCategories';
 import { buildWikiCatalog } from '../lib/sectionSeeds';
+import { asWikiText } from '../lib/wikiNormalize';
 import { useMemo } from 'react';
 
 /** Статьи раздела из Supabase (после сидирования — единственный источник данных). */
@@ -14,7 +15,7 @@ export function useSectionWikiArticles(sectionId: string) {
   }, [wikiArticles, sectionId]);
 
   const filterItems = useMemo(
-    () => articles.map(a => ({ categoryId: a.fields?.category || '' })),
+    () => articles.map(a => ({ categoryId: asWikiText(a.fields?.category) })),
     [articles],
   );
 
