@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useSectionCategories } from '../../hooks/useSectionCategories';
 import { getCustomSectionById } from '../../lib/sectionRegistry';
@@ -35,13 +35,17 @@ export default function WikiArticleCards({
 }: WikiArticleCardsProps) {
   const focusId = useWikiFocus();
   const activeHighlight = highlightId ?? focusId;
-  const { wikiArticles, isEditor, isAdmin, updateWikiArticle, deleteWikiArticle, siteSettings } = useAuth();
+  const { wikiArticles, wikiLoaded, isEditor, isAdmin, updateWikiArticle, deleteWikiArticle, siteSettings, ensureWikiLoaded } = useAuth();
   const [editId, setEditId] = useState<string | null>(null);
   const [editInitial, setEditInitial] = useState<Partial<SectionEditorValues>>();
   const [dynamicInitial, setDynamicInitial] = useState<Partial<DynamicEditorValues>>();
   const { categories, getLabel, matchesFilter, normalizeId } = useSectionCategories(sectionId);
   const customDef = getCustomSectionById(sectionId, siteSettings);
   const schema = getSectionSchema(sectionId);
+
+  useEffect(() => {
+    void ensureWikiLoaded();
+  }, [ensureWikiLoaded]);
 
   const articles = wikiArticles.filter(a => {
     if (a.section !== sectionId) return false;
@@ -51,6 +55,14 @@ export default function WikiArticleCards({
 
   const canEdit = isEditor() || isAdmin();
   const config = sectionEditorConfigs[sectionId];
+
+  if (!wikiLoaded) {
+    return (
+      <div className="py-8 text-center text-ink-400 text-sm animate-pulse">
+        Загрузка карточек…
+      </div>
+    );
+  }
 
   if (articles.length === 0) return null;
 

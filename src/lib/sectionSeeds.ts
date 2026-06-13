@@ -272,6 +272,15 @@ export function getAllSeedArticles(): WikiArticle[] {
   ];
 }
 
+/** Дополняет загруженные статьи дефолтным контентом (без перезаписи существующих). */
+export function mergeWikiWithSeeds(existing: WikiArticle[]): WikiArticle[] {
+  const byId = new Map(existing.map(a => [a.id, a]));
+  for (const seed of getAllSeedArticles()) {
+    if (!byId.has(seed.id)) byId.set(seed.id, seed);
+  }
+  return [...byId.values()];
+}
+
 const OVERRIDE_CONVERTERS: Record<string, (item: unknown, index?: number) => WikiArticle | null> = {
   weapons: item => weaponToWiki(item as Weapon, 'override'),
   builds: item => buildToWiki(item as BuildPath, 'override'),

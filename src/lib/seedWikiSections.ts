@@ -50,8 +50,7 @@ export async function seedWikiSections(
     if (exists && !isOverride) continue;
 
     if (usesNormalized) {
-      const ok = await contentStoreUpsertWiki(article);
-      if (!ok) continue;
+      await contentStoreUpsertWiki(article);
     }
 
     byId.set(article.id, article);

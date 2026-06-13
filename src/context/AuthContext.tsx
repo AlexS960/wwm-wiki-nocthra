@@ -136,6 +136,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (!siteCore.isLoading) void guildsHook.ensureGuildsLoaded();
   }, [siteCore.isLoading, guildsHook.ensureGuildsLoaded]);
 
+  useEffect(() => {
+    if (!siteCore.isLoading) void wikiHook.ensureWikiLoaded();
+  }, [siteCore.isLoading, wikiHook.ensureWikiLoaded]);
+
   const pm = useAuthPm({
     user,
     registeredUsers: accounts.registeredUsers,

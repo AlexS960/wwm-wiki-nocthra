@@ -7,6 +7,7 @@ import {
   contentStoreUpdateWiki,
   contentStoreDeleteWiki,
 } from '../../lib/contentStore';
+import { mergeWikiWithSeeds } from '../../lib/sectionSeeds';
 import { seedWikiSections } from '../../lib/seedWikiSections';
 import { sanitizeWiki } from '../../lib/siteImages';
 import type { MutableRefObject } from 'react';
@@ -44,16 +45,18 @@ export function useAuthWiki({
         let articles = sanitizeWiki(await contentStoreLoadWiki());
 
         if (!seededRef.current) {
-          seededRef.current = true;
           const seedResult = await seedWikiSections(
             articles,
             getSectionOverrides(),
             async all => { await persist('wiki', all); },
           );
-          articles = sanitizeWiki(seedResult.articles);
+          articles = sanitizeWiki(mergeWikiWithSeeds(seedResult.articles));
+          seededRef.current = true;
           if (seedResult.migratedSections.length > 0) {
             onOverridesMigrated(seedResult.migratedSections);
           }
+        } else {
+          articles = sanitizeWiki(mergeWikiWithSeeds(articles));
         }
 
         setWikiArticles(articles);
