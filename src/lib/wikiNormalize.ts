@@ -1,20 +1,18 @@
 import type { WikiArticle } from '../types/site';
+import { asText } from './asText';
 import { sanitizeImageList } from './siteImages';
 
-/** Безопасное приведение к строке для текстовых полей вики. */
-export function asWikiText(value: unknown): string {
-  if (value == null) return '';
-  if (typeof value === 'string') return value;
-  if (typeof value === 'number' || typeof value === 'boolean') return String(value);
-  return '';
-}
+export { asText, trimText } from './asText';
+
+/** @deprecated use asText */
+export const asWikiText = asText;
 
 /** JSONB из Supabase может содержать числа/объекты — приводим к Record<string, string>. */
 export function normalizeWikiFields(fields: unknown): Record<string, string> {
   if (!fields || typeof fields !== 'object' || Array.isArray(fields)) return {};
   const out: Record<string, string> = {};
   for (const [key, value] of Object.entries(fields as Record<string, unknown>)) {
-    const text = asWikiText(value);
+    const text = asText(value);
     if (text) out[key] = text;
   }
   return out;
@@ -23,13 +21,13 @@ export function normalizeWikiFields(fields: unknown): Record<string, string> {
 export function normalizeWikiArticle<T extends WikiArticle>(article: T): T {
   return {
     ...article,
-    id: asWikiText(article.id) || article.id,
-    section: asWikiText(article.section),
-    title: asWikiText(article.title) || 'Без названия',
-    content: asWikiText(article.content),
-    icon: asWikiText(article.icon),
-    authorName: asWikiText(article.authorName),
-    updatedAt: asWikiText(article.updatedAt) || article.updatedAt,
+    id: asText(article.id) || String(article.id ?? ''),
+    section: asText(article.section),
+    title: asText(article.title) || 'Без названия',
+    content: asText(article.content),
+    icon: asText(article.icon),
+    authorName: asText(article.authorName),
+    updatedAt: asText(article.updatedAt) || String(article.updatedAt ?? ''),
     fields: normalizeWikiFields(article.fields),
     images: sanitizeImageList(article.images),
   };

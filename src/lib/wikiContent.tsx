@@ -58,8 +58,9 @@ function numberedText(line: string) {
 }
 
 /** Контент гайдов и разделов вики: заголовки, списки, цвет, выравнивание, BBCode. */
-export function renderWikiContent(content: string, opts: RenderOpts = {}): ReactNode[] {
-  const lines = content.split('\n');
+export function renderWikiContent(content: unknown, opts: RenderOpts = {}): ReactNode[] {
+  const text = typeof content === 'string' ? content : (content == null ? '' : String(content));
+  const lines = text.split('\n');
   const nodes: ReactNode[] = [];
   let i = 0;
   let blockKey = 0;

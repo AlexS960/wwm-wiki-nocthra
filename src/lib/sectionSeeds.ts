@@ -6,6 +6,7 @@ import { innerWays, resolvePathMeta } from '../data/innerWays';
 import { getDefaultSectionCategories } from '../data/sectionCategories';
 import type { WikiArticle } from '../types/site';
 import { buildSectionContent } from './sectionContent';
+import { normalizeWikiArticle } from './wikiNormalize';
 
 const SEED_AUTHOR = 'Nocthra Wiki';
 
@@ -297,7 +298,7 @@ export function buildWikiCatalog(
       }
     }
   }
-  return [...byId.values()];
+  return [...byId.values()].map(normalizeWikiArticle);
 }
 
 const OVERRIDE_CONVERTERS: Record<string, (item: unknown, index?: number) => WikiArticle | null> = {

@@ -1,6 +1,6 @@
 import { renderBBCode } from '../../lib/bbcode';
 import { renderWikiContent } from '../../lib/wikiContent';
-import { asWikiText } from '../../lib/wikiNormalize';
+import { asText } from '../../lib/asText';
 
 type RichTextVariant = 'compact' | 'preview' | 'normal';
 
@@ -22,7 +22,7 @@ export default function RichText({
   variant?: RichTextVariant;
   className?: string;
 }) {
-  const text = asWikiText(content);
+  const text = asText(content);
   if (!text.trim()) return null;
   return (
     <div className={`${variantStyles[variant]} ${className}`.trim()}>
@@ -33,7 +33,7 @@ export default function RichText({
 
 /** Однострочный фрагмент с BB-кодом (списки, подписи). */
 export function RichInline({ content, className = '' }: { content: string; className?: string }) {
-  const text = asWikiText(content);
+  const text = asText(content);
   if (!text.trim()) return null;
   return <span className={className}>{renderBBCode(text)}</span>;
 }

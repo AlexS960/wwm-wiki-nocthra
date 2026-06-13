@@ -13,7 +13,7 @@ import RichText, { RichInline } from '../ui/RichText';
 import MarkdownBody from '../MarkdownBody';
 import ContentImages from '../ContentImages';
 import { wikiCardLinkBbcode } from '../../lib/wikiLinks';
-import { asWikiText } from '../../lib/wikiNormalize';
+import { asText } from '../../lib/asText';
 
 interface SectionWikiCardProps {
   sectionId: string;
@@ -688,7 +688,7 @@ function CookingWikiCard(props: SectionWikiCardProps) {
 
 function TipsWikiCard(props: SectionWikiCardProps) {
   const { sectionId, article, categoryLabel, canEdit, onEdit, onDelete } = props;
-  const text = asWikiText(article.fields?.summary || article.content);
+  const text = asText(article.fields?.summary || article.content);
 
   return (
     <div className="relative bg-ink-800/50 border border-ink-700/30 rounded-xl p-4 flex items-start gap-3">
@@ -779,7 +779,7 @@ function InnerPathWikiCard(props: SectionWikiCardProps) {
 function GenericWikiCard(props: SectionWikiCardProps) {
   const { sectionId, article, categoryLabel, canEdit, onEdit, onDelete, isFavorite, onToggleFavorite, favoriteAddTitle, favoriteRemoveTitle, highlighted } = props;
   const [expanded, setExpanded] = useState(false);
-  const rawPreview = asWikiText(article.fields?.summary || article.content);
+  const rawPreview = asText(article.fields?.summary || article.content);
 
   useEffect(() => {
     if (highlighted) setExpanded(true);

@@ -7,7 +7,7 @@ import {
   parseSectionContent,
   textareaToList,
 } from './sectionContent';
-import { asWikiText } from './wikiNormalize';
+import { asText, trimText } from './asText';
 
 export type StructuredEditorValues = SectionEditorValues & {
   nameEn: string;
@@ -20,7 +20,7 @@ export function wikiArticleToStructured(article: WikiArticle, schema: SectionSch
   const parsed = parseSectionContent(article.content);
   const tagValues: Record<string, string> = {};
   schema.tagFields?.forEach(f => {
-    tagValues[f.id] = asWikiText(article.fields?.[f.id]);
+    tagValues[f.id] = asText(article.fields?.[f.id]);
   });
   if (!tagValues.theme) tagValues.theme = parsed.getLine('## Тема');
   if (!tagValues.weapon) tagValues.weapon = parsed.getLine('## Оружие');
@@ -49,13 +49,13 @@ export function wikiArticleToStructured(article: WikiArticle, schema: SectionSch
   }
 
   return {
-    title: asWikiText(article.title),
-    summary: asWikiText(article.fields?.summary),
-    content: asWikiText(article.content),
-    category: asWikiText(article.fields?.category),
-    icon: asWikiText(article.icon),
+    title: asText(article.title),
+    summary: asText(article.fields?.summary),
+    content: asText(article.content),
+    category: asText(article.fields?.category),
+    icon: asText(article.icon),
     images: article.images || [],
-    nameEn: asWikiText(article.fields?.nameEn),
+    nameEn: asText(article.fields?.nameEn),
     tagValues,
     structuredText,
     structuredLists,
@@ -76,20 +76,20 @@ export function structuredToWikiPayload(
 
   const content = schema.contentFields.length > 0
     ? buildSectionContent(sections)
-    : values.content.trim();
+    : trimText(values.content);
 
   const fields: Record<string, string> = {
-    summary: values.summary.trim(),
-    category: normalizeCategory(values.category),
+    summary: trimText(values.summary),
+    category: normalizeCategory(asText(values.category)),
   };
-  if (schema.showNameEn && values.nameEn.trim()) fields.nameEn = values.nameEn.trim();
+  if (schema.showNameEn && trimText(values.nameEn)) fields.nameEn = trimText(values.nameEn);
   schema.tagFields?.forEach(f => {
-    const v = values.tagValues[f.id]?.trim();
+    const v = trimText(values.tagValues[f.id]);
     if (v) fields[f.id] = v;
   });
 
   return {
-    title: values.title.trim(),
+    title: trimText(values.title),
     content,
     icon: values.icon,
     images: values.images,
@@ -109,7 +109,7 @@ export function editorValuesToWikiPayload(
       icon: values.icon,
       images: values.images,
       fields: {
-        summary: values.summary.trim(),
+        summary: trimText(values.summary),
         category: normalizeCategory(values.category),
       },
     };

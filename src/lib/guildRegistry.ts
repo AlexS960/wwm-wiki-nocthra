@@ -1,4 +1,5 @@
 import type { RegisteredGuild, RegisteredUser, RoleConfig, User } from '../types/site';
+import { trimText } from './asText';
 
 /** Системный id роли «Гильдмастер» на сайте (баннер Nocthra, guild.edit). */
 export const SITE_GUILDMASTER_ROLE = 'guildmaster';
@@ -16,7 +17,7 @@ function roleConfigFor(roleId: string, siteRoles?: RoleConfig[]): RoleConfig | u
 export function siteGuildmasterRoleIds(siteRoles?: RoleConfig[]): string[] {
   const ids = new Set<string>([SITE_GUILDMASTER_ROLE, SITE_GUILDMASTER_CUSTOM_ROLE_ID]);
   for (const r of siteRoles || []) {
-    if (r.displayName.trim().toLowerCase() === SITE_GUILDMASTER_DISPLAY) ids.add(r.id);
+    if (trimText(r.displayName).toLowerCase() === SITE_GUILDMASTER_DISPLAY) ids.add(r.id);
   }
   return [...ids];
 }
@@ -24,7 +25,7 @@ export function siteGuildmasterRoleIds(siteRoles?: RoleConfig[]): string[] {
 export function isSiteGuildmasterRole(roleId: string, siteRoles?: RoleConfig[]): boolean {
   if (roleId === SITE_GUILDMASTER_ROLE || roleId === SITE_GUILDMASTER_CUSTOM_ROLE_ID) return true;
   const rc = roleConfigFor(roleId, siteRoles);
-  return rc?.displayName.trim().toLowerCase() === SITE_GUILDMASTER_DISPLAY;
+  return trimText(rc?.displayName).toLowerCase() === SITE_GUILDMASTER_DISPLAY;
 }
 
 export function isSiteGuildmaster(user: User | null | undefined, siteRoles?: RoleConfig[]): boolean {

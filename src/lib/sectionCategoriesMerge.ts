@@ -3,6 +3,7 @@ import {
   type SectionCategoryDef,
   getDefaultSectionCategories,
 } from '../data/sectionCategories';
+import { trimText } from './asText';
 
 /** Разделы, где id категории = отображаемое название (хранится в поле type/category) */
 export const LABEL_AS_ID_SECTIONS = new Set([
@@ -32,7 +33,7 @@ export function usesLabelAsCategoryId(sectionKey: string): boolean {
 }
 
 export function createCategoryId(sectionKey: string, label: string): string {
-  const trimmed = String(label ?? '').trim();
+  const trimmed = trimText(label);
   if (!trimmed) return `cat-${Date.now()}`;
   if (usesLabelAsCategoryId(sectionKey)) return trimmed;
   return trimmed

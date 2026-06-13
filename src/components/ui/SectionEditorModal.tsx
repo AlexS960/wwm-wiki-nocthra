@@ -8,6 +8,7 @@ import AppModal, { type ModalLayer } from './AppModal';
 import ImageUploader from './ImageUploader';
 import ContentImages from '../ContentImages';
 import ContentRichEditor from './ContentRichEditor';
+import { asText, trimText } from '../../lib/asText';
 
 export interface SectionEditorValues {
   title: string;
@@ -48,30 +49,30 @@ export default function SectionEditorModal({
   const resolvedCategories = categoryOptions?.length
     ? categoryOptions
     : config.categories.map(c => ({ id: c, label: c }));
-  const defaultCategory = initial?.category || resolvedCategories[0]?.id || '';
-  const [title, setTitle] = useState(initial?.title || '');
-  const [summary, setSummary] = useState(initial?.summary || '');
-  const [content, setContent] = useState(initial?.content || schema?.defaultContentTemplate || '');
+  const defaultCategory = asText(initial?.category) || asText(resolvedCategories[0]?.id);
+  const [title, setTitle] = useState(() => asText(initial?.title));
+  const [summary, setSummary] = useState(() => asText(initial?.summary));
+  const [content, setContent] = useState(() => asText(initial?.content) || asText(schema?.defaultContentTemplate));
   const [category, setCategory] = useState(defaultCategory);
-  const [icon, setIcon] = useState(initial?.icon || config.icons[0]);
+  const [icon, setIcon] = useState(() => asText(initial?.icon) || config.icons[0]);
   const [images, setImages] = useState<string[]>(initial?.images || []);
-  const [nameEn, setNameEn] = useState(initial?.nameEn || '');
+  const [nameEn, setNameEn] = useState(() => asText(initial?.nameEn));
   const [tagValues, setTagValues] = useState<Record<string, string>>(() => {
     const base: Record<string, string> = {};
-    schema?.tagFields?.forEach(f => { base[f.id] = initial?.tagValues?.[f.id] || ''; });
+    schema?.tagFields?.forEach(f => { base[f.id] = asText(initial?.tagValues?.[f.id]); });
     return base;
   });
   const [structuredText, setStructuredText] = useState<Record<string, string>>(() => {
     const base: Record<string, string> = {};
     schema?.contentFields.filter(f => f.kind !== 'list').forEach(f => {
-      base[f.id] = initial?.structuredText?.[f.id] || '';
+      base[f.id] = asText(initial?.structuredText?.[f.id]);
     });
     return base;
   });
   const [structuredLists, setStructuredLists] = useState<Record<string, string>>(() => {
     const base: Record<string, string> = {};
     schema?.contentFields.filter(f => f.kind === 'list').forEach(f => {
-      base[f.id] = initial?.structuredLists?.[f.id] || '';
+      base[f.id] = asText(initial?.structuredLists?.[f.id]);
     });
     return base;
   });
@@ -84,13 +85,13 @@ export default function SectionEditorModal({
     const sections = schema.contentFields.map(field => ({
       header: field.header,
       body: field.kind === 'list'
-        ? (structuredLists[field.id] || '').split('\n').map(l => l.trim()).filter(Boolean)
-        : (structuredText[field.id] || ''),
+        ? asText(structuredLists[field.id]).split('\n').map(l => l.trim()).filter(Boolean)
+        : asText(structuredText[field.id]),
     }));
     return buildSectionContent(sections);
   }, [structured, schema, content, structuredText, structuredLists]);
 
-  const isValid = title.trim() && (structured ? true : content.trim());
+  const isValid = trimText(title) && (structured ? true : trimText(content));
 
   const handleSubmit = () => {
     if (!isValid) return;

@@ -1,5 +1,6 @@
 import type { RoleConfig } from '../types/site';
 import { defaultSiteSettings } from '../context/authContextTypes';
+import { trimText } from './asText';
 
 /** Системные id ролей с доступом к служебному чату */
 export const STAFF_CHAT_ROLE_IDS = ['admin', 'guildmaster', 'editor', 'moderator'] as const;
@@ -46,7 +47,7 @@ export function isStaffChatRole(roleId: string, siteRoles?: RoleConfig[]): boole
   const rc = roleConfigFor(roleId, siteRoles);
   if (!rc) return false;
   if (rc.permissions?.includes(STAFF_CHAT_PERMISSION)) return true;
-  return STAFF_ROLE_DISPLAY_NAMES.has(rc.displayName.trim().toLowerCase());
+  return STAFF_ROLE_DISPLAY_NAMES.has(trimText(rc.displayName).toLowerCase());
 }
 
 export function canAccessStaffChat(
@@ -62,7 +63,7 @@ export function mergeStaffRolesWithDefaults(roles: RoleConfig[]): RoleConfig[] {
   for (const def of defaultSiteSettings.roles) {
     if (def.id === 'user') continue;
     const hasId = out.some(r => r.id === def.id);
-    const hasName = out.some(r => r.displayName.trim().toLowerCase() === def.displayName.trim().toLowerCase());
+    const hasName = out.some(r => trimText(r.displayName).toLowerCase() === trimText(def.displayName).toLowerCase());
     if (!hasId && !hasName) out.push({ ...def });
   }
   return out;
@@ -124,7 +125,7 @@ export function staffRoleIdsForQuery(siteRoles?: RoleConfig[]): string[] {
   const ids = new Set<string>([...STAFF_CHAT_ROLE_IDS]);
   for (const r of siteRoles || []) {
     if (r.permissions?.includes(STAFF_CHAT_PERMISSION)) ids.add(r.id);
-    if (STAFF_ROLE_DISPLAY_NAMES.has(r.displayName.trim().toLowerCase())) ids.add(r.id);
+    if (STAFF_ROLE_DISPLAY_NAMES.has(trimText(r.displayName).toLowerCase())) ids.add(r.id);
   }
   return [...ids];
 }

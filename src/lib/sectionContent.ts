@@ -1,7 +1,9 @@
 /** Парсинг и сборка структурированного markdown-контента карточек разделов. */
 
-export function parseSectionContent(content: string) {
-  const lines = content.split('\n').map(l => l.trim());
+import { asText, trimText } from './asText';
+
+export function parseSectionContent(content: unknown) {
+  const lines = asText(content).split('\n').map(l => l.trim());
 
   const findHeader = (header: string) =>
     lines.findIndex(l => l.toLowerCase() === header.toLowerCase());
@@ -28,28 +30,33 @@ export function parseSectionContent(content: string) {
   return { getLine, getList, lines };
 }
 
-export function buildSectionContent(sections: Array<{ header: string; body: string | string[] }>): string {
+export function buildSectionContent(sections: Array<{ header: string; body: unknown | unknown[] }>): string {
   const parts: string[] = [];
   for (const { header, body } of sections) {
     if (!header) continue;
     parts.push(header);
     if (Array.isArray(body)) {
-      if (body.length === 0) continue;
-      parts.push(...body.map(x => `- ${x}`));
-    } else if (body.trim()) {
-      parts.push(body.trim());
+      const items = body.map(item => asText(item)).filter(Boolean);
+      if (items.length === 0) continue;
+      parts.push(...items.map(x => `- ${x}`));
+    } else {
+      const text = trimText(body);
+      if (text) parts.push(text);
     }
     parts.push('');
   }
   return parts.join('\n').trim();
 }
 
-export function listToTextarea(items: string[]): string {
-  return items.map(x => x.startsWith('- ') ? x.slice(2) : x).join('\n');
+export function listToTextarea(items: unknown[]): string {
+  return items.map(x => {
+    const s = asText(x);
+    return s.startsWith('- ') ? s.slice(2) : s;
+  }).join('\n');
 }
 
-export function textareaToList(text: string): string[] {
-  return text
+export function textareaToList(text: unknown): string[] {
+  return asText(text)
     .split('\n')
     .map(l => l.trim())
     .filter(Boolean)
