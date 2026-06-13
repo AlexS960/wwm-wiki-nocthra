@@ -20,6 +20,7 @@ import RiddlesSection from './RiddlesSection';
 import InnerPathSection from './InnerPathSection';
 import GenericSection from './GenericSection';
 import WikiEditorBar from './wiki/WikiEditorBar';
+import { WikiFocusProvider } from '../context/WikiFocusContext';
 
 interface ContentPageProps {
   pageId: string;
@@ -58,6 +59,7 @@ export default function ContentPage({ pageId, onBack, focusWikiId, onWikiFocused
   }
 
   return (
+    <WikiFocusProvider focusId={focusWikiId ?? null} onFocused={onWikiFocused}>
     <div className="cv-auto min-h-screen text-ink-100 pt-16 md:pt-20">
       <div className="bg-ink-800/60 border-b border-ink-700/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-3">
@@ -83,13 +85,12 @@ export default function ContentPage({ pageId, onBack, focusWikiId, onWikiFocused
         </div>
       )}
 
-      {pageId === 'builds' ? (
-        <BuildsSection focusBuildId={focusWikiId} onBuildFocused={onWikiFocused} />
-      ) : SectionComponent ? (
+      {SectionComponent ? (
         <SectionComponent />
       ) : customDef ? (
         <GenericSection definition={customDef} />
       ) : null}
     </div>
+    </WikiFocusProvider>
   );
 }

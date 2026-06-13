@@ -1,8 +1,11 @@
 import type { ReactNode } from 'react';
 import { logger } from './logger';
+import WikiInternalLink from '../components/ui/WikiInternalLink';
+import { isWikiCardLink } from './wikiLinks';
 
 export type RenderOpts = {
   linkClassName?: string;
+  wikiLinkClassName?: string;
   quoteClassName?: string;
   codeClassName?: string;
 };
@@ -103,7 +106,7 @@ function findMatchingClose(text: string, innerStart: number, open: OpenTag): num
   return -1;
 }
 
-function linkifyPlainText(text: string, opts: RenderOpts): ReactNode[] {
+function linkifyHttp(text: string, opts: RenderOpts): ReactNode[] {
   const nodes: ReactNode[] = [];
   const pattern = /(https?:\/\/[^\s<]+)/gi;
   let last = 0;
@@ -130,6 +133,47 @@ function linkifyPlainText(text: string, opts: RenderOpts): ReactNode[] {
   return nodes.length ? nodes : [text];
 }
 
+function linkifyPlainText(text: string, opts: RenderOpts): ReactNode[] {
+  const nodes: ReactNode[] = [];
+  const mdPattern = /\[([^\]]+)\]\(([^)]+)\)/g;
+  let last = 0;
+  let match = mdPattern.exec(text);
+  while (match) {
+    const start = match.index;
+    const end = start + match[0].length;
+    if (start > last) nodes.push(...linkifyHttp(text.slice(last, start), opts));
+    const label = match[1];
+    const href = match[2];
+    if (isWikiCardLink(href)) {
+      nodes.push(
+        <WikiInternalLink
+          key={key('md-wiki')}
+          href={href}
+          className={opts.wikiLinkClassName || opts.linkClassName || 'text-gold-300 hover:text-gold-200 underline underline-offset-2'}
+        >
+          {label}
+        </WikiInternalLink>,
+      );
+    } else {
+      nodes.push(
+        <a
+          key={key('md-url')}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={opts.linkClassName || 'text-blue-300 hover:text-blue-200 underline break-all'}
+        >
+          {label}
+        </a>,
+      );
+    }
+    last = end;
+    match = mdPattern.exec(text);
+  }
+  if (last < text.length) nodes.push(...linkifyHttp(text.slice(last), opts));
+  return nodes.length ? nodes : [text];
+}
+
 function renderTag(open: OpenTag, inner: string, opts: RenderOpts): ReactNode {
   switch (open.kind) {
     case 'code':
@@ -148,6 +192,17 @@ function renderTag(open: OpenTag, inner: string, opts: RenderOpts): ReactNode {
     }
     case 'url-eq': {
       const children = parseFragment(inner, opts);
+      if (isWikiCardLink(open.href)) {
+        return (
+          <WikiInternalLink
+            key={key('wiki-url-eq')}
+            href={open.href}
+            className={opts.wikiLinkClassName || opts.linkClassName || 'text-gold-300 hover:text-gold-200 underline underline-offset-2'}
+          >
+            {children}
+          </WikiInternalLink>
+        );
+      }
       return (
         <a
           key={key('url-eq')}
@@ -162,6 +217,17 @@ function renderTag(open: OpenTag, inner: string, opts: RenderOpts): ReactNode {
     }
     case 'url': {
       const href = inner.trim();
+      if (isWikiCardLink(href)) {
+        return (
+          <WikiInternalLink
+            key={key('wiki-url')}
+            href={href}
+            className={opts.wikiLinkClassName || opts.linkClassName || 'text-gold-300 hover:text-gold-200 underline underline-offset-2'}
+          >
+            {href}
+          </WikiInternalLink>
+        );
+      }
       return (
         <a
           key={key('url')}

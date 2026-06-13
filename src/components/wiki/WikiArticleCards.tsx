@@ -12,6 +12,7 @@ import SectionEditorModal, { type SectionEditorValues } from '../ui/SectionEdito
 import DynamicSectionEditorModal, { type DynamicEditorValues } from '../ui/DynamicSectionEditorModal';
 import { sectionEditorConfigs } from '../../data/sectionEditorConfig';
 import SectionWikiCard from './SectionWikiCard';
+import { useWikiFocus } from '../../context/WikiFocusContext';
 
 interface WikiArticleCardsProps {
   sectionId: string;
@@ -32,6 +33,8 @@ export default function WikiArticleCards({
   favoriteRemoveTitle,
   highlightId,
 }: WikiArticleCardsProps) {
+  const focusId = useWikiFocus();
+  const activeHighlight = highlightId ?? focusId;
   const { wikiArticles, isEditor, isAdmin, updateWikiArticle, deleteWikiArticle, siteSettings } = useAuth();
   const [editId, setEditId] = useState<string | null>(null);
   const [editInitial, setEditInitial] = useState<Partial<SectionEditorValues>>();
@@ -78,7 +81,7 @@ export default function WikiArticleCards({
           onToggleFavorite={onToggleFavorite ? () => onToggleFavorite(article.id) : undefined}
           favoriteAddTitle={favoriteAddTitle}
           favoriteRemoveTitle={favoriteRemoveTitle}
-          highlighted={highlightId === article.id}
+          highlighted={activeHighlight === article.id}
           onEdit={() => {
             setEditId(article.id);
             if (customDef) {

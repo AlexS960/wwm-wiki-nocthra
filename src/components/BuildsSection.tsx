@@ -1,33 +1,15 @@
-import { useEffect, useState } from 'react';
 import { Zap, Star } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { findBuildCardElement, resolveBuildName } from '../lib/buildLookup';
+import { resolveBuildName } from '../lib/buildLookup';
 import WikiArticleCards from './wiki/WikiArticleCards';
 import { SECTION_ITEMS_LIST_CLASS } from './wiki/sectionLayout';
 import SectionHeader from './ui/SectionHeader';
 
-interface BuildsSectionProps {
-  focusBuildId?: string | null;
-  onBuildFocused?: () => void;
-}
-
-export default function BuildsSection({ focusBuildId, onBuildFocused }: BuildsSectionProps = {}) {
+export default function BuildsSection() {
   const { user, progress, setSelectedBuild, wikiArticles } = useAuth();
   const selectedBuildName = progress.selectedBuild
     ? resolveBuildName(progress.selectedBuild, wikiArticles)
     : null;
-
-  useEffect(() => {
-    if (!focusBuildId) return;
-    const timer = window.setTimeout(() => {
-      const el = findBuildCardElement(focusBuildId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        onBuildFocused?.();
-      }
-    }, 150);
-    return () => window.clearTimeout(timer);
-  }, [focusBuildId, onBuildFocused]);
 
   return (
     <section id="builds" className="py-20 bg-pattern">
@@ -48,7 +30,6 @@ export default function BuildsSection({ focusBuildId, onBuildFocused }: BuildsSe
         <div className={SECTION_ITEMS_LIST_CLASS}>
           <WikiArticleCards
             sectionId="builds"
-            highlightId={focusBuildId}
             {...(user ? {
               isFavorite: (id: string) => progress.selectedBuild === id,
               onToggleFavorite: (id: string) => setSelectedBuild(progress.selectedBuild === id ? null : id),

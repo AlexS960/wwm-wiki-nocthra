@@ -23,6 +23,7 @@ import { isKnownPath, pageFromPath, pathFromPage, registerCustomSectionRoutes } 
 import { isContentSectionResolved, sanitizeSectionDefinitions } from './lib/sectionRegistry';
 import { lazyWithRetry } from './lib/lazyWithRetry';
 import type { NavigatePayload } from './components/Header';
+import { WikiNavigationProvider } from './context/WikiNavigationContext';
 
 const GuidesPage = lazyWithRetry(() => import('./components/GuidesPage'));
 const AdminPage = lazyWithRetry(() => import('./components/AdminPage'));
@@ -144,26 +145,6 @@ function AppContent() {
     showStaffChatLink: canAccessStaffChat(),
   }), [currentPage, handleNavigate, user?.role, siteSettings.roles, canAccessStaffChat]);
 
-  if (isLoading) {
-    return (
-      <PageShell
-        headerProps={{
-          activeSection: 'home',
-          onNavigate: handleNavigate,
-          onLoginClick: () => setShowLoginModal(true),
-          onProfileClick: (anchor?: { top: number; right: number }) => {
-            setProfileAnchor(anchor || null);
-            setShowProfileModal(true);
-          },
-          showStaffChatLink: false,
-        }}
-        modals={null}
-      >
-        <PageLoader />
-      </PageShell>
-    );
-  }
-
   const modals = (
     <>
       <DbErrorBanner />
@@ -191,127 +172,158 @@ function AppContent() {
     </>
   );
 
-  if (siteSettings.maintenanceMode && !canAccessAdminPanel()) {
-    return (
-      <PageShell headerProps={headerProps} modals={modals}>
-        <MaintenancePage title={siteSettings.siteName || 'Сайт'} message="Сайт находится на техническом обслуживании." onBack={goBack} />
-      </PageShell>
-    );
-  }
+  const renderPage = () => {
+    if (isLoading) {
+      return (
+        <PageShell
+          headerProps={{
+            activeSection: 'home',
+            onNavigate: handleNavigate,
+            onLoginClick: () => setShowLoginModal(true),
+            onProfileClick: (anchor?: { top: number; right: number }) => {
+              setProfileAnchor(anchor || null);
+              setShowProfileModal(true);
+            },
+            showStaffChatLink: false,
+          }}
+          modals={null}
+        >
+          <PageLoader />
+        </PageShell>
+      );
+    }
 
-  if (currentPage !== 'main' && currentPage !== 'admin' && currentPage !== 'staffchat' && isSectionMaintenance && !canAccessAdminPanel()) {
-    return (
-      <PageShell headerProps={headerProps} modals={modals}>
-        <MaintenancePage
-          title={sectionState?.title || 'Раздел'}
-          message={sectionState?.message || 'Раздел находится на технических работах.'}
-          onBack={goBack}
-        />
-      </PageShell>
-    );
-  }
+    if (siteSettings.maintenanceMode && !canAccessAdminPanel()) {
+      return (
+        <PageShell headerProps={headerProps} modals={modals}>
+          <MaintenancePage title={siteSettings.siteName || 'Сайт'} message="Сайт находится на техническом обслуживании." onBack={goBack} />
+        </PageShell>
+      );
+    }
 
-  if (currentPage === 'guides') {
-    return (
-      <PageShell headerProps={headerProps} modals={modals}>
-        <Suspense fallback={<PageLoader />}>
-          <GuidesPage
+    if (currentPage !== 'main' && currentPage !== 'admin' && currentPage !== 'staffchat' && isSectionMaintenance && !canAccessAdminPanel()) {
+      return (
+        <PageShell headerProps={headerProps} modals={modals}>
+          <MaintenancePage
+            title={sectionState?.title || 'Раздел'}
+            message={sectionState?.message || 'Раздел находится на технических работах.'}
             onBack={goBack}
-            onLoginClick={() => setShowLoginModal(true)}
-            initialGuideId={pendingGuideId}
-            onGuideOpened={() => setPendingGuideId(null)}
           />
-        </Suspense>
-      </PageShell>
-    );
-  }
+        </PageShell>
+      );
+    }
 
-  if (currentPage === 'admin') {
-    return (
-      <PageShell headerProps={headerProps} modals={modals}>
-        <Suspense fallback={<PageLoader />}>
-          <AdminPage onBack={goBack} />
-        </Suspense>
-      </PageShell>
-    );
-  }
+    if (currentPage === 'guides') {
+      return (
+        <PageShell headerProps={headerProps} modals={modals}>
+          <Suspense fallback={<PageLoader />}>
+            <GuidesPage
+              onBack={goBack}
+              onLoginClick={() => setShowLoginModal(true)}
+              initialGuideId={pendingGuideId}
+              onGuideOpened={() => setPendingGuideId(null)}
+            />
+          </Suspense>
+        </PageShell>
+      );
+    }
 
-  if (currentPage === 'staffchat') {
-    return (
-      <PageShell headerProps={headerProps} modals={modals} animated={false}>
-        <Suspense fallback={<PageLoader />}>
-          <StaffChatPage onBack={goBack} onLoginClick={() => setShowLoginModal(true)} />
-        </Suspense>
-      </PageShell>
-    );
-  }
+    if (currentPage === 'admin') {
+      return (
+        <PageShell headerProps={headerProps} modals={modals}>
+          <Suspense fallback={<PageLoader />}>
+            <AdminPage onBack={goBack} />
+          </Suspense>
+        </PageShell>
+      );
+    }
 
-  if (currentPage === 'suggestions') {
-    return (
-      <PageShell headerProps={headerProps} modals={modals}>
-        <Suspense fallback={<PageLoader />}>
-          <SuggestionsPage onBack={goBack} onLoginClick={() => setShowLoginModal(true)} />
-        </Suspense>
-      </PageShell>
-    );
-  }
+    if (currentPage === 'staffchat') {
+      return (
+        <PageShell headerProps={headerProps} modals={modals} animated={false}>
+          <Suspense fallback={<PageLoader />}>
+            <StaffChatPage onBack={goBack} onLoginClick={() => setShowLoginModal(true)} />
+          </Suspense>
+        </PageShell>
+      );
+    }
 
-  if (currentPage === 'guilds') {
-    return (
-      <PageShell headerProps={headerProps} modals={modals}>
-        <Suspense fallback={<PageLoader />}>
-          <GuildsPage onBack={goBack} onLoginClick={() => setShowLoginModal(true)} />
-        </Suspense>
-      </PageShell>
-    );
-  }
+    if (currentPage === 'suggestions') {
+      return (
+        <PageShell headerProps={headerProps} modals={modals}>
+          <Suspense fallback={<PageLoader />}>
+            <SuggestionsPage onBack={goBack} onLoginClick={() => setShowLoginModal(true)} />
+          </Suspense>
+        </PageShell>
+      );
+    }
 
-  if (currentPage === 'faq') {
-    return (
-      <PageShell headerProps={headerProps} modals={modals}>
-        <Suspense fallback={<PageLoader />}>
-          <div className="pt-16 md:pt-20"><FAQSection /></div>
-        </Suspense>
-      </PageShell>
-    );
-  }
+    if (currentPage === 'guilds') {
+      return (
+        <PageShell headerProps={headerProps} modals={modals}>
+          <Suspense fallback={<PageLoader />}>
+            <GuildsPage onBack={goBack} onLoginClick={() => setShowLoginModal(true)} />
+          </Suspense>
+        </PageShell>
+      );
+    }
 
-  if (currentPage === 'users') {
-    return (
-      <PageShell headerProps={headerProps} modals={modals}>
-        <Suspense fallback={<PageLoader />}>
-          <UsersListPage onBack={goBack} />
-        </Suspense>
-      </PageShell>
-    );
-  }
+    if (currentPage === 'faq') {
+      return (
+        <PageShell headerProps={headerProps} modals={modals}>
+          <Suspense fallback={<PageLoader />}>
+            <div className="pt-16 md:pt-20"><FAQSection /></div>
+          </Suspense>
+        </PageShell>
+      );
+    }
 
-  if (currentPage === 'wwmwiki') {
-    return (
-      <PageShell headerProps={headerProps} modals={modals}>
-        <Suspense fallback={<PageLoader />}>
-          <WwmWikiPage onNavigate={handleNavigate} />
-        </Suspense>
-      </PageShell>
-    );
-  }
+    if (currentPage === 'users') {
+      return (
+        <PageShell headerProps={headerProps} modals={modals}>
+          <Suspense fallback={<PageLoader />}>
+            <UsersListPage onBack={goBack} />
+          </Suspense>
+        </PageShell>
+      );
+    }
 
-  if (isContentSectionResolved(currentPage, siteSettings)) {
-    return (
-      <PageShell headerProps={headerProps} modals={modals}>
-        <Suspense fallback={<PageLoader />}>
-          <ContentPage
-            pageId={currentPage}
-            onBack={goBack}
-            focusWikiId={pendingWikiId}
-            onWikiFocused={() => setPendingWikiId(null)}
-          />
-        </Suspense>
-      </PageShell>
-    );
-  }
+    if (currentPage === 'wwmwiki') {
+      return (
+        <PageShell headerProps={headerProps} modals={modals}>
+          <Suspense fallback={<PageLoader />}>
+            <WwmWikiPage onNavigate={handleNavigate} />
+          </Suspense>
+        </PageShell>
+      );
+    }
 
-  return <MainPage headerProps={headerProps} modals={modals} onNavigate={handleNavigate} />;
+    if (isContentSectionResolved(currentPage, siteSettings)) {
+      return (
+        <PageShell headerProps={headerProps} modals={modals}>
+          <Suspense fallback={<PageLoader />}>
+            <ContentPage
+              pageId={currentPage}
+              onBack={goBack}
+              focusWikiId={pendingWikiId}
+              onWikiFocused={() => setPendingWikiId(null)}
+            />
+          </Suspense>
+        </PageShell>
+      );
+    }
+
+    return <MainPage headerProps={headerProps} modals={modals} onNavigate={handleNavigate} />;
+  };
+
+  return (
+    <WikiNavigationProvider
+      onNavigate={handleNavigate}
+      getCurrentSection={() => (currentPage === 'main' ? null : currentPage)}
+    >
+      {renderPage()}
+    </WikiNavigationProvider>
+  );
 }
 
 function MainPage({ headerProps, modals, onNavigate }: {

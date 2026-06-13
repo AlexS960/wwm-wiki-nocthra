@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import {
-  ChevronDown, ChevronUp, Edit3, Star, Trash2,
-  MapPin, Target, Gift, Lightbulb, Check, X as XIcon,
+  ChevronDown, ChevronUp, Edit3, Star, Trash2, Link2, Check,
+  MapPin, Target, Gift, Lightbulb, Check as CheckIcon, X as XIcon,
   Sparkles, Zap, Shield, Heart, Wind, Clock,
 } from 'lucide-react';
 import type { WikiArticle } from '../../context/AuthContext';
@@ -12,6 +12,7 @@ import { bossDiffColor, buildDiffColor, mysticElementColors, mysticTypeLabels } 
 import RichText, { RichInline } from '../ui/RichText';
 import MarkdownBody from '../MarkdownBody';
 import ContentImages from '../ContentImages';
+import { wikiCardLinkBbcode } from '../../lib/wikiLinks';
 
 interface SectionWikiCardProps {
   sectionId: string;
@@ -27,20 +28,55 @@ interface SectionWikiCardProps {
   highlighted?: boolean;
 }
 
+function CopyWikiLinkButton({
+  sectionId,
+  article,
+}: {
+  sectionId: string;
+  article: WikiArticle;
+}) {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    try {
+      await navigator.clipboard.writeText(wikiCardLinkBbcode(sectionId, article.id, article.title));
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* clipboard unavailable */
+    }
+  };
+  return (
+    <button
+      type="button"
+      onClick={handleCopy}
+      className="p-1.5 rounded-md text-jade-300 border border-jade-400/30 hover:bg-jade-400/10 cursor-pointer"
+      title={copied ? 'Скопировано!' : 'Копировать ссылку на карточку'}
+    >
+      {copied ? <Check className="w-3.5 h-3.5" /> : <Link2 className="w-3.5 h-3.5" />}
+    </button>
+  );
+}
+
 function ManageButtons({
   canEdit,
   onEdit,
   onDelete,
+  sectionId,
+  article,
   className = '',
 }: {
   canEdit: boolean;
   onEdit: () => void;
   onDelete: () => void;
+  sectionId: string;
+  article: WikiArticle;
   className?: string;
 }) {
   if (!canEdit) return null;
   return (
     <div className={`flex items-center gap-1 ${className}`} onClick={e => e.stopPropagation()}>
+      <CopyWikiLinkButton sectionId={sectionId} article={article} />
       <button type="button" onClick={onEdit} className="p-1.5 rounded-md text-gold-300 border border-gold-400/30 hover:bg-gold-400/10 cursor-pointer" title="Редактировать">
         <Edit3 className="w-3.5 h-3.5" />
       </button>
@@ -97,7 +133,7 @@ function TitleBlock({ title, nameEn }: { title: string; nameEn?: string }) {
 }
 
 function BossWikiCard(props: SectionWikiCardProps) {
-  const { article, categoryLabel, canEdit, onEdit, onDelete, highlighted } = props;
+  const { sectionId, article, categoryLabel, canEdit, onEdit, onDelete, highlighted } = props;
   const [expanded, setExpanded] = useState(false);
   const parsed = parseSectionContent(article.content);
   const difficulty = parsed.getLine('## Сложность');
@@ -157,7 +193,7 @@ function BossWikiCard(props: SectionWikiCardProps) {
         </div>
       </div>
 
-      <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} className="absolute top-3 right-3 z-10" />
+      <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} className="absolute top-3 right-3 z-10" />
 
       {expanded && (
         <div className="mt-4 pt-4 border-t border-ink-700/30 space-y-4 animate-fadeIn" onClick={e => e.stopPropagation()}>
@@ -211,7 +247,7 @@ function BossWikiCard(props: SectionWikiCardProps) {
 }
 
 function WeaponWikiCard(props: SectionWikiCardProps) {
-  const { article, categoryLabel, canEdit, onEdit, onDelete, isFavorite, onToggleFavorite, favoriteAddTitle, favoriteRemoveTitle, highlighted } = props;
+  const { sectionId, article, categoryLabel, canEdit, onEdit, onDelete, isFavorite, onToggleFavorite, favoriteAddTitle, favoriteRemoveTitle, highlighted } = props;
   const [expanded, setExpanded] = useState(false);
   const parsed = parseSectionContent(article.content);
   const howToGetBlock = () => {
@@ -258,7 +294,7 @@ function WeaponWikiCard(props: SectionWikiCardProps) {
           )}
         </div>
         <div className="flex flex-col items-center gap-1 shrink-0" onClick={e => e.stopPropagation()}>
-          <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} />
+          <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} />
           <FavoriteButton isFavorite={isFavorite} onToggle={onToggleFavorite} addTitle={favoriteAddTitle} removeTitle={favoriteRemoveTitle} />
         </div>
       </div>
@@ -290,7 +326,7 @@ function WeaponWikiCard(props: SectionWikiCardProps) {
 }
 
 function BuildWikiCard(props: SectionWikiCardProps) {
-  const { article, categoryLabel, canEdit, onEdit, onDelete, isFavorite, onToggleFavorite, favoriteAddTitle, favoriteRemoveTitle, highlighted } = props;
+  const { sectionId, article, categoryLabel, canEdit, onEdit, onDelete, isFavorite, onToggleFavorite, favoriteAddTitle, favoriteRemoveTitle, highlighted } = props;
   const [expanded, setExpanded] = useState(false);
   const parsed = parseSectionContent(article.content);
   const weapons = parsed.getList('## Оружие');
@@ -329,7 +365,7 @@ function BuildWikiCard(props: SectionWikiCardProps) {
             : <ChevronDown className={`w-5 h-5 text-ink-400 shrink-0 ${canEdit ? 'mr-14' : ''}`} />}
         </div>
 
-        <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} className="absolute top-4 right-4 z-20" />
+        <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} className="absolute top-4 right-4 z-20" />
 
         {onToggleFavorite && (
           <div className={`absolute ${canEdit ? 'top-14' : 'top-4'} right-4 z-10`}>
@@ -373,7 +409,7 @@ function BuildWikiCard(props: SectionWikiCardProps) {
                 <div className="space-y-1">
                   {strengths.map((s, i) => (
                     <div key={i} className="flex items-center gap-2 text-sm text-ink-200">
-                      <Check className="w-3 h-3 text-jade-400 shrink-0" />
+                      <CheckIcon className="w-3 h-3 text-jade-400 shrink-0" />
                       <RichInline content={s} />
                     </div>
                   ))}
@@ -416,7 +452,7 @@ function BuildWikiCard(props: SectionWikiCardProps) {
 }
 
 function SectWikiCard(props: SectionWikiCardProps) {
-  const { article, canEdit, onEdit, onDelete, highlighted } = props;
+  const { sectionId, article, canEdit, onEdit, onDelete, highlighted } = props;
   const [expanded, setExpanded] = useState(false);
   const parsed = parseSectionContent(article.content);
   const howToJoin = parsed.getLine('## Как вступить');
@@ -448,7 +484,7 @@ function SectWikiCard(props: SectionWikiCardProps) {
           : <ChevronDown className={`w-5 h-5 text-ink-400 shrink-0 ${canEdit ? 'mr-14' : ''}`} />}
       </div>
 
-      <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} className="absolute top-3 right-3 z-10" />
+      <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} className="absolute top-3 right-3 z-10" />
 
       {article.fields?.summary && <RichText content={article.fields.summary} variant="normal" className="mb-3" />}
       {theme && (
@@ -465,7 +501,7 @@ function SectWikiCard(props: SectionWikiCardProps) {
         <div className="mt-4 pt-4 border-t border-ink-700/30 space-y-3 animate-fadeIn" onClick={e => e.stopPropagation()}>
           {benefits.length > 0 && (
             <div>
-              <h4 className="text-jade-400 font-semibold text-sm mb-1 flex items-center gap-1"><Check className="w-3 h-3" /> Преимущества</h4>
+              <h4 className="text-jade-400 font-semibold text-sm mb-1 flex items-center gap-1"><CheckIcon className="w-3 h-3" /> Преимущества</h4>
               <ul className="space-y-1">
                 {benefits.map((b, i) => (
                   <li key={i} className="text-sm text-ink-200 flex items-start gap-2">
@@ -497,7 +533,7 @@ function SectWikiCard(props: SectionWikiCardProps) {
 }
 
 function MysticWikiCard(props: SectionWikiCardProps) {
-  const { article, categoryLabel, canEdit, onEdit, onDelete } = props;
+  const { sectionId, article, categoryLabel, canEdit, onEdit, onDelete } = props;
   const parsed = parseSectionContent(article.content);
   const effectBlock = () => {
     const idx = parsed.lines.findIndex(l => l.toLowerCase() === '## эффект');
@@ -567,14 +603,14 @@ function MysticWikiCard(props: SectionWikiCardProps) {
           </div>
         </div>
       </div>
-      <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} className="absolute top-3 right-3 z-10" />
+      <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} className="absolute top-3 right-3 z-10" />
       <ContentImages images={article.images} />
     </div>
   );
 }
 
 function CookingWikiCard(props: SectionWikiCardProps) {
-  const { article, categoryLabel, canEdit, onEdit, onDelete, highlighted } = props;
+  const { sectionId, article, categoryLabel, canEdit, onEdit, onDelete, highlighted } = props;
   const [expanded, setExpanded] = useState(false);
   const parsed = parseSectionContent(article.content);
   const level = parsed.getLine('## Уровень') || article.fields?.level;
@@ -622,7 +658,7 @@ function CookingWikiCard(props: SectionWikiCardProps) {
         </div>
       </div>
 
-      <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} className="absolute top-3 right-3 z-10" />
+      <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} className="absolute top-3 right-3 z-10" />
 
       {expanded && (
         <div className="mt-3 pt-3 border-t border-ink-700/30 space-y-2 animate-fadeIn" onClick={e => e.stopPropagation()}>
@@ -650,7 +686,7 @@ function CookingWikiCard(props: SectionWikiCardProps) {
 }
 
 function TipsWikiCard(props: SectionWikiCardProps) {
-  const { article, categoryLabel, canEdit, onEdit, onDelete } = props;
+  const { sectionId, article, categoryLabel, canEdit, onEdit, onDelete } = props;
   const text = article.fields?.summary || article.content;
 
   return (
@@ -664,14 +700,14 @@ function TipsWikiCard(props: SectionWikiCardProps) {
         )}
         <RichText content={text} variant="normal" />
       </div>
-      <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} className="absolute top-2 right-2" />
+      <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} className="absolute top-2 right-2" />
       <ContentImages images={article.images} />
     </div>
   );
 }
 
 function InnerPathWikiCard(props: SectionWikiCardProps) {
-  const { article, categoryLabel, canEdit, onEdit, onDelete, highlighted } = props;
+  const { sectionId, article, categoryLabel, canEdit, onEdit, onDelete, highlighted } = props;
   const [expanded, setExpanded] = useState(false);
   const parsed = parseSectionContent(article.content);
   const readBlock = (header: string) => {
@@ -716,7 +752,7 @@ function InnerPathWikiCard(props: SectionWikiCardProps) {
             ? <ChevronUp className={`w-5 h-5 text-gold-400 shrink-0 ${canEdit ? 'mr-14' : ''}`} />
             : <ChevronDown className={`w-5 h-5 text-ink-400 shrink-0 ${canEdit ? 'mr-14' : ''}`} />}
         </div>
-        <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} className="absolute top-3 right-3 z-10" />
+        <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} className="absolute top-3 right-3 z-10" />
         {expanded && (
           <div className="mt-4 pt-4 border-t border-ink-700/30 space-y-3 animate-fadeIn" onClick={e => e.stopPropagation()}>
             {effect && (
@@ -740,7 +776,7 @@ function InnerPathWikiCard(props: SectionWikiCardProps) {
 }
 
 function GenericWikiCard(props: SectionWikiCardProps) {
-  const { article, categoryLabel, canEdit, onEdit, onDelete, isFavorite, onToggleFavorite, favoriteAddTitle, favoriteRemoveTitle, highlighted } = props;
+  const { sectionId, article, categoryLabel, canEdit, onEdit, onDelete, isFavorite, onToggleFavorite, favoriteAddTitle, favoriteRemoveTitle, highlighted } = props;
   const [expanded, setExpanded] = useState(false);
   const rawPreview = article.fields?.summary || article.content;
 
@@ -771,7 +807,7 @@ function GenericWikiCard(props: SectionWikiCardProps) {
         </div>
         {(canEdit || onToggleFavorite) && (
           <div className="flex flex-col items-center gap-1 shrink-0" onClick={e => e.stopPropagation()}>
-            <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} />
+            <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} />
             <FavoriteButton isFavorite={isFavorite} onToggle={onToggleFavorite} addTitle={favoriteAddTitle} removeTitle={favoriteRemoveTitle} />
           </div>
         )}

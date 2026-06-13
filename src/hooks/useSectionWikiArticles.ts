@@ -1,5 +1,5 @@
-import { useAuth } from '../../context/AuthContext';
-import { useSectionCategories } from '../../hooks/useSectionCategories';
+import { useAuth } from '../context/AuthContext';
+import { useSectionCategories } from './useSectionCategories';
 import { useMemo } from 'react';
 
 /** Статьи раздела из Supabase (после сидирования — единственный источник данных). */
