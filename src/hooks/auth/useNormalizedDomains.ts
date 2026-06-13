@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, type MutableRefObject } from 'react';
 import type { GuideArticle, GuideComment, GuideVersion, SiteNewsItem, SiteSettings, SupportTicket, WikiArticle, ChatState } from '../../types/site';
 import { contentStoreUsesNormalized } from '../../lib/contentStore';
+import { buildWikiCatalog } from '../../lib/sectionSeeds';
 import { asArray } from '../../context/authContextTypes';
 import { normalizeChatState } from '../../lib/normalizeState';
 import { sanitizeGuides, sanitizeGuideVersions, sanitizeGuildAvatar, sanitizeSiteNews, sanitizeWiki } from '../../lib/siteImages';
@@ -48,7 +49,8 @@ export function useNormalizedDomains(
         break;
       case 'wiki':
         if (!n.wiki) {
-          s.setWikiArticles(sanitizeWiki(asArray<WikiArticle>(value)));
+          const fromSite = sanitizeWiki(asArray<WikiArticle>(value));
+          s.setWikiArticles(sanitizeWiki(buildWikiCatalog(fromSite)));
           s.setWikiLoaded(true);
         }
         break;

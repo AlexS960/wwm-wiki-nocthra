@@ -14,6 +14,15 @@ import { logger } from '../../lib/logger';
 import type { MutableRefObject } from 'react';
 import type { NormalizedDomains } from './types';
 
+const DB_TIMEOUT_MS = 8_000;
+
+function withTimeout<T>(promise: Promise<T>, ms: number, fallback: T): Promise<T> {
+  return Promise.race([
+    promise,
+    new Promise<T>(resolve => setTimeout(() => resolve(fallback), ms)),
+  ]);
+}
+
 type Deps = {
   user: User | null;
   persist: (key: string, data: unknown) => Promise<string | null>;
@@ -31,59 +40,64 @@ export function useAuthWiki({
   getSectionOverrides,
   onOverridesMigrated,
 }: Deps) {
-  const [wikiArticles, setWikiArticles] = useState<WikiArticle[]>([]);
-  const [wikiLoaded, setWikiLoaded] = useState(false);
-  const wikiLoadRef = useRef<Promise<void> | null>(null);
+  const [wikiArticles, setWikiArticles] = useState<WikiArticle[]>(() =>
+    sanitizeWiki(buildWikiCatalog([])),
+  );
+  const [wikiLoaded] = useState(true);
   const wikiRef = useRef(wikiArticles);
   wikiRef.current = wikiArticles;
   const seededRef = useRef(false);
+  const syncStartedRef = useRef(false);
 
-  const ensureWikiLoaded = useCallback(async () => {
-    if (wikiLoaded) return;
-    if (!wikiLoadRef.current) {
-      wikiLoadRef.current = (async () => {
-        let dbArticles: WikiArticle[] = [];
-
-        try {
-          normalizedRef.current.wiki = await contentStoreUsesNormalized('wiki');
-          dbArticles = sanitizeWiki(await contentStoreLoadWiki());
-        } catch (err) {
-          logger.warn('Wiki DB load skipped, using local catalog', 'wiki', String(err));
-          normalizedRef.current.wiki = false;
-        }
-
-        const overrides = seededRef.current ? undefined : getSectionOverrides();
-        const catalog = sanitizeWiki(buildWikiCatalog(dbArticles, overrides));
-
-        setWikiArticles(catalog);
-        setWikiLoaded(true);
-
-        if (!seededRef.current) {
-          seededRef.current = true;
-          void seedWikiSections(
-            dbArticles,
-            overrides,
-            async all => { await persist('wiki', all); },
-          )
-            .then(seedResult => {
-              if (seedResult.migratedSections.length > 0) {
-                onOverridesMigrated(seedResult.migratedSections);
-              }
-              setWikiArticles(sanitizeWiki(buildWikiCatalog(seedResult.articles)));
-            })
-            .catch(err => {
-              logger.warn('Background wiki seed failed', 'wiki', String(err));
-            });
-        }
-      })().catch(err => {
-        wikiLoadRef.current = null;
-        logger.error('Wiki load failed', 'wiki', String(err));
-        setWikiArticles(sanitizeWiki(buildWikiCatalog([])));
-        setWikiLoaded(true);
-      });
+  const syncWikiFromDb = useCallback(async () => {
+    let dbArticles: WikiArticle[] = [];
+    try {
+      normalizedRef.current.wiki = await withTimeout(
+        contentStoreUsesNormalized('wiki'),
+        DB_TIMEOUT_MS,
+        false,
+      );
+      if (normalizedRef.current.wiki) {
+        dbArticles = sanitizeWiki(await withTimeout(
+          contentStoreLoadWiki(),
+          DB_TIMEOUT_MS,
+          [],
+        ));
+      }
+    } catch (err) {
+      logger.warn('Wiki DB sync skipped', 'wiki', String(err));
+      normalizedRef.current.wiki = false;
     }
-    await wikiLoadRef.current;
-  }, [wikiLoaded, normalizedRef, getSectionOverrides, onOverridesMigrated, persist]);
+
+    const overrides = getSectionOverrides();
+    setWikiArticles(sanitizeWiki(buildWikiCatalog(dbArticles, overrides)));
+
+    if (!seededRef.current) {
+      seededRef.current = true;
+      try {
+        const seedResult = await seedWikiSections(
+          dbArticles,
+          overrides,
+          async all => { await persist('wiki', all); },
+        );
+        if (seedResult.migratedSections.length > 0) {
+          onOverridesMigrated(seedResult.migratedSections);
+        }
+        setWikiArticles(sanitizeWiki(buildWikiCatalog(seedResult.articles, overrides)));
+      } catch (err) {
+        logger.warn('Background wiki seed failed', 'wiki', String(err));
+      }
+    }
+  }, [getSectionOverrides, onOverridesMigrated, persist, normalizedRef]);
+
+  const ensureWikiLoaded = useCallback(() => {
+    const overrides = getSectionOverrides();
+    setWikiArticles(sanitizeWiki(buildWikiCatalog([], overrides)));
+
+    if (syncStartedRef.current) return;
+    syncStartedRef.current = true;
+    void syncWikiFromDb();
+  }, [getSectionOverrides, syncWikiFromDb]);
 
   const addWikiArticle = useCallback((a: Omit<WikiArticle, 'id' | 'authorName' | 'updatedAt'>) => {
     const article = {
@@ -141,7 +155,7 @@ export function useAuthWiki({
     wikiArticles,
     setWikiArticles,
     wikiLoaded,
-    setWikiLoaded,
+    setWikiLoaded: () => {},
     ensureWikiLoaded,
     addWikiArticle,
     updateWikiArticle,

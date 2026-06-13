@@ -13,6 +13,7 @@ import DynamicSectionEditorModal, { type DynamicEditorValues } from '../ui/Dynam
 import { sectionEditorConfigs } from '../../data/sectionEditorConfig';
 import SectionWikiCard from './SectionWikiCard';
 import { useWikiFocus } from '../../context/WikiFocusContext';
+import { buildWikiCatalog } from '../../lib/sectionSeeds';
 
 interface WikiArticleCardsProps {
   sectionId: string;
@@ -35,7 +36,7 @@ export default function WikiArticleCards({
 }: WikiArticleCardsProps) {
   const focusId = useWikiFocus();
   const activeHighlight = highlightId ?? focusId;
-  const { wikiArticles, wikiLoaded, isEditor, isAdmin, updateWikiArticle, deleteWikiArticle, siteSettings, ensureWikiLoaded } = useAuth();
+  const { wikiArticles, isEditor, isAdmin, updateWikiArticle, deleteWikiArticle, siteSettings, ensureWikiLoaded } = useAuth();
   const [editId, setEditId] = useState<string | null>(null);
   const [editInitial, setEditInitial] = useState<Partial<SectionEditorValues>>();
   const [dynamicInitial, setDynamicInitial] = useState<Partial<DynamicEditorValues>>();
@@ -44,10 +45,11 @@ export default function WikiArticleCards({
   const schema = getSectionSchema(sectionId);
 
   useEffect(() => {
-    void ensureWikiLoaded();
+    ensureWikiLoaded();
   }, [ensureWikiLoaded]);
 
-  const articles = wikiArticles.filter(a => {
+  const catalog = wikiArticles.length > 0 ? wikiArticles : buildWikiCatalog([]);
+  const articles = catalog.filter(a => {
     if (a.section !== sectionId) return false;
     if (categoryFilter === 'all') return true;
     return matchesFilter(a.fields?.category, categoryFilter);
@@ -55,14 +57,6 @@ export default function WikiArticleCards({
 
   const canEdit = isEditor() || isAdmin();
   const config = sectionEditorConfigs[sectionId];
-
-  if (!wikiLoaded) {
-    return (
-      <div className="py-8 text-center text-ink-400 text-sm animate-pulse">
-        Загрузка карточек…
-      </div>
-    );
-  }
 
   if (articles.length === 0) return null;
 

@@ -21,7 +21,7 @@ import {
   contentStoreLoadSupportTickets,
   contentStoreLoadGuideVersions,
 } from '../../lib/contentStore';
-import { mergeWikiWithSeeds } from '../../lib/sectionSeeds';
+import { buildWikiCatalog } from '../../lib/sectionSeeds';
 import { sanitizeGuides, sanitizeGuideVersions, sanitizeSiteNews, sanitizeWiki } from '../../lib/siteImages';
 import type { UserProgress } from '../../types/site';
 
@@ -77,7 +77,7 @@ export function useAuthRealtime(deps: Deps) {
       if (domains.wiki) {
         cleanups.push(subscribeWikiArticles(() => {
           void contentStoreLoadWiki().then(w =>
-            depsRef.current.setWikiArticles(sanitizeWiki(mergeWikiWithSeeds(w))),
+            depsRef.current.setWikiArticles(sanitizeWiki(buildWikiCatalog(w))),
           );
         }));
       }
