@@ -74,6 +74,40 @@ function matchOpenTag(text: string, pos: number): OpenTag | null {
   return null;
 }
 
+const MD_LINK_RE = /^\[([^\]]+)\]\(([^)]+)\)/;
+
+function matchMarkdownLink(text: string, pos: number): { label: string; href: string; len: number } | null {
+  if (text[pos] !== '[') return null;
+  const m = text.slice(pos).match(MD_LINK_RE);
+  if (!m) return null;
+  return { label: m[1], href: m[2], len: m[0].length };
+}
+
+function renderMarkdownLink(label: string, href: string, opts: RenderOpts): ReactNode {
+  if (isWikiCardLink(href)) {
+    return (
+      <WikiInternalLink
+        key={key('md-wiki')}
+        href={href}
+        className={opts.wikiLinkClassName || opts.linkClassName || 'text-gold-300 hover:text-gold-200 underline underline-offset-2'}
+      >
+        {label}
+      </WikiInternalLink>
+    );
+  }
+  return (
+    <a
+      key={key('md-url')}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={opts.linkClassName || 'text-blue-300 hover:text-blue-200 underline break-all'}
+    >
+      {label}
+    </a>
+  );
+}
+
 /** Ищет закрывающий тег с учётом вложенности одноимённых тегов. */
 function findMatchingClose(text: string, innerStart: number, open: OpenTag): number {
   const close = closeFor(open);
@@ -142,31 +176,7 @@ function linkifyPlainText(text: string, opts: RenderOpts): ReactNode[] {
     const start = match.index;
     const end = start + match[0].length;
     if (start > last) nodes.push(...linkifyHttp(text.slice(last, start), opts));
-    const label = match[1];
-    const href = match[2];
-    if (isWikiCardLink(href)) {
-      nodes.push(
-        <WikiInternalLink
-          key={key('md-wiki')}
-          href={href}
-          className={opts.wikiLinkClassName || opts.linkClassName || 'text-gold-300 hover:text-gold-200 underline underline-offset-2'}
-        >
-          {label}
-        </WikiInternalLink>,
-      );
-    } else {
-      nodes.push(
-        <a
-          key={key('md-url')}
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={opts.linkClassName || 'text-blue-300 hover:text-blue-200 underline break-all'}
-        >
-          {label}
-        </a>,
-      );
-    }
+    nodes.push(renderMarkdownLink(match[1], match[2], opts));
     last = end;
     match = mdPattern.exec(text);
   }
@@ -289,6 +299,12 @@ function parseFragment(text: string, opts: RenderOpts): ReactNode[] {
 
     const open = matchOpenTag(text, bracket);
     if (!open) {
+      const md = matchMarkdownLink(text, bracket);
+      if (md) {
+        nodes.push(renderMarkdownLink(md.label, md.href, opts));
+        pos = bracket + md.len;
+        continue;
+      }
       nodes.push('[');
       pos = bracket + 1;
       continue;
@@ -297,6 +313,12 @@ function parseFragment(text: string, opts: RenderOpts): ReactNode[] {
     const innerStart = bracket + open.len;
     const closeStart = findMatchingClose(text, innerStart, open);
     if (closeStart === -1) {
+      const md = matchMarkdownLink(text, bracket);
+      if (md) {
+        nodes.push(renderMarkdownLink(md.label, md.href, opts));
+        pos = bracket + md.len;
+        continue;
+      }
       nodes.push('[');
       pos = bracket + 1;
       continue;
