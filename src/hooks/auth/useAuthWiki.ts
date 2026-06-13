@@ -69,12 +69,12 @@ export function useAuthWiki({
       normalizedRef.current.wiki = false;
     }
 
-    const overrides = getSectionOverrides();
-    setWikiArticles(sanitizeWiki(buildWikiCatalog(dbArticles, overrides)));
+    setWikiArticles(sanitizeWiki(buildWikiCatalog(dbArticles)));
 
     if (!seededRef.current) {
       seededRef.current = true;
       try {
+        const overrides = getSectionOverrides();
         const seedResult = await seedWikiSections(
           dbArticles,
           overrides,
@@ -83,7 +83,7 @@ export function useAuthWiki({
         if (seedResult.migratedSections.length > 0) {
           onOverridesMigrated(seedResult.migratedSections);
         }
-        setWikiArticles(sanitizeWiki(buildWikiCatalog(seedResult.articles, overrides)));
+        setWikiArticles(sanitizeWiki(buildWikiCatalog(seedResult.articles)));
       } catch (err) {
         logger.warn('Background wiki seed failed', 'wiki', String(err));
       }
@@ -91,13 +91,10 @@ export function useAuthWiki({
   }, [getSectionOverrides, onOverridesMigrated, persist, normalizedRef]);
 
   const ensureWikiLoaded = useCallback(() => {
-    const overrides = getSectionOverrides();
-    setWikiArticles(sanitizeWiki(buildWikiCatalog([], overrides)));
-
     if (syncStartedRef.current) return;
     syncStartedRef.current = true;
     void syncWikiFromDb();
-  }, [getSectionOverrides, syncWikiFromDb]);
+  }, [syncWikiFromDb]);
 
   const addWikiArticle = useCallback((a: Omit<WikiArticle, 'id' | 'authorName' | 'updatedAt'>) => {
     const article = {
@@ -119,9 +116,20 @@ export function useAuthWiki({
   }, [user?.name, persist, setDbSaveError]);
 
   const updateWikiArticle = useCallback((id: string, u: Partial<WikiArticle>) => {
-    const next = wikiRef.current.map(x =>
-      x.id === id ? { ...x, ...u, updatedAt: new Date().toISOString() } : x,
-    );
+    const next = wikiRef.current.map(x => {
+      if (x.id !== id) return x;
+      const mergedFields = {
+        ...x.fields,
+        ...(u.fields || {}),
+        source: 'custom' as const,
+      };
+      return {
+        ...x,
+        ...u,
+        fields: mergedFields,
+        updatedAt: new Date().toISOString(),
+      };
+    });
     setWikiArticles(next);
     void (async () => {
       const updated = next.find(x => x.id === id);

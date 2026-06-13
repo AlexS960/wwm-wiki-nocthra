@@ -96,6 +96,15 @@ export function useSectionCategories(sectionKey: string) {
     [setCategories],
   );
 
+  const updateCategory = useCallback(
+    (id: string, patch: Partial<Pick<SectionCategoryDef, 'label' | 'icon'>>) => {
+      setCategories(prev =>
+        prev.map(c => (c.id === id ? { ...c, ...patch, label: patch.label?.trim() || c.label } : c)),
+      );
+    },
+    [setCategories],
+  );
+
   const resetCategories = useCallback(() => {
     setCategories(customDefaults);
   }, [customDefaults, setCategories]);
@@ -137,6 +146,7 @@ export function useSectionCategories(sectionKey: string) {
     addCategory,
     removeCategory,
     moveCategory,
+    updateCategory,
     resetCategories,
     getLabel,
     resolveCategory,

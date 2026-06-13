@@ -178,7 +178,6 @@ export function buildSettingsPatch(
   if (payload.innerpath) {
     if (!payload.innerpath.items?.length) return {};
     parsedContent.innerpath = { ...payload.innerpath, syncedAt };
-    sectionOverrides.innerpath = payload.innerpath.items;
     meta.innerpath = { syncedAt, count: payload.innerpath.items.length };
   }
   if (payload.npcLocations) {

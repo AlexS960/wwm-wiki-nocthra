@@ -1,9 +1,8 @@
-import { Zap, Star } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { resolveBuildName } from '../lib/buildLookup';
-import WikiArticleCards from './wiki/WikiArticleCards';
-import { SECTION_ITEMS_LIST_CLASS } from './wiki/sectionLayout';
+import { Zap, Star } from 'lucide-react';
 import SectionHeader from './ui/SectionHeader';
+import SectionWikiBody from './wiki/SectionWikiBody';
 
 export default function BuildsSection() {
   const { user, progress, setSelectedBuild, wikiArticles } = useAuth();
@@ -27,28 +26,29 @@ export default function BuildsSection() {
           </p>
         )}
 
-        <div className={SECTION_ITEMS_LIST_CLASS}>
-          <WikiArticleCards
-            sectionId="builds"
-            {...(user ? {
+        <SectionWikiBody
+          sectionId="builds"
+          {...(user ? {
+            wikiCardsProps: {
               isFavorite: (id: string) => progress.selectedBuild === id,
               onToggleFavorite: (id: string) => setSelectedBuild(progress.selectedBuild === id ? null : id),
               favoriteAddTitle: 'Выбрать как мой билд',
               favoriteRemoveTitle: 'Убрать выбор',
-            } : {})}
-          />
-        </div>
-
-        <div className="mt-10 text-center">
-          <div className="inline-flex items-center gap-2 bg-ink-800/50 border border-ink-700/30 rounded-full px-5 py-3 text-sm text-ink-300">
-            <Zap className="w-4 h-4 text-gold-400" />
-            <span>
-              {user
-                ? 'Нажмите ⭐ чтобы выбрать свой билд, или раскройте карточку для деталей'
-                : 'Нажмите на карточку для просмотра деталей каждого билда'}
-            </span>
-          </div>
-        </div>
+            },
+          } : {})}
+          afterCards={(
+            <div className="mt-10 text-center">
+              <div className="inline-flex items-center gap-2 bg-ink-800/50 border border-ink-700/30 rounded-full px-5 py-3 text-sm text-ink-300">
+                <Zap className="w-4 h-4 text-gold-400" />
+                <span>
+                  {user
+                    ? 'Нажмите ⭐ чтобы выбрать свой билд, или раскройте карточку для деталей'
+                    : 'Нажмите на карточку для просмотра деталей каждого билда'}
+                </span>
+              </div>
+            </div>
+          )}
+        />
       </div>
     </section>
   );

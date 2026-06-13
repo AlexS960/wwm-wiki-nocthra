@@ -1,15 +1,8 @@
-import { useState } from 'react';
 import { ChefHat } from 'lucide-react';
-import WikiArticleCards from './wiki/WikiArticleCards';
-import { SECTION_ITEMS_LIST_CLASS } from './wiki/sectionLayout';
-import { useSectionWikiArticles } from '../hooks/useSectionWikiArticles';
 import SectionHeader from './ui/SectionHeader';
-import SectionFilterBar from './ui/SectionFilterBar';
+import SectionWikiBody from './wiki/SectionWikiBody';
 
 export default function CookingSection() {
-  const [filterCategory, setFilterCategory] = useState<string>('all');
-  const { filterItems } = useSectionWikiArticles('cooking');
-
   return (
     <section id="cooking" className="py-20 bg-pattern">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,7 +10,7 @@ export default function CookingSection() {
           sectionId="cooking"
           icon="🍳"
           title="Кулинария и Рецепты"
-          subtitle="20+ блюд для восстановления здоровья и получения баффов. Готовьте у костров по всему миру"
+          subtitle="20+ блюд для восстановления здоровья и получения бафов. Готовьте у костров по всему миру"
         />
 
         <div className="bg-ink-800/50 border border-gold-400/20 rounded-xl p-5 mb-8 max-w-2xl mx-auto">
@@ -32,17 +25,7 @@ export default function CookingSection() {
           </ul>
         </div>
 
-        <SectionFilterBar
-          sectionKey="cooking"
-          items={filterItems}
-          getCategoryId={r => r.categoryId}
-          active={filterCategory}
-          onChange={v => setFilterCategory(v)}
-        />
-
-        <div className={SECTION_ITEMS_LIST_CLASS}>
-          <WikiArticleCards sectionId="cooking" categoryFilter={filterCategory} />
-        </div>
+        <SectionWikiBody sectionId="cooking" />
       </div>
     </section>
   );

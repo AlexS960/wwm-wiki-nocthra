@@ -282,22 +282,11 @@ export function mergeWikiWithSeeds(existing: WikiArticle[]): WikiArticle[] {
   return [...byId.values()];
 }
 
-/** Собирает полный каталог для отображения: сиды → БД → overrides. */
-export function buildWikiCatalog(
-  existing: WikiArticle[],
-  sectionOverrides?: Record<string, unknown>,
-): WikiArticle[] {
+/** Собирает полный каталог для отображения: сиды → БД (БД перекрывает сиды). */
+export function buildWikiCatalog(existing: WikiArticle[] = []): WikiArticle[] {
   const byId = new Map<string, WikiArticle>();
   for (const seed of getAllSeedArticles()) byId.set(seed.id, seed);
   for (const article of existing) byId.set(article.id, article);
-  if (sectionOverrides) {
-    for (const [sectionKey, raw] of Object.entries(sectionOverrides)) {
-      if (!Array.isArray(raw) || raw.length === 0) continue;
-      for (const article of convertOverrideSection(sectionKey, raw)) {
-        byId.set(article.id, article);
-      }
-    }
-  }
   return [...byId.values()].map(normalizeWikiArticle);
 }
 

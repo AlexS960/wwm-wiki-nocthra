@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Plus, RotateCcw, Settings2, Trash2, X, ChevronUp, ChevronDown } from 'lucide-react';
+import { Plus, RotateCcw, Settings2, Trash2, X, ChevronUp, ChevronDown, Pencil, Check } from 'lucide-react';
 import FilterPills from './FilterPills';
 import { buildSectionFilterOptions, type SectionCategoryDef } from '../../lib/sectionCategoriesMerge';
 import { useSectionCategories } from '../../hooks/useSectionCategories';
@@ -19,7 +19,7 @@ export default function SectionFilterBar<T>({
   active,
   onChange,
 }: SectionFilterBarProps<T>) {
-  const { categories, addCategory, removeCategory, moveCategory, resetCategories, canManage } = useSectionCategories(sectionKey);
+  const { categories, addCategory, removeCategory, moveCategory, updateCategory, resetCategories, canManage } = useSectionCategories(sectionKey);
   const [showManager, setShowManager] = useState(false);
   const [newLabel, setNewLabel] = useState('');
   const [newIcon, setNewIcon] = useState('✦');
@@ -65,6 +65,7 @@ export default function SectionFilterBar<T>({
           onAdd={handleAdd}
           onRemove={removeCategory}
           onMove={moveCategory}
+          onUpdate={updateCategory}
           onReset={resetCategories}
           onClose={() => setShowManager(false)}
         />
@@ -82,6 +83,7 @@ function CategoryManagerPanel({
   onAdd,
   onRemove,
   onMove,
+  onUpdate,
   onReset,
   onClose,
 }: {
@@ -93,9 +95,26 @@ function CategoryManagerPanel({
   onAdd: () => void;
   onRemove: (id: string) => void;
   onMove: (index: number, dir: -1 | 1) => void;
+  onUpdate: (id: string, patch: Partial<Pick<SectionCategoryDef, 'label' | 'icon'>>) => void;
   onReset: () => void;
   onClose: () => void;
 }) {
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editLabel, setEditLabel] = useState('');
+  const [editIcon, setEditIcon] = useState('');
+
+  const startEdit = (cat: SectionCategoryDef) => {
+    setEditingId(cat.id);
+    setEditLabel(cat.label);
+    setEditIcon(cat.icon || '✦');
+  };
+
+  const saveEdit = () => {
+    if (!editingId || !editLabel.trim()) return;
+    onUpdate(editingId, { label: editLabel.trim(), icon: editIcon.trim() || '✦' });
+    setEditingId(null);
+  };
+
   return (
     <div className="max-w-2xl mx-auto bg-ink-800/80 border border-gold-400/20 rounded-xl p-4 space-y-4">
       <div className="flex items-center justify-between gap-2">
@@ -131,21 +150,55 @@ function CategoryManagerPanel({
                 <ChevronDown className="w-3.5 h-3.5" />
               </button>
             </span>
-            <span className="flex items-center gap-2 min-w-0 flex-1 text-ink-200">
-              <span>{cat.icon || '✦'}</span>
-              <span className="truncate">{cat.label}</span>
-              <span className="text-[10px] text-ink-600 truncate hidden sm:inline">({cat.id})</span>
-            </span>
-            <button
-              type="button"
-              onClick={() => {
-                if (confirm(`Удалить категорию «${cat.label}»?`)) onRemove(cat.id);
-              }}
-              className="p-1 text-crimson-400/80 hover:text-crimson-300 cursor-pointer shrink-0"
-              title="Удалить"
-            >
-              <Trash2 className="w-3.5 h-3.5" />
-            </button>
+            {editingId === cat.id ? (
+              <div className="flex flex-1 items-center gap-2 min-w-0">
+                <input
+                  type="text"
+                  value={editIcon}
+                  onChange={e => setEditIcon(e.target.value.slice(0, 4))}
+                  className="w-10 bg-ink-900/80 border border-ink-600/50 rounded px-1 py-1 text-center text-sm focus:outline-none focus:border-gold-400/50"
+                />
+                <input
+                  type="text"
+                  value={editLabel}
+                  onChange={e => setEditLabel(e.target.value)}
+                  className="flex-1 min-w-0 bg-ink-900/80 border border-ink-600/50 rounded-lg px-2 py-1 text-sm text-white focus:outline-none focus:border-gold-400/50"
+                  onKeyDown={e => { if (e.key === 'Enter') saveEdit(); }}
+                />
+                <button type="button" onClick={saveEdit} className="p-1 text-jade-400 hover:text-jade-300 cursor-pointer" title="Сохранить">
+                  <Check className="w-3.5 h-3.5" />
+                </button>
+                <button type="button" onClick={() => setEditingId(null)} className="p-1 text-ink-500 hover:text-white cursor-pointer" title="Отмена">
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            ) : (
+              <>
+                <span className="flex items-center gap-2 min-w-0 flex-1 text-ink-200">
+                  <span>{cat.icon || '✦'}</span>
+                  <span className="truncate">{cat.label}</span>
+                  <span className="text-[10px] text-ink-600 truncate hidden sm:inline">({cat.id})</span>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => startEdit(cat)}
+                  className="p-1 text-gold-400/80 hover:text-gold-300 cursor-pointer shrink-0"
+                  title="Переименовать"
+                >
+                  <Pencil className="w-3.5 h-3.5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (confirm(`Удалить категорию «${cat.label}»?`)) onRemove(cat.id);
+                  }}
+                  className="p-1 text-crimson-400/80 hover:text-crimson-300 cursor-pointer shrink-0"
+                  title="Удалить"
+                >
+                  <Trash2 className="w-3.5 h-3.5" />
+                </button>
+              </>
+            )}
           </li>
         ))}
       </ul>

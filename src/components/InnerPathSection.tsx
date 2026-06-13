@@ -1,16 +1,13 @@
 import { BookOpen, TrendingUp } from 'lucide-react';
-import { useState } from 'react';
 import {
   innerPathExplainedRu,
   innerPathIntroRu,
   innerPathUpgradeRu,
   innerPathUpgradeTipsRu,
 } from '../data/innerWays';
-import WikiArticleCards from './wiki/WikiArticleCards';
 import { SECTION_ITEMS_LIST_CLASS } from './wiki/sectionLayout';
-import { useSectionWikiArticles } from '../hooks/useSectionWikiArticles';
 import SectionHeader from './ui/SectionHeader';
-import SectionFilterBar from './ui/SectionFilterBar';
+import SectionWikiBody from './wiki/SectionWikiBody';
 
 function InfoBlock({ title, body }: { title: string; body: string }) {
   const paragraphs = body.split(/\n\n+/).filter(Boolean);
@@ -29,9 +26,6 @@ function InfoBlock({ title, body }: { title: string; body: string }) {
 }
 
 export default function InnerPathSection() {
-  const [filterPath, setFilterPath] = useState<string>('all');
-  const { filterItems } = useSectionWikiArticles('innerpath');
-
   return (
     <section id="innerpath" className="py-20 bg-ink-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -72,18 +66,10 @@ export default function InnerPathSection() {
           </div>
         </div>
 
-        <h3 className="font-serif text-lg font-bold text-white mb-4">Список всех внутренних путей</h3>
-        <SectionFilterBar
-          sectionKey="innerpath"
-          items={filterItems}
-          getCategoryId={w => w.categoryId}
-          active={filterPath}
-          onChange={setFilterPath}
+        <SectionWikiBody
+          sectionId="innerpath"
+          listTitle="Список всех внутренних путей"
         />
-
-        <div className={`${SECTION_ITEMS_LIST_CLASS} mt-4`}>
-          <WikiArticleCards sectionId="innerpath" categoryFilter={filterPath} />
-        </div>
       </div>
     </section>
   );

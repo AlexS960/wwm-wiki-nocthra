@@ -1,6 +1,5 @@
-import WikiArticleCards from './wiki/WikiArticleCards';
-import { SECTION_ITEMS_LIST_CLASS } from './wiki/sectionLayout';
 import SectionHeader from './ui/SectionHeader';
+import SectionWikiBody from './wiki/SectionWikiBody';
 
 export default function SectsSection() {
   return (
@@ -12,9 +11,7 @@ export default function SectsSection() {
           title="Секты и Фракции"
           subtitle="Игровые секты со своими уникальными способностями, оружием и стилем"
         />
-        <div className={SECTION_ITEMS_LIST_CLASS}>
-          <WikiArticleCards sectionId="sects" />
-        </div>
+        <SectionWikiBody sectionId="sects" />
       </div>
     </section>
   );

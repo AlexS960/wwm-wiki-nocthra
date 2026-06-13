@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { Lightbulb, Code, Copy, Check } from 'lucide-react';
-import WikiArticleCards from './wiki/WikiArticleCards';
 import { SECTION_ITEMS_LIST_CLASS } from './wiki/sectionLayout';
-import { useSectionWikiArticles } from '../hooks/useSectionWikiArticles';
 import SectionHeader from './ui/SectionHeader';
-import SectionFilterBar from './ui/SectionFilterBar';
+import SectionWikiBody from './wiki/SectionWikiBody';
 
 interface CodeItem {
   code: string;
@@ -20,9 +18,7 @@ const promoCodes: CodeItem[] = [
 ];
 
 export default function TipsSection() {
-  const [filterCat, setFilterCat] = useState<string>('all');
   const [copied, setCopied] = useState<string | null>(null);
-  const { filterItems } = useSectionWikiArticles('tips');
 
   const copyCode = async (code: string) => {
     try { await navigator.clipboard.writeText(code); setCopied(code); setTimeout(() => setCopied(null), 2000); } catch {}
@@ -38,22 +34,16 @@ export default function TipsSection() {
           subtitle="Полезные советы от опытных игроков и актуальные промокоды"
         />
 
-        <h3 className="font-serif text-xl font-bold text-gold-400 mb-4 flex items-center gap-2">
-          <Lightbulb className="w-5 h-5" /> Советы
-        </h3>
-        <SectionFilterBar
-          sectionKey="tips"
-          items={filterItems}
-          getCategoryId={t => t.categoryId}
-          active={filterCat}
-          onChange={setFilterCat}
+        <SectionWikiBody
+          sectionId="tips"
+          beforeFilters={(
+            <h3 className="font-serif text-xl font-bold text-gold-400 mb-4 flex items-center gap-2">
+              <Lightbulb className="w-5 h-5" /> Советы
+            </h3>
+          )}
         />
 
-        <div className={`${SECTION_ITEMS_LIST_CLASS} mb-12`}>
-          <WikiArticleCards sectionId="tips" categoryFilter={filterCat} />
-        </div>
-
-        <h3 className="font-serif text-xl font-bold text-gold-400 mb-4 flex items-center gap-2">
+        <h3 className="font-serif text-xl font-bold text-gold-400 mb-4 flex items-center gap-2 mt-12">
           <Code className="w-5 h-5" /> Промокоды
         </h3>
         <div className={`${SECTION_ITEMS_LIST_CLASS} max-w-3xl`}>

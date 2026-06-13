@@ -30,10 +30,12 @@ export async function seedWikiSections(
   if (sectionOverrides) {
     for (const [sectionKey, raw] of Object.entries(sectionOverrides)) {
       if (!Array.isArray(raw) || raw.length === 0) continue;
-      const converted = convertOverrideSection(sectionKey, raw);
-      if (converted.length > 0) {
-        toUpsert.push(...converted);
-        migratedSections.push(sectionKey);
+      migratedSections.push(sectionKey);
+      for (const article of convertOverrideSection(sectionKey, raw)) {
+        const existing = byId.get(article.id);
+        const src = existing?.fields?.source;
+        if (existing && src !== 'override' && src !== undefined) continue;
+        toUpsert.push(article);
       }
     }
   }
@@ -55,13 +57,14 @@ export async function seedWikiSections(
   const toPersist: WikiArticle[] = [];
 
   for (const article of toUpsert) {
-    const exists = byId.has(article.id);
-    const isOverride = article.fields?.source === 'override';
-    if (exists && !isOverride) continue;
+    const existing = byId.get(article.id);
+    if (existing?.fields?.source === 'custom') continue;
+    if (existing && existing.fields?.source !== 'override' && article.fields?.source !== 'seed') continue;
 
+    const hadExisting = byId.has(article.id);
     byId.set(article.id, article);
     if (usesNormalized) toPersist.push(article);
-    if (exists) updated++;
+    if (hadExisting) updated++;
     else inserted++;
   }
 
