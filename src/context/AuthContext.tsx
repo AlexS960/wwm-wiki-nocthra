@@ -16,7 +16,6 @@ import { useAuthChat } from '../hooks/auth/useAuthChat';
 import { useAuthSupport } from '../hooks/auth/useAuthSupport';
 import { useAuthSuggestions } from '../hooks/auth/useAuthSuggestions';
 import { useAuthRealtime } from '../hooks/auth/useAuthRealtime';
-import { buildPaths } from '../data/gameData';
 import { isKnownBuild } from '../lib/buildLookup';
 import {
   contentStoreUpdateGuide,
@@ -92,7 +91,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const siteNewsHook = useAuthSiteNews({ user, persist, setDbSaveError, normalizedRef });
   const guidesHook = useAuthGuides({ user, persist, setDbSaveError, normalizedRef });
-  const wikiHook = useAuthWiki({ user, persist, setDbSaveError, normalizedRef });
+  const migrateOverridesRef = useRef<(sections: string[]) => void>(() => {});
+
+  const wikiHook = useAuthWiki({
+    user,
+    persist,
+    setDbSaveError,
+    normalizedRef,
+    getSectionOverrides: () => siteCore.siteSettings.sectionOverrides,
+    onOverridesMigrated: sections => migrateOverridesRef.current(sections),
+  });
   const chatHook = useAuthChat({ user, persist, normalizedRef });
   const supportHook = useAuthSupport({
     user,
@@ -167,21 +175,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     [siteCore.siteSettings],
   );
 
-  const buildItems = useMemo(() => {
-    const overrides = safeSiteSettings.sectionOverrides?.builds;
-    return Array.isArray(overrides) ? overrides : buildPaths;
-  }, [safeSiteSettings.sectionOverrides]);
-
   useEffect(() => {
     const id = progress.selectedBuild;
     if (!id) return;
-    if (isKnownBuild(id, buildItems, wikiHook.wikiArticles)) return;
-    // Wiki-статьи могут ещё грузиться — не сбрасываем, пока не убедимся
-    if (id.startsWith('w') && !wikiHook.wikiLoaded) return;
+    if (!wikiHook.wikiLoaded) return;
+    if (isKnownBuild(id, wikiHook.wikiArticles)) return;
     setSelectedBuild(null);
   }, [
     progress.selectedBuild,
-    buildItems,
     wikiHook.wikiArticles,
     wikiHook.wikiLoaded,
     setSelectedBuild,
@@ -226,6 +227,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const nextPatch = typeof patch === 'function' ? patch(base) : patch;
       return mergeSiteSettingsSafe({ ...base, ...nextPatch });
     }, siteCore.setSiteSettings);
+  };
+
+  migrateOverridesRef.current = (sections: string[]) => {
+    if (!sections.length) return;
+    patchSiteSettings(prev => {
+      const next = { ...(prev.sectionOverrides || {}) };
+      for (const s of sections) delete next[s];
+      return { sectionOverrides: next };
+    });
   };
 
   const purgeEmbeddedImagesFromDb = async () => {

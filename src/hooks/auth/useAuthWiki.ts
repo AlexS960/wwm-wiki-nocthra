@@ -7,6 +7,7 @@ import {
   contentStoreUpdateWiki,
   contentStoreDeleteWiki,
 } from '../../lib/contentStore';
+import { seedWikiSections } from '../../lib/seedWikiSections';
 import { sanitizeWiki } from '../../lib/siteImages';
 import type { MutableRefObject } from 'react';
 import type { NormalizedDomains } from './types';
@@ -16,26 +17,51 @@ type Deps = {
   persist: (key: string, data: unknown) => Promise<string | null>;
   setDbSaveError: (msg: string | null) => void;
   normalizedRef: MutableRefObject<NormalizedDomains>;
+  getSectionOverrides: () => Record<string, unknown> | undefined;
+  onOverridesMigrated: (sections: string[]) => void;
 };
 
-export function useAuthWiki({ user, persist, setDbSaveError, normalizedRef }: Deps) {
+export function useAuthWiki({
+  user,
+  persist,
+  setDbSaveError,
+  normalizedRef,
+  getSectionOverrides,
+  onOverridesMigrated,
+}: Deps) {
   const [wikiArticles, setWikiArticles] = useState<WikiArticle[]>([]);
   const [wikiLoaded, setWikiLoaded] = useState(false);
   const wikiLoadRef = useRef<Promise<void> | null>(null);
   const wikiRef = useRef(wikiArticles);
   wikiRef.current = wikiArticles;
+  const seededRef = useRef(false);
 
   const ensureWikiLoaded = useCallback(async () => {
     if (wikiLoaded) return;
     if (!wikiLoadRef.current) {
       wikiLoadRef.current = (async () => {
         normalizedRef.current.wiki = await contentStoreUsesNormalized('wiki');
-        setWikiArticles(sanitizeWiki(await contentStoreLoadWiki()));
+        let articles = sanitizeWiki(await contentStoreLoadWiki());
+
+        if (!seededRef.current) {
+          seededRef.current = true;
+          const seedResult = await seedWikiSections(
+            articles,
+            getSectionOverrides(),
+            async all => { await persist('wiki', all); },
+          );
+          articles = sanitizeWiki(seedResult.articles);
+          if (seedResult.migratedSections.length > 0) {
+            onOverridesMigrated(seedResult.migratedSections);
+          }
+        }
+
+        setWikiArticles(articles);
         setWikiLoaded(true);
       })();
     }
     await wikiLoadRef.current;
-  }, [wikiLoaded, normalizedRef]);
+  }, [wikiLoaded, normalizedRef, getSectionOverrides, onOverridesMigrated, persist]);
 
   const addWikiArticle = useCallback((a: Omit<WikiArticle, 'id' | 'authorName' | 'updatedAt'>) => {
     const article = {
@@ -43,6 +69,7 @@ export function useAuthWiki({ user, persist, setDbSaveError, normalizedRef }: De
       id: 'w' + Date.now(),
       authorName: user?.name || '',
       updatedAt: new Date().toLocaleDateString('ru-RU'),
+      fields: { ...a.fields, source: a.fields?.source || 'custom' },
     } as WikiArticle;
     setWikiArticles(prev => [...prev, article]);
     void (async () => {

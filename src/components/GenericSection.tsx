@@ -6,6 +6,7 @@ import { useSectionCategories } from '../hooks/useSectionCategories';
 import SectionHeader from './ui/SectionHeader';
 import SectionFilterBar from './ui/SectionFilterBar';
 import WikiArticleCards from './wiki/WikiArticleCards';
+import { SECTION_ITEMS_LIST_CLASS } from './wiki/sectionLayout';
 import DynamicSectionEditorModal, { type DynamicEditorValues } from './ui/DynamicSectionEditorModal';
 
 interface GenericSectionProps {
@@ -73,7 +74,7 @@ export default function GenericSection({ definition }: GenericSectionProps) {
         ) : articles.length === 0 && !canManage ? (
           <p className="text-center text-ink-500 py-16">В этом разделе пока нет записей.</p>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className={SECTION_ITEMS_LIST_CLASS}>
             <WikiArticleCards sectionId={definition.id} categoryFilter={filterCat} />
           </div>
         )}

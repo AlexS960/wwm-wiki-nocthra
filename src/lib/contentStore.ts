@@ -30,6 +30,7 @@ import {
   dbLoadWikiArticles,
   dbInsertWikiArticle,
   dbUpdateWikiArticle,
+  dbUpsertWikiArticle,
   dbDeleteWikiArticle,
   dbLoadChatMessages,
   dbInsertChatMessage,
@@ -329,6 +330,11 @@ export async function contentStoreDeleteGuide(id: string): Promise<boolean> {
 export async function contentStoreAddWiki(article: WikiArticle): Promise<boolean> {
   if (!(await usesTable('wiki'))) return false;
   return !!(await dbInsertWikiArticle(wikiToDb(article)));
+}
+
+export async function contentStoreUpsertWiki(article: WikiArticle): Promise<boolean> {
+  if (!(await usesTable('wiki'))) return false;
+  return dbUpsertWikiArticle(wikiToDb(article));
 }
 
 export async function contentStoreUpdateWiki(id: string, article: WikiArticle): Promise<boolean> {

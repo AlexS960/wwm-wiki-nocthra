@@ -1,7 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { buildPaths } from '../data/gameData';
-import { useSectionOverrides } from '../hooks/useSectionOverrides';
 import { resolveBuildName } from '../lib/buildLookup';
 import type { NavigatePayload } from './Header';
 import { compressImageFileToBlob } from '../lib/imageUpload';
@@ -26,8 +24,10 @@ export default function ProfileModal({ isOpen, onClose, anchor, onNavigate }: Pr
     getRoleConfig, addNote, deleteNote, isUserOnline,
     registeredGuilds, ensureGuildsLoaded, getGuildName, wikiArticles, ensureWikiLoaded,
   } = useAuth();
-  const { items: buildItems } = useSectionOverrides('builds', buildPaths);
   const { exportSettings, importSettings, resetSettings, canExport } = useUserSettings();
+  const selectedBuildName = progress.selectedBuild
+    ? resolveBuildName(progress.selectedBuild, wikiArticles)
+    : null;
   const [editing, setEditing] = useState(false);
   const [nickname, setNickname] = useState(user?.gameNickname || '');
   const [pictureUrl, setPictureUrl] = useState(user?.picture || '');
@@ -57,9 +57,6 @@ export default function ProfileModal({ isOpen, onClose, anchor, onNavigate }: Pr
   if (!isOpen || !user) return null;
   const rc = getRoleConfig(user.role);
   const guildLabel = getGuildName(user.guildId) || 'не указана';
-  const selectedBuildName = progress.selectedBuild
-    ? resolveBuildName(progress.selectedBuild, buildItems, wikiArticles)
-    : null;
 
   const handleSaveGuild = () => {
     updateUserGuild(guildId);

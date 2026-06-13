@@ -40,10 +40,11 @@ export const sectionSchemas: Record<string, SectionSchema> = {
       { id: 'difficulty', label: 'Сложность', placeholder: 'Низкая / Средняя / Высокая' },
     ],
     contentFields: [
+      { id: 'weapons', label: 'Оружие', kind: 'list', header: '## Оружие', placeholder: 'Одна строка — одно оружие' },
       { id: 'strengths', label: 'Сильные стороны', kind: 'list', header: '## Сильные стороны', placeholder: 'Одна строка — один пункт' },
       { id: 'weaknesses', label: 'Слабые стороны', kind: 'list', header: '## Слабые стороны', placeholder: 'Одна строка — один пункт' },
     ],
-    defaultContentTemplate: '## Сильные стороны\n\n- \n\n## Слабые стороны\n\n- \n',
+    defaultContentTemplate: '## Оружие\n\n- \n\n## Сильные стороны\n\n- \n\n## Слабые стороны\n\n- \n',
   },
   sects: {
     showNameEn: true,
@@ -102,10 +103,12 @@ export const sectionSchemas: Record<string, SectionSchema> = {
     defaultContentTemplate: '',
   },
   innerpath: {
+    showNameEn: true,
     contentFields: [
+      { id: 'effect', label: 'Эффект', kind: 'textarea', header: '## Эффект', placeholder: 'Описание эффекта…' },
       { id: 'howToGet', label: 'Как получить', kind: 'textarea', header: '## Как получить', placeholder: '…' },
     ],
-    defaultContentTemplate: '## Как получить\n\n',
+    defaultContentTemplate: '## Эффект\n\n\n## Как получить\n\n',
   },
 };
 

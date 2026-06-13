@@ -621,6 +621,20 @@ export async function dbInsertWikiArticle(article: Omit<DbWikiArticle, 'created_
   return newArticle.id;
 }
 
+export async function dbUpsertWikiArticle(article: Omit<DbWikiArticle, 'created_at' | 'updated_at'>): Promise<boolean> {
+  const row: DbWikiArticle = {
+    ...article,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  };
+  const { error } = await getSupabase().from('wiki_articles').upsert(row, { onConflict: 'id' });
+  if (error) {
+    logger.error('Failed to upsert wiki article', 'db', error.message);
+    return false;
+  }
+  return true;
+}
+
 export async function dbUpdateWikiArticle(id: string, updates: Partial<DbWikiArticle>): Promise<boolean> {
   const { error } = await getSupabase()
     .from('wiki_articles')

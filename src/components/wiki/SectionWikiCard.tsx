@@ -8,7 +8,7 @@ import type { WikiArticle } from '../../context/AuthContext';
 import { wikiCardDomId } from '../../lib/buildLookup';
 import { parseSectionContent } from '../../lib/sectionContent';
 import { getSectionSchema } from '../../data/sectionSchemas';
-import { bossDiffColor, buildDiffColor, mysticTypeLabels } from '../../lib/sectionCardStyles';
+import { bossDiffColor, buildDiffColor, mysticElementColors, mysticTypeLabels } from '../../lib/sectionCardStyles';
 import RichText, { RichInline } from '../ui/RichText';
 import MarkdownBody from '../MarkdownBody';
 import ContentImages from '../ContentImages';
@@ -108,13 +108,13 @@ function BossWikiCard(props: SectionWikiCardProps) {
   const rewards = parsed.getList('## Награды');
   const tips = parsed.getList('## Советы');
   const nameEn = article.fields?.nameEn;
+  const bossType = article.fields?.category;
 
   useEffect(() => {
     if (highlighted) setExpanded(true);
   }, [highlighted]);
 
-  const typeLabel = categoryLabel || 'Мировой';
-  const isCampaign = typeLabel.toLowerCase().includes('сюжет');
+  const isCampaign = bossType === 'campaign';
 
   return (
     <div
@@ -142,7 +142,7 @@ function BossWikiCard(props: SectionWikiCardProps) {
               </span>
             )}
             {level && <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">Ур. {level}</span>}
-            {categoryLabel && (
+            {(bossType || categoryLabel) && (
               <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">
                 {isCampaign ? '📖 Сюжет' : '🌍 Мировой'}
               </span>
@@ -293,6 +293,7 @@ function BuildWikiCard(props: SectionWikiCardProps) {
   const { article, categoryLabel, canEdit, onEdit, onDelete, isFavorite, onToggleFavorite, favoriteAddTitle, favoriteRemoveTitle, highlighted } = props;
   const [expanded, setExpanded] = useState(false);
   const parsed = parseSectionContent(article.content);
+  const weapons = parsed.getList('## Оружие');
   const strengths = parsed.getList('## Сильные стороны');
   const weaknesses = parsed.getList('## Слабые стороны');
   const difficulty = article.fields?.difficulty;
@@ -352,6 +353,14 @@ function BuildWikiCard(props: SectionWikiCardProps) {
             </span>
           )}
         </div>
+
+        {weapons.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {weapons.map(w => (
+              <span key={w} className="text-xs bg-ink-700/50 text-ink-200 px-2 py-0.5 rounded-full">{w}</span>
+            ))}
+          </div>
+        )}
 
         {!expanded && article.fields?.summary && <RichText content={article.fields.summary} variant="compact" className="mt-3" />}
 
@@ -505,7 +514,8 @@ function MysticWikiCard(props: SectionWikiCardProps) {
   const cooldown = parsed.getLine('## Перезарядка');
   const howToGet = parsed.getLine('## Как получить');
   const nameEn = article.fields?.nameEn;
-  const typeLabel = mysticTypeLabels[categoryLabel || ''] || categoryLabel;
+  const element = article.fields?.category || categoryLabel || '';
+  const typeLabel = article.fields?.mysticType || mysticTypeLabels[categoryLabel || ''] || categoryLabel;
 
   const typeIcon = (t?: string) => {
     const key = (t || '').toLowerCase();
@@ -522,13 +532,18 @@ function MysticWikiCard(props: SectionWikiCardProps) {
         <span className="text-3xl shrink-0 leading-none">{article.icon}</span>
         <div className="flex-1 min-w-0">
           <TitleBlock title={article.title} nameEn={nameEn} />
-          {typeLabel && (
-            <div className="flex flex-wrap gap-1.5 mt-1.5">
+          <div className="flex flex-wrap gap-1.5 mt-1.5">
+            {element && (
+              <span className={`text-xs px-2 py-0.5 rounded-full border ${mysticElementColors[element] || 'border-ink-600/40'}`}>
+                {element}
+              </span>
+            )}
+            {typeLabel && (
               <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full flex items-center gap-1">
                 {typeIcon(typeLabel)} {typeLabel}
               </span>
-            </div>
-          )}
+            )}
+          </div>
           {article.fields?.summary && <RichText content={article.fields.summary} variant="normal" className="mt-1.5 mb-2" />}
           <div className="space-y-1 text-xs">
             {effect && (
@@ -634,6 +649,96 @@ function CookingWikiCard(props: SectionWikiCardProps) {
   );
 }
 
+function TipsWikiCard(props: SectionWikiCardProps) {
+  const { article, categoryLabel, canEdit, onEdit, onDelete } = props;
+  const text = article.fields?.summary || article.content;
+
+  return (
+    <div className="relative bg-ink-800/50 border border-ink-700/30 rounded-xl p-4 flex items-start gap-3">
+      <span className="text-lg shrink-0">{article.icon || '💡'}</span>
+      <div className="flex-1 min-w-0 pr-8">
+        {categoryLabel && (
+          <span className="inline-block mb-1.5 text-[10px] px-2 py-0.5 rounded-full bg-gold-400/10 text-gold-400 border border-gold-400/30">
+            {categoryLabel}
+          </span>
+        )}
+        <RichText content={text} variant="normal" />
+      </div>
+      <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} className="absolute top-2 right-2" />
+      <ContentImages images={article.images} />
+    </div>
+  );
+}
+
+function InnerPathWikiCard(props: SectionWikiCardProps) {
+  const { article, categoryLabel, canEdit, onEdit, onDelete, highlighted } = props;
+  const [expanded, setExpanded] = useState(false);
+  const parsed = parseSectionContent(article.content);
+  const readBlock = (header: string) => {
+    const idx = parsed.lines.findIndex(l => l.toLowerCase() === header.toLowerCase());
+    if (idx < 0) return '';
+    const chunk: string[] = [];
+    for (let i = idx + 1; i < parsed.lines.length; i++) {
+      const line = parsed.lines[i];
+      if (line.startsWith('## ')) break;
+      chunk.push(line);
+    }
+    return chunk.join('\n').trim();
+  };
+  const effect = readBlock('## Эффект') || article.fields?.summary || '';
+  const howToGet = readBlock('## Как получить');
+  const nameEn = article.fields?.nameEn;
+
+  useEffect(() => {
+    if (highlighted) setExpanded(true);
+  }, [highlighted]);
+
+  return (
+    <div
+      id={wikiCardDomId(article.id)}
+      onClick={() => setExpanded(!expanded)}
+      className={`relative bg-ink-800/60 border rounded-xl overflow-hidden transition-all cursor-pointer ${
+        expanded || highlighted ? 'border-gold-400/40' : 'border-ink-700/30 hover:border-gold-700/30 card-hover'
+      }`}
+    >
+      <div className="p-4 sm:p-5">
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex-1 min-w-0">
+            <TitleBlock title={article.title} nameEn={nameEn} />
+            {categoryLabel && (
+              <span className="inline-flex items-center gap-1 mt-2 text-xs px-2.5 py-0.5 rounded-full border border-gold-400/30 text-gold-300 bg-gold-400/10">
+                {categoryLabel}
+              </span>
+            )}
+            {!expanded && effect && <RichText content={effect} variant="compact" className="mt-2" />}
+          </div>
+          {expanded
+            ? <ChevronUp className={`w-5 h-5 text-gold-400 shrink-0 ${canEdit ? 'mr-14' : ''}`} />
+            : <ChevronDown className={`w-5 h-5 text-ink-400 shrink-0 ${canEdit ? 'mr-14' : ''}`} />}
+        </div>
+        <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} className="absolute top-3 right-3 z-10" />
+        {expanded && (
+          <div className="mt-4 pt-4 border-t border-ink-700/30 space-y-3 animate-fadeIn" onClick={e => e.stopPropagation()}>
+            {effect && (
+              <div>
+                <h4 className="text-gold-400 font-semibold text-xs mb-1 flex items-center gap-1"><Sparkles className="w-3.5 h-3.5" /> Эффект</h4>
+                <RichText content={effect} />
+              </div>
+            )}
+            {howToGet && (
+              <div>
+                <h4 className="text-jade-400 font-semibold text-xs mb-1">Как получить</h4>
+                <RichText content={howToGet} />
+              </div>
+            )}
+            <ContentImages images={article.images} />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function GenericWikiCard(props: SectionWikiCardProps) {
   const { article, categoryLabel, canEdit, onEdit, onDelete, isFavorite, onToggleFavorite, favoriteAddTitle, favoriteRemoveTitle, highlighted } = props;
   const [expanded, setExpanded] = useState(false);
@@ -690,6 +795,8 @@ export default function SectionWikiCard(props: SectionWikiCardProps) {
     case 'sects': return <SectWikiCard {...props} />;
     case 'mystic': return <MysticWikiCard {...props} />;
     case 'cooking': return <CookingWikiCard {...props} />;
+    case 'tips': return <TipsWikiCard {...props} />;
+    case 'innerpath': return <InnerPathWikiCard {...props} />;
     default: return <GenericWikiCard {...props} />;
   }
 }
