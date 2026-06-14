@@ -124,13 +124,6 @@ function FavoriteButton({
   );
 }
 
-function formatBilingualTitle(title: string, nameEn?: string): string {
-  const ru = asText(title).trim();
-  const en = asText(nameEn).trim();
-  if (!en || en.toLowerCase() === ru.toLowerCase()) return ru;
-  return `${ru} — ${en}`;
-}
-
 function CardTitle({
   title,
   nameEn,
@@ -144,11 +137,17 @@ function CardTitle({
   highlight?: boolean;
   size?: 'base' | 'lg';
 }) {
+  const ru = asText(title).trim();
+  const en = asText(nameEn).trim();
+  const showEn = en.length > 0 && en.toLowerCase() !== ru.toLowerCase();
   const sizeClass = size === 'lg' ? 'text-lg' : 'text-base';
   return (
-    <h3 className={`font-serif font-bold leading-snug break-words ${sizeClass} ${highlight ? 'text-gold-400' : 'text-white'} ${className}`}>
-      {formatBilingualTitle(title, nameEn)}
-    </h3>
+    <>
+      <h3 className={`font-serif font-bold leading-snug break-words ${sizeClass} ${highlight ? 'text-gold-400' : 'text-white'} ${className}`}>
+        {ru}
+      </h3>
+      {showEn && <p className="text-ink-400 text-xs mt-0.5">{en}</p>}
+    </>
   );
 }
 
