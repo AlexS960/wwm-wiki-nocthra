@@ -7,7 +7,7 @@ import {
 import type { WikiArticle } from '../../context/AuthContext';
 import { wikiCardDomId } from '../../lib/buildLookup';
 import { parseSectionContent } from '../../lib/sectionContent';
-import { getSectionSchema } from '../../data/sectionSchemas';
+import { weaponCategoryEnglish } from '../../data/sectionCategories';
 import { bossDiffColor, buildDiffColor, mysticElementColors, mysticTypeLabels } from '../../lib/sectionCardStyles';
 import RichText, { RichInline } from '../ui/RichText';
 import MarkdownBody from '../MarkdownBody';
@@ -151,34 +151,41 @@ function CardTitle({
   );
 }
 
-/** Заголовок карточки оружия: название + тип «Русское — English» в одном блоке. */
+/** Заголовок карточки оружия: «Название (English)» + строка категории «Русское — English». */
 function WeaponCardTitle({
   title,
   nameEn,
   categoryLabel,
+  categoryId,
 }: {
   title: string;
   nameEn?: string;
   categoryLabel?: string;
+  categoryId?: string;
 }) {
   const ruTitle = asText(title).trim();
-  const en = asText(nameEn).trim();
-  const cat = asText(categoryLabel).trim();
+  const weaponEn = asText(nameEn).trim();
+  const catRu = asText(categoryLabel).trim();
+  const catEn = weaponCategoryEnglish(asText(categoryId), catRu);
   const titleClass = 'font-serif font-bold leading-snug break-words text-base text-white';
+  const showWeaponEn = weaponEn.length > 0 && weaponEn.toLowerCase() !== ruTitle.toLowerCase();
 
-  let typeLine = '';
-  if (cat && en && cat.toLowerCase() !== en.toLowerCase()) {
-    typeLine = `${cat} — ${en}`;
-  } else if (cat && cat.toLowerCase() !== ruTitle.toLowerCase()) {
-    typeLine = cat;
-  } else if (en && en.toLowerCase() !== ruTitle.toLowerCase()) {
-    typeLine = en;
+  let categoryLine = '';
+  if (catRu && catEn && catRu.toLowerCase() !== catEn.toLowerCase()) {
+    categoryLine = `${catRu} — ${catEn}`;
+  } else if (catRu) {
+    categoryLine = catRu;
   }
 
   return (
     <div>
-      <h3 className={titleClass}>{ruTitle}</h3>
-      {typeLine && <h3 className={`${titleClass} mt-0.5`}>{typeLine}</h3>}
+      <h3 className={titleClass}>
+        {ruTitle}
+        {showWeaponEn && <span className="text-ink-400 font-normal"> ({weaponEn})</span>}
+      </h3>
+      {categoryLine && (
+        <p className="text-sm text-gold-400 mt-1">{categoryLine}</p>
+      )}
     </div>
   );
 }
@@ -356,7 +363,12 @@ function WeaponWikiCard(props: SectionWikiCardProps) {
       <div className="flex items-start gap-3">
         <span className="text-3xl shrink-0 leading-none">{article.icon}</span>
         <div className="flex-1 min-w-0">
-          <WeaponCardTitle title={article.title} nameEn={nameEn} categoryLabel={categoryLabel} />
+          <WeaponCardTitle
+            title={article.title}
+            nameEn={nameEn}
+            categoryLabel={categoryLabel}
+            categoryId={asText(article.fields?.category)}
+          />
           <CardMetaRich label="Роль" content={role} />
           <CardMetaRich label="Искусство" content={martialArt} />
           {!expanded && article.fields?.summary && (

@@ -20,14 +20,24 @@ export const DEFAULT_SECTION_CATEGORIES: Record<string, SectionCategoryDef[]> = 
     { id: 'Bamboocut - Dust', label: 'Рассечение бамбука - Пыль', icon: '🎋', badgeClass: 'text-emerald-300 bg-emerald-500/10 border-emerald-500/30' },
   ],
   weapons: [
+    { id: 'Sword', label: 'Меч', icon: '⚔️' },
+    { id: 'Spear', label: 'Копьё', icon: '🔱' },
+    { id: 'Dual Blades', label: 'Парные Клинки', icon: '🔪' },
+    { id: 'Mo Blade', label: 'Мо-клинок', icon: '🔨' },
+    { id: 'Rope Dart', label: 'Верёвочный Дротик', icon: '🪢' },
+    { id: 'Fan', label: 'Веер', icon: '🪭' },
+    { id: 'Umbrella', label: 'Зонт', icon: '☂️' },
+    { id: 'Heng Blade', label: 'Хенг Блейд', icon: '⚔️' },
+    { id: 'Bow', label: 'Лук', icon: '🏹' },
     { id: 'Меч', label: 'Меч', icon: '⚔️' },
     { id: 'Копьё', label: 'Копьё', icon: '🔱' },
     { id: 'Парные Клинки', label: 'Парные Клинки', icon: '🔪' },
+    { id: 'Парные клинки', label: 'Парные Клинки', icon: '🔪' },
     { id: 'Мо-клинок', label: 'Мо-клинок', icon: '🔨' },
     { id: 'Верёвочный Дротик', label: 'Верёвочный Дротик', icon: '🪢' },
     { id: 'Веер', label: 'Веер', icon: '🪭' },
     { id: 'Зонт', label: 'Зонт', icon: '☂️' },
-    { id: 'Хангблэйд', label: 'Хангблэйд', icon: '⚔️' },
+    { id: 'Хангблэйд', label: 'Хенг Блейд', icon: '⚔️' },
     { id: 'Лук', label: 'Лук', icon: '🏹' },
     { id: 'Прочее', label: 'Прочее', icon: '✦' },
   ],
@@ -97,4 +107,28 @@ export function slugCategoryId(label: string): string {
 
 export function getDefaultSectionCategories(sectionKey: string): SectionCategoryDef[] {
   return DEFAULT_SECTION_CATEGORIES[sectionKey] ?? fromConfig(sectionKey);
+}
+
+const WEAPON_TYPE_EN: Record<string, string> = {
+  Меч: 'Sword',
+  Копьё: 'Spear',
+  'Парные Клинки': 'Dual Blades',
+  'Парные клинки': 'Dual Blades',
+  'Мо-клинок': 'Mo Blade',
+  'Верёвочный Дротик': 'Rope Dart',
+  Веер: 'Fan',
+  Зонт: 'Umbrella',
+  Хангблэйд: 'Heng Blade',
+  'Хенг Блейд': 'Heng Blade',
+  Лук: 'Bow',
+};
+
+/** Английское название типа оружия для строки «Русское — English». */
+export function weaponCategoryEnglish(categoryId: string, categoryLabel: string): string {
+  const id = categoryId.trim();
+  const label = categoryLabel.trim();
+  if (id && label && id.toLowerCase() !== label.toLowerCase() && !/[а-яё]/i.test(id)) {
+    return id;
+  }
+  return WEAPON_TYPE_EN[id] || WEAPON_TYPE_EN[label] || '';
 }
