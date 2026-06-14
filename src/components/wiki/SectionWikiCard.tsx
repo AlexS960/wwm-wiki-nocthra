@@ -8,6 +8,7 @@ import type { WikiArticle } from '../../context/AuthContext';
 import { wikiCardDomId } from '../../lib/buildLookup';
 import { parseSectionContent } from '../../lib/sectionContent';
 import { weaponCategoryEnglish } from '../../data/sectionCategories';
+import { getSectionSchema } from '../../data/sectionSchemas';
 import { bossDiffColor, buildDiffColor, mysticElementColors, mysticTypeLabels } from '../../lib/sectionCardStyles';
 import RichText, { RichInline } from '../ui/RichText';
 import MarkdownBody from '../MarkdownBody';
