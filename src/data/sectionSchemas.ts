@@ -25,7 +25,7 @@ export const sectionSchemas: Record<string, SectionSchema> = {
     showNameEn: true,
     tagFields: [
       { id: 'role', label: 'Роль', placeholder: 'Ближний ДПС' },
-      { id: 'martialArt', label: 'Искусство', placeholder: 'Bellstrike — Splendor' },
+      { id: 'martialArt', label: 'Искусство', placeholder: 'Bellstrike — Splendor или ссылка [Название](/builds#wiki-card-id)' },
     ],
     contentFields: [
       { id: 'howToGet', label: 'Получение', kind: 'textarea', header: '## Получение', placeholder: 'Как получить оружие…' },

@@ -124,12 +124,53 @@ function FavoriteButton({
   );
 }
 
-function TitleBlock({ title, nameEn }: { title: string; nameEn?: string }) {
+function formatBilingualTitle(title: string, nameEn?: string): string {
+  const ru = asText(title).trim();
+  const en = asText(nameEn).trim();
+  if (!en || en.toLowerCase() === ru.toLowerCase()) return ru;
+  return `${ru} — ${en}`;
+}
+
+function CardTitle({
+  title,
+  nameEn,
+  className = '',
+  highlight = false,
+  size = 'base',
+}: {
+  title: string;
+  nameEn?: string;
+  className?: string;
+  highlight?: boolean;
+  size?: 'base' | 'lg';
+}) {
+  const sizeClass = size === 'lg' ? 'text-lg' : 'text-base';
   return (
-    <>
-      <h3 className="font-serif font-bold text-white leading-snug break-words">{title}</h3>
-      {nameEn && <p className="text-ink-400 text-xs mt-0.5">{nameEn}</p>}
-    </>
+    <h3 className={`font-serif font-bold leading-snug break-words ${sizeClass} ${highlight ? 'text-gold-400' : 'text-white'} ${className}`}>
+      {formatBilingualTitle(title, nameEn)}
+    </h3>
+  );
+}
+
+function CardMetaText({ label, text }: { label: string; text?: string }) {
+  const val = asText(text).trim();
+  if (!val) return null;
+  return (
+    <div className="text-sm mt-1">
+      <span className="text-ink-400">{label}: </span>
+      <span className="text-gold-400">{val}</span>
+    </div>
+  );
+}
+
+function CardMetaRich({ label, content }: { label: string; content?: string }) {
+  const val = asText(content).trim();
+  if (!val) return null;
+  return (
+    <div className="text-sm mt-1 [&_button]:text-gold-300 [&_button]:underline [&_a]:text-gold-300 [&_a]:underline">
+      <span className="text-ink-400">{label}: </span>
+      <RichInline content={val} className="text-gold-400" />
+    </div>
   );
 }
 
@@ -166,7 +207,7 @@ function BossWikiCard(props: SectionWikiCardProps) {
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
-              <TitleBlock title={article.title} nameEn={nameEn} />
+              <CardTitle title={article.title} nameEn={nameEn} />
             </div>
             {expanded
               ? <ChevronUp className={`w-5 h-5 text-gold-400 shrink-0 ${canEdit ? 'mr-14' : ''}`} />
@@ -284,12 +325,12 @@ function WeaponWikiCard(props: SectionWikiCardProps) {
       <div className="flex items-start gap-3">
         <span className="text-3xl shrink-0 leading-none">{article.icon}</span>
         <div className="flex-1 min-w-0">
-          <TitleBlock title={article.title} nameEn={nameEn} />
+          <CardTitle title={article.title} nameEn={nameEn} />
           <div className="flex flex-wrap gap-1.5 mt-1.5">
             {categoryLabel && <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">{categoryLabel}</span>}
-            {role && <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">{role}</span>}
-            {martialArt && <span className="text-xs bg-gold-400/10 text-gold-400 px-2 py-0.5 rounded-full">{martialArt}</span>}
           </div>
+          <CardMetaRich label="Роль" content={role} />
+          <CardMetaRich label="Искусство" content={martialArt} />
           {!expanded && article.fields?.summary && (
             <RichText content={article.fields.summary} variant="compact" className="mt-1.5" />
           )}
@@ -356,9 +397,8 @@ function BuildWikiCard(props: SectionWikiCardProps) {
           <div className="flex items-center gap-3 pr-8 min-w-0">
             <span className="text-3xl shrink-0">{article.icon}</span>
             <div className="min-w-0">
-              <h3 className={`font-serif text-lg font-bold break-words ${isSelected ? 'text-gold-400' : 'text-white'}`}>{article.title}</h3>
-              {nameEn && <p className="text-ink-400 text-xs mt-0.5">{nameEn}</p>}
-              {categoryLabel && <span className="text-sm text-gold-400">{categoryLabel}</span>}
+              <CardTitle title={article.title} nameEn={nameEn} highlight={isSelected} size="lg" />
+              <CardMetaText label="Роль" text={categoryLabel} />
             </div>
           </div>
           {expanded
@@ -480,7 +520,7 @@ function SectWikiCard(props: SectionWikiCardProps) {
       <div className="flex items-start gap-3 mb-3">
         <span className="text-3xl">{article.icon}</span>
         <div className="flex-1 min-w-0">
-          <TitleBlock title={article.title} nameEn={nameEn} />
+          <CardTitle title={article.title} nameEn={nameEn} />
         </div>
         {expanded
           ? <ChevronUp className={`w-5 h-5 text-gold-400 shrink-0 ${canEdit ? 'mr-14' : ''}`} />
@@ -490,14 +530,8 @@ function SectWikiCard(props: SectionWikiCardProps) {
       <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} className="absolute top-3 right-3 z-10" />
 
       {article.fields?.summary && <RichText content={article.fields.summary} variant="normal" className="mb-3" />}
-      {theme && (
-        <div className="flex items-center gap-2 text-xs text-ink-400 mb-2">
-          <RichInline content={theme} className="text-purple-400" />
-        </div>
-      )}
-      {weapon && (
-        <div className="text-sm text-purple-400 font-medium mb-1">Оружие: <RichInline content={weapon} /></div>
-      )}
+      <CardMetaRich label="Тема" content={theme} />
+      <CardMetaRich label="Оружие" content={weapon} />
       {howToJoin && <RichText content={howToJoin} variant="compact" className="mt-1" />}
 
       {expanded && (
@@ -570,7 +604,7 @@ function MysticWikiCard(props: SectionWikiCardProps) {
       <div className="flex items-start gap-3">
         <span className="text-3xl shrink-0 leading-none">{article.icon}</span>
         <div className="flex-1 min-w-0">
-          <TitleBlock title={article.title} nameEn={nameEn} />
+          <CardTitle title={article.title} nameEn={nameEn} />
           <div className="flex flex-wrap gap-1.5 mt-1.5">
             {element && (
               <span className={`text-xs px-2 py-0.5 rounded-full border ${mysticElementColors[element] || 'border-ink-600/40'}`}>
@@ -638,7 +672,7 @@ function CookingWikiCard(props: SectionWikiCardProps) {
       <div className="flex items-start gap-3">
         <span className="text-3xl shrink-0 leading-none">{article.icon}</span>
         <div className="flex-1 min-w-0">
-          <TitleBlock title={article.title} nameEn={nameEn} />
+          <CardTitle title={article.title} nameEn={nameEn} />
           <div className="flex items-center gap-1.5 flex-wrap mt-1.5">
             {categoryLabel && (
               <span className={`flex items-center gap-1 text-xs px-2 py-0.5 rounded-full ${
@@ -743,7 +777,7 @@ function InnerPathWikiCard(props: SectionWikiCardProps) {
       <div className="p-4 sm:p-5">
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
-            <TitleBlock title={article.title} nameEn={nameEn} />
+            <CardTitle title={article.title} nameEn={nameEn} />
             {categoryLabel && (
               <span className="inline-flex items-center gap-1 mt-2 text-xs px-2.5 py-0.5 rounded-full border border-gold-400/30 text-gold-300 bg-gold-400/10">
                 {categoryLabel}
@@ -798,7 +832,7 @@ function GenericWikiCard(props: SectionWikiCardProps) {
       <div className="flex items-start gap-3">
         <span className="text-3xl shrink-0 leading-none">{article.icon}</span>
         <div className="flex-1 min-w-0">
-          <h3 className="font-serif font-bold text-white leading-snug break-words">{article.title}</h3>
+          <CardTitle title={article.title} nameEn={article.fields?.nameEn} />
           {categoryLabel && (
             <span className="inline-block mt-1 text-[10px] px-2 py-0.5 rounded-full bg-gold-400/10 text-gold-400 border border-gold-400/30">
               {categoryLabel}

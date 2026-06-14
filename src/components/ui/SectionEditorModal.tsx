@@ -230,6 +230,12 @@ export default function SectionEditorModal({
                     placeholder={field.placeholder}
                     className="w-full bg-ink-900/80 border border-ink-600/50 rounded-xl px-4 py-2.5 text-white placeholder:text-ink-500 focus:outline-none focus:border-gold-400/50"
                   />
+                  {tagValues[field.id]?.trim() && (
+                    <div className="mt-1.5 text-xs text-ink-300">
+                      <span className="text-ink-500">Предпросмотр: </span>
+                      <RichInline content={tagValues[field.id]} />
+                    </div>
+                  )}
                 </div>
               ))}
 
