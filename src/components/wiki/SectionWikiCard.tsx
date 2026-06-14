@@ -151,6 +151,38 @@ function CardTitle({
   );
 }
 
+/** Заголовок карточки оружия: название + тип «Русское — English» в одном блоке. */
+function WeaponCardTitle({
+  title,
+  nameEn,
+  categoryLabel,
+}: {
+  title: string;
+  nameEn?: string;
+  categoryLabel?: string;
+}) {
+  const ruTitle = asText(title).trim();
+  const en = asText(nameEn).trim();
+  const cat = asText(categoryLabel).trim();
+  const titleClass = 'font-serif font-bold leading-snug break-words text-base text-white';
+
+  let typeLine = '';
+  if (cat && en && cat.toLowerCase() !== en.toLowerCase()) {
+    typeLine = `${cat} — ${en}`;
+  } else if (cat && cat.toLowerCase() !== ruTitle.toLowerCase()) {
+    typeLine = cat;
+  } else if (en && en.toLowerCase() !== ruTitle.toLowerCase()) {
+    typeLine = en;
+  }
+
+  return (
+    <div>
+      <h3 className={titleClass}>{ruTitle}</h3>
+      {typeLine && <h3 className={`${titleClass} mt-0.5`}>{typeLine}</h3>}
+    </div>
+  );
+}
+
 function CardMetaText({ label, text }: { label: string; text?: string }) {
   const val = asText(text).trim();
   if (!val) return null;
@@ -324,10 +356,7 @@ function WeaponWikiCard(props: SectionWikiCardProps) {
       <div className="flex items-start gap-3">
         <span className="text-3xl shrink-0 leading-none">{article.icon}</span>
         <div className="flex-1 min-w-0">
-          <CardTitle title={article.title} nameEn={nameEn} />
-          <div className="flex flex-wrap gap-1.5 mt-1.5">
-            {categoryLabel && <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">{categoryLabel}</span>}
-          </div>
+          <WeaponCardTitle title={article.title} nameEn={nameEn} categoryLabel={categoryLabel} />
           <CardMetaRich label="Роль" content={role} />
           <CardMetaRich label="Искусство" content={martialArt} />
           {!expanded && article.fields?.summary && (
