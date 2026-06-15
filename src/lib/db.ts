@@ -257,8 +257,9 @@ export async function dbLoadProgress(userId: string): Promise<UserProgress | nul
 }
 
 export async function dbSaveProgress(userId: string, data: UserProgress): Promise<{ error?: string }> {
+  const payload = typeof data === 'string' ? data : JSON.stringify(data);
   const { error } = await getSupabase().from('user_progress').upsert(
-    { user_id: userId, data, updated_at: new Date().toISOString() },
+    { user_id: userId, data: payload, updated_at: new Date().toISOString() },
     { onConflict: 'user_id' },
   );
   if (error) {

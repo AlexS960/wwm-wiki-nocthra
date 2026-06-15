@@ -25,12 +25,31 @@ export function normalizeUserProgress(raw: unknown): UserProgress {
         date: typeof n.date === 'string' ? n.date : '',
       }))
       .filter(n => n.id && n.title),
-    selectedBuild: typeof selected === 'string' && selected.length > 0
-      ? selected
-      : selected === null
-        ? null
-        : null,
+    selectedBuild: typeof selected === 'string' && selected.length > 0 ? selected : null,
   };
+}
+
+function uniqIds(...lists: string[][]): string[] {
+  return [...new Set(lists.flat())];
+}
+
+/** Объединяет локальный и удалённый прогресс без потери выбранного билда и избранного. */
+export function mergeUserProgress(preferred: UserProgress, fallback: UserProgress): UserProgress {
+  const notes = preferred.notes.length >= fallback.notes.length ? preferred.notes : fallback.notes;
+  return normalizeUserProgress({
+    completedGuides: uniqIds(preferred.completedGuides, fallback.completedGuides),
+    favoriteWeapons: uniqIds(preferred.favoriteWeapons, fallback.favoriteWeapons),
+    favoriteSects: uniqIds(preferred.favoriteSects, fallback.favoriteSects),
+    visitedRegions: uniqIds(preferred.visitedRegions, fallback.visitedRegions),
+    notes,
+    selectedBuild: preferred.selectedBuild ?? fallback.selectedBuild,
+  });
+}
+
+export function resolveUserProgress(fromLocal: UserProgress | null, fromDb: UserProgress | null): UserProgress {
+  const local = fromLocal ?? { ...defaultUserProgress };
+  const remote = fromDb ?? { ...defaultUserProgress };
+  return mergeUserProgress(local, remote);
 }
 
 export function loadProgressLocal(userId: string): UserProgress | null {

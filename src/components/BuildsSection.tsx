@@ -7,7 +7,7 @@ import SectionWikiBody from './wiki/SectionWikiBody';
 export default function BuildsSection() {
   const { user, progress, setSelectedBuild, wikiArticles } = useAuth();
   const selectedBuildName = progress.selectedBuild
-    ? resolveBuildName(progress.selectedBuild, wikiArticles)
+    ? (resolveBuildName(progress.selectedBuild, wikiArticles) ?? 'Выбранный билд')
     : null;
 
   return (
@@ -19,7 +19,7 @@ export default function BuildsSection() {
           title="Пути Развития (Build Paths)"
           subtitle="6 уникальных путей боя — от ближнего DPS до целителя. Выберите свой стиль"
         />
-        {user && selectedBuildName && (
+        {user && progress.selectedBuild && selectedBuildName && (
           <p className="text-gold-400 text-sm text-center -mt-8 mb-8">
             <Star className="w-4 h-4 inline-block mr-1 fill-current" />
             Мой билд: {selectedBuildName}

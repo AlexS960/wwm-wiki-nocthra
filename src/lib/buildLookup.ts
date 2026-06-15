@@ -1,7 +1,10 @@
 import type { WikiArticle } from '../context/AuthContext';
 
+import { getAllSeedArticles } from './sectionSeeds';
+
 export function isKnownBuild(buildId: string, wikiArticles: WikiArticle[]): boolean {
-  return wikiArticles.some(a => a.section === 'builds' && a.id === buildId);
+  if (wikiArticles.some(a => a.section === 'builds' && a.id === buildId)) return true;
+  return getAllSeedArticles().some(a => a.section === 'builds' && a.id === buildId);
 }
 
 export function resolveBuildName(buildId: string, wikiArticles: WikiArticle[]): string | null {

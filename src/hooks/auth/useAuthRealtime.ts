@@ -24,7 +24,7 @@ import {
 import { buildWikiCatalog } from '../../lib/sectionSeeds';
 import { sanitizeGuides, sanitizeGuideVersions, sanitizeSiteNews, sanitizeWiki } from '../../lib/siteImages';
 import type { UserProgress } from '../../types/site';
-import { normalizeUserProgress, saveProgressLocal } from '../../lib/userProgress';
+import { mergeUserProgress, normalizeUserProgress, saveProgressLocal } from '../../lib/userProgress';
 
 type Deps = {
   isLoading: boolean;
@@ -119,9 +119,12 @@ export function useAuthRealtime(deps: Deps) {
     if (!deps.userId) return;
     return subscribeUserProgress(deps.userId, (data) => {
       if (!data) return;
-      const normalized = normalizeUserProgress(data);
-      depsRef.current.setProgress(normalized);
-      saveProgressLocal(deps.userId!, normalized);
+      const remote = normalizeUserProgress(data);
+      depsRef.current.setProgress(prev => {
+        const merged = mergeUserProgress(remote, prev);
+        saveProgressLocal(deps.userId!, merged);
+        return merged;
+      });
     });
   }, [deps.userId]);
 }

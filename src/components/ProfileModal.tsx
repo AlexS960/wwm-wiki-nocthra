@@ -222,6 +222,12 @@ export default function ProfileModal({ isOpen, onClose, anchor, onNavigate }: Pr
                 <StatMini icon={<Star className="w-4 h-4 text-purple-400" />} value={progress.favoriteSects.length} label="Сект" />
                 <StatMini icon={<FileText className="w-4 h-4 text-ink-400" />} value={progress.notes.length} label="Заметок" />
               </div>
+              {progress.selectedBuild && (
+                <div className="bg-gold-400/5 border border-gold-400/20 rounded-lg p-3">
+                  <p className="text-gold-400 text-xs font-medium mb-1">Выбранный билд</p>
+                  <p className="text-white text-sm break-words">{selectedBuildName}</p>
+                </div>
+              )}
 
               {editing ? (
                 <div className="space-y-3 bg-ink-800/55 rounded-xl p-4 border border-ink-600/35">

@@ -5,7 +5,7 @@ import type { GuildData, SiteSettings, User, UserProgress } from '../../types/si
 import { defaultSiteSettings } from '../../context/authContextTypes';
 import { sanitizeGuildAvatar } from '../../lib/siteImages';
 import { mergeSiteSettingsSafe } from '../../lib/normalizeState';
-import { loadProgressLocal, normalizeUserProgress, saveProgressLocal } from '../../lib/userProgress';
+import { loadProgressLocal, mergeUserProgress, resolveUserProgress, saveProgressLocal } from '../../lib/userProgress';
 
 const defS = defaultSiteSettings;
 
@@ -54,10 +54,13 @@ export function useAuthSiteCore({ user, setProgress, setDbSaveError }: Deps) {
       if (user) {
         const fromDb = await dbLoadProgress(user.id);
         const fromLocal = loadProgressLocal(user.id);
-        const merged = normalizeUserProgress(fromDb ?? fromLocal ?? null);
-        if (active) setProgress(merged);
-        if (fromDb) saveProgressLocal(user.id, merged);
-        else if (fromLocal) void dbSaveProgress(user.id, merged);
+        const merged = resolveUserProgress(fromLocal, fromDb);
+        if (active) setProgress(prev => mergeUserProgress(merged, prev));
+        saveProgressLocal(user.id, merged);
+        if (!fromDb || merged.selectedBuild !== fromDb.selectedBuild
+          || merged.favoriteWeapons.length !== fromDb.favoriteWeapons.length) {
+          void dbSaveProgress(user.id, merged);
+        }
       }
       setIsLoading(false);
     })();

@@ -13,7 +13,9 @@ import type { User, UserProgress } from '../types/site';
 import { defaultUserProgress } from '../context/authContextTypes';
 import {
   loadProgressLocal,
+  mergeUserProgress,
   normalizeUserProgress,
+  resolveUserProgress,
   saveProgressLocal,
 } from '../lib/userProgress';
 
@@ -47,15 +49,13 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
     void (async () => {
       const fromDb = await dbLoadProgress(user.id);
       if (!active) return;
-      if (fromDb) {
-        setProgress(fromDb);
-        saveProgressLocal(user.id, fromDb);
-      } else {
-        const fromLocal = loadProgressLocal(user.id);
-        if (fromLocal) {
-          setProgress(fromLocal);
-          void dbSaveProgress(user.id, fromLocal);
-        }
+      const fromLocal = loadProgressLocal(user.id);
+      const merged = resolveUserProgress(fromLocal, fromDb);
+      setProgress(prev => mergeUserProgress(merged, prev));
+      saveProgressLocal(user.id, merged);
+      if (!fromDb || merged.selectedBuild !== fromDb.selectedBuild
+        || merged.favoriteWeapons.length !== fromDb.favoriteWeapons.length) {
+        void dbSaveProgress(user.id, merged);
       }
       const acc = await dbGetAccountById(user.id);
       if (!active || !acc) return;
@@ -108,15 +108,13 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
     if (remember) localStorage.setItem('wwm_user', JSON.stringify(nextUser));
     void dbUpdateAccount(acc.id, { last_seen: new Date().toISOString() });
     const loadedProgress = await dbLoadProgress(acc.id);
-    if (loadedProgress) {
-      setProgress(loadedProgress);
-      saveProgressLocal(acc.id, loadedProgress);
-    } else {
-      const local = loadProgressLocal(acc.id);
-      if (local) {
-        setProgress(local);
-        void dbSaveProgress(acc.id, local);
-      }
+    const local = loadProgressLocal(acc.id);
+    const merged = resolveUserProgress(local, loadedProgress);
+    setProgress(merged);
+    saveProgressLocal(acc.id, merged);
+    if (!loadedProgress || merged.selectedBuild !== loadedProgress.selectedBuild
+      || merged.favoriteWeapons.length !== loadedProgress.favoriteWeapons.length) {
+      void dbSaveProgress(acc.id, merged);
     }
     return null;
   }, []);
