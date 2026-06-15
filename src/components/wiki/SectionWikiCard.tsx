@@ -125,6 +125,54 @@ function FavoriteButton({
   );
 }
 
+/** Отступ заголовка под колонку кнопок справа */
+const CARD_HEADER_ACTIONS_PAD = 'pr-[4.75rem] sm:pr-20';
+
+function cardHasActionRail(canEdit: boolean, onToggleFavorite?: () => void) {
+  return canEdit || !!onToggleFavorite;
+}
+
+function CardActionRail({
+  sectionId,
+  article,
+  canEdit,
+  onEdit,
+  onDelete,
+  isFavorite,
+  onToggleFavorite,
+  favoriteAddTitle,
+  favoriteRemoveTitle,
+  favoriteSize = 'sm',
+}: {
+  sectionId: string;
+  article: WikiArticle;
+  canEdit: boolean;
+  onEdit: () => void;
+  onDelete: () => void;
+  isFavorite?: boolean;
+  onToggleFavorite?: () => void;
+  favoriteAddTitle?: string;
+  favoriteRemoveTitle?: string;
+  favoriteSize?: 'sm' | 'md';
+}) {
+  if (!cardHasActionRail(canEdit, onToggleFavorite)) return null;
+  return (
+    <div
+      className="absolute top-3 right-3 z-20 flex flex-col items-end gap-1"
+      onClick={e => e.stopPropagation()}
+    >
+      <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} />
+      <FavoriteButton
+        isFavorite={isFavorite}
+        onToggle={onToggleFavorite}
+        addTitle={favoriteAddTitle}
+        removeTitle={favoriteRemoveTitle}
+        size={favoriteSize}
+      />
+    </div>
+  );
+}
+
 function CardTitle({
   title,
   nameEn,
@@ -152,31 +200,33 @@ function CardTitle({
   );
 }
 
-/** Заголовок карточки оружия: «Название (English)» + строка категории «Русское — English». */
+/** Заголовок карточки оружия: «Название (English)» + опционально строка категории. */
+function getWeaponCategoryLine(categoryLabel?: string, categoryId?: string): string {
+  const catRu = asText(categoryLabel).trim();
+  const catEn = weaponCategoryEnglish(asText(categoryId), catRu);
+  if (catRu && catEn && catRu.toLowerCase() !== catEn.toLowerCase()) return `${catRu} — ${catEn}`;
+  if (catRu) return catRu;
+  return '';
+}
+
 function WeaponCardTitle({
   title,
   nameEn,
   categoryLabel,
   categoryId,
+  showCategory = true,
 }: {
   title: string;
   nameEn?: string;
   categoryLabel?: string;
   categoryId?: string;
+  showCategory?: boolean;
 }) {
   const ruTitle = asText(title).trim();
   const weaponEn = asText(nameEn).trim();
-  const catRu = asText(categoryLabel).trim();
-  const catEn = weaponCategoryEnglish(asText(categoryId), catRu);
-  const titleClass = 'font-serif font-bold leading-snug break-words text-base text-white';
+  const categoryLine = getWeaponCategoryLine(categoryLabel, categoryId);
+  const titleClass = 'font-serif font-bold leading-snug break-words text-base sm:text-lg text-white';
   const showWeaponEn = weaponEn.length > 0 && weaponEn.toLowerCase() !== ruTitle.toLowerCase();
-
-  let categoryLine = '';
-  if (catRu && catEn && catRu.toLowerCase() !== catEn.toLowerCase()) {
-    categoryLine = `${catRu} — ${catEn}`;
-  } else if (catRu) {
-    categoryLine = catRu;
-  }
 
   return (
     <div>
@@ -184,8 +234,8 @@ function WeaponCardTitle({
         {ruTitle}
         {showWeaponEn && <span className="text-ink-400 font-normal"> ({weaponEn})</span>}
       </h3>
-      {categoryLine && (
-        <p className="text-sm text-gold-400 mt-1">{categoryLine}</p>
+      {showCategory && categoryLine && (
+        <p className="text-sm text-gold-400 mt-1 leading-relaxed">{categoryLine}</p>
       )}
     </div>
   );
@@ -195,7 +245,7 @@ function CardMetaText({ label, text }: { label: string; text?: string }) {
   const val = asText(text).trim();
   if (!val) return null;
   return (
-    <div className="text-sm mt-1">
+    <div className="text-sm mt-1 leading-relaxed w-full">
       <span className="text-ink-400">{label}: </span>
       <span className="text-gold-400">{val}</span>
     </div>
@@ -206,7 +256,7 @@ function CardMetaRich({ label, content }: { label: string; content?: string }) {
   const val = asText(content).trim();
   if (!val) return null;
   return (
-    <div className="text-sm mt-1 [&_button]:text-gold-300 [&_button]:underline [&_a]:text-gold-300 [&_a]:underline">
+    <div className="text-sm mt-1 leading-relaxed w-full [&_button]:text-gold-300 [&_button]:underline [&_a]:text-gold-300 [&_a]:underline">
       <span className="text-ink-400">{label}: </span>
       <RichInline content={val} className="text-gold-400" />
     </div>
@@ -232,6 +282,7 @@ function BossWikiCard(props: SectionWikiCardProps) {
   }, [highlighted]);
 
   const isCampaign = bossType === 'campaign';
+  const hasActions = canEdit;
 
   return (
     <div
@@ -241,40 +292,37 @@ function BossWikiCard(props: SectionWikiCardProps) {
         expanded || highlighted ? 'border-gold-400/40 bg-gold-400/5' : 'border-ink-700/30 hover:border-gold-700/30 card-hover'
       }`}
     >
-      <div className="flex items-start gap-3">
+      <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} className="absolute top-3 right-3 z-10" />
+      <div className={`flex items-start gap-3 ${hasActions ? CARD_HEADER_ACTIONS_PAD : ''}`}>
         <span className="text-3xl shrink-0 leading-none">{article.icon}</span>
         <div className="flex-1 min-w-0">
-          <div className="flex items-start justify-between gap-2">
-            <div className="min-w-0">
-              <CardTitle title={article.title} nameEn={nameEn} />
-            </div>
-            {expanded
-              ? <ChevronUp className={`w-5 h-5 text-gold-400 shrink-0 ${canEdit ? 'mr-14' : ''}`} />
-              : <ChevronDown className={`w-5 h-5 text-ink-400 shrink-0 ${canEdit ? 'mr-14' : ''}`} />}
-          </div>
-          <div className="flex flex-wrap gap-1.5 mt-1.5">
-            {difficulty && (
-              <span className={`text-xs px-2 py-0.5 rounded-full ${bossDiffColor[difficulty] || 'text-jade-400 bg-jade-400/10'}`}>
-                {difficulty}
-              </span>
-            )}
-            {level && <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">Ур. {level}</span>}
-            {(bossType || categoryLabel) && (
-              <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">
-                {isCampaign ? '📖 Сюжет' : '🌍 Мировой'}
-              </span>
-            )}
-          </div>
-          {(region || location) && (
-            <div className="flex items-center gap-1 text-ink-400 text-xs mt-1.5">
-              <MapPin className="w-3 h-3 shrink-0" />
-              <span>{region}{region && location ? ' — ' : ''}{location}</span>
-            </div>
+          <CardTitle title={article.title} nameEn={nameEn} />
+        </div>
+        {expanded
+          ? <ChevronUp className="w-5 h-5 text-gold-400 shrink-0 hidden sm:block" />
+          : <ChevronDown className="w-5 h-5 text-ink-400 shrink-0 hidden sm:block" />}
+      </div>
+      <div className="w-full mt-2 space-y-1.5">
+        <div className="flex flex-wrap gap-1.5">
+          {difficulty && (
+            <span className={`text-xs px-2 py-0.5 rounded-full ${bossDiffColor[difficulty] || 'text-jade-400 bg-jade-400/10'}`}>
+              {difficulty}
+            </span>
+          )}
+          {level && <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">Ур. {level}</span>}
+          {(bossType || categoryLabel) && (
+            <span className="text-xs bg-ink-700/50 text-ink-300 px-2 py-0.5 rounded-full">
+              {isCampaign ? '📖 Сюжет' : '🌍 Мировой'}
+            </span>
           )}
         </div>
+        {(region || location) && (
+          <div className="flex items-center gap-1 text-ink-400 text-xs">
+            <MapPin className="w-3 h-3 shrink-0" />
+            <span>{region}{region && location ? ' — ' : ''}{location}</span>
+          </div>
+        )}
       </div>
-
-      <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} className="absolute top-3 right-3 z-10" />
 
       {expanded && (
         <div className="mt-4 pt-4 border-t border-ink-700/30 space-y-4 animate-fadeIn" onClick={e => e.stopPropagation()}>
@@ -348,6 +396,8 @@ function WeaponWikiCard(props: SectionWikiCardProps) {
   const role = article.fields?.role;
   const martialArt = article.fields?.martialArt;
   const nameEn = article.fields?.nameEn;
+  const categoryLine = getWeaponCategoryLine(categoryLabel, asText(article.fields?.category));
+  const hasActions = cardHasActionRail(canEdit, onToggleFavorite);
 
   useEffect(() => {
     if (highlighted) setExpanded(true);
@@ -361,25 +411,32 @@ function WeaponWikiCard(props: SectionWikiCardProps) {
         expanded || highlighted ? 'border-gold-400/40' : 'border-ink-700/30 hover:border-gold-700/30 card-hover'
       }`}
     >
-      <div className="flex items-start gap-3">
+      <CardActionRail
+        sectionId={sectionId}
+        article={article}
+        canEdit={canEdit}
+        onEdit={onEdit}
+        onDelete={onDelete}
+        isFavorite={isFavorite}
+        onToggleFavorite={onToggleFavorite}
+        favoriteAddTitle={favoriteAddTitle}
+        favoriteRemoveTitle={favoriteRemoveTitle}
+      />
+      <div className={`flex items-start gap-3 ${hasActions ? CARD_HEADER_ACTIONS_PAD : ''}`}>
         <span className="text-3xl shrink-0 leading-none">{article.icon}</span>
         <div className="flex-1 min-w-0">
-          <WeaponCardTitle
-            title={article.title}
-            nameEn={nameEn}
-            categoryLabel={categoryLabel}
-            categoryId={asText(article.fields?.category)}
-          />
-          <CardMetaRich label="Роль" content={role} />
-          <CardMetaRich label="Искусство" content={martialArt} />
-          {!expanded && article.fields?.summary && (
-            <RichText content={article.fields.summary} variant="compact" className="mt-1.5" />
-          )}
+          <WeaponCardTitle title={article.title} nameEn={nameEn} showCategory={false} />
         </div>
-        <div className="flex flex-col items-center gap-1 shrink-0" onClick={e => e.stopPropagation()}>
-          <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} />
-          <FavoriteButton isFavorite={isFavorite} onToggle={onToggleFavorite} addTitle={favoriteAddTitle} removeTitle={favoriteRemoveTitle} />
-        </div>
+      </div>
+      <div className="mt-2 w-full space-y-1">
+        {categoryLine && (
+          <p className="text-sm text-gold-400 leading-relaxed">{categoryLine}</p>
+        )}
+        <CardMetaRich label="Роль" content={role} />
+        <CardMetaRich label="Искусство" content={martialArt} />
+        {!expanded && article.fields?.summary && (
+          <RichText content={article.fields.summary} variant="compact" className="mt-1" />
+        )}
       </div>
       {expanded && (
         <div className="mt-3 pt-3 border-t border-ink-700/30 space-y-2 animate-fadeIn" onClick={e => e.stopPropagation()}>
@@ -418,6 +475,7 @@ function BuildWikiCard(props: SectionWikiCardProps) {
   const difficulty = article.fields?.difficulty;
   const nameEn = article.fields?.nameEn;
   const isSelected = isFavorite;
+  const hasActions = cardHasActionRail(canEdit, onToggleFavorite);
 
   useEffect(() => {
     if (highlighted) setExpanded(true);
@@ -433,56 +491,54 @@ function BuildWikiCard(props: SectionWikiCardProps) {
       }`}
     >
       {isSelected && <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-400/0 via-gold-400 to-gold-400/0" />}
-      <div className="relative p-5">
-        <div className="flex items-start justify-between gap-2">
-          <div className="flex items-center gap-3 pr-8 min-w-0">
-            <span className="text-3xl shrink-0">{article.icon}</span>
-            <div className="min-w-0">
-              <CardTitle title={article.title} nameEn={nameEn} highlight={isSelected} size="lg" />
-              <CardMetaText label="Роль" text={categoryLabel} />
-            </div>
+      <div className="relative p-4 sm:p-5">
+        <CardActionRail
+          sectionId={sectionId}
+          article={article}
+          canEdit={canEdit}
+          onEdit={onEdit}
+          onDelete={onDelete}
+          isFavorite={isFavorite}
+          onToggleFavorite={onToggleFavorite}
+          favoriteAddTitle={favoriteAddTitle}
+          favoriteRemoveTitle={favoriteRemoveTitle}
+          favoriteSize="md"
+        />
+        <div className={`flex items-start gap-3 ${hasActions ? CARD_HEADER_ACTIONS_PAD : ''}`}>
+          <span className="text-3xl shrink-0 leading-none">{article.icon}</span>
+          <div className="flex-1 min-w-0 w-full">
+            <CardTitle title={article.title} nameEn={nameEn} highlight={isSelected} size="lg" />
           </div>
           {expanded
-            ? <ChevronUp className={`w-5 h-5 text-ink-400 shrink-0 ${canEdit ? 'mr-14' : ''}`} />
-            : <ChevronDown className={`w-5 h-5 text-ink-400 shrink-0 ${canEdit ? 'mr-14' : ''}`} />}
+            ? <ChevronUp className="w-5 h-5 text-ink-400 shrink-0 hidden sm:block" />
+            : <ChevronDown className="w-5 h-5 text-ink-400 shrink-0 hidden sm:block" />}
         </div>
 
-        <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} className="absolute top-4 right-4 z-20" />
-
-        {onToggleFavorite && (
-          <div className={`absolute ${canEdit ? 'top-14' : 'top-4'} right-4 z-10`}>
-            <FavoriteButton
-              isFavorite={isFavorite}
-              onToggle={onToggleFavorite}
-              addTitle={favoriteAddTitle}
-              removeTitle={favoriteRemoveTitle}
-              size="md"
-            />
-          </div>
-        )}
-
-        <div className="mt-3 flex items-center gap-2 flex-wrap">
-          {difficulty && (
-            <span className={`text-xs px-2 py-1 rounded-full ${buildDiffColor[difficulty] || ''}`}>Сложность: {difficulty}</span>
-          )}
-          {isSelected && (
-            <span className="text-xs px-2 py-1 rounded-full bg-gold-400/20 text-gold-400 flex items-center gap-1">
-              <Star className="w-3 h-3 fill-current" /> Мой билд
-            </span>
-          )}
-        </div>
-
-        {weapons.length > 0 && (
-          <div className="mt-3 flex flex-wrap gap-1.5">
-            {weapons.map((w, i) => (
-              <span key={i} className="text-xs bg-ink-700/50 text-ink-200 px-2 py-0.5 rounded-full">
-                <RichInline content={w} />
+        <div className="w-full mt-2 space-y-2">
+          <CardMetaText label="Роль" text={categoryLabel} />
+          <div className="flex items-center gap-2 flex-wrap">
+            {difficulty && (
+              <span className={`text-xs px-2 py-1 rounded-full ${buildDiffColor[difficulty] || ''}`}>Сложность: {difficulty}</span>
+            )}
+            {isSelected && (
+              <span className="text-xs px-2 py-1 rounded-full bg-gold-400/20 text-gold-400 flex items-center gap-1">
+                <Star className="w-3 h-3 fill-current" /> Мой билд
               </span>
-            ))}
+            )}
           </div>
-        )}
 
-        {!expanded && article.fields?.summary && <RichText content={article.fields.summary} variant="compact" className="mt-3" />}
+          {weapons.length > 0 && (
+            <div className="flex flex-wrap gap-1.5">
+              {weapons.map((w, i) => (
+                <span key={i} className="text-xs bg-ink-700/50 text-ink-200 px-2 py-0.5 rounded-full">
+                  <RichInline content={w} />
+                </span>
+              ))}
+            </div>
+          )}
+
+          {!expanded && article.fields?.summary && <RichText content={article.fields.summary} variant="compact" />}
+        </div>
 
         {expanded && (
           <div className="mt-4 pt-4 border-t border-ink-700/30 space-y-4 animate-fadeIn" onClick={e => e.stopPropagation()}>
@@ -768,17 +824,19 @@ function TipsWikiCard(props: SectionWikiCardProps) {
   const text = asText(article.fields?.summary || article.content);
 
   return (
-    <div className="relative bg-ink-800/50 border border-ink-700/30 rounded-xl p-4 flex items-start gap-3">
-      <span className="text-lg shrink-0">{article.icon || '💡'}</span>
-      <div className="flex-1 min-w-0 pr-8">
+    <div className="relative bg-ink-800/50 border border-ink-700/30 rounded-xl p-4">
+      <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} className={`absolute top-3 right-3 z-10 ${canEdit ? '' : 'hidden'}`} />
+      <div className={`flex items-center gap-2 mb-2 ${canEdit ? CARD_HEADER_ACTIONS_PAD : ''}`}>
+        <span className="text-lg shrink-0">{article.icon || '💡'}</span>
         {categoryLabel && (
-          <span className="inline-block mb-1.5 text-[10px] px-2 py-0.5 rounded-full bg-gold-400/10 text-gold-400 border border-gold-400/30">
+          <span className="inline-block text-[10px] px-2 py-0.5 rounded-full bg-gold-400/10 text-gold-400 border border-gold-400/30">
             {categoryLabel}
           </span>
         )}
+      </div>
+      <div className="w-full">
         <RichText content={text} variant="normal" />
       </div>
-      <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} className="absolute top-2 right-2" />
       <ContentImages images={article.images} />
     </div>
   );
@@ -816,21 +874,18 @@ function InnerPathWikiCard(props: SectionWikiCardProps) {
       }`}
     >
       <div className="p-4 sm:p-5">
-        <div className="flex items-start justify-between gap-3">
-          <div className="flex-1 min-w-0">
-            <CardTitle title={article.title} nameEn={nameEn} />
-            {categoryLabel && (
-              <span className="inline-flex items-center gap-1 mt-2 text-xs px-2.5 py-0.5 rounded-full border border-gold-400/30 text-gold-300 bg-gold-400/10">
-                {categoryLabel}
-              </span>
-            )}
-            {!expanded && effect && <RichText content={effect} variant="compact" className="mt-2" />}
-          </div>
-          {expanded
-            ? <ChevronUp className={`w-5 h-5 text-gold-400 shrink-0 ${canEdit ? 'mr-14' : ''}`} />
-            : <ChevronDown className={`w-5 h-5 text-ink-400 shrink-0 ${canEdit ? 'mr-14' : ''}`} />}
-        </div>
         <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} className="absolute top-3 right-3 z-10" />
+        <div className={`w-full ${canEdit ? CARD_HEADER_ACTIONS_PAD : ''}`}>
+          <CardTitle title={article.title} nameEn={nameEn} />
+          {categoryLabel && (
+            <span className="inline-flex items-center gap-1 mt-2 text-xs px-2.5 py-0.5 rounded-full border border-gold-400/30 text-gold-300 bg-gold-400/10">
+              {categoryLabel}
+            </span>
+          )}
+        </div>
+        <div className="w-full mt-2">
+          {!expanded && effect && <RichText content={effect} variant="compact" />}
+        </div>
         {expanded && (
           <div className="mt-4 pt-4 border-t border-ink-700/30 space-y-3 animate-fadeIn" onClick={e => e.stopPropagation()}>
             {effect && (
@@ -857,6 +912,7 @@ function GenericWikiCard(props: SectionWikiCardProps) {
   const { sectionId, article, categoryLabel, canEdit, onEdit, onDelete, isFavorite, onToggleFavorite, favoriteAddTitle, favoriteRemoveTitle, highlighted } = props;
   const [expanded, setExpanded] = useState(false);
   const rawPreview = asText(article.fields?.summary || article.content);
+  const hasActions = cardHasActionRail(canEdit, onToggleFavorite);
 
   useEffect(() => {
     if (highlighted) setExpanded(true);
@@ -870,24 +926,31 @@ function GenericWikiCard(props: SectionWikiCardProps) {
         expanded || highlighted ? 'border-gold-400/40' : 'border-ink-700/30 hover:border-gold-700/30 card-hover'
       }`}
     >
-      <div className="flex items-start gap-3">
+      <CardActionRail
+        sectionId={sectionId}
+        article={article}
+        canEdit={canEdit}
+        onEdit={onEdit}
+        onDelete={onDelete}
+        isFavorite={isFavorite}
+        onToggleFavorite={onToggleFavorite}
+        favoriteAddTitle={favoriteAddTitle}
+        favoriteRemoveTitle={favoriteRemoveTitle}
+      />
+      <div className={`flex items-start gap-3 ${hasActions ? CARD_HEADER_ACTIONS_PAD : ''}`}>
         <span className="text-3xl shrink-0 leading-none">{article.icon}</span>
         <div className="flex-1 min-w-0">
           <CardTitle title={article.title} nameEn={article.fields?.nameEn} />
-          {categoryLabel && (
-            <span className="inline-block mt-1 text-[10px] px-2 py-0.5 rounded-full bg-gold-400/10 text-gold-400 border border-gold-400/30">
-              {categoryLabel}
-            </span>
-          )}
-          {!expanded && rawPreview.trim() && (
-            <RichText content={rawPreview} variant="preview" className="mt-1.5" />
-          )}
         </div>
-        {(canEdit || onToggleFavorite) && (
-          <div className="flex flex-col items-center gap-1 shrink-0" onClick={e => e.stopPropagation()}>
-            <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} />
-            <FavoriteButton isFavorite={isFavorite} onToggle={onToggleFavorite} addTitle={favoriteAddTitle} removeTitle={favoriteRemoveTitle} />
-          </div>
+      </div>
+      <div className="w-full mt-2 space-y-1.5">
+        {categoryLabel && (
+          <span className="inline-block text-[10px] px-2 py-0.5 rounded-full bg-gold-400/10 text-gold-400 border border-gold-400/30">
+            {categoryLabel}
+          </span>
+        )}
+        {!expanded && rawPreview.trim() && (
+          <RichText content={rawPreview} variant="preview" />
         )}
       </div>
       {expanded && (
