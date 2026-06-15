@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
-import { dbInit, dbLoadProgress, dbLoadSiteData } from '../../lib/db';
+import { dbInit, dbLoadProgress, dbLoadSiteData, dbSaveProgress } from '../../lib/db';
 import { defaultGuild } from '../../types/site';
 import type { GuildData, SiteSettings, User, UserProgress } from '../../types/site';
 import { defaultSiteSettings } from '../../context/authContextTypes';
 import { sanitizeGuildAvatar } from '../../lib/siteImages';
 import { mergeSiteSettingsSafe } from '../../lib/normalizeState';
+import { loadProgressLocal, normalizeUserProgress, saveProgressLocal } from '../../lib/userProgress';
 
 const defS = defaultSiteSettings;
 
@@ -34,6 +35,10 @@ export function useAuthSiteCore({ user, setProgress, setDbSaveError }: Deps) {
         setDbSaveError(
           'Не удалось подключиться к Supabase. Проверьте VITE_SUPABASE_URL и VITE_SUPABASE_ANON_KEY (.env локально или Environment Variables на Vercel + Redeploy).',
         );
+        if (user) {
+          const fromLocal = loadProgressLocal(user.id);
+          if (fromLocal) setProgress(fromLocal);
+        }
         setIsLoading(false);
         return;
       }
@@ -47,8 +52,12 @@ export function useAuthSiteCore({ user, setProgress, setDbSaveError }: Deps) {
       setGuild(sanitizeGuildAvatar(guildData as GuildData));
       setDiscordUrl(discord);
       if (user) {
-        const p = await dbLoadProgress(user.id);
-        if (p && active) setProgress(p);
+        const fromDb = await dbLoadProgress(user.id);
+        const fromLocal = loadProgressLocal(user.id);
+        const merged = normalizeUserProgress(fromDb ?? fromLocal ?? null);
+        if (active) setProgress(merged);
+        if (fromDb) saveProgressLocal(user.id, merged);
+        else if (fromLocal) void dbSaveProgress(user.id, merged);
       }
       setIsLoading(false);
     })();

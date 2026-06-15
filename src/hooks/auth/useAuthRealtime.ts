@@ -24,6 +24,7 @@ import {
 import { buildWikiCatalog } from '../../lib/sectionSeeds';
 import { sanitizeGuides, sanitizeGuideVersions, sanitizeSiteNews, sanitizeWiki } from '../../lib/siteImages';
 import type { UserProgress } from '../../types/site';
+import { normalizeUserProgress, saveProgressLocal } from '../../lib/userProgress';
 
 type Deps = {
   isLoading: boolean;
@@ -117,7 +118,10 @@ export function useAuthRealtime(deps: Deps) {
   useEffect(() => {
     if (!deps.userId) return;
     return subscribeUserProgress(deps.userId, (data) => {
-      if (data) depsRef.current.setProgress(data as UserProgress);
+      if (!data) return;
+      const normalized = normalizeUserProgress(data);
+      depsRef.current.setProgress(normalized);
+      saveProgressLocal(deps.userId!, normalized);
     });
   }, [deps.userId]);
 }

@@ -11,6 +11,11 @@ import { verifyPassword, hashPassword, isPasswordHashed } from '../lib/password'
 import { sanitizePictureField } from '../lib/siteImages';
 import type { User, UserProgress } from '../types/site';
 import { defaultUserProgress } from '../context/authContextTypes';
+import {
+  loadProgressLocal,
+  normalizeUserProgress,
+  saveProgressLocal,
+} from '../lib/userProgress';
 
 function loadStoredUser(): User | null {
   try {
@@ -27,12 +32,31 @@ interface UseAuthSessionOptions {
 
 export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
   const [user, setUser] = useState<User | null>(loadStoredUser);
-  const [progress, setProgress] = useState<UserProgress>(defaultUserProgress);
+  const [progress, setProgress] = useState<UserProgress>(() => {
+    const stored = loadStoredUser();
+    if (!stored?.id) return { ...defaultUserProgress };
+    return loadProgressLocal(stored.id) ?? { ...defaultUserProgress };
+  });
 
   useEffect(() => {
-    if (!user?.id) return;
+    if (!user?.id) {
+      setProgress({ ...defaultUserProgress });
+      return;
+    }
     let active = true;
     void (async () => {
+      const fromDb = await dbLoadProgress(user.id);
+      if (!active) return;
+      if (fromDb) {
+        setProgress(fromDb);
+        saveProgressLocal(user.id, fromDb);
+      } else {
+        const fromLocal = loadProgressLocal(user.id);
+        if (fromLocal) {
+          setProgress(fromLocal);
+          void dbSaveProgress(user.id, fromLocal);
+        }
+      }
       const acc = await dbGetAccountById(user.id);
       if (!active || !acc) return;
       const refreshed: User = {
@@ -84,7 +108,16 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
     if (remember) localStorage.setItem('wwm_user', JSON.stringify(nextUser));
     void dbUpdateAccount(acc.id, { last_seen: new Date().toISOString() });
     const loadedProgress = await dbLoadProgress(acc.id);
-    if (loadedProgress) setProgress(loadedProgress as UserProgress);
+    if (loadedProgress) {
+      setProgress(loadedProgress);
+      saveProgressLocal(acc.id, loadedProgress);
+    } else {
+      const local = loadProgressLocal(acc.id);
+      if (local) {
+        setProgress(local);
+        void dbSaveProgress(acc.id, local);
+      }
+    }
     return null;
   }, []);
 
@@ -109,74 +142,83 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
 
   const logout = useCallback(() => {
     setUser(null);
+    setProgress({ ...defaultUserProgress });
     localStorage.removeItem('wwm_user');
   }, []);
 
+  const persistProgress = useCallback(async (userId: string, next: UserProgress) => {
+    saveProgressLocal(userId, next);
+    const result = await dbSaveProgress(userId, next);
+    if (result.error) {
+      setDbSaveError('Не удалось сохранить прогресс в базе. Данные сохранены локально в браузере.');
+    }
+  }, [setDbSaveError]);
+
   const updateProgress = useCallback((updates: Partial<UserProgress>) => {
     setProgress(prev => {
-      const next = { ...prev, ...updates };
-      if (user) void dbSaveProgress(user.id, next);
+      const next = normalizeUserProgress({ ...prev, ...updates });
+      if (user) void persistProgress(user.id, next);
       return next;
     });
-  }, [user?.id]);
+  }, [user, persistProgress]);
 
   const toggleFavoriteWeapon = useCallback((id: string) => {
     setProgress(prev => {
-      const next = {
+      const next = normalizeUserProgress({
         ...prev,
         favoriteWeapons: prev.favoriteWeapons.includes(id)
           ? prev.favoriteWeapons.filter(x => x !== id)
           : [...prev.favoriteWeapons, id],
-      };
-      if (user) void dbSaveProgress(user.id, next);
+      });
+      if (user) void persistProgress(user.id, next);
       return next;
     });
-  }, [user?.id]);
+  }, [user, persistProgress]);
 
   const toggleFavoriteSect = useCallback((id: string) => {
     setProgress(prev => {
-      const next = {
+      const next = normalizeUserProgress({
         ...prev,
         favoriteSects: prev.favoriteSects.includes(id)
           ? prev.favoriteSects.filter(x => x !== id)
           : [...prev.favoriteSects, id],
-      };
-      if (user) void dbSaveProgress(user.id, next);
+      });
+      if (user) void persistProgress(user.id, next);
       return next;
     });
-  }, [user?.id]);
+  }, [user, persistProgress]);
 
   const toggleCompletedGuide = useCallback((id: string) => {
     setProgress(prev => {
-      const next = {
+      const next = normalizeUserProgress({
         ...prev,
         completedGuides: prev.completedGuides.includes(id)
           ? prev.completedGuides.filter(x => x !== id)
           : [...prev.completedGuides, id],
-      };
-      if (user) void dbSaveProgress(user.id, next);
+      });
+      if (user) void persistProgress(user.id, next);
       return next;
     });
-  }, [user?.id]);
+  }, [user, persistProgress]);
 
   const addNote = useCallback((title: string, content: string) => {
     setProgress(prev => {
-      const next = {
+      const next = normalizeUserProgress({
         ...prev,
-        notes: [{ id: 'n' + Date.now(), title, content, date: new Date().toLocaleDateString() }, ...prev.notes],
-      };
-      if (user) void dbSaveProgress(user.id, next);
+        notes: [{ id: 'n' + Date.now(), title, content, date: new Date().toLocaleDateString('ru-RU') }, ...prev.notes],
+      });
+      if (user) void persistProgress(user.id, next);
       return next;
     });
-  }, [user?.id]);
+  }, [user, persistProgress]);
 
   const deleteNote = useCallback((id: string) => {
     setProgress(prev => {
-      const next = { ...prev, notes: prev.notes.filter(x => x.id !== id) };
-      if (user) void dbSaveProgress(user.id, next);
+      const next = normalizeUserProgress({ ...prev, notes: prev.notes.filter(x => x.id !== id) });
+      if (user) void persistProgress(user.id, next);
       return next;
     });
-  }, [user?.id]);
+  }, [user, persistProgress]);
 
   const setSelectedBuild = useCallback((id: string | null) => {
     updateProgress({ selectedBuild: id });

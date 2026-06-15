@@ -3,7 +3,7 @@ import SectionHeader from './ui/SectionHeader';
 import SectionWikiBody from './wiki/SectionWikiBody';
 
 export default function WeaponsSection() {
-  const { progress, toggleFavoriteWeapon } = useAuth();
+  const { user, progress, toggleFavoriteWeapon } = useAuth();
 
   return (
     <section id="weapons" className="py-20 bg-ink-900/50">
@@ -16,10 +16,12 @@ export default function WeaponsSection() {
         />
         <SectionWikiBody
           sectionId="weapons"
-          wikiCardsProps={{
-            isFavorite: id => progress.favoriteWeapons.includes(id),
-            onToggleFavorite: toggleFavoriteWeapon,
-          }}
+          {...(user ? {
+            wikiCardsProps: {
+              isFavorite: (id: string) => progress.favoriteWeapons.includes(id),
+              onToggleFavorite: toggleFavoriteWeapon,
+            },
+          } : {})}
         />
       </div>
     </section>

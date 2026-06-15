@@ -3,6 +3,8 @@ import { hashPassword } from './password';
 import { checkSiteDataSize } from './siteDataLimits';
 import { isStaffChatRole, staffRoleIdsForQuery } from './staffChat';
 import { logger } from './logger';
+import type { UserProgress } from '../types/site';
+import { normalizeUserProgress } from './userProgress';
 
 export interface DbAccount {
   id: string;
@@ -248,17 +250,22 @@ export async function dbSaveSiteData(key: string, value: unknown): Promise<{ err
 }
 
 // ====== user_progress ======
-export async function dbLoadProgress(userId: string): Promise<any> {
+export async function dbLoadProgress(userId: string): Promise<UserProgress | null> {
   const { data, error } = await getSupabase().from('user_progress').select('data').eq('user_id', userId).maybeSingle();
   if (error || !data) return null;
-  return parseDbJson(data.data, null);
+  return normalizeUserProgress(parseDbJson(data.data, null));
 }
 
-export async function dbSaveProgress(userId: string, data: unknown) {
-  await getSupabase().from('user_progress').upsert(
+export async function dbSaveProgress(userId: string, data: UserProgress): Promise<{ error?: string }> {
+  const { error } = await getSupabase().from('user_progress').upsert(
     { user_id: userId, data, updated_at: new Date().toISOString() },
     { onConflict: 'user_id' },
   );
+  if (error) {
+    logger.error('Failed to save user progress', 'db', error.message);
+    return { error: error.message };
+  }
+  return {};
 }
 
 // ====== GUIDES (новые нормализованные функции) ======

@@ -26,8 +26,13 @@ export default function ProfileModal({ isOpen, onClose, anchor, onNavigate }: Pr
   } = useAuth();
   const { exportSettings, importSettings, resetSettings, canExport } = useUserSettings();
   const selectedBuildName = progress.selectedBuild
-    ? resolveBuildName(progress.selectedBuild, wikiArticles)
+    ? (resolveBuildName(progress.selectedBuild, wikiArticles) ?? 'Выбранный билд')
     : null;
+
+  const favoriteWeaponTitles = progress.favoriteWeapons.map(id => ({
+    id,
+    title: wikiArticles.find(a => a.id === id && a.section === 'weapons')?.title ?? 'Оружие',
+  }));
   const [editing, setEditing] = useState(false);
   const [nickname, setNickname] = useState(user?.gameNickname || '');
   const [pictureUrl, setPictureUrl] = useState(user?.picture || '');
@@ -258,7 +263,7 @@ export default function ProfileModal({ isOpen, onClose, anchor, onNavigate }: Pr
               <ProgressRow label="Оружие в избранном" done={progress.favoriteWeapons.length} total={12} icon="⚔️" />
               <ProgressRow label="Секты изучены" done={progress.favoriteSects.length} total={8} icon="🏛️" />
               <ProgressRow label="Регионов посещено" done={progress.visitedRegions.length} total={5} icon="🗺️" />
-              {progress.selectedBuild && selectedBuildName && (
+              {progress.selectedBuild && (
                 <button
                   type="button"
                   onClick={() => {
@@ -270,10 +275,28 @@ export default function ProfileModal({ isOpen, onClose, anchor, onNavigate }: Pr
                   <span className="text-lg shrink-0">⭐</span>
                   <div className="flex-1 min-w-0">
                     <p className="text-gold-400 text-sm font-medium">Выбранный билд</p>
-                    <p className="text-white text-xs truncate">{selectedBuildName}</p>
+                    <p className="text-white text-xs break-words">{selectedBuildName}</p>
                   </div>
                   <ChevronRight className="w-4 h-4 text-gold-400/60 group-hover:text-gold-400 shrink-0 transition-colors" />
                 </button>
+              )}
+              {favoriteWeaponTitles.length > 0 && (
+                <div className="bg-ink-800/40 border border-ink-700/30 rounded-lg p-3 space-y-2">
+                  <p className="text-gold-400 text-sm font-medium">Избранное оружие</p>
+                  <ul className="space-y-1">
+                    {favoriteWeaponTitles.map(w => (
+                      <li key={w.id}>
+                        <button
+                          type="button"
+                          onClick={() => { onNavigate?.('weapons', { wikiId: w.id }); onClose(); }}
+                          className="w-full text-left text-xs text-ink-200 hover:text-gold-300 cursor-pointer break-words"
+                        >
+                          ⚔️ {w.title}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               )}
             </div>
           )}
