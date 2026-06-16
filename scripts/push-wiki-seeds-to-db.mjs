@@ -70,6 +70,27 @@ function stripEnglishFields(fields) {
   return next;
 }
 
+/** Ловит битую кодировку (PowerShell Set-Content без UTF-8 и т.п.) */
+function assertRussianArticles(articles, label) {
+  const CYRILLIC = /[а-яёА-ЯЁ]/;
+  const MOJIBAKE = /[¦ÐÑÃ]|TË|TÏ|òÀ/;
+  const bad = articles.filter(a => {
+    if (!a.title?.trim()) return true;
+    if (MOJIBAKE.test(a.title) || MOJIBAKE.test(a.content || '')) return true;
+    if (a.section === 'innerpath') return !CYRILLIC.test(a.title);
+    if (a.section === 'tips' || a.section === 'lifeskills') return !CYRILLIC.test(a.title);
+    return !CYRILLIC.test(a.title);
+  });
+  if (bad.length > 0) {
+    console.error(`✗ ${label}: битая кодировка в ${bad.length} статьях, примеры:`);
+    for (const a of bad.slice(0, 5)) {
+      console.error(`  - ${a.id} (${a.section}): ${JSON.stringify(a.title?.slice(0, 40))}`);
+    }
+    console.error('  Восстановите scripts/data/*.ts через: git show <commit>:path > file (Node.js, не PowerShell Set-Content)');
+    process.exit(1);
+  }
+}
+
 async function main() {
   loadEnvFile();
   const url = process.env.VITE_SUPABASE_URL;
@@ -83,6 +104,9 @@ async function main() {
   const seeds = await loadSeedArticles();
   const innerPath = buildInnerPathWikiArticles();
   console.log(`  сиды: ${seeds.length}, внутренний путь: ${innerPath.length}`);
+
+  assertRussianArticles(seeds, 'Сиды');
+  assertRussianArticles(innerPath, 'Внутренний путь');
 
   if (innerPath.length < 40) {
     console.warn(`⚠ В innerPathRu.json не хватает переводов (ожидалось ~42, есть ${innerPath.length})`);
