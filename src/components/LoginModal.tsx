@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { X, User, LogIn, UserPlus, Eye, EyeOff, Shield, AlertCircle, Check, Gamepad2, Users } from 'lucide-react';
 import { useAuthState, useAuthActions } from '../context/AuthContext';
 import { validateUsername, validatePassword, validateGameNickname } from '../lib/validation';
+import { useBodyScrollLock } from '../hooks/useBodyScrollLock';
 
 type AuthMode = 'login' | 'register';
 
@@ -25,6 +26,8 @@ export default function LoginModal({ isOpen, onClose, initialMode = 'login' }: L
   const [showPasswordRepeat, setShowPasswordRepeat] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+
+  useBodyScrollLock(isOpen);
 
   useEffect(() => {
     if (isOpen) {

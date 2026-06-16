@@ -60,6 +60,8 @@ function AppContent() {
   useClickSound();
 
   useEffect(() => {
+    const nav = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+    if (nav?.type === 'reload') return;
     clearChunkReloadFlag();
   }, []);
   const showScrollTop = useScrollThreshold(600);
@@ -87,7 +89,7 @@ function AppContent() {
   }, []);
 
   useOverlayDismiss(closeLoginProfileModals, true, {
-    dismissOnScroll: showLoginModal || showProfileModal,
+    dismissOnScroll: showProfileModal,
   });
 
   useEffect(() => {
@@ -161,12 +163,18 @@ function AppContent() {
     activeSection: currentPage === 'main' ? 'home' : currentPage,
     onNavigate: handleNavigate,
     onLoginClick: () => {
+      setPendingWikiId(null);
+      setPendingGuideId(null);
       setShowProfileModal(false);
       setProfileAnchor(null);
       setShowLoginModal(true);
     },
     onProfileClick: (anchor?: { top: number; right: number }) => {
       if (!user) {
+        setPendingWikiId(null);
+        setPendingGuideId(null);
+        setShowProfileModal(false);
+        setProfileAnchor(null);
         setShowLoginModal(true);
         return;
       }
@@ -336,7 +344,7 @@ function AppContent() {
             <ContentPage
               pageId={currentPage}
               onBack={goBack}
-              focusWikiId={pendingWikiId}
+              focusWikiId={showLoginModal || showProfileModal ? null : pendingWikiId}
               onWikiFocused={() => setPendingWikiId(null)}
             />
           </Suspense>

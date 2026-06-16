@@ -51,34 +51,29 @@ export default function HeroSection({ onNavigate, hasAnnouncements = false }: He
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className={`hero-readable relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center ${hasAnnouncements ? 'pt-6 md:pt-8' : 'pt-16 md:pt-20'}`}>
+    <section className="relative min-h-[calc(100dvh-4.5rem)] flex flex-col items-center justify-start overflow-hidden pb-16">
+      <div className={`hero-readable relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center ${hasAnnouncements ? 'pt-1 sm:pt-2' : 'pt-3 sm:pt-5 md:pt-6'}`}>
         <div className="md:animate-fadeInUp">
           {onNavigate && (
-            <div className="mb-5 sm:mb-6 flex justify-center">
+            <div className="mb-4 sm:mb-5 flex justify-center">
               <button
                 type="button"
                 onClick={() => onNavigate('wwmwiki')}
-                className="group relative inline-flex items-center gap-2.5 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full
+                className="group inline-flex items-center gap-2.5 px-5 sm:px-7 py-2.5 sm:py-3 rounded-xl
                   font-serif text-sm sm:text-base font-semibold tracking-wide
-                  text-crimson-50 bg-gradient-to-b from-crimson-950/55 to-ink-950/70
-                  border border-crimson-400/45
-                  shadow-[0_0_28px_rgba(185,28,28,0.18),inset_0_1px_0_rgba(255,255,255,0.06)]
-                  backdrop-blur-md
-                  hover:border-crimson-300/65 hover:from-crimson-900/60 hover:to-ink-900/75
-                  hover:shadow-[0_0_36px_rgba(220,38,38,0.28),inset_0_1px_0_rgba(255,255,255,0.1)]
-                  md:hover:scale-[1.03] active:scale-[0.99]
+                  text-ink-950 bg-gradient-to-b from-gold-200 via-gold-400 to-gold-500
+                  border border-gold-100/90
+                  shadow-[0_4px_22px_rgba(212,175,55,0.38),inset_0_1px_0_rgba(255,255,255,0.45)]
+                  hover:from-gold-100 hover:via-gold-300 hover:to-gold-400
+                  hover:shadow-[0_6px_28px_rgba(212,175,55,0.48),inset_0_1px_0_rgba(255,255,255,0.55)]
+                  md:hover:scale-[1.02] active:scale-[0.99]
                   transition-all duration-300 cursor-pointer"
               >
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-r from-crimson-500/0 via-crimson-400/10 to-gold-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                />
-                <span className="relative flex items-center justify-center w-8 h-8 rounded-full bg-crimson-500/15 border border-crimson-400/35 group-hover:border-crimson-300/50 transition-colors">
-                  <BookOpen className="w-4 h-4 text-crimson-200 group-hover:text-crimson-100" />
+                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-ink-950/10 border border-ink-950/10 group-hover:bg-ink-950/15 transition-colors">
+                  <BookOpen className="w-4 h-4 text-ink-900" />
                 </span>
-                <span className="relative text-crimson-50 group-hover:text-white transition-colors">WWM Вики</span>
-                <span className="relative hidden sm:inline text-[10px] uppercase tracking-[0.2em] text-gold-400/75 border-l border-crimson-400/25 pl-2.5">
+                <span className="text-ink-950 group-hover:text-ink-900">WWM Вики</span>
+                <span className="hidden sm:inline text-[10px] uppercase tracking-[0.18em] text-ink-800/70 border-l border-ink-900/15 pl-2.5">
                   разделы
                 </span>
               </button>
