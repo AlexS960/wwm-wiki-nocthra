@@ -58,7 +58,13 @@ export default function WikiArticleCards({
   const canEdit = isEditor() || isAdmin();
   const config = sectionEditorConfigs[sectionId];
 
-  if (articles.length === 0) return null;
+  if (articles.length === 0) {
+    return (
+      <p className="text-center text-ink-500 text-sm py-8">
+        {categoryFilter === 'all' ? 'В этом разделе пока нет записей.' : 'Нет записей в выбранной категории.'}
+      </p>
+    );
+  }
 
   const handleSave = (values: SectionEditorValues) => {
     if (!editId) return;

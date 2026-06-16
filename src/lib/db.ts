@@ -44,9 +44,18 @@ export async function dbInit() {
   await getSupabase().from('accounts').select('id').limit(1);
 }
 
+const ACCOUNT_PUBLIC_FIELDS =
+  'id, username, role, picture, game_nickname, guild_id, created_at, last_seen';
+
 export async function dbListAccounts(): Promise<DbAccount[]> {
-  const { data } = await getSupabase().from('accounts').select('*').order('created_at', { ascending: false });
-  return (data || []) as DbAccount[];
+  const { data } = await getSupabase()
+    .from('accounts')
+    .select(ACCOUNT_PUBLIC_FIELDS)
+    .order('created_at', { ascending: false });
+  return ((data || []) as Omit<DbAccount, 'password_hash'>[]).map(a => ({
+    ...a,
+    password_hash: '',
+  }));
 }
 
 /** Аккаунты со служебными ролями (включая кастомные id с правом staff.chat). */
@@ -56,22 +65,25 @@ export async function dbListStaffAccounts(
   const roleIds = staffRoleIdsForQuery(siteRoles);
   const { data, error } = await getSupabase()
     .from('accounts')
-    .select('id, username, role, picture, game_nickname, password_hash, created_at, last_seen')
+    .select(ACCOUNT_PUBLIC_FIELDS)
     .in('role', roleIds)
     .order('created_at', { ascending: false });
   if (error) {
     logger.error('Failed to load staff accounts', 'db', error);
     return [];
   }
-  const fromQuery = (data || []) as DbAccount[];
+  const fromQuery = ((data || []) as Omit<DbAccount, 'password_hash'>[]).map(a => ({
+    ...a,
+    password_hash: '',
+  }));
   const known = new Set(fromQuery.map(a => a.id));
   const { data: extra } = await getSupabase()
     .from('accounts')
-    .select('id, username, role, picture, game_nickname, password_hash, created_at, last_seen')
+    .select(ACCOUNT_PUBLIC_FIELDS)
     .order('created_at', { ascending: false });
-  const customStaff = ((extra || []) as DbAccount[]).filter(
+  const customStaff = ((extra || []) as Omit<DbAccount, 'password_hash'>[]).filter(
     a => !known.has(a.id) && isStaffChatRole(a.role, siteRoles),
-  );
+  ).map(a => ({ ...a, password_hash: '' }));
   return [...fromQuery, ...customStaff];
 }
 
@@ -107,12 +119,22 @@ export async function dbCreateAccount(
   return account;
 }
 
-export async function dbUpdateAccount(id: string, updates: Partial<DbAccount>) {
-  await getSupabase().from('accounts').update(updates).eq('id', id);
+export async function dbUpdateAccount(id: string, updates: Partial<DbAccount>): Promise<{ error?: string }> {
+  const { error } = await getSupabase().from('accounts').update(updates).eq('id', id);
+  if (error) {
+    logger.error('Failed to update account', 'db', error.message);
+    return { error: error.message };
+  }
+  return {};
 }
 
-export async function dbDeleteAccount(id: string) {
-  await getSupabase().from('accounts').delete().eq('id', id);
+export async function dbDeleteAccount(id: string): Promise<{ error?: string }> {
+  const { error } = await getSupabase().from('accounts').delete().eq('id', id);
+  if (error) {
+    logger.error('Failed to delete account', 'db', error.message);
+    return { error: error.message };
+  }
+  return {};
 }
 
 function mapDbGuild(row: DbRegisteredGuild): import('../types/site').RegisteredGuild {

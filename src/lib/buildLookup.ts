@@ -8,7 +8,9 @@ export function isKnownBuild(buildId: string, wikiArticles: WikiArticle[]): bool
 }
 
 export function resolveBuildName(buildId: string, wikiArticles: WikiArticle[]): string | null {
-  return wikiArticles.find(a => a.section === 'builds' && a.id === buildId)?.title ?? null;
+  const fromWiki = wikiArticles.find(a => a.section === 'builds' && a.id === buildId)?.title;
+  if (fromWiki) return fromWiki;
+  return getAllSeedArticles().find(a => a.section === 'builds' && a.id === buildId)?.title ?? null;
 }
 
 export function buildCardDomId(buildId: string): string {

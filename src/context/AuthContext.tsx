@@ -357,9 +357,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     canAccessAdminPanel,
     canAccessStaffChat,
     isEditor,
-    adminSetUserRole: (id, r) => dbUpdateAccount(id, { role: r }),
-    adminBanUser: () => {},
-    adminDeleteUser: id => dbDeleteAccount(id),
+    adminSetUserRole: (id, r) => { void dbUpdateAccount(id, { role: r }); void accounts.refreshAccounts(); },
+    adminBanUser: (id, banned) => {
+      void dbUpdateAccount(id, { role: banned ? 'banned' : 'user' });
+      accounts.setRegisteredUsers(prev =>
+        prev.map(u => u.id === id ? { ...u, isBanned: banned, role: banned ? 'banned' : 'user' } : u),
+      );
+    },
+    adminDeleteUser: id => { void dbDeleteAccount(id); void accounts.refreshAccounts(); },
     isUserOnline: id => {
       const u = accounts.registeredUsers.find(x => x.id === id);
       return isOnlineByLastSeen(u?.lastSeenAt);

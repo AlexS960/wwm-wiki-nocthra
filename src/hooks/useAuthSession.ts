@@ -1,10 +1,9 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import {
   dbGetAccountByUsername,
   dbGetAccountById,
   dbCreateAccount,
   dbUpdateAccount,
-  dbLoadProgress,
   dbSaveProgress,
 } from '../lib/db';
 import { verifyPassword, hashPassword, isPasswordHashed } from '../lib/password';
@@ -13,11 +12,12 @@ import type { User, UserProgress } from '../types/site';
 import { defaultUserProgress } from '../context/authContextTypes';
 import {
   loadProgressLocal,
-  mergeUserProgress,
   normalizeUserProgress,
-  resolveUserProgress,
   saveProgressLocal,
 } from '../lib/userProgress';
+import { hydrateUserProgress } from '../lib/progressSync';
+
+const PROGRESS_SAVE_DEBOUNCE_MS = 400;
 
 function loadStoredUser(): User | null {
   try {
@@ -39,6 +39,37 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
     if (!stored?.id) return { ...defaultUserProgress };
     return loadProgressLocal(stored.id) ?? { ...defaultUserProgress };
   });
+  const progressSaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pendingProgress = useRef<UserProgress | null>(null);
+
+  const flushProgress = useCallback(async (userId: string, next: UserProgress) => {
+    const result = await dbSaveProgress(userId, next);
+    if (result.error) {
+      setDbSaveError('Не удалось сохранить прогресс в базе. Данные сохранены локально в браузере.');
+    }
+  }, [setDbSaveError]);
+
+  const persistProgress = useCallback((userId: string, next: UserProgress) => {
+    saveProgressLocal(userId, next);
+    pendingProgress.current = next;
+    if (progressSaveTimer.current) clearTimeout(progressSaveTimer.current);
+    progressSaveTimer.current = setTimeout(() => {
+      const payload = pendingProgress.current;
+      if (payload) void flushProgress(userId, payload);
+    }, PROGRESS_SAVE_DEBOUNCE_MS);
+  }, [flushProgress]);
+
+  useEffect(() => {
+    const onUnload = () => {
+      if (!user?.id || !pendingProgress.current) return;
+      saveProgressLocal(user.id, pendingProgress.current);
+    };
+    window.addEventListener('beforeunload', onUnload);
+    return () => {
+      window.removeEventListener('beforeunload', onUnload);
+      if (progressSaveTimer.current) clearTimeout(progressSaveTimer.current);
+    };
+  }, [user?.id]);
 
   useEffect(() => {
     if (!user?.id) {
@@ -47,18 +78,17 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
     }
     let active = true;
     void (async () => {
-      const fromDb = await dbLoadProgress(user.id);
+      await hydrateUserProgress(user.id, setProgress);
       if (!active) return;
-      const fromLocal = loadProgressLocal(user.id);
-      const merged = resolveUserProgress(fromLocal, fromDb);
-      setProgress(prev => mergeUserProgress(merged, prev));
-      saveProgressLocal(user.id, merged);
-      if (!fromDb || merged.selectedBuild !== fromDb.selectedBuild
-        || merged.favoriteWeapons.length !== fromDb.favoriteWeapons.length) {
-        void dbSaveProgress(user.id, merged);
-      }
       const acc = await dbGetAccountById(user.id);
       if (!active || !acc) return;
+      if (acc.role === 'banned') {
+        setUser(null);
+        setProgress({ ...defaultUserProgress });
+        localStorage.removeItem('wwm_user');
+        setDbSaveError('Аккаунт заблокирован.');
+        return;
+      }
       const refreshed: User = {
         id: acc.id,
         email: '',
@@ -84,11 +114,12 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
       });
     })();
     return () => { active = false; };
-  }, [user?.id]);
+  }, [user?.id, setDbSaveError]);
 
   const loginWithPassword = useCallback(async (username: string, password: string, remember: boolean) => {
     const acc = await dbGetAccountByUsername(username);
     if (!acc) return 'Неверный логин или пароль';
+    if (acc.role === 'banned') return 'Аккаунт заблокирован';
     const ok = await verifyPassword(password, acc.password_hash);
     if (!ok) return 'Неверный логин или пароль';
     if (!isPasswordHashed(acc.password_hash)) {
@@ -107,15 +138,7 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
     setUser(nextUser);
     if (remember) localStorage.setItem('wwm_user', JSON.stringify(nextUser));
     void dbUpdateAccount(acc.id, { last_seen: new Date().toISOString() });
-    const loadedProgress = await dbLoadProgress(acc.id);
-    const local = loadProgressLocal(acc.id);
-    const merged = resolveUserProgress(local, loadedProgress);
-    setProgress(merged);
-    saveProgressLocal(acc.id, merged);
-    if (!loadedProgress || merged.selectedBuild !== loadedProgress.selectedBuild
-      || merged.favoriteWeapons.length !== loadedProgress.favoriteWeapons.length) {
-      void dbSaveProgress(acc.id, merged);
-    }
+    await hydrateUserProgress(acc.id, setProgress);
     return null;
   }, []);
 
@@ -144,18 +167,10 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
     localStorage.removeItem('wwm_user');
   }, []);
 
-  const persistProgress = useCallback(async (userId: string, next: UserProgress) => {
-    saveProgressLocal(userId, next);
-    const result = await dbSaveProgress(userId, next);
-    if (result.error) {
-      setDbSaveError('Не удалось сохранить прогресс в базе. Данные сохранены локально в браузере.');
-    }
-  }, [setDbSaveError]);
-
   const updateProgress = useCallback((updates: Partial<UserProgress>) => {
     setProgress(prev => {
       const next = normalizeUserProgress({ ...prev, ...updates });
-      if (user) void persistProgress(user.id, next);
+      if (user) persistProgress(user.id, next);
       return next;
     });
   }, [user, persistProgress]);
@@ -168,7 +183,7 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
           ? prev.favoriteWeapons.filter(x => x !== id)
           : [...prev.favoriteWeapons, id],
       });
-      if (user) void persistProgress(user.id, next);
+      if (user) persistProgress(user.id, next);
       return next;
     });
   }, [user, persistProgress]);
@@ -181,7 +196,7 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
           ? prev.favoriteSects.filter(x => x !== id)
           : [...prev.favoriteSects, id],
       });
-      if (user) void persistProgress(user.id, next);
+      if (user) persistProgress(user.id, next);
       return next;
     });
   }, [user, persistProgress]);
@@ -194,7 +209,7 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
           ? prev.completedGuides.filter(x => x !== id)
           : [...prev.completedGuides, id],
       });
-      if (user) void persistProgress(user.id, next);
+      if (user) persistProgress(user.id, next);
       return next;
     });
   }, [user, persistProgress]);
@@ -205,7 +220,7 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
         ...prev,
         notes: [{ id: 'n' + Date.now(), title, content, date: new Date().toLocaleDateString('ru-RU') }, ...prev.notes],
       });
-      if (user) void persistProgress(user.id, next);
+      if (user) persistProgress(user.id, next);
       return next;
     });
   }, [user, persistProgress]);
@@ -213,7 +228,7 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
   const deleteNote = useCallback((id: string) => {
     setProgress(prev => {
       const next = normalizeUserProgress({ ...prev, notes: prev.notes.filter(x => x.id !== id) });
-      if (user) void persistProgress(user.id, next);
+      if (user) persistProgress(user.id, next);
       return next;
     });
   }, [user, persistProgress]);

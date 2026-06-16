@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { User, WikiArticle } from '../../types/site';
 import {
   contentStoreLoadWiki,
@@ -43,7 +43,7 @@ export function useAuthWiki({
   const [wikiArticles, setWikiArticles] = useState<WikiArticle[]>(() =>
     sanitizeWiki(buildWikiCatalog([])),
   );
-  const [wikiLoaded] = useState(true);
+  const [wikiLoaded, setWikiLoaded] = useState(false);
   const wikiRef = useRef(wikiArticles);
   wikiRef.current = wikiArticles;
   const seededRef = useRef(false);
@@ -88,6 +88,7 @@ export function useAuthWiki({
         logger.warn('Background wiki seed failed', 'wiki', String(err));
       }
     }
+    setWikiLoaded(true);
   }, [getSectionOverrides, onOverridesMigrated, persist, normalizedRef]);
 
   const ensureWikiLoaded = useCallback(() => {
@@ -95,6 +96,10 @@ export function useAuthWiki({
     syncStartedRef.current = true;
     void syncWikiFromDb();
   }, [syncWikiFromDb]);
+
+  useEffect(() => {
+    ensureWikiLoaded();
+  }, [ensureWikiLoaded]);
 
   const addWikiArticle = useCallback((a: Omit<WikiArticle, 'id' | 'authorName' | 'updatedAt'>) => {
     const article = {
@@ -104,15 +109,18 @@ export function useAuthWiki({
       updatedAt: new Date().toLocaleDateString('ru-RU'),
       fields: { ...a.fields, source: a.fields?.source || 'custom' },
     } as WikiArticle;
-    setWikiArticles(prev => [...prev, article]);
-    void (async () => {
-      if (await contentStoreUsesNormalized('wiki')) {
-        const ok = await contentStoreAddWiki(article);
-        if (!ok) setDbSaveError('Не удалось сохранить статью вики');
-      } else {
-        await persist('wiki', [...wikiRef.current, article]);
-      }
-    })();
+    setWikiArticles(prev => {
+      const next = [...prev, article];
+      void (async () => {
+        if (await contentStoreUsesNormalized('wiki')) {
+          const ok = await contentStoreAddWiki(article);
+          if (!ok) setDbSaveError('Не удалось сохранить статью вики');
+        } else {
+          await persist('wiki', next);
+        }
+      })();
+      return next;
+    });
   }, [user?.name, persist, setDbSaveError]);
 
   const updateWikiArticle = useCallback((id: string, u: Partial<WikiArticle>) => {
@@ -163,7 +171,7 @@ export function useAuthWiki({
     wikiArticles,
     setWikiArticles,
     wikiLoaded,
-    setWikiLoaded: () => {},
+    setWikiLoaded,
     ensureWikiLoaded,
     addWikiArticle,
     updateWikiArticle,

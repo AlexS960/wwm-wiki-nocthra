@@ -1,17 +1,17 @@
-import { useCallback, useEffect, useState } from 'react';
-import { dbInit, dbLoadProgress, dbLoadSiteData, dbSaveProgress } from '../../lib/db';
+import { useCallback, useEffect, useState, type Dispatch, type SetStateAction } from 'react';
+import { dbInit, dbLoadSiteData } from '../../lib/db';
 import { defaultGuild } from '../../types/site';
 import type { GuildData, SiteSettings, User, UserProgress } from '../../types/site';
 import { defaultSiteSettings } from '../../context/authContextTypes';
 import { sanitizeGuildAvatar } from '../../lib/siteImages';
 import { mergeSiteSettingsSafe } from '../../lib/normalizeState';
-import { loadProgressLocal, mergeUserProgress, resolveUserProgress, saveProgressLocal } from '../../lib/userProgress';
+import { loadProgressLocal } from '../../lib/userProgress';
 
 const defS = defaultSiteSettings;
 
 type Deps = {
   user: User | null;
-  setProgress: (p: UserProgress) => void;
+  setProgress: Dispatch<SetStateAction<UserProgress>>;
   setDbSaveError: (msg: string | null) => void;
 };
 
@@ -51,17 +51,6 @@ export function useAuthSiteCore({ user, setProgress, setDbSaveError }: Deps) {
       setSiteSettings(mergeSiteSettings(s as SiteSettings | null));
       setGuild(sanitizeGuildAvatar(guildData as GuildData));
       setDiscordUrl(discord);
-      if (user) {
-        const fromDb = await dbLoadProgress(user.id);
-        const fromLocal = loadProgressLocal(user.id);
-        const merged = resolveUserProgress(fromLocal, fromDb);
-        if (active) setProgress(prev => mergeUserProgress(merged, prev));
-        saveProgressLocal(user.id, merged);
-        if (!fromDb || merged.selectedBuild !== fromDb.selectedBuild
-          || merged.favoriteWeapons.length !== fromDb.favoriteWeapons.length) {
-          void dbSaveProgress(user.id, merged);
-        }
-      }
       setIsLoading(false);
     })();
     return () => { active = false; };

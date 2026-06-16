@@ -23,6 +23,7 @@ import {
 } from '../../lib/contentStore';
 import { buildWikiCatalog } from '../../lib/sectionSeeds';
 import { sanitizeGuides, sanitizeGuideVersions, sanitizeSiteNews, sanitizeWiki } from '../../lib/siteImages';
+import type { Dispatch, SetStateAction } from 'react';
 import type { UserProgress } from '../../types/site';
 import { mergeUserProgress, normalizeUserProgress, saveProgressLocal } from '../../lib/userProgress';
 
@@ -40,7 +41,7 @@ type Deps = {
   setSiteNews: (n: ReturnType<typeof sanitizeSiteNews>) => void;
   setSupportTickets: (t: Awaited<ReturnType<typeof contentStoreLoadSupportTickets>>) => void;
   setGuideVersions: (v: ReturnType<typeof sanitizeGuideVersions>) => void;
-  setProgress: (p: UserProgress) => void;
+  setProgress: Dispatch<SetStateAction<UserProgress>>;
 };
 
 export function useAuthRealtime(deps: Deps) {

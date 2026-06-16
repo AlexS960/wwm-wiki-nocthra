@@ -1,10 +1,11 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { resolveBuildName } from '../lib/buildLookup';
 import type { NavigatePayload } from './Header';
 import { compressImageFileToBlob } from '../lib/imageUpload';
 import { uploadSiteImage, deleteSiteImageByUrl, isStorageUrl } from '../lib/storage';
 import { useUserSettings } from '../hooks/useUserSettings';
+import { useBodyScrollLock } from '../hooks/useBodyScrollLock';
 import {
   X, User, LogOut, Edit3, Save, Camera, Shield, Star, BookOpen,
   Swords, MapPin, FileText, Plus, Trash2, Check, ImagePlus, Link as LinkIcon,
@@ -22,17 +23,37 @@ export default function ProfileModal({ isOpen, onClose, anchor, onNavigate }: Pr
   const {
     user, logout, progress, updateUserPicture, updateUserGameNickname, updateUserGuild,
     getRoleConfig, addNote, deleteNote, isUserOnline,
-    registeredGuilds, ensureGuildsLoaded, getGuildName, wikiArticles, ensureWikiLoaded,
+    registeredGuilds, ensureGuildsLoaded, getGuildName, wikiArticles, ensureWikiLoaded, guides,
   } = useAuth();
-  const { exportSettings, importSettings, resetSettings, canExport } = useUserSettings();
+  const { exportSettings, importSettings, resetSettings } = useUserSettings();
+  useBodyScrollLock(isOpen);
+
+  const weaponTitleById = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const a of wikiArticles) {
+      if (a.section === 'weapons') map.set(a.id, a.title);
+    }
+    return map;
+  }, [wikiArticles]);
+
   const selectedBuildName = progress.selectedBuild
     ? (resolveBuildName(progress.selectedBuild, wikiArticles) ?? 'Выбранный билд')
     : null;
 
-  const favoriteWeaponTitles = progress.favoriteWeapons.map(id => ({
-    id,
-    title: wikiArticles.find(a => a.id === id && a.section === 'weapons')?.title ?? 'Оружие',
-  }));
+  const favoriteWeaponTitles = useMemo(
+    () => progress.favoriteWeapons.map(id => ({
+      id,
+      title: weaponTitleById.get(id) ?? 'Оружие',
+    })),
+    [progress.favoriteWeapons, weaponTitleById],
+  );
+
+  const progressTotals = useMemo(() => ({
+    guides: guides.length || 1,
+    weapons: wikiArticles.filter(a => a.section === 'weapons').length || 1,
+    sects: wikiArticles.filter(a => a.section === 'sects').length || 1,
+    regions: 5,
+  }), [guides.length, wikiArticles]);
   const [editing, setEditing] = useState(false);
   const [nickname, setNickname] = useState(user?.gameNickname || '');
   const [pictureUrl, setPictureUrl] = useState(user?.picture || '');
@@ -265,10 +286,10 @@ export default function ProfileModal({ isOpen, onClose, anchor, onNavigate }: Pr
 
           {activeTab === 'progress' && (
             <div className="space-y-2">
-              <ProgressRow label="Пройдено гайдов" done={progress.completedGuides.length} total={6} icon="📖" />
-              <ProgressRow label="Оружие в избранном" done={progress.favoriteWeapons.length} total={12} icon="⚔️" />
-              <ProgressRow label="Секты изучены" done={progress.favoriteSects.length} total={8} icon="🏛️" />
-              <ProgressRow label="Регионов посещено" done={progress.visitedRegions.length} total={5} icon="🗺️" />
+              <ProgressRow label="Пройдено гайдов" done={progress.completedGuides.length} total={progressTotals.guides} icon="📖" />
+              <ProgressRow label="Оружие в избранном" done={progress.favoriteWeapons.length} total={progressTotals.weapons} icon="⚔️" />
+              <ProgressRow label="Секты изучены" done={progress.favoriteSects.length} total={progressTotals.sects} icon="🏛️" />
+              <ProgressRow label="Регионов посещено" done={progress.visitedRegions.length} total={progressTotals.regions} icon="🗺️" />
               {progress.selectedBuild && (
                 <button
                   type="button"
@@ -327,14 +348,14 @@ export default function ProfileModal({ isOpen, onClose, anchor, onNavigate }: Pr
                 <div className="text-center py-8 text-ink-500"><FileText className="w-10 h-10 mx-auto mb-2 opacity-50" /><p className="text-sm">Нет заметок</p></div>
               ) : (
                 <div className="space-y-2">
-                  {progress.notes.map((note, i) => (
-                    <div key={i} className="bg-ink-800/40 border border-ink-600/20 rounded-lg p-3">
+                  {progress.notes.map(note => (
+                    <div key={note.id} className="bg-ink-800/40 border border-ink-600/20 rounded-lg p-3">
                       <div className="flex items-start justify-between gap-2">
                         <div className="flex-1 min-w-0">
                           <p className="text-white text-sm font-medium truncate">{note.title}</p>
                           <p className="text-ink-400 text-xs mt-1 line-clamp-2">{note.content}</p>
                         </div>
-                        <button onClick={() => deleteNote(i)} className="p-1 text-ink-500 hover:text-crimson-400 cursor-pointer"><Trash2 className="w-3.5 h-3.5" /></button>
+                        <button onClick={() => deleteNote(note.id)} className="p-1 text-ink-500 hover:text-crimson-400 cursor-pointer"><Trash2 className="w-3.5 h-3.5" /></button>
                       </div>
                     </div>
                   ))}

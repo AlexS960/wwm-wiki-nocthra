@@ -48,6 +48,7 @@ export const defaultSiteSettings: SiteSettings = {
     { id: 'moderator', displayName: 'Модератор', color: '#4abf85', permissions: ['read', 'profile', 'favorites', 'chat.write', 'chat.delete', 'chat.mute', 'staff.chat', 'support.view_all', 'support.reply', 'support.close'] },
     { id: 'guildmaster', displayName: 'Гильдмастер', color: '#d4a528', permissions: ['read', 'profile', 'favorites', 'chat.write', 'chat.delete', 'chat.mute', 'chat.ban', 'staff.chat', 'support.view_all', 'support.reply', 'support.close', 'support.delete', 'guides.create', 'guides.edit', 'guild.edit'] },
     { id: 'editor', displayName: 'Редактор', color: '#5865F2', permissions: ['read', 'profile', 'favorites', 'chat.write', 'staff.chat', 'guides.create', 'guides.edit'] },
+    { id: 'banned', displayName: 'Заблокирован', color: '#6b7280', permissions: [] },
     { id: 'admin', displayName: 'Администратор', color: '#a882ff', permissions: ['read', 'profile', 'favorites', 'chat.write', 'chat.delete', 'chat.mute', 'chat.ban', 'staff.chat', 'support.view_all', 'support.reply', 'support.close', 'support.delete', 'guides.create', 'guides.edit', 'guides.delete', 'guild.edit', 'guild.registry.manage', 'users.manage', 'users.ban', 'users.roles', 'site.settings', 'site.announcements', 'admin.panel'] },
   ],
   sections: [{ id: 'guides', title: 'Гайды', maintenance: false, message: '...' }],

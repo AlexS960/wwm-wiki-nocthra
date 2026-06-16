@@ -22,7 +22,7 @@ export function useAuthAccounts(user: User | null) {
         joinedAt: a.created_at,
         lastSeenAt,
         lastSeen: formatLastSeen(lastSeenAt),
-        isBanned: false,
+        isBanned: a.role === 'banned',
       };
     }),
   []);
