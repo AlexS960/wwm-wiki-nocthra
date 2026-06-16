@@ -76,11 +76,12 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
       setProgress({ ...defaultUserProgress });
       return;
     }
+    const userId = user.id;
     let active = true;
     void (async () => {
-      await hydrateUserProgress(user.id, setProgress);
+      await hydrateUserProgress(userId, setProgress, () => active);
       if (!active) return;
-      const acc = await dbGetAccountById(user.id);
+      const acc = await dbGetAccountById(userId);
       if (!active || !acc) return;
       if (acc.role === 'banned') {
         setUser(null);
@@ -113,8 +114,20 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
         return refreshed;
       });
     })();
-    return () => { active = false; };
-  }, [user?.id, setDbSaveError]);
+    return () => {
+      active = false;
+      if (progressSaveTimer.current) {
+        clearTimeout(progressSaveTimer.current);
+        progressSaveTimer.current = null;
+      }
+      const payload = pendingProgress.current;
+      if (payload) {
+        saveProgressLocal(userId, payload);
+        void flushProgress(userId, payload);
+        pendingProgress.current = null;
+      }
+    };
+  }, [user?.id, setDbSaveError, flushProgress]);
 
   const loginWithPassword = useCallback(async (username: string, password: string, remember: boolean) => {
     const acc = await dbGetAccountByUsername(username);
@@ -158,14 +171,26 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
     };
     setUser(nextUser);
     localStorage.setItem('wwm_user', JSON.stringify(nextUser));
+    setProgress({ ...defaultUserProgress });
+    await hydrateUserProgress(res.id, setProgress);
     return null;
   }, []);
 
   const logout = useCallback(() => {
+    const uid = user?.id;
+    if (uid && pendingProgress.current) {
+      saveProgressLocal(uid, pendingProgress.current);
+      void flushProgress(uid, pendingProgress.current);
+      pendingProgress.current = null;
+    }
+    if (progressSaveTimer.current) {
+      clearTimeout(progressSaveTimer.current);
+      progressSaveTimer.current = null;
+    }
     setUser(null);
     setProgress({ ...defaultUserProgress });
     localStorage.removeItem('wwm_user');
-  }, []);
+  }, [user?.id, flushProgress]);
 
   const updateProgress = useCallback((updates: Partial<UserProgress>) => {
     setProgress(prev => {
@@ -255,7 +280,9 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
       setDbSaveError('Аватар: используйте ссылку https://… или загрузку в Storage, не base64.');
       return;
     }
-    setUser({ ...user, picture: clean });
+    const next = { ...user, picture: clean };
+    setUser(next);
+    localStorage.setItem('wwm_user', JSON.stringify(next));
     void dbUpdateAccount(user.id, { picture: clean });
   }, [user, setDbSaveError]);
 

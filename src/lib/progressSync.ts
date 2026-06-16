@@ -21,11 +21,14 @@ export function progressNeedsDbSync(merged: UserProgress, fromDb: UserProgress |
 export async function hydrateUserProgress(
   userId: string,
   setProgress: Dispatch<SetStateAction<UserProgress>>,
-): Promise<UserProgress> {
+  isActive?: () => boolean,
+): Promise<UserProgress | null> {
   const fromDb = await dbLoadProgress(userId);
+  if (isActive && !isActive()) return null;
   const fromLocal = loadProgressLocal(userId);
   const merged = resolveUserProgress(fromLocal, fromDb);
   setProgress(prev => mergeUserProgress(prev, merged));
+  if (isActive && !isActive()) return null;
   saveProgressLocal(userId, merged);
   if (progressNeedsDbSync(merged, fromDb)) {
     void dbSaveProgress(userId, merged);

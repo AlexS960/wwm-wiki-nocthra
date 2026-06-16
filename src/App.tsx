@@ -24,6 +24,7 @@ import { isContentSectionResolved, sanitizeSectionDefinitions } from './lib/sect
 import { lazyWithRetry } from './lib/lazyWithRetry';
 import type { NavigatePayload } from './components/Header';
 import { WikiNavigationProvider } from './context/WikiNavigationContext';
+import { wikiCardHash, wikiCardIdFromHash } from './lib/wikiLinks';
 
 const GuidesPage = lazyWithRetry(() => import('./components/GuidesPage'));
 const AdminPage = lazyWithRetry(() => import('./components/AdminPage'));
@@ -69,7 +70,9 @@ function AppContent() {
     () => pageFromPath(window.location.pathname) || 'main',
   );
   const [pendingGuideId, setPendingGuideId] = useState<string | null>(null);
-  const [pendingWikiId, setPendingWikiId] = useState<string | null>(null);
+  const [pendingWikiId, setPendingWikiId] = useState<string | null>(
+    () => wikiCardIdFromHash(window.location.hash),
+  );
 
   usePageSeo(currentPage);
   usePmBrowserNotifications();
@@ -102,6 +105,7 @@ function AppContent() {
       const fromUrl = pageFromPath(pathname);
       if (fromUrl) {
         setCurrentPage(fromUrl);
+        setPendingWikiId(wikiCardIdFromHash(window.location.hash));
         return;
       }
       if (!isKnownPath(pathname)) {
@@ -116,6 +120,7 @@ function AppContent() {
       const fromState = e.state?.page as string | undefined;
       const page = fromState || pageFromPath(window.location.pathname) || 'main';
       setCurrentPage(page);
+      setPendingWikiId(wikiCardIdFromHash(window.location.hash));
       window.scrollTo({ top: 0 });
     };
     window.addEventListener('popstate', onPopState);
@@ -123,13 +128,22 @@ function AppContent() {
   }, [isLoading, siteSettings.sectionDefinitions]);
 
   const handleNavigate = useCallback((section: string, payload?: NavigatePayload) => {
-    if (payload?.guideId) setPendingGuideId(payload.guideId);
-    if (payload?.wikiId) setPendingWikiId(payload.wikiId);
+    setPendingGuideId(payload?.guideId ?? null);
+    setPendingWikiId(payload?.wikiId ?? null);
     const page = section === 'home' ? 'main' : section;
-    window.history.pushState({ page }, '', pathFromPage(page));
+    let url = pathFromPage(page);
+    if (payload?.wikiId) {
+      url += `#${wikiCardHash(payload.wikiId)}`;
+    }
+    window.history.pushState({ page }, '', url);
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: page === 'main' ? 'smooth' : 'auto' });
   }, []);
+
+  const getCurrentSection = useCallback(
+    () => (currentPage === 'main' ? null : currentPage),
+    [currentPage],
+  );
 
   const goBack = () => window.history.back();
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -294,7 +308,7 @@ function AppContent() {
       return (
         <PageShell headerProps={headerProps} modals={modals}>
           <Suspense fallback={<PageLoader />}>
-            <WwmWikiPage onNavigate={handleNavigate} />
+            <WwmWikiPage onNavigate={handleNavigate} onBack={goBack} />
           </Suspense>
         </PageShell>
       );
@@ -321,7 +335,7 @@ function AppContent() {
   return (
     <WikiNavigationProvider
       onNavigate={handleNavigate}
-      getCurrentSection={() => (currentPage === 'main' ? null : currentPage)}
+      getCurrentSection={getCurrentSection}
     >
       {renderPage()}
     </WikiNavigationProvider>

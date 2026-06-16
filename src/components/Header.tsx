@@ -1,12 +1,13 @@
 import { useState, useEffect, memo, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
-import { Menu, X, Scroll, User, LogIn, House, Users, CircleHelp, MessageSquare, Lightbulb, Shield } from 'lucide-react';
+import { Menu, X, Scroll, User, LogIn, House, Users, CircleHelp, MessageSquare, Lightbulb, Shield, BookOpen, BookOpenText } from 'lucide-react';
 import { useAuthState } from '../context/AuthContext';
 import GlobalSearch from './GlobalSearch';
 import { dispatchCloseFloatPanels } from '../lib/closeFloatPanels';
 import { useBodyScrollLock } from '../hooks/useBodyScrollLock';
 import { useScrollThreshold } from '../hooks/useScrollThreshold';
 import { mergeBranding } from '../lib/siteConstructor';
+import { CONTENT_SECTION_IDS } from '../data/sections';
 
 export type NavigatePayload = { guideId?: string; wikiId?: string };
 
@@ -38,6 +39,9 @@ function Header({ activeSection, onNavigate, onLoginClick, onProfileClick, showS
     });
   };
 
+  const isWikiHubActive = activeSection === 'wwmwiki';
+  const isWikiContentActive = CONTENT_SECTION_IDS.includes(activeSection) || activeSection === 'guides';
+
   return (
     <header
       className={`site-header fixed top-0 left-0 right-0 transition-[background-color,box-shadow,border-color] duration-300 ${
@@ -58,8 +62,10 @@ function Header({ activeSection, onNavigate, onLoginClick, onProfileClick, showS
             </div>
           </button>
 
-          <nav className="hidden xl:flex items-center gap-0.5">
+          <nav className="hidden lg:flex items-center gap-0.5 flex-wrap justify-end max-w-[58vw] xl:max-w-none">
             <NavButton icon={<House className="w-4 h-4" />} label="Главная" active={activeSection === 'home'} onClick={() => onNavigate('home')} />
+            <NavButton icon={<BookOpen className="w-4 h-4" />} label="WWM Вики" active={isWikiHubActive} onClick={() => onNavigate('wwmwiki')} accent="crimson" />
+            <NavButton icon={<BookOpenText className="w-4 h-4" />} label="Гайды" active={activeSection === 'guides'} onClick={() => onNavigate('guides')} />
             <NavButton icon={<Shield className="w-4 h-4" />} label="Гильдии" active={activeSection === 'guilds'} onClick={() => onNavigate('guilds')} />
             <NavButton icon={<Users className="w-4 h-4" />} label="Пользователи" active={activeSection === 'users'} onClick={() => onNavigate('users')} />
             <NavButton icon={<Lightbulb className="w-4 h-4" />} label="Предложения" active={activeSection === 'suggestions'} onClick={() => onNavigate('suggestions')} />
@@ -132,6 +138,8 @@ function Header({ activeSection, onNavigate, onLoginClick, onProfileClick, showS
                 <GlobalSearch onNavigate={(s, p) => { onNavigate(s, p); setMobileOpen(false); }} />
               </div>
               <MobileNavButton label="🏠 Главная" active={activeSection === 'home'} onClick={() => { onNavigate('home'); setMobileOpen(false); }} />
+              <MobileNavButton label="📚 WWM Вики" active={isWikiHubActive || isWikiContentActive} onClick={() => { onNavigate('wwmwiki'); setMobileOpen(false); }} />
+              <MobileNavButton label="📖 Гайды" active={activeSection === 'guides'} onClick={() => { onNavigate('guides'); setMobileOpen(false); }} />
               <MobileNavButton label="🛡️ Гильдии" active={activeSection === 'guilds'} onClick={() => { onNavigate('guilds'); setMobileOpen(false); }} />
               <MobileNavButton label="👥 Список пользователей" active={activeSection === 'users'} onClick={() => { onNavigate('users'); setMobileOpen(false); }} />
               <MobileNavButton label="💡 Предложения" active={activeSection === 'suggestions'} onClick={() => { onNavigate('suggestions'); setMobileOpen(false); }} />
@@ -175,17 +183,22 @@ function Header({ activeSection, onNavigate, onLoginClick, onProfileClick, showS
   );
 }
 
-function NavButton({ icon, label, active, onClick, accent }: { icon: ReactNode; label: string; active: boolean; onClick: () => void; accent?: 'purple' }) {
+function NavButton({ icon, label, active, onClick, accent }: { icon: ReactNode; label: string; active: boolean; onClick: () => void; accent?: 'purple' | 'crimson' }) {
   const purple = accent === 'purple';
+  const crimson = accent === 'crimson';
   return (
-    <button onClick={onClick} className={`hover-glow-btn px-3 py-2 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer ${
+    <button onClick={onClick} className={`hover-glow-btn px-2.5 xl:px-3 py-2 rounded-xl text-xs xl:text-sm font-medium transition-all duration-200 cursor-pointer ${
       active
         ? purple
           ? 'text-purple-300 bg-purple-500/10 border border-purple-400/30'
-          : 'text-gold-400 bg-gold-400/10 border border-gold-400/30'
+          : crimson
+            ? 'text-crimson-300 bg-crimson-400/15 border border-crimson-400/45'
+            : 'text-gold-400 bg-gold-400/10 border border-gold-400/30'
         : purple
           ? 'text-purple-200 hover:text-purple-300 hover:bg-purple-500/10 border border-transparent hover:border-purple-400/20'
-          : 'text-ink-200 hover:text-gold-300 hover:bg-white/5 border border-transparent hover:border-gold-400/20'
+          : crimson
+            ? 'text-crimson-400 bg-transparent hover:text-crimson-300 hover:bg-crimson-400/10 border border-crimson-400/40 hover:border-crimson-400/55'
+            : 'text-ink-200 hover:text-gold-300 hover:bg-white/5 border border-transparent hover:border-gold-400/20'
     }`}>
       <span className="inline-flex items-center gap-1.5">{icon}{label}</span>
     </button>

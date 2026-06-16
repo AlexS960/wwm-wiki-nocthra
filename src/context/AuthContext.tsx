@@ -97,6 +97,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const siteNewsHook = useAuthSiteNews({ user, persist, setDbSaveError, normalizedRef });
   const guidesHook = useAuthGuides({ user, persist, setDbSaveError, normalizedRef });
   const migrateOverridesRef = useRef<(sections: string[]) => void>(() => {});
+  const banPreviousRolesRef = useRef(new Map<string, string>());
 
   const wikiHook = useAuthWiki({
     user,
@@ -412,10 +413,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     isEditor,
     adminSetUserRole: (id, r) => { void dbUpdateAccount(id, { role: r }); void accounts.refreshAccounts(); },
     adminBanUser: (id, banned) => {
-      void dbUpdateAccount(id, { role: banned ? 'banned' : 'user' });
-      accounts.setRegisteredUsers(prev =>
-        prev.map(u => u.id === id ? { ...u, isBanned: banned, role: banned ? 'banned' : 'user' } : u),
-      );
+      if (banned) {
+        const u = accounts.registeredUsers.find(x => x.id === id);
+        if (u && u.role !== 'banned') banPreviousRolesRef.current.set(id, u.role);
+        void dbUpdateAccount(id, { role: 'banned' });
+        accounts.setRegisteredUsers(prev =>
+          prev.map(u => u.id === id ? { ...u, isBanned: true, role: 'banned' } : u),
+        );
+      } else {
+        const restore = banPreviousRolesRef.current.get(id) || 'user';
+        banPreviousRolesRef.current.delete(id);
+        void dbUpdateAccount(id, { role: restore });
+        accounts.setRegisteredUsers(prev =>
+          prev.map(u => u.id === id ? { ...u, isBanned: false, role: restore } : u),
+        );
+      }
     },
     adminDeleteUser: id => { void dbDeleteAccount(id); void accounts.refreshAccounts(); },
     isUserOnline: id => {

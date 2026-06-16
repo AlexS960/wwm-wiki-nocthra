@@ -7,6 +7,14 @@ export function wikiCardHash(articleId: string): string {
   return `${WIKI_CARD_HASH_PREFIX}${articleId}`;
 }
 
+/** ID карточки из location.hash (#wiki-card-...) */
+export function wikiCardIdFromHash(hash: string): string | null {
+  const clean = hash.replace(/^#/, '');
+  if (!clean.startsWith(WIKI_CARD_HASH_PREFIX)) return null;
+  const id = clean.slice(WIKI_CARD_HASH_PREFIX.length);
+  return id || null;
+}
+
 /** Относительная ссылка на карточку вики: /weapons#wiki-card-nameless-sword */
 export function wikiCardHref(sectionId: string, articleId: string): string {
   return `${pathFromPage(sectionId)}#${wikiCardHash(articleId)}`;

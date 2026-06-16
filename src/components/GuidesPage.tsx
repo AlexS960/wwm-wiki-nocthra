@@ -46,13 +46,11 @@ export default function GuidesPage({ onBack, onLoginClick, initialGuideId, onGui
   }, [searchQuery, filterCategory, guidesLoaded, searchGuidesList]);
 
   useEffect(() => {
-    if (!initialGuideId || !guides.length) return;
+    if (!initialGuideId || !guidesLoaded) return;
     const g = guides.find(x => x.id === initialGuideId);
-    if (g) {
-      setOpenGuide(g);
-      onGuideOpened?.();
-    }
-  }, [initialGuideId, guides, onGuideOpened]);
+    if (g) setOpenGuide(g);
+    onGuideOpened?.();
+  }, [initialGuideId, guides, guidesLoaded, onGuideOpened]);
 
   useEffect(() => {
     if (!openGuide) return;
