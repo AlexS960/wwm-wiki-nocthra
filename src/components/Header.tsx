@@ -1,13 +1,12 @@
 import { useState, useEffect, memo, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
-import { Menu, X, Scroll, User, LogIn, House, Users, CircleHelp, MessageSquare, Lightbulb, Shield, BookOpen, BookOpenText } from 'lucide-react';
+import { Menu, X, Scroll, User, LogIn, House, Users, CircleHelp, MessageSquare, Lightbulb, Shield, BookOpen } from 'lucide-react';
 import { useAuthState } from '../context/AuthContext';
 import GlobalSearch from './GlobalSearch';
 import { dispatchCloseFloatPanels } from '../lib/closeFloatPanels';
 import { useBodyScrollLock } from '../hooks/useBodyScrollLock';
 import { useScrollThreshold } from '../hooks/useScrollThreshold';
 import { mergeBranding } from '../lib/siteConstructor';
-import { CONTENT_SECTION_IDS } from '../data/sections';
 
 export type NavigatePayload = { guideId?: string; wikiId?: string };
 
@@ -24,6 +23,8 @@ function Header({ activeSection, onNavigate, onLoginClick, onProfileClick, showS
   const [mobileOpen, setMobileOpen] = useState(false);
   const { user, siteSettings } = useAuthState();
   const branding = mergeBranding(siteSettings.branding);
+  const isHome = activeSection === 'home';
+  const isWikiHubActive = activeSection === 'wwmwiki';
 
   useBodyScrollLock(mobileOpen);
 
@@ -38,9 +39,6 @@ function Header({ activeSection, onNavigate, onLoginClick, onProfileClick, showS
       return !prev;
     });
   };
-
-  const isWikiHubActive = activeSection === 'wwmwiki';
-  const isWikiContentActive = CONTENT_SECTION_IDS.includes(activeSection) || activeSection === 'guides';
 
   return (
     <header
@@ -62,27 +60,34 @@ function Header({ activeSection, onNavigate, onLoginClick, onProfileClick, showS
             </div>
           </button>
 
-          <nav className="hidden lg:flex items-center gap-0.5 flex-wrap justify-end max-w-[58vw] xl:max-w-none">
-            <NavButton icon={<House className="w-4 h-4" />} label="Главная" active={activeSection === 'home'} onClick={() => onNavigate('home')} />
-            <NavButton icon={<BookOpen className="w-4 h-4" />} label="WWM Вики" active={isWikiHubActive} onClick={() => onNavigate('wwmwiki')} accent="crimson" />
-            <NavButton icon={<BookOpenText className="w-4 h-4" />} label="Гайды" active={activeSection === 'guides'} onClick={() => onNavigate('guides')} />
-            <NavButton icon={<Shield className="w-4 h-4" />} label="Гильдии" active={activeSection === 'guilds'} onClick={() => onNavigate('guilds')} />
-            <NavButton icon={<Users className="w-4 h-4" />} label="Пользователи" active={activeSection === 'users'} onClick={() => onNavigate('users')} />
-            <NavButton icon={<Lightbulb className="w-4 h-4" />} label="Предложения" active={activeSection === 'suggestions'} onClick={() => onNavigate('suggestions')} />
-            <NavButton icon={<CircleHelp className="w-4 h-4" />} label="FAQ" active={activeSection === 'faq'} onClick={() => onNavigate('faq')} />
-            {showStaffChatLink && (
-              <NavButton
-                icon={<MessageSquare className="w-4 h-4" />}
-                label="Служебный чат"
-                active={activeSection === 'staffchat'}
-                onClick={() => onNavigate('staffchat')}
-                accent="purple"
+          <nav className="hidden lg:flex items-center gap-1">
+            <NavIconButton icon={<House className="w-4 h-4" />} label="Главная" active={activeSection === 'home'} onClick={() => onNavigate('home')} />
+            {!isHome && (
+              <NavIconButton
+                icon={<BookOpen className="w-4 h-4" />}
+                label="WWM Вики"
+                active={isWikiHubActive}
+                onClick={() => onNavigate('wwmwiki')}
+                accent="crimson"
               />
             )}
+            <NavIconButton icon={<Shield className="w-4 h-4" />} label="Гильдии" active={activeSection === 'guilds'} onClick={() => onNavigate('guilds')} />
+            <NavIconButton icon={<Users className="w-4 h-4" />} label="Пользователи" active={activeSection === 'users'} onClick={() => onNavigate('users')} />
+            <NavIconButton icon={<Lightbulb className="w-4 h-4" />} label="Предложения" active={activeSection === 'suggestions'} onClick={() => onNavigate('suggestions')} />
+            <NavIconButton icon={<CircleHelp className="w-4 h-4" />} label="FAQ" active={activeSection === 'faq'} onClick={() => onNavigate('faq')} />
           </nav>
 
           <div className="flex items-center gap-2">
-            <div className="hidden md:block">
+            <div className="hidden md:flex items-center gap-1.5">
+              {showStaffChatLink && (
+                <NavIconButton
+                  icon={<MessageSquare className="w-4 h-4" />}
+                  label="Служебный чат"
+                  active={activeSection === 'staffchat'}
+                  onClick={() => onNavigate('staffchat')}
+                  accent="purple"
+                />
+              )}
               <GlobalSearch onNavigate={onNavigate} />
             </div>
             {user ? (
@@ -90,10 +95,11 @@ function Header({ activeSection, onNavigate, onLoginClick, onProfileClick, showS
                 type="button"
                 data-overlay-trigger
                 onClick={(e) => {
-                const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-                onProfileClick({ top: rect.bottom + 8, right: Math.max(8, window.innerWidth - rect.right) });
-              }}
-                className="hover-glow-btn flex items-center gap-2 px-3 py-2 rounded-lg bg-gold-400/10 border border-gold-400/35 hover:bg-gold-400/20 transition-colors cursor-pointer group">
+                  const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+                  onProfileClick({ top: rect.bottom + 8, right: Math.max(8, window.innerWidth - rect.right) });
+                }}
+                className="hover-glow-btn flex items-center gap-2 px-3 py-2 rounded-lg bg-gold-400/10 border border-gold-400/35 hover:bg-gold-400/20 transition-colors cursor-pointer group"
+              >
                 {user.picture ? <img src={user.picture} alt={user.name} className="w-6 h-6 rounded-full" /> :
                   <div className="w-6 h-6 rounded-full bg-gold-400/20 flex items-center justify-center"><User className="w-3.5 h-3.5 text-gold-400" /></div>}
                 <span className="hidden sm:block text-sm font-medium text-gold-400 group-hover:text-gold-300 max-w-[100px] truncate">
@@ -101,8 +107,16 @@ function Header({ activeSection, onNavigate, onLoginClick, onProfileClick, showS
                 </span>
               </button>
             ) : (
-              <button type="button" data-overlay-trigger onClick={onLoginClick}
-                className="hover-glow-btn flex items-center gap-2 px-3 py-2 rounded-lg bg-gold-400/10 border border-gold-400/35 hover:bg-gold-400/20 transition-colors cursor-pointer group">
+              <button
+                type="button"
+                data-overlay-trigger
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  onLoginClick();
+                }}
+                className="hover-glow-btn flex items-center gap-2 px-3 py-2 rounded-lg bg-gold-400/10 border border-gold-400/35 hover:bg-gold-400/20 transition-colors cursor-pointer group"
+              >
                 <LogIn className="w-4 h-4 text-gold-400 group-hover:text-gold-300" />
                 <span className="hidden sm:block text-sm font-medium text-gold-400 group-hover:text-gold-300">Войти</span>
               </button>
@@ -134,19 +148,33 @@ function Header({ activeSection, onNavigate, onLoginClick, onProfileClick, showS
             style={{ top: 'var(--header-height, 4rem)' }}
           >
             <div className="w-full px-4 py-4 flex flex-col gap-1 pb-8">
-              <div className="px-1 pb-2">
-                <GlobalSearch onNavigate={(s, p) => { onNavigate(s, p); setMobileOpen(false); }} />
+              <div className="px-1 pb-2 flex items-center gap-2">
+                {showStaffChatLink && (
+                  <button
+                    type="button"
+                    onClick={() => { onNavigate('staffchat'); setMobileOpen(false); }}
+                    className={`p-2.5 rounded-full border cursor-pointer transition-colors ${
+                      activeSection === 'staffchat'
+                        ? 'text-purple-300 bg-purple-500/15 border-purple-400/40'
+                        : 'text-purple-200 bg-ink-800 border-purple-500/35 hover:bg-purple-500/10'
+                    }`}
+                    aria-label="Служебный чат"
+                  >
+                    <MessageSquare className="w-5 h-5" />
+                  </button>
+                )}
+                <div className="flex-1 min-w-0">
+                  <GlobalSearch onNavigate={(s, p) => { onNavigate(s, p); setMobileOpen(false); }} />
+                </div>
               </div>
               <MobileNavButton label="🏠 Главная" active={activeSection === 'home'} onClick={() => { onNavigate('home'); setMobileOpen(false); }} />
-              <MobileNavButton label="📚 WWM Вики" active={isWikiHubActive || isWikiContentActive} onClick={() => { onNavigate('wwmwiki'); setMobileOpen(false); }} />
-              <MobileNavButton label="📖 Гайды" active={activeSection === 'guides'} onClick={() => { onNavigate('guides'); setMobileOpen(false); }} />
+              {!isHome && (
+                <MobileNavButton label="📚 WWM Вики" active={isWikiHubActive} onClick={() => { onNavigate('wwmwiki'); setMobileOpen(false); }} />
+              )}
               <MobileNavButton label="🛡️ Гильдии" active={activeSection === 'guilds'} onClick={() => { onNavigate('guilds'); setMobileOpen(false); }} />
               <MobileNavButton label="👥 Список пользователей" active={activeSection === 'users'} onClick={() => { onNavigate('users'); setMobileOpen(false); }} />
               <MobileNavButton label="💡 Предложения" active={activeSection === 'suggestions'} onClick={() => { onNavigate('suggestions'); setMobileOpen(false); }} />
               <MobileNavButton label="❓ FAQ" active={activeSection === 'faq'} onClick={() => { onNavigate('faq'); setMobileOpen(false); }} />
-              {showStaffChatLink && (
-                <MobileNavButton label="💬 Служебный чат" active={activeSection === 'staffchat'} onClick={() => { onNavigate('staffchat'); setMobileOpen(false); }} />
-              )}
               <div className="mt-2 pt-2 border-t border-ink-700/50">
                 {user ? (
                   <button
@@ -183,24 +211,60 @@ function Header({ activeSection, onNavigate, onLoginClick, onProfileClick, showS
   );
 }
 
-function NavButton({ icon, label, active, onClick, accent }: { icon: ReactNode; label: string; active: boolean; onClick: () => void; accent?: 'purple' | 'crimson' }) {
+function NavIconButton({
+  icon,
+  label,
+  active,
+  onClick,
+  accent,
+}: {
+  icon: ReactNode;
+  label: string;
+  active: boolean;
+  onClick: () => void;
+  accent?: 'purple' | 'crimson';
+}) {
   const purple = accent === 'purple';
   const crimson = accent === 'crimson';
+
+  const shell = active
+    ? purple
+      ? 'bg-purple-500/15 border-purple-400/40 text-purple-300'
+      : crimson
+        ? 'bg-crimson-400/15 border-crimson-400/45 text-crimson-300'
+        : 'bg-gold-400/10 border-gold-400/35 text-gold-400'
+    : purple
+      ? 'bg-ink-900/85 border-purple-500/35 text-purple-200 hover:bg-purple-500/10 hover:border-purple-500/55'
+      : crimson
+        ? 'bg-ink-900/85 border-crimson-500/35 text-crimson-300 hover:bg-crimson-400/10 hover:border-crimson-400/55'
+        : 'bg-ink-900/85 border-gold-700/25 text-ink-200 hover:bg-gold-400/10 hover:border-gold-400/35 hover:text-gold-300';
+
+  const iconBg = active
+    ? purple
+      ? 'bg-purple-500/20'
+      : crimson
+        ? 'bg-crimson-500/20'
+        : 'bg-gold-400/20'
+    : purple
+      ? 'bg-purple-500/20'
+      : crimson
+        ? 'bg-crimson-500/20'
+        : 'bg-gold-400/10';
+
   return (
-    <button onClick={onClick} className={`hover-glow-btn px-2.5 xl:px-3 py-2 rounded-xl text-xs xl:text-sm font-medium transition-all duration-200 cursor-pointer ${
-      active
-        ? purple
-          ? 'text-purple-300 bg-purple-500/10 border border-purple-400/30'
-          : crimson
-            ? 'text-crimson-300 bg-crimson-400/15 border border-crimson-400/45'
-            : 'text-gold-400 bg-gold-400/10 border border-gold-400/30'
-        : purple
-          ? 'text-purple-200 hover:text-purple-300 hover:bg-purple-500/10 border border-transparent hover:border-purple-400/20'
-          : crimson
-            ? 'text-crimson-400 bg-transparent hover:text-crimson-300 hover:bg-crimson-400/10 border border-crimson-400/40 hover:border-crimson-400/55'
-            : 'text-ink-200 hover:text-gold-300 hover:bg-white/5 border border-transparent hover:border-gold-400/20'
-    }`}>
-      <span className="inline-flex items-center gap-1.5">{icon}{label}</span>
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={label}
+      title={label}
+      className={`admin-btn hover-glow-btn flex items-center p-2 rounded-full backdrop-blur-md shadow-lg transition-all cursor-pointer group w-fit border ${shell}`}
+    >
+      <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform ${iconBg}`}>
+        {icon}
+      </div>
+      <span className={`admin-btn-text text-xs font-medium ${purple ? 'text-purple-300' : crimson ? 'text-crimson-300' : 'text-gold-300'}`}>
+        {label}
+      </span>
     </button>
   );
 }

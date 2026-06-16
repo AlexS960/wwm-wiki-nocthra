@@ -91,6 +91,13 @@ function AppContent() {
   });
 
   useEffect(() => {
+    if (!user) {
+      setShowProfileModal(false);
+      setProfileAnchor(null);
+    }
+  }, [user]);
+
+  useEffect(() => {
     document.documentElement.dataset.appPage = currentPage;
     return () => {
       delete document.documentElement.dataset.appPage;
@@ -153,13 +160,21 @@ function AppContent() {
   const headerProps = useMemo(() => ({
     activeSection: currentPage === 'main' ? 'home' : currentPage,
     onNavigate: handleNavigate,
-    onLoginClick: () => setShowLoginModal(true),
+    onLoginClick: () => {
+      setShowProfileModal(false);
+      setProfileAnchor(null);
+      setShowLoginModal(true);
+    },
     onProfileClick: (anchor?: { top: number; right: number }) => {
+      if (!user) {
+        setShowLoginModal(true);
+        return;
+      }
       setProfileAnchor(anchor || null);
       setShowProfileModal(true);
     },
     showStaffChatLink: canAccessStaffChat(),
-  }), [currentPage, handleNavigate, user?.role, siteSettings.roles, canAccessStaffChat]);
+  }), [currentPage, handleNavigate, user, siteSettings.roles, canAccessStaffChat]);
 
   const modals = (
     <>

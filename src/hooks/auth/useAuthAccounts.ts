@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 import { dbListAccounts, dbUpdateAccount } from '../../lib/db';
 import type { RegisteredUser, User } from '../../types/site';
-import { formatLastSeen } from '../../lib/displayName';
+import { formatLastSeen, formatRegistrationDate } from '../../lib/displayName';
 
 export function useAuthAccounts(user: User | null) {
   const [registeredUsers, setRegisteredUsers] = useState<RegisteredUser[]>([]);
@@ -19,7 +19,7 @@ export function useAuthAccounts(user: User | null) {
         gameNickname: a.game_nickname || '',
         guildId: a.guild_id || '',
         role: a.role,
-        joinedAt: a.created_at,
+        joinedAt: formatRegistrationDate(a.created_at),
         lastSeenAt,
         lastSeen: formatLastSeen(lastSeenAt),
         isBanned: a.role === 'banned',

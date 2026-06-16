@@ -17,6 +17,19 @@ export function formatLastSeen(iso: string | null | undefined): string {
   return d.toLocaleString('ru-RU', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
 }
 
+export function formatRegistrationDate(iso: string | null | undefined): string {
+  if (!iso) return '—';
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return '—';
+  return d.toLocaleString('ru-RU', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+}
+
 export const ONLINE_THRESHOLD_MS = 3 * 60 * 1000;
 
 export function isOnlineByLastSeen(lastSeenAt: string | null | undefined): boolean {
