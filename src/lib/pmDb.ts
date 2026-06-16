@@ -52,6 +52,14 @@ function pmToRow(msg: PrivateMessage): PmRow {
   };
 }
 
+function threadOrFilter(userId: string, partnerId: string): string {
+  return `and(from_id.eq.${userId},to_id.eq.${partnerId}),and(from_id.eq.${partnerId},to_id.eq.${userId})`;
+}
+
+function bothParticipantsHidden(fromId: string, toId: string, hiddenFor: string[]): boolean {
+  return [fromId, toId].every(id => hiddenFor.includes(id));
+}
+
 export async function pmTableExists(): Promise<boolean> {
   const { error } = await getSupabase().from('pm_messages').select('id').limit(1);
   if (!error) return true;
@@ -77,9 +85,7 @@ export async function pmLoadThread(userId: string, partnerId: string): Promise<P
   const { data, error } = await getSupabase()
     .from('pm_messages')
     .select('*')
-    .or(
-      `and(from_id.eq.${userId},to_id.eq.${partnerId}),and(from_id.eq.${partnerId},to_id.eq.${userId})`,
-    )
+    .or(threadOrFilter(userId, partnerId))
     .order('created_at', { ascending: true })
     .limit(THREAD_LIMIT);
 
@@ -104,10 +110,14 @@ export async function pmMarkRead(userId: string, partnerId: string): Promise<{ e
   return {};
 }
 
-export async function pmHideForUser(messageId: string, userId: string): Promise<{ error?: string }> {
+/** Скрыть у себя; если оба участника скрыли — физически удалить строку. */
+export async function pmHideForUser(
+  messageId: string,
+  userId: string,
+): Promise<{ error?: string; deleted?: boolean }> {
   const { data, error: fetchErr } = await getSupabase()
     .from('pm_messages')
-    .select('hidden_for')
+    .select('from_id, to_id, hidden_for')
     .eq('id', messageId)
     .maybeSingle();
 
@@ -115,47 +125,49 @@ export async function pmHideForUser(messageId: string, userId: string): Promise<
   if (!data) return { error: 'Сообщение не найдено' };
 
   const hidden = (data.hidden_for || []) as string[];
-  if (hidden.includes(userId)) return {};
+  if (hidden.includes(userId)) return { deleted: false };
+
+  const nextHidden = [...hidden, userId];
+  if (bothParticipantsHidden(data.from_id, data.to_id, nextHidden)) {
+    const { error } = await getSupabase().from('pm_messages').delete().eq('id', messageId);
+    if (error) return { error: error.message };
+    return { deleted: true };
+  }
 
   const { error } = await getSupabase()
     .from('pm_messages')
-    .update({ hidden_for: [...hidden, userId] })
+    .update({ hidden_for: nextHidden })
     .eq('id', messageId);
 
   if (error) return { error: error.message };
-  return {};
+  return { deleted: false };
 }
 
 export async function pmDeleteForAll(messageId: string, senderId: string): Promise<{ error?: string }> {
   const { data, error: fetchErr } = await getSupabase()
     .from('pm_messages')
-    .select('from_id, created_at, deleted_for_all')
+    .select('from_id, created_at')
     .eq('id', messageId)
     .maybeSingle();
 
   if (fetchErr) return { error: fetchErr.message };
   if (!data) return { error: 'Сообщение не найдено' };
   if (data.from_id !== senderId) return { error: 'Можно удалить только свои сообщения' };
-  if (data.deleted_for_all) return {};
   if (Date.now() - new Date(data.created_at).getTime() > PM_DELETE_FOR_ALL_MS) {
     return { error: 'Удалить у всех можно в течение 48 часов после отправки' };
   }
 
-  const { error } = await getSupabase()
-    .from('pm_messages')
-    .update({ deleted_for_all: true, text: '' })
-    .eq('id', messageId);
-
+  const { error } = await getSupabase().from('pm_messages').delete().eq('id', messageId);
   if (error) return { error: error.message };
   return {};
 }
 
-/** "Удалить у всех" целиком диалога: помечаем удалёнными все сообщения между двумя пользователями. */
+/** Удалить весь диалог физически (у обоих). */
 export async function pmDeleteDialogForAll(userId: string, partnerId: string): Promise<{ error?: string }> {
   const { error } = await getSupabase()
     .from('pm_messages')
-    .update({ deleted_for_all: true, text: '' })
-    .or(`and(from_id.eq.${userId},to_id.eq.${partnerId}),and(from_id.eq.${partnerId},to_id.eq.${userId})`);
+    .delete()
+    .or(threadOrFilter(userId, partnerId));
   if (error) return { error: error.message };
   return {};
 }
@@ -186,7 +198,9 @@ export async function pmMigrateLegacyFromSiteData(): Promise<{ migrated: number;
     return { migrated: 0, skipped: true };
   }
 
-  const rows = legacy.map(pmToRow);
+  const rows = legacy
+    .filter(m => !m.deletedForAll && m.text)
+    .map(pmToRow);
   const batchSize = 100;
   for (let i = 0; i < rows.length; i += batchSize) {
     const chunk = rows.slice(i, i + batchSize);
@@ -204,8 +218,7 @@ export async function pmCountUnread(userId: string): Promise<number> {
     .from('pm_messages')
     .select('*', { count: 'exact', head: true })
     .eq('to_id', userId)
-    .eq('read', false)
-    .eq('deleted_for_all', false);
+    .eq('read', false);
 
   if (error) return 0;
   return count ?? 0;

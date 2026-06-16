@@ -449,7 +449,7 @@ export async function contentStoreDeleteChatMessage(id: string, current: ChatSta
   }
   const next: ChatState = {
     ...current,
-    messages: current.messages.map(m => (m.id === id ? { ...m, deleted: true } : m)),
+    messages: current.messages.filter(m => m.id !== id),
   };
   const { error } = await dbSaveSiteData('chat', next);
   return error ? { error } : {};

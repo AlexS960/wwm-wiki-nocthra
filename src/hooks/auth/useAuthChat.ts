@@ -167,7 +167,7 @@ export function useAuthChat({ user, persist, normalizedRef }: Deps) {
     const prev = chatRef.current;
     const next: ChatState = {
       ...prev,
-      messages: prev.messages.map(x => x.id === id ? { ...x, deleted: true } : x),
+      messages: prev.messages.filter(x => x.id !== id),
     };
     setChatState(next);
     if (chatPersistTimer.current) clearTimeout(chatPersistTimer.current);

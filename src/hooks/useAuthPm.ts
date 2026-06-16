@@ -146,10 +146,7 @@ export function useAuthPm({ user, registeredUsers, siteRoles, isLoading, setDbSa
     const msg = prev.find(m => m.id === messageId);
     if (!msg) return null;
     if (msg.hiddenFor?.includes(user.id)) return null;
-    const next = prev.map(m =>
-      m.id !== messageId ? m : { ...m, hiddenFor: [...(m.hiddenFor || []), user.id] },
-    );
-    setPrivateMessages(next);
+    setPrivateMessages(prev.filter(m => m.id !== messageId));
     const { error } = await pmHideForUser(messageId, user.id);
     if (error) {
       setPrivateMessages(prev);
@@ -163,10 +160,7 @@ export function useAuthPm({ user, registeredUsers, siteRoles, isLoading, setDbSa
     const prev = pmRef.current;
     const msg = prev.find(m => m.id === messageId);
     if (!msg) return null;
-    const next = prev.map(m =>
-      m.id === messageId ? { ...m, deletedForAll: true, text: '' } : m,
-    );
-    setPrivateMessages(next);
+    setPrivateMessages(prev.filter(m => m.id !== messageId));
     const { error } = await pmDeleteForAll(messageId, user.id);
     if (error) {
       setPrivateMessages(prev);
@@ -178,31 +172,25 @@ export function useAuthPm({ user, registeredUsers, siteRoles, isLoading, setDbSa
   const deletePmDialogForMe = useCallback(async (partnerId: string) => {
     if (!user) return 'Войдите в аккаунт';
     const prev = pmRef.current;
-    const thread = prev.filter(m =>
-      (m.fromId === user.id && m.toId === partnerId) || (m.fromId === partnerId && m.toId === user.id),
-    );
+    const inThread = (m: PrivateMessage) =>
+      (m.fromId === user.id && m.toId === partnerId) || (m.fromId === partnerId && m.toId === user.id);
+    const thread = prev.filter(inThread);
     for (const m of thread) {
       const { error } = await pmHideForUser(m.id, user.id);
       if (error) return error;
     }
-    setPrivateMessages(prev.map(m =>
-      ((m.fromId === user.id && m.toId === partnerId) || (m.fromId === partnerId && m.toId === user.id))
-        ? { ...m, hiddenFor: [...(m.hiddenFor || []), user.id] }
-        : m,
-    ));
+    setPrivateMessages(prev.filter(m => !inThread(m)));
     return null;
   }, [user]);
 
   const deletePmDialogForAll = useCallback(async (partnerId: string) => {
     if (!user) return 'Войдите в аккаунт';
     const prev = pmRef.current;
+    const inThread = (m: PrivateMessage) =>
+      (m.fromId === user.id && m.toId === partnerId) || (m.fromId === partnerId && m.toId === user.id);
     const { error } = await pmDeleteDialogForAll(user.id, partnerId);
     if (error) return error;
-    setPrivateMessages(prev.map(m =>
-      ((m.fromId === user.id && m.toId === partnerId) || (m.fromId === partnerId && m.toId === user.id))
-        ? { ...m, deletedForAll: true, text: '' }
-        : m,
-    ));
+    setPrivateMessages(prev.filter(m => !inThread(m)));
     return null;
   }, [user]);
 

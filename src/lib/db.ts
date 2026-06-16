@@ -718,6 +718,7 @@ export async function dbLoadChatMessages(limit: number = CHAT_PAGE_SIZE): Promis
   const { data, error } = await getSupabase()
     .from('chat_messages')
     .select('*')
+    .eq('deleted', false)
     .order('created_at', { ascending: false })
     .limit(limit);
   if (error) return [];
@@ -728,6 +729,7 @@ export async function dbLoadChatMessagesBefore(beforeCreatedAt: string, limit = 
   const { data, error } = await getSupabase()
     .from('chat_messages')
     .select('*')
+    .eq('deleted', false)
     .lt('created_at', beforeCreatedAt)
     .order('created_at', { ascending: false })
     .limit(limit);
@@ -767,7 +769,7 @@ export async function dbInsertChatMessage(message: Omit<DbChatMessage, 'created_
 }
 
 export async function dbDeleteChatMessage(id: string): Promise<boolean> {
-  const { error } = await getSupabase().from('chat_messages').update({ deleted: true }).eq('id', id);
+  const { error } = await getSupabase().from('chat_messages').delete().eq('id', id);
   return !error;
 }
 

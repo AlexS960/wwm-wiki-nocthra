@@ -1,21 +1,17 @@
-/** Конвертация статического контента и overrides → WikiArticle для Supabase. */
+/** Русские сиды вики для npm run wiki:push-db (не в клиентском бандле). */
 
-import { weapons, buildPaths, sects, lifeSkills, type Weapon, type BuildPath, type Sect } from '../data/gameData';
-import { bosses, recipes, type Boss, type Recipe } from '../data/extendedData';
-import { innerWays, resolvePathMeta } from '../data/innerWays';
-import { getDefaultSectionCategories } from '../data/sectionCategories';
-import type { WikiArticle } from '../types/site';
-import { buildSectionContent } from './sectionContent';
-import { martialArtRu } from './martialArtRu';
-import { normalizeWikiArticle } from './wikiNormalize';
-import { articleForDbStorage } from './wikiDbSync';
+import { weapons, buildPaths, sects, lifeSkills, type Weapon, type BuildPath, type Sect } from './data/gameSeeds.ts';
+import { bosses, recipes, type Boss, type Recipe } from './data/extendedData.ts';
+import type { WikiArticle } from '../src/types/site';
+import { buildSectionContent } from '../src/lib/sectionContent';
+import { martialArtRu } from '../src/lib/martialArtRu';
+import { articleForDbStorage } from '../src/lib/wikiDbSync';
 
 const SEED_AUTHOR = 'Nocthra Wiki';
 
-export interface MysticArtSeed {
+interface MysticArtSeed {
   id: string;
   name: string;
-  nameEn: string;
   icon: string;
   element: string;
   type: 'attack' | 'defense' | 'support' | 'movement';
@@ -25,22 +21,22 @@ export interface MysticArtSeed {
   howToGet: string;
 }
 
-export const mysticArtSeeds: MysticArtSeed[] = [
-  { id: 'ma-1', name: 'Небесный Гром', nameEn: 'Heavenly Thunder', icon: '⚡', element: 'Молния', type: 'attack', description: 'Призывает молнию с небес, поражающую всех врагов в радиусе.', effect: 'Урон 500% от силы атаки', cooldown: '60 сек', howToGet: 'Квест "Грозовое Небо"' },
-  { id: 'ma-2', name: 'Щит Дракона', nameEn: 'Dragon Shield', icon: '🛡️', element: 'Земля', type: 'defense', description: 'Создаёт непробиваемый щит, поглощающий урон.', effect: 'Поглощает 3000 урона', cooldown: '90 сек', howToGet: 'Секта Нефритового Лотоса — ранг 3' },
-  { id: 'ma-3', name: 'Дыхание Феникса', nameEn: 'Phoenix Breath', icon: '🔥', element: 'Огонь', type: 'support', description: 'Исцеляет союзников пламенем феникса.', effect: 'Восстанавливает 40% HP группы', cooldown: '120 сек', howToGet: 'Мировой босс "Феникс"' },
-  { id: 'ma-4', name: 'Теневой Прыжок', nameEn: 'Shadow Leap', icon: '🌑', element: 'Тьма', type: 'movement', description: 'Мгновенное перемещение в указанную точку.', effect: 'Телепортация на 20 метров', cooldown: '15 сек', howToGet: 'Павильон Теней — начальный навык' },
-  { id: 'ma-5', name: 'Вихрь Ветра', nameEn: 'Wind Vortex', icon: '🌀', element: 'Ветер', type: 'attack', description: 'Создаёт вихрь, затягивающий и повреждающий врагов.', effect: 'Урон 300% + контроль', cooldown: '45 сек', howToGet: 'Храм Ветров — сундук босса' },
-  { id: 'ma-6', name: 'Благословение Лотоса', nameEn: 'Lotus Blessing', icon: '🪷', element: 'Вода', type: 'support', description: 'Накладывает регенерацию и увеличивает защиту.', effect: '+30% защиты, реген 5% HP/сек', cooldown: '75 сек', howToGet: 'Квест "Цветок Лотоса"' },
+const mysticArtSeeds: MysticArtSeed[] = [
+  { id: 'ma-1', name: 'Небесный Гром', icon: '⚡', element: 'Молния', type: 'attack', description: 'Призывает молнию с небес, поражающую всех врагов в радиусе.', effect: 'Урон 500% от силы атаки', cooldown: '60 сек', howToGet: 'Квест "Грозовое Небо"' },
+  { id: 'ma-2', name: 'Щит Дракона', icon: '🛡️', element: 'Земля', type: 'defense', description: 'Создаёт непробиваемый щит, поглощающий урон.', effect: 'Поглощает 3000 урона', cooldown: '90 сек', howToGet: 'Секта Нефритового Лотоса — ранг 3' },
+  { id: 'ma-3', name: 'Дыхание Феникса', icon: '🔥', element: 'Огонь', type: 'support', description: 'Исцеляет союзников пламенем феникса.', effect: 'Восстанавливает 40% HP группы', cooldown: '120 сек', howToGet: 'Мировой босс "Феникс"' },
+  { id: 'ma-4', name: 'Теневой Прыжок', icon: '🌑', element: 'Тьма', type: 'movement', description: 'Мгновенное перемещение в указанную точку.', effect: 'Телепортация на 20 метров', cooldown: '15 сек', howToGet: 'Павильон Теней — начальный навык' },
+  { id: 'ma-5', name: 'Вихрь Ветра', icon: '🌀', element: 'Ветер', type: 'attack', description: 'Создаёт вихрь, затягивающий и повреждающий врагов.', effect: 'Урон 300% + контроль', cooldown: '45 сек', howToGet: 'Храм Ветров — сундук босса' },
+  { id: 'ma-6', name: 'Благословение Лотоса', icon: '🪷', element: 'Вода', type: 'support', description: 'Накладывает регенерацию и увеличивает защиту.', effect: '+30% защиты, реген 5% HP/сек', cooldown: '75 сек', howToGet: 'Квест "Цветок Лотоса"' },
 ];
 
-export interface TipSeed {
+interface TipSeed {
   id: string;
   category: string;
   text: string;
 }
 
-export const tipSeeds: TipSeed[] = [
+const tipSeeds: TipSeed[] = [
   { id: 't-1', category: 'beginner', text: 'Всегда собирайте всё на своём пути. Даже обычные травы могут пригодиться в готовке.' },
   { id: 't-2', category: 'beginner', text: 'Не тратьте ресурсы на улучшение низкоуровневого оружия. Сохраните их для легендарных предметов.' },
   { id: 't-3', category: 'beginner', text: 'Вступайте в гильдию как можно раньше — бонусы к опыту и доступ к гильдейским квестам.' },
@@ -62,7 +58,7 @@ const MYSTIC_TYPE_RU: Record<string, string> = {
 
 function baseArticle(
   partial: Omit<WikiArticle, 'authorName' | 'updatedAt'>,
-  source: 'seed' | 'override' = 'seed',
+  source: 'seed' | 'custom' = 'seed',
 ): WikiArticle {
   return {
     ...partial,
@@ -72,7 +68,7 @@ function baseArticle(
   };
 }
 
-export function weaponToWiki(w: Weapon, source: 'seed' | 'override' = 'seed'): WikiArticle {
+function weaponToWiki(w: Weapon): WikiArticle {
   return baseArticle({
     id: w.id,
     section: 'weapons',
@@ -90,10 +86,10 @@ export function weaponToWiki(w: Weapon, source: 'seed' | 'override' = 'seed'): W
       category: w.type,
     },
     images: [],
-  }, source);
+  });
 }
 
-export function buildToWiki(b: BuildPath, source: 'seed' | 'override' = 'seed'): WikiArticle {
+function buildToWiki(b: BuildPath): WikiArticle {
   return baseArticle({
     id: b.id,
     section: 'builds',
@@ -110,10 +106,10 @@ export function buildToWiki(b: BuildPath, source: 'seed' | 'override' = 'seed'):
       category: b.role,
     },
     images: [],
-  }, source);
+  });
 }
 
-export function sectToWiki(s: Sect, source: 'seed' | 'override' = 'seed'): WikiArticle {
+function sectToWiki(s: Sect): WikiArticle {
   return baseArticle({
     id: s.id,
     section: 'sects',
@@ -131,10 +127,10 @@ export function sectToWiki(s: Sect, source: 'seed' | 'override' = 'seed'): WikiA
       category: 'Секта',
     },
     images: [],
-  }, source);
+  });
 }
 
-export function bossToWiki(b: Boss, source: 'seed' | 'override' = 'seed'): WikiArticle {
+function bossToWiki(b: Boss): WikiArticle {
   return baseArticle({
     id: b.id,
     section: 'bosses',
@@ -154,10 +150,10 @@ export function bossToWiki(b: Boss, source: 'seed' | 'override' = 'seed'): WikiA
       category: b.type,
     },
     images: [],
-  }, source);
+  });
 }
 
-export function recipeToWiki(r: Recipe, source: 'seed' | 'override' = 'seed'): WikiArticle {
+function recipeToWiki(r: Recipe): WikiArticle {
   return baseArticle({
     id: r.id,
     section: 'cooking',
@@ -174,10 +170,10 @@ export function recipeToWiki(r: Recipe, source: 'seed' | 'override' = 'seed'): W
       category: r.category,
     },
     images: [],
-  }, source);
+  });
 }
 
-export function mysticToWiki(m: MysticArtSeed, source: 'seed' | 'override' = 'seed'): WikiArticle {
+function mysticToWiki(m: MysticArtSeed): WikiArticle {
   return baseArticle({
     id: m.id,
     section: 'mystic',
@@ -194,10 +190,10 @@ export function mysticToWiki(m: MysticArtSeed, source: 'seed' | 'override' = 'se
       mysticType: MYSTIC_TYPE_RU[m.type] || m.type,
     },
     images: [],
-  }, source);
+  });
 }
 
-export function tipToWiki(t: TipSeed, source: 'seed' | 'override' = 'seed'): WikiArticle {
+function tipToWiki(t: TipSeed): WikiArticle {
   return baseArticle({
     id: t.id,
     section: 'tips',
@@ -209,13 +205,12 @@ export function tipToWiki(t: TipSeed, source: 'seed' | 'override' = 'seed'): Wik
       category: t.category,
     },
     images: [],
-  }, source);
+  });
 }
 
-export function lifeSkillToWiki(
+function lifeSkillToWiki(
   ls: { name: string; description: string; icon: string },
   index: number,
-  source: 'seed' | 'override' = 'seed',
 ): WikiArticle {
   const id = `ls-${index}-${ls.name.toLowerCase().replace(/\s+/g, '-').slice(0, 24)}`;
   return baseArticle({
@@ -229,29 +224,7 @@ export function lifeSkillToWiki(
       category: 'Навык',
     },
     images: [],
-  }, source);
-}
-
-export function innerWayToWiki(
-  w: (typeof innerWays)[0],
-  source: 'seed' | 'override' = 'seed',
-): WikiArticle {
-  const pathMeta = resolvePathMeta(w.pathEn, getDefaultSectionCategories('innerpath'));
-  return baseArticle({
-    id: w.id,
-    section: 'innerpath',
-    title: w.nameRu || w.nameEn,
-    icon: pathMeta.icon,
-    content: buildSectionContent([
-      { header: '## Эффект', body: w.effectRu || w.effect },
-      { header: '## Как получить', body: w.howToGetRu || w.howToGet },
-    ]),
-    fields: {
-      summary: w.effectRu || w.effect,
-      category: w.pathEn,
-    },
-    images: [],
-  }, source);
+  });
 }
 
 export function getAllSeedArticles(): WikiArticle[] {
@@ -266,38 +239,4 @@ export function getAllSeedArticles(): WikiArticle[] {
     ...lifeSkills.map((ls, i) => lifeSkillToWiki(ls, i)),
   ];
   return raw.map(articleForDbStorage);
-}
-
-/** Собирает каталог только из БД (сиды — scripts/push-wiki-seeds-to-db.mjs). */
-export function buildWikiCatalog(existing: WikiArticle[] = []): WikiArticle[] {
-  return existing.map(normalizeWikiArticle);
-}
-
-const OVERRIDE_CONVERTERS: Record<string, (item: unknown, index?: number) => WikiArticle | null> = {
-  weapons: item => weaponToWiki(item as Weapon, 'override'),
-  builds: item => buildToWiki(item as BuildPath, 'override'),
-  sects: item => sectToWiki(item as Sect, 'override'),
-  bosses: item => bossToWiki(item as Boss, 'override'),
-  cooking: item => recipeToWiki(item as Recipe, 'override'),
-  mystic: item => mysticToWiki(item as MysticArtSeed, 'override'),
-  tips: item => tipToWiki(item as TipSeed, 'override'),
-  lifeskills: (item, index = 0) => {
-    const ls = item as { name: string; description: string; icon: string; id?: string };
-    const article = lifeSkillToWiki(ls, index, 'override');
-    if (ls.id) article.id = ls.id;
-    return article;
-  },
-  innerpath: item => innerWayToWiki(item as (typeof innerWays)[0], 'override'),
-};
-
-export function convertOverrideItem(sectionKey: string, item: unknown, index = 0): WikiArticle | null {
-  const fn = OVERRIDE_CONVERTERS[sectionKey];
-  if (!fn) return null;
-  return fn(item, index);
-}
-
-export function convertOverrideSection(sectionKey: string, items: unknown[]): WikiArticle[] {
-  return items
-    .map((item, i) => convertOverrideItem(sectionKey, item, i))
-    .filter((a): a is WikiArticle => a !== null);
 }

@@ -125,7 +125,7 @@ async function staffLoadGroupInboxFallback(userId: string): Promise<StaffGroupIn
     const last = msgs[msgs.length - 1];
     rows.push({
       room,
-      lastText: last ? (last.deletedForAll ? 'Сообщение удалено' : last.text) : 'Нет сообщений',
+      lastText: last ? last.text : 'Нет сообщений',
       lastTs: last?.timestamp || new Date(room.createdAt).getTime(),
       unreadCount: 0,
     });
@@ -244,16 +244,15 @@ export async function staffDeleteGroupMessageForAll(
   if (!(await staffGroupTablesExist())) return { error: 'Нет таблиц' };
   const { data, error: fetchErr } = await getSupabase()
     .from('staff_group_messages')
-    .select('from_id, deleted_for_all')
+    .select('from_id')
     .eq('id', messageId)
     .maybeSingle();
   if (fetchErr) return { error: fetchErr.message };
   if (!data) return { error: 'Сообщение не найдено' };
   if (data.from_id !== senderId) return { error: 'Можно удалить только свои сообщения' };
-  if (data.deleted_for_all) return {};
   const { error } = await getSupabase()
     .from('staff_group_messages')
-    .update({ deleted_for_all: true, text: '' })
+    .delete()
     .eq('id', messageId);
   return error ? { error: error.message } : {};
 }

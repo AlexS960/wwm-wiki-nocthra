@@ -54,7 +54,7 @@ async function loadSeedArticles() {
     logLevel: 'error',
   });
   try {
-    const mod = await server.ssrLoadModule('/src/lib/sectionSeeds.ts');
+    const mod = await server.ssrLoadModule('/scripts/wikiSeeds.ts');
     return mod.getAllSeedArticles();
   } finally {
     await server.close();
