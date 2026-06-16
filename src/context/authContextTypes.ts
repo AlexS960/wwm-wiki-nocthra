@@ -196,3 +196,46 @@ export interface AuthContextValue {
   chatSearchQuery: string;
   chatSearchResults: ChatMessage[] | null;
 }
+
+/** Данные, которые часто меняются — отдельный контекст, чтобы не ререндерить потребителей действий. */
+export type AuthState = Pick<
+  AuthContextValue,
+  | 'user'
+  | 'progress'
+  | 'guides'
+  | 'guideComments'
+  | 'guideVersions'
+  | 'registeredUsers'
+  | 'siteSettings'
+  | 'isLoading'
+  | 'wikiArticles'
+  | 'supportTickets'
+  | 'suggestions'
+  | 'suggestionsLoaded'
+  | 'chatState'
+  | 'privateMessages'
+  | 'unreadPMCount'
+  | 'dbSaveError'
+  | 'guild'
+  | 'registeredGuilds'
+  | 'guildsLoaded'
+  | 'discordUrl'
+  | 'siteNews'
+  | 'pmLoaded'
+  | 'guidesLoaded'
+  | 'chatLoaded'
+  | 'accountsLoaded'
+  | 'wikiLoaded'
+  | 'supportLoaded'
+  | 'guideMetaLoaded'
+  | 'guidesHasMore'
+  | 'guidesTotal'
+  | 'guidesLoading'
+  | 'chatHasMore'
+  | 'chatLoadingMore'
+  | 'chatSearchQuery'
+  | 'chatSearchResults'
+>;
+
+/** Стабильные методы (через useStableActions) — отдельный контекст. */
+export type AuthActions = Omit<AuthContextValue, keyof AuthState>;

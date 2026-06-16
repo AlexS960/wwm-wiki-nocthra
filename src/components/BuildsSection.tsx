@@ -1,12 +1,13 @@
 import { useMemo } from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useAuthState, useAuthActions } from '../context/AuthContext';
 import { resolveBuildName } from '../lib/buildLookup';
 import { Zap, Star } from 'lucide-react';
 import SectionHeader from './ui/SectionHeader';
 import SectionWikiBody from './wiki/SectionWikiBody';
 
 export default function BuildsSection() {
-  const { user, progress, toggleSelectedBuild, wikiArticles } = useAuth();
+  const { user, progress, wikiArticles } = useAuthState();
+  const { toggleSelectedBuild } = useAuthActions();
   const selectedBuildName = progress.selectedBuild
     ? (resolveBuildName(progress.selectedBuild, wikiArticles) ?? 'Выбранный билд')
     : null;

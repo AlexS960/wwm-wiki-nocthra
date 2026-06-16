@@ -1,9 +1,10 @@
-import { useAuth } from '../context/AuthContext';
+import { useAuthState, useAuthActions } from '../context/AuthContext';
 import SectionHeader from './ui/SectionHeader';
 import SectionWikiBody from './wiki/SectionWikiBody';
 
 export default function WeaponsSection() {
-  const { user, progress, toggleFavoriteWeapon } = useAuth();
+  const { user, progress } = useAuthState();
+  const { toggleFavoriteWeapon } = useAuthActions();
 
   return (
     <section id="weapons" className="py-20 bg-ink-900/50">

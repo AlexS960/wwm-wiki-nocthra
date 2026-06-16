@@ -32,8 +32,11 @@ import {
   sanitizeWiki,
 } from '../lib/siteImages';
 import { getDisplayName, isOnlineByLastSeen } from '../lib/displayName';
-import type { AuthContextValue } from './authContextTypes';
+import type { AuthContextValue, AuthState, AuthActions } from './authContextTypes';
+import { useStableActions } from '../lib/createStableActions';
 import { emptyNormalizedDomains } from '../hooks/auth/types';
+
+export type { AuthContextValue, AuthState, AuthActions } from './authContextTypes';
 
 export type { PrivateMessage } from '../lib/pm';
 export type {
@@ -57,7 +60,8 @@ export type {
 } from '../types/site';
 export { defaultGuild } from '../types/site';
 
-const AuthContext = createContext<AuthContextValue | null>(null);
+const AuthStateContext = createContext<AuthState | null>(null);
+const AuthActionsContext = createContext<AuthActions | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [dbSaveError, setDbSaveError] = useState<string | null>(null);
@@ -203,16 +207,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     [chatHook.chatState],
   );
 
-  const isAdmin = () => user?.role === 'admin';
-  const isEditor = () => user?.role === 'admin' || user?.role === 'editor';
-  const canAccessAdminPanel = () => {
+  const isAdmin = useCallback(() => user?.role === 'admin', [user?.role]);
+  const isEditor = useCallback(
+    () => user?.role === 'admin' || user?.role === 'editor',
+    [user?.role],
+  );
+  const canAccessAdminPanel = useCallback(() => {
     if (!user) return false;
     if (user.role === 'admin') return true;
     const rc = siteCore.getRoleConfig(user.role);
     return rc?.permissions?.includes('admin.panel') ?? false;
-  };
+  }, [user, siteCore.getRoleConfig]);
 
-  const canAccessStaffChat = () => userCanAccessStaffChat(user, safeSiteSettings.roles);
+  const canAccessStaffChat = useCallback(
+    () => userCanAccessStaffChat(user, safeSiteSettings.roles),
+    [user, safeSiteSettings.roles],
+  );
 
   const registerGuildEntry = useCallback(async (
     input: import('../types/site').RegisteredGuildInput,
@@ -283,44 +293,90 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return results.find(r => r) || null;
   };
 
-  const value: AuthContextValue = {
+  const clearDbSaveError = useCallback(() => setDbSaveError(null), []);
+
+  const authState = useMemo<AuthState>(() => ({
     user,
     progress,
     guides: guidesHook.guides,
     guideComments: guidesHook.guideComments,
     guideVersions: guidesHook.guideVersions,
     registeredUsers: accounts.registeredUsers,
-    refreshAccounts: accounts.refreshAccounts,
     siteSettings: safeSiteSettings,
     isLoading: siteCore.isLoading,
     wikiArticles: wikiHook.wikiArticles,
     supportTickets: supportHook.supportTickets,
     suggestions: suggestionsHook.suggestions,
     suggestionsLoaded: suggestionsHook.suggestionsLoaded,
+    chatState: safeChatState,
+    privateMessages: pm.privateMessages,
+    unreadPMCount: pm.unreadPMCount,
+    dbSaveError,
+    guild: siteCore.guild,
+    registeredGuilds: guildsHook.registeredGuilds,
+    guildsLoaded: guildsHook.guildsLoaded,
+    discordUrl: siteCore.discordUrl,
+    siteNews: siteNewsHook.siteNews,
+    pmLoaded: pm.pmLoaded,
+    guidesLoaded: guidesHook.guidesLoaded,
+    chatLoaded: chatHook.chatLoaded,
+    accountsLoaded: accounts.accountsLoaded,
+    wikiLoaded: wikiHook.wikiLoaded,
+    supportLoaded: supportHook.supportLoaded,
+    guideMetaLoaded: guidesHook.guideMetaLoaded,
+    guidesHasMore: guidesHook.guidesHasMore,
+    guidesTotal: guidesHook.guidesTotal,
+    guidesLoading: guidesHook.guidesLoading,
+    chatHasMore: chatHook.chatHasMore,
+    chatLoadingMore: chatHook.chatLoadingMore,
+    chatSearchQuery: chatHook.chatSearchQuery,
+    chatSearchResults: chatHook.chatSearchResults,
+  }), [
+    user,
+    progress,
+    guidesHook.guides,
+    guidesHook.guideComments,
+    guidesHook.guideVersions,
+    accounts.registeredUsers,
+    safeSiteSettings,
+    siteCore.isLoading,
+    wikiHook.wikiArticles,
+    supportHook.supportTickets,
+    suggestionsHook.suggestions,
+    suggestionsHook.suggestionsLoaded,
+    safeChatState,
+    pm.privateMessages,
+    pm.unreadPMCount,
+    dbSaveError,
+    siteCore.guild,
+    guildsHook.registeredGuilds,
+    guildsHook.guildsLoaded,
+    siteCore.discordUrl,
+    siteNewsHook.siteNews,
+    pm.pmLoaded,
+    guidesHook.guidesLoaded,
+    chatHook.chatLoaded,
+    accounts.accountsLoaded,
+    wikiHook.wikiLoaded,
+    supportHook.supportLoaded,
+    guidesHook.guideMetaLoaded,
+    guidesHook.guidesHasMore,
+    guidesHook.guidesTotal,
+    guidesHook.guidesLoading,
+    chatHook.chatHasMore,
+    chatHook.chatLoadingMore,
+    chatHook.chatSearchQuery,
+    chatHook.chatSearchResults,
+  ]);
+
+  const authActions = useStableActions<AuthActions>(() => ({
+    refreshAccounts: accounts.refreshAccounts,
     ensureSuggestionsLoaded: suggestionsHook.ensureSuggestionsLoaded,
     createSuggestion: suggestionsHook.createSuggestion,
     replyToSuggestion: suggestionsHook.replyToSuggestion,
     closeSuggestion: suggestionsHook.closeSuggestion,
     deleteSuggestion: suggestionsHook.deleteSuggestion,
-    chatState: safeChatState,
-    privateMessages: pm.privateMessages,
-    pmLoaded: pm.pmLoaded,
-    loadPmThread: pm.loadPmThread,
-    guidesLoaded: guidesHook.guidesLoaded,
-    chatLoaded: chatHook.chatLoaded,
-    accountsLoaded: accounts.accountsLoaded,
-    ensureGuidesLoaded: guidesHook.ensureGuidesLoaded,
-    ensureChatLoaded: chatHook.ensureChatLoaded,
-    ensureAccountsLoaded: accounts.ensureAccountsLoaded,
-    wikiLoaded: wikiHook.wikiLoaded,
-    supportLoaded: supportHook.supportLoaded,
-    guideMetaLoaded: guidesHook.guideMetaLoaded,
-    ensureWikiLoaded: wikiHook.ensureWikiLoaded,
-    ensureSupportLoaded: supportHook.ensureSupportLoaded,
-    ensureGuideMetaLoaded: guidesHook.ensureGuideMetaLoaded,
-    guild: siteCore.guild,
-    registeredGuilds: guildsHook.registeredGuilds,
-    guildsLoaded: guildsHook.guildsLoaded,
+    clearDbSaveError,
     ensureGuildsLoaded: guildsHook.ensureGuildsLoaded,
     refreshGuilds: guildsHook.refreshGuilds,
     registerGuild: registerGuildEntry,
@@ -328,16 +384,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     deleteRegisteredGuild: guildsHook.deleteRegisteredGuild,
     getGuildName: guildsHook.getGuildName,
     getGuildById: guildsHook.getGuildById,
-    discordUrl: siteCore.discordUrl,
-    siteNews: siteNewsHook.siteNews,
-    dbSaveError,
-    clearDbSaveError: () => setDbSaveError(null),
     updateGuild: g => { siteCore.setGuild(g); void persist('guild', g); },
     updateDiscordUrl: url => { siteCore.setDiscordUrl(url); void persist('discord_url', url); },
     addSiteNews: siteNewsHook.addSiteNews,
     updateSiteNews: siteNewsHook.updateSiteNews,
     deleteSiteNews: siteNewsHook.deleteSiteNews,
-    unreadPMCount: pm.unreadPMCount,
     loginWithPassword,
     register,
     logout,
@@ -436,26 +487,42 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     },
     getGuideVersions: guidesHook.getGuideVersions,
     restoreGuideVersion: guidesHook.restoreGuideVersion,
-    guidesHasMore: guidesHook.guidesHasMore,
-    guidesTotal: guidesHook.guidesTotal,
-    guidesLoading: guidesHook.guidesLoading,
+    loadPmThread: pm.loadPmThread,
+    ensureGuidesLoaded: guidesHook.ensureGuidesLoaded,
+    ensureChatLoaded: chatHook.ensureChatLoaded,
+    ensureAccountsLoaded: accounts.ensureAccountsLoaded,
+    ensureWikiLoaded: wikiHook.ensureWikiLoaded,
+    ensureSupportLoaded: supportHook.ensureSupportLoaded,
+    ensureGuideMetaLoaded: guidesHook.ensureGuideMetaLoaded,
     loadMoreGuides: guidesHook.loadMoreGuides,
     searchGuidesList: guidesHook.searchGuidesList,
     searchGuidesRemote: guidesHook.searchGuidesRemote,
-    chatHasMore: chatHook.chatHasMore,
-    chatLoadingMore: chatHook.chatLoadingMore,
     loadOlderChatMessages: chatHook.loadOlderChatMessages,
     searchChatMessages: chatHook.searchChatMessages,
     clearChatSearch: chatHook.clearChatSearch,
-    chatSearchQuery: chatHook.chatSearchQuery,
-    chatSearchResults: chatHook.chatSearchResults,
-  };
+  }));
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthStateContext.Provider value={authState}>
+      <AuthActionsContext.Provider value={authActions}>
+        {children}
+      </AuthActionsContext.Provider>
+    </AuthStateContext.Provider>
+  );
 }
 
-export function useAuth() {
-  const c = useContext(AuthContext);
-  if (!c) throw new Error('useAuth');
-  return c;
+export function useAuthState(): AuthState {
+  const state = useContext(AuthStateContext);
+  if (!state) throw new Error('useAuthState');
+  return state;
+}
+
+export function useAuthActions(): AuthActions {
+  const actions = useContext(AuthActionsContext);
+  if (!actions) throw new Error('useAuthActions');
+  return actions;
+}
+
+export function useAuth(): AuthContextValue {
+  return { ...useAuthState(), ...useAuthActions() };
 }
