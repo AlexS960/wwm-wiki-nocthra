@@ -1,6 +1,6 @@
 import type { WikiArticle } from '../types/site';
 import { convertOverrideSection, getAllSeedArticles } from './sectionSeeds';
-import { repairWikiArticleFromSeed } from './wikiRussianRepair';
+import { articleForDbStorage, needsWikiSeedResync, seedDiffersFromDb } from './wikiDbSync';
 import { contentStoreUpsertWiki, contentStoreUsesNormalized } from './contentStore';
 
 const UPSERT_BATCH = 8;
@@ -19,59 +19,57 @@ export interface SeedResult {
   migratedSections: string[];
 }
 
+/**
+ * Синхронизирует дефолтные статьи в Supabase (wiki_articles).
+ * Кастомные статьи (fields.source === 'custom') не перезаписываются.
+ */
 export async function seedWikiSections(
   existing: WikiArticle[],
   sectionOverrides: Record<string, unknown> | undefined,
   persistLegacy: (articles: WikiArticle[]) => Promise<void>,
 ): Promise<SeedResult> {
   const byId = new Map(existing.map(a => [a.id, a]));
-  const toUpsert: WikiArticle[] = [];
+  const toPersist: WikiArticle[] = [];
   const migratedSections: string[] = [];
+  const forceAll = needsWikiSeedResync();
 
   if (sectionOverrides) {
     for (const [sectionKey, raw] of Object.entries(sectionOverrides)) {
       if (!Array.isArray(raw) || raw.length === 0) continue;
       migratedSections.push(sectionKey);
       for (const article of convertOverrideSection(sectionKey, raw)) {
-        const existing = byId.get(article.id);
-        const src = existing?.fields?.source;
-        if (existing && src !== 'override' && src !== undefined) continue;
-        const seed = getAllSeedArticles().find(s => s.id === article.id);
-        toUpsert.push(seed ? repairWikiArticleFromSeed(article, seed) : article);
+        const prev = byId.get(article.id);
+        const src = prev?.fields?.source;
+        if (prev && src !== 'override' && src !== undefined) continue;
+        const normalized = articleForDbStorage(article);
+        byId.set(article.id, normalized);
+        toPersist.push(normalized);
       }
     }
   }
 
-  const pendingIds = new Set(toUpsert.map(a => a.id));
+  let inserted = 0;
+  let updated = 0;
+
   for (const seed of getAllSeedArticles()) {
-    if (!byId.has(seed.id) && !pendingIds.has(seed.id)) {
-      toUpsert.push(seed);
+    const prev = byId.get(seed.id);
+    if (prev?.fields?.source === 'custom') continue;
+
+    if (!prev) {
+      byId.set(seed.id, seed);
+      toPersist.push(seed);
+      inserted++;
+      continue;
+    }
+
+    if (forceAll || seedDiffersFromDb(seed, prev)) {
+      byId.set(seed.id, seed);
+      toPersist.push(seed);
+      updated++;
     }
   }
 
-  if (toUpsert.length === 0) {
-    return { inserted: 0, updated: 0, articles: existing, migratedSections };
-  }
-
   const usesNormalized = await contentStoreUsesNormalized('wiki');
-  let inserted = 0;
-  let updated = 0;
-  const toPersist: WikiArticle[] = [];
-
-  for (const article of toUpsert) {
-    const existing = byId.get(article.id);
-    if (existing?.fields?.source === 'custom') continue;
-    if (existing && existing.fields?.source !== 'override' && article.fields?.source !== 'seed') continue;
-
-    const seed = getAllSeedArticles().find(s => s.id === article.id);
-    const normalized = seed ? repairWikiArticleFromSeed(article, seed) : article;
-
-    const hadExisting = byId.has(article.id);
-    byId.set(article.id, normalized);
-    if (usesNormalized) toPersist.push(normalized);
-    if (hadExisting) updated++;
-    else inserted++;
-  }
 
   if (usesNormalized && toPersist.length > 0) {
     await upsertWikiBatch(toPersist);

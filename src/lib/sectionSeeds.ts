@@ -6,8 +6,9 @@ import { innerWays, resolvePathMeta } from '../data/innerWays';
 import { getDefaultSectionCategories } from '../data/sectionCategories';
 import type { WikiArticle } from '../types/site';
 import { buildSectionContent } from './sectionContent';
+import { martialArtRu } from './martialArtRu';
 import { normalizeWikiArticle } from './wikiNormalize';
-import { repairWikiArticleFromSeed } from './wikiRussianRepair';
+import { articleForDbStorage } from './wikiDbSync';
 
 const SEED_AUTHOR = 'Nocthra Wiki';
 
@@ -83,9 +84,8 @@ export function weaponToWiki(w: Weapon, source: 'seed' | 'override' = 'seed'): W
       { header: '## Пара', body: w.pair },
     ]),
     fields: {
-      nameEn: w.nameEn,
       role: w.role,
-      martialArt: w.martialArt,
+      martialArt: martialArtRu(w.martialArt),
       summary: w.description,
       category: w.type,
     },
@@ -105,7 +105,6 @@ export function buildToWiki(b: BuildPath, source: 'seed' | 'override' = 'seed'):
       { header: '## Слабые стороны', body: b.weaknesses },
     ]),
     fields: {
-      nameEn: b.nameEn,
       difficulty: b.difficulty,
       summary: b.description,
       category: b.role,
@@ -126,7 +125,6 @@ export function sectToWiki(s: Sect, source: 'seed' | 'override' = 'seed'): WikiA
       { header: '## Правила', body: s.rules },
     ]),
     fields: {
-      nameEn: s.nameEn,
       theme: s.theme,
       weapon: s.weapon,
       summary: s.description,
@@ -152,7 +150,6 @@ export function bossToWiki(b: Boss, source: 'seed' | 'override' = 'seed'): WikiA
       { header: '## Советы', body: b.tips },
     ]),
     fields: {
-      nameEn: b.nameEn,
       summary: `${b.region} — ${b.location}`,
       category: b.type,
     },
@@ -173,7 +170,6 @@ export function recipeToWiki(r: Recipe, source: 'seed' | 'override' = 'seed'): W
       { header: '## Разблокировка', body: r.howToUnlock },
     ]),
     fields: {
-      nameEn: r.nameEn,
       summary: r.effect,
       category: r.category,
     },
@@ -193,7 +189,6 @@ export function mysticToWiki(m: MysticArtSeed, source: 'seed' | 'override' = 'se
       { header: '## Как получить', body: m.howToGet },
     ]),
     fields: {
-      nameEn: m.nameEn,
       summary: m.description,
       category: m.element,
       mysticType: MYSTIC_TYPE_RU[m.type] || m.type,
@@ -252,7 +247,6 @@ export function innerWayToWiki(
       { header: '## Как получить', body: w.howToGetRu || w.howToGet },
     ]),
     fields: {
-      nameEn: w.nameEn,
       summary: w.effectRu || w.effect,
       category: w.pathEn,
     },
@@ -261,7 +255,7 @@ export function innerWayToWiki(
 }
 
 export function getAllSeedArticles(): WikiArticle[] {
-  return [
+  const raw = [
     ...weapons.map(w => weaponToWiki(w)),
     ...buildPaths.map(b => buildToWiki(b)),
     ...sects.map(s => sectToWiki(s)),
@@ -272,6 +266,7 @@ export function getAllSeedArticles(): WikiArticle[] {
     ...lifeSkills.map((ls, i) => lifeSkillToWiki(ls, i)),
     ...innerWays.map(w => innerWayToWiki(w)),
   ];
+  return raw.map(articleForDbStorage);
 }
 
 /** Дополняет загруженные статьи дефолтным контентом (без перезаписи существующих). */
@@ -283,17 +278,11 @@ export function mergeWikiWithSeeds(existing: WikiArticle[]): WikiArticle[] {
   return [...byId.values()];
 }
 
-/** Собирает полный каталог для отображения: сиды → БД (БД перекрывает сиды, с восстановлением русского). */
+/** Собирает каталог: сиды → БД (БД перекрывает сиды; кастомные статьи сохраняются). */
 export function buildWikiCatalog(existing: WikiArticle[] = []): WikiArticle[] {
-  const seeds = getAllSeedArticles();
-  const seedById = new Map(seeds.map(s => [s.id, s]));
   const byId = new Map<string, WikiArticle>();
-  for (const seed of seeds) byId.set(seed.id, seed);
-  for (const article of existing) {
-    const seed = seedById.get(article.id);
-    const merged = seed ? repairWikiArticleFromSeed(article, seed) : article;
-    byId.set(article.id, merged);
-  }
+  for (const seed of getAllSeedArticles()) byId.set(seed.id, seed);
+  for (const article of existing) byId.set(article.id, article);
   return [...byId.values()].map(normalizeWikiArticle);
 }
 

@@ -6,25 +6,16 @@ import {
   contentStoreAddWiki,
   contentStoreUpdateWiki,
   contentStoreDeleteWiki,
-  contentStoreUpsertWiki,
 } from '../../lib/contentStore';
-import { buildWikiCatalog, getAllSeedArticles } from '../../lib/sectionSeeds';
+import { buildWikiCatalog } from '../../lib/sectionSeeds';
 import { seedWikiSections } from '../../lib/seedWikiSections';
-import { collectWikiDbRepairs } from '../../lib/wikiRussianRepair';
+import { markWikiSeedSynced, needsWikiSeedResync } from '../../lib/wikiDbSync';
 import { sanitizeWiki } from '../../lib/siteImages';
 import { logger } from '../../lib/logger';
 import type { MutableRefObject } from 'react';
 import type { NormalizedDomains } from './types';
 
 const DB_TIMEOUT_MS = 8_000;
-const REPAIR_BATCH = 8;
-
-async function upsertRepairBatch(articles: WikiArticle[]): Promise<void> {
-  for (let i = 0; i < articles.length; i += REPAIR_BATCH) {
-    const batch = articles.slice(i, i + REPAIR_BATCH);
-    await Promise.all(batch.map(a => contentStoreUpsertWiki(a)));
-  }
-}
 
 function withTimeout<T>(promise: Promise<T>, ms: number, fallback: T): Promise<T> {
   return Promise.race([
@@ -56,7 +47,6 @@ export function useAuthWiki({
   const [wikiLoaded, setWikiLoaded] = useState(false);
   const wikiRef = useRef(wikiArticles);
   wikiRef.current = wikiArticles;
-  const seededRef = useRef(false);
   const syncStartedRef = useRef(false);
 
   const syncWikiFromDb = useCallback(async () => {
@@ -79,38 +69,27 @@ export function useAuthWiki({
       normalizedRef.current.wiki = false;
     }
 
-    if (normalizedRef.current.wiki && dbArticles.length > 0) {
-      const repairs = collectWikiDbRepairs(dbArticles, getAllSeedArticles());
-      if (repairs.length > 0) {
-        try {
-          await upsertRepairBatch(repairs);
-          const repairById = new Map(repairs.map(a => [a.id, a]));
-          dbArticles = dbArticles.map(a => repairById.get(a.id) ?? a);
-        } catch (err) {
-          logger.warn('Wiki Russian repair persist failed', 'wiki', String(err));
-        }
-      }
-    }
-
     setWikiArticles(sanitizeWiki(buildWikiCatalog(dbArticles)));
 
-    if (!seededRef.current) {
-      seededRef.current = true;
-      try {
-        const overrides = getSectionOverrides();
-        const seedResult = await seedWikiSections(
-          dbArticles,
-          overrides,
-          async all => { await persist('wiki', all); },
-        );
-        if (seedResult.migratedSections.length > 0) {
-          onOverridesMigrated(seedResult.migratedSections);
-        }
-        setWikiArticles(sanitizeWiki(buildWikiCatalog(seedResult.articles)));
-      } catch (err) {
-        logger.warn('Background wiki seed failed', 'wiki', String(err));
+    try {
+      const forceResync = needsWikiSeedResync();
+      const overrides = getSectionOverrides();
+      const seedResult = await seedWikiSections(
+        dbArticles,
+        overrides,
+        async all => { await persist('wiki', all); },
+      );
+      if (seedResult.migratedSections.length > 0) {
+        onOverridesMigrated(seedResult.migratedSections);
       }
+      if (forceResync || seedResult.inserted > 0 || seedResult.updated > 0) {
+        markWikiSeedSynced();
+      }
+      setWikiArticles(sanitizeWiki(buildWikiCatalog(seedResult.articles)));
+    } catch (err) {
+      logger.warn('Wiki DB seed sync failed', 'wiki', String(err));
     }
+
     setWikiLoaded(true);
   }, [getSectionOverrides, onOverridesMigrated, persist, normalizedRef]);
 
