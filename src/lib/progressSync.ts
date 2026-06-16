@@ -3,7 +3,6 @@ import { dbLoadProgress, dbSaveProgress } from './db';
 import type { UserProgress } from '../types/site';
 import {
   loadProgressLocal,
-  mergeUserProgress,
   resolveUserProgress,
   saveProgressLocal,
 } from './userProgress';
@@ -26,12 +25,12 @@ export async function hydrateUserProgress(
   const fromDb = await dbLoadProgress(userId);
   if (isActive && !isActive()) return null;
   const fromLocal = loadProgressLocal(userId);
-  const merged = resolveUserProgress(fromLocal, fromDb);
-  setProgress(prev => mergeUserProgress(prev, merged));
+  const resolved = resolveUserProgress(fromLocal, fromDb);
+  setProgress(resolved);
   if (isActive && !isActive()) return null;
-  saveProgressLocal(userId, merged);
-  if (progressNeedsDbSync(merged, fromDb)) {
-    void dbSaveProgress(userId, merged);
+  saveProgressLocal(userId, resolved);
+  if (progressNeedsDbSync(resolved, fromDb?.progress ?? null)) {
+    void dbSaveProgress(userId, resolved);
   }
-  return merged;
+  return resolved;
 }

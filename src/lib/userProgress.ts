@@ -4,13 +4,19 @@ import { asArray } from '../context/authContextTypes';
 
 const PROGRESS_KEY_PREFIX = 'wwm_progress_';
 
+export interface ProgressSnapshot {
+  progress: UserProgress;
+  savedAt: string | null;
+}
+
 function progressStorageKey(userId: string) {
   return `${PROGRESS_KEY_PREFIX}${userId}`;
 }
 
 export function normalizeUserProgress(raw: unknown): UserProgress {
   if (!raw || typeof raw !== 'object') return { ...defaultUserProgress };
-  const p = raw as Record<string, unknown>;
+  const p = { ...(raw as Record<string, unknown>) };
+  delete p.savedAt;
   const selected = p.selectedBuild;
   return {
     completedGuides: asArray<string>(p.completedGuides).filter(id => typeof id === 'string' && id.length > 0),
@@ -29,34 +35,35 @@ export function normalizeUserProgress(raw: unknown): UserProgress {
   };
 }
 
-function uniqIds(...lists: string[][]): string[] {
-  return [...new Set(lists.flat())];
+function progressTimestamp(iso: string | null | undefined): number {
+  if (!iso) return 0;
+  const t = new Date(iso).getTime();
+  return Number.isFinite(t) ? t : 0;
 }
 
-/** Объединяет локальный и удалённый прогресс без потери выбранного билда и избранного. */
-export function mergeUserProgress(preferred: UserProgress, fallback: UserProgress): UserProgress {
-  const notes = preferred.notes.length >= fallback.notes.length ? preferred.notes : fallback.notes;
-  return normalizeUserProgress({
-    completedGuides: uniqIds(preferred.completedGuides, fallback.completedGuides),
-    favoriteWeapons: uniqIds(preferred.favoriteWeapons, fallback.favoriteWeapons),
-    favoriteSects: uniqIds(preferred.favoriteSects, fallback.favoriteSects),
-    visitedRegions: uniqIds(preferred.visitedRegions, fallback.visitedRegions),
-    notes,
-    selectedBuild: preferred.selectedBuild ?? fallback.selectedBuild,
-  });
+/** Берёт более свежую копию прогресса (local vs DB). Не объединяет списки — иначе удаления не сохраняются. */
+export function resolveUserProgress(
+  local: ProgressSnapshot | null,
+  remote: ProgressSnapshot | null,
+): UserProgress {
+  const localProgress = local?.progress ?? { ...defaultUserProgress };
+  const remoteProgress = remote?.progress ?? { ...defaultUserProgress };
+  const localTs = progressTimestamp(local?.savedAt);
+  const remoteTs = progressTimestamp(remote?.savedAt);
+
+  if (localTs === 0 && remoteTs === 0) return remoteProgress;
+  if (localTs === 0) return remoteProgress;
+  if (remoteTs === 0) return localProgress;
+  return localTs >= remoteTs ? localProgress : remoteProgress;
 }
 
-export function resolveUserProgress(fromLocal: UserProgress | null, fromDb: UserProgress | null): UserProgress {
-  const local = fromLocal ?? { ...defaultUserProgress };
-  const remote = fromDb ?? { ...defaultUserProgress };
-  return mergeUserProgress(local, remote);
-}
-
-export function loadProgressLocal(userId: string): UserProgress | null {
+export function loadProgressLocal(userId: string): ProgressSnapshot | null {
   try {
     const raw = localStorage.getItem(progressStorageKey(userId));
     if (!raw) return null;
-    return normalizeUserProgress(JSON.parse(raw));
+    const parsed = JSON.parse(raw) as Record<string, unknown>;
+    const savedAt = typeof parsed.savedAt === 'string' ? parsed.savedAt : null;
+    return { progress: normalizeUserProgress(parsed), savedAt };
   } catch {
     return null;
   }
@@ -64,7 +71,10 @@ export function loadProgressLocal(userId: string): UserProgress | null {
 
 export function saveProgressLocal(userId: string, progress: UserProgress) {
   try {
-    localStorage.setItem(progressStorageKey(userId), JSON.stringify(progress));
+    localStorage.setItem(
+      progressStorageKey(userId),
+      JSON.stringify({ ...progress, savedAt: new Date().toISOString() }),
+    );
   } catch {
     /* quota / private mode */
   }
@@ -76,4 +86,8 @@ export function clearProgressLocal(userId: string) {
   } catch {
     /* ignore */
   }
+}
+
+export function getProgressLocalSavedAt(userId: string): string | null {
+  return loadProgressLocal(userId)?.savedAt ?? null;
 }

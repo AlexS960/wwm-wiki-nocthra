@@ -37,7 +37,7 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
   const [progress, setProgress] = useState<UserProgress>(() => {
     const stored = loadStoredUser();
     if (!stored?.id) return { ...defaultUserProgress };
-    return loadProgressLocal(stored.id) ?? { ...defaultUserProgress };
+    return loadProgressLocal(stored.id)?.progress ?? { ...defaultUserProgress };
   });
   const progressSaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pendingProgress = useRef<UserProgress | null>(null);
@@ -176,14 +176,17 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
     return null;
   }, []);
 
-  const logout = useCallback(() => {
+  const logout = useCallback(async () => {
     const uid = user?.id;
     if (uid && pendingProgress.current) {
+      if (progressSaveTimer.current) {
+        clearTimeout(progressSaveTimer.current);
+        progressSaveTimer.current = null;
+      }
       saveProgressLocal(uid, pendingProgress.current);
-      void flushProgress(uid, pendingProgress.current);
+      await flushProgress(uid, pendingProgress.current);
       pendingProgress.current = null;
-    }
-    if (progressSaveTimer.current) {
+    } else if (progressSaveTimer.current) {
       clearTimeout(progressSaveTimer.current);
       progressSaveTimer.current = null;
     }

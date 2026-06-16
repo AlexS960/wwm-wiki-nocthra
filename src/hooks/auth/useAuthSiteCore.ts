@@ -37,7 +37,7 @@ export function useAuthSiteCore({ user, setProgress, setDbSaveError }: Deps) {
         );
         if (user) {
           const fromLocal = loadProgressLocal(user.id);
-          if (fromLocal) setProgress(fromLocal);
+          if (fromLocal) setProgress(fromLocal.progress);
         }
         setIsLoading(false);
         return;

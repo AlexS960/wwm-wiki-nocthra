@@ -288,10 +288,17 @@ export async function dbSaveSiteData(key: string, value: unknown): Promise<{ err
 }
 
 // ====== user_progress ======
-export async function dbLoadProgress(userId: string): Promise<UserProgress | null> {
-  const { data, error } = await getSupabase().from('user_progress').select('data').eq('user_id', userId).maybeSingle();
+export async function dbLoadProgress(userId: string): Promise<{ progress: UserProgress; savedAt: string | null } | null> {
+  const { data, error } = await getSupabase()
+    .from('user_progress')
+    .select('data, updated_at')
+    .eq('user_id', userId)
+    .maybeSingle();
   if (error || !data) return null;
-  return normalizeUserProgress(parseDbJson(data.data, null));
+  return {
+    progress: normalizeUserProgress(parseDbJson(data.data, null)),
+    savedAt: typeof data.updated_at === 'string' ? data.updated_at : null,
+  };
 }
 
 export async function dbSaveProgress(userId: string, data: UserProgress): Promise<{ error?: string }> {

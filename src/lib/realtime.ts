@@ -49,7 +49,7 @@ export function subscribeAccounts(onChange: () => void): () => void {
 /** Подписка на прогресс конкретного пользователя */
 export function subscribeUserProgress(
   userId: string,
-  onChange: (data: unknown) => void,
+  onChange: (data: unknown, updatedAt: string | null) => void,
 ): () => void {
   const channel = getSupabase()
     .channel(`user_progress-${userId}`)
@@ -62,9 +62,10 @@ export function subscribeUserProgress(
         filter: `user_id=eq.${userId}`,
       },
       (payload) => {
-        const row = payload.new as { data?: unknown } | undefined;
+        const row = payload.new as { data?: unknown; updated_at?: string } | undefined;
         if (!row?.data) return;
-        onChange(parseSiteDataValue(row.data));
+        const updatedAt = typeof row.updated_at === 'string' ? row.updated_at : null;
+        onChange(parseSiteDataValue(row.data), updatedAt);
       },
     )
     .subscribe();

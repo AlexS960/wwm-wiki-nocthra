@@ -25,7 +25,7 @@ import { buildWikiCatalog } from '../../lib/wikiCatalog';
 import { sanitizeGuides, sanitizeGuideVersions, sanitizeSiteNews, sanitizeWiki } from '../../lib/siteImages';
 import type { Dispatch, SetStateAction } from 'react';
 import type { UserProgress } from '../../types/site';
-import { mergeUserProgress, normalizeUserProgress, saveProgressLocal } from '../../lib/userProgress';
+import { normalizeUserProgress, saveProgressLocal, getProgressLocalSavedAt } from '../../lib/userProgress';
 
 type Deps = {
   isLoading: boolean;
@@ -118,14 +118,15 @@ export function useAuthRealtime(deps: Deps) {
 
   useEffect(() => {
     if (!deps.userId) return;
-    return subscribeUserProgress(deps.userId, (data) => {
+    return subscribeUserProgress(deps.userId, (data, updatedAt) => {
       if (!data) return;
       const remote = normalizeUserProgress(data);
-      depsRef.current.setProgress(prev => {
-        const merged = mergeUserProgress(remote, prev);
-        saveProgressLocal(deps.userId!, merged);
-        return merged;
-      });
+      const localSavedAt = getProgressLocalSavedAt(deps.userId!);
+      const localTs = localSavedAt ? new Date(localSavedAt).getTime() : 0;
+      const remoteTs = updatedAt ? new Date(updatedAt).getTime() : 0;
+      if (localTs > remoteTs) return;
+      depsRef.current.setProgress(remote);
+      saveProgressLocal(deps.userId!, remote);
     });
   }, [deps.userId]);
 }
