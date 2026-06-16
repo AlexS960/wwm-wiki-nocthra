@@ -1,5 +1,5 @@
 import { lazy, type ComponentType, type LazyExoticComponent } from 'react';
-import { isChunkLoadError, reloadOnceForChunkError } from './chunkError';
+import { isChunkLoadError, recoverFromChunkError } from './chunkError';
 
 async function importWithRetry<T>(
   factory: () => Promise<T>,
@@ -19,9 +19,8 @@ async function importWithRetry<T>(
     }
   }
   if (isChunkLoadError(lastError)) {
-    if (reloadOnceForChunkError()) {
-      return new Promise(() => {});
-    }
+    const recovered = await recoverFromChunkError();
+    if (recovered) return new Promise(() => {});
     throw lastError;
   }
   throw lastError;

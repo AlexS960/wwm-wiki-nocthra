@@ -1,5 +1,5 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react';
-import { isChunkLoadError, reloadOnceForChunkError } from '../lib/chunkError';
+import { isChunkLoadError, recoverFromChunkError } from '../lib/chunkError';
 import { logger } from '../lib/logger';
 
 interface Props {
@@ -20,10 +20,17 @@ export default class AppErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, info: ErrorInfo) {
     logger.error('AppErrorBoundary caught an error', 'AppErrorBoundary', { error, componentStack: info.componentStack });
-    if (isChunkLoadError(error) && reloadOnceForChunkError()) {
-      this.setState({ reloading: true });
+    if (isChunkLoadError(error)) {
+      void recoverFromChunkError().then(ok => {
+        if (ok) this.setState({ reloading: true });
+      });
     }
   }
+
+  handleRecover = () => {
+    this.setState({ reloading: true, error: null });
+    void recoverFromChunkError(true);
+  };
 
   render() {
     if (this.state.reloading) {
@@ -42,7 +49,7 @@ export default class AppErrorBoundary extends Component<Props, State> {
             <h1 className="font-serif text-xl font-bold text-crimson-300">Ошибка интерфейса</h1>
             <p className="text-sm text-ink-300">
               {isChunk
-                ? 'Не удалось загрузить часть приложения — обычно это решается перезагрузкой после обновления сайта.'
+                ? 'Сайт обновился, а в браузере осталась старая версия. Нажмите кнопку — кэш очистится и страница перезагрузится.'
                 : 'Приложение не смогло отрисоваться. Откройте консоль браузера (F12) для подробностей.'}
             </p>
             <pre className="text-xs text-ink-400 bg-ink-900/80 rounded-lg p-3 overflow-auto max-h-40 whitespace-pre-wrap break-words">
@@ -50,10 +57,10 @@ export default class AppErrorBoundary extends Component<Props, State> {
             </pre>
             <button
               type="button"
-              onClick={() => window.location.reload()}
+              onClick={this.handleRecover}
               className="px-4 py-2 rounded-lg bg-gold-400/20 text-gold-400 text-sm font-medium hover:bg-gold-400/30 cursor-pointer"
             >
-              Перезагрузить страницу
+              {isChunk ? 'Обновить сайт' : 'Перезагрузить страницу'}
             </button>
           </div>
         </div>

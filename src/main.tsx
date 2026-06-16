@@ -5,7 +5,7 @@ import App from "./App";
 import AppErrorBoundary from "./components/AppErrorBoundary";
 import SetupError from "./components/SetupError";
 import { isSupabaseConfigured } from "./lib/supabase";
-import { isChunkLoadError, reloadOnceForChunkError } from "./lib/chunkError";
+import { isChunkLoadError, recoverFromChunkError } from "./lib/chunkError";
 
 const rootEl = document.getElementById("root");
 if (!rootEl) throw new Error("Элемент #root не найден");
@@ -13,8 +13,9 @@ if (!rootEl) throw new Error("Элемент #root не найден");
 const root = createRoot(rootEl);
 
 window.addEventListener("unhandledrejection", (event) => {
-  if (isChunkLoadError(event.reason) && reloadOnceForChunkError()) {
+  if (isChunkLoadError(event.reason)) {
     event.preventDefault();
+    void recoverFromChunkError();
   }
 });
 

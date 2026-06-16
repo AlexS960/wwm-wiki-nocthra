@@ -22,6 +22,7 @@ import { clearChunkReloadFlag } from './lib/chunkError';
 import { isKnownPath, pageFromPath, pathFromPage, registerCustomSectionRoutes } from './lib/appRoutes';
 import { isContentSectionResolved, sanitizeSectionDefinitions } from './lib/sectionRegistry';
 import { lazyWithRetry } from './lib/lazyWithRetry';
+import ContentPage from './components/ContentPage';
 import type { NavigatePayload } from './components/Header';
 import { WikiNavigationProvider } from './context/WikiNavigationContext';
 import { wikiCardHash, wikiCardIdFromHash } from './lib/wikiLinks';
@@ -29,7 +30,6 @@ import { wikiCardHash, wikiCardIdFromHash } from './lib/wikiLinks';
 const GuidesPage = lazyWithRetry(() => import('./components/GuidesPage'));
 const AdminPage = lazyWithRetry(() => import('./components/AdminPage'));
 const UsersListPage = lazyWithRetry(() => import('./components/UsersListPage'));
-const ContentPage = lazyWithRetry(() => import('./components/ContentPage'));
 const WwmWikiPage = lazyWithRetry(() => import('./components/WwmWikiPage'));
 const FAQSection = lazyWithRetry(() => import('./components/FAQSection'));
 const PrivateMessages = lazyWithRetry(() => import('./components/PrivateMessages'));
@@ -60,9 +60,18 @@ function AppContent() {
   useClickSound();
 
   useEffect(() => {
-    const nav = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
-    if (nav?.type === 'reload') return;
-    clearChunkReloadFlag();
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('_v')) {
+      url.searchParams.delete('_v');
+      const qs = url.searchParams.toString();
+      window.history.replaceState(
+        window.history.state,
+        '',
+        url.pathname + (qs ? `?${qs}` : '') + url.hash,
+      );
+    }
+    const t = setTimeout(() => clearChunkReloadFlag(), 10_000);
+    return () => clearTimeout(t);
   }, []);
   const showScrollTop = useScrollThreshold(600);
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -340,14 +349,12 @@ function AppContent() {
     if (isContentSectionResolved(currentPage, siteSettings)) {
       return (
         <PageShell headerProps={headerProps} modals={modals}>
-          <Suspense fallback={<PageLoader />}>
-            <ContentPage
-              pageId={currentPage}
-              onBack={goBack}
-              focusWikiId={showLoginModal || showProfileModal ? null : pendingWikiId}
-              onWikiFocused={() => setPendingWikiId(null)}
-            />
-          </Suspense>
+          <ContentPage
+            pageId={currentPage}
+            onBack={goBack}
+            focusWikiId={showLoginModal || showProfileModal ? null : pendingWikiId}
+            onWikiFocused={() => setPendingWikiId(null)}
+          />
         </PageShell>
       );
     }

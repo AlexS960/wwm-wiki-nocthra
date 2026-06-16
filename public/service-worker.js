@@ -1,9 +1,7 @@
-const CACHE_NAME = 'wwm-wiki-v4';
-const SHELL_CACHE = [
-  '/',
-  '/index.html',
-  '/site.webmanifest',
-  '/robots.txt',
+const CACHE_NAME = 'wwm-wiki-v5';
+
+/** Только статика изображений — HTML и JS никогда не кэшируем (ломает lazy-чанки после деплоя). */
+const IMAGE_CACHE = [
   '/images/hero-bg.jpg',
   '/images/wwm-logo.png',
 ];
@@ -11,9 +9,8 @@ const SHELL_CACHE = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) =>
-      cache.addAll(SHELL_CACHE).catch((err) => {
-        console.warn('Cache addAll error:', err);
-        return cache.add('/index.html');
+      cache.addAll(IMAGE_CACHE).catch((err) => {
+        console.warn('SW image cache error:', err);
       }),
     ),
   );
@@ -46,33 +43,17 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(request.url);
   if (url.origin !== location.origin) return;
 
-  // Хешированные чанки Vite — всегда с сети (иначе после деплоя остаётся старый JS)
-  if (url.pathname.startsWith('/assets/')) {
-    event.respondWith(
-      fetch(request)
-        .then((response) => {
-          cachePut(request, response);
-          return response;
-        })
-        .catch(() => caches.match(request).then((r) => r || new Response('', { status: 503 }))),
-    );
+  // HTML, JS, CSS — только сеть (иначе мобильные получают старые ссылки на чанки)
+  if (
+    url.pathname === '/' ||
+    url.pathname === '/index.html' ||
+    url.pathname.startsWith('/assets/')
+  ) {
+    event.respondWith(fetch(request));
     return;
   }
 
-  // index.html — network-first, чтобы подхватывать новые ссылки на чанки
-  if (url.pathname === '/' || url.pathname === '/index.html') {
-    event.respondWith(
-      fetch(request)
-        .then((response) => {
-          cachePut(request, response);
-          return response;
-        })
-        .catch(() => caches.match('/index.html').then((r) => r || caches.match('/'))),
-    );
-    return;
-  }
-
-  // Статика (картинки, шрифты) — cache-first с подгрузкой из сети
+  // Картинки — cache-first
   if (
     request.destination === 'image' ||
     request.destination === 'font' ||
