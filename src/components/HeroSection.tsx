@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { ChevronDown, Edit3, Save, X } from 'lucide-react';
+import { ChevronDown, Edit3, Save, X, BookOpen } from 'lucide-react';
 import { GuildBadgeHero } from './GuildBadge';
-import { useAuth } from '../context/AuthContext';
+import { useAuthState, useAuthActions } from '../context/AuthContext';
 import { DEFAULT_LOGO, getResolvedLolkaUrl, mergeHeroSettings } from '../lib/siteConstructor';
 
 const WWM_LOGO_FALLBACK =
@@ -12,8 +12,9 @@ interface HeroSectionProps {
   hasAnnouncements?: boolean;
 }
 
-export default function HeroSection({ onNavigate: _onNavigate, hasAnnouncements = false }: HeroSectionProps) {
-  const { hasPermission, discordUrl, updateDiscordUrl, siteSettings, updateSiteSettings } = useAuth();
+export default function HeroSection({ onNavigate, hasAnnouncements = false }: HeroSectionProps) {
+  const { siteSettings, discordUrl } = useAuthState();
+  const { hasPermission, updateDiscordUrl, updateSiteSettings } = useAuthActions();
   const canEdit = hasPermission('guild.edit') || hasPermission('admin.panel');
   const [showEditor, setShowEditor] = useState(false);
   const [draft, setDraft] = useState('');
@@ -53,6 +54,36 @@ export default function HeroSection({ onNavigate: _onNavigate, hasAnnouncements 
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className={`hero-readable relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center ${hasAnnouncements ? 'pt-6 md:pt-8' : 'pt-16 md:pt-20'}`}>
         <div className="md:animate-fadeInUp">
+          {onNavigate && (
+            <div className="mb-5 sm:mb-6 flex justify-center">
+              <button
+                type="button"
+                onClick={() => onNavigate('wwmwiki')}
+                className="group relative inline-flex items-center gap-2.5 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full
+                  font-serif text-sm sm:text-base font-semibold tracking-wide
+                  text-crimson-50 bg-gradient-to-b from-crimson-950/55 to-ink-950/70
+                  border border-crimson-400/45
+                  shadow-[0_0_28px_rgba(185,28,28,0.18),inset_0_1px_0_rgba(255,255,255,0.06)]
+                  backdrop-blur-md
+                  hover:border-crimson-300/65 hover:from-crimson-900/60 hover:to-ink-900/75
+                  hover:shadow-[0_0_36px_rgba(220,38,38,0.28),inset_0_1px_0_rgba(255,255,255,0.1)]
+                  md:hover:scale-[1.03] active:scale-[0.99]
+                  transition-all duration-300 cursor-pointer"
+              >
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-r from-crimson-500/0 via-crimson-400/10 to-gold-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
+                <span className="relative flex items-center justify-center w-8 h-8 rounded-full bg-crimson-500/15 border border-crimson-400/35 group-hover:border-crimson-300/50 transition-colors">
+                  <BookOpen className="w-4 h-4 text-crimson-200 group-hover:text-crimson-100" />
+                </span>
+                <span className="relative text-crimson-50 group-hover:text-white transition-colors">WWM Вики</span>
+                <span className="relative hidden sm:inline text-[10px] uppercase tracking-[0.2em] text-gold-400/75 border-l border-crimson-400/25 pl-2.5">
+                  разделы
+                </span>
+              </button>
+            </div>
+          )}
           <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl font-bold text-shadow-glow mb-4 flex flex-wrap sm:flex-nowrap items-center justify-center gap-0.5 sm:gap-1 md:gap-2">
             <img
               src={logoUrl}

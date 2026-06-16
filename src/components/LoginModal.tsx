@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { X, User, LogIn, UserPlus, Eye, EyeOff, Shield, AlertCircle, Check, Gamepad2, Users } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import { useAuthState, useAuthActions } from '../context/AuthContext';
 import { validateUsername, validatePassword, validateGameNickname } from '../lib/validation';
 
 type AuthMode = 'login' | 'register';
@@ -12,7 +12,8 @@ interface LoginModalProps {
 }
 
 export default function LoginModal({ isOpen, onClose, initialMode = 'login' }: LoginModalProps) {
-  const { loginWithPassword, register, registeredGuilds, ensureGuildsLoaded } = useAuth();
+  const { registeredGuilds } = useAuthState();
+  const { loginWithPassword, register, ensureGuildsLoaded } = useAuthActions();
   const [mode, setMode] = useState<AuthMode>(initialMode);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

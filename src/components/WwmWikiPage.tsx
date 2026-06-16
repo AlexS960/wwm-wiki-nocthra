@@ -1,5 +1,5 @@
 import { BookOpen } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import { useAuthState } from '../context/AuthContext';
 import { resolveAllWikiSections } from '../lib/sectionRegistry';
 import type { NavigatePayload } from './Header';
 
@@ -8,7 +8,7 @@ interface WwmWikiPageProps {
 }
 
 export default function WwmWikiPage({ onNavigate }: WwmWikiPageProps) {
-  const { siteSettings } = useAuth();
+  const { siteSettings } = useAuthState();
   const sections = resolveAllWikiSections(siteSettings);
 
   return (
@@ -16,7 +16,7 @@ export default function WwmWikiPage({ onNavigate }: WwmWikiPageProps) {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="text-center mb-8">
           <div className="text-gold-400 text-3xl mb-3">📚</div>
-          <h1 className="font-serif text-3xl md:text-4xl font-bold text-white mb-3">WWM-Вики Ру</h1>
+          <h1 className="font-serif text-3xl md:text-4xl font-bold text-white mb-3">WWM Вики</h1>
           <p className="text-ink-300 max-w-2xl mx-auto">
             Все разделы собраны на одной странице. Выберите нужный раздел кнопкой ниже.
           </p>

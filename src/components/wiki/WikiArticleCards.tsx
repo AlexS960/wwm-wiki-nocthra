@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuthState, useAuthActions } from '../../context/AuthContext';
 import { useSectionCategoriesScoped } from '../../context/SectionCategoriesContext';
 import { useSectionWikiArticles } from '../../hooks/useSectionWikiArticles';
 import { getCustomSectionById } from '../../lib/sectionRegistry';
@@ -50,7 +50,8 @@ function WikiArticleCardsView({
 }: WikiArticleCardsProps & { catalog: SectionWikiCatalog }) {
   const focusId = useWikiFocus();
   const activeHighlight = highlightId ?? focusId;
-  const { isEditor, isAdmin, updateWikiArticle, deleteWikiArticle, siteSettings, ensureWikiLoaded } = useAuth();
+  const { siteSettings } = useAuthState();
+  const { isEditor, isAdmin, updateWikiArticle, deleteWikiArticle, ensureWikiLoaded } = useAuthActions();
   const [editId, setEditId] = useState<string | null>(null);
   const [editInitial, setEditInitial] = useState<Partial<SectionEditorValues>>();
   const [dynamicInitial, setDynamicInitial] = useState<Partial<DynamicEditorValues>>();

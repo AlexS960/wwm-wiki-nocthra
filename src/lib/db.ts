@@ -47,15 +47,35 @@ export async function dbInit() {
 const ACCOUNT_PUBLIC_FIELDS =
   'id, username, role, picture, game_nickname, guild_id, created_at, last_seen';
 
+type AccountPublicRow = Omit<DbAccount, 'password_hash'>;
+
+function mapPublicAccounts(rows: AccountPublicRow[] | null | undefined): DbAccount[] {
+  return (rows || []).map(a => ({ ...a, password_hash: '' }));
+}
+
+/** Списки аккаунтов: view accounts_public (без password_hash), fallback на таблицу. */
+async function dbSelectPublicAccounts(
+  build: (source: 'accounts_public' | 'accounts') => PromiseLike<{ data: unknown; error: unknown }>,
+): Promise<DbAccount[]> {
+  const fromView = await build('accounts_public');
+  if (!fromView.error && fromView.data) {
+    return mapPublicAccounts(fromView.data as AccountPublicRow[]);
+  }
+  const fromTable = await build('accounts');
+  if (fromTable.error) {
+    logger.error('Failed to load accounts', 'db', fromTable.error);
+    return [];
+  }
+  return mapPublicAccounts(fromTable.data as AccountPublicRow[]);
+}
+
 export async function dbListAccounts(): Promise<DbAccount[]> {
-  const { data } = await getSupabase()
-    .from('accounts')
-    .select(ACCOUNT_PUBLIC_FIELDS)
-    .order('created_at', { ascending: false });
-  return ((data || []) as Omit<DbAccount, 'password_hash'>[]).map(a => ({
-    ...a,
-    password_hash: '',
-  }));
+  return dbSelectPublicAccounts(source =>
+    getSupabase()
+      .from(source)
+      .select(ACCOUNT_PUBLIC_FIELDS)
+      .order('created_at', { ascending: false }),
+  );
 }
 
 /** Аккаунты со служебными ролями (включая кастомные id с правом staff.chat). */
@@ -63,27 +83,23 @@ export async function dbListStaffAccounts(
   siteRoles?: import('../types/site').RoleConfig[],
 ): Promise<DbAccount[]> {
   const roleIds = staffRoleIdsForQuery(siteRoles);
-  const { data, error } = await getSupabase()
-    .from('accounts')
-    .select(ACCOUNT_PUBLIC_FIELDS)
-    .in('role', roleIds)
-    .order('created_at', { ascending: false });
-  if (error) {
-    logger.error('Failed to load staff accounts', 'db', error);
-    return [];
-  }
-  const fromQuery = ((data || []) as Omit<DbAccount, 'password_hash'>[]).map(a => ({
-    ...a,
-    password_hash: '',
-  }));
+  const fromQuery = await dbSelectPublicAccounts(source =>
+    getSupabase()
+      .from(source)
+      .select(ACCOUNT_PUBLIC_FIELDS)
+      .in('role', roleIds)
+      .order('created_at', { ascending: false }),
+  );
   const known = new Set(fromQuery.map(a => a.id));
-  const { data: extra } = await getSupabase()
-    .from('accounts')
-    .select(ACCOUNT_PUBLIC_FIELDS)
-    .order('created_at', { ascending: false });
-  const customStaff = ((extra || []) as Omit<DbAccount, 'password_hash'>[]).filter(
+  const all = await dbSelectPublicAccounts(source =>
+    getSupabase()
+      .from(source)
+      .select(ACCOUNT_PUBLIC_FIELDS)
+      .order('created_at', { ascending: false }),
+  );
+  const customStaff = all.filter(
     a => !known.has(a.id) && isStaffChatRole(a.role, siteRoles),
-  ).map(a => ({ ...a, password_hash: '' }));
+  );
   return [...fromQuery, ...customStaff];
 }
 

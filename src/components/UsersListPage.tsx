@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useAuthState, useAuthActions } from '../context/AuthContext';
 import { ArrowLeft, Users, Search, Circle } from 'lucide-react';
 
 interface UsersListPageProps { onBack: () => void; }
 
 export default function UsersListPage({ onBack }: UsersListPageProps) {
-  const { registeredUsers, isUserOnline, getRoleConfig, siteSettings, ensureAccountsLoaded, accountsLoaded } = useAuth();
+  const { registeredUsers, siteSettings, accountsLoaded } = useAuthState();
+  const { isUserOnline, getRoleConfig, ensureAccountsLoaded } = useAuthActions();
 
   useEffect(() => { void ensureAccountsLoaded(); }, [ensureAccountsLoaded]);
   const [search, setSearch] = useState('');

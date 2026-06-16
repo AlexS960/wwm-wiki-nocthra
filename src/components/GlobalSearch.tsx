@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { Search, X, BookOpen, FileText } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import { useAuthState, useAuthActions } from '../context/AuthContext';
 import { searchSite, preloadSearchExtras, type SearchResult } from '../lib/search';
 import { getWikiSectionLabels } from '../lib/sectionRegistry';
 import { loadBuiltinNpcs } from '../lib/npcData';
@@ -11,7 +11,8 @@ interface GlobalSearchProps {
 }
 
 export default function GlobalSearch({ onNavigate }: GlobalSearchProps) {
-  const { guides, wikiArticles, ensureWikiLoaded, ensureGuidesLoaded, searchGuidesRemote, siteSettings } = useAuth();
+  const { guides, wikiArticles, siteSettings } = useAuthState();
+  const { ensureWikiLoaded, ensureGuidesLoaded, searchGuidesRemote } = useAuthActions();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [npcs, setNpcs] = useState<AiNpc[]>([]);

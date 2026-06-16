@@ -1,6 +1,6 @@
 import { useEffect, type ComponentType } from 'react';
 import { ArrowLeft } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import { useAuthState, useAuthActions } from '../context/AuthContext';
 import {
   getCustomSectionById,
   getSectionMetaResolved,
@@ -44,7 +44,8 @@ const SECTION_COMPONENTS: Record<string, ComponentType> = {
 };
 
 export default function ContentPage({ pageId, onBack, focusWikiId, onWikiFocused }: ContentPageProps) {
-  const { siteSettings, ensureWikiLoaded } = useAuth();
+  const { siteSettings } = useAuthState();
+  const { ensureWikiLoaded } = useAuthActions();
   const info = getSectionMetaResolved(pageId, siteSettings);
   const customDef = getCustomSectionById(pageId, siteSettings);
   const SectionComponent = SECTION_COMPONENTS[pageId];

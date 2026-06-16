@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo, Suspense } from 'react';
-import { AuthProvider, useAuth } from './context/AuthContext';
+import { AuthProvider, useAuthState, useAuthActions } from './context/AuthContext';
 import HeroSection from './components/HeroSection';
 import LoginModal from './components/LoginModal';
 import ProfileModal from './components/ProfileModal';
@@ -42,7 +42,8 @@ function PageLoader() {
 }
 
 function DbErrorBanner() {
-  const { dbSaveError, clearDbSaveError } = useAuth();
+  const { dbSaveError } = useAuthState();
+  const { clearDbSaveError } = useAuthActions();
   if (!dbSaveError) return null;
   return (
     <div className="fixed top-20 left-2 right-2 sm:left-auto sm:right-4 sm:max-w-md z-[110] px-4 py-3 rounded-xl bg-crimson-400/15 border border-crimson-400/40 text-crimson-200 text-sm shadow-lg flex gap-2">
@@ -53,7 +54,8 @@ function DbErrorBanner() {
 }
 
 function AppContent() {
-  const { user, siteSettings, canAccessAdminPanel, canAccessStaffChat, isLoading } = useAuth();
+  const { user, siteSettings, isLoading } = useAuthState();
+  const { canAccessAdminPanel, canAccessStaffChat } = useAuthActions();
   useClickSound();
 
   useEffect(() => {
@@ -331,7 +333,8 @@ function MainPage({ headerProps, modals, onNavigate }: {
   modals: React.ReactNode;
   onNavigate: (s: string) => void;
 }) {
-  const { canAccessAdminPanel, siteSettings } = useAuth();
+  const { siteSettings } = useAuthState();
+  const { canAccessAdminPanel } = useAuthActions();
   const activeAnnouncements = (siteSettings.announcements ?? []).filter(a => a.active);
   const homeBlocks = mergeHomeBlocks(siteSettings.homeBlocks);
   const showAnnBar = isHomeBlockVisible(siteSettings.homeBlocks, 'announcements') && activeAnnouncements.length > 0;
@@ -366,7 +369,7 @@ function MainPage({ headerProps, modals, onNavigate }: {
           if (block.id === 'hero') {
             return (
               <div key="hero" id="home">
-                <HeroSection hasAnnouncements={showAnnBar} />
+                <HeroSection hasAnnouncements={showAnnBar} onNavigate={onNavigate} />
               </div>
             );
           }

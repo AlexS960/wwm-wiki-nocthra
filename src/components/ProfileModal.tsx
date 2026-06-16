@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useAuthState, useAuthActions } from '../context/AuthContext';
 import { resolveBuildName } from '../lib/buildLookup';
 import type { NavigatePayload } from './Header';
 import { compressImageFileToBlob } from '../lib/imageUpload';
@@ -21,10 +21,13 @@ interface ProfileModalProps {
 
 export default function ProfileModal({ isOpen, onClose, anchor, onNavigate }: ProfileModalProps) {
   const {
-    user, logout, progress, updateUserPicture, updateUserGameNickname, updateUserGuild,
+    user, progress, registeredGuilds, wikiArticles, guides,
+  } = useAuthState();
+  const {
+    logout, updateUserPicture, updateUserGameNickname, updateUserGuild,
     getRoleConfig, addNote, deleteNote, isUserOnline,
-    registeredGuilds, ensureGuildsLoaded, getGuildName, wikiArticles, ensureWikiLoaded, guides,
-  } = useAuth();
+    ensureGuildsLoaded, getGuildName, ensureWikiLoaded,
+  } = useAuthActions();
   const { exportSettings, importSettings, resetSettings } = useUserSettings();
   useBodyScrollLock(isOpen);
 

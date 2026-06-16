@@ -1,12 +1,11 @@
-import { useState, useEffect, useRef, memo, type ReactNode } from 'react';
+import { useState, useEffect, memo, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
-import { Menu, X, Scroll, User, LogIn, House, BookOpenText, Users, CircleHelp, MessageSquare, Lightbulb, Shield, ChevronDown } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import { Menu, X, Scroll, User, LogIn, House, Users, CircleHelp, MessageSquare, Lightbulb, Shield } from 'lucide-react';
+import { useAuthState } from '../context/AuthContext';
 import GlobalSearch from './GlobalSearch';
 import { dispatchCloseFloatPanels } from '../lib/closeFloatPanels';
 import { useBodyScrollLock } from '../hooks/useBodyScrollLock';
 import { useScrollThreshold } from '../hooks/useScrollThreshold';
-import { WIKI_HUB_SECTIONS } from '../data/sections';
 import { mergeBranding } from '../lib/siteConstructor';
 
 export type NavigatePayload = { guideId?: string; wikiId?: string };
@@ -19,12 +18,10 @@ interface HeaderProps {
   showStaffChatLink?: boolean;
 }
 
-const wikiNavItems = WIKI_HUB_SECTIONS.map(({ id, label, icon }) => ({ id, label, icon }));
-
 function Header({ activeSection, onNavigate, onLoginClick, onProfileClick, showStaffChatLink }: HeaderProps) {
   const isScrolled = useScrollThreshold(50);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { user, siteSettings } = useAuth();
+  const { user, siteSettings } = useAuthState();
   const branding = mergeBranding(siteSettings.branding);
 
   useBodyScrollLock(mobileOpen);
@@ -40,8 +37,6 @@ function Header({ activeSection, onNavigate, onLoginClick, onProfileClick, showS
       return !prev;
     });
   };
-
-  const isWikiPageActive = activeSection === 'wwmwiki' || wikiNavItems.some(i => i.id === activeSection);
 
   return (
     <header
@@ -63,15 +58,21 @@ function Header({ activeSection, onNavigate, onLoginClick, onProfileClick, showS
             </div>
           </button>
 
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden xl:flex items-center gap-0.5">
             <NavButton icon={<House className="w-4 h-4" />} label="Главная" active={activeSection === 'home'} onClick={() => onNavigate('home')} />
-            <NavButton icon={<BookOpenText className="w-4 h-4" />} label="WWM-Вики Ру" active={isWikiPageActive} onClick={() => onNavigate('wwmwiki')} accent="red" />
             <NavButton icon={<Shield className="w-4 h-4" />} label="Гильдии" active={activeSection === 'guilds'} onClick={() => onNavigate('guilds')} />
-            <NavMoreMenu
-              activeSection={activeSection}
-              onNavigate={onNavigate}
-              showStaffChatLink={showStaffChatLink}
-            />
+            <NavButton icon={<Users className="w-4 h-4" />} label="Пользователи" active={activeSection === 'users'} onClick={() => onNavigate('users')} />
+            <NavButton icon={<Lightbulb className="w-4 h-4" />} label="Предложения" active={activeSection === 'suggestions'} onClick={() => onNavigate('suggestions')} />
+            <NavButton icon={<CircleHelp className="w-4 h-4" />} label="FAQ" active={activeSection === 'faq'} onClick={() => onNavigate('faq')} />
+            {showStaffChatLink && (
+              <NavButton
+                icon={<MessageSquare className="w-4 h-4" />}
+                label="Служебный чат"
+                active={activeSection === 'staffchat'}
+                onClick={() => onNavigate('staffchat')}
+                accent="purple"
+              />
+            )}
           </nav>
 
           <div className="flex items-center gap-2">
@@ -131,9 +132,7 @@ function Header({ activeSection, onNavigate, onLoginClick, onProfileClick, showS
                 <GlobalSearch onNavigate={(s, p) => { onNavigate(s, p); setMobileOpen(false); }} />
               </div>
               <MobileNavButton label="🏠 Главная" active={activeSection === 'home'} onClick={() => { onNavigate('home'); setMobileOpen(false); }} />
-              <MobileNavButton label="☯️ WWM-Вики Ру" active={isWikiPageActive} onClick={() => { onNavigate('wwmwiki'); setMobileOpen(false); }} />
               <MobileNavButton label="🛡️ Гильдии" active={activeSection === 'guilds'} onClick={() => { onNavigate('guilds'); setMobileOpen(false); }} />
-              <div className="h-px bg-ink-700/50 my-1" />
               <MobileNavButton label="👥 Список пользователей" active={activeSection === 'users'} onClick={() => { onNavigate('users'); setMobileOpen(false); }} />
               <MobileNavButton label="💡 Предложения" active={activeSection === 'suggestions'} onClick={() => { onNavigate('suggestions'); setMobileOpen(false); }} />
               <MobileNavButton label="❓ FAQ" active={activeSection === 'faq'} onClick={() => { onNavigate('faq'); setMobileOpen(false); }} />
@@ -176,124 +175,20 @@ function Header({ activeSection, onNavigate, onLoginClick, onProfileClick, showS
   );
 }
 
-function NavButton({ icon, label, active, onClick, accent }: { icon: ReactNode; label: string; active: boolean; onClick: () => void; accent?: 'purple' | 'red' }) {
+function NavButton({ icon, label, active, onClick, accent }: { icon: ReactNode; label: string; active: boolean; onClick: () => void; accent?: 'purple' }) {
   const purple = accent === 'purple';
-  const red = accent === 'red';
   return (
-    <button onClick={onClick} className={`hover-glow-btn px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer ${
+    <button onClick={onClick} className={`hover-glow-btn px-3 py-2 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer ${
       active
         ? purple
           ? 'text-purple-300 bg-purple-500/10 border border-purple-400/30'
-          : red
-            ? 'text-crimson-300 bg-crimson-400/15 border border-crimson-400/45'
-            : 'text-gold-400 bg-gold-400/10 border border-gold-400/30'
+          : 'text-gold-400 bg-gold-400/10 border border-gold-400/30'
         : purple
           ? 'text-purple-200 hover:text-purple-300 hover:bg-purple-500/10 border border-transparent hover:border-purple-400/20'
-          : red
-            ? 'text-crimson-400 bg-transparent hover:text-crimson-300 hover:bg-crimson-400/10 border border-crimson-400/40 hover:border-crimson-400/55'
-            : 'text-ink-200 hover:text-gold-300 hover:bg-white/5 border border-transparent hover:border-gold-400/20'
+          : 'text-ink-200 hover:text-gold-300 hover:bg-white/5 border border-transparent hover:border-gold-400/20'
     }`}>
       <span className="inline-flex items-center gap-1.5">{icon}{label}</span>
     </button>
-  );
-}
-
-const MORE_MENU_SECTIONS = ['users', 'suggestions', 'faq', 'staffchat'] as const;
-
-function NavMoreMenu({
-  activeSection,
-  onNavigate,
-  showStaffChatLink,
-}: {
-  activeSection: string;
-  onNavigate: (section: string) => void;
-  showStaffChatLink?: boolean;
-}) {
-  const [open, setOpen] = useState(false);
-  const rootRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const onPointerDown = (e: PointerEvent) => {
-      if (rootRef.current?.contains(e.target as Node)) return;
-      setOpen(false);
-    };
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false);
-    };
-    document.addEventListener('pointerdown', onPointerDown);
-    document.addEventListener('keydown', onKeyDown);
-    return () => {
-      document.removeEventListener('pointerdown', onPointerDown);
-      document.removeEventListener('keydown', onKeyDown);
-    };
-  }, [open]);
-
-  const menuActive = MORE_MENU_SECTIONS.includes(activeSection as typeof MORE_MENU_SECTIONS[number]);
-
-  const items: { id: string; label: string; icon: ReactNode; accent?: 'purple' }[] = [
-    ...(showStaffChatLink
-      ? [{ id: 'staffchat', label: 'Служебный чат', icon: <MessageSquare className="w-4 h-4" />, accent: 'purple' as const }]
-      : []),
-    { id: 'users', label: 'Список пользователей', icon: <Users className="w-4 h-4" /> },
-    { id: 'suggestions', label: 'Предложения', icon: <Lightbulb className="w-4 h-4" /> },
-    { id: 'faq', label: 'FAQ', icon: <CircleHelp className="w-4 h-4" /> },
-  ];
-
-  return (
-    <div ref={rootRef} className="relative">
-      <button
-        type="button"
-        onClick={() => {
-          dispatchCloseFloatPanels();
-          setOpen(v => !v);
-        }}
-        aria-expanded={open}
-        aria-haspopup="menu"
-        aria-label="Дополнительные разделы"
-        className={`hover-glow-btn p-2 rounded-xl text-sm transition-all duration-200 cursor-pointer border ${
-          open || menuActive
-            ? 'text-gold-400 bg-gold-400/10 border-gold-400/30'
-            : 'text-ink-200 hover:text-gold-300 hover:bg-white/5 border-transparent hover:border-gold-400/20'
-        }`}
-      >
-        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
-      </button>
-      {open && (
-        <div
-          role="menu"
-          className="absolute top-full left-0 mt-1.5 min-w-[13.5rem] py-1.5 rounded-xl border border-ink-700/50 bg-ink-900/95 backdrop-blur-md shadow-xl shadow-black/40 z-[60] animate-fadeIn"
-        >
-          {items.map(item => {
-            const active = activeSection === item.id;
-            const purple = item.accent === 'purple';
-            return (
-              <button
-                key={item.id}
-                type="button"
-                role="menuitem"
-                onClick={() => {
-                  onNavigate(item.id);
-                  setOpen(false);
-                }}
-                className={`w-full flex items-center gap-2 px-3.5 py-2.5 text-sm font-medium text-left cursor-pointer transition-colors ${
-                  active
-                    ? purple
-                      ? 'text-purple-300 bg-purple-500/10'
-                      : 'text-gold-400 bg-gold-400/10'
-                    : purple
-                      ? 'text-purple-200 hover:text-purple-300 hover:bg-purple-500/10'
-                      : 'text-ink-200 hover:text-gold-300 hover:bg-white/5'
-                }`}
-              >
-                {item.icon}
-                {item.label}
-              </button>
-            );
-          })}
-        </div>
-      )}
-    </div>
   );
 }
 

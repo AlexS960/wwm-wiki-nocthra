@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuthActions } from '../../context/AuthContext';
 import { useSectionCategories } from '../../hooks/useSectionCategories';
 import { Edit3, Plus } from 'lucide-react';
 import SectionEditorModal, { type SectionEditorValues } from '../ui/SectionEditorModal';
@@ -13,7 +13,7 @@ interface WikiEditorBarProps {
 
 /** Панель редактора — записи отображаются в общей сетке раздела */
 export default function WikiEditorBar({ sectionId }: WikiEditorBarProps) {
-  const { isEditor, isAdmin, addWikiArticle, updateWikiArticle } = useAuth();
+  const { isEditor, isAdmin, addWikiArticle, updateWikiArticle } = useAuthActions();
   const [showModal, setShowModal] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editInitial, setEditInitial] = useState<Partial<SectionEditorValues> | undefined>();

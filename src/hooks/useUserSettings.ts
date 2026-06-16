@@ -3,7 +3,7 @@
  */
 
 import { useCallback } from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useAuthState, useAuthActions } from '../context/AuthContext';
 import { logger } from '../lib/logger';
 
 interface UserSettingsExport {
@@ -21,7 +21,8 @@ interface UserSettingsExport {
 }
 
 export function useUserSettings() {
-  const { user, progress, updateProgress } = useAuth();
+  const { user, progress } = useAuthState();
+  const { updateProgress } = useAuthActions();
 
   const exportSettings = useCallback((): string | null => {
     if (!user) {

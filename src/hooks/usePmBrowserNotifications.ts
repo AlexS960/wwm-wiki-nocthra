@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useAuthState } from '../context/AuthContext';
 import { getPmBrowserNotifyEnabled, showPmNotification } from '../lib/notifications';
 
 /** Показывает браузерные уведомления при новых входящих ЛС */
 export function usePmBrowserNotifications() {
-  const { user, privateMessages } = useAuth();
+  const { user, privateMessages } = useAuthState();
   const seenRef = useRef<Set<string>>(new Set());
   const initializedRef = useRef(false);
 

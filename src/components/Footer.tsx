@@ -1,10 +1,10 @@
 import { memo, useMemo } from 'react';
 import { Scroll, ExternalLink } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import { useAuthState } from '../context/AuthContext';
 import { getResolvedLolkaUrl, mergeFooterSettings } from '../lib/siteConstructor';
 
 function Footer() {
-  const { siteSettings, discordUrl } = useAuth();
+  const { siteSettings, discordUrl } = useAuthState();
   const lolkaUrl = getResolvedLolkaUrl(siteSettings);
   const footer = useMemo(
     () => mergeFooterSettings(siteSettings.footer, discordUrl, lolkaUrl),
