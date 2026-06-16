@@ -32,7 +32,7 @@ function DialogueBubble({
           <p className="text-[10px] uppercase tracking-wide text-blue-300/90 mb-1 flex items-center gap-1 justify-end">
             <User className="w-3 h-3" /> Игрок
           </p>
-          <p className="text-sm text-white leading-relaxed font-medium">{line.textEn}</p>
+          <p className="text-sm text-white leading-relaxed font-medium">{line.textRu || line.textEn}</p>
         </div>
       </div>
     );
@@ -44,7 +44,7 @@ function DialogueBubble({
         <p className="text-[10px] uppercase tracking-wide text-gold-400/90 mb-1 flex items-center gap-1">
           <Bot className="w-3 h-3" /> {npcName}
         </p>
-        <p className="text-sm text-ink-100 leading-relaxed">{line.textEn}</p>
+        <p className="text-sm text-ink-100 leading-relaxed">{line.textRu || line.textEn}</p>
       </div>
     </div>
   );
@@ -70,7 +70,6 @@ export default function NpcDetailModal({ npc, onClose }: NpcDetailModalProps) {
             <span className="text-4xl shrink-0">{npc.icon}</span>
             <div className="min-w-0">
               <h2 className="font-serif text-xl sm:text-2xl font-bold text-white">{npc.nameRu}</h2>
-              <p className="text-ink-500 text-sm mt-0.5">{npc.nameEn}</p>
               <div className="flex flex-wrap gap-2 mt-2">
                 <span className="text-[10px] px-2 py-0.5 rounded-full bg-gold-400/10 text-gold-400 border border-gold-400/30">
                   {npc.regionLabelRu}

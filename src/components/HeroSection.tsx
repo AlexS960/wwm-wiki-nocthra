@@ -61,19 +61,18 @@ export default function HeroSection({ onNavigate, hasAnnouncements = false }: He
                 onClick={() => onNavigate('wwmwiki')}
                 className="group inline-flex items-center gap-2.5 px-5 sm:px-7 py-2.5 sm:py-3 rounded-xl
                   font-serif text-sm sm:text-base font-semibold tracking-wide
-                  text-ink-950 bg-gradient-to-b from-gold-200 via-gold-400 to-gold-500
-                  border border-gold-100/90
-                  shadow-[0_4px_22px_rgba(212,175,55,0.38),inset_0_1px_0_rgba(255,255,255,0.45)]
-                  hover:from-gold-100 hover:via-gold-300 hover:to-gold-400
-                  hover:shadow-[0_6px_28px_rgba(212,175,55,0.48),inset_0_1px_0_rgba(255,255,255,0.55)]
+                  text-gold-200 bg-gold-500/12 border border-gold-400/55 backdrop-blur-md
+                  shadow-[0_2px_16px_rgba(212,175,55,0.12)]
+                  hover:bg-gold-400/20 hover:border-gold-300/70 hover:text-gold-100
+                  hover:shadow-[0_4px_22px_rgba(212,175,55,0.22)]
                   md:hover:scale-[1.02] active:scale-[0.99]
                   transition-all duration-300 cursor-pointer"
               >
-                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-ink-950/10 border border-ink-950/10 group-hover:bg-ink-950/15 transition-colors">
-                  <BookOpen className="w-4 h-4 text-ink-900" />
+                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-gold-400/10 border border-gold-400/25 group-hover:bg-gold-400/18 transition-colors">
+                  <BookOpen className="w-4 h-4 text-gold-300" />
                 </span>
-                <span className="text-ink-950 group-hover:text-ink-900">WWM Вики</span>
-                <span className="hidden sm:inline text-[10px] uppercase tracking-[0.18em] text-ink-800/70 border-l border-ink-900/15 pl-2.5">
+                <span>WWM Вики</span>
+                <span className="hidden sm:inline text-[10px] uppercase tracking-[0.18em] text-gold-400/60 border-l border-gold-400/25 pl-2.5">
                   разделы
                 </span>
               </button>

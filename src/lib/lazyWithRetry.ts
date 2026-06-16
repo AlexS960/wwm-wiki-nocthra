@@ -19,8 +19,10 @@ async function importWithRetry<T>(
     }
   }
   if (isChunkLoadError(lastError)) {
-    reloadOnceForChunkError();
-    return new Promise(() => {});
+    if (reloadOnceForChunkError()) {
+      return new Promise(() => {});
+    }
+    throw lastError;
   }
   throw lastError;
 }

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'wwm-wiki-v3';
+const CACHE_NAME = 'wwm-wiki-v4';
 const SHELL_CACHE = [
   '/',
   '/index.html',

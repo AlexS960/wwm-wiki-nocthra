@@ -13,9 +13,8 @@ if (!rootEl) throw new Error("Элемент #root не найден");
 const root = createRoot(rootEl);
 
 window.addEventListener("unhandledrejection", (event) => {
-  if (isChunkLoadError(event.reason)) {
+  if (isChunkLoadError(event.reason) && reloadOnceForChunkError()) {
     event.preventDefault();
-    reloadOnceForChunkError();
   }
 });
 

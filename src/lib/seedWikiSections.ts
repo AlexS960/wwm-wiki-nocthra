@@ -1,5 +1,6 @@
 import type { WikiArticle } from '../types/site';
 import { convertOverrideSection, getAllSeedArticles } from './sectionSeeds';
+import { repairWikiArticleFromSeed } from './wikiRussianRepair';
 import { contentStoreUpsertWiki, contentStoreUsesNormalized } from './contentStore';
 
 const UPSERT_BATCH = 8;
@@ -35,7 +36,8 @@ export async function seedWikiSections(
         const existing = byId.get(article.id);
         const src = existing?.fields?.source;
         if (existing && src !== 'override' && src !== undefined) continue;
-        toUpsert.push(article);
+        const seed = getAllSeedArticles().find(s => s.id === article.id);
+        toUpsert.push(seed ? repairWikiArticleFromSeed(article, seed) : article);
       }
     }
   }
@@ -61,9 +63,12 @@ export async function seedWikiSections(
     if (existing?.fields?.source === 'custom') continue;
     if (existing && existing.fields?.source !== 'override' && article.fields?.source !== 'seed') continue;
 
+    const seed = getAllSeedArticles().find(s => s.id === article.id);
+    const normalized = seed ? repairWikiArticleFromSeed(article, seed) : article;
+
     const hadExisting = byId.has(article.id);
-    byId.set(article.id, article);
-    if (usesNormalized) toPersist.push(article);
+    byId.set(article.id, normalized);
+    if (usesNormalized) toPersist.push(normalized);
     if (hadExisting) updated++;
     else inserted++;
   }

@@ -7,6 +7,7 @@ import { getDefaultSectionCategories } from '../data/sectionCategories';
 import type { WikiArticle } from '../types/site';
 import { buildSectionContent } from './sectionContent';
 import { normalizeWikiArticle } from './wikiNormalize';
+import { repairWikiArticleFromSeed } from './wikiRussianRepair';
 
 const SEED_AUTHOR = 'Nocthra Wiki';
 
@@ -282,11 +283,17 @@ export function mergeWikiWithSeeds(existing: WikiArticle[]): WikiArticle[] {
   return [...byId.values()];
 }
 
-/** Собирает полный каталог для отображения: сиды → БД (БД перекрывает сиды). */
+/** Собирает полный каталог для отображения: сиды → БД (БД перекрывает сиды, с восстановлением русского). */
 export function buildWikiCatalog(existing: WikiArticle[] = []): WikiArticle[] {
+  const seeds = getAllSeedArticles();
+  const seedById = new Map(seeds.map(s => [s.id, s]));
   const byId = new Map<string, WikiArticle>();
-  for (const seed of getAllSeedArticles()) byId.set(seed.id, seed);
-  for (const article of existing) byId.set(article.id, article);
+  for (const seed of seeds) byId.set(seed.id, seed);
+  for (const article of existing) {
+    const seed = seedById.get(article.id);
+    const merged = seed ? repairWikiArticleFromSeed(article, seed) : article;
+    byId.set(article.id, merged);
+  }
   return [...byId.values()].map(normalizeWikiArticle);
 }
 

@@ -6,15 +6,25 @@ import {
   contentStoreAddWiki,
   contentStoreUpdateWiki,
   contentStoreDeleteWiki,
+  contentStoreUpsertWiki,
 } from '../../lib/contentStore';
-import { buildWikiCatalog } from '../../lib/sectionSeeds';
+import { buildWikiCatalog, getAllSeedArticles } from '../../lib/sectionSeeds';
 import { seedWikiSections } from '../../lib/seedWikiSections';
+import { collectWikiDbRepairs } from '../../lib/wikiRussianRepair';
 import { sanitizeWiki } from '../../lib/siteImages';
 import { logger } from '../../lib/logger';
 import type { MutableRefObject } from 'react';
 import type { NormalizedDomains } from './types';
 
 const DB_TIMEOUT_MS = 8_000;
+const REPAIR_BATCH = 8;
+
+async function upsertRepairBatch(articles: WikiArticle[]): Promise<void> {
+  for (let i = 0; i < articles.length; i += REPAIR_BATCH) {
+    const batch = articles.slice(i, i + REPAIR_BATCH);
+    await Promise.all(batch.map(a => contentStoreUpsertWiki(a)));
+  }
+}
 
 function withTimeout<T>(promise: Promise<T>, ms: number, fallback: T): Promise<T> {
   return Promise.race([
@@ -67,6 +77,19 @@ export function useAuthWiki({
     } catch (err) {
       logger.warn('Wiki DB sync skipped', 'wiki', String(err));
       normalizedRef.current.wiki = false;
+    }
+
+    if (normalizedRef.current.wiki && dbArticles.length > 0) {
+      const repairs = collectWikiDbRepairs(dbArticles, getAllSeedArticles());
+      if (repairs.length > 0) {
+        try {
+          await upsertRepairBatch(repairs);
+          const repairById = new Map(repairs.map(a => [a.id, a]));
+          dbArticles = dbArticles.map(a => repairById.get(a.id) ?? a);
+        } catch (err) {
+          logger.warn('Wiki Russian repair persist failed', 'wiki', String(err));
+        }
+      }
     }
 
     setWikiArticles(sanitizeWiki(buildWikiCatalog(dbArticles)));

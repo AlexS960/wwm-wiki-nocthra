@@ -7,7 +7,6 @@ import {
 import type { WikiArticle } from '../../context/AuthContext';
 import { wikiCardDomId } from '../../lib/buildLookup';
 import { parseSectionContent } from '../../lib/sectionContent';
-import { weaponCategoryEnglish } from '../../data/sectionCategories';
 import { getSectionSchema } from '../../data/sectionSchemas';
 import { bossDiffColor, buildDiffColor, mysticElementColors, mysticTypeLabels } from '../../lib/sectionCardStyles';
 import RichText, { RichInline } from '../ui/RichText';
@@ -175,7 +174,6 @@ function CardActionRail({
 
 function CardTitle({
   title,
-  nameEn,
   className = '',
   highlight = false,
   size = 'base',
@@ -187,33 +185,22 @@ function CardTitle({
   size?: 'base' | 'lg';
 }) {
   const ru = asText(title).trim();
-  const en = asText(nameEn).trim();
-  const showEn = en.length > 0 && en.toLowerCase() !== ru.toLowerCase();
   const sizeClass = size === 'lg' ? 'text-lg' : 'text-base';
   return (
-    <>
-      <h3 className={`font-serif font-bold leading-snug break-words ${sizeClass} ${highlight ? 'text-gold-400' : 'text-white'} ${className}`}>
-        {ru}
-      </h3>
-      {showEn && <p className="text-ink-400 text-xs mt-0.5">{en}</p>}
-    </>
+    <h3 className={`font-serif font-bold leading-snug break-words ${sizeClass} ${highlight ? 'text-gold-400' : 'text-white'} ${className}`}>
+      {ru}
+    </h3>
   );
 }
 
-/** Заголовок карточки оружия: «Название (English)» + опционально строка категории. */
-function getWeaponCategoryLine(categoryLabel?: string, categoryId?: string): string {
-  const catRu = asText(categoryLabel).trim();
-  const catEn = weaponCategoryEnglish(asText(categoryId), catRu);
-  if (catRu && catEn && catRu.toLowerCase() !== catEn.toLowerCase()) return `${catRu} — ${catEn}`;
-  if (catRu) return catRu;
-  return '';
+/** Заголовок карточки оружия + опционально строка категории. */
+function getWeaponCategoryLine(categoryLabel?: string): string {
+  return asText(categoryLabel).trim();
 }
 
 function WeaponCardTitle({
   title,
-  nameEn,
   categoryLabel,
-  categoryId,
   showCategory = true,
 }: {
   title: string;
@@ -223,17 +210,12 @@ function WeaponCardTitle({
   showCategory?: boolean;
 }) {
   const ruTitle = asText(title).trim();
-  const weaponEn = asText(nameEn).trim();
-  const categoryLine = getWeaponCategoryLine(categoryLabel, categoryId);
+  const categoryLine = getWeaponCategoryLine(categoryLabel);
   const titleClass = 'font-serif font-bold leading-snug break-words text-base sm:text-lg text-white';
-  const showWeaponEn = weaponEn.length > 0 && weaponEn.toLowerCase() !== ruTitle.toLowerCase();
 
   return (
     <div>
-      <h3 className={titleClass}>
-        {ruTitle}
-        {showWeaponEn && <span className="text-ink-400 font-normal"> ({weaponEn})</span>}
-      </h3>
+      <h3 className={titleClass}>{ruTitle}</h3>
       {showCategory && categoryLine && (
         <p className="text-sm text-gold-400 mt-1 leading-relaxed">{categoryLine}</p>
       )}
