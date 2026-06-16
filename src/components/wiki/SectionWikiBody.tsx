@@ -3,6 +3,7 @@ import WikiArticleCards from './WikiArticleCards';
 import { SECTION_ITEMS_LIST_CLASS } from './sectionLayout';
 import { useSectionWikiArticles } from '../../hooks/useSectionWikiArticles';
 import SectionFilterBar from '../ui/SectionFilterBar';
+import { SectionCategoriesScope } from '../../context/SectionCategoriesContext';
 
 interface SectionWikiBodyProps {
   sectionId: string;
@@ -11,11 +12,11 @@ interface SectionWikiBodyProps {
   afterCards?: ReactNode;
   wikiCardsProps?: Omit<
     React.ComponentProps<typeof WikiArticleCards>,
-    'sectionId' | 'categoryFilter'
+    'sectionId' | 'categoryFilter' | 'catalog'
   >;
 }
 
-export default function SectionWikiBody({
+function SectionWikiBodyInner({
   sectionId,
   listTitle,
   beforeFilters,
@@ -23,7 +24,7 @@ export default function SectionWikiBody({
   wikiCardsProps,
 }: SectionWikiBodyProps) {
   const [filter, setFilter] = useState('all');
-  const { filterItems } = useSectionWikiArticles(sectionId);
+  const catalog = useSectionWikiArticles(sectionId);
 
   return (
     <>
@@ -33,7 +34,7 @@ export default function SectionWikiBody({
       )}
       <SectionFilterBar
         sectionKey={sectionId}
-        items={filterItems}
+        items={catalog.filterItems}
         getCategoryId={item => item.categoryId}
         active={filter}
         onChange={setFilter}
@@ -42,10 +43,19 @@ export default function SectionWikiBody({
         <WikiArticleCards
           sectionId={sectionId}
           categoryFilter={filter}
+          catalog={catalog}
           {...wikiCardsProps}
         />
       </div>
       {afterCards}
     </>
+  );
+}
+
+export default function SectionWikiBody(props: SectionWikiBodyProps) {
+  return (
+    <SectionCategoriesScope sectionKey={props.sectionId}>
+      <SectionWikiBodyInner {...props} />
+    </SectionCategoriesScope>
   );
 }

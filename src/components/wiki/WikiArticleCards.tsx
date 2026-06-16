@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { useSectionCategories } from '../../hooks/useSectionCategories';
+import { useSectionCategoriesScoped } from '../../context/SectionCategoriesContext';
+import { useSectionWikiArticles } from '../../hooks/useSectionWikiArticles';
 import { getCustomSectionById } from '../../lib/sectionRegistry';
 import {
   defaultStructuredInitial,
@@ -13,11 +14,13 @@ import DynamicSectionEditorModal, { type DynamicEditorValues } from '../ui/Dynam
 import { sectionEditorConfigs } from '../../data/sectionEditorConfig';
 import SectionWikiCard from './SectionWikiCard';
 import { useWikiFocus } from '../../context/WikiFocusContext';
-import { buildWikiCatalog } from '../../lib/sectionSeeds';
+
+export type SectionWikiCatalog = ReturnType<typeof useSectionWikiArticles>;
 
 interface WikiArticleCardsProps {
   sectionId: string;
   categoryFilter?: string;
+  catalog?: SectionWikiCatalog;
   isFavorite?: (articleId: string) => boolean;
   onToggleFavorite?: (articleId: string) => void;
   favoriteAddTitle?: string;
@@ -25,22 +28,33 @@ interface WikiArticleCardsProps {
   highlightId?: string | null;
 }
 
-export default function WikiArticleCards({
+export default function WikiArticleCards(props: WikiArticleCardsProps) {
+  if (props.catalog) return <WikiArticleCardsView {...props} catalog={props.catalog} />;
+  return <WikiArticleCardsLoader {...props} />;
+}
+
+function WikiArticleCardsLoader(props: WikiArticleCardsProps) {
+  const catalog = useSectionWikiArticles(props.sectionId);
+  return <WikiArticleCardsView {...props} catalog={catalog} />;
+}
+
+function WikiArticleCardsView({
   sectionId,
   categoryFilter = 'all',
+  catalog,
   isFavorite,
   onToggleFavorite,
   favoriteAddTitle,
   favoriteRemoveTitle,
   highlightId,
-}: WikiArticleCardsProps) {
+}: WikiArticleCardsProps & { catalog: SectionWikiCatalog }) {
   const focusId = useWikiFocus();
   const activeHighlight = highlightId ?? focusId;
-  const { wikiArticles, isEditor, isAdmin, updateWikiArticle, deleteWikiArticle, siteSettings, ensureWikiLoaded } = useAuth();
+  const { isEditor, isAdmin, updateWikiArticle, deleteWikiArticle, siteSettings, ensureWikiLoaded } = useAuth();
   const [editId, setEditId] = useState<string | null>(null);
   const [editInitial, setEditInitial] = useState<Partial<SectionEditorValues>>();
   const [dynamicInitial, setDynamicInitial] = useState<Partial<DynamicEditorValues>>();
-  const { categories, getLabel, matchesFilter, normalizeId } = useSectionCategories(sectionId);
+  const { categories, getLabel, matchesFilter, normalizeId } = useSectionCategoriesScoped(sectionId);
   const customDef = getCustomSectionById(sectionId, siteSettings);
   const schema = getSectionSchema(sectionId);
 
@@ -48,12 +62,10 @@ export default function WikiArticleCards({
     ensureWikiLoaded();
   }, [ensureWikiLoaded]);
 
-  const catalog = wikiArticles.length > 0 ? wikiArticles : buildWikiCatalog([]);
-  const articles = catalog.filter(a => {
-    if (a.section !== sectionId) return false;
+  const articles = useMemo(() => catalog.articles.filter(a => {
     if (categoryFilter === 'all') return true;
     return matchesFilter(a.fields?.category, categoryFilter);
-  });
+  }), [catalog.articles, categoryFilter, matchesFilter]);
 
   const canEdit = isEditor() || isAdmin();
   const config = sectionEditorConfigs[sectionId];

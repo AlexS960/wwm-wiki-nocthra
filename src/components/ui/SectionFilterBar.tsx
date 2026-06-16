@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Plus, RotateCcw, Settings2, Trash2, X, ChevronUp, ChevronDown, Pencil, Check } from 'lucide-react';
 import FilterPills from './FilterPills';
 import { buildSectionFilterOptions, type SectionCategoryDef } from '../../lib/sectionCategoriesMerge';
-import { useSectionCategories } from '../../hooks/useSectionCategories';
+import { useSectionCategoriesScoped } from '../../context/SectionCategoriesContext';
 
 interface SectionFilterBarProps<T> {
   sectionKey: string;
@@ -19,7 +19,7 @@ export default function SectionFilterBar<T>({
   active,
   onChange,
 }: SectionFilterBarProps<T>) {
-  const { categories, addCategory, removeCategory, moveCategory, updateCategory, resetCategories, canManage } = useSectionCategories(sectionKey);
+  const { categories, addCategory, removeCategory, moveCategory, updateCategory, resetCategories, canManage } = useSectionCategoriesScoped(sectionKey);
   const [showManager, setShowManager] = useState(false);
   const [newLabel, setNewLabel] = useState('');
   const [newIcon, setNewIcon] = useState('✦');

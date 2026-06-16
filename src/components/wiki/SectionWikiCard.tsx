@@ -667,7 +667,7 @@ function SectWikiCard(props: SectionWikiCardProps) {
 }
 
 function MysticWikiCard(props: SectionWikiCardProps) {
-  const { sectionId, article, categoryLabel, canEdit, onEdit, onDelete } = props;
+  const { sectionId, article, categoryLabel, canEdit, onEdit, onDelete, highlighted } = props;
   const parsed = parseSectionContent(article.content);
   const effectBlock = () => {
     const idx = parsed.lines.findIndex(l => l.toLowerCase() === '## эффект');
@@ -697,7 +697,12 @@ function MysticWikiCard(props: SectionWikiCardProps) {
   };
 
   return (
-    <div id={wikiCardDomId(article.id)} className="relative bg-ink-800/60 border border-ink-700/30 rounded-xl p-5 card-hover transition-all">
+    <div
+      id={wikiCardDomId(article.id)}
+      className={`relative bg-ink-800/60 border rounded-xl p-5 card-hover transition-all ${
+        highlighted ? 'border-gold-400/40 bg-gold-400/5' : 'border-ink-700/30 hover:border-gold-700/30'
+      }`}
+    >
       <div className="flex items-start gap-3">
         <span className="text-3xl shrink-0 leading-none">{article.icon}</span>
         <div className="flex-1 min-w-0">
@@ -820,11 +825,16 @@ function CookingWikiCard(props: SectionWikiCardProps) {
 }
 
 function TipsWikiCard(props: SectionWikiCardProps) {
-  const { sectionId, article, categoryLabel, canEdit, onEdit, onDelete } = props;
+  const { sectionId, article, categoryLabel, canEdit, onEdit, onDelete, highlighted } = props;
   const text = asText(article.fields?.summary || article.content);
 
   return (
-    <div className="relative bg-ink-800/50 border border-ink-700/30 rounded-xl p-4">
+    <div
+      id={wikiCardDomId(article.id)}
+      className={`relative bg-ink-800/50 border rounded-xl p-4 transition-all ${
+        highlighted ? 'border-gold-400/40 bg-gold-400/5' : 'border-ink-700/30'
+      }`}
+    >
       <ManageButtons canEdit={canEdit} onEdit={onEdit} onDelete={onDelete} sectionId={sectionId} article={article} className={`absolute top-3 right-3 z-10 ${canEdit ? '' : 'hidden'}`} />
       <div className={`flex items-center gap-2 mb-2 ${canEdit ? CARD_HEADER_ACTIONS_PAD : ''}`}>
         <span className="text-lg shrink-0">{article.icon || '💡'}</span>

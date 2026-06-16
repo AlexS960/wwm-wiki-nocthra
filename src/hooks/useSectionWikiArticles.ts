@@ -1,5 +1,5 @@
 import { useAuth } from '../context/AuthContext';
-import { useSectionCategories } from './useSectionCategories';
+import { useSectionCategoriesScoped } from '../context/SectionCategoriesContext';
 import { buildWikiCatalog } from '../lib/sectionSeeds';
 import { asText } from '../lib/asText';
 import { useMemo } from 'react';
@@ -7,7 +7,7 @@ import { useMemo } from 'react';
 /** Статьи раздела из Supabase (после сидирования — единственный источник данных). */
 export function useSectionWikiArticles(sectionId: string) {
   const { wikiArticles } = useAuth();
-  const { matchesFilter, getLabel, normalizeId } = useSectionCategories(sectionId);
+  const { matchesFilter, getLabel, normalizeId } = useSectionCategoriesScoped(sectionId);
 
   const articles = useMemo(() => {
     const catalog = wikiArticles.length > 0 ? wikiArticles : buildWikiCatalog([]);

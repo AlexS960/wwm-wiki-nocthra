@@ -114,6 +114,7 @@ export interface AuthContextValue {
   addNote: (t: string, c: string) => void;
   deleteNote: (id: string) => void;
   setSelectedBuild: (id: string | null) => void;
+  toggleSelectedBuild: (id: string) => void;
   updateUserPicture: (p: string) => void;
   updateUserGameNickname: (n: string) => void;
   updateUserGuild: (guildId: string) => void;

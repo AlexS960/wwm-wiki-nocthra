@@ -237,6 +237,17 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
     updateProgress({ selectedBuild: id });
   }, [updateProgress]);
 
+  const toggleSelectedBuild = useCallback((id: string) => {
+    setProgress(prev => {
+      const next = normalizeUserProgress({
+        ...prev,
+        selectedBuild: prev.selectedBuild === id ? null : id,
+      });
+      if (user) persistProgress(user.id, next);
+      return next;
+    });
+  }, [user, persistProgress]);
+
   const updateUserPicture = useCallback((picture: string) => {
     if (!user) return;
     const clean = sanitizePictureField(picture);
@@ -279,6 +290,7 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
     addNote,
     deleteNote,
     setSelectedBuild,
+    toggleSelectedBuild,
     updateUserPicture,
     updateUserGameNickname,
     updateUserGuild,

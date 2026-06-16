@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { resolveBuildName } from '../lib/buildLookup';
 import { Zap, Star } from 'lucide-react';
@@ -5,10 +6,20 @@ import SectionHeader from './ui/SectionHeader';
 import SectionWikiBody from './wiki/SectionWikiBody';
 
 export default function BuildsSection() {
-  const { user, progress, setSelectedBuild, wikiArticles } = useAuth();
+  const { user, progress, toggleSelectedBuild, wikiArticles } = useAuth();
   const selectedBuildName = progress.selectedBuild
     ? (resolveBuildName(progress.selectedBuild, wikiArticles) ?? 'Выбранный билд')
     : null;
+
+  const wikiCardsProps = useMemo(
+    () => (user ? {
+      isFavorite: (id: string) => progress.selectedBuild === id,
+      onToggleFavorite: toggleSelectedBuild,
+      favoriteAddTitle: 'Выбрать как мой билд',
+      favoriteRemoveTitle: 'Убрать выбор',
+    } : undefined),
+    [user, progress.selectedBuild, toggleSelectedBuild],
+  );
 
   return (
     <section id="builds" className="py-20 bg-pattern">
@@ -28,14 +39,7 @@ export default function BuildsSection() {
 
         <SectionWikiBody
           sectionId="builds"
-          {...(user ? {
-            wikiCardsProps: {
-              isFavorite: (id: string) => progress.selectedBuild === id,
-              onToggleFavorite: (id: string) => setSelectedBuild(progress.selectedBuild === id ? null : id),
-              favoriteAddTitle: 'Выбрать как мой билд',
-              favoriteRemoveTitle: 'Убрать выбор',
-            },
-          } : {})}
+          {...(wikiCardsProps ? { wikiCardsProps } : {})}
           afterCards={(
             <div className="mt-10 text-center">
               <div className="inline-flex items-center gap-2 bg-ink-800/50 border border-ink-700/30 rounded-full px-5 py-3 text-sm text-ink-300">
