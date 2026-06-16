@@ -44,7 +44,7 @@ export const defaultSiteSettings: SiteSettings = {
   pmSettings: { notificationSound: true, soundUrl: '' },
   sectionOverrides: {},
   roles: [
-    { id: 'user', displayName: 'Странник', color: '#b0a696', permissions: ['read', 'profile', 'favorites', 'chat.write'] },
+    { id: 'user', displayName: 'Странник', color: '#b0a696', permissions: ['read', 'profile', 'favorites'] },
     { id: 'moderator', displayName: 'Модератор', color: '#4abf85', permissions: ['read', 'profile', 'favorites', 'chat.write', 'chat.delete', 'chat.mute', 'staff.chat', 'support.view_all', 'support.reply', 'support.close'] },
     { id: 'guildmaster', displayName: 'Гильдмастер', color: '#d4a528', permissions: ['read', 'profile', 'favorites', 'chat.write', 'chat.delete', 'chat.mute', 'chat.ban', 'staff.chat', 'support.view_all', 'support.reply', 'support.close', 'support.delete', 'guides.create', 'guides.edit', 'guild.edit'] },
     { id: 'editor', displayName: 'Редактор', color: '#5865F2', permissions: ['read', 'profile', 'favorites', 'chat.write', 'staff.chat', 'guides.create', 'guides.edit'] },
@@ -124,6 +124,8 @@ export interface AuthContextValue {
   isAdmin: () => boolean;
   canAccessAdminPanel: () => boolean;
   canAccessStaffChat: () => boolean;
+  canUseMessenger: () => boolean;
+  adminSetMessengerAccessId: (userId: string, accessId: string) => void;
   isEditor: () => boolean;
   adminSetUserRole: (id: string, r: string) => void;
   adminBanUser: (id: string, b: boolean) => void;

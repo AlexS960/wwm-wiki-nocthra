@@ -13,9 +13,19 @@ export interface DbAccount {
   picture?: string;
   game_nickname?: string;
   guild_id?: string;
+  messenger_access_id?: string;
   password_hash: string;
   created_at: string;
   last_seen?: string | null;
+}
+
+export interface VisitStats {
+  totalHits: number;
+  uniqueVisitors: number;
+  anonymousHits: number;
+  registeredHits: number;
+  topPaths: { path: string; hits: number }[];
+  daily: { day: string; hits: number; uniqueVisitors: number }[];
 }
 
 export interface DbRegisteredGuild {
@@ -45,7 +55,7 @@ export async function dbInit() {
 }
 
 const ACCOUNT_PUBLIC_FIELDS =
-  'id, username, role, picture, game_nickname, guild_id, created_at, last_seen';
+  'id, username, role, picture, game_nickname, guild_id, created_at, last_seen, messenger_access_id';
 
 type AccountPublicRow = Omit<DbAccount, 'password_hash'>;
 
@@ -70,12 +80,20 @@ async function dbSelectPublicAccounts(
 }
 
 export async function dbListAccounts(): Promise<DbAccount[]> {
-  return dbSelectPublicAccounts(source =>
-    getSupabase()
-      .from(source)
-      .select(ACCOUNT_PUBLIC_FIELDS)
-      .order('created_at', { ascending: false }),
-  );
+  const { data, error } = await getSupabase()
+    .from('accounts')
+    .select(ACCOUNT_PUBLIC_FIELDS)
+    .order('created_at', { ascending: false });
+  if (error) {
+    logger.error('Failed to load accounts', 'db', error.message);
+    return dbSelectPublicAccounts(source =>
+      getSupabase()
+        .from(source)
+        .select(ACCOUNT_PUBLIC_FIELDS)
+        .order('created_at', { ascending: false }),
+    );
+  }
+  return mapPublicAccounts(data as AccountPublicRow[]);
 }
 
 /** Аккаунты со служебными ролями (включая кастомные id с правом staff.chat). */
@@ -797,4 +815,94 @@ export async function dbMuteUser(userId: string, until: string): Promise<boolean
 export async function dbUnmuteUser(userId: string): Promise<boolean> {
   const { error } = await getSupabase().from('chat_muted_users').delete().eq('user_id', userId);
   return !error;
+}
+
+// ====== site_visits (аналитика) ======
+export async function dbRecordVisit(row: {
+  visitor_id: string;
+  user_id: string | null;
+  path: string;
+}): Promise<void> {
+  const { error } = await getSupabase().from('site_visits').insert({
+    visitor_id: row.visitor_id,
+    user_id: row.user_id,
+    path: row.path,
+    hit_at: new Date().toISOString(),
+  });
+  if (error) {
+    const msg = error.message.toLowerCase();
+    if (msg.includes('does not exist') || msg.includes('could not find')) return;
+    logger.warn('Failed to record visit', 'analytics', error.message);
+  }
+}
+
+export async function dbGetVisitStats(days: number): Promise<{ stats: VisitStats | null; error?: string }> {
+  const since = new Date(Date.now() - days * 86400000).toISOString();
+  const { data, error } = await getSupabase()
+    .from('site_visits')
+    .select('visitor_id, user_id, path, hit_at')
+    .gte('hit_at', since)
+    .order('hit_at', { ascending: false })
+    .limit(10000);
+
+  if (error) {
+    const msg = error.message.toLowerCase();
+    if (msg.includes('does not exist') || msg.includes('could not find')) {
+      return {
+        stats: {
+          totalHits: 0,
+          uniqueVisitors: 0,
+          anonymousHits: 0,
+          registeredHits: 0,
+          topPaths: [],
+          daily: [],
+        },
+        error: 'Таблица site_visits не найдена. Выполните миграцию 14_site_analytics_chat_access.sql',
+      };
+    }
+    return { stats: null, error: error.message };
+  }
+
+  const rows = data || [];
+  const visitors = new Set<string>();
+  let anonymousHits = 0;
+  let registeredHits = 0;
+  const pathCounts = new Map<string, number>();
+  const dailyMap = new Map<string, { hits: number; visitors: Set<string> }>();
+
+  for (const row of rows) {
+    visitors.add(row.visitor_id);
+    if (row.user_id) registeredHits++;
+    else anonymousHits++;
+    pathCounts.set(row.path, (pathCounts.get(row.path) || 0) + 1);
+    const day = row.hit_at.slice(0, 10);
+    const bucket = dailyMap.get(day) || { hits: 0, visitors: new Set<string>() };
+    bucket.hits++;
+    bucket.visitors.add(row.visitor_id);
+    dailyMap.set(day, bucket);
+  }
+
+  const topPaths = [...pathCounts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 15)
+    .map(([path, hits]) => ({ path, hits }));
+
+  const daily = [...dailyMap.entries()]
+    .sort((a, b) => b[0].localeCompare(a[0]))
+    .map(([day, v]) => ({
+      day,
+      hits: v.hits,
+      uniqueVisitors: v.visitors.size,
+    }));
+
+  return {
+    stats: {
+      totalHits: rows.length,
+      uniqueVisitors: visitors.size,
+      anonymousHits,
+      registeredHits,
+      topPaths,
+      daily,
+    },
+  };
 }

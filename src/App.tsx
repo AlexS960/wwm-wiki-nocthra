@@ -20,6 +20,7 @@ import { usePageSeo } from './hooks/usePageSeo';
 import { useClickSound } from './hooks/useClickSound';
 import { clearChunkReloadFlag } from './lib/chunkError';
 import { isKnownPath, pageFromPath, pathFromPage, registerCustomSectionRoutes } from './lib/appRoutes';
+import { trackPageVisit } from './lib/analytics';
 import { isContentSectionResolved, sanitizeSectionDefinitions } from './lib/sectionRegistry';
 import { lazyWithRetry } from './lib/lazyWithRetry';
 import ContentPage from './components/ContentPage';
@@ -56,7 +57,8 @@ function DbErrorBanner() {
 
 function AppContent() {
   const { user, siteSettings, isLoading } = useAuthState();
-  const { canAccessAdminPanel, canAccessStaffChat } = useAuthActions();
+  const { canAccessAdminPanel, canAccessStaffChat, canUseMessenger } = useAuthActions();
+  const showMessenger = canUseMessenger();
   useClickSound();
 
   useEffect(() => {
@@ -87,6 +89,12 @@ function AppContent() {
 
   usePageSeo(currentPage);
   usePmBrowserNotifications();
+
+  useEffect(() => {
+    if (isLoading) return;
+    const path = pathFromPage(currentPage) || window.location.pathname || '/';
+    trackPageVisit(path, user?.id);
+  }, [currentPage, user?.id, isLoading]);
 
   useEffect(() => {
     registerCustomSectionRoutes(sanitizeSectionDefinitions(siteSettings.sectionDefinitions));
@@ -203,11 +211,13 @@ function AppContent() {
         anchor={profileAnchor}
         onNavigate={handleNavigate}
       />
-      <FloatingChat onLoginClick={() => setShowLoginModal(true)} />
+      {showMessenger && <FloatingChat onLoginClick={() => setShowLoginModal(true)} />}
       <SupportWidget onLoginClick={() => setShowLoginModal(true)} />
-      <Suspense fallback={null}>
-        <PrivateMessages onLoginClick={() => setShowLoginModal(true)} />
-      </Suspense>
+      {showMessenger && (
+        <Suspense fallback={null}>
+          <PrivateMessages onLoginClick={() => setShowLoginModal(true)} />
+        </Suspense>
+      )}
       {showScrollTop && (
         <button
           type="button"

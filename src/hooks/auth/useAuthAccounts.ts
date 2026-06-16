@@ -19,6 +19,7 @@ export function useAuthAccounts(user: User | null) {
         gameNickname: a.game_nickname || '',
         guildId: a.guild_id || '',
         role: a.role,
+        messengerAccessId: a.messenger_access_id || undefined,
         joinedAt: formatRegistrationDate(a.created_at),
         lastSeenAt,
         lastSeen: formatLastSeen(lastSeenAt),

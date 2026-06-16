@@ -16,7 +16,7 @@ interface MenuPos { x: number; y: number; openUp: boolean; }
 export default function FloatingChat({ onLoginClick }: FloatingChatProps) {
   const {
     user, chatState, sendMessage, deleteMessage, muteUser, unmuteUser,
-    isUserMuted, chatBanUser, hasPermission, siteSettings, getUserDisplayName,
+    isUserMuted, chatBanUser, hasPermission, canUseMessenger, siteSettings, getUserDisplayName,
     ensureChatLoaded, chatLoaded,
     chatHasMore, chatLoadingMore, loadOlderChatMessages,
     searchChatMessages, clearChatSearch, chatSearchResults,
@@ -51,7 +51,7 @@ export default function FloatingChat({ onLoginClick }: FloatingChatProps) {
 
   const isMod = hasPermission('chat.delete') || hasPermission('chat.mute');
   const canMute = hasPermission('chat.mute') || hasPermission('chat.delete');
-  const canWrite = hasPermission('chat.write') && user && !isUserMuted(user.id);
+  const canWrite = canUseMessenger() && user && !isUserMuted(user.id);
   const currentMute = user ? chatState.mutedUsers.find(m => m.userId === user.id && Date.now() < m.until) : null;
 
   useEffect(() => {

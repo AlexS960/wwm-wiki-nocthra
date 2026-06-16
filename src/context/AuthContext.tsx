@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useCallback, useRef, useState, type ReactNode } from 'react';
 import { mergeSiteSettingsSafe, normalizeChatState } from '../lib/normalizeState';
 import { canAccessStaffChat as userCanAccessStaffChat } from '../lib/staffChat';
+import { canUseMessenger as userCanUseMessenger } from '../lib/messengerAccess';
 import { dbDeleteAccount, dbUpdateAccount } from '../lib/db';
 import { useAuthSession } from '../hooks/useAuthSession';
 import { useAuthPm } from '../hooks/useAuthPm';
@@ -70,6 +71,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const session = useAuthSession({ setDbSaveError });
   const {
     user,
+    setUser,
     progress,
     setProgress,
     loginWithPassword,
@@ -220,6 +222,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const canAccessStaffChat = useCallback(
     () => userCanAccessStaffChat(user, safeSiteSettings.roles),
+    [user, safeSiteSettings.roles],
+  );
+
+  const canUseMessenger = useCallback(
+    () => userCanUseMessenger(user, safeSiteSettings.roles),
     [user, safeSiteSettings.roles],
   );
 
@@ -408,8 +415,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     isAdmin,
     canAccessAdminPanel,
     canAccessStaffChat,
+    canUseMessenger,
     isEditor,
     adminSetUserRole: (id, r) => { void dbUpdateAccount(id, { role: r }); void accounts.refreshAccounts(); },
+    adminSetMessengerAccessId: (id, accessId) => {
+      void dbUpdateAccount(id, { messenger_access_id: accessId });
+      accounts.setRegisteredUsers(prev =>
+        prev.map(u => u.id === id ? { ...u, messengerAccessId: accessId || undefined } : u),
+      );
+      if (user?.id === id) {
+        setUser(prev => {
+          if (!prev) return prev;
+          const next = { ...prev, messengerAccessId: accessId || undefined };
+          localStorage.setItem('wwm_user', JSON.stringify(next));
+          return next;
+        });
+      }
+    },
     adminBanUser: (id, banned) => {
       if (banned) {
         const u = accounts.registeredUsers.find(x => x.id === id);

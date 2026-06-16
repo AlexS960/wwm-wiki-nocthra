@@ -73,7 +73,7 @@ function stripEnglishFields(fields) {
 /** Ловит битую кодировку (PowerShell Set-Content без UTF-8 и т.п.) */
 function assertRussianArticles(articles, label) {
   const CYRILLIC = /[а-яёА-ЯЁ]/;
-  const MOJIBAKE = /[¦ÐÑÃ]|TË|TÏ|òÀ/;
+  const MOJIBAKE = /[¦ÐÑÃ]|TË|TÏ|òÀ|Ð|âœ/;
   const bad = articles.filter(a => {
     if (!a.title?.trim()) return true;
     if (MOJIBAKE.test(a.title) || MOJIBAKE.test(a.content || '')) return true;
@@ -129,10 +129,24 @@ async function main() {
   );
 
   const innerIds = new Set(innerPath.map(a => a.id));
+  const FORCE_SEED_SECTIONS = new Set(['lifeskills', 'tips', 'mystic', 'builds', 'weapons', 'sects', 'bosses', 'cooking']);
   const toUpsert = [
-    ...seeds.filter(s => !customIds.has(s.id)),
+    ...seeds.filter(s => !customIds.has(s.id) || FORCE_SEED_SECTIONS.has(s.section)),
     ...innerPath,
   ];
+
+  const MOJIBAKE = /[¦ÐÑÃ]|TË|TÏ|òÀ|âœ|ðŸ/;
+  const seedLsIds = new Set(seeds.filter(s => s.section === 'lifeskills').map(s => s.id));
+  const { data: lsRows } = await supabase.from('wiki_articles').select('id, title, section').eq('section', 'lifeskills');
+  const lsToDelete = (lsRows || []).filter(r => {
+    if (seedLsIds.has(r.id)) return false;
+    const title = r.title || '';
+    return MOJIBAKE.test(title) || !/[а-яёА-ЯЁ]/.test(title);
+  });
+  if (lsToDelete.length) {
+    console.log(`▶ Удаление битых статей lifeskills (${lsToDelete.length})…`);
+    await supabase.from('wiki_articles').delete().in('id', lsToDelete.map(r => r.id));
+  }
 
   // Удалить старые innerpath seed-статьи, если id совпадает — перезапишем как custom
   const skipped = seeds.filter(s => customIds.has(s.id)).length;

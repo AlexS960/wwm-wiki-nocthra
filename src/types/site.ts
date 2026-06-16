@@ -54,6 +54,8 @@ export interface User {
   gameNickname?: string;
   guildId?: string;
   role: UserRole;
+  /** Идентификатор доступа к чату и ЛС (выдаёт администратор) */
+  messengerAccessId?: string;
 }
 
 export interface GuideArticle {
@@ -117,6 +119,7 @@ export interface RegisteredUser {
   lastSeenAt: string | null;
   isBanned: boolean;
   chatBanned?: boolean;
+  messengerAccessId?: string;
 }
 
 export interface PmSettings {

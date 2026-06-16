@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { ArrowLeft, Users, Settings, ShieldAlert, Crown, Tag, Wrench, Shield, LayoutTemplate, RefreshCw } from 'lucide-react';
+import { ArrowLeft, Users, Settings, ShieldAlert, Crown, Tag, Wrench, Shield, LayoutTemplate, RefreshCw, BarChart3 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import UsersPanel from './UsersPanel';
 import RolesPanel from './RolesPanel';
@@ -8,15 +8,17 @@ import SettingsPanel from './SettingsPanel';
 import GuildsPanel from './GuildsPanel';
 import ConstructorPanel from './ConstructorPanel';
 import ParsersPanel from './ParsersPanel';
+import AnalyticsPanel from './AnalyticsPanel';
 
 interface AdminPageProps {
   onBack: () => void;
 }
 
-type Tab = 'users' | 'roles' | 'sections' | 'settings' | 'guilds' | 'constructor' | 'parsers';
+type Tab = 'users' | 'roles' | 'sections' | 'settings' | 'guilds' | 'constructor' | 'parsers' | 'analytics';
 
 const tabs: { id: Tab; label: string; icon: React.ReactNode }[] = [
   { id: 'users', label: 'Пользователи', icon: <Users className="w-4 h-4" /> },
+  { id: 'analytics', label: 'Статистика', icon: <BarChart3 className="w-4 h-4" /> },
   { id: 'constructor', label: 'Конструктор', icon: <LayoutTemplate className="w-4 h-4" /> },
   { id: 'guilds', label: 'Гильдии', icon: <Shield className="w-4 h-4" /> },
   { id: 'roles', label: 'Роли и Звания', icon: <Tag className="w-4 h-4" /> },
@@ -89,6 +91,7 @@ export default function AdminPage({ onBack }: AdminPageProps) {
         </div>
 
         {activeTab === 'users' && <UsersPanel />}
+        {activeTab === 'analytics' && <AnalyticsPanel />}
         {activeTab === 'constructor' && <ConstructorPanel />}
         {activeTab === 'guilds' && <GuildsPanel />}
         {activeTab === 'roles' && <RolesPanel />}

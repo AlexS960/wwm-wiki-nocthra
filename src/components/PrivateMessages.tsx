@@ -31,7 +31,7 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
     user, registeredUsers, privateMessages, unreadPMCount, sendPrivateMessage, markPMRead,
     deletePrivateMessageForMe, deletePrivateMessageForAll, loadPmThread,
     deletePmDialogForMe, deletePmDialogForAll,
-    siteSettings, hasPermission, getUserDisplayName, dbSaveError, clearDbSaveError, pmLoaded,
+    siteSettings, hasPermission, canUseMessenger, getUserDisplayName, dbSaveError, clearDbSaveError, pmLoaded,
     ensureAccountsLoaded,
   } = useAuth();
   const [sendError, setSendError] = useState<string | null>(null);
@@ -307,6 +307,8 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
       </button>
     );
   }
+
+  if (!canUseMessenger()) return null;
 
   const displayError = sendError || dbSaveError;
   const menuMsg = pmMenu ? privateMessages.find(m => m.id === pmMenu.messageId) : null;

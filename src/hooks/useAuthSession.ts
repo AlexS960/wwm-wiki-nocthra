@@ -98,6 +98,7 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
         gameNickname: acc.game_nickname || '',
         guildId: acc.guild_id || '',
         role: acc.role,
+        messengerAccessId: acc.messenger_access_id || undefined,
       };
       setUser(prev => {
         if (!prev || prev.id !== refreshed.id) return prev;
@@ -107,6 +108,7 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
           && prev.picture === refreshed.picture
           && prev.gameNickname === refreshed.gameNickname
           && prev.guildId === refreshed.guildId
+          && prev.messengerAccessId === refreshed.messengerAccessId
         ) {
           return prev;
         }
@@ -147,6 +149,7 @@ export function useAuthSession({ setDbSaveError }: UseAuthSessionOptions) {
       gameNickname: acc.game_nickname || '',
       guildId: acc.guild_id || '',
       role: acc.role,
+      messengerAccessId: acc.messenger_access_id || undefined,
     };
     setUser(nextUser);
     if (remember) localStorage.setItem('wwm_user', JSON.stringify(nextUser));

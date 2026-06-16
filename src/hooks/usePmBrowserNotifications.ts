@@ -1,15 +1,16 @@
 import { useEffect, useRef } from 'react';
-import { useAuthState } from '../context/AuthContext';
+import { useAuthState, useAuthActions } from '../context/AuthContext';
 import { getPmBrowserNotifyEnabled, showPmNotification } from '../lib/notifications';
 
 /** Показывает браузерные уведомления при новых входящих ЛС */
 export function usePmBrowserNotifications() {
   const { user, privateMessages } = useAuthState();
+  const { canUseMessenger } = useAuthActions();
   const seenRef = useRef<Set<string>>(new Set());
   const initializedRef = useRef(false);
 
   useEffect(() => {
-    if (!user) {
+    if (!user || !canUseMessenger()) {
       seenRef.current.clear();
       initializedRef.current = false;
       return;
@@ -32,5 +33,5 @@ export function usePmBrowserNotifications() {
         showPmNotification(m.fromName, m.deletedForAll ? 'Сообщение удалено' : m.text);
       }
     }
-  }, [user, privateMessages]);
+  }, [user, privateMessages, canUseMessenger]);
 }
