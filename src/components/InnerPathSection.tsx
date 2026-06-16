@@ -4,7 +4,7 @@ import {
   innerPathIntroRu,
   innerPathUpgradeRu,
   innerPathUpgradeTipsRu,
-} from '../data/innerWays';
+} from '../data/innerPathCopy';
 import { SECTION_ITEMS_LIST_CLASS } from './wiki/sectionLayout';
 import SectionHeader from './ui/SectionHeader';
 import SectionWikiBody from './wiki/SectionWikiBody';

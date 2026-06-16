@@ -104,8 +104,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     persist,
     setDbSaveError,
     normalizedRef,
-    getSectionOverrides: () => siteCore.siteSettings.sectionOverrides,
-    onOverridesMigrated: sections => migrateOverridesRef.current(sections),
   });
   const chatHook = useAuthChat({ user, persist, normalizedRef });
   const supportHook = useAuthSupport({

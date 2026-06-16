@@ -1,7 +1,6 @@
 import type { GuideArticle, WikiArticle } from '../types/site';
 import type { AiNpc } from '../data/aiNpcs.meta';
 import type { RiddleClue, RiddleMaster } from '../data/riddles';
-import type { InnerWay } from '../data/innerWays';
 import { WIKI_SECTION_LABELS } from '../data/sections';
 
 export interface SearchResult {
@@ -18,18 +17,13 @@ export interface SearchResult {
 let extrasPromise: Promise<{
   riddleMasters: RiddleMaster[];
   riddleClues: RiddleClue[];
-  innerWays: InnerWay[];
 }> | null = null;
 
 function loadSearchExtras() {
   if (!extrasPromise) {
-    extrasPromise = Promise.all([
-      import('../data/riddles'),
-      import('../data/innerWays'),
-    ]).then(([riddles, inner]) => ({
+    extrasPromise = import('../data/riddles').then(riddles => ({
       riddleMasters: riddles.riddleMasters,
       riddleClues: riddles.riddleClues,
-      innerWays: inner.innerWays,
     }));
   }
   return extrasPromise;
@@ -45,7 +39,6 @@ function searchCore(
   wiki: WikiArticle[],
   npcs: AiNpc[],
   riddleMasters: RiddleMaster[],
-  innerWays: InnerWay[],
   riddleClues: RiddleClue[],
   limit: number,
   sectionLabels: Record<string, string> = WIKI_SECTION_LABELS,
@@ -110,22 +103,6 @@ function searchCore(
     });
   }
 
-  for (const iw of innerWays) {
-    const hay = `${iw.nameEn} ${iw.pathEn} ${iw.effect} ${iw.howToGet}`.toLowerCase();
-    if (!hay.includes(q)) continue;
-    results.push({
-      id: iw.id,
-      type: 'wiki',
-      title: iw.nameEn,
-      summary: iw.effect.slice(0, 100) + (iw.effect.length > 100 ? '…' : ''),
-      section: 'innerpath',
-      sectionLabel: WIKI_SECTION_LABELS.innerpath,
-      icon: '☯️',
-      navigateTo: 'innerpath',
-    });
-    if (results.length >= limit) return results.slice(0, limit);
-  }
-
   for (const c of riddleClues) {
     const hay = `${c.clueEn} ${c.answers.join(' ')}`.toLowerCase();
     if (!hay.includes(q)) continue;
@@ -156,6 +133,6 @@ export async function searchSite(
   const q = query.trim().toLowerCase();
   if (q.length < 2) return [];
 
-  const { riddleMasters, riddleClues, innerWays } = await loadSearchExtras();
-  return searchCore(q, guides, wiki, npcs, riddleMasters, innerWays, riddleClues, limit, sectionLabels);
+  const { riddleMasters, riddleClues } = await loadSearchExtras();
+  return searchCore(q, guides, wiki, npcs, riddleMasters, riddleClues, limit, sectionLabels);
 }

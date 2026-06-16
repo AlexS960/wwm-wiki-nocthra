@@ -7,9 +7,7 @@ import {
   contentStoreUpdateWiki,
   contentStoreDeleteWiki,
 } from '../../lib/contentStore';
-import { buildWikiCatalog } from '../../lib/sectionSeeds';
-import { seedWikiSections } from '../../lib/seedWikiSections';
-import { markWikiSeedSynced, needsWikiSeedResync } from '../../lib/wikiDbSync';
+import { buildWikiCatalog } from '../../lib/wikiCatalog';
 import { sanitizeWiki } from '../../lib/siteImages';
 import { logger } from '../../lib/logger';
 import type { MutableRefObject } from 'react';
@@ -29,8 +27,6 @@ type Deps = {
   persist: (key: string, data: unknown) => Promise<string | null>;
   setDbSaveError: (msg: string | null) => void;
   normalizedRef: MutableRefObject<NormalizedDomains>;
-  getSectionOverrides: () => Record<string, unknown> | undefined;
-  onOverridesMigrated: (sections: string[]) => void;
 };
 
 export function useAuthWiki({
@@ -38,12 +34,8 @@ export function useAuthWiki({
   persist,
   setDbSaveError,
   normalizedRef,
-  getSectionOverrides,
-  onOverridesMigrated,
 }: Deps) {
-  const [wikiArticles, setWikiArticles] = useState<WikiArticle[]>(() =>
-    sanitizeWiki(buildWikiCatalog([])),
-  );
+  const [wikiArticles, setWikiArticles] = useState<WikiArticle[]>([]);
   const [wikiLoaded, setWikiLoaded] = useState(false);
   const wikiRef = useRef(wikiArticles);
   wikiRef.current = wikiArticles;
@@ -70,28 +62,8 @@ export function useAuthWiki({
     }
 
     setWikiArticles(sanitizeWiki(buildWikiCatalog(dbArticles)));
-
-    try {
-      const forceResync = needsWikiSeedResync();
-      const overrides = getSectionOverrides();
-      const seedResult = await seedWikiSections(
-        dbArticles,
-        overrides,
-        async all => { await persist('wiki', all); },
-      );
-      if (seedResult.migratedSections.length > 0) {
-        onOverridesMigrated(seedResult.migratedSections);
-      }
-      if (forceResync || seedResult.inserted > 0 || seedResult.updated > 0) {
-        markWikiSeedSynced();
-      }
-      setWikiArticles(sanitizeWiki(buildWikiCatalog(seedResult.articles)));
-    } catch (err) {
-      logger.warn('Wiki DB seed sync failed', 'wiki', String(err));
-    }
-
     setWikiLoaded(true);
-  }, [getSectionOverrides, onOverridesMigrated, persist, normalizedRef]);
+  }, [normalizedRef]);
 
   const ensureWikiLoaded = useCallback(() => {
     if (syncStartedRef.current) return;

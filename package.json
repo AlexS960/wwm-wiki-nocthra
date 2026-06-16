@@ -17,7 +17,8 @@
     "sync:riddles": "node scripts/sync-content.mjs riddles",
     "sync:npcs": "node scripts/sync-content.mjs npcs-locations,npcs-bundle",
     "sync:fetch": "node scripts/sync-content.mjs all --fetch",
-    "wiki:push-db": "node scripts/push-wiki-seeds-to-db.mjs"
+    "wiki:push-db": "node scripts/push-wiki-seeds-to-db.mjs",
+    "wiki:innerpath-ru": "node scripts/generate-innerpath-ru-full.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.106.1",

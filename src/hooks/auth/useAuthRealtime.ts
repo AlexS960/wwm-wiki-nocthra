@@ -21,7 +21,7 @@ import {
   contentStoreLoadSupportTickets,
   contentStoreLoadGuideVersions,
 } from '../../lib/contentStore';
-import { buildWikiCatalog } from '../../lib/sectionSeeds';
+import { buildWikiCatalog } from '../../lib/wikiCatalog';
 import { sanitizeGuides, sanitizeGuideVersions, sanitizeSiteNews, sanitizeWiki } from '../../lib/siteImages';
 import type { Dispatch, SetStateAction } from 'react';
 import type { UserProgress } from '../../types/site';

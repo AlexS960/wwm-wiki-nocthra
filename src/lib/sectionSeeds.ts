@@ -264,26 +264,13 @@ export function getAllSeedArticles(): WikiArticle[] {
     ...mysticArtSeeds.map(m => mysticToWiki(m)),
     ...tipSeeds.map(t => tipToWiki(t)),
     ...lifeSkills.map((ls, i) => lifeSkillToWiki(ls, i)),
-    ...innerWays.map(w => innerWayToWiki(w)),
   ];
   return raw.map(articleForDbStorage);
 }
 
-/** Дополняет загруженные статьи дефолтным контентом (без перезаписи существующих). */
-export function mergeWikiWithSeeds(existing: WikiArticle[]): WikiArticle[] {
-  const byId = new Map(existing.map(a => [a.id, a]));
-  for (const seed of getAllSeedArticles()) {
-    if (!byId.has(seed.id)) byId.set(seed.id, seed);
-  }
-  return [...byId.values()];
-}
-
-/** Собирает каталог: сиды → БД (БД перекрывает сиды; кастомные статьи сохраняются). */
+/** Собирает каталог только из БД (сиды — scripts/push-wiki-seeds-to-db.mjs). */
 export function buildWikiCatalog(existing: WikiArticle[] = []): WikiArticle[] {
-  const byId = new Map<string, WikiArticle>();
-  for (const seed of getAllSeedArticles()) byId.set(seed.id, seed);
-  for (const article of existing) byId.set(article.id, article);
-  return [...byId.values()].map(normalizeWikiArticle);
+  return existing.map(normalizeWikiArticle);
 }
 
 const OVERRIDE_CONVERTERS: Record<string, (item: unknown, index?: number) => WikiArticle | null> = {

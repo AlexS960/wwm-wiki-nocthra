@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, type MutableRefObject } from 'react';
 import type { GuideArticle, GuideComment, GuideVersion, SiteNewsItem, SiteSettings, SupportTicket, WikiArticle, ChatState } from '../../types/site';
 import { contentStoreUsesNormalized } from '../../lib/contentStore';
-import { buildWikiCatalog } from '../../lib/sectionSeeds';
+import { buildWikiCatalog } from '../../lib/wikiCatalog';
 import { asArray } from '../../context/authContextTypes';
 import { normalizeChatState } from '../../lib/normalizeState';
 import { sanitizeGuides, sanitizeGuideVersions, sanitizeGuildAvatar, sanitizeSiteNews, sanitizeWiki } from '../../lib/siteImages';

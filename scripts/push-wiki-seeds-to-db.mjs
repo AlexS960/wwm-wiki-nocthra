@@ -1,20 +1,16 @@
 #!/usr/bin/env node
 /**
- * Записывает дефолтные русские статьи вики в Supabase (wiki_articles).
- * Перезаписывает все статьи кроме fields.source = 'custom'.
+ * Записывает русский контент вики в Supabase (wiki_articles).
+ * Дефолтные разделы — source: seed. Внутренний путь — source: custom.
  *
- * Использование:
  *   npm run wiki:push-db
- *
- * Требует .env:
- *   VITE_SUPABASE_URL
- *   VITE_SUPABASE_ANON_KEY
  */
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { createServer } from 'vite';
 import { createClient } from '@supabase/supabase-js';
+import { buildInnerPathWikiArticles } from './innerPathWiki.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
@@ -65,6 +61,15 @@ async function loadSeedArticles() {
   }
 }
 
+function stripEnglishFields(fields) {
+  if (!fields || typeof fields !== 'object') return {};
+  const next = { ...fields };
+  delete next.nameEn;
+  delete next.name_en;
+  delete next.textEn;
+  return next;
+}
+
 async function main() {
   loadEnvFile();
   const url = process.env.VITE_SUPABASE_URL;
@@ -74,9 +79,14 @@ async function main() {
     process.exit(1);
   }
 
-  console.log('▶ Загрузка русских сидов…');
+  console.log('▶ Загрузка русских сидов (без внутреннего пути)…');
   const seeds = await loadSeedArticles();
-  console.log(`  статей: ${seeds.length}`);
+  const innerPath = buildInnerPathWikiArticles();
+  console.log(`  сиды: ${seeds.length}, внутренний путь: ${innerPath.length}`);
+
+  if (innerPath.length < 40) {
+    console.warn(`⚠ В innerPathRu.json не хватает переводов (ожидалось ~42, есть ${innerPath.length})`);
+  }
 
   const supabase = createClient(url, key);
 
@@ -90,12 +100,18 @@ async function main() {
 
   const customIds = new Set(
     (existing || [])
-      .filter(row => row.fields?.source === 'custom')
+      .filter(row => row.fields?.source === 'custom' && row.id && !row.id.startsWith('ls-'))
       .map(row => row.id),
   );
 
-  const toUpsert = seeds.filter(s => !customIds.has(s.id));
-  const skipped = seeds.length - toUpsert.length;
+  const innerIds = new Set(innerPath.map(a => a.id));
+  const toUpsert = [
+    ...seeds.filter(s => !customIds.has(s.id)),
+    ...innerPath,
+  ];
+
+  // Удалить старые innerpath seed-статьи, если id совпадает — перезапишем как custom
+  const skipped = seeds.filter(s => customIds.has(s.id)).length;
 
   console.log(`▶ Запись в Supabase (${toUpsert.length} статей, пропуск кастомных: ${skipped})…`);
 
@@ -104,7 +120,11 @@ async function main() {
   let fail = 0;
 
   for (let i = 0; i < toUpsert.length; i += BATCH) {
-    const batch = toUpsert.slice(i, i + BATCH).map(wikiToRow);
+    const batch = toUpsert.slice(i, i + BATCH).map(a => {
+      const row = wikiToRow(a);
+      row.fields = stripEnglishFields(row.fields);
+      return row;
+    });
     const { error } = await supabase.from('wiki_articles').upsert(batch, { onConflict: 'id' });
     if (error) {
       console.error(`  ✗ batch ${i / BATCH + 1}:`, error.message);
@@ -117,20 +137,36 @@ async function main() {
 
   console.log(`\n✓ Готово: записано ${ok}, ошибок ${fail}`);
 
-  // Удалить nameEn из fields у оставшихся не-кастомных
-  const { data: withEn } = await supabase
-    .from('wiki_articles')
-    .select('id, fields')
-    .not('fields->nameEn', 'is', null);
+  // Удалить nameEn и английские innerpath без перевода
+  const { data: allRows } = await supabase.from('wiki_articles').select('id, section, title, content, fields');
+  if (allRows?.length) {
+    let cleaned = 0;
+    for (const row of allRows) {
+      const fields = stripEnglishFields(row.fields);
+      const hadEn = row.fields?.nameEn || row.fields?.name_en;
+      const isLatinTitle = row.title && !/[а-яёА-ЯЁ]/.test(row.title);
+      const isInnerStale = row.section === 'innerpath' && innerIds.has(row.id) && row.fields?.source !== 'custom';
 
-  if (withEn?.length) {
-    console.log(`▶ Очистка nameEn (${withEn.length})…`);
-    for (const row of withEn) {
-      if (row.fields?.source === 'custom') continue;
-      const fields = { ...row.fields };
-      delete fields.nameEn;
-      await supabase.from('wiki_articles').update({ fields, updated_at: new Date().toISOString() }).eq('id', row.id);
+      if (!hadEn && !isLatinTitle && !isInnerStale && JSON.stringify(fields) === JSON.stringify(row.fields || {})) {
+        continue;
+      }
+
+      const patch = { fields, updated_at: new Date().toISOString() };
+      if (isInnerStale) patch.fields = { ...fields, source: 'custom' };
+
+      await supabase.from('wiki_articles').update(patch).eq('id', row.id);
+      cleaned++;
     }
+    if (cleaned) console.log(`▶ Очищено полей / меток: ${cleaned}`);
+  }
+
+  // Удалить дубликаты innerpath на английском (если id отличается от ru-набора)
+  const { data: innerRows } = await supabase.from('wiki_articles').select('id, title, section').eq('section', 'innerpath');
+  const validInner = new Set(innerPath.map(a => a.id));
+  const toDelete = (innerRows || []).filter(r => !validInner.has(r.id) && !/[а-яёА-ЯЁ]/.test(r.title || ''));
+  if (toDelete.length) {
+    console.log(`▶ Удаление устаревших innerpath (${toDelete.length})…`);
+    await supabase.from('wiki_articles').delete().in('id', toDelete.map(r => r.id));
   }
 }
 
