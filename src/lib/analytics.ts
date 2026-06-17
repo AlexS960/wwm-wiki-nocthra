@@ -1,37 +1,71 @@
 import { dbGetVisitStats, dbRecordVisit } from './db';
 
-const VISITOR_KEY = 'wwm_visitor_id';
+const IP_SESSION_KEY = 'wwm_client_ip';
 const LAST_HIT_KEY = 'wwm_last_hit';
-/** Не чаще одного hit на path за сессию (5 мин) */
+/** Не чаще одного hit на path за вкладку (5 мин) */
 const HIT_COOLDOWN_MS = 5 * 60 * 1000;
 
-export function getOrCreateVisitorId(): string {
+let cachedIp: string | null = null;
+
+const IPV4_RE = /^\d{1,3}(\.\d{1,3}){3}$/;
+
+function isIpLike(value: string): boolean {
+  return IPV4_RE.test(value) || value.includes(':');
+}
+
+/** Публичный IP устройства (кэш на вкладку). */
+export async function resolveClientIp(): Promise<string> {
+  if (cachedIp) return cachedIp;
   try {
-    const existing = localStorage.getItem(VISITOR_KEY);
-    if (existing) return existing;
-    const id = 'v_' + crypto.randomUUID().replace(/-/g, '').slice(0, 16);
-    localStorage.setItem(VISITOR_KEY, id);
-    return id;
+    const stored = sessionStorage.getItem(IP_SESSION_KEY);
+    if (stored && isIpLike(stored)) {
+      cachedIp = stored;
+      return stored;
+    }
   } catch {
-    return 'v_anon_' + Date.now();
+    /* ignore */
   }
+
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 5000);
+    const res = await fetch('https://api.ipify.org?format=json', { signal: controller.signal });
+    clearTimeout(timer);
+    if (res.ok) {
+      const data = await res.json() as { ip?: string };
+      const ip = String(data.ip || '').trim();
+      if (ip && isIpLike(ip)) {
+        cachedIp = ip;
+        try { sessionStorage.setItem(IP_SESSION_KEY, ip); } catch { /* ignore */ }
+        return ip;
+      }
+    }
+  } catch {
+    /* ignore */
+  }
+
+  return 'unknown';
 }
 
 export function trackPageVisit(path: string, userId?: string | null): void {
   const normalized = path.split('?')[0].split('#')[0] || '/';
   const key = `${LAST_HIT_KEY}:${normalized}`;
   try {
-    const last = Number(localStorage.getItem(key) || '0');
+    const last = Number(sessionStorage.getItem(key) || '0');
     if (Date.now() - last < HIT_COOLDOWN_MS) return;
-    localStorage.setItem(key, String(Date.now()));
+    sessionStorage.setItem(key, String(Date.now()));
   } catch {
     /* ignore */
   }
-  void dbRecordVisit({
-    visitor_id: getOrCreateVisitorId(),
-    user_id: userId || null,
-    path: normalized,
-  });
+
+  void (async () => {
+    const clientIp = await resolveClientIp();
+    await dbRecordVisit({
+      client_ip: clientIp,
+      user_id: userId || null,
+      path: normalized,
+    });
+  })();
 }
 
 export async function loadVisitStats(days = 7) {

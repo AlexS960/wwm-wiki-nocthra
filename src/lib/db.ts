@@ -21,11 +21,12 @@ export interface DbAccount {
 
 export interface VisitStats {
   totalHits: number;
-  uniqueVisitors: number;
+  uniqueIps: number;
   anonymousHits: number;
   registeredHits: number;
   topPaths: { path: string; hits: number }[];
-  daily: { day: string; hits: number; uniqueVisitors: number }[];
+  topIps: { ip: string; hits: number; lastSeen: string }[];
+  daily: { day: string; hits: number; uniqueIps: number }[];
 }
 
 export interface DbRegisteredGuild {
@@ -693,10 +694,16 @@ export async function dbInsertWikiArticle(article: Omit<DbWikiArticle, 'created_
 }
 
 export async function dbUpsertWikiArticle(article: Omit<DbWikiArticle, 'created_at' | 'updated_at'>): Promise<boolean> {
+  const now = new Date().toISOString();
+  const { data: existing } = await getSupabase()
+    .from('wiki_articles')
+    .select('created_at')
+    .eq('id', article.id)
+    .maybeSingle();
   const row: DbWikiArticle = {
     ...article,
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: existing?.created_at || now,
+    updated_at: now,
   };
   const { error } = await getSupabase().from('wiki_articles').upsert(row, { onConflict: 'id' });
   if (error) {
@@ -706,12 +713,25 @@ export async function dbUpsertWikiArticle(article: Omit<DbWikiArticle, 'created_
   return true;
 }
 
-export async function dbUpdateWikiArticle(id: string, updates: Partial<DbWikiArticle>): Promise<boolean> {
-  const { error } = await getSupabase()
+export async function dbUpdateWikiArticle(
+  id: string,
+  updates: Partial<DbWikiArticle>,
+): Promise<{ ok: boolean; error?: string }> {
+  const { data, error } = await getSupabase()
     .from('wiki_articles')
     .update({ ...updates, updated_at: new Date().toISOString() })
-    .eq('id', id);
-  return !error;
+    .eq('id', id)
+    .select('id');
+  if (error) {
+    logger.error('Failed to update wiki article', 'db', error.message);
+    return { ok: false, error: error.message };
+  }
+  if (!data?.length) {
+    const msg = `Статья ${id} не найдена в базе`;
+    logger.warn(msg, 'db');
+    return { ok: false, error: msg };
+  }
+  return { ok: true };
 }
 
 export async function dbDeleteWikiArticle(id: string): Promise<boolean> {
@@ -818,13 +838,23 @@ export async function dbUnmuteUser(userId: string): Promise<boolean> {
 }
 
 // ====== site_visits (аналитика) ======
+function visitIpFromRow(row: { client_ip?: string | null; visitor_id?: string | null }): string {
+  const fromColumn = row.client_ip?.trim();
+  if (fromColumn && fromColumn !== 'unknown') return fromColumn;
+  const legacy = row.visitor_id?.trim() || '';
+  if (/^\d{1,3}(\.\d{1,3}){3}$/.test(legacy) || legacy.includes(':')) return legacy;
+  return '';
+}
+
 export async function dbRecordVisit(row: {
-  visitor_id: string;
+  client_ip: string;
   user_id: string | null;
   path: string;
 }): Promise<void> {
+  const ip = row.client_ip.trim() || 'unknown';
   const { error } = await getSupabase().from('site_visits').insert({
-    visitor_id: row.visitor_id,
+    visitor_id: ip,
+    client_ip: ip,
     user_id: row.user_id,
     path: row.path,
     hit_at: new Date().toISOString(),
@@ -832,6 +862,16 @@ export async function dbRecordVisit(row: {
   if (error) {
     const msg = error.message.toLowerCase();
     if (msg.includes('does not exist') || msg.includes('could not find')) return;
+    if (msg.includes('client_ip')) {
+      const { error: legacyErr } = await getSupabase().from('site_visits').insert({
+        visitor_id: ip,
+        user_id: row.user_id,
+        path: row.path,
+        hit_at: new Date().toISOString(),
+      });
+      if (legacyErr) logger.warn('Failed to record visit', 'analytics', legacyErr.message);
+      return;
+    }
     logger.warn('Failed to record visit', 'analytics', error.message);
   }
 }
@@ -840,7 +880,7 @@ export async function dbGetVisitStats(days: number): Promise<{ stats: VisitStats
   const since = new Date(Date.now() - days * 86400000).toISOString();
   const { data, error } = await getSupabase()
     .from('site_visits')
-    .select('visitor_id, user_id, path, hit_at')
+    .select('visitor_id, client_ip, user_id, path, hit_at')
     .gte('hit_at', since)
     .order('hit_at', { ascending: false })
     .limit(10000);
@@ -851,35 +891,69 @@ export async function dbGetVisitStats(days: number): Promise<{ stats: VisitStats
       return {
         stats: {
           totalHits: 0,
-          uniqueVisitors: 0,
+          uniqueIps: 0,
           anonymousHits: 0,
           registeredHits: 0,
           topPaths: [],
+          topIps: [],
           daily: [],
         },
-        error: 'Таблица site_visits не найдена. Выполните миграцию 14_site_analytics_chat_access.sql',
+        error: 'Таблица site_visits не найдена. Выполните миграции 14 и 15 в Supabase.',
       };
+    }
+    if (msg.includes('client_ip')) {
+      const fallback = await getSupabase()
+        .from('site_visits')
+        .select('visitor_id, user_id, path, hit_at')
+        .gte('hit_at', since)
+        .order('hit_at', { ascending: false })
+        .limit(10000);
+      if (fallback.error) return { stats: null, error: fallback.error.message };
+      return buildVisitStats((fallback.data || []) as Array<{
+        visitor_id: string;
+        client_ip?: string;
+        user_id: string | null;
+        path: string;
+        hit_at: string;
+      }>);
     }
     return { stats: null, error: error.message };
   }
 
-  const rows = data || [];
-  const visitors = new Set<string>();
+  return buildVisitStats(data || []);
+}
+
+function buildVisitStats(rows: Array<{
+  visitor_id: string;
+  client_ip?: string | null;
+  user_id: string | null;
+  path: string;
+  hit_at: string;
+}>): { stats: VisitStats | null; error?: string } {
+  const ips = new Set<string>();
   let anonymousHits = 0;
   let registeredHits = 0;
   const pathCounts = new Map<string, number>();
-  const dailyMap = new Map<string, { hits: number; visitors: Set<string> }>();
+  const ipCounts = new Map<string, { hits: number; lastSeen: string }>();
+  const dailyMap = new Map<string, { hits: number; ips: Set<string> }>();
 
   for (const row of rows) {
-    visitors.add(row.visitor_id);
+    const ip = visitIpFromRow(row);
+    if (ip) ips.add(ip);
     if (row.user_id) registeredHits++;
     else anonymousHits++;
     pathCounts.set(row.path, (pathCounts.get(row.path) || 0) + 1);
+    if (ip) {
+      const bucket = ipCounts.get(ip) || { hits: 0, lastSeen: row.hit_at };
+      bucket.hits++;
+      if (row.hit_at > bucket.lastSeen) bucket.lastSeen = row.hit_at;
+      ipCounts.set(ip, bucket);
+    }
     const day = row.hit_at.slice(0, 10);
-    const bucket = dailyMap.get(day) || { hits: 0, visitors: new Set<string>() };
-    bucket.hits++;
-    bucket.visitors.add(row.visitor_id);
-    dailyMap.set(day, bucket);
+    const dayBucket = dailyMap.get(day) || { hits: 0, ips: new Set<string>() };
+    dayBucket.hits++;
+    if (ip) dayBucket.ips.add(ip);
+    dailyMap.set(day, dayBucket);
   }
 
   const topPaths = [...pathCounts.entries()]
@@ -887,21 +961,31 @@ export async function dbGetVisitStats(days: number): Promise<{ stats: VisitStats
     .slice(0, 15)
     .map(([path, hits]) => ({ path, hits }));
 
+  const topIps = [...ipCounts.entries()]
+    .sort((a, b) => b[1].hits - a[1].hits)
+    .slice(0, 20)
+    .map(([ip, v]) => ({
+      ip,
+      hits: v.hits,
+      lastSeen: new Date(v.lastSeen).toLocaleString('ru-RU'),
+    }));
+
   const daily = [...dailyMap.entries()]
     .sort((a, b) => b[0].localeCompare(a[0]))
     .map(([day, v]) => ({
       day,
       hits: v.hits,
-      uniqueVisitors: v.visitors.size,
+      uniqueIps: v.ips.size,
     }));
 
   return {
     stats: {
       totalHits: rows.length,
-      uniqueVisitors: visitors.size,
+      uniqueIps: ips.size,
       anonymousHits,
       registeredHits,
       topPaths,
+      topIps,
       daily,
     },
   };

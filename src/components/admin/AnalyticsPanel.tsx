@@ -31,7 +31,7 @@ export default function AnalyticsPanel() {
             <BarChart3 className="w-5 h-5 text-gold-400" /> Статистика посещений
           </h2>
           <p className="text-ink-400 text-sm mt-1">
-            Учитываются все посетители, включая гостей без регистрации (анонимный ID в браузере).
+            Уникальные посетители считаются по IP устройства. Один человек с одного интернета — одна запись, даже в разных браузерах.
           </p>
         </div>
         <select
@@ -52,9 +52,31 @@ export default function AnalyticsPanel() {
         <>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <StatBox label="Просмотры" value={stats.totalHits} icon="👁️" />
-            <StatBox label="Уникальные" value={stats.uniqueVisitors} icon="👥" />
-            <StatBox label="Гости" value={stats.anonymousHits} icon="🌐" />
+            <StatBox label="Уникальные IP" value={stats.uniqueIps} icon="🌐" />
+            <StatBox label="Без входа" value={stats.anonymousHits} icon="👤" />
             <StatBox label="Авторизованные" value={stats.registeredHits} icon="✅" />
+          </div>
+
+          <div className="bg-ink-800/50 border border-ink-700/30 rounded-xl overflow-hidden">
+            <div className="px-4 py-3 border-b border-ink-700/30 text-sm font-medium text-gold-300">
+              IP-адреса посетителей
+            </div>
+            {stats.topIps.length === 0 ? (
+              <p className="p-6 text-ink-500 text-sm text-center">
+                Пока нет данных с IP. Новые визиты появятся после посещений (нужна миграция 15).
+              </p>
+            ) : (
+              <div className="divide-y divide-ink-700/30">
+                {stats.topIps.map(row => (
+                  <div key={row.ip} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 px-4 py-2.5 text-sm">
+                    <span className="text-ink-200 font-mono">{row.ip}</span>
+                    <span className="text-ink-500 text-xs shrink-0">
+                      {row.hits} просм. · последний визит {row.lastSeen}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="bg-ink-800/50 border border-ink-700/30 rounded-xl overflow-hidden">
@@ -62,7 +84,7 @@ export default function AnalyticsPanel() {
               Популярные страницы
             </div>
             {stats.topPaths.length === 0 ? (
-              <p className="p-6 text-ink-500 text-sm text-center">Пока нет данных. Статистика начнёт собираться после посещений.</p>
+              <p className="p-6 text-ink-500 text-sm text-center">Пока нет данных.</p>
             ) : (
               <div className="divide-y divide-ink-700/30">
                 {stats.topPaths.map(row => (
@@ -85,7 +107,7 @@ export default function AnalyticsPanel() {
                   <div key={row.day} className="flex items-center justify-between px-4 py-2 text-sm">
                     <span className="text-ink-300">{row.day}</span>
                     <span className="text-ink-400">
-                      {row.hits} просм. · {row.uniqueVisitors} уник.
+                      {row.hits} просм. · {row.uniqueIps} IP
                     </span>
                   </div>
                 ))}
