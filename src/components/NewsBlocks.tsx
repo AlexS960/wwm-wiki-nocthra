@@ -243,7 +243,7 @@ function SiteNewsCard({
           onOpen();
         }
       }}
-      className="w-full p-3 sm:p-4 rounded-xl surface-card surface-card-hover border transition-all flex flex-col cursor-pointer"
+      className="w-full p-3 sm:p-4 rounded-xl surface-card-subtle surface-card-hover border transition-all flex flex-col cursor-pointer"
     >
       <div className="flex items-start gap-3 w-full">
         <span className="text-lg shrink-0">{item.icon}</span>

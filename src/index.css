@@ -130,10 +130,18 @@ body::before {
   --accent-muted: #b8891a;
   --accent-border: #b8891a;
   --accent-secondary-rgb: 168, 130, 255;
+  --surface-tint-pct: 16%;
+  --surface-tint-hover-pct: 22%;
+  --surface-panel-tint-pct: 12%;
+  --surface-input-tint-pct: 14%;
   --surface-card: rgba(26, 20, 14, 0.6);
-  --surface-card-hover: rgba(26, 20, 14, 0.72);
+  --surface-card-subtle: rgba(26, 20, 14, 0.4);
+  --surface-card-hover: rgba(26, 20, 14, 0.55);
+  --surface-card-hover-strong: rgba(26, 20, 14, 0.72);
+  --surface-card-strong: rgba(26, 20, 14, 0.8);
   --surface-panel: rgba(15, 11, 7, 0.5);
-  --surface-input: rgba(26, 20, 14, 0.7);
+  --surface-panel-strong: rgba(15, 11, 7, 0.78);
+  --surface-input: rgba(26, 20, 14, 0.85);
   --surface-border: rgba(184, 137, 26, 0.35);
   --surface-border-subtle: rgba(184, 137, 26, 0.15);
   --accent-tint: #d4a528;
@@ -152,12 +160,28 @@ body::before {
   background-color: var(--surface-card);
   border-color: var(--surface-border-subtle);
 }
+.surface-card-subtle {
+  background-color: var(--surface-card-subtle);
+  border-color: var(--surface-border-subtle);
+}
 .surface-card-hover:hover {
   background-color: var(--surface-card-hover);
   border-color: var(--surface-border);
 }
+.surface-card-hover-strong:hover {
+  background-color: var(--surface-card-hover-strong);
+  border-color: var(--surface-border);
+}
 .surface-panel {
   background-color: var(--surface-panel);
+  border-color: var(--surface-border-subtle);
+}
+.surface-panel-strong {
+  background-color: var(--surface-panel-strong);
+  border-color: var(--surface-border-subtle);
+}
+.surface-card-strong {
+  background-color: var(--surface-card-strong);
   border-color: var(--surface-border-subtle);
 }
 .surface-input {
@@ -642,41 +666,78 @@ html.mobile-nav-open .admin-float-cluster {
 }
 
 /* ── Пользовательский акцент: глобальные переопределения Tailwind ── */
-html[data-user-accent] :is(
-  .bg-ink-800,
-  .bg-ink-800\/40,
-  .bg-ink-800\/45,
-  .bg-ink-800\/50,
-  .bg-ink-800\/55,
-  .bg-ink-800\/60,
-  .bg-ink-800\/65,
-  .bg-ink-800\/70,
-  .bg-ink-800\/80
-) {
-  background-color: var(--surface-card) !important;
+/* Фоны ink-800: сохраняем исходную прозрачность, добавляем акцентный оттенок */
+html[data-user-accent] .bg-ink-800\/30 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-tint-pct), rgba(26, 20, 14, 0.3)) !important;
+}
+html[data-user-accent] .bg-ink-800\/40 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-tint-pct), rgba(26, 20, 14, 0.4)) !important;
+}
+html[data-user-accent] .bg-ink-800\/45 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-tint-pct), rgba(26, 20, 14, 0.45)) !important;
+}
+html[data-user-accent] .bg-ink-800\/50 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-tint-pct), rgba(26, 20, 14, 0.5)) !important;
+}
+html[data-user-accent] .bg-ink-800\/55 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-tint-hover-pct), rgba(26, 20, 14, 0.55)) !important;
+}
+html[data-user-accent] .bg-ink-800\/60 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-tint-pct), rgba(26, 20, 14, 0.6)) !important;
+}
+html[data-user-accent] .bg-ink-800\/65 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-tint-pct), rgba(26, 20, 14, 0.65)) !important;
+}
+html[data-user-accent] .bg-ink-800\/70 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-tint-pct), rgba(26, 20, 14, 0.7)) !important;
+}
+html[data-user-accent] .bg-ink-800\/80 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-tint-pct), rgba(26, 20, 14, 0.8)) !important;
+}
+html[data-user-accent] .bg-ink-800 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-input-tint-pct), rgba(26, 20, 14, 0.92)) !important;
 }
 
-html[data-user-accent] :is(
-  .bg-ink-900,
-  .bg-ink-900\/30,
-  .bg-ink-900\/40,
-  .bg-ink-900\/50,
-  .bg-ink-900\/60,
-  .bg-ink-900\/72,
-  .bg-ink-900\/78,
-  .bg-ink-900\/85,
-  .bg-ink-900\/90,
-  .bg-ink-900\/95,
-  .bg-ink-900\/98
-) {
-  background-color: var(--surface-panel) !important;
+/* Фоны ink-900: панели и оверлеи с сохранением alpha */
+html[data-user-accent] .bg-ink-900\/30 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-panel-tint-pct), rgba(15, 11, 7, 0.3)) !important;
+}
+html[data-user-accent] .bg-ink-900\/40 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-panel-tint-pct), rgba(15, 11, 7, 0.4)) !important;
+}
+html[data-user-accent] .bg-ink-900\/50 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-panel-tint-pct), rgba(15, 11, 7, 0.5)) !important;
+}
+html[data-user-accent] .bg-ink-900\/60 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-panel-tint-pct), rgba(15, 11, 7, 0.6)) !important;
+}
+html[data-user-accent] .bg-ink-900\/72 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-panel-tint-pct), rgba(15, 11, 7, 0.72)) !important;
+}
+html[data-user-accent] .bg-ink-900\/78 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-panel-tint-pct), rgba(15, 11, 7, 0.78)) !important;
+}
+html[data-user-accent] .bg-ink-900\/85 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-panel-tint-pct), rgba(15, 11, 7, 0.85)) !important;
+}
+html[data-user-accent] .bg-ink-900\/90 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-panel-tint-pct), rgba(15, 11, 7, 0.9)) !important;
+}
+html[data-user-accent] .bg-ink-900\/95 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-panel-tint-pct), rgba(15, 11, 7, 0.95)) !important;
+}
+html[data-user-accent] .bg-ink-900\/98 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-panel-tint-pct), rgba(15, 11, 7, 0.98)) !important;
+}
+html[data-user-accent] .bg-ink-900 {
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-panel-tint-pct), rgba(15, 11, 7, 0.95)) !important;
 }
 
 html[data-user-accent] :is(
   .bg-ink-700\/50,
   .bg-ink-700\/60
 ) {
-  background-color: color-mix(in srgb, var(--accent-tint) 10%, #2a2016 90%) !important;
+  background-color: color-mix(in srgb, var(--accent-tint) 10%, rgba(42, 32, 22, 0.55)) !important;
 }
 
 html[data-user-accent] :is(
@@ -713,16 +774,22 @@ html[data-user-accent] :is(
 html[data-user-accent] :is(
   .hover\:bg-gold-500\/5:hover,
   .hover\:bg-ink-800\/55:hover,
-  .hover\:bg-ink-800\/35:hover
+  .hover\:bg-ink-800\/35:hover,
+  .hover\:bg-ink-800\/50:hover,
+  .hover\:bg-ink-800\/30:hover
 ) {
-  background-color: var(--surface-card-hover) !important;
+  background-color: color-mix(in srgb, var(--accent-tint) var(--surface-tint-hover-pct), rgba(26, 20, 14, 0.55)) !important;
+}
+
+html[data-user-accent] .hover\:bg-gold-500\/5:hover {
+  background-color: color-mix(in srgb, var(--accent-tint) 8%, rgba(26, 20, 14, 0.6)) !important;
 }
 
 html[data-user-accent] :is(
   .bg-gold-900\/10,
   .bg-gold-400\/5
 ) {
-  background-color: color-mix(in srgb, var(--accent-tint) 12%, var(--surface-panel) 88%) !important;
+  background-color: color-mix(in srgb, var(--accent-tint) 12%, rgba(15, 11, 7, 0.5)) !important;
 }
 
 html[data-user-accent] :is(
@@ -798,7 +865,7 @@ html[data-user-accent] :is(
   .bg-purple-950\/28,
   .bg-purple-950\/30
 ) {
-  background-color: color-mix(in srgb, var(--accent-tint) 16%, var(--surface-card) 84%) !important;
+  background-color: color-mix(in srgb, var(--accent-tint) 16%, rgba(26, 20, 14, 0.45)) !important;
 }
 
 html[data-user-accent] :is(
@@ -807,7 +874,7 @@ html[data-user-accent] :is(
   .hover\:bg-purple-500\/25:hover,
   .hover\:bg-purple-500\/30:hover
 ) {
-  background-color: color-mix(in srgb, var(--accent-tint) 24%, var(--surface-card) 76%) !important;
+  background-color: color-mix(in srgb, var(--accent-tint) 24%, rgba(26, 20, 14, 0.55)) !important;
 }
 
 html[data-user-accent] :is(

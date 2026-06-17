@@ -19,10 +19,18 @@ const DEFAULT_GOLD_SCALE: Record<string, string> = {
 };
 
 const DEFAULT_SURFACE_VARS: Record<string, string> = {
+  '--surface-tint-pct': '16%',
+  '--surface-tint-hover-pct': '22%',
+  '--surface-panel-tint-pct': '12%',
+  '--surface-input-tint-pct': '14%',
   '--surface-card': 'rgba(26, 20, 14, 0.6)',
-  '--surface-card-hover': 'rgba(26, 20, 14, 0.72)',
+  '--surface-card-subtle': 'rgba(26, 20, 14, 0.4)',
+  '--surface-card-hover': 'rgba(26, 20, 14, 0.55)',
+  '--surface-card-hover-strong': 'rgba(26, 20, 14, 0.72)',
+  '--surface-card-strong': 'rgba(26, 20, 14, 0.8)',
   '--surface-panel': 'rgba(15, 11, 7, 0.5)',
-  '--surface-input': 'rgba(26, 20, 14, 0.7)',
+  '--surface-panel-strong': 'rgba(15, 11, 7, 0.78)',
+  '--surface-input': 'rgba(26, 20, 14, 0.85)',
   '--surface-border': 'rgba(184, 137, 26, 0.35)',
   '--surface-border-subtle': 'rgba(184, 137, 26, 0.15)',
   '--accent-tint': DEFAULT_USER_ACCENT,
@@ -140,11 +148,15 @@ function buildContrastVars(hex: string, scale: Record<string, string>): Record<s
   };
 }
 
+function tintedSurface(displayHex: string, tintPct: string, baseRgba: string): string {
+  return `color-mix(in srgb, ${displayHex} ${tintPct}, ${baseRgba})`;
+}
+
 function buildSurfaceVars(hex: string, displayHex: string, isDark: boolean): Record<string, string> {
-  const cardPct = isDark ? 24 : 16;
-  const cardHoverPct = isDark ? 30 : 22;
-  const panelPct = isDark ? 18 : 12;
-  const inputPct = isDark ? 20 : 14;
+  const cardPct = isDark ? '24%' : '16%';
+  const cardHoverPct = isDark ? '30%' : '22%';
+  const panelPct = isDark ? '18%' : '12%';
+  const inputPct = isDark ? '20%' : '14%';
   const [dr, dg, db] = hexToRgb(displayHex);
   const mutedRgb = mixRgb(hexToRgb(displayHex), [26, 20, 14], 0.4);
 
@@ -153,10 +165,18 @@ function buildSurfaceVars(hex: string, displayHex: string, isDark: boolean): Rec
   const gradEnd = rgbToHex(...mixRgb(hexToRgb(displayHex), [15, 11, 7], isDark ? 0.65 : 0.72));
 
   return {
-    '--surface-card': `color-mix(in srgb, ${displayHex} ${cardPct}%, #1a140e ${100 - cardPct}%)`,
-    '--surface-card-hover': `color-mix(in srgb, ${displayHex} ${cardHoverPct}%, #1a140e ${100 - cardHoverPct}%)`,
-    '--surface-panel': `color-mix(in srgb, ${displayHex} ${panelPct}%, #0f0b07 ${100 - panelPct}%)`,
-    '--surface-input': `color-mix(in srgb, ${displayHex} ${inputPct}%, #1a140e ${100 - inputPct}%)`,
+    '--surface-tint-pct': cardPct,
+    '--surface-tint-hover-pct': cardHoverPct,
+    '--surface-panel-tint-pct': panelPct,
+    '--surface-input-tint-pct': inputPct,
+    '--surface-card': tintedSurface(displayHex, cardPct, 'rgba(26, 20, 14, 0.6)'),
+    '--surface-card-subtle': tintedSurface(displayHex, cardPct, 'rgba(26, 20, 14, 0.4)'),
+    '--surface-card-hover': tintedSurface(displayHex, cardHoverPct, 'rgba(26, 20, 14, 0.55)'),
+    '--surface-card-hover-strong': tintedSurface(displayHex, cardHoverPct, 'rgba(26, 20, 14, 0.72)'),
+    '--surface-card-strong': tintedSurface(displayHex, cardPct, 'rgba(26, 20, 14, 0.8)'),
+    '--surface-panel': tintedSurface(displayHex, panelPct, 'rgba(15, 11, 7, 0.5)'),
+    '--surface-panel-strong': tintedSurface(displayHex, panelPct, 'rgba(15, 11, 7, 0.78)'),
+    '--surface-input': tintedSurface(displayHex, inputPct, 'rgba(26, 20, 14, 0.85)'),
     '--surface-border': `rgba(${dr}, ${dg}, ${db}, 0.38)`,
     '--surface-border-subtle': `rgba(${dr}, ${dg}, ${db}, 0.2)`,
     '--accent-tint': displayHex,
@@ -234,7 +254,7 @@ export function applyUserAccent(color: UserAccentColor | null | undefined): void
   const surfaces = buildSurfaceVars(hex, displayHex, isDark);
 
   root.setAttribute('data-user-accent', hex);
-  ensureAccentThemeStyle(isDark ? 24 : 16);
+  ensureAccentThemeStyle(isDark ? 24 : 16); // surface tint % for glow intensity
 
   setRootVars({
     ...scale,

@@ -116,7 +116,7 @@ function GuildInfoPopup({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
 
   const modal = (
     <AppModal open={isOpen} onClose={onClose} layer="default" className="max-w-lg w-full">
-      <div className="w-full max-h-[min(92dvh,720px)] sm:max-h-[90vh] rounded-t-2xl sm:rounded-2xl overflow-hidden shadow-2xl border border-purple-500/35 flex flex-col surface-panel backdrop-blur-lg">
+      <div className="w-full max-h-[min(92dvh,720px)] sm:max-h-[90vh] rounded-t-2xl sm:rounded-2xl overflow-hidden shadow-2xl border border-purple-500/35 flex flex-col surface-panel-strong backdrop-blur-lg">
         <div className="h-1 guild-border-flow shrink-0" />
 
         <div className="relative shrink-0">
