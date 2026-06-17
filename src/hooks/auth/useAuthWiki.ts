@@ -10,6 +10,7 @@ import {
 import { buildWikiCatalog } from '../../lib/wikiCatalog';
 import { sanitizeWiki } from '../../lib/siteImages';
 import { logger } from '../../lib/logger';
+import { dbgLog } from '../../lib/debugSessionLog';
 import type { MutableRefObject } from 'react';
 import type { NormalizedDomains } from './types';
 
@@ -103,12 +104,21 @@ export function useAuthWiki({
     } as WikiArticle;
 
     const next = [...wikiRef.current, article];
+    const prevLen = wikiRef.current.length;
     wikiSavePendingRef.current += 1;
     setWikiArticles(next);
     try {
       const err = await saveWikiArticle(article, next);
       if (err) {
-        setWikiArticles(wikiRef.current.filter(x => x.id !== article.id));
+        const rollback = wikiRef.current.filter(x => x.id !== article.id);
+        dbgLog('useAuthWiki.ts:addWikiArticle', 'save failed rollback', {
+          articleId: article.id,
+          prevLen,
+          nextLen: next.length,
+          rollbackLen: rollback.length,
+          refLen: wikiRef.current.length,
+        }, 'A');
+        setWikiArticles(rollback);
         setDbSaveError(err);
         return err;
       }
@@ -146,10 +156,12 @@ export function useAuthWiki({
     try {
       const err = await saveWikiArticle(updated, next);
       if (err) {
+        dbgLog('useAuthWiki.ts:updateWikiArticle', 'save failed', { articleId: id, err }, 'D');
         setWikiArticles(prev);
         setDbSaveError(err);
         return err;
       }
+      dbgLog('useAuthWiki.ts:updateWikiArticle', 'save ok', { articleId: id, titleLen: updated.title.length }, 'D');
       setDbSaveError(null);
       return null;
     } finally {
