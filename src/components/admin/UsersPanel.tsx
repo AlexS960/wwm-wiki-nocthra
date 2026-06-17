@@ -3,6 +3,7 @@ import { Users, Trash2, Ban, UserCheck, Search, MessageCircle, Copy, KeyRound } 
 import { useAuth } from '../../context/AuthContext';
 import { dbListAccounts, type DbAccount } from '../../lib/db';
 import { generateMessengerAccessId } from '../../lib/messengerAccess';
+import { MessengerStar } from '../MessengerStar';
 import { StatBox, ConfirmModal } from './AdminShared';
 
 export default function UsersPanel() {
@@ -155,8 +156,9 @@ export default function UsersPanel() {
                       </div>
                     )}
                     <div className="min-w-0">
-                      <div className="text-white text-sm font-medium truncate">
+                      <div className="text-white text-sm font-medium truncate inline-flex items-center gap-0.5 max-w-full">
                         {u.name}
+                        {hasMessenger && <MessengerStar className="text-[0.75em] shrink-0" />}
                         {u.gameNickname ? <span className="text-gold-400 font-normal"> ({u.gameNickname})</span> : null}
                       </div>
                       <div className="text-ink-500 text-xs truncate">{u.email}</div>

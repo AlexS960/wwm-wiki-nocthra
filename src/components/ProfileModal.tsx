@@ -11,6 +11,7 @@ import {
   Swords, MapPin, FileText, Plus, Trash2, Check, ImagePlus, Link as LinkIcon,
   Circle, Download, Upload, RotateCcw, Settings, Users, ChevronRight
 } from 'lucide-react';
+import { MessengerStar } from './MessengerStar';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -209,7 +210,10 @@ export default function ProfileModal({ isOpen, onClose, anchor, onNavigate }: Pr
               <div className="flex items-baseline gap-1.5 min-w-0">
                 <h2 className="font-serif text-base sm:text-lg font-bold text-white truncate">{user.name}</h2>
                 {user.gameNickname && (
-                  <span className="text-gold-400 text-xs sm:text-sm font-medium truncate">({user.gameNickname})</span>
+                  <span className="text-gold-400 text-xs sm:text-sm font-medium truncate inline-flex items-center gap-0.5">
+                    ({user.gameNickname})
+                    {user.messengerAccessId?.trim() && <MessengerStar className="text-[0.75em]" />}
+                  </span>
                 )}
               </div>
               <span className="text-xs px-2 py-0.5 rounded-full font-medium inline-flex items-center gap-1 shrink-0"

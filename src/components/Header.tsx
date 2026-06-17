@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { Menu, X, Scroll, User, LogIn, House, Users, CircleHelp, MessageSquare, Lightbulb, Shield, BookOpen } from 'lucide-react';
 import { useAuthState } from '../context/AuthContext';
 import GlobalSearch from './GlobalSearch';
+import { MessengerStar } from './MessengerStar';
 import { dispatchCloseFloatPanels } from '../lib/closeFloatPanels';
 import { useBodyScrollLock } from '../hooks/useBodyScrollLock';
 import { useScrollThreshold } from '../hooks/useScrollThreshold';
@@ -102,8 +103,9 @@ function Header({ activeSection, onNavigate, onLoginClick, onProfileClick, showS
               >
                 {user.picture ? <img src={user.picture} alt={user.name} className="w-6 h-6 rounded-full" /> :
                   <div className="w-6 h-6 rounded-full bg-gold-400/20 flex items-center justify-center"><User className="w-3.5 h-3.5 text-gold-400" /></div>}
-                <span className="hidden sm:block text-sm font-medium text-gold-400 group-hover:text-gold-300 max-w-[100px] truncate">
-                  {user.gameNickname?.trim() || user.name.split(' ')[0]}
+                <span className="hidden sm:inline-flex items-center gap-0.5 text-sm font-medium text-gold-400 group-hover:text-gold-300 max-w-[100px]">
+                  <span className="truncate">{user.gameNickname?.trim() || user.name.split(' ')[0]}</span>
+                  {user.messengerAccessId?.trim() && <MessengerStar className="text-[0.7em] shrink-0" />}
                 </span>
               </button>
             ) : (

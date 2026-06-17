@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuthState, useAuthActions } from '../context/AuthContext';
 import { ArrowLeft, Users, Search, Circle } from 'lucide-react';
+import { MessengerStar } from './MessengerStar';
 
 interface UsersListPageProps { onBack: () => void; }
 
@@ -90,7 +91,10 @@ export default function UsersListPage({ onBack }: UsersListPageProps) {
                   </div>
                   {/* Игровой ник */}
                   <div className="col-span-2 border-l border-ink-600/20 pl-3">
-                    <span className="text-gold-400 text-sm truncate block">{u.gameNickname || '—'}</span>
+                    <span className="text-gold-400 text-sm truncate inline-flex items-center gap-0.5 max-w-full">
+                      {u.gameNickname || '—'}
+                      {u.messengerAccessId?.trim() && <MessengerStar className="text-[0.75em]" />}
+                    </span>
                   </div>
                   {/* Роль */}
                   <div className="col-span-2 border-l border-ink-600/20 pl-3">

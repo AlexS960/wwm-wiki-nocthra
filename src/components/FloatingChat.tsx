@@ -6,6 +6,7 @@ import {
   MessageCircle, X, Send, Trash2, VolumeX, Volume2, Ban, Shield,
   AlertTriangle, Minus, Smile, Type
 } from 'lucide-react';
+import { UserNameWithBadge } from './UserNameWithBadge';
 
 interface FloatingChatProps {
   onLoginClick: () => void;
@@ -16,7 +17,7 @@ interface MenuPos { x: number; y: number; openUp: boolean; }
 export default function FloatingChat({ onLoginClick }: FloatingChatProps) {
   const {
     user, chatState, sendMessage, deleteMessage, muteUser, unmuteUser,
-    isUserMuted, chatBanUser, hasPermission, canUseMessenger, siteSettings, getUserDisplayName,
+    isUserMuted, chatBanUser, hasPermission, canUseMessenger, siteSettings,
     ensureChatLoaded, chatLoaded,
     chatHasMore, chatLoadingMore, loadOlderChatMessages,
     searchChatMessages, clearChatSearch, chatSearchResults,
@@ -277,7 +278,13 @@ export default function FloatingChat({ onLoginClick }: FloatingChatProps) {
 
                       {/* Name + time row */}
                       <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className="font-semibold text-xs" style={{ color: roleDisplay.color }}>{getUserDisplayName(msg.userId, msg.userName)}</span>
+                        <span style={{ color: roleDisplay.color }}>
+                          <UserNameWithBadge
+                            userId={msg.userId}
+                            fallback={msg.userName}
+                            nameClassName="font-semibold text-xs"
+                          />
+                        </span>
                         <span className="text-[8px] px-1 py-0.5 rounded" style={{ backgroundColor: roleDisplay.color + '15', color: roleDisplay.color }}>
                           {roleDisplay.displayName}
                         </span>

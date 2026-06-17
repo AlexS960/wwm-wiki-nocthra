@@ -18,6 +18,7 @@ import {
 } from '../lib/pm';
 import { useCloseFloatPanels } from '../lib/closeFloatPanels';
 import { renderBBCode } from '../lib/bbcode';
+import { UserNameWithBadge } from './UserNameWithBadge';
 
 interface PrivateMessagesProps { onLoginClick: () => void; }
 
@@ -121,10 +122,6 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
       .filter(m => (m.fromId === user.id && m.toId === activeChatId) || (m.fromId === activeChatId && m.toId === user.id))
       .sort((a, b) => a.timestamp - b.timestamp);
   }, [myMessages, user, activeChatId]);
-
-  const activeChatName = activeChatId
-    ? getUserDisplayName(activeChatId, chats.find(c => c.id === activeChatId)?.name || '')
-    : '';
 
   const scrollChatToBottom = useCallback((smooth = false) => {
     const el = messagesScrollRef.current;
@@ -326,7 +323,9 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
             )}
             <Mail className="w-4 h-4 text-purple-400 shrink-0" />
             <span className="font-serif text-sm font-bold text-white truncate">
-              {view === 'compose' ? 'Новое сообщение' : view === 'chat' ? activeChatName : view === 'settings' ? 'Настройки ЛС' : 'Сообщения'}
+              {view === 'compose' ? 'Новое сообщение' : view === 'chat' && activeChatId ? (
+                <UserNameWithBadge userId={activeChatId} fallback={chats.find(c => c.id === activeChatId)?.name || ''} />
+              ) : view === 'settings' ? 'Настройки ЛС' : 'Сообщения'}
             </span>
             {view === 'list' && unreadPMCount > 0 && <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-crimson-400/20 text-crimson-400 shrink-0">{unreadPMCount}</span>}
           </div>
@@ -377,7 +376,14 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
                           onClick={e => { if (window.innerWidth < 768) openMessageMenu(e, msg); }}
                           className={`max-w-[80%] rounded-xl px-3 py-2 text-sm text-left cursor-pointer ${isSelf ? 'bg-purple-500/24 text-purple-100 rounded-br-md' : 'bg-ink-800/45 text-ink-100 rounded-bl-md'} ${msg.deletedForAll ? 'opacity-80' : ''}`}
                         >
-                          {!isSelf && <p className="text-[9px] text-purple-400/80 mb-0.5">{getUserDisplayName(msg.fromId, msg.fromName)}</p>}
+                          {!isSelf && (
+                            <UserNameWithBadge
+                              userId={msg.fromId}
+                              fallback={msg.fromName}
+                              as="p"
+                              className="text-[9px] text-purple-400/80 mb-0.5"
+                            />
+                          )}
                           {renderMessageBody(msg, isSelf)}
                           <div className="mt-1 flex items-center justify-end gap-1.5">
                             {isSelf && !msg.deletedForAll && (
@@ -536,7 +542,11 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between">
-                            <span className="text-white text-sm font-medium truncate">{chat.name}</span>
+                            <UserNameWithBadge
+                              userId={chat.id}
+                              fallback={chat.name}
+                              nameClassName="text-white text-sm font-medium"
+                            />
                             <span className="text-ink-500 text-[10px] shrink-0">{new Date(chat.ts).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })}</span>
                           </div>
                           <p dir="ltr" className="text-ink-400 text-xs truncate text-left">{chat.lastMsg}</p>

@@ -458,6 +458,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const u = accounts.registeredUsers.find(x => x.id === id);
       return u ? getDisplayName(u) : fallback;
     },
+    hasMessengerBadge: userId => {
+      if (user?.id === userId && user.messengerAccessId?.trim()) return true;
+      const u = accounts.registeredUsers.find(x => x.id === userId);
+      return !!u?.messengerAccessId?.trim();
+    },
     getRoleConfig: siteCore.getRoleConfig,
     hasPermission: p => {
       const rc = siteCore.getRoleConfig(user?.role || 'user');

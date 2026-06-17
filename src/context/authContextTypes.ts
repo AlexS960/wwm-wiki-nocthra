@@ -176,6 +176,7 @@ export interface AuthContextValue {
   restoreGuideVersion: (guideId: string, versionId: string) => Promise<string | null>;
   isUserOnline: (id: string) => boolean;
   getUserDisplayName: (id: string, fallback?: string) => string;
+  hasMessengerBadge: (userId: string) => boolean;
   updatePmSettings: (s: Partial<PmSettings>) => void;
   wikiLoaded: boolean;
   supportLoaded: boolean;
