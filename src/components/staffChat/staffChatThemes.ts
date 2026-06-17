@@ -20,9 +20,9 @@ export const STAFF_CHAT_THEMES: StaffChatTheme[] = [
     panelBg: 'bg-ink-900/30',
     otherBubble: 'bg-ink-800/70 text-ink-100 rounded-bl-md',
     selfBubble: 'bg-purple-600/35 text-purple-50 rounded-br-md',
-    accent: 'text-purple-400',
-    accentBorder: 'border-purple-500/35',
-    accentSoft: 'bg-purple-500/15',
+    accent: 'text-gold-400',
+    accentBorder: 'border-gold-500/35',
+    accentSoft: 'bg-gold-500/15',
   },
   {
     id: 'gold',

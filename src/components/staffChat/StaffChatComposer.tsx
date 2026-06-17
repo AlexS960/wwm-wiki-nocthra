@@ -35,7 +35,7 @@ export default function StaffChatComposer({
     ? 'bg-gold-500/20 text-gold-400 border-gold-400/40'
     : accentClass === 'jade'
       ? 'bg-jade-500/20 text-jade-400 border-jade-400/40'
-      : 'bg-purple-500/20 text-purple-400 border-purple-400/40';
+      : 'bg-gold-500/20 text-gold-400 border-gold-400/40';
 
   const applyBbCode = (openTag: string, closeTag: string, placeholderText = 'текст') => {
     const el = inputRef.current;
@@ -134,7 +134,7 @@ export default function StaffChatComposer({
               onSend();
             }
           }}
-          className="w-full resize-none bg-ink-700/50 border border-ink-600/40 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-ink-500 focus:outline-none focus:border-purple-400/50 min-h-[44px] max-h-32"
+          className="w-full resize-none bg-ink-700/50 border border-ink-600/40 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-ink-500 focus:outline-none focus:border-gold-400/50 min-h-[44px] max-h-32"
         />
         <div className="flex items-center gap-2">
           <button

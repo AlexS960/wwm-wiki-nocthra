@@ -19,7 +19,7 @@ export default function SetupError({ title = 'Сайт не настроен', m
       }}
     >
       <div style={{ maxWidth: 560, textAlign: 'center' }}>
-        <h1 style={{ color: '#d4a528', fontSize: 22, marginBottom: 12 }}>{title}</h1>
+        <h1 style={{ color: 'var(--color-gold-400)', fontSize: 22, marginBottom: 12 }}>{title}</h1>
         <p style={{ lineHeight: 1.65, marginBottom: 16 }}>{message}</p>
         {hint && (
           <p style={{ fontSize: 13, color: '#8c7e6a', lineHeight: 1.6, textAlign: 'left', whiteSpace: 'pre-wrap' }}>

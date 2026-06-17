@@ -69,10 +69,10 @@ export default function StaffChatPage({ onBack, onLoginClick }: StaffChatPagePro
     return (
       <div className="min-h-[calc(100dvh-4rem)] pt-16 md:pt-20 flex items-center justify-center px-4">
         <div className="text-center max-w-sm">
-          <MessageSquare className="w-14 h-14 text-purple-400/50 mx-auto mb-4" />
+          <MessageSquare className="w-14 h-14 text-gold-400/50 mx-auto mb-4" />
           <h2 className="font-serif text-xl font-bold text-white mb-2">Служебный чат</h2>
           <p className="text-ink-400 text-sm mb-6">Войдите в аккаунт</p>
-          <button type="button" onClick={onLoginClick} className="px-6 py-2.5 bg-purple-500/20 text-purple-300 rounded-lg cursor-pointer">Войти</button>
+          <button type="button" onClick={onLoginClick} className="px-6 py-2.5 bg-gold-400/20 text-gold-300 rounded-lg cursor-pointer">Войти</button>
         </div>
       </div>
     );
@@ -101,7 +101,7 @@ export default function StaffChatPage({ onBack, onLoginClick }: StaffChatPagePro
         <button type="button" onClick={onBack} className="p-2 rounded-lg text-ink-400 hover:text-gold-400 cursor-pointer">
           <ArrowLeft className="w-5 h-5" />
         </button>
-        <MessageSquare className="w-5 h-5 text-purple-400 shrink-0" />
+        <MessageSquare className="w-5 h-5 text-gold-400 shrink-0" />
         <div className="min-w-0 flex-1">
           <h1 className="font-serif text-lg font-bold text-white truncate">Служебный чат</h1>
           <p className="text-[11px] text-ink-500">{staffList.length} в команде · {groupRooms.length} групп</p>

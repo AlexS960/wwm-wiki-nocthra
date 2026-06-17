@@ -284,7 +284,7 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
       <div className="break-words text-ink-100">
         {renderBBCode(msg.text, {
           linkClassName: 'text-blue-300 hover:text-blue-200 underline break-all',
-          quoteClassName: 'my-1 border-l-2 border-purple-400/45 pl-2 text-ink-200 italic',
+          quoteClassName: 'my-1 border-l-2 border-gold-400/45 pl-2 text-ink-200 italic',
           codeClassName: 'px-1.5 py-0.5 rounded bg-ink-800/65 text-ink-100 font-mono text-[0.92em]',
         })}
       </div>
@@ -294,7 +294,7 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
   if (!isOpen) {
     return (
       <button onClick={() => setIsOpen(true)}
-        className="hover-glow-btn hover-glow-purple fixed bottom-28 right-6 z-40 bg-purple-500/20 backdrop-blur-sm border border-purple-400/40 text-purple-400 p-3.5 rounded-full shadow-lg hover:bg-purple-500/30 hover:scale-110 transition-all duration-300 cursor-pointer">
+        className="hover-glow-btn fixed bottom-28 right-6 z-40 bg-gold-400/20 backdrop-blur-sm border border-gold-400/40 text-gold-400 p-3.5 rounded-full shadow-lg hover:bg-gold-400/30 hover:scale-110 transition-all duration-300 cursor-pointer">
         <Mail className="w-6 h-6" />
         {unreadPMCount > 0 && (
           <span className="absolute -top-1 -right-1 w-5 h-5 bg-crimson-400 text-white text-[10px] font-bold rounded-full flex items-center justify-center animate-fadeIn">
@@ -312,7 +312,7 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
 
   return (
     <div className="overlay-panel fixed right-2 sm:right-6 bottom-20 sm:bottom-6 z-50 w-[min(100vw-1rem,380px)] max-w-[calc(100vw-1rem)]">
-      <div className="bg-ink-900/72 backdrop-blur-lg border border-purple-700/35 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden flex flex-col" style={{ height: 'min(500px, calc(100dvh - 6rem))' }}>
+      <div className="bg-ink-900/72 backdrop-blur-lg border border-gold-700/35 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden flex flex-col" style={{ height: 'min(500px, calc(100dvh - 6rem))' }}>
         <div className="flex items-center justify-between px-4 py-2.5 bg-ink-800/65 border-b border-ink-700/35 shrink-0">
           <div className="flex items-center gap-2 min-w-0">
             {view !== 'list' && view !== 'settings' && (
@@ -321,7 +321,7 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
             {view === 'settings' && (
               <button onClick={() => setView('list')} className="p-1 text-ink-400 hover:text-white cursor-pointer shrink-0"><ArrowLeft className="w-4 h-4" /></button>
             )}
-            <Mail className="w-4 h-4 text-purple-400 shrink-0" />
+            <Mail className="w-4 h-4 text-gold-400 shrink-0" />
             <span className="font-serif text-sm font-bold text-white truncate">
               {view === 'compose' ? 'Новое сообщение' : view === 'chat' && activeChatId ? (
                 <UserNameWithBadge userId={activeChatId} fallback={chats.find(c => c.id === activeChatId)?.name || ''} />
@@ -332,8 +332,8 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
           <div className="flex items-center gap-0.5 shrink-0">
             {view === 'list' && (
               <>
-                <button onClick={() => setView('settings')} className="p-1.5 text-ink-400 hover:text-purple-400 rounded-lg hover:bg-ink-700/50 cursor-pointer" title="Настройки"><Settings className="w-4 h-4" /></button>
-                <button onClick={() => setView('compose')} className="p-1.5 text-ink-400 hover:text-purple-400 rounded-lg hover:bg-ink-700/50 cursor-pointer"><User className="w-4 h-4" /></button>
+                <button onClick={() => setView('settings')} className="p-1.5 text-ink-400 hover:text-gold-400 rounded-lg hover:bg-ink-700/50 cursor-pointer" title="Настройки"><Settings className="w-4 h-4" /></button>
+                <button onClick={() => setView('compose')} className="p-1.5 text-ink-400 hover:text-gold-400 rounded-lg hover:bg-ink-700/50 cursor-pointer"><User className="w-4 h-4" /></button>
               </>
             )}
             <button onClick={() => { setIsOpen(false); setPmMenu(null); setShowBbcode(false); setShowEmoji(false); }} className="p-1.5 text-ink-400 hover:text-white rounded-lg hover:bg-ink-700/50 cursor-pointer"><X className="w-4 h-4" /></button>
@@ -358,7 +358,7 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
                 <div className="flex flex-col items-center justify-center h-full text-center py-8">
                   <Mail className="w-10 h-10 text-ink-700 mb-3" />
                   <p className="text-ink-400 text-sm mb-3">Войдите для отправки сообщений</p>
-                  <button onClick={onLoginClick} className="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-lg text-sm cursor-pointer hover:bg-purple-500/30">Войти</button>
+                  <button onClick={onLoginClick} className="px-4 py-2 bg-gold-400/20 text-gold-400 rounded-lg text-sm cursor-pointer hover:bg-gold-400/30">Войти</button>
                 </div>
               ) : !pmLoaded ? (
                 <p className="text-center text-ink-500 text-sm py-8">Загрузка сообщений…</p>
@@ -374,22 +374,22 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
                           type="button"
                           onContextMenu={e => openMessageMenu(e, msg)}
                           onClick={e => { if (window.innerWidth < 768) openMessageMenu(e, msg); }}
-                          className={`max-w-[80%] rounded-xl px-3 py-2 text-sm text-left cursor-pointer ${isSelf ? 'bg-purple-500/24 text-purple-100 rounded-br-md' : 'bg-ink-800/45 text-ink-100 rounded-bl-md'} ${msg.deletedForAll ? 'opacity-80' : ''}`}
+                          className={`max-w-[80%] rounded-xl px-3 py-2 text-sm text-left cursor-pointer ${isSelf ? 'bg-gold-400/24 text-gold-100 rounded-br-md' : 'bg-ink-800/45 text-ink-100 rounded-bl-md'} ${msg.deletedForAll ? 'opacity-80' : ''}`}
                         >
                           {!isSelf && (
                             <UserNameWithBadge
                               userId={msg.fromId}
                               fallback={msg.fromName}
                               as="p"
-                              className="text-[9px] text-purple-400/80 mb-0.5"
+                              className="text-[9px] text-gold-400/80 mb-0.5"
                             />
                           )}
                           {renderMessageBody(msg, isSelf)}
                           <div className="mt-1 flex items-center justify-end gap-1.5">
                             {isSelf && !msg.deletedForAll && (
                               <span className="inline-flex items-center gap-0.5">
-                                <span className={`w-1.5 h-1.5 rounded-full ${msg.read ? 'bg-[#D8BFD8]' : 'bg-crimson-400'}`} />
-                                {msg.read && <span className="w-1.5 h-1.5 rounded-full bg-[#D8BFD8]" />}
+                                <span className={`w-1.5 h-1.5 rounded-full ${msg.read ? 'bg-gold-300' : 'bg-crimson-400'}`} />
+                                {msg.read && <span className="w-1.5 h-1.5 rounded-full bg-gold-300" />}
                               </span>
                             )}
                             <span className="text-[9px] text-ink-500">
@@ -414,7 +414,7 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
             {user && (
               <div className="px-3 py-2.5 bg-ink-800/45 border-t border-ink-700/35 shrink-0 relative">
                 {showEmoji && (
-                  <div className="absolute bottom-full left-3 mb-2 p-2 bg-ink-900 border border-purple-700/30 rounded-xl grid grid-cols-6 gap-1 z-20">
+                  <div className="absolute bottom-full left-3 mb-2 p-2 bg-ink-900 border border-gold-700/30 rounded-xl grid grid-cols-6 gap-1 z-20">
                     {PM_EMOJIS.map(e => (
                       <button key={e} onClick={() => { setText(t => t + e); setShowEmoji(false); }}
                         className="h-8 text-lg hover:bg-ink-800 rounded cursor-pointer">{e}</button>
@@ -422,21 +422,21 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
                   </div>
                 )}
                 {showBbcode && (
-                  <div className="absolute bottom-full left-14 mb-2 w-[230px] max-w-[calc(100%-3rem)] bg-ink-900/95 border border-purple-700/35 rounded-xl shadow-2xl p-2.5 z-20 animate-fadeIn">
+                  <div className="absolute bottom-full left-14 mb-2 w-[230px] max-w-[calc(100%-3rem)] bg-ink-900/95 border border-gold-700/35 rounded-xl shadow-2xl p-2.5 z-20 animate-fadeIn">
                     <p className="text-[10px] text-ink-300 mb-2 px-1">Выделите текст и выберите BB-код:</p>
                     <div className="grid grid-cols-2 gap-1.5">
-                      <button onClick={() => applyBbCode('[b]', '[/b]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-purple-500/20 hover:text-purple-200 cursor-pointer">[b] Жирный</button>
-                      <button onClick={() => applyBbCode('[i]', '[/i]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-purple-500/20 hover:text-purple-200 cursor-pointer">[i] Курсив</button>
-                      <button onClick={() => applyBbCode('[u]', '[/u]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-purple-500/20 hover:text-purple-200 cursor-pointer">[u] Подчеркн.</button>
-                      <button onClick={() => applyBbCode('[s]', '[/s]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-purple-500/20 hover:text-purple-200 cursor-pointer">[s] Зачеркн.</button>
-                      <button onClick={() => applyBbCode('[quote]', '[/quote]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-purple-500/20 hover:text-purple-200 cursor-pointer">[quote]</button>
-                      <button onClick={() => applyBbCode('[url]', '[/url]', 'https://')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-purple-500/20 hover:text-purple-200 cursor-pointer">[url]</button>
+                      <button onClick={() => applyBbCode('[b]', '[/b]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-gold-400/20 hover:text-gold-200 cursor-pointer">[b] Жирный</button>
+                      <button onClick={() => applyBbCode('[i]', '[/i]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-gold-400/20 hover:text-gold-200 cursor-pointer">[i] Курсив</button>
+                      <button onClick={() => applyBbCode('[u]', '[/u]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-gold-400/20 hover:text-gold-200 cursor-pointer">[u] Подчеркн.</button>
+                      <button onClick={() => applyBbCode('[s]', '[/s]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-gold-400/20 hover:text-gold-200 cursor-pointer">[s] Зачеркн.</button>
+                      <button onClick={() => applyBbCode('[quote]', '[/quote]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-gold-400/20 hover:text-gold-200 cursor-pointer">[quote]</button>
+                      <button onClick={() => applyBbCode('[url]', '[/url]', 'https://')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-gold-400/20 hover:text-gold-200 cursor-pointer">[url]</button>
                     </div>
                   </div>
                 )}
                 <div className="flex items-center gap-2">
                   <button onClick={() => setShowEmoji(!showEmoji)}
-                    className={`p-2 rounded-xl border cursor-pointer ${showEmoji ? 'bg-purple-500/20 text-purple-400 border-purple-400/40' : 'bg-ink-700/50 text-ink-400 border-ink-600/30'}`}>
+                    className={`p-2 rounded-xl border cursor-pointer ${showEmoji ? 'bg-gold-400/20 text-gold-400 border-gold-400/40' : 'bg-ink-700/50 text-ink-400 border-ink-600/30'}`}>
                     <Smile className="w-4 h-4" />
                   </button>
                   <button
@@ -444,16 +444,16 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
                       setShowBbcode(prev => !prev);
                       setShowEmoji(false);
                     }}
-                    className={`p-2 rounded-xl border cursor-pointer ${showBbcode ? 'bg-purple-500/20 text-purple-400 border-purple-400/40' : 'bg-ink-700/50 text-ink-400 border-ink-600/30 hover:text-purple-300'}`}
+                    className={`p-2 rounded-xl border cursor-pointer ${showBbcode ? 'bg-gold-400/20 text-gold-400 border-gold-400/40' : 'bg-ink-700/50 text-ink-400 border-ink-600/30 hover:text-gold-300'}`}
                     title="BB-коды"
                   >
                     <Type className="w-4 h-4" />
                   </button>
                   <input ref={chatInputRef} value={text} onChange={e => setText(e.target.value)} placeholder="Сообщение..." maxLength={1000}
                     onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); } }}
-                    className="flex-1 bg-ink-700/50 border border-ink-600/30 rounded-xl px-3 py-2 text-sm text-white placeholder:text-ink-500 focus:outline-none focus:border-purple-400/50" />
+                    className="flex-1 bg-ink-700/50 border border-ink-600/30 rounded-xl px-3 py-2 text-sm text-white placeholder:text-ink-500 focus:outline-none focus:border-gold-400/50" />
                   <button onClick={handleSend} disabled={!text.trim() || sending}
-                    className="p-2 rounded-xl bg-purple-500/20 text-purple-400 hover:bg-purple-500/30 cursor-pointer disabled:opacity-30 transition-colors">
+                    className="p-2 rounded-xl bg-gold-400/20 text-gold-400 hover:bg-gold-400/30 cursor-pointer disabled:opacity-30 transition-colors">
                     <Send className="w-4 h-4" />
                   </button>
                 </div>
@@ -466,14 +466,14 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
               <div className="flex flex-col items-center justify-center h-full text-center py-8">
                 <Mail className="w-10 h-10 text-ink-700 mb-3" />
                 <p className="text-ink-400 text-sm mb-3">Войдите для отправки сообщений</p>
-                <button onClick={onLoginClick} className="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-lg text-sm cursor-pointer hover:bg-purple-500/30">Войти</button>
+                <button onClick={onLoginClick} className="px-4 py-2 bg-gold-400/20 text-gold-400 rounded-lg text-sm cursor-pointer hover:bg-gold-400/30">Войти</button>
               </div>
             ) : view === 'settings' ? (
               <div className="space-y-4">
                 <div className="bg-ink-800/50 border border-ink-700/30 rounded-xl p-4">
                   <h4 className="text-white text-sm font-medium mb-3">Уведомления</h4>
                   <button onClick={toggleLocalSound}
-                    className={`w-full flex items-center justify-between gap-2 px-3 py-2.5 rounded-lg text-sm cursor-pointer ${localSound ? 'bg-purple-500/20 text-purple-300' : 'bg-ink-700/50 text-ink-400'}`}>
+                    className={`w-full flex items-center justify-between gap-2 px-3 py-2.5 rounded-lg text-sm cursor-pointer ${localSound ? 'bg-gold-400/20 text-gold-300' : 'bg-ink-700/50 text-ink-400'}`}>
                     <span className="flex items-center gap-2">{localSound ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />} Звук уведомлений</span>
                     <span className="text-xs">{localSound ? 'Вкл' : 'Выкл'}</span>
                   </button>
@@ -500,7 +500,7 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
                       }}
                       className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm cursor-pointer ${
                         browserNotify && notifyPerm === 'granted'
-                          ? 'bg-purple-500/20 text-purple-300'
+                          ? 'bg-gold-400/20 text-gold-300'
                           : 'bg-ink-700/50 text-ink-400'
                       }`}
                     >
@@ -522,14 +522,14 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
                 <div className="flex flex-col items-center justify-center h-full text-center py-8">
                   <Mail className="w-8 h-8 text-ink-700 mb-2" />
                   <p className="text-ink-500 text-xs mb-3">Нет сообщений</p>
-                  <button onClick={() => setView('compose')} className="text-purple-400 text-xs hover:underline cursor-pointer">Написать первым</button>
+                  <button onClick={() => setView('compose')} className="text-gold-400 text-xs hover:underline cursor-pointer">Написать первым</button>
                 </div>
               ) : (
                 <div className="space-y-1">
                   {chats.map(chat => (
                     <div
                       key={chat.id}
-                      className="w-full text-left bg-ink-800/50 border border-ink-700/30 rounded-xl p-3 hover:border-purple-500/20 flex items-center gap-3"
+                      className="w-full text-left bg-ink-800/50 border border-ink-700/30 rounded-xl p-3 hover:border-gold-500/20 flex items-center gap-3"
                       onContextMenu={e => openDialogMenu(e, chat.id)}
                     >
                       <button
@@ -537,8 +537,8 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
                         onClick={() => { setActiveChatId(chat.id); setView('chat'); stickToBottomRef.current = true; }}
                         className="flex items-center gap-3 flex-1 min-w-0 cursor-pointer"
                       >
-                        <div className="w-9 h-9 rounded-full bg-purple-500/20 flex items-center justify-center shrink-0">
-                          <User className="w-4 h-4 text-purple-400" />
+                        <div className="w-9 h-9 rounded-full bg-gold-400/20 flex items-center justify-center shrink-0">
+                          <User className="w-4 h-4 text-gold-400" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between">
@@ -551,7 +551,7 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
                           </div>
                           <p dir="ltr" className="text-ink-400 text-xs truncate text-left">{chat.lastMsg}</p>
                         </div>
-                        {chat.unread > 0 && <span className="w-5 h-5 rounded-full bg-purple-400 text-white text-[10px] font-bold flex items-center justify-center shrink-0">{chat.unread}</span>}
+                        {chat.unread > 0 && <span className="w-5 h-5 rounded-full bg-gold-400 text-[var(--accent-foreground)] text-[10px] font-bold flex items-center justify-center shrink-0">{chat.unread}</span>}
                       </button>
                     </div>
                   ))}
@@ -571,28 +571,28 @@ export default function PrivateMessages({ onLoginClick }: PrivateMessagesProps) 
                   <button
                     type="button"
                     onClick={() => setShowBbcode(prev => !prev)}
-                    className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded-lg bg-ink-800/60 border border-ink-700/40 text-ink-300 hover:text-purple-300 cursor-pointer"
+                    className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded-lg bg-ink-800/60 border border-ink-700/40 text-ink-300 hover:text-gold-300 cursor-pointer"
                   >
                     <Type className="w-3.5 h-3.5" /> BB-коды
                   </button>
                 </div>
                 {showBbcode && (
-                  <div className="w-full bg-ink-900/95 border border-purple-700/35 rounded-xl p-2.5 animate-fadeIn">
+                  <div className="w-full bg-ink-900/95 border border-gold-700/35 rounded-xl p-2.5 animate-fadeIn">
                     <div className="grid grid-cols-3 gap-1.5">
-                      <button onClick={() => applyBbCode('[b]', '[/b]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-purple-500/20 cursor-pointer">[b]</button>
-                      <button onClick={() => applyBbCode('[i]', '[/i]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-purple-500/20 cursor-pointer">[i]</button>
-                      <button onClick={() => applyBbCode('[u]', '[/u]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-purple-500/20 cursor-pointer">[u]</button>
-                      <button onClick={() => applyBbCode('[s]', '[/s]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-purple-500/20 cursor-pointer">[s]</button>
-                      <button onClick={() => applyBbCode('[quote]', '[/quote]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-purple-500/20 cursor-pointer">[quote]</button>
-                      <button onClick={() => applyBbCode('[url]', '[/url]', 'https://')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-purple-500/20 cursor-pointer">[url]</button>
+                      <button onClick={() => applyBbCode('[b]', '[/b]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-gold-400/20 cursor-pointer">[b]</button>
+                      <button onClick={() => applyBbCode('[i]', '[/i]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-gold-400/20 cursor-pointer">[i]</button>
+                      <button onClick={() => applyBbCode('[u]', '[/u]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-gold-400/20 cursor-pointer">[u]</button>
+                      <button onClick={() => applyBbCode('[s]', '[/s]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-gold-400/20 cursor-pointer">[s]</button>
+                      <button onClick={() => applyBbCode('[quote]', '[/quote]')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-gold-400/20 cursor-pointer">[quote]</button>
+                      <button onClick={() => applyBbCode('[url]', '[/url]', 'https://')} className="px-2 py-1.5 rounded-lg text-xs bg-ink-800/60 text-ink-200 hover:bg-gold-400/20 cursor-pointer">[url]</button>
                     </div>
                   </div>
                 )}
                 <textarea ref={composeInputRef} value={text} onChange={e => setText(e.target.value)} rows={4} placeholder="Сообщение..." maxLength={1000}
-                  className="w-full bg-ink-800 border border-ink-700/50 rounded-lg px-3 py-2 text-sm text-white placeholder:text-ink-500 focus:outline-none focus:border-purple-400/50 resize-none" />
+                  className="w-full bg-ink-800 border border-ink-700/50 rounded-lg px-3 py-2 text-sm text-white placeholder:text-ink-500 focus:outline-none focus:border-gold-400/50 resize-none" />
                 <p className="text-ink-500 text-[10px] text-right">{text.length}/1000</p>
                 <button onClick={handleCompose} disabled={!recipientId || !text.trim() || sending}
-                  className="w-full bg-purple-500/20 text-purple-400 py-2 rounded-lg text-sm font-medium hover:bg-purple-500/30 cursor-pointer disabled:opacity-40">
+                  className="w-full bg-gold-400/20 text-gold-400 py-2 rounded-lg text-sm font-medium hover:bg-gold-400/30 cursor-pointer disabled:opacity-40">
                   <Send className="w-4 h-4 inline mr-1" />{sending ? 'Отправка…' : 'Отправить'}
                 </button>
               </div>

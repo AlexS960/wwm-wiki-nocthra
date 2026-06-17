@@ -55,12 +55,12 @@ export default function CreateGroupModal({ staffList, siteRoles, currentUserId, 
   return (
     <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-black/70" onClick={onClose}>
       <div
-        className="w-full max-w-md bg-ink-900 border border-purple-500/30 rounded-2xl shadow-2xl max-h-[90vh] flex flex-col"
+        className="w-full max-w-md bg-ink-900 border border-gold-500/30 rounded-2xl shadow-2xl max-h-[90vh] flex flex-col"
         onClick={e => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-4 py-3 border-b border-ink-700/40">
           <h2 className="font-serif text-lg font-bold text-white flex items-center gap-2">
-            <Users className="w-5 h-5 text-purple-400" /> Новый групповой чат
+            <Users className="w-5 h-5 text-gold-400" /> Новый групповой чат
           </h2>
           <button type="button" onClick={onClose} className="p-1 text-ink-400 hover:text-white cursor-pointer">
             <X className="w-5 h-5" />
@@ -73,7 +73,7 @@ export default function CreateGroupModal({ staffList, siteRoles, currentUserId, 
               value={title}
               onChange={e => setTitle(e.target.value)}
               placeholder="Например: Модераторы"
-              className="w-full bg-ink-800 border border-ink-700/50 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-purple-400/50"
+              className="w-full bg-ink-800 border border-ink-700/50 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-400/50"
             />
           </div>
           <div>
@@ -128,7 +128,7 @@ export default function CreateGroupModal({ staffList, siteRoles, currentUserId, 
             type="button"
             disabled={saving}
             onClick={() => void handleSubmit()}
-            className="flex-1 py-2 rounded-lg bg-purple-500/25 text-purple-300 hover:bg-purple-500/35 cursor-pointer text-sm font-medium disabled:opacity-50"
+            className="flex-1 py-2 rounded-lg bg-gold-500/25 text-gold-300 hover:bg-gold-500/35 cursor-pointer text-sm font-medium disabled:opacity-50"
           >
             {saving ? 'Создание…' : 'Создать чат'}
           </button>

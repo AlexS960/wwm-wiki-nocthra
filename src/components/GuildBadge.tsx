@@ -22,25 +22,25 @@ function GuildBanner({ guildName, onClick }: { guildName: string; onClick?: () =
       </div>
 
       <div className="relative px-5 sm:px-10 py-7 sm:py-9">
-        <p className="guild-banner-label text-[10px] sm:text-xs uppercase text-purple-200/75 text-center mb-4">
+        <p className="guild-banner-label text-[10px] sm:text-xs uppercase text-gold-200/75 text-center mb-4">
           База знаний принадлежит гильдии
         </p>
 
         <div className="flex items-center justify-center gap-3 sm:gap-4">
-          <span className="hidden sm:block h-px flex-1 max-w-[4.5rem] bg-gradient-to-r from-transparent to-purple-400/50" />
+          <span className="hidden sm:block h-px flex-1 max-w-[4.5rem] bg-gradient-to-r from-transparent to-gold-400/50" />
           <h2 className="text-center font-serif text-2xl sm:text-4xl md:text-5xl font-bold tracking-[0.12em] sm:tracking-[0.18em] guild-text-shimmer group-hover:scale-[1.02] transition-transform duration-300 px-1">
             {guildName}
           </h2>
-          <span className="hidden sm:block h-px flex-1 max-w-[4.5rem] bg-gradient-to-l from-transparent to-purple-400/50" />
+          <span className="hidden sm:block h-px flex-1 max-w-[4.5rem] bg-gradient-to-l from-transparent to-gold-400/50" />
         </div>
 
         <div className="flex items-center justify-center gap-3 mt-5">
-          <span className="h-px w-12 sm:w-16 bg-gradient-to-r from-transparent via-purple-400/40 to-transparent" />
+          <span className="h-px w-12 sm:w-16 bg-gradient-to-r from-transparent via-gold-400/40 to-transparent" />
           <span className="guild-banner-moon text-lg" aria-hidden>🌙</span>
-          <span className="h-px w-12 sm:w-16 bg-gradient-to-r from-transparent via-purple-400/40 to-transparent" />
+          <span className="h-px w-12 sm:w-16 bg-gradient-to-r from-transparent via-gold-400/40 to-transparent" />
         </div>
 
-        <p className="text-center text-[10px] text-purple-300/45 mt-3 tracking-widest uppercase group-hover:text-purple-300/65 transition-colors">
+        <p className="text-center text-[10px] text-gold-400/45 mt-3 tracking-widest uppercase group-hover:text-gold-400/65 transition-colors">
           Нажмите, чтобы узнать больше
         </p>
       </div>

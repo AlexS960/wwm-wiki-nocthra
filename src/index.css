@@ -125,6 +125,11 @@ body::before {
   --header-height: 4rem;
   --accent-rgb: 212, 165, 40;
   --user-accent: #d4a528;
+  --accent-foreground: #2e200a;
+  --accent-on-dark: #d4a528;
+  --accent-muted: #b8891a;
+  --accent-border: #b8891a;
+  --accent-secondary-rgb: 168, 130, 255;
 }
 
 @media (min-width: 768px) {
@@ -167,7 +172,9 @@ html.mobile-nav-open .admin-float-cluster {
 }
 
 .bg-pattern {
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a528' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(var(--accent-rgb), 0.045) 1px, transparent 1px);
+  background-size: 30px 30px;
 }
 
 @keyframes fadeInUp {
@@ -267,7 +274,16 @@ html.mobile-nav-open .admin-float-cluster {
 }
 
 .guild-text-shimmer {
-  background: linear-gradient(90deg, #a882ff 0%, #c4a8ff 15%, #e8d5ff 30%, #ffffff 50%, #e8d5ff 70%, #c4a8ff 85%, #a882ff 100%);
+  background: linear-gradient(
+    90deg,
+    var(--color-gold-600) 0%,
+    var(--color-gold-400) 20%,
+    var(--color-gold-200) 45%,
+    #ffffff 50%,
+    var(--color-gold-200) 55%,
+    var(--color-gold-400) 80%,
+    var(--color-gold-600) 100%
+  );
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -278,18 +294,18 @@ html.mobile-nav-open .admin-float-cluster {
 
 /* Guild banner with corner brackets */
 .guild-banner {
-  border: 1px solid rgba(168, 130, 255, 0.28);
+  border: 1px solid rgba(var(--accent-rgb), 0.28);
   border-radius: 1.25rem;
   overflow: hidden;
   transition: border-color 0.35s ease, transform 0.35s ease, background-color 0.35s ease;
   box-shadow: none;
-  background: rgba(76, 29, 149, 0.06);
+  background: rgba(var(--accent-rgb), 0.06);
   backdrop-filter: blur(4px);
 }
 
 .guild-banner-label {
   letter-spacing: 0.28em;
-  text-shadow: 0 0 20px rgba(168, 130, 255, 0.35);
+  text-shadow: 0 0 20px rgba(var(--accent-rgb), 0.35);
 }
 
 .guild-banner-moon {
@@ -299,8 +315,8 @@ html.mobile-nav-open .admin-float-cluster {
   width: 2.25rem;
   height: 2.25rem;
   border-radius: 9999px;
-  border: 1px solid rgba(251, 191, 36, 0.25);
-  background: rgba(251, 191, 36, 0.06);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
+  background: rgba(var(--accent-rgb), 0.06);
 }
 
 .guild-banner-bg {
@@ -308,8 +324,8 @@ html.mobile-nav-open .admin-float-cluster {
 }
 
 .guild-banner:hover {
-  border-color: rgba(216, 180, 255, 0.45);
-  background: rgba(76, 29, 149, 0.1);
+  border-color: rgba(var(--accent-rgb), 0.45);
+  background: rgba(var(--accent-rgb), 0.1);
   transform: translateY(-1px);
 }
 
@@ -327,7 +343,7 @@ html.mobile-nav-open .admin-float-cluster {
   position: absolute;
   width: 18px;
   height: 18px;
-  border-color: rgba(196, 168, 255, 0.75);
+  border-color: rgba(var(--accent-rgb), 0.75);
   pointer-events: none;
 }
 .guild-corner-tl {
@@ -335,28 +351,28 @@ html.mobile-nav-open .admin-float-cluster {
   left: 10px;
   border-top: 2px solid;
   border-left: 2px solid;
-  box-shadow: -2px -2px 8px rgba(168, 130, 255, 0.4);
+  box-shadow: -2px -2px 8px rgba(var(--accent-rgb), 0.4);
 }
 .guild-corner-tr {
   top: 10px;
   right: 10px;
   border-top: 2px solid;
   border-right: 2px solid;
-  box-shadow: 2px -2px 8px rgba(168, 130, 255, 0.4);
+  box-shadow: 2px -2px 8px rgba(var(--accent-rgb), 0.4);
 }
 .guild-corner-bl {
   bottom: 10px;
   left: 10px;
   border-bottom: 2px solid;
   border-left: 2px solid;
-  box-shadow: -2px 2px 8px rgba(168, 130, 255, 0.4);
+  box-shadow: -2px 2px 8px rgba(var(--accent-rgb), 0.4);
 }
 .guild-corner-br {
   bottom: 10px;
   right: 10px;
   border-bottom: 2px solid;
   border-right: 2px solid;
-  box-shadow: 2px 2px 8px rgba(168, 130, 255, 0.4);
+  box-shadow: 2px 2px 8px rgba(var(--accent-rgb), 0.4);
 }
 .guild-corner-tl::after,
 .guild-corner-tr::after,
@@ -365,15 +381,15 @@ html.mobile-nav-open .admin-float-cluster {
   content: '✦';
   position: absolute;
   font-size: 7px;
-  color: rgba(216, 180, 255, 0.9);
-  text-shadow: 0 0 6px rgba(168, 130, 255, 0.8);
+  color: rgba(var(--accent-rgb), 0.9);
+  text-shadow: 0 0 6px rgba(var(--accent-rgb), 0.8);
 }
 .guild-corner-tl::after { top: -4px; left: -2px; }
 .guild-corner-tr::after { top: -4px; right: -2px; }
 .guild-corner-bl::after { bottom: -4px; left: -2px; }
 .guild-corner-br::after { bottom: -4px; right: -2px; }
 .guild-border-flow {
-  background: linear-gradient(270deg, rgba(168, 130, 255, 0.0), rgba(168, 130, 255, 0.4), rgba(200, 170, 255, 0.7), rgba(168, 130, 255, 0.4), rgba(168, 130, 255, 0.0));
+  background: linear-gradient(270deg, rgba(var(--accent-rgb), 0.0), rgba(var(--accent-rgb), 0.4), rgba(var(--accent-rgb), 0.7), rgba(var(--accent-rgb), 0.4), rgba(var(--accent-rgb), 0.0));
   background-size: 300% 300%;
   animation: borderFlow 6s ease infinite;
 }
@@ -517,8 +533,8 @@ html.mobile-nav-open .admin-float-cluster {
 
   .guild-text-shimmer {
     animation: none !important;
-    -webkit-text-fill-color: #e8d5ff;
-    color: #e8d5ff;
+    -webkit-text-fill-color: var(--color-gold-300);
+    color: var(--color-gold-300);
     background: none;
   }
 

@@ -18,6 +18,25 @@ const DEFAULT_GOLD_SCALE: Record<string, string> = {
   '--color-gold-900': '#2e200a',
 };
 
+const DEFAULT_CONTRAST_VARS: Record<string, string> = {
+  '--user-accent': DEFAULT_USER_ACCENT,
+  '--accent-rgb': '212, 165, 40',
+  '--accent-foreground': '#2e200a',
+  '--accent-on-dark': DEFAULT_USER_ACCENT,
+  '--accent-muted': '#b8891a',
+  '--accent-border': '#b8891a',
+  '--accent-secondary-rgb': '168, 130, 255',
+};
+
+/** Акценты с низкой яркостью (#000, #800000, #696969, #808080) — поднимаем читаемость на тёмном фоне. */
+const DARK_ACCENT_LUMINANCE_THRESHOLD = 0.18;
+const TEXT_ON_DARK_MIN_LUMINANCE = 0.38;
+
+const ALL_ACCENT_VAR_KEYS = [
+  ...Object.keys(DEFAULT_GOLD_SCALE),
+  ...Object.keys(DEFAULT_CONTRAST_VARS),
+];
+
 function hexToRgb(hex: string): [number, number, number] {
   const h = hex.replace('#', '');
   const full = h.length === 3 ? h.split('').map(c => c + c).join('') : h;
@@ -35,6 +54,25 @@ function mixRgb(a: [number, number, number], b: [number, number, number], t: num
     a[1] + (b[1] - a[1]) * t,
     a[2] + (b[2] - a[2]) * t,
   ];
+}
+
+function relativeLuminance(r: number, g: number, b: number): number {
+  const lin = (c: number) => {
+    const s = c / 255;
+    return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+  };
+  return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+}
+
+function ensureReadableOnDark(rgb: [number, number, number]): [number, number, number] {
+  if (relativeLuminance(...rgb) >= TEXT_ON_DARK_MIN_LUMINANCE) return rgb;
+  let t = 0;
+  let result = rgb;
+  while (relativeLuminance(...result) < TEXT_ON_DARK_MIN_LUMINANCE && t < 0.95) {
+    t += 0.08;
+    result = mixRgb(rgb, [255, 255, 255], t);
+  }
+  return result;
 }
 
 function buildGoldScale(baseHex: string): Record<string, string> {
@@ -57,6 +95,30 @@ function buildGoldScale(baseHex: string): Record<string, string> {
   };
 }
 
+function buildContrastVars(hex: string, scale: Record<string, string>): Record<string, string> {
+  const base = hexToRgb(hex);
+  const lum = relativeLuminance(...base);
+  const isDark = lum < DARK_ACCENT_LUMINANCE_THRESHOLD;
+  const displayRgb = isDark ? ensureReadableOnDark(base) : base;
+  const displayHex = rgbToHex(displayRgb[0], displayRgb[1], displayRgb[2]);
+  const [dr, dg, db] = displayRgb;
+
+  const onDarkHex = isDark ? displayHex : hex;
+  const mutedRgb = mixRgb(displayRgb, [150, 138, 120], 0.35);
+  const borderRgb = isDark ? displayRgb : mixRgb(base, [255, 255, 255], 0.12);
+  const secondaryRgb = mixRgb(displayRgb, [168, 130, 255], 0.42);
+
+  return {
+    '--user-accent': onDarkHex,
+    '--accent-rgb': `${Math.round(dr)}, ${Math.round(dg)}, ${Math.round(db)}`,
+    '--accent-on-dark': onDarkHex,
+    '--accent-muted': rgbToHex(mutedRgb[0], mutedRgb[1], mutedRgb[2]),
+    '--accent-border': rgbToHex(borderRgb[0], borderRgb[1], borderRgb[2]),
+    '--accent-foreground': isDark ? '#f8f5f0' : (scale['--color-gold-900'] ?? '#2e200a'),
+    '--accent-secondary-rgb': `${Math.round(secondaryRgb[0])}, ${Math.round(secondaryRgb[1])}, ${Math.round(secondaryRgb[2])}`,
+  };
+}
+
 function setRootVars(vars: Record<string, string>) {
   const root = document.documentElement;
   for (const [key, value] of Object.entries(vars)) {
@@ -75,15 +137,21 @@ function clearRootVars(keys: string[]) {
 export function applyUserAccent(color: UserAccentColor | null | undefined): void {
   const hex = color && isUserAccentColor(color) ? color : null;
   if (!hex || hex === DEFAULT_USER_ACCENT) {
-    clearRootVars([...Object.keys(DEFAULT_GOLD_SCALE), '--accent-rgb', '--user-accent']);
+    clearRootVars(ALL_ACCENT_VAR_KEYS);
     return;
   }
-  const scale = buildGoldScale(hex);
-  const [r, g, b] = hexToRgb(hex);
+
+  const baseRgb = hexToRgb(hex);
+  const isDark = relativeLuminance(...baseRgb) < DARK_ACCENT_LUMINANCE_THRESHOLD;
+  const scaleBase = isDark
+    ? rgbToHex(...ensureReadableOnDark(baseRgb))
+    : hex;
+  const scale = buildGoldScale(scaleBase);
+  const contrast = buildContrastVars(hex, scale);
+
   setRootVars({
     ...scale,
-    '--user-accent': hex,
-    '--accent-rgb': `${r}, ${g}, ${b}`,
+    ...contrast,
   });
 }
 
@@ -118,4 +186,11 @@ export function resolveAccentForUser(
     return isUserAccentColor(progressAccent) ? progressAccent : null;
   }
   return loadGuestAccent();
+}
+
+/** Цвет gold в BBCode / inline-стилях — читает актуальную CSS-переменную. */
+export function getAccentGoldCssValue(): string {
+  if (typeof document === 'undefined') return DEFAULT_USER_ACCENT;
+  const v = getComputedStyle(document.documentElement).getPropertyValue('--color-gold-400').trim();
+  return v || DEFAULT_USER_ACCENT;
 }

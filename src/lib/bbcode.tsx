@@ -11,7 +11,7 @@ export type RenderOpts = {
 };
 
 const NAMED_COLORS: Record<string, string> = {
-  gold: '#d4a528',
+  gold: 'var(--color-gold-400)',
   jade: '#4ade80',
   crimson: '#f87171',
   blue: '#93c5fd',

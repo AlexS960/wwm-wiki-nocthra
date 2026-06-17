@@ -23,7 +23,7 @@ export default function ContentRichEditor({
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const shell = emphasized
-    ? 'rounded-xl border-2 border-gold-500/40 overflow-hidden bg-ink-900/60 shadow-[inset_0_0_0_1px_rgba(212,165,40,0.08)] focus-within:border-gold-400/55'
+    ? 'rounded-xl border-2 border-gold-500/40 overflow-hidden bg-ink-900/60 shadow-[inset_0_0_0_1px_rgba(var(--accent-rgb),0.08)] focus-within:border-gold-400/55'
     : 'rounded-xl border border-ink-600/50 overflow-hidden bg-ink-900/40 focus-within:border-gold-400/40';
 
   return (

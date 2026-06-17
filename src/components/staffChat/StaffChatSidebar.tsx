@@ -60,14 +60,14 @@ export default function StaffChatSidebar({
         <button
           type="button"
           onClick={() => onTabChange('chats')}
-          className={`flex-1 py-2.5 text-xs font-medium cursor-pointer ${sidebarTab === 'chats' ? 'text-purple-400 border-b-2 border-purple-400' : 'text-ink-400'}`}
+          className={`flex-1 py-2.5 text-xs font-medium cursor-pointer ${sidebarTab === 'chats' ? 'text-gold-400 border-b-2 border-gold-400' : 'text-ink-400'}`}
         >
           Чаты
         </button>
         <button
           type="button"
           onClick={() => onTabChange('team')}
-          className={`flex-1 py-2.5 text-xs font-medium cursor-pointer ${sidebarTab === 'team' ? 'text-purple-400 border-b-2 border-purple-400' : 'text-ink-400'}`}
+          className={`flex-1 py-2.5 text-xs font-medium cursor-pointer ${sidebarTab === 'team' ? 'text-gold-400 border-b-2 border-gold-400' : 'text-ink-400'}`}
         >
           Команда ({staffCount})
         </button>
@@ -80,13 +80,13 @@ export default function StaffChatSidebar({
             value={search}
             onChange={e => onSearchChange(e.target.value)}
             placeholder={sidebarTab === 'team' ? 'Поиск по имени или роли…' : 'Поиск чатов…'}
-            className="w-full bg-ink-800/80 border border-ink-700/50 rounded-xl pl-9 pr-3 py-2 text-sm text-white placeholder:text-ink-500 focus:outline-none focus:border-purple-400/40"
+            className="w-full bg-ink-800/80 border border-ink-700/50 rounded-xl pl-9 pr-3 py-2 text-sm text-white placeholder:text-ink-500 focus:outline-none focus:border-gold-400/40"
           />
         </div>
         <button
           type="button"
           onClick={onCreateGroup}
-          className="p-2 rounded-xl bg-purple-500/15 text-purple-400 border border-purple-500/30 hover:bg-purple-500/25 cursor-pointer shrink-0"
+          className="p-2 rounded-xl bg-gold-500/15 text-gold-400 border border-gold-500/30 hover:bg-gold-500/25 cursor-pointer shrink-0"
           title="Групповой чат"
         >
           <UsersRound className="w-5 h-5" />
@@ -108,7 +108,7 @@ export default function StaffChatSidebar({
                   type="button"
                   onClick={() => onSelectTeamMember(s.id)}
                   className={`w-full flex items-center gap-3 px-3 py-3 cursor-pointer text-left border-b border-ink-800/50 hover:bg-ink-800/40 ${
-                    activeChatKey === dmChatKey(s.id) ? 'bg-purple-500/10' : ''
+                    activeChatKey === dmChatKey(s.id) ? 'bg-gold-500/10' : ''
                   }`}
                 >
                   <div className="w-11 h-11 rounded-full bg-ink-700 flex items-center justify-center text-base font-bold shrink-0" style={{ color: s.roleColor }}>
@@ -128,7 +128,7 @@ export default function StaffChatSidebar({
         ) : filteredConversations.length === 0 ? (
           <div className="text-center py-8 px-4">
             <p className="text-ink-500 text-sm mb-3">Нет чатов. Откройте вкладку «Команда» или создайте группу.</p>
-            <button type="button" onClick={() => onTabChange('team')} className="text-purple-400 text-xs cursor-pointer hover:underline">
+            <button type="button" onClick={() => onTabChange('team')} className="text-gold-400 text-xs cursor-pointer hover:underline">
               Список команды
             </button>
           </div>
@@ -140,12 +140,12 @@ export default function StaffChatSidebar({
               onClick={() => onSelectChat(chat.key)}
               onContextMenu={e => onOpenDialogMenu(e, chat.key)}
               className={`w-full flex items-center gap-3 px-3 py-3 cursor-pointer text-left border-b border-ink-800/50 transition-colors ${
-                activeChatKey === chat.key ? 'bg-purple-500/10' : 'hover:bg-ink-800/40'
+                activeChatKey === chat.key ? 'bg-gold-500/10' : 'hover:bg-ink-800/40'
               }`}
             >
-              <div className={`w-11 h-11 rounded-full flex items-center justify-center shrink-0 ${chat.type === 'group' ? 'bg-purple-500/20' : 'bg-ink-700'}`}>
-                {chat.type === 'group' ? <Users className="w-5 h-5 text-purple-400" /> : (
-                  <span className="text-base font-bold text-purple-300">{chat.title.charAt(0)}</span>
+              <div className={`w-11 h-11 rounded-full flex items-center justify-center shrink-0 ${chat.type === 'group' ? 'bg-gold-500/20' : 'bg-ink-700'}`}>
+                {chat.type === 'group' ? <Users className="w-5 h-5 text-gold-400" /> : (
+                  <span className="text-base font-bold text-gold-300">{chat.title.charAt(0)}</span>
                 )}
               </div>
               <div className="min-w-0 flex-1">
@@ -156,7 +156,7 @@ export default function StaffChatSidebar({
                 <div className="flex justify-between gap-2 mt-0.5">
                   <span className="text-xs text-ink-400 truncate">{chat.lastMsg}</span>
                   {chat.unread > 0 && (
-                    <span className="shrink-0 min-w-[18px] h-[18px] px-1 rounded-full bg-purple-500 text-white text-[10px] font-bold flex items-center justify-center">
+                    <span className="shrink-0 min-w-[18px] h-[18px] px-1 rounded-full bg-gold-500 text-[var(--accent-foreground)] text-[10px] font-bold flex items-center justify-center">
                       {chat.unread > 9 ? '9+' : chat.unread}
                     </span>
                   )}

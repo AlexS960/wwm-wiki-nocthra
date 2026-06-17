@@ -62,9 +62,9 @@ export default function HeroSection({ onNavigate, hasAnnouncements = false }: He
                 className="group inline-flex items-center gap-2.5 px-5 sm:px-7 py-2.5 sm:py-3 rounded-xl
                   font-serif text-sm sm:text-base font-semibold tracking-wide
                   text-gold-200 bg-gold-500/12 border border-gold-400/55 backdrop-blur-md
-                  shadow-[0_2px_16px_rgba(212,175,55,0.12)]
+                  shadow-[0_2px_16px_rgba(var(--accent-rgb),0.12)]
                   hover:bg-gold-400/20 hover:border-gold-300/70 hover:text-gold-100
-                  hover:shadow-[0_4px_22px_rgba(212,175,55,0.22)]
+                  hover:shadow-[0_4px_22px_rgba(var(--accent-rgb),0.22)]
                   md:hover:scale-[1.02] active:scale-[0.99]
                   transition-all duration-300 cursor-pointer"
               >
@@ -82,7 +82,7 @@ export default function HeroSection({ onNavigate, hasAnnouncements = false }: He
             <img
               src={logoUrl}
               alt=""
-              className="h-16 w-16 sm:h-[4.5rem] sm:w-[4.5rem] md:h-24 md:w-24 lg:h-28 lg:w-28 object-contain drop-shadow-[0_0_14px_rgba(212,175,55,0.4)] shrink-0 -mr-0.5 sm:-mr-1"
+              className="h-16 w-16 sm:h-[4.5rem] sm:w-[4.5rem] md:h-24 md:w-24 lg:h-28 lg:w-28 object-contain drop-shadow-[0_0_14px_rgba(var(--accent-rgb),0.4)] shrink-0 -mr-0.5 sm:-mr-1"
               onError={e => {
                 const img = e.currentTarget;
                 if (img.src !== WWM_LOGO_FALLBACK) img.src = WWM_LOGO_FALLBACK;

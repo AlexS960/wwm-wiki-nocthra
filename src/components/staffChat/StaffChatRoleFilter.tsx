@@ -19,7 +19,7 @@ export default function StaffChatRoleFilter({ options, value, onChange }: StaffC
         onClick={() => onChange('all')}
         className={`px-2.5 py-1 rounded-full text-[11px] font-medium cursor-pointer border transition-colors ${
           value === 'all'
-            ? 'bg-purple-500/20 text-purple-300 border-purple-500/40'
+            ? 'bg-gold-500/20 text-gold-300 border-gold-500/40'
             : 'text-ink-400 border-ink-700/50 hover:border-ink-600'
         }`}
       >

@@ -176,7 +176,7 @@ export default function ContentFormatToolbar({ value, onChange, textareaRef }: C
                   }}
                   className="px-2 py-1 rounded-lg text-xs border border-ink-600/50 hover:border-gold-400/50 cursor-pointer"
                   style={{
-                    color: c.tag === 'gold' ? '#d4a528' : c.tag === 'jade' ? '#4ade80' : c.tag === 'crimson' ? '#f87171' : c.tag === 'blue' ? '#93c5fd' : c.tag === 'white' ? '#fff' : '#9ca3af',
+                    color: c.tag === 'gold' ? 'var(--color-gold-400)' : c.tag === 'jade' ? '#4ade80' : c.tag === 'crimson' ? '#f87171' : c.tag === 'blue' ? '#93c5fd' : c.tag === 'white' ? '#fff' : '#9ca3af',
                   }}
                 >
                   {c.label}

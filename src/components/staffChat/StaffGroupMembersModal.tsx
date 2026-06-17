@@ -67,7 +67,7 @@ export default function StaffGroupMembersModal({
   return (
     <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-black/70" onClick={onClose}>
       <div
-        className="w-full max-w-md bg-ink-900 border border-purple-500/30 rounded-2xl shadow-2xl max-h-[90vh] flex flex-col"
+        className="w-full max-w-md bg-ink-900 border border-gold-500/30 rounded-2xl shadow-2xl max-h-[90vh] flex flex-col"
         onClick={e => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-4 py-3 border-b border-ink-700/50">
@@ -94,7 +94,7 @@ export default function StaffGroupMembersModal({
         </div>
 
         <div className="px-4 py-2 border-b border-ink-700/40 flex items-center gap-2">
-          <UserPlus className="w-4 h-4 text-purple-400 shrink-0" />
+          <UserPlus className="w-4 h-4 text-gold-400 shrink-0" />
           <span className="text-sm text-ink-300">Добавить участников</span>
         </div>
 
@@ -106,7 +106,7 @@ export default function StaffGroupMembersModal({
           ) : (
             candidates.map(s => (
               <label key={s.id} className="flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-ink-800/50 cursor-pointer">
-                <input type="checkbox" checked={selected.has(s.id)} onChange={() => toggle(s.id)} className="accent-purple-500" />
+                <input type="checkbox" checked={selected.has(s.id)} onChange={() => toggle(s.id)} className="accent-gold-500" />
                 <span className="text-sm text-white truncate">{s.displayName}</span>
                 <span className="text-xs ml-auto" style={{ color: s.roleColor }}>{s.roleName}</span>
               </label>
@@ -122,7 +122,7 @@ export default function StaffGroupMembersModal({
             type="button"
             disabled={adding || selected.size === 0}
             onClick={() => void handleAdd()}
-            className="flex-1 py-2 rounded-lg bg-purple-500/20 text-purple-300 text-sm cursor-pointer disabled:opacity-50"
+            className="flex-1 py-2 rounded-lg bg-gold-500/20 text-gold-300 text-sm cursor-pointer disabled:opacity-50"
           >
             {adding ? 'Добавление…' : 'Добавить'}
           </button>

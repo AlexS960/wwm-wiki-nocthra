@@ -77,7 +77,7 @@ export default function StaffChatThread({
           <div className="break-words whitespace-pre-wrap">
             {renderBBCode(body, {
               linkClassName: 'text-blue-300 underline break-all',
-              quoteClassName: 'border-l-2 border-purple-400/40 pl-2 italic text-ink-300',
+              quoteClassName: 'border-l-2 border-gold-400/40 pl-2 italic text-ink-300',
               codeClassName: 'font-mono text-xs bg-ink-900/50 px-1 rounded',
             })}
           </div>
@@ -118,7 +118,7 @@ export default function StaffChatThread({
               <input
                 value={groupTitleDraft}
                 onChange={e => onGroupTitleDraftChange(e.target.value)}
-                className="flex-1 bg-ink-800 border border-ink-600 rounded-lg px-2 py-1 text-sm text-white focus:outline-none focus:border-purple-400/50"
+                className="flex-1 bg-ink-800 border border-ink-600 rounded-lg px-2 py-1 text-sm text-white focus:outline-none focus:border-gold-400/50"
               />
               <button type="button" onClick={onSaveTitle} className="p-1 text-jade-400 cursor-pointer"><Check className="w-4 h-4" /></button>
               <button type="button" onClick={onCancelEditTitle} className="p-1 text-ink-400 cursor-pointer"><X className="w-4 h-4" /></button>
@@ -131,10 +131,10 @@ export default function StaffChatThread({
               </div>
               {isGroup && (
                 <>
-                  <button type="button" onClick={onStartEditTitle} className="p-1.5 text-ink-400 hover:text-purple-400 cursor-pointer shrink-0" title="Изменить название">
+                  <button type="button" onClick={onStartEditTitle} className="p-1.5 text-ink-400 hover:text-gold-400 cursor-pointer shrink-0" title="Изменить название">
                     <Pencil className="w-4 h-4" />
                   </button>
-                  <button type="button" onClick={onShowMembers} className="p-1.5 text-ink-400 hover:text-purple-400 cursor-pointer shrink-0" title="Участники">
+                  <button type="button" onClick={onShowMembers} className="p-1.5 text-ink-400 hover:text-gold-400 cursor-pointer shrink-0" title="Участники">
                     <Users className="w-4 h-4" />
                   </button>
                 </>
