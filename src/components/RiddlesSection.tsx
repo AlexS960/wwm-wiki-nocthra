@@ -108,7 +108,7 @@ export default function RiddlesSection() {
     });
   }, [config, wikiArticles]);
 
-  const handleEditorSave = (values: SectionEditorValues) => {
+  const handleEditorSave = async (values: SectionEditorValues) => {
     if (!editor) return;
     const payload = {
       title: values.title,
@@ -118,10 +118,12 @@ export default function RiddlesSection() {
       fields: { summary: values.summary, category: values.category },
     };
     if (editor.wikiId) {
-      updateWikiArticle(editor.wikiId, payload);
+      const err = await updateWikiArticle(editor.wikiId, payload);
+      if (err) return;
     } else {
       if (editor.hideBuiltinId) hideBuiltin(editor.hideBuiltinId);
-      addWikiArticle({ section: 'riddles', ...payload });
+      const err = await addWikiArticle({ section: 'riddles', ...payload });
+      if (err) return;
     }
     setEditor(null);
   };

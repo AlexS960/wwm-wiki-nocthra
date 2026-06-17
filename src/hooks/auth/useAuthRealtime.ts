@@ -36,6 +36,7 @@ type Deps = {
   schedulePmRefresh: () => void;
   setGuides: (g: ReturnType<typeof sanitizeGuides>) => void;
   setWikiArticles: (w: ReturnType<typeof sanitizeWiki>) => void;
+  isWikiSavePending: () => boolean;
   setChatState: (s: Awaited<ReturnType<typeof contentStoreLoadChat>>) => void;
   setGuideComments: (c: Awaited<ReturnType<typeof contentStoreLoadGuideComments>>) => void;
   setSiteNews: (n: ReturnType<typeof sanitizeSiteNews>) => void;
@@ -77,11 +78,18 @@ export function useAuthRealtime(deps: Deps) {
         }));
       }
       if (domains.wiki) {
-        cleanups.push(subscribeWikiArticles(() => {
-          void contentStoreLoadWiki().then(w =>
-            depsRef.current.setWikiArticles(sanitizeWiki(buildWikiCatalog(w))),
-          );
-        }));
+        let wikiReloadTimer: ReturnType<typeof setTimeout> | null = null;
+        const scheduleWikiReload = () => {
+          if (depsRef.current.isWikiSavePending()) return;
+          if (wikiReloadTimer) clearTimeout(wikiReloadTimer);
+          wikiReloadTimer = setTimeout(() => {
+            if (depsRef.current.isWikiSavePending()) return;
+            void contentStoreLoadWiki().then(w =>
+              depsRef.current.setWikiArticles(sanitizeWiki(buildWikiCatalog(w))),
+            );
+          }, 500);
+        };
+        cleanups.push(subscribeWikiArticles(scheduleWikiReload));
       }
       if (domains.chat) {
         cleanups.push(subscribeChatMessages(() => {

@@ -92,9 +92,9 @@ export default function GenericSection({ definition }: GenericSectionProps) {
           key="new"
           definition={definition}
           storageFolder={definition.id}
-          onSave={(values: DynamicEditorValues) => {
-            addWikiArticle(buildWikiPayload(definition, values));
-            setShowModal(false);
+          onSave={async (values: DynamicEditorValues) => {
+            const err = await addWikiArticle(buildWikiPayload(definition, values));
+            if (!err) setShowModal(false);
           }}
           onCancel={() => setShowModal(false)}
         />

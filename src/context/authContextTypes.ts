@@ -140,9 +140,9 @@ export interface AuthContextValue {
   addRole: (n: string, c: string, p: string[]) => void;
   deleteRole: (id: string) => void;
   updateRolePermissions: (id: string, p: string[]) => void;
-  addWikiArticle: (a: Omit<WikiArticle, 'id' | 'authorName' | 'updatedAt'>) => void;
-  updateWikiArticle: (id: string, u: Partial<WikiArticle>) => void;
-  deleteWikiArticle: (id: string) => void;
+  addWikiArticle: (a: Omit<WikiArticle, 'id' | 'authorName' | 'updatedAt'>) => Promise<string | null>;
+  updateWikiArticle: (id: string, u: Partial<WikiArticle>) => Promise<string | null>;
+  deleteWikiArticle: (id: string) => Promise<string | null>;
   sendMessage: (t: string) => Promise<string | null>;
   deleteMessage: (id: string) => Promise<string | null>;
   createTicket: (s: string, m: string) => Promise<string | null>;

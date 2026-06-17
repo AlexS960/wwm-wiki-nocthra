@@ -26,18 +26,19 @@ export default function WikiEditorBar({ sectionId }: WikiEditorBarProps) {
 
   if (!canEdit) return null;
 
-  const handleSave = (values: SectionEditorValues) => {
+  const handleSave = async (values: SectionEditorValues) => {
     const payload = editorValuesToWikiPayload(values, schema, normalizeId);
     if (editingId) {
-      updateWikiArticle(editingId, {
+      const err = await updateWikiArticle(editingId, {
         title: payload.title,
         content: payload.content,
         icon: payload.icon,
         images: payload.images,
         fields: payload.fields,
       });
+      if (err) return;
     } else {
-      addWikiArticle({
+      const err = await addWikiArticle({
         section: sectionId,
         title: payload.title,
         content: payload.content,
@@ -45,6 +46,7 @@ export default function WikiEditorBar({ sectionId }: WikiEditorBarProps) {
         images: payload.images,
         fields: payload.fields,
       });
+      if (err) return;
     }
     setShowModal(false);
     setEditingId(null);

@@ -4,7 +4,7 @@ import {
   contentStoreLoadWiki,
   contentStoreUsesNormalized,
   contentStoreAddWiki,
-  contentStoreUpdateWiki,
+  contentStoreUpsertWiki,
   contentStoreDeleteWiki,
 } from '../../lib/contentStore';
 import { buildWikiCatalog } from '../../lib/wikiCatalog';
@@ -40,6 +40,9 @@ export function useAuthWiki({
   const wikiRef = useRef(wikiArticles);
   wikiRef.current = wikiArticles;
   const syncStartedRef = useRef(false);
+  const wikiSavePendingRef = useRef(0);
+
+  const isWikiSavePending = useCallback(() => wikiSavePendingRef.current > 0, []);
 
   const syncWikiFromDb = useCallback(async () => {
     let dbArticles: WikiArticle[] = [];
@@ -75,71 +78,114 @@ export function useAuthWiki({
     ensureWikiLoaded();
   }, [ensureWikiLoaded]);
 
-  const addWikiArticle = useCallback((a: Omit<WikiArticle, 'id' | 'authorName' | 'updatedAt'>) => {
+  const saveWikiArticle = useCallback(async (
+    article: WikiArticle,
+    fallbackList?: WikiArticle[],
+  ): Promise<string | null> => {
+    const usesNorm = normalizedRef.current.wiki ?? await contentStoreUsesNormalized('wiki');
+    normalizedRef.current.wiki = usesNorm;
+    if (usesNorm) {
+      const ok = await contentStoreUpsertWiki(article);
+      if (!ok) return 'Не удалось сохранить статью вики в базе';
+      return null;
+    }
+    if (!fallbackList) return 'Не удалось определить список статей для сохранения';
+    return persist('wiki', fallbackList);
+  }, [persist, normalizedRef]);
+
+  const addWikiArticle = useCallback(async (a: Omit<WikiArticle, 'id' | 'authorName' | 'updatedAt'>) => {
     const article = {
       ...a,
       id: 'w' + Date.now(),
       authorName: user?.name || '',
-      updatedAt: new Date().toLocaleDateString('ru-RU'),
+      updatedAt: new Date().toISOString(),
       fields: { ...a.fields, source: a.fields?.source || 'custom' },
     } as WikiArticle;
-    setWikiArticles(prev => {
-      const next = [...prev, article];
-      void (async () => {
-        if (await contentStoreUsesNormalized('wiki')) {
-          const ok = await contentStoreAddWiki(article);
-          if (!ok) setDbSaveError('Не удалось сохранить статью вики');
-        } else {
-          await persist('wiki', next);
-        }
-      })();
-      return next;
-    });
-  }, [user?.name, persist, setDbSaveError]);
 
-  const updateWikiArticle = useCallback((id: string, u: Partial<WikiArticle>) => {
-    const next = wikiRef.current.map(x => {
-      if (x.id !== id) return x;
-      const mergedFields = {
-        ...x.fields,
-        ...(u.fields || {}),
-        source: 'custom' as const,
-      };
-      return {
-        ...x,
-        ...u,
-        fields: mergedFields,
-        updatedAt: new Date().toISOString(),
-      };
-    });
+    const next = [...wikiRef.current, article];
+    wikiSavePendingRef.current += 1;
     setWikiArticles(next);
-    void (async () => {
-      const updated = next.find(x => x.id === id);
-      if (await contentStoreUsesNormalized('wiki') && updated) {
-        const ok = await contentStoreUpdateWiki(id, updated);
-        if (!ok) setDbSaveError('Не удалось обновить статью вики');
-      } else {
-        await persist('wiki', next);
+    try {
+      const err = await saveWikiArticle(article, next);
+      if (err) {
+        setWikiArticles(wikiRef.current.filter(x => x.id !== article.id));
+        setDbSaveError(err);
+        return err;
       }
-    })();
-  }, [persist, setDbSaveError]);
+      setDbSaveError(null);
+      return null;
+    } finally {
+      wikiSavePendingRef.current -= 1;
+    }
+  }, [user?.name, saveWikiArticle, setDbSaveError]);
 
-  const deleteWikiArticle = useCallback((id: string) => {
+  const updateWikiArticle = useCallback(async (id: string, u: Partial<WikiArticle>): Promise<string | null> => {
+    const prev = wikiRef.current;
+    const existing = prev.find(x => x.id === id);
+    if (!existing) {
+      const msg = 'Запись не найдена. Обновите страницу и попробуйте снова.';
+      setDbSaveError(msg);
+      return msg;
+    }
+
+    const mergedFields = {
+      ...existing.fields,
+      ...(u.fields || {}),
+      source: 'custom' as const,
+    };
+    const updated: WikiArticle = {
+      ...existing,
+      ...u,
+      fields: mergedFields,
+      updatedAt: new Date().toISOString(),
+    };
+    const next = prev.map(x => (x.id === id ? updated : x));
+
+    wikiSavePendingRef.current += 1;
+    setWikiArticles(next);
+    try {
+      const err = await saveWikiArticle(updated, next);
+      if (err) {
+        setWikiArticles(prev);
+        setDbSaveError(err);
+        return err;
+      }
+      setDbSaveError(null);
+      return null;
+    } finally {
+      wikiSavePendingRef.current -= 1;
+    }
+  }, [saveWikiArticle, setDbSaveError]);
+
+  const deleteWikiArticle = useCallback(async (id: string): Promise<string | null> => {
     const prev = wikiRef.current;
     const next = prev.filter(x => x.id !== id);
+    wikiSavePendingRef.current += 1;
     setWikiArticles(next);
-    void (async () => {
-      if (await contentStoreUsesNormalized('wiki')) {
+    try {
+      const usesNorm = normalizedRef.current.wiki ?? await contentStoreUsesNormalized('wiki');
+      if (usesNorm) {
         const ok = await contentStoreDeleteWiki(id);
         if (!ok) {
           setWikiArticles(prev);
-          setDbSaveError('Не удалось удалить статью вики');
+          const msg = 'Не удалось удалить статью вики';
+          setDbSaveError(msg);
+          return msg;
         }
       } else {
-        await persist('wiki', next);
+        const err = await persist('wiki', next);
+        if (err) {
+          setWikiArticles(prev);
+          setDbSaveError(err);
+          return err;
+        }
       }
-    })();
-  }, [persist, setDbSaveError]);
+      setDbSaveError(null);
+      return null;
+    } finally {
+      wikiSavePendingRef.current -= 1;
+    }
+  }, [persist, normalizedRef, setDbSaveError]);
 
   return {
     wikiArticles,
@@ -147,6 +193,7 @@ export function useAuthWiki({
     wikiLoaded,
     setWikiLoaded,
     ensureWikiLoaded,
+    isWikiSavePending,
     addWikiArticle,
     updateWikiArticle,
     deleteWikiArticle,

@@ -122,6 +122,7 @@ async function main() {
     process.exit(1);
   }
 
+  // Статьи с fields.source === 'custom' не перезаписываются сидами (редакции в админке).
   const customIds = new Set(
     (existing || [])
       .filter(row => row.fields?.source === 'custom' && row.id && !row.id.startsWith('ls-'))
@@ -129,9 +130,8 @@ async function main() {
   );
 
   const innerIds = new Set(innerPath.map(a => a.id));
-  const FORCE_SEED_SECTIONS = new Set(['lifeskills', 'tips', 'mystic', 'builds', 'weapons', 'sects', 'bosses', 'cooking']);
   const toUpsert = [
-    ...seeds.filter(s => !customIds.has(s.id) || FORCE_SEED_SECTIONS.has(s.section)),
+    ...seeds.filter(s => !customIds.has(s.id)),
     ...innerPath,
   ];
 

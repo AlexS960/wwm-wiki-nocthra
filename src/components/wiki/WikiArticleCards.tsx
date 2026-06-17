@@ -79,16 +79,17 @@ function WikiArticleCardsView({
     );
   }
 
-  const handleSave = (values: SectionEditorValues) => {
+  const handleSave = async (values: SectionEditorValues) => {
     if (!editId) return;
     const payload = editorValuesToWikiPayload(values, schema, normalizeId);
-    updateWikiArticle(editId, {
+    const err = await updateWikiArticle(editId, {
       title: payload.title,
       content: payload.content,
       icon: payload.icon,
       images: payload.images,
       fields: payload.fields,
     });
+    if (err) return;
     setEditId(null);
     setEditInitial(undefined);
   };
@@ -128,7 +129,7 @@ function WikiArticleCardsView({
             }
           }}
           onDelete={() => {
-            if (confirm('Удалить эту запись?')) deleteWikiArticle(article.id);
+            if (confirm('Удалить эту запись?')) void deleteWikiArticle(article.id);
           }}
         />
       ))}
@@ -140,14 +141,15 @@ function WikiArticleCardsView({
           storageFolder={sectionId}
           isEdit
           initial={dynamicInitial}
-          onSave={values => {
-            updateWikiArticle(editId, {
+          onSave={async values => {
+            const err = await updateWikiArticle(editId, {
               title: values.title,
               content: values.fields.content || '',
               icon: values.icon,
               images: values.images,
               fields: values.fields,
             });
+            if (err) return;
             setEditId(null);
             setDynamicInitial(undefined);
           }}

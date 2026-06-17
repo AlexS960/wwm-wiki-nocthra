@@ -339,7 +339,9 @@ export async function contentStoreUpsertWiki(article: WikiArticle): Promise<bool
 
 export async function contentStoreUpdateWiki(id: string, article: WikiArticle): Promise<boolean> {
   if (!(await usesTable('wiki'))) return false;
-  return dbUpdateWikiArticle(id, wikiToDb(article));
+  const result = await dbUpdateWikiArticle(id, wikiToDb(article));
+  if (result.ok) return true;
+  return dbUpsertWikiArticle(wikiToDb(article));
 }
 
 export async function contentStoreDeleteWiki(id: string): Promise<boolean> {

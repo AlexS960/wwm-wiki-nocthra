@@ -163,6 +163,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     schedulePmRefresh: pm.schedulePmRefresh,
     setGuides: g => guidesHook.setGuides(g),
     setWikiArticles: w => wikiHook.setWikiArticles(w),
+    isWikiSavePending: wikiHook.isWikiSavePending,
     setChatState: chatHook.setChatState,
     setGuideComments: guidesHook.setGuideComments,
     setSiteNews: n => siteNewsHook.setSiteNews(n),
