@@ -47,7 +47,7 @@ export default function WwmWikiPage({ onNavigate, onBack }: WwmWikiPageProps) {
               key={section.id}
               type="button"
               onClick={() => onNavigate(section.id)}
-              className="hover-glow-btn text-left bg-ink-800/60 border border-ink-700/30 rounded-xl p-4 hover:border-gold-500/40 hover:bg-gold-500/5 transition-all cursor-pointer"
+              className="hover-glow-btn surface-card surface-card-hover text-left border rounded-xl p-4 transition-all cursor-pointer"
             >
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-xl">{section.icon}</span>

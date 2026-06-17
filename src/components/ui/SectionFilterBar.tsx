@@ -116,7 +116,7 @@ function CategoryManagerPanel({
   };
 
   return (
-    <div className="max-w-2xl mx-auto bg-ink-800/80 border border-gold-400/20 rounded-xl p-4 space-y-4">
+    <div className="max-w-2xl mx-auto surface-panel accent-border-subtle border rounded-xl p-4 space-y-4">
       <div className="flex items-center justify-between gap-2">
         <p className="text-sm text-ink-200">Категории раздела — используются в фильтрах и при добавлении записей</p>
         <button type="button" onClick={onClose} className="p-1 text-ink-500 hover:text-white cursor-pointer">

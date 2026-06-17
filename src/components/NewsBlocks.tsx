@@ -103,8 +103,8 @@ export default function NewsBlocks() {
   return (
     <>
       <div className="w-full mt-6">
-        <div className="bg-ink-900/50 backdrop-blur-sm border border-gold-700/25 rounded-2xl overflow-hidden flex flex-col min-h-[340px]">
-          <div className="px-4 py-3 border-b border-gold-700/15 flex items-center justify-between bg-gold-900/10">
+        <div className="surface-panel backdrop-blur-sm border accent-border-subtle border rounded-2xl overflow-hidden flex flex-col min-h-[340px]">
+          <div className="px-4 py-3 border-b accent-border-subtle border-b flex items-center justify-between bg-gold-900/10">
             <h3 className="font-serif font-bold text-gold-300 flex items-center gap-2 text-sm sm:text-base">
               <Newspaper className="w-4 h-4 sm:w-5 sm:h-5 text-gold-400" />
               Новости сайта
@@ -243,7 +243,7 @@ function SiteNewsCard({
           onOpen();
         }
       }}
-      className="w-full p-3 sm:p-4 rounded-xl bg-ink-800/40 border border-gold-700/15 hover:border-gold-600/25 hover:bg-ink-800/55 transition-all flex flex-col cursor-pointer"
+      className="w-full p-3 sm:p-4 rounded-xl surface-card surface-card-hover border transition-all flex flex-col cursor-pointer"
     >
       <div className="flex items-start gap-3 w-full">
         <span className="text-lg shrink-0">{item.icon}</span>

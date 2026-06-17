@@ -18,6 +18,24 @@ const DEFAULT_GOLD_SCALE: Record<string, string> = {
   '--color-gold-900': '#2e200a',
 };
 
+const DEFAULT_SURFACE_VARS: Record<string, string> = {
+  '--surface-card': 'rgba(26, 20, 14, 0.6)',
+  '--surface-card-hover': 'rgba(26, 20, 14, 0.72)',
+  '--surface-panel': 'rgba(15, 11, 7, 0.5)',
+  '--surface-input': 'rgba(26, 20, 14, 0.7)',
+  '--surface-border': 'rgba(184, 137, 26, 0.35)',
+  '--surface-border-subtle': 'rgba(184, 137, 26, 0.15)',
+  '--accent-tint': DEFAULT_USER_ACCENT,
+  '--accent-tint-muted': '#b8891a',
+  '--header-gradient-start': '#4d370d',
+  '--header-gradient-mid': '#2a2016',
+  '--header-gradient-end': '#0f0b07',
+  '--accent-gradient': 'linear-gradient(to bottom right, #4d370d, #2a2016, #0f0b07)',
+  '--accent-radial-glow': 'rgba(212, 165, 40, 0.35)',
+  '--text-on-surface': '#f8f5f0',
+  '--text-muted-on-surface': 'rgba(248, 245, 240, 0.62)',
+};
+
 const DEFAULT_CONTRAST_VARS: Record<string, string> = {
   '--user-accent': DEFAULT_USER_ACCENT,
   '--accent-rgb': '212, 165, 40',
@@ -34,8 +52,11 @@ const TEXT_ON_DARK_MIN_LUMINANCE = 0.38;
 
 const ALL_ACCENT_VAR_KEYS = [
   ...Object.keys(DEFAULT_GOLD_SCALE),
+  ...Object.keys(DEFAULT_SURFACE_VARS),
   ...Object.keys(DEFAULT_CONTRAST_VARS),
 ];
+
+const USER_ACCENT_STYLE_ID = 'user-accent-theme';
 
 function hexToRgb(hex: string): [number, number, number] {
   const h = hex.replace('#', '');
@@ -119,6 +140,37 @@ function buildContrastVars(hex: string, scale: Record<string, string>): Record<s
   };
 }
 
+function buildSurfaceVars(hex: string, displayHex: string, isDark: boolean): Record<string, string> {
+  const cardPct = isDark ? 24 : 16;
+  const cardHoverPct = isDark ? 30 : 22;
+  const panelPct = isDark ? 18 : 12;
+  const inputPct = isDark ? 20 : 14;
+  const [dr, dg, db] = hexToRgb(displayHex);
+  const mutedRgb = mixRgb(hexToRgb(displayHex), [26, 20, 14], 0.4);
+
+  const gradStart = rgbToHex(...mixRgb(hexToRgb(displayHex), [15, 11, 7], isDark ? 0.35 : 0.45));
+  const gradMid = rgbToHex(...mixRgb(hexToRgb(displayHex), [26, 20, 14], isDark ? 0.5 : 0.55));
+  const gradEnd = rgbToHex(...mixRgb(hexToRgb(displayHex), [15, 11, 7], isDark ? 0.65 : 0.72));
+
+  return {
+    '--surface-card': `color-mix(in srgb, ${displayHex} ${cardPct}%, #1a140e ${100 - cardPct}%)`,
+    '--surface-card-hover': `color-mix(in srgb, ${displayHex} ${cardHoverPct}%, #1a140e ${100 - cardHoverPct}%)`,
+    '--surface-panel': `color-mix(in srgb, ${displayHex} ${panelPct}%, #0f0b07 ${100 - panelPct}%)`,
+    '--surface-input': `color-mix(in srgb, ${displayHex} ${inputPct}%, #1a140e ${100 - inputPct}%)`,
+    '--surface-border': `rgba(${dr}, ${dg}, ${db}, 0.38)`,
+    '--surface-border-subtle': `rgba(${dr}, ${dg}, ${db}, 0.2)`,
+    '--accent-tint': displayHex,
+    '--accent-tint-muted': rgbToHex(mutedRgb[0], mutedRgb[1], mutedRgb[2]),
+    '--header-gradient-start': gradStart,
+    '--header-gradient-mid': gradMid,
+    '--header-gradient-end': gradEnd,
+    '--accent-gradient': `linear-gradient(to bottom right, ${gradStart}, ${gradMid}, ${gradEnd})`,
+    '--accent-radial-glow': `rgba(${dr}, ${dg}, ${db}, 0.38)`,
+    '--text-on-surface': isDark ? '#f8f5f0' : '#1a140e',
+    '--text-muted-on-surface': isDark ? 'rgba(248, 245, 240, 0.62)' : 'rgba(26, 20, 14, 0.65)',
+  };
+}
+
 function setRootVars(vars: Record<string, string>) {
   const root = document.documentElement;
   for (const [key, value] of Object.entries(vars)) {
@@ -133,25 +185,61 @@ function clearRootVars(keys: string[]) {
   }
 }
 
+function removeAccentThemeStyle() {
+  document.getElementById(USER_ACCENT_STYLE_ID)?.remove();
+}
+
+function ensureAccentThemeStyle(surfaceMix: number) {
+  let el = document.getElementById(USER_ACCENT_STYLE_ID) as HTMLStyleElement | null;
+  if (!el) {
+    el = document.createElement('style');
+    el.id = USER_ACCENT_STYLE_ID;
+    document.head.appendChild(el);
+  }
+  const glowAlpha = surfaceMix >= 20 ? 0.42 : 0.35;
+  el.textContent = `
+html[data-user-accent] .hover-glow-purple:hover,
+html[data-user-accent] .hover-glow-purple:focus-visible {
+  box-shadow: 0 0 16px rgba(var(--accent-rgb), ${glowAlpha}), 0 0 36px rgba(var(--accent-rgb), ${glowAlpha * 0.55}) !important;
+}
+html[data-user-accent] .guild-glow {
+  animation: glowPulseAccent 3s ease-in-out infinite;
+}
+@keyframes glowPulseAccent {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(var(--accent-rgb), 0.35)) drop-shadow(0 0 20px rgba(var(--accent-rgb), 0.12)); }
+  50% { filter: drop-shadow(0 0 12px rgba(var(--accent-rgb), 0.65)) drop-shadow(0 0 36px rgba(var(--accent-rgb), 0.22)); }
+}
+`;
+}
+
 /** Применить акцент к CSS-переменным gold-* и эффектам. null — сброс к дефолту. */
 export function applyUserAccent(color: UserAccentColor | null | undefined): void {
   const hex = color && isUserAccentColor(color) ? color : null;
+  const root = document.documentElement;
+
   if (!hex || hex === DEFAULT_USER_ACCENT) {
     clearRootVars(ALL_ACCENT_VAR_KEYS);
+    root.removeAttribute('data-user-accent');
+    removeAccentThemeStyle();
     return;
   }
 
   const baseRgb = hexToRgb(hex);
   const isDark = relativeLuminance(...baseRgb) < DARK_ACCENT_LUMINANCE_THRESHOLD;
-  const scaleBase = isDark
-    ? rgbToHex(...ensureReadableOnDark(baseRgb))
-    : hex;
+  const displayRgb = isDark ? ensureReadableOnDark(baseRgb) : baseRgb;
+  const displayHex = rgbToHex(displayRgb[0], displayRgb[1], displayRgb[2]);
+  const scaleBase = displayHex;
   const scale = buildGoldScale(scaleBase);
   const contrast = buildContrastVars(hex, scale);
+  const surfaces = buildSurfaceVars(hex, displayHex, isDark);
+
+  root.setAttribute('data-user-accent', hex);
+  ensureAccentThemeStyle(isDark ? 24 : 16);
 
   setRootVars({
     ...scale,
     ...contrast,
+    ...surfaces,
   });
 }
 

@@ -15,7 +15,7 @@ export default function FilterPills({ options, active, onChange }: FilterPillsPr
           className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all cursor-pointer ${
             active === option.value
               ? 'bg-gold-400/20 text-gold-400 border border-gold-400/40'
-              : 'bg-ink-800/50 text-ink-300 border border-ink-700/30 hover:text-gold-300'
+              : 'surface-card text-ink-300 border hover:text-gold-300'
           }`}
         >
           {option.icon && <span>{option.icon}</span>}

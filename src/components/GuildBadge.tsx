@@ -18,7 +18,7 @@ function GuildBanner({ guildName, onClick }: { guildName: string; onClick?: () =
       className="guild-banner relative w-full max-w-2xl mx-auto block cursor-pointer group text-left"
     >
       <div className="guild-banner-bg absolute inset-0 overflow-hidden" aria-hidden>
-        <div className="absolute inset-0 opacity-20 bg-[linear-gradient(110deg,transparent_0%,rgba(216,180,255,0.15)_45%,transparent_85%)] bg-[length:180%_180%] animate-[shimmer_7s_linear_infinite]" />
+        <div className="absolute inset-0 opacity-20 accent-shimmer-line bg-[length:180%_180%] animate-[shimmer_7s_linear_infinite]" />
       </div>
 
       <div className="relative px-5 sm:px-10 py-7 sm:py-9">
@@ -116,12 +116,12 @@ function GuildInfoPopup({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
 
   const modal = (
     <AppModal open={isOpen} onClose={onClose} layer="default" className="max-w-lg w-full">
-      <div className="w-full max-h-[min(92dvh,720px)] sm:max-h-[90vh] rounded-t-2xl sm:rounded-2xl overflow-hidden shadow-2xl border border-purple-500/35 flex flex-col bg-ink-900/78 backdrop-blur-lg">
+      <div className="w-full max-h-[min(92dvh,720px)] sm:max-h-[90vh] rounded-t-2xl sm:rounded-2xl overflow-hidden shadow-2xl border border-purple-500/35 flex flex-col surface-panel backdrop-blur-lg">
         <div className="h-1 guild-border-flow shrink-0" />
 
         <div className="relative shrink-0">
-          <div className="relative h-24 sm:h-32 md:h-36 bg-gradient-to-br from-purple-900 via-violet-700 to-purple-950 flex items-center justify-center overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(168,130,255,0.35),transparent_70%)]" />
+          <div className="relative h-24 sm:h-32 md:h-36 accent-header-gradient flex items-center justify-center overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,var(--accent-radial-glow),transparent_70%)]" />
             {g.avatar ? (
               <img src={g.avatar} alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
             ) : null}
@@ -323,8 +323,8 @@ export function GuildBadgeHero() {
 export function GuildBadgeCompact() {
   const { guild } = useAuth();
   return (
-    <div className="relative inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-900/30 border border-purple-500/20">
-      <span className="text-purple-300/60 text-xs">🌙</span>
+    <div className="relative inline-flex items-center gap-2 px-4 py-2 rounded-full surface-card accent-border border">
+      <span className="text-gold-300/60 text-xs">🌙</span>
       <span className="font-serif font-bold text-sm tracking-wider guild-text-shimmer">{guild.name}</span>
     </div>
   );
@@ -335,9 +335,9 @@ export function GuildBadgeFooter() {
   const [showInfo, setShowInfo] = useState(false);
   return (
     <>
-      <div className="relative mt-8 pt-8 border-t border-purple-500/10">
+      <div className="relative mt-8 pt-8 border-t accent-border-subtle">
         <GuildBanner guildName={guild.name} onClick={() => setShowInfo(true)} />
-        <p className="text-center text-purple-400/35 text-[10px] tracking-widest uppercase mt-3">{guild.motto}</p>
+        <p className="text-center text-gold-400/35 text-[10px] tracking-widest uppercase mt-3">{guild.motto}</p>
       </div>
       <GuildInfoPopup isOpen={showInfo} onClose={() => setShowInfo(false)} />
     </>
