@@ -3,6 +3,9 @@ import { X, User, LogIn, UserPlus, Eye, EyeOff, Shield, AlertCircle, Check, Game
 import { useAuthState, useAuthActions } from '../context/AuthContext';
 import { validateUsername, validatePassword, validateGameNickname } from '../lib/validation';
 import { useBodyScrollLock } from '../hooks/useBodyScrollLock';
+import AccentColorPicker from './ui/AccentColorPicker';
+import { applyUserAccent, loadGuestAccent, saveGuestAccent } from '../lib/userAccent';
+import type { UserAccentColor } from '../lib/userThemePalette';
 
 type AuthMode = 'login' | 'register';
 
@@ -26,6 +29,7 @@ export default function LoginModal({ isOpen, onClose, initialMode = 'login' }: L
   const [showPasswordRepeat, setShowPasswordRepeat] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [accent, setAccent] = useState<UserAccentColor | null>(() => loadGuestAccent());
 
   useBodyScrollLock(isOpen);
 
@@ -286,6 +290,19 @@ export default function LoginModal({ isOpen, onClose, initialMode = 'login' }: L
               </span>
             </label>
           )}
+
+          <div className="pt-2 border-t border-ink-700/30">
+            <p className="text-ink-500 text-[10px] mb-2">Цвет интерфейса</p>
+            <AccentColorPicker
+              value={accent}
+              onChange={color => {
+                setAccent(color);
+                saveGuestAccent(color);
+                applyUserAccent(color);
+              }}
+              compact
+            />
+          </div>
 
           <button
             type="button"

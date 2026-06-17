@@ -11,6 +11,7 @@ import AnnouncementsFloating from './components/AnnouncementsFloating';
 import AnnouncementTicker from './components/AnnouncementTicker';
 import DonationBlock from './components/DonationBlock';
 import SiteThemeSync from './components/SiteThemeSync';
+import UserAccentSync from './components/UserAccentSync';
 import { isHomeBlockVisible, mergeHomeBlocks } from './lib/siteConstructor';
 import { ArrowUp, Crown } from 'lucide-react';
 import { usePmBrowserNotifications } from './hooks/usePmBrowserNotifications';
@@ -472,6 +473,7 @@ export default function App() {
   return (
     <AuthProvider>
       <SiteThemeSync />
+      <UserAccentSync />
       <AppContent />
     </AuthProvider>
   );

@@ -104,6 +104,8 @@ export interface UserProgress {
   visitedRegions: string[];
   notes: { id: string; title: string; content: string; date: string }[];
   selectedBuild: string | null;
+  /** Акцентный цвет UI из фиксированной палитры */
+  accentColor?: string | null;
 }
 
 export interface RegisteredUser {

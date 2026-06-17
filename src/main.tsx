@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
+import { initGuestAccentFromStorage } from "./lib/userAccent";
 import App from "./App";
 import AppErrorBoundary from "./components/AppErrorBoundary";
 import SetupError from "./components/SetupError";
@@ -9,6 +10,8 @@ import { isChunkLoadError, recoverFromChunkError } from "./lib/chunkError";
 
 const rootEl = document.getElementById("root");
 if (!rootEl) throw new Error("Элемент #root не найден");
+
+initGuestAccentFromStorage();
 
 const root = createRoot(rootEl);
 

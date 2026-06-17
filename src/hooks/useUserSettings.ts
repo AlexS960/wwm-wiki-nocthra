@@ -5,6 +5,7 @@
 import { useCallback } from 'react';
 import { useAuthState, useAuthActions } from '../context/AuthContext';
 import { logger } from '../lib/logger';
+import { applyUserAccent, saveGuestAccent } from '../lib/userAccent';
 
 interface UserSettingsExport {
   version: string;
@@ -17,6 +18,7 @@ interface UserSettingsExport {
     visitedRegions: string[];
     notes: Array<{ id: string; title: string; content: string; date: string }>;
     selectedBuild: string | null;
+    accentColor?: string | null;
   };
 }
 
@@ -42,6 +44,7 @@ export function useUserSettings() {
           visitedRegions: progress.visitedRegions,
           notes: progress.notes,
           selectedBuild: progress.selectedBuild,
+          accentColor: progress.accentColor ?? null,
         },
       };
 
@@ -87,6 +90,7 @@ export function useUserSettings() {
         visitedRegions: data.progress.visitedRegions || [],
         notes: data.progress.notes || [],
         selectedBuild: data.progress.selectedBuild,
+        accentColor: data.progress.accentColor ?? null,
       });
 
       logger.info('Settings imported successfully', 'useUserSettings', { 
@@ -114,7 +118,10 @@ export function useUserSettings() {
         visitedRegions: [],
         notes: [],
         selectedBuild: null,
+        accentColor: null,
       });
+      saveGuestAccent(null);
+      applyUserAccent(null);
 
       logger.info('Settings reset successfully', 'useUserSettings', { userId: user.id });
       return { success: true, message: 'Настройки сброшены' };

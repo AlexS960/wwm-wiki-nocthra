@@ -32,6 +32,7 @@ export const defaultUserProgress: UserProgress = {
   visitedRegions: [],
   notes: [],
   selectedBuild: null,
+  accentColor: null,
 };
 
 export const defaultSiteSettings: SiteSettings = {

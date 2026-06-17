@@ -1,6 +1,7 @@
 import type { UserProgress } from '../types/site';
 import { defaultUserProgress } from '../context/authContextTypes';
 import { asArray } from '../context/authContextTypes';
+import { isUserAccentColor } from './userThemePalette';
 
 const PROGRESS_KEY_PREFIX = 'wwm_progress_';
 
@@ -32,6 +33,7 @@ export function normalizeUserProgress(raw: unknown): UserProgress {
       }))
       .filter(n => n.id && n.title),
     selectedBuild: typeof selected === 'string' && selected.length > 0 ? selected : null,
+    accentColor: isUserAccentColor(p.accentColor) ? p.accentColor : null,
   };
 }
 

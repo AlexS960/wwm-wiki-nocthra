@@ -26,7 +26,6 @@ import { sanitizeGuides, sanitizeGuideVersions, sanitizeSiteNews, sanitizeWiki }
 import type { Dispatch, SetStateAction } from 'react';
 import type { UserProgress } from '../../types/site';
 import { normalizeUserProgress, saveProgressLocal, getProgressLocalSavedAt } from '../../lib/userProgress';
-import { dbgLog } from '../../lib/debugSessionLog';
 
 type Deps = {
   isLoading: boolean;
@@ -81,18 +80,13 @@ export function useAuthRealtime(deps: Deps) {
       if (domains.wiki) {
         let wikiReloadTimer: ReturnType<typeof setTimeout> | null = null;
         const scheduleWikiReload = () => {
-          const pending = depsRef.current.isWikiSavePending();
-          if (pending) {
-            dbgLog('useAuthRealtime.ts:wiki', 'reload skipped pending', {}, 'C');
-            return;
-          }
           if (wikiReloadTimer) clearTimeout(wikiReloadTimer);
           wikiReloadTimer = setTimeout(() => {
+            wikiReloadTimer = null;
             if (depsRef.current.isWikiSavePending()) {
-              dbgLog('useAuthRealtime.ts:wiki', 'reload skipped pending delayed', {}, 'C');
+              scheduleWikiReload();
               return;
             }
-            dbgLog('useAuthRealtime.ts:wiki', 'reload executing', {}, 'C');
             void contentStoreLoadWiki().then(w =>
               depsRef.current.setWikiArticles(sanitizeWiki(buildWikiCatalog(w))),
             );

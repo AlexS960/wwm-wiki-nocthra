@@ -6,6 +6,8 @@ import {
   resolveUserProgress,
   saveProgressLocal,
 } from './userProgress';
+import { loadGuestAccent } from './userAccent';
+import { isUserAccentColor } from './userThemePalette';
 
 export function progressEquals(a: UserProgress, b: UserProgress): boolean {
   return JSON.stringify(a) === JSON.stringify(b);
@@ -25,7 +27,11 @@ export async function hydrateUserProgress(
   const fromDb = await dbLoadProgress(userId);
   if (isActive && !isActive()) return null;
   const fromLocal = loadProgressLocal(userId);
-  const resolved = resolveUserProgress(fromLocal, fromDb);
+  let resolved = resolveUserProgress(fromLocal, fromDb);
+  const guestAccent = loadGuestAccent();
+  if (guestAccent && !isUserAccentColor(resolved.accentColor)) {
+    resolved = { ...resolved, accentColor: guestAccent };
+  }
   setProgress(resolved);
   if (isActive && !isActive()) return null;
   saveProgressLocal(userId, resolved);

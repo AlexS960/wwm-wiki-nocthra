@@ -3,7 +3,6 @@ import { hashPassword } from './password';
 import { checkSiteDataSize } from './siteDataLimits';
 import { isStaffChatRole, staffRoleIdsForQuery } from './staffChat';
 import { logger } from './logger';
-import { dbgLog } from './debugSessionLog';
 import type { UserProgress } from '../types/site';
 import { normalizeUserProgress } from './userProgress';
 
@@ -862,7 +861,6 @@ export async function dbRecordVisit(row: {
   });
   if (error) {
     const msg = error.message.toLowerCase();
-    dbgLog('db.ts:dbRecordVisit', 'insert failed', { err: error.message.slice(0, 120), ipKind: ip === 'unknown' ? 'unknown' : 'resolved' }, 'B');
     if (msg.includes('does not exist') || msg.includes('could not find')) return;
     if (msg.includes('client_ip')) {
       const { error: legacyErr } = await getSupabase().from('site_visits').insert({
@@ -871,14 +869,12 @@ export async function dbRecordVisit(row: {
         path: row.path,
         hit_at: new Date().toISOString(),
       });
-      dbgLog('db.ts:dbRecordVisit', 'legacy insert', { ok: !legacyErr, err: legacyErr?.message?.slice(0, 80) }, 'B');
       if (legacyErr) logger.warn('Failed to record visit', 'analytics', legacyErr.message);
       return;
     }
     logger.warn('Failed to record visit', 'analytics', error.message);
     return;
   }
-  dbgLog('db.ts:dbRecordVisit', 'insert ok', { ipKind: ip === 'unknown' ? 'unknown' : 'resolved', path: row.path }, 'B');
 }
 
 export async function dbGetVisitStats(days: number): Promise<{ stats: VisitStats | null; error?: string }> {
@@ -983,7 +979,7 @@ function buildVisitStats(rows: Array<{
       uniqueIps: v.ips.size,
     }));
 
-  const result = {
+  return {
     stats: {
       totalHits: rows.length,
       uniqueIps: ips.size,
@@ -994,11 +990,4 @@ function buildVisitStats(rows: Array<{
       daily,
     },
   };
-  dbgLog('db.ts:buildVisitStats', 'stats built', {
-    rows: rows.length,
-    uniqueIps: ips.size,
-    topIpsCount: topIps.length,
-    legacyVisitorRows: rows.filter(r => !visitIpFromRow(r)).length,
-  }, 'E');
-  return result;
 }

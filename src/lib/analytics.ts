@@ -1,5 +1,4 @@
 import { dbGetVisitStats, dbRecordVisit } from './db';
-import { dbgLog } from './debugSessionLog';
 
 const IP_SESSION_KEY = 'wwm_client_ip';
 const LAST_HIT_KEY = 'wwm_last_hit';
@@ -48,23 +47,12 @@ export async function resolveClientIp(): Promise<string> {
   return 'unknown';
 }
 
-function ipKind(ip: string): string {
-  if (ip === 'unknown') return 'unknown';
-  if (ip.includes(':')) return 'ipv6';
-  if (IPV4_RE.test(ip)) return 'ipv4';
-  return 'other';
-}
-
 export function trackPageVisit(path: string, userId?: string | null): void {
   const normalized = path.split('?')[0].split('#')[0] || '/';
   const key = `${LAST_HIT_KEY}:${normalized}`;
-  dbgLog('analytics.ts:trackPageVisit', 'track called', { path: normalized, hasUser: !!userId }, 'B');
   try {
     const last = Number(sessionStorage.getItem(key) || '0');
-    if (Date.now() - last < HIT_COOLDOWN_MS) {
-      dbgLog('analytics.ts:trackPageVisit', 'cooldown skip', { path: normalized }, 'B');
-      return;
-    }
+    if (Date.now() - last < HIT_COOLDOWN_MS) return;
     sessionStorage.setItem(key, String(Date.now()));
   } catch {
     /* ignore */
@@ -72,7 +60,6 @@ export function trackPageVisit(path: string, userId?: string | null): void {
 
   void (async () => {
     const clientIp = await resolveClientIp();
-    dbgLog('analytics.ts:trackPageVisit', 'ip resolved', { path: normalized, ipKind: ipKind(clientIp) }, 'B');
     await dbRecordVisit({
       client_ip: clientIp,
       user_id: userId || null,

@@ -12,6 +12,9 @@ import {
   Circle, Download, Upload, RotateCcw, Settings, Users, ChevronRight
 } from 'lucide-react';
 import { MessengerStar } from './MessengerStar';
+import AccentColorPicker from './ui/AccentColorPicker';
+import { setUserAccentPreference } from './UserAccentSync';
+import { loadGuestAccent } from '../lib/userAccent';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -27,7 +30,7 @@ export default function ProfileModal({ isOpen, onClose, anchor, onNavigate }: Pr
   const {
     logout, updateUserPicture, updateUserGameNickname, updateUserGuild,
     getRoleConfig, addNote, deleteNote, isUserOnline,
-    ensureGuildsLoaded, getGuildName, ensureWikiLoaded,
+    ensureGuildsLoaded, getGuildName, ensureWikiLoaded, updateProgress,
   } = useAuthActions();
   const { exportSettings, importSettings, resetSettings } = useUserSettings();
   useBodyScrollLock(isOpen);
@@ -374,6 +377,15 @@ export default function ProfileModal({ isOpen, onClose, anchor, onNavigate }: Pr
           {activeTab === 'settings' && (
             <div className="space-y-4">
               <h3 className="text-gold-400 font-medium text-sm flex items-center gap-2"><Settings className="w-4 h-4" /> Управление настройками</h3>
+
+              <div className="bg-ink-800/40 border border-ink-600/20 rounded-lg p-4 space-y-2">
+                <label className="text-ink-400 text-[10px] uppercase tracking-wider block">Цвет интерфейса</label>
+                <AccentColorPicker
+                  value={progress.accentColor ?? loadGuestAccent()}
+                  onChange={color => setUserAccentPreference(color, updateProgress, true)}
+                />
+                <p className="text-ink-500 text-[10px]">Акцент кнопок и подсветок на сайте</p>
+              </div>
 
               <div className="bg-ink-800/40 border border-ink-600/20 rounded-lg p-4 space-y-3">
                 <div>
