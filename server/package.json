@@ -1,0 +1,8 @@
+{
+  "name": "wwm-wiki-sync-api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node index.mjs"
+  }
+}

@@ -2,6 +2,8 @@
 
 Пошаговая инструкция для переноса **только фронтенда** (статический SPA из `dist/`) на VPS [FirstVDS](https://my.firstvds.ru/). База данных и API остаются на [Supabase](https://supabase.com/) — миграция БД не требуется.
 
+> **Полная миграция (БД + Realtime + Storage + отказ от Vercel):** см. **[MIGRATION-FULL-FIRSTVDS.md](./MIGRATION-FULL-FIRSTVDS.md)** — self-hosted Supabase на Docker, экспорт данных, sync-api, DNS для `api.поддомен`.
+
 > **Домен в примерах:** `wwm-wiki.example.ru` — замените на свой домен.  
 > **Текущий Vercel-деплой** продолжит работать параллельно, пока вы не переключите DNS.
 
@@ -26,12 +28,12 @@
 
 ## 1. Что куда переезжает
 
-| Компонент | Где остаётся / куда едет |
-|-----------|--------------------------|
-| React + Vite SPA (`dist/`) | **FirstVDS** — `/var/www/wwm-wiki/` |
-| Supabase (auth, БД, realtime) | **Supabase** — без изменений |
-| `/api/sync-content` (парсеры в админке) | **Только Vercel** (serverless). На статическом VPS этот endpoint **не работает** без отдельного Node-сервера |
-| Домен | **REG.RU** → A-записи на IP VPS |
+| Компонент | Только фронт (этот документ) | Полная миграция |
+|-----------|------------------------------|-----------------|
+| React + Vite SPA (`dist/`) | **FirstVDS** — `/var/www/wwm-wiki/` | **FirstVDS** |
+| Supabase (БД, realtime, storage) | **Облако Supabase** | **Self-hosted Docker** — [MIGRATION-FULL-FIRSTVDS.md](./MIGRATION-FULL-FIRSTVDS.md) |
+| `/api/sync-content` | **Vercel** или `server/index.mjs` на VPS | **sync-api** на VPS (`deploy/docker-compose.yml`) |
+| Домен | **REG.RU** → A на IP VPS | **REG.RU** → A для сайта и `api.` поддомена |
 
 ---
 

@@ -1,0 +1,32 @@
+# Обёртка над официальным Supabase Docker.
+# Не дублирует весь upstream compose — используйте setup-supabase-docker.sh.
+#
+# После ./deploy/setup-supabase-docker.sh:
+#   cd deploy/supabase-upstream/docker && docker compose up -d
+#
+# Этот файл — справочный include для продвинутых сценариев (profiles).
+
+name: wwm-wiki-supabase
+
+services:
+  # Прокси-подсказка: Kong из официального стека слушает 8000
+  # Настройте REG.RU: api.ваш-домен.ru → A → IP VPS
+  # nginx proxy_pass http://127.0.0.1:8000;
+
+  db:
+    profiles: ["reference-only"]
+    image: supabase/postgres:15.8.1.060
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+# Минимальные требования VPS для полного Supabase Docker:
+#   RAM: 4 GB (рекомендуется), 2 GB — возможны OOM при старте всех сервисов
+#   CPU: 2 vCPU
+#   Диск: 20+ GB SSD
+#
+# Альтернатива при 2 GB RAM: только PostgreSQL + apply-migrations.sh
+#   — без Realtime/Storage API (чат без live-обновлений, картинки в data URL / внешние URL)
+#   См. docs/MIGRATION-FULL-FIRSTVDS.md § «Урезанный вариант»
