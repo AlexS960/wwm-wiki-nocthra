@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
 
-const siteUrl = (process.env.VITE_SITE_URL || 'https://wwm-wiki-nocthra-vnd6.vercel.app').replace(/\/$/, '');
+const siteUrl = (process.env.VITE_SITE_URL || process.env.SITE_URL || 'https://wwm-wiki-nocthra-vnd6.vercel.app').replace(/\/$/, '');
 const routes = JSON.parse(readFileSync(join(root, 'src/seo/routes.json'), 'utf8'));
 
 const publicRoutes = routes.filter((r) => !r.noindex);

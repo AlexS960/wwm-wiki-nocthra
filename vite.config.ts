@@ -7,6 +7,24 @@ import { defineConfig, loadEnv } from "vite";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const DEFAULT_SITE_URL = "https://wwm-wiki-nocthra-vnd6.vercel.app";
+
+function resolveSiteUrl(env: Record<string, string>): string {
+  return (env.VITE_SITE_URL || env.SITE_URL || DEFAULT_SITE_URL).replace(/\/$/, "");
+}
+
+/** Подставляет VITE_SITE_URL в index.html при сборке (canonical, Open Graph). */
+function siteUrlHtmlPlugin(siteUrl: string) {
+  return {
+    name: "site-url-html",
+    transformIndexHtml(html: string) {
+      return html
+        .replace(/__SITE_URL__/g, siteUrl)
+        .replace(new RegExp(DEFAULT_SITE_URL.replace(/\./g, "\\."), "g"), siteUrl);
+    },
+  };
+}
+
 function syncApiDevPlugin(env: Record<string, string>) {
   return {
     name: "sync-api-dev",
@@ -41,8 +59,10 @@ function syncApiDevPlugin(env: Record<string, string>) {
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
+  const siteUrl = resolveSiteUrl(env);
   return {
-  plugins: [react(), tailwindcss(), syncApiDevPlugin(env)],
+  base: "/",
+  plugins: [react(), tailwindcss(), syncApiDevPlugin(env), siteUrlHtmlPlugin(siteUrl)],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
