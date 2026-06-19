@@ -6,7 +6,7 @@ export const SITE_LOCALE = 'ru_RU';
 export const DEFAULT_OG_IMAGE = '/images/hero-bg.jpg';
 
 export const SITE_URL = (import.meta.env.VITE_SITE_URL as string | undefined)?.replace(/\/$/, '')
-  || 'https://wwm-wiki-nocthra-vnd6.vercel.app';
+  || 'https://wwm-wiki-nocthra.ru';
 
 export interface PageSeo {
   title: string;

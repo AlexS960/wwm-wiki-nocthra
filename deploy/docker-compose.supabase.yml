@@ -10,7 +10,7 @@ name: wwm-wiki-supabase
 
 services:
   # Прокси-подсказка: Kong из официального стека слушает 8000
-  # Настройте REG.RU: api.ваш-домен.ru → A → IP VPS
+  # Настройте REG.RU: api.wwm-wiki-nocthra.ru → A → 62.109.19.21
   # nginx proxy_pass http://127.0.0.1:8000;
 
   db:

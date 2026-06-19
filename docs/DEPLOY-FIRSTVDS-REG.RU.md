@@ -4,7 +4,7 @@
 
 > **Полная миграция (БД + Realtime + Storage + отказ от Vercel):** см. **[MIGRATION-FULL-FIRSTVDS.md](./MIGRATION-FULL-FIRSTVDS.md)** — self-hosted Supabase на Docker, экспорт данных, sync-api, DNS для `api.поддомен`.
 
-> **Домен в примерах:** `wwm-wiki.example.ru` — замените на свой домен.  
+> **Домен проекта:** `wwm-wiki-nocthra.ru` (VPS: `62.109.19.21`).  
 > **Текущий Vercel-деплой** продолжит работать параллельно, пока вы не переключите DNS.
 
 ---
@@ -43,7 +43,7 @@
 2. Закажите VPS (для статического сайта достаточно минимального тарифа: 1 CPU, 1–2 GB RAM, 10+ GB SSD).
 3. Выберите ОС: **Ubuntu 22.04 LTS** (рекомендуется).
 4. После создания VPS запишите:
-   - **IP-адрес** сервера (например `203.0.113.10`);
+   - **IP-адрес** сервера (например `62.109.19.21`);
    - **логин** (часто `root`);
    - **пароль** или способ входа по SSH-ключу.
 
@@ -54,7 +54,7 @@
 Подключитесь с Windows (PowerShell или cmd):
 
 ```powershell
-ssh root@203.0.113.10
+ssh root@62.109.19.21
 ```
 
 При первом входе смените пароль root, если система попросит.
@@ -127,14 +127,14 @@ sudo chmod -R 755 /var/www/wwm-wiki
 
 ```bash
 # На вашем ПК (PowerShell), из корня проекта:
-scp deploy/nginx-wwm-wiki.conf deploy@203.0.113.10:/tmp/wwm-wiki.conf
+scp deploy/nginx-wwm-wiki.conf deploy@62.109.19.21:/tmp/wwm-wiki.conf
 ```
 
 На сервере отредактируйте домен:
 
 ```bash
 sudo nano /tmp/wwm-wiki.conf
-# Замените wwm-wiki.example.ru на ваш реальный домен
+# При необходимости проверьте server_name (wwm-wiki-nocthra.ru)
 sudo cp /tmp/wwm-wiki.conf /etc/nginx/sites-available/wwm-wiki
 sudo ln -sf /etc/nginx/sites-available/wwm-wiki /etc/nginx/sites-enabled/
 sudo rm -f /etc/nginx/sites-enabled/default
@@ -156,7 +156,7 @@ sudo systemctl reload nginx
 
 ### 5.1. Узнайте IP VPS
 
-В панели FirstVDS → ваш сервер → **IP-адрес**. Обозначим его `203.0.113.10`.
+В панели FirstVDS → ваш сервер → **IP-адрес**. Обозначим его `62.109.19.21`.
 
 ### 5.2. DNS-записи в REG.RU
 
@@ -165,11 +165,11 @@ sudo systemctl reload nginx
 
 | Тип | Имя (хост) | Значение | TTL |
 |-----|------------|----------|-----|
-| **A** | `@` | `203.0.113.10` | 3600 |
-| **A** | `www` | `203.0.113.10` | 3600 |
+| **A** | `@` | `62.109.19.21` | 3600 |
+| **A** | `www` | `62.109.19.21` | 3600 |
 
-- `@` — корень домена (`wwm-wiki.example.ru`);
-- `www` — поддомен (`www.wwm-wiki.example.ru`).
+- `@` — корень домена (`wwm-wiki-nocthra.ru`);
+- `www` — поддомен (`www.wwm-wiki-nocthra.ru`).
 
 3. Удалите или измените старые A/CNAME-записи, указывающие на Vercel, если они больше не нужны.
 
@@ -188,8 +188,8 @@ sudo systemctl reload nginx
 - Проверка с Windows:
 
 ```powershell
-nslookup wwm-wiki.example.ru
-nslookup www.wwm-wiki.example.ru
+nslookup wwm-wiki-nocthra.ru
+nslookup www.wwm-wiki-nocthra.ru
 ```
 
 Оба должны вернуть IP вашего VPS.
@@ -199,7 +199,7 @@ nslookup www.wwm-wiki.example.ru
 После выбора финального домена задайте его **до сборки**:
 
 ```env
-VITE_SITE_URL=https://wwm-wiki.example.ru
+VITE_SITE_URL=https://wwm-wiki-nocthra.ru
 ```
 
 Без слэша в конце. Это обновит `sitemap.xml`, `robots.txt`, canonical и Open Graph (см. раздел 10).
@@ -212,7 +212,7 @@ VITE_SITE_URL=https://wwm-wiki.example.ru
 
 ```bash
 sudo apt install -y certbot python3-certbot-nginx
-sudo certbot --nginx -d wwm-wiki.example.ru -d www.wwm-wiki.example.ru
+sudo certbot --nginx -d wwm-wiki-nocthra.ru -d www.wwm-wiki-nocthra.ru
 ```
 
 Certbot:
@@ -227,7 +227,7 @@ Certbot:
 sudo certbot renew --dry-run
 ```
 
-Проверьте сайт: `https://wwm-wiki.example.ru`
+Проверьте сайт: `https://wwm-wiki-nocthra.ru`
 
 ---
 
@@ -248,7 +248,7 @@ copy deploy\.env.production.example .env.production
 ```env
 VITE_SUPABASE_URL=https://xxxx.supabase.co
 VITE_SUPABASE_ANON_KEY=eyJ...
-VITE_SITE_URL=https://wwm-wiki.example.ru
+VITE_SITE_URL=https://wwm-wiki-nocthra.ru
 ```
 
 > **Не коммитьте** `.env.production` в git — в нём секреты.
@@ -289,7 +289,7 @@ copy deploy\.env.deploy.example deploy\.env.deploy
 Отредактируйте `deploy/.env.deploy`:
 
 ```env
-SERVER_HOST=203.0.113.10
+SERVER_HOST=62.109.19.21
 SERVER_USER=deploy
 REMOTE_PATH=/var/www/wwm-wiki
 ```
@@ -310,7 +310,7 @@ REMOTE_PATH=/var/www/wwm-wiki
 
 ```powershell
 npm run deploy:build
-scp -r dist/* deploy@203.0.113.10:/var/www/wwm-wiki/
+scp -r dist/* deploy@62.109.19.21:/var/www/wwm-wiki/
 ```
 
 ### 8.4. Деплой через Git на сервере (вариант B)
@@ -389,7 +389,7 @@ sudo systemctl reload nginx
 
 ### base path
 
-В `vite.config.ts` задано `base: '/'` — корректно для домена в корне (`https://example.ru/`). Менять не нужно, если сайт не в подкаталоге.
+В `vite.config.ts` задано `base: '/'` — корректно для домена в корне (`https://wwm-wiki-nocthra.ru/`). Менять не нужно, если сайт не в подкаталоге.
 
 ---
 
@@ -433,11 +433,11 @@ curl -I http://localhost
 ### Проверка SEO-файлов
 
 ```bash
-curl https://wwm-wiki.example.ru/robots.txt
-curl https://wwm-wiki.example.ru/sitemap.xml
+curl https://wwm-wiki-nocthra.ru/robots.txt
+curl https://wwm-wiki-nocthra.ru/sitemap.xml
 ```
 
-В `robots.txt` должна быть строка `Sitemap: https://ваш-домен/sitemap.xml`.
+В `robots.txt` должна быть строка `Sitemap: https://wwm-wiki-nocthra.ru/sitemap.xml`.
 
 ---
 

@@ -7,7 +7,7 @@ import { defineConfig, loadEnv } from "vite";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DEFAULT_SITE_URL = "https://wwm-wiki-nocthra-vnd6.vercel.app";
+const DEFAULT_SITE_URL = "https://wwm-wiki-nocthra.ru";
 
 function resolveSiteUrl(env: Record<string, string>): string {
   return (env.VITE_SITE_URL || env.SITE_URL || DEFAULT_SITE_URL).replace(/\/$/, "");
