@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import {
   ArrowLeft, Shield, Users, Plus, AlertCircle, Check, ChevronRight,
-  Edit3, Save, X, User as UserIcon,
+  Edit3, Save, X, User as UserIcon, Pin,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import {
@@ -11,9 +11,11 @@ import {
 } from '../hooks/auth/useAuthGuilds';
 import {
   canEditRegisteredGuild,
+  canManageGuildRegistry,
+  getGuildMemberRoleBadge,
   getGuildMembers,
   getLeaderDisplayName,
-  isSiteGuildmaster,
+  sortRegisteredGuilds,
 } from '../lib/guildRegistry';
 import { getDisplayName } from '../lib/displayName';
 import { validateGuildName } from '../lib/validation';
@@ -38,7 +40,15 @@ export default function GuildsPage({ onBack, onLoginClick }: GuildsPageProps) {
     hasPermission,
     getRoleConfig,
     siteSettings,
+    togglePinnedGuild,
   } = useAuth();
+
+  const pinnedIds = siteSettings.pinnedGuildIds || [];
+  const canPin = canManageGuildRegistry(hasPermission);
+  const sortedGuilds = useMemo(
+    () => sortRegisteredGuilds(registeredGuilds, pinnedIds),
+    [registeredGuilds, pinnedIds],
+  );
 
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(false);
@@ -68,7 +78,7 @@ export default function GuildsPage({ onBack, onLoginClick }: GuildsPageProps) {
     }
   }, [user, leaderOptions]);
 
-  const selected = registeredGuilds.find(g => g.id === selectedId) ?? null;
+  const selected = sortedGuilds.find(g => g.id === selectedId) ?? null;
   const members = selected ? getGuildMembers(selected.id, registeredUsers) : [];
 
   const canEdit = selected
@@ -253,7 +263,7 @@ export default function GuildsPage({ onBack, onLoginClick }: GuildsPageProps) {
 
         {!loaded ? (
           <p className="text-center text-ink-500 text-sm py-12">Загрузка…</p>
-        ) : registeredGuilds.length === 0 ? (
+        ) : sortedGuilds.length === 0 ? (
           <div className="text-center py-16 text-ink-500">
             <Users className="w-12 h-12 mx-auto mb-3 opacity-40" />
             <p className="text-sm">Пока нет зарегистрированных гильдий</p>
@@ -262,30 +272,52 @@ export default function GuildsPage({ onBack, onLoginClick }: GuildsPageProps) {
           <div className="grid lg:grid-cols-[minmax(0,18rem)_1fr] gap-4 lg:gap-6">
             <div className="rounded-xl border border-ink-700/40 overflow-hidden bg-ink-900/40">
               <div className="px-3 py-2 border-b border-ink-700/40 text-xs text-ink-500 uppercase tracking-wide">
-                Гильдии ({registeredGuilds.length})
+                Гильдии ({sortedGuilds.length})
               </div>
               <ul className="scroll-area max-h-[28rem] lg:max-h-[36rem]">
-                {registeredGuilds.map(g => {
+                {sortedGuilds.map(g => {
                   const count = getGuildMembers(g.id, registeredUsers).length;
                   const active = g.id === selectedId;
+                  const pinned = pinnedIds.includes(g.id);
                   return (
                     <li key={g.id}>
-                      <button
-                        type="button"
-                        onClick={() => { setSelectedId(g.id); setEditing(false); setError(null); }}
-                        className={`w-full flex items-center gap-2 px-3 py-3 text-left border-b border-ink-800/50 cursor-pointer transition-colors ${
-                          active ? 'bg-gold-400/10 text-gold-300' : 'text-ink-200 hover:bg-ink-800/50'
+                      <div
+                        className={`w-full flex items-center gap-1 border-b border-ink-800/50 transition-colors ${
+                          active ? 'bg-gold-400/10' : 'hover:bg-ink-800/50'
                         }`}
                       >
-                        <span className="text-lg shrink-0">🛡️</span>
-                        <div className="min-w-0 flex-1">
-                          <div className="font-medium truncate">{g.name}</div>
-                          <div className="text-[10px] text-ink-500 truncate">
-                            {getLeaderDisplayName(g)} · {count} уч.
+                        {canPin && (
+                          <button
+                            type="button"
+                            onClick={() => togglePinnedGuild(g.id)}
+                            className={`p-2 shrink-0 cursor-pointer transition-colors ${
+                              pinned ? 'text-gold-400' : 'text-ink-600 hover:text-ink-400'
+                            }`}
+                            title={pinned ? 'Открепить' : 'Закрепить'}
+                          >
+                            <Pin className={`w-3.5 h-3.5 ${pinned ? 'fill-current' : ''}`} />
+                          </button>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => { setSelectedId(g.id); setEditing(false); setError(null); }}
+                          className={`flex-1 flex items-center gap-2 px-3 py-3 text-left cursor-pointer min-w-0 ${
+                            active ? 'text-gold-300' : 'text-ink-200'
+                          }`}
+                        >
+                          <span className="text-lg shrink-0">🛡️</span>
+                          <div className="min-w-0 flex-1">
+                            <div className="font-medium truncate flex items-center gap-1.5">
+                              {g.name}
+                              {pinned && <span className="text-[9px] text-gold-500 uppercase">pin</span>}
+                            </div>
+                            <div className="text-[10px] text-ink-500 truncate">
+                              {getLeaderDisplayName(g)} · {count} уч.
+                            </div>
                           </div>
-                        </div>
-                        <ChevronRight className={`w-4 h-4 shrink-0 ${active ? 'text-gold-400' : 'text-ink-600'}`} />
-                      </button>
+                          <ChevronRight className={`w-4 h-4 shrink-0 ${active ? 'text-gold-400' : 'text-ink-600'}`} />
+                        </button>
+                      </div>
                     </li>
                   );
                 })}
@@ -362,9 +394,8 @@ export default function GuildsPage({ onBack, onLoginClick }: GuildsPageProps) {
                     ) : (
                       <ul className="space-y-2">
                         {members.map(m => {
-                          const rc = getRoleConfig(m.role);
+                          const badge = getGuildMemberRoleBadge(m, selected, getRoleConfig);
                           const isLeader = m.id === selected.leaderId;
-                          const siteGm = isSiteGuildmaster({ ...m, email: m.email }, siteSettings.roles);
                           return (
                             <li
                               key={m.id}
@@ -382,14 +413,13 @@ export default function GuildsPage({ onBack, onLoginClick }: GuildsPageProps) {
                               <div className="min-w-0 flex-1">
                                 <div className="text-sm text-white font-medium truncate">
                                   {getDisplayName(m)}
-                                  {isLeader && <span className="text-gold-400 text-xs ml-1.5">· лидер</span>}
                                 </div>
                               </div>
                               <span
                                 className="text-[10px] px-2 py-0.5 rounded-full shrink-0"
-                                style={{ backgroundColor: rc.color + '20', color: rc.color, border: `1px solid ${rc.color}40` }}
+                                style={{ backgroundColor: badge.color + '20', color: badge.color, border: `1px solid ${badge.color}40` }}
                               >
-                                {siteGm ? 'Гильдмастер сайта' : rc.displayName}
+                                {badge.label}
                               </span>
                             </li>
                           );

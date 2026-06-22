@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Edit3, Save, Trash2, Shield, Users, X } from 'lucide-react';
+import { Edit3, Save, Trash2, Shield, Users, X, Pin } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { ConfirmModal } from './AdminShared';
 import {
@@ -7,7 +7,7 @@ import {
   leaderFromUser,
   leaderOptionLabel,
 } from '../../hooks/auth/useAuthGuilds';
-import { getGuildMembers, getLeaderDisplayName } from '../../lib/guildRegistry';
+import { getGuildMembers, getLeaderDisplayName, sortRegisteredGuilds } from '../../lib/guildRegistry';
 import { validateGuildName } from '../../lib/validation';
 import type { RegisteredGuild } from '../../types/site';
 
@@ -25,12 +25,20 @@ export default function GuildsPanel() {
   const {
     registeredGuilds,
     registeredUsers,
+    siteSettings,
     ensureGuildsLoaded,
     ensureAccountsLoaded,
     guildsLoaded,
     updateRegisteredGuild,
     deleteRegisteredGuild,
+    togglePinnedGuild,
   } = useAuth();
+
+  const sortedGuilds = useMemo(
+    () => sortRegisteredGuilds(registeredGuilds, siteSettings.pinnedGuildIds || []),
+    [registeredGuilds, siteSettings.pinnedGuildIds],
+  );
+  const pinnedIds = siteSettings.pinnedGuildIds || [];
 
   const [editing, setEditing] = useState<RegisteredGuild | null>(null);
   const [draftName, setDraftName] = useState('');
@@ -109,7 +117,7 @@ export default function GuildsPanel() {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-        <StatBox label="Гильдий в реестре" value={registeredGuilds.length} icon="🛡️" />
+        <StatBox label="Гильдий в реестре" value={sortedGuilds.length} icon="🛡️" />
         <StatBox
           label="Участников в гильдиях"
           value={registeredUsers.filter(u => u.guildId).length}
@@ -130,6 +138,7 @@ export default function GuildsPanel() {
         <table className="w-full min-w-[720px] text-left text-sm">
           <thead>
             <tr className="bg-ink-800/80 text-ink-400 text-xs uppercase">
+              <th className="py-3 px-2 font-medium w-10" title="Закрепить">📌</th>
               <th className="py-3 px-3 font-medium">Название</th>
               <th className="py-3 px-2 font-medium">Гильдмастер</th>
               <th className="py-3 px-2 font-medium">Участники</th>
@@ -138,12 +147,22 @@ export default function GuildsPanel() {
             </tr>
           </thead>
           <tbody>
-            {registeredGuilds.length === 0 ? (
+            {sortedGuilds.length === 0 ? (
               <tr>
-                <td colSpan={5} className="py-10 text-center text-ink-500">Нет зарегистрированных гильдий</td>
+                <td colSpan={6} className="py-10 text-center text-ink-500">Нет зарегистрированных гильдий</td>
               </tr>
-            ) : registeredGuilds.map(g => (
+            ) : sortedGuilds.map(g => (
               <tr key={g.id} className="border-t border-ink-700/30 hover:bg-ink-800/30">
+                <td className="py-3 px-2 text-center">
+                  <button
+                    type="button"
+                    onClick={() => togglePinnedGuild(g.id)}
+                    className={`p-1 rounded cursor-pointer ${pinnedIds.includes(g.id) ? 'text-gold-400' : 'text-ink-600 hover:text-ink-400'}`}
+                    title={pinnedIds.includes(g.id) ? 'Открепить' : 'Закрепить'}
+                  >
+                    <Pin className={`w-3.5 h-3.5 mx-auto ${pinnedIds.includes(g.id) ? 'fill-current' : ''}`} />
+                  </button>
+                </td>
                 <td className="py-3 px-3">
                   <div className="font-medium text-white">{g.name}</div>
                   {g.description && <div className="text-ink-500 text-xs truncate max-w-[16rem]">{g.description}</div>}

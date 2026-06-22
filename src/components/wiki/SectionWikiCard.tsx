@@ -14,6 +14,7 @@ import MarkdownBody from '../MarkdownBody';
 import ContentImages from '../ContentImages';
 import { wikiCardLinkMarkdown } from '../../lib/wikiLinks';
 import { asText } from '../../lib/asText';
+import { weaponNameEnglish } from '../../lib/weaponNames';
 
 interface SectionWikiCardProps {
   sectionId: string;
@@ -174,6 +175,7 @@ function CardActionRail({
 
 function CardTitle({
   title,
+  nameEn,
   className = '',
   highlight = false,
   size = 'base',
@@ -185,11 +187,15 @@ function CardTitle({
   size?: 'base' | 'lg';
 }) {
   const ru = asText(title).trim();
+  const en = asText(nameEn).trim();
   const sizeClass = size === 'lg' ? 'text-lg' : 'text-base';
   return (
-    <h3 className={`font-serif font-bold leading-snug break-words ${sizeClass} ${highlight ? 'text-gold-400' : 'text-white'} ${className}`}>
-      {ru}
-    </h3>
+    <div>
+      <h3 className={`font-serif font-bold leading-snug break-words ${sizeClass} ${highlight ? 'text-gold-400' : 'text-white'} ${className}`}>
+        {ru}
+      </h3>
+      {en && <p className="text-sm text-ink-500 mt-0.5 leading-snug">{en}</p>}
+    </div>
   );
 }
 
@@ -200,6 +206,7 @@ function getWeaponCategoryLine(categoryLabel?: string): string {
 
 function WeaponCardTitle({
   title,
+  nameEn,
   categoryLabel,
   showCategory = true,
 }: {
@@ -210,12 +217,14 @@ function WeaponCardTitle({
   showCategory?: boolean;
 }) {
   const ruTitle = asText(title).trim();
+  const enTitle = asText(nameEn).trim();
   const categoryLine = getWeaponCategoryLine(categoryLabel);
   const titleClass = 'font-serif font-bold leading-snug break-words text-base sm:text-lg text-white';
 
   return (
     <div>
       <h3 className={titleClass}>{ruTitle}</h3>
+      {enTitle && <p className="text-sm text-ink-500 mt-0.5 leading-snug">{enTitle}</p>}
       {showCategory && categoryLine && (
         <p className="text-sm text-gold-400 mt-1 leading-relaxed">{categoryLine}</p>
       )}
@@ -377,8 +386,8 @@ function WeaponWikiCard(props: SectionWikiCardProps) {
   const pair = parsed.getLine('## Пара');
   const role = article.fields?.role;
   const martialArt = article.fields?.martialArt;
-  const nameEn = article.fields?.nameEn;
-  const categoryLine = getWeaponCategoryLine(categoryLabel, asText(article.fields?.category));
+  const nameEn = weaponNameEnglish(article.id, article.fields?.nameEn);
+  const categoryLine = getWeaponCategoryLine(categoryLabel);
   const hasActions = cardHasActionRail(canEdit, onToggleFavorite);
 
   useEffect(() => {

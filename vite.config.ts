@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import tailwindcss from "@tailwindcss/vite";
@@ -11,6 +12,17 @@ const DEFAULT_SITE_URL = "https://wwm-wiki-nocthra.ru";
 
 function resolveSiteUrl(env: Record<string, string>): string {
   return (env.VITE_SITE_URL || env.SITE_URL || DEFAULT_SITE_URL).replace(/\/$/, "");
+}
+
+function resolveBuildTime(env: Record<string, string>): string {
+  if (env.VITE_BUILD_TIME) return env.VITE_BUILD_TIME;
+  try {
+    const meta = JSON.parse(readFileSync(path.join(__dirname, ".build-meta.json"), "utf8")) as { buildTime?: string };
+    if (meta.buildTime) return meta.buildTime;
+  } catch {
+    /* generate-seo.mjs runs before vite build */
+  }
+  return new Date().toISOString();
 }
 
 /** Подставляет VITE_SITE_URL в index.html при сборке (canonical, Open Graph). */
@@ -33,15 +45,7 @@ function syncApiDevPlugin(env: Record<string, string>) {
         const url = req.url?.split("?")[0];
         if (url !== "/api/sync-content") return next();
         try {
-          for (const key of [
-            "SYNC_API_SECRET",
-            "LM_STUDIO_BASE_URL",
-            "LM_STUDIO_API_KEY",
-            "LM_STUDIO_MODEL",
-            "AI_ENRICH_LIMIT",
-            "AI_BATCH_SIZE",
-            "AI_TIMEOUT_MS",
-          ]) {
+          for (const key of ["SYNC_API_SECRET"]) {
             if (env[key]) process.env[key] = env[key];
           }
           const { handleSyncRequest } = await import("./api/sync-content.mjs");
@@ -60,6 +64,7 @@ function syncApiDevPlugin(env: Record<string, string>) {
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   const siteUrl = resolveSiteUrl(env);
+  const buildTime = resolveBuildTime(env);
   return {
   base: "/",
   plugins: [react(), tailwindcss(), syncApiDevPlugin(env), siteUrlHtmlPlugin(siteUrl)],
@@ -94,6 +99,7 @@ export default defineConfig(({ mode }) => {
   },
   define: {
     'process.env.NODE_ENV': mode === 'production' ? '"production"' : '"development"',
+    'import.meta.env.VITE_BUILD_TIME': JSON.stringify(buildTime),
   },
 };
 });

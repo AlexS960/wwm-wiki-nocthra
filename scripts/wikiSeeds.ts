@@ -84,6 +84,7 @@ function weaponToWiki(w: Weapon): WikiArticle {
       martialArt: martialArtRu(w.martialArt),
       summary: w.description,
       category: w.type,
+      nameEn: w.nameEn,
     },
     images: [],
   });

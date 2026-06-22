@@ -5,6 +5,7 @@ dist/
 .env.production
 deploy/.env.deploy
 deploy/.env.selfhosted
+.build-meta.json
 deploy/supabase-upstream/
 *.log
 .vercel

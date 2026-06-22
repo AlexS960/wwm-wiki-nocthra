@@ -1,6 +1,5 @@
-import { runSyncSection, runSyncSections, PARSERS, SYNC_ORDER, SAFE_SYNC_ORDER } from '../scripts/parsers/run-handler.mjs';
+import { runSyncSection, runSyncSections, PARSERS, SYNC_ORDER } from '../scripts/parsers/run-handler.mjs';
 import { discoverSourcesFromWiki, DEFAULT_WIKI_URL } from '../scripts/parsers/lib/game8-discover.mjs';
-import { getAiStatus } from '../scripts/parsers/lib/ai-enrich.mjs';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -52,11 +51,6 @@ export default async function handler(req, res) {
   }
 
   if (req.method === 'GET') {
-    const url = new URL(req.url || '/', `http://${req.headers?.host || 'localhost'}`);
-    if (url.searchParams.get('action') === 'ai-status') {
-      const ai = await getAiStatus();
-      return json(res, 200, { ai });
-    }
     return json(res, 200, {
       wikiUrl: DEFAULT_WIKI_URL,
       sections: SYNC_ORDER.map(id => ({
@@ -66,7 +60,6 @@ export default async function handler(req, res) {
         requiresNetwork: Boolean(PARSERS[id].requiresNetwork),
         note: PARSERS[id].note,
       })),
-      ai: await getAiStatus(),
     });
   }
 
@@ -91,7 +84,6 @@ export default async function handler(req, res) {
       sourceUrls,
       wikiUrl,
       autoDiscover,
-      useAi,
     } = body;
 
     if (action === 'discover') {
@@ -108,11 +100,10 @@ export default async function handler(req, res) {
       sourceUrl: sourceUrl || undefined,
       wikiUrl: wikiUrl || undefined,
       autoDiscover: autoDiscover === true,
-      useAi: useAi !== false,
     };
 
     if (section === 'all' || sections?.includes?.('all')) {
-      const results = await runSyncSections(SAFE_SYNC_ORDER, syncOpts);
+      const results = await runSyncSections(SYNC_ORDER, syncOpts);
       return json(res, 200, { results });
     }
 

@@ -1,0 +1,76 @@
+name: Deploy to FirstVDS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-firstvds
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build frontend
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          VITE_SITE_URL: ${{ secrets.VITE_SITE_URL }}
+          VITE_BUILD_TIME: ${{ github.event.head_commit.timestamp || github.run_id }}
+          VITE_GOOGLE_SITE_VERIFICATION: ${{ secrets.VITE_GOOGLE_SITE_VERIFICATION }}
+          VITE_YANDEX_VERIFICATION: ${{ secrets.VITE_YANDEX_VERIFICATION }}
+          VITE_BING_SITE_VERIFICATION: ${{ secrets.VITE_BING_SITE_VERIFICATION }}
+        run: npm run deploy:build
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Deploy dist/ to VPS
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
+        run: |
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes "${SSH_USER}@${SSH_HOST}" "mkdir -p '${REMOTE_PATH}'"
+          rsync -avz --delete -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes" dist/ "${SSH_USER}@${SSH_HOST}:${REMOTE_PATH}/"
+
+      - name: Post-deploy (optional nginx reload + sync-api)
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          VPS_POST_DEPLOY_CMD: ${{ secrets.VPS_POST_DEPLOY_CMD }}
+        run: |
+          if [ -z "${VPS_POST_DEPLOY_CMD}" ]; then
+            echo "VPS_POST_DEPLOY_CMD not set — skip"
+            exit 0
+          fi
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes "${SSH_USER}@${SSH_HOST}" "${VPS_POST_DEPLOY_CMD}"
+
+      - name: Verify site is live
+        env:
+          VITE_SITE_URL: ${{ secrets.VITE_SITE_URL }}
+        run: |
+          SITE="${VITE_SITE_URL:-https://wwm-wiki-nocthra.ru}"
+          SITE="${SITE%/}"
+          echo "Checking ${SITE}/health.json"
+          curl -sf "${SITE}/health.json" | head -c 500
+          echo ""
+          curl -sfI "${SITE}/" | head -5

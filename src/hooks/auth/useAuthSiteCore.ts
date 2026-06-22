@@ -59,7 +59,11 @@ export function useAuthSiteCore({ user, setProgress, setDbSaveError }: Deps) {
   const getRoleConfig = useCallback(
     (r: string) => {
       const roles = siteSettings.roles?.length ? siteSettings.roles : defS.roles;
-      return roles.find(x => x.id === r) || roles[0];
+      const found = roles.find(x => x.id === r);
+      if (found) return found;
+      const def = defS.roles.find(x => x.id === r);
+      if (def) return def;
+      return { id: r, displayName: r, color: '#b0a696', permissions: [] as string[] };
     },
     [siteSettings.roles],
   );

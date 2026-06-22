@@ -1,21 +1,7 @@
 import type { SiteSettings } from '../types/site';
+import { DEFAULT_WIKI_URL, PARSER_SECTIONS, type SyncSectionInfo } from './parserSections';
 
-export interface SyncSectionInfo {
-  id: string;
-  label: string;
-  defaultUrl?: string;
-  requiresNetwork?: boolean;
-  note?: string;
-}
-
-export interface AiSyncInfo {
-  used?: boolean;
-  enriched?: number;
-  model?: string;
-  message?: string;
-  error?: string;
-  reason?: string;
-}
+export type { SyncSectionInfo };
 
 export interface DiscoveredSource {
   url: string;
@@ -35,20 +21,8 @@ export interface SyncResult {
   payload?: ParsedPayload | null;
   sourceUrl?: string;
   discovered?: DiscoveredSource | null;
-  ai?: AiSyncInfo | null;
   note?: string;
   requiresNetwork?: boolean;
-}
-
-export interface AiStatus {
-  provider?: string;
-  label?: string;
-  configured: boolean;
-  active: boolean;
-  message?: string;
-  model?: string;
-  baseUrl?: string;
-  localOnly?: boolean;
 }
 
 export interface DiscoverResult {
@@ -67,6 +41,12 @@ export interface ParsedPayload {
 
 const SYNC_KEY_STORAGE = 'wwm_sync_api_key';
 
+function syncApiPath(path = '/api/sync-content'): string {
+  const base = import.meta.env.VITE_SYNC_API_URL?.replace(/\/$/, '');
+  if (!base) return path;
+  return path.startsWith('/') ? `${base}${path}` : `${base}/${path}`;
+}
+
 export function getStoredSyncKey(): string {
   try {
     return sessionStorage.getItem(SYNC_KEY_STORAGE) || '';
@@ -83,7 +63,7 @@ export function setStoredSyncKey(key: string) {
 }
 
 async function syncFetch<T>(path: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(path, {
+  const res = await fetch(syncApiPath(path), {
     ...init,
     headers: {
       'Content-Type': 'application/json',
@@ -101,14 +81,38 @@ async function syncFetch<T>(path: string, init?: RequestInit): Promise<T> {
 export async function fetchSyncSections(): Promise<{
   sections: SyncSectionInfo[];
   wikiUrl: string;
-  ai: AiStatus;
+  apiAvailable: boolean;
 }> {
-  return syncFetch('/api/sync-content');
-}
+  const fallback = {
+    sections: PARSER_SECTIONS,
+    wikiUrl: DEFAULT_WIKI_URL,
+    apiAvailable: false,
+  };
 
-export async function fetchAiStatus(): Promise<AiStatus> {
-  const data = await syncFetch<{ ai: AiStatus }>('/api/sync-content?action=ai-status');
-  return data.ai;
+  try {
+    const res = await fetch(syncApiPath('/api/sync-content'), {
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Sync-Key': getStoredSyncKey(),
+      },
+    });
+    const contentType = res.headers.get('content-type') || '';
+    if (!contentType.includes('application/json')) {
+      return fallback;
+    }
+    const data = await res.json().catch(() => ({})) as { sections?: unknown; wikiUrl?: string };
+    const apiSections = Array.isArray(data.sections) ? data.sections as SyncSectionInfo[] : [];
+    if (!res.ok || !apiSections.length) {
+      return fallback;
+    }
+    return {
+      sections: apiSections,
+      wikiUrl: typeof data.wikiUrl === 'string' ? data.wikiUrl : DEFAULT_WIKI_URL,
+      apiAvailable: true,
+    };
+  } catch {
+    return fallback;
+  }
 }
 
 export async function discoverParserSources(wikiUrl?: string): Promise<DiscoverResult> {
@@ -129,7 +133,6 @@ export async function runParserSync(opts: {
   sourceUrls?: Record<string, string>;
   wikiUrl?: string;
   autoDiscover?: boolean;
-  useAi?: boolean;
 }): Promise<{ result?: SyncResult; results?: SyncResult[] }> {
   return syncFetch('/api/sync-content', {
     method: 'POST',

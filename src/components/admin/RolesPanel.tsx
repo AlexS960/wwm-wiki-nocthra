@@ -5,7 +5,7 @@ import { ConfirmModal } from './AdminShared';
 import { ALL_ROLE_PERMISSIONS, PERM_GROUPS, ROLE_PRESET_COLORS, isSystemRole } from './rolePermissions';
 
 export default function RolesPanel() {
-  const { siteSettings, updateRoleDisplayName, updateRoleColor, addRole, deleteRole, updateRolePermissions, registeredUsers } = useAuth();
+  const { siteSettings, updateRole, addRole, deleteRole, registeredUsers, dbSaveError, clearDbSaveError } = useAuth();
   const [editingRole, setEditingRole] = useState<string | null>(null);
   const [editName, setEditName] = useState('');
   const [editColor, setEditColor] = useState('');
@@ -26,9 +26,11 @@ export default function RolesPanel() {
 
   const saveEdit = (roleId: string) => {
     if (!editName.trim()) return;
-    updateRoleDisplayName(roleId, editName.trim());
-    updateRoleColor(roleId, editColor);
-    updateRolePermissions(roleId, editPerms);
+    updateRole(roleId, {
+      displayName: editName.trim(),
+      color: editColor,
+      permissions: editPerms,
+    });
     setSaved(roleId);
     setTimeout(() => setSaved(null), 2000);
     setEditingRole(null);
@@ -71,6 +73,13 @@ export default function RolesPanel() {
           </button>
         )}
       </div>
+
+      {dbSaveError && (
+        <div className="flex items-center justify-between gap-2 bg-crimson-400/10 border border-crimson-400/30 rounded-xl px-4 py-3 text-crimson-300 text-sm">
+          <span>Не удалось сохранить: {dbSaveError}</span>
+          <button type="button" onClick={clearDbSaveError} className="text-xs underline cursor-pointer">Закрыть</button>
+        </div>
+      )}
 
       {showAddForm && (
         <div className="bg-ink-800/70 border border-gold-400/30 rounded-xl p-5 space-y-4 animate-fadeIn">

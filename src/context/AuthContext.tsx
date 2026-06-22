@@ -478,20 +478,28 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     removeAnnouncement: id => patchSiteSettings({
       announcements: safeSiteSettings.announcements.filter(x => x.id !== id),
     }),
-    updateRoleDisplayName: (id, n) => patchSiteSettings({
-      roles: safeSiteSettings.roles.map(r => r.id === id ? { ...r, displayName: n } : r),
-    }),
-    updateRoleColor: (id, c) => patchSiteSettings({
-      roles: safeSiteSettings.roles.map(r => r.id === id ? { ...r, color: c } : r),
-    }),
-    addRole: (n, c, p) => patchSiteSettings({
-      roles: [...safeSiteSettings.roles, { id: 'r' + Date.now(), displayName: n, color: c, permissions: p }],
-    }),
-    deleteRole: id => patchSiteSettings({
-      roles: safeSiteSettings.roles.filter(r => r.id !== id),
-    }),
-    updateRolePermissions: (id, p) => patchSiteSettings({
-      roles: safeSiteSettings.roles.map(r => r.id === id ? { ...r, permissions: p } : r),
+    updateRoleDisplayName: (id, n) => patchSiteSettings(prev => ({
+      roles: prev.roles.map(r => r.id === id ? { ...r, displayName: n } : r),
+    })),
+    updateRoleColor: (id, c) => patchSiteSettings(prev => ({
+      roles: prev.roles.map(r => r.id === id ? { ...r, color: c } : r),
+    })),
+    updateRole: (id, patch) => patchSiteSettings(prev => ({
+      roles: prev.roles.map(r => r.id === id ? { ...r, ...patch } : r),
+    })),
+    addRole: (n, c, p) => patchSiteSettings(prev => ({
+      roles: [...prev.roles, { id: 'r' + Date.now(), displayName: n, color: c, permissions: p }],
+    })),
+    deleteRole: id => patchSiteSettings(prev => ({
+      roles: prev.roles.filter(r => r.id !== id),
+    })),
+    updateRolePermissions: (id, p) => patchSiteSettings(prev => ({
+      roles: prev.roles.map(r => r.id === id ? { ...r, permissions: p } : r),
+    })),
+    togglePinnedGuild: guildId => patchSiteSettings(prev => {
+      const ids = prev.pinnedGuildIds || [];
+      const next = ids.includes(guildId) ? ids.filter(x => x !== guildId) : [...ids, guildId];
+      return { pinnedGuildIds: next };
     }),
     addWikiArticle: wikiHook.addWikiArticle,
     updateWikiArticle: wikiHook.updateWikiArticle,

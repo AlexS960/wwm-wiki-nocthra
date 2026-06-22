@@ -57,7 +57,7 @@ function DbErrorBanner() {
 }
 
 function AppContent() {
-  const { user, siteSettings, isLoading } = useAuthState();
+  const { user, siteSettings, isLoading, wikiArticles } = useAuthState();
   const { canAccessAdminPanel, canAccessStaffChat, canUseMessenger } = useAuthActions();
   const showMessenger = canUseMessenger();
   useClickSound();
@@ -88,7 +88,13 @@ function AppContent() {
     () => wikiCardIdFromHash(window.location.hash),
   );
 
-  usePageSeo(currentPage);
+  const activeWikiCard = useMemo(() => {
+    if (!pendingWikiId) return null;
+    const sectionId = currentPage === 'main' ? 'home' : currentPage;
+    return wikiArticles.find((a) => a.id === pendingWikiId && a.section === sectionId) ?? null;
+  }, [pendingWikiId, wikiArticles, currentPage]);
+
+  usePageSeo(currentPage, activeWikiCard);
   usePmBrowserNotifications();
 
   useEffect(() => {

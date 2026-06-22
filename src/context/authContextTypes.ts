@@ -138,9 +138,11 @@ export interface AuthContextValue {
   hasPermission: (p: string) => boolean;
   updateRoleDisplayName: (id: string, n: string) => void;
   updateRoleColor: (id: string, c: string) => void;
+  updateRole: (id: string, patch: { displayName: string; color: string; permissions: string[] }) => void;
   addRole: (n: string, c: string, p: string[]) => void;
   deleteRole: (id: string) => void;
   updateRolePermissions: (id: string, p: string[]) => void;
+  togglePinnedGuild: (guildId: string) => void;
   addWikiArticle: (a: Omit<WikiArticle, 'id' | 'authorName' | 'updatedAt'>) => Promise<string | null>;
   updateWikiArticle: (id: string, u: Partial<WikiArticle>) => Promise<string | null>;
   deleteWikiArticle: (id: string) => Promise<string | null>;

@@ -340,6 +340,26 @@ sudo systemctl reload nginx
 
 ## 9. Обновление сайта после изменений
 
+### 9.1. Автоматически (GitHub Actions)
+
+При push в ветку `main` workflow [`.github/workflows/deploy-firstvds.yml`](../.github/workflows/deploy-firstvds.yml) собирает фронтенд и выкладывает `dist/` на VPS через rsync.
+
+**Secrets** (GitHub → Settings → Secrets and variables → Actions):
+
+| Secret | Значение |
+|--------|----------|
+| `SSH_HOST` | IP VPS, например `62.109.19.21` |
+| `SSH_USER` | SSH-пользователь, например `root` или `deploy` |
+| `SSH_PRIVATE_KEY` | Приватный ключ (PEM), одной строкой с `\n` или многострочно |
+| `REMOTE_PATH` | `/var/www/wwm-wiki` |
+| `VITE_SUPABASE_URL` | URL Supabase |
+| `VITE_SUPABASE_ANON_KEY` | anon key |
+| `VITE_SITE_URL` | `https://wwm-wiki-nocthra.ru` |
+
+На сервере в `~/.ssh/authorized_keys` пользователя деплоя должен быть **публичный** ключ, парный `SSH_PRIVATE_KEY`. Подробнее: [deploy/README.md](../deploy/README.md).
+
+### 9.2. Вручную (локально)
+
 1. Внесите изменения в код локально.
 2. Убедитесь, что `.env.production` актуален.
 3. Запустите `.\deploy\deploy-firstvds.ps1` или `npm run deploy:build` + scp/rsync.

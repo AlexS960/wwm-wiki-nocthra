@@ -71,3 +71,33 @@ export function getGuildMembers(guildId: string, users: RegisteredUser[]): Regis
 export function getLeaderDisplayName(guild: RegisteredGuild): string {
   return guild.leaderGameNickname?.trim() || guild.leaderName?.trim() || '—';
 }
+
+/** Сортировка: закреплённые сверху, затем по названию. */
+export function sortRegisteredGuilds(
+  guilds: RegisteredGuild[],
+  pinnedIds: string[] = [],
+): RegisteredGuild[] {
+  const pinOrder = new Map(pinnedIds.map((id, i) => [id, i]));
+  return [...guilds].sort((a, b) => {
+    const ap = pinOrder.has(a.id) ? pinOrder.get(a.id)! : Number.MAX_SAFE_INTEGER;
+    const bp = pinOrder.has(b.id) ? pinOrder.get(b.id)! : Number.MAX_SAFE_INTEGER;
+    if (ap !== bp) return ap - bp;
+    return a.name.localeCompare(b.name, 'ru');
+  });
+}
+
+/** Подпись и цвет роли участника в реестре гильдий. */
+export function getGuildMemberRoleBadge(
+  member: RegisteredUser,
+  guild: RegisteredGuild,
+  getRoleConfig: (roleId: string) => RoleConfig,
+): { label: string; color: string } {
+  if (member.id === guild.leaderId) {
+    return { label: 'Гильдмастер', color: '#d4a528' };
+  }
+  const rc = getRoleConfig(member.role);
+  if (isSiteGuildmasterRole(member.role)) {
+    return { label: rc.displayName || 'Гильдмастер сайта', color: rc.color || '#d4a528' };
+  }
+  return { label: rc.displayName, color: rc.color };
+}

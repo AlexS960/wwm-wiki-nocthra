@@ -3,146 +3,163 @@
     "id": "home",
     "path": "/",
     "title": "Where Winds Meet — База знаний | WWM Вики Ру",
-    "description": "Русскоязычная вики по Where Winds Meet: гайды, оружие, секты, билды, NPC, загадки и советы. Сообщество гильдии Nocthra.",
-    "keywords": "Where Winds Meet, WWM, вики, гайды, оружие, секты, билды, Nocthra",
+    "description": "Русскоязычная вики по Where Winds Meet (燕云十六声): гайды, оружие, секты, билды, NPC, загадки, боссы и советы. Сообщество гильдии Nocthra.",
+    "keywords": "Where Winds Meet, WWM, 燕云十六声, вики, гайды, оружие, секты, билды, боссы, NPC, загадки, Nocthra, русская вики",
     "changefreq": "daily",
     "priority": 1
   },
   {
     "id": "wwmwiki",
     "path": "/wwmwiki",
-    "title": "WWM-Вики Ру — разделы базы знаний",
-    "description": "Оружие, секты, билды, боссы, NPC, загадки, готовка и жизненные навыки Where Winds Meet.",
+    "title": "WWM Вики — все разделы базы знаний Where Winds Meet",
+    "description": "Оглавление вики: оружие, секты, билды, боссы, NPC, загадки, внутренний путь, мистические арты, готовка, жизненные навыки и советы по Where Winds Meet.",
+    "keywords": "WWM вики, разделы, база знаний, Where Winds Meet, 燕云十六声, оружие, секты, билды",
     "changefreq": "weekly",
     "priority": 0.9
   },
   {
     "id": "guides",
     "path": "/guides",
-    "title": "Гайды Where Winds Meet",
-    "description": "Пошаговые гайды и разборы механик WWM на русском языке.",
+    "title": "Гайды Where Winds Meet — пошаговые руководства на русском",
+    "description": "Гайды и разборы механик Where Winds Meet (WWM): прохождение, PvE, PvP, фарм и советы для новичков и опытных игроков.",
+    "keywords": "гайды WWM, Where Winds Meet гайд, прохождение, механики, 燕云十六声, русский гайд",
     "changefreq": "daily",
     "priority": 0.9
   },
   {
-    "id": "suggestions",
-    "path": "/suggestions",
-    "title": "Предложения и пожелания — WWM Вики",
-    "description": "Предложите улучшения для сайта и вики: новые разделы, исправления, идеи для гильдии Nocthra.",
-    "changefreq": "daily",
-    "priority": 0.7
+    "id": "weapons",
+    "path": "/weapons",
+    "title": "Оружие Where Winds Meet — типы, механики, советы | WWM Вики",
+    "description": "Справочник оружия Where Winds Meet: меч, клинок, копьё, веер, зонт и другие типы. Механики, комбо и советы по выбору оружия в WWM.",
+    "keywords": "оружие WWM, Where Winds Meet оружие, меч, клинок, копьё, веер, механики боя, 燕云十六声",
+    "changefreq": "weekly",
+    "priority": 0.85
+  },
+  {
+    "id": "builds",
+    "path": "/builds",
+    "title": "Билды Where Winds Meet — сборки PvE и PvP | WWM Вики",
+    "description": "Готовые билды и сборки персонажей Where Winds Meet для PvE, PvP и рейдов. Синергии оружия, сект и внутренних путей.",
+    "keywords": "билды WWM, сборки Where Winds Meet, PvE, PvP, персонаж, прокачка, 燕云十六声",
+    "changefreq": "weekly",
+    "priority": 0.85
+  },
+  {
+    "id": "sects",
+    "path": "/sects",
+    "title": "Секты Where Winds Meet — школы и стили боя | WWM Вики",
+    "description": "Все секты и школы Where Winds Meet: особенности стилей, умения, роли в PvE и PvP. Выбор секты для вашего билда.",
+    "keywords": "секты WWM, школы Where Winds Meet, стили боя, классы, 燕云十六声, внутренний путь",
+    "changefreq": "weekly",
+    "priority": 0.85
+  },
+  {
+    "id": "bosses",
+    "path": "/bosses",
+    "title": "Боссы Where Winds Meet — тактики и механики | WWM Вики",
+    "description": "Гайды по боссам Where Winds Meet: механики, фазы, слабости и тактики для соло и группы. Подготовка к рейдам WWM.",
+    "keywords": "боссы WWM, Where Winds Meet боссы, рейд, тактика, механики, 燕云十六声",
+    "changefreq": "weekly",
+    "priority": 0.85
+  },
+  {
+    "id": "npcs",
+    "path": "/npcs",
+    "title": "NPC Where Winds Meet — НПС, дружба, диалоги | WWM Вики",
+    "description": "База NPC Where Winds Meet: локации, подарки, дружба, диалоги и квесты. Как повысить отношения с персонажами WWM.",
+    "keywords": "NPC WWM, НПС Where Winds Meet, дружба, подарки, локации, 燕云十六声, персонажи",
+    "changefreq": "weekly",
+    "priority": 0.85
+  },
+  {
+    "id": "riddles",
+    "path": "/riddles",
+    "title": "Загадки Where Winds Meet — ответы и подсказки | WWM Вики",
+    "description": "Ответы на загадки Where Winds Meet: подсказки, решения головоломок и секреты на карте. Полный справочник загадок WWM.",
+    "keywords": "загадки WWM, Where Winds Meet загадки, ответы, головоломки, секреты, 燕云十六声",
+    "changefreq": "weekly",
+    "priority": 0.85
+  },
+  {
+    "id": "innerpath",
+    "path": "/innerpath",
+    "title": "Внутренний путь Where Winds Meet — пассивки и эффекты | WWM Вики",
+    "description": "Внутренние пути Where Winds Meet: пассивные эффекты, синергии с секами и оружием, как получить и прокачать.",
+    "keywords": "внутренний путь WWM, inner path, Where Winds Meet, пассивки, эффекты, 燕云十六声",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "id": "mystic",
+    "path": "/mystic",
+    "title": "Мистические арты Where Winds Meet — умения и синергии | WWM Вики",
+    "description": "Мистические арты Where Winds Meet: описание умений, синергии с билдами, советы по выбору и прокачке в WWM.",
+    "keywords": "мистические арты WWM, mystic arts, Where Winds Meet, умения, синергии, 燕云十六声",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "id": "cooking",
+    "path": "/cooking",
+    "title": "Готовка Where Winds Meet — рецепты и бонусы | WWM Вики",
+    "description": "Рецепты и готовка в Where Winds Meet: ингредиенты, бонусы к характеристикам и советы по кулинарии WWM.",
+    "keywords": "готовка WWM, рецепты Where Winds Meet, еда, бонусы, кулинария, 燕云十六声",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "id": "lifeskills",
+    "path": "/lifeskills",
+    "title": "Жизненные навыки Where Winds Meet — ремёсла и прокачка | WWM Вики",
+    "description": "Жизненные навыки и ремёсла Where Winds Meet: прокачка, ресурсы, крафт и заработок в WWM.",
+    "keywords": "жизненные навыки WWM, ремёсла Where Winds Meet, крафт, прокачка, 燕云十六声",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "id": "tips",
+    "path": "/tips",
+    "title": "Советы и промокоды Where Winds Meet | WWM Вики",
+    "description": "Полезные советы, промокоды и лайфхаки для Where Winds Meet. Экономия времени, фарм и скрытые механики WWM.",
+    "keywords": "советы WWM, промокоды Where Winds Meet, коды, лайфхаки, 燕云十六声",
+    "changefreq": "weekly",
+    "priority": 0.75
   },
   {
     "id": "guilds",
     "path": "/guilds",
-    "title": "Гильдии — WWM Вики",
-    "description": "Реестр игровых гильдий Where Winds Meet: регистрация и выбор гильдии для профиля.",
+    "title": "Гильдии Where Winds Meet — реестр и регистрация | WWM Вики",
+    "description": "Реестр игровых гильдий Where Winds Meet: регистрация, поиск гильдии и привязка к профилю на WWM Вики Nocthra.",
+    "keywords": "гильдии WWM, Where Winds Meet гильдия, Nocthra, клан, сообщество, 燕云十六声",
     "changefreq": "weekly",
     "priority": 0.7
   },
   {
     "id": "faq",
     "path": "/faq",
-    "title": "FAQ — WWM Вики",
-    "description": "Частые вопросы о сайте и игре Where Winds Meet.",
+    "title": "FAQ — частые вопросы о WWM Вики и Where Winds Meet",
+    "description": "Ответы на частые вопросы о сайте WWM Вики и игре Where Winds Meet: регистрация, разделы, роли и правила сообщества.",
+    "keywords": "FAQ WWM, вопросы Where Winds Meet, помощь, вики, Nocthra",
     "changefreq": "monthly",
+    "priority": 0.65
+  },
+  {
+    "id": "suggestions",
+    "path": "/suggestions",
+    "title": "Предложения и пожелания — WWM Вики Nocthra",
+    "description": "Предложите улучшения для WWM Вики: новые разделы, исправления ошибок и идеи для сообщества гильдии Nocthra.",
+    "keywords": "предложения WWM вики, обратная связь, улучшения, Nocthra",
+    "changefreq": "daily",
     "priority": 0.6
   },
   {
     "id": "users",
     "path": "/users",
-    "title": "Пользователи — WWM Вики",
-    "description": "Список зарегистрированных пользователей вики.",
+    "title": "Пользователи WWM Вики — список участников",
+    "description": "Список зарегистрированных пользователей русскоязычной вики Where Winds Meet Nocthra.",
+    "keywords": "пользователи WWM вики, участники, сообщество, Nocthra",
     "changefreq": "weekly",
     "priority": 0.5
-  },
-  {
-    "id": "weapons",
-    "path": "/weapons",
-    "title": "Оружие — WWM Вики",
-    "description": "Типы оружия и механики Where Winds Meet.",
-    "changefreq": "weekly",
-    "priority": 0.8
-  },
-  {
-    "id": "builds",
-    "path": "/builds",
-    "title": "Билды — WWM Вики",
-    "description": "Сборки персонажей PvE и PvP в Where Winds Meet.",
-    "changefreq": "weekly",
-    "priority": 0.8
-  },
-  {
-    "id": "sects",
-    "path": "/sects",
-    "title": "Секты — WWM Вики",
-    "description": "Школы и стили боя Where Winds Meet.",
-    "changefreq": "weekly",
-    "priority": 0.8
-  },
-  {
-    "id": "bosses",
-    "path": "/bosses",
-    "title": "Боссы — WWM Вики",
-    "description": "Тактики и механики боссов Where Winds Meet.",
-    "changefreq": "weekly",
-    "priority": 0.8
-  },
-  {
-    "id": "npcs",
-    "path": "/npcs",
-    "title": "NPC — WWM Вики",
-    "description": "НПС, дружба и диалоги в Where Winds Meet.",
-    "changefreq": "weekly",
-    "priority": 0.8
-  },
-  {
-    "id": "riddles",
-    "path": "/riddles",
-    "title": "Загадки — WWM Вики",
-    "description": "Подсказки и ответы на загадки Where Winds Meet.",
-    "changefreq": "weekly",
-    "priority": 0.8
-  },
-  {
-    "id": "innerpath",
-    "path": "/innerpath",
-    "title": "Внутренний путь — WWM Вики",
-    "description": "Пассивки, эффекты и получение внутренних путей Where Winds Meet.",
-    "changefreq": "weekly",
-    "priority": 0.7
-  },
-  {
-    "id": "mystic",
-    "path": "/mystic",
-    "title": "Мистические арты — WWM Вики",
-    "description": "Мистические умения и синергии Where Winds Meet.",
-    "changefreq": "weekly",
-    "priority": 0.7
-  },
-  {
-    "id": "cooking",
-    "path": "/cooking",
-    "title": "Готовка — WWM Вики",
-    "description": "Рецепты и бонусы готовки в Where Winds Meet.",
-    "changefreq": "weekly",
-    "priority": 0.7
-  },
-  {
-    "id": "tips",
-    "path": "/tips",
-    "title": "Советы и коды — WWM Вики",
-    "description": "Полезные советы и промокоды для Where Winds Meet.",
-    "changefreq": "weekly",
-    "priority": 0.7
-  },
-  {
-    "id": "lifeskills",
-    "path": "/lifeskills",
-    "title": "Жизненные навыки — WWM Вики",
-    "description": "Ремёсла и прокачка жизненных навыков Where Winds Meet.",
-    "changefreq": "weekly",
-    "priority": 0.7
   },
   {
     "id": "admin",

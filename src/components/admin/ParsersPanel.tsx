@@ -1,91 +1,63 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   RefreshCw, Download, Play, Loader2, Key, CheckCircle2, AlertTriangle,
-  SkipForward, Globe, Link2, Save, ScanSearch, Sparkles, Radio, ChevronDown, Monitor,
+  SkipForward, Globe, Link2, Save, ScanSearch,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import {
   buildSettingsPatch,
   discoverParserSources,
-  fetchAiStatus,
   fetchSyncSections,
   formatSyncDiff,
   getStoredSyncKey,
   isPayloadEmpty,
   runParserSync,
   setStoredSyncKey,
-  type AiStatus,
   type SyncResult,
   type SyncSectionInfo,
 } from '../../lib/adminSync';
 import { buildParserSourcesPatch, getParserUrl } from '../../lib/parserSources';
+import { DEFAULT_WIKI_URL, PARSER_SECTIONS } from '../../lib/parserSections';
 
 type LogEntry = {
   id: string;
   section: string;
-  status: 'ok' | 'skip' | 'error' | 'ai';
+  status: 'ok' | 'skip' | 'error';
   message: string;
 };
-
-const DEFAULT_WIKI = 'https://game8.co/games/Where-Winds-Meet';
-
-function formatAiLine(ai: SyncResult['ai']): string {
-  if (!ai) return '';
-  if (ai.error) return ` · LM Studio: ${ai.error}`;
-  if (ai.used) return ` · LM Studio: ${ai.message || `+${ai.enriched ?? 0}`}`;
-  if (ai.reason === 'no_ai_or_payload') return '';
-  return ai.message ? ` · ${ai.message}` : '';
-}
 
 export default function ParsersPanel() {
   const { siteSettings, updateSiteSettings, hasPermission } = useAuth();
   const canSync = hasPermission('site.settings') || hasPermission('admin.panel');
 
-  const [sections, setSections] = useState<SyncSectionInfo[]>([]);
+  const [sections, setSections] = useState<SyncSectionInfo[]>(PARSER_SECTIONS);
+  const [syncApiAvailable, setSyncApiAvailable] = useState(true);
   const [urlDrafts, setUrlDrafts] = useState<Record<string, string>>({});
   const [discovered, setDiscovered] = useState<Record<string, { label: string; matched: boolean }>>({});
   const [syncKey, setSyncKey] = useState(getStoredSyncKey);
-  const [wikiUrl, setWikiUrl] = useState(DEFAULT_WIKI);
+  const [wikiUrl, setWikiUrl] = useState(DEFAULT_WIKI_URL);
   const [fetchGame8, setFetchGame8] = useState(true);
   const [autoDiscover, setAutoDiscover] = useState(true);
-  const [useAi, setUseAi] = useState(true);
   const [dryRun, setDryRun] = useState(false);
   const [applyToSite, setApplyToSite] = useState(true);
   const [running, setRunning] = useState<string | null>(null);
   const [scanning, setScanning] = useState(false);
-  const [aiStatus, setAiStatus] = useState<AiStatus | null>(null);
-  const [aiRefreshing, setAiRefreshing] = useState(false);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [urlsDirty, setUrlsDirty] = useState(false);
-  const [lmGuideOpen, setLmGuideOpen] = useState(true);
-
-  const refreshAiStatus = useCallback(async () => {
-    setAiRefreshing(true);
-    try {
-      const ai = await fetchAiStatus();
-      setAiStatus(ai);
-    } catch {
-      setAiStatus({ configured: false, active: false, message: 'Не удалось проверить ИИ' });
-    } finally {
-      setAiRefreshing(false);
-    }
-  }, []);
 
   useEffect(() => {
     void fetchSyncSections().then(data => {
-      setSections(data.sections);
-      setWikiUrl(data.wikiUrl || DEFAULT_WIKI);
-      setAiStatus(data.ai);
-    }).catch(() => {});
+      setSections(Array.isArray(data.sections) && data.sections.length ? data.sections : PARSER_SECTIONS);
+      setWikiUrl(data.wikiUrl || DEFAULT_WIKI_URL);
+      setSyncApiAvailable(data.apiAvailable);
+    }).catch(() => {
+      setSections(PARSER_SECTIONS);
+      setSyncApiAvailable(false);
+    });
   }, []);
 
   useEffect(() => {
-    const t = setInterval(() => { void refreshAiStatus(); }, 45000);
-    return () => clearInterval(t);
-  }, [refreshAiStatus]);
-
-  useEffect(() => {
-    if (!sections.length) return;
+    if (!Array.isArray(sections) || !sections.length) return;
     setUrlDrafts(prev => {
       const next = { ...prev };
       for (const s of sections) {
@@ -99,7 +71,7 @@ export default function ParsersPanel() {
 
   const sourceUrlsForSync = useMemo(() => {
     const out: Record<string, string> = {};
-    for (const s of sections) {
+    for (const s of Array.isArray(sections) ? sections : []) {
       const url = urlDrafts[s.id]?.trim();
       if (url) out[s.id] = url;
     }
@@ -126,12 +98,12 @@ export default function ParsersPanel() {
     if (!canSync) return;
     setStoredSyncKey(syncKey);
     setScanning(true);
-    pushLog({ section: 'scan', status: 'ai', message: `Сканирование ${wikiUrl}…` });
+    pushLog({ section: 'scan', status: 'ok', message: `Сканирование ${wikiUrl}…` });
     try {
       const data = await discoverParserSources(wikiUrl);
       const nextUrls: Record<string, string> = { ...urlDrafts };
       const nextDiscovered: Record<string, { label: string; matched: boolean }> = {};
-      for (const [id, src] of Object.entries(data.sources)) {
+      for (const [id, src] of Object.entries(data.sources || {})) {
         if (src.url) nextUrls[id] = src.url;
         nextDiscovered[id] = { label: src.label, matched: src.matched };
       }
@@ -160,9 +132,6 @@ export default function ParsersPanel() {
       pushLog({ section: sectionId, status: 'error', message: 'Укажите URL или включите авто-поиск на Game8' });
       return null;
     }
-    if (useAi && aiStatus?.configured) {
-      pushLog({ section: sectionId, status: 'ai', message: `Парсинг + ${aiStatus?.label || 'ИИ'}…` });
-    }
     return runParserSync({
       section: sectionId,
       dryRun,
@@ -171,9 +140,8 @@ export default function ParsersPanel() {
       sourceUrls: sourceUrlsForSync,
       wikiUrl,
       autoDiscover,
-      useAi,
     });
-  }, [urlDrafts, fetchGame8, autoDiscover, dryRun, sourceUrlsForSync, wikiUrl, useAi, aiStatus, pushLog]);
+  }, [urlDrafts, fetchGame8, autoDiscover, dryRun, sourceUrlsForSync, wikiUrl, pushLog]);
 
   const logSyncResult = useCallback((sectionId: string, result: SyncResult) => {
     if (result.error) {
@@ -189,13 +157,7 @@ export default function ParsersPanel() {
     let msg = `Записей: ${result.count ?? 0}${diffStr ? ` (${diffStr})` : ''}`;
     if (result.sourceUrl) msg += ` · ${result.sourceUrl.replace(/^https?:\/\/game8\.co/, '')}`;
     if (result.discovered?.matched) msg += ' · авто-ссылка';
-    msg += formatAiLine(result.ai);
-
-    if (result.ai?.used) {
-      pushLog({ section: sectionId, status: 'ai', message: msg });
-    } else {
-      pushLog({ section: sectionId, status: 'ok', message: msg });
-    }
+    pushLog({ section: sectionId, status: 'ok', message: msg });
   }, [pushLog]);
 
   const handleRun = useCallback(async (sectionId: string) => {
@@ -216,18 +178,10 @@ export default function ParsersPanel() {
         let msg = `Записей: ${result.count ?? 0}${diffStr ? ` (${diffStr})` : ''}`;
         if (result.sourceUrl) msg += ` · ${result.sourceUrl.replace(/^https?:\/\/game8\.co/, '')}`;
         if (result.discovered?.matched) msg += ' · авто-ссылка';
-        if (result.ai?.error) msg += ` · ${result.ai.error}`;
-        else msg += formatAiLine(result.ai);
         if (applied) msg += ' · применено на сайте';
         else if (applyToSite && !dryRun && !result.payload) msg += ' · без данных для Supabase';
-        pushLog({
-          section: sectionId,
-          status: result.ai?.error ? 'skip' : (result.ai?.used ? 'ai' : 'ok'),
-          message: msg,
-        });
+        pushLog({ section: sectionId, status: 'ok', message: msg });
       }
-
-      void refreshAiStatus();
     } catch (e) {
       pushLog({
         section: sectionId,
@@ -237,54 +191,50 @@ export default function ParsersPanel() {
     } finally {
       setRunning(null);
     }
-  }, [canSync, syncKey, applyToSite, dryRun, pushLog, applyResult, runSection, logSyncResult, refreshAiStatus]);
+  }, [canSync, syncKey, applyToSite, dryRun, pushLog, applyResult, runSection, logSyncResult]);
 
   const handleRunAll = useCallback(async () => {
     if (!canSync) return;
     if (urlsDirty) saveUrls();
     setStoredSyncKey(syncKey);
     setRunning('all');
-    const batch = ['riddles', 'innerpath', 'npcs-locations', 'weapons'];
+    const batch = (Array.isArray(sections) ? sections : []).map(s => s.id);
     try {
-      for (const sectionId of batch) {
-        try {
-          const data = await runSection(sectionId);
-          if (!data) continue;
-          const r = data.result;
-          if (!r) {
-            pushLog({ section: sectionId, status: 'error', message: 'Пустой ответ' });
-            continue;
-          }
-          if (r.error || r.skipped) {
-            logSyncResult(sectionId, r);
-            continue;
-          }
-          const applied = applyToSite && applyResult(r);
-          const diffStr = formatSyncDiff(r.diff);
-          let msg = `${r.count ?? 0} записей${diffStr ? ` (${diffStr})` : ''}`;
-          if (r.ai?.error) msg += ` · ${r.ai.error}`;
-          else if (r.ai?.used) msg += formatAiLine(r.ai);
-          if (applied) msg += ' · применено';
-          pushLog({
-            section: sectionId,
-            status: r.ai?.error ? 'skip' : (r.error ? 'error' : 'ok'),
-            message: msg,
+      const data = batch.length
+        ? await runParserSync({
+            sections: batch,
+            dryRun,
+            fetch: fetchGame8,
+            sourceUrls: sourceUrlsForSync,
+            wikiUrl,
+            autoDiscover,
+          })
+        : await runParserSync({
+            section: 'all',
+            dryRun,
+            fetch: fetchGame8,
+            sourceUrls: sourceUrlsForSync,
+            wikiUrl,
+            autoDiscover,
           });
-        } catch (e) {
-          pushLog({
-            section: sectionId,
-            status: 'error',
-            message: e instanceof Error ? e.message : 'Ошибка',
-          });
+      for (const r of Array.isArray(data.results) ? data.results : []) {
+        const sectionId = r.section;
+        if (r.error || r.skipped) {
+          logSyncResult(sectionId, r);
+          continue;
         }
+        const applied = applyToSite && applyResult(r);
+        const diffStr = formatSyncDiff(r.diff);
+        let msg = `${r.count ?? 0} записей${diffStr ? ` (${diffStr})` : ''}`;
+        if (applied) msg += ' · применено';
+        pushLog({ section: sectionId, status: 'ok', message: msg });
       }
-      void refreshAiStatus();
     } catch (e) {
       pushLog({ section: 'all', status: 'error', message: e instanceof Error ? e.message : 'Ошибка' });
     } finally {
       setRunning(null);
     }
-  }, [canSync, syncKey, urlsDirty, saveUrls, applyToSite, pushLog, applyResult, runSection, logSyncResult, refreshAiStatus]);
+  }, [canSync, syncKey, urlsDirty, saveUrls, applyToSite, dryRun, fetchGame8, sourceUrlsForSync, wikiUrl, autoDiscover, sections, pushLog, applyResult, logSyncResult]);
 
   const handleClearSync = useCallback(() => {
     if (!confirm('Сбросить синхронизированные данные парсеров? Вернётся встроенный контент из сборки.')) return;
@@ -295,8 +245,6 @@ export default function ParsersPanel() {
   }, [siteSettings.sectionOverrides, updateSiteSettings, pushLog]);
 
   const meta = siteSettings.parsedContent?.meta || {};
-  const aiActive = Boolean(aiStatus?.configured && aiStatus?.active);
-  const aiBusy = Boolean(running) && useAi && aiActive;
 
   if (!canSync) {
     return <p className="text-ink-400 text-sm">Нужно право «Настройки сайта» или «Админ-панель».</p>;
@@ -304,145 +252,16 @@ export default function ParsersPanel() {
 
   return (
     <div className="space-y-6">
-      {/* LM Studio / ИИ */}
-      <div className={`border rounded-xl p-4 flex flex-col sm:flex-row sm:items-center gap-4 ${
-        aiActive ? 'bg-violet-500/10 border-violet-500/30' : 'bg-ink-800/40 border-ink-700/50'
-      }`}>
-        <div className="flex items-center gap-3 min-w-0 flex-1">
-          <div className={`relative shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${
-            aiActive ? 'bg-violet-500/20' : 'bg-ink-700/50'
-          }`}>
-            <Sparkles className={`w-5 h-5 ${aiActive ? 'text-violet-300' : 'text-ink-500'}`} />
-            {aiBusy && (
-              <span className="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-violet-400 animate-pulse ring-2 ring-ink-900" />
-            )}
-            {aiActive && !aiBusy && (
-              <span className="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-400 ring-2 ring-ink-900" />
-            )}
-          </div>
-          <div className="min-w-0">
-            <div className="flex items-center gap-2 flex-wrap">
-              <h3 className="text-white font-medium text-sm">{aiStatus?.label || 'ИИ-ассистент'}</h3>
-              {aiStatus?.localOnly && (
-                <span className="text-xs text-sky-400 bg-sky-500/10 px-2 py-0.5 rounded-full">Локально</span>
-              )}
-              {aiActive && (
-                <span className="inline-flex items-center gap-1 text-xs text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
-                  <Radio className="w-3 h-3" /> Активен
-                </span>
-              )}
-              {aiStatus?.configured && !aiStatus.active && (
-                <span className="text-xs text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full">Офлайн</span>
-              )}
-              {!aiStatus?.configured && (
-                <span className="text-xs text-ink-500 bg-ink-700/50 px-2 py-0.5 rounded-full">Не настроен</span>
-              )}
-            </div>
-            <p className="text-ink-400 text-xs mt-0.5 line-clamp-2">
-              {aiBusy ? 'Обогащение контента…' : (aiStatus?.message || 'Проверка…')}
-              {aiStatus?.model ? ` · ${aiStatus.model}` : ''}
-            </p>
-          </div>
+      {!syncApiAvailable && (
+        <div className="flex items-start gap-3 rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
+          <AlertTriangle className="w-5 h-5 shrink-0 text-amber-400 mt-0.5" />
+          <p>
+            Для запуска парсеров нужен sync-api на сервере. Ссылки ниже можно редактировать и сохранять,
+            но «Сканировать Game8» и «Запустить» работают только при проксировании{' '}
+            <code className="text-amber-100/90">/api/sync-content</code> на Node-сервис.
+          </p>
         </div>
-        <div className="flex items-center gap-3 shrink-0">
-          <label className="flex items-center gap-2 text-sm text-ink-300 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={useAi}
-              onChange={e => setUseAi(e.target.checked)}
-              disabled={!aiStatus?.configured || (aiStatus.localOnly && !aiStatus.active)}
-            />
-            Перевод на русский (LM Studio)
-          </label>
-          <button
-            type="button"
-            onClick={() => void refreshAiStatus()}
-            disabled={aiRefreshing}
-            className="p-2 rounded-lg bg-ink-700/50 text-ink-300 hover:bg-ink-700 disabled:opacity-50 cursor-pointer"
-            title="Обновить статус"
-          >
-            <RefreshCw className={`w-4 h-4 ${aiRefreshing ? 'animate-spin' : ''}`} />
-          </button>
-        </div>
-      </div>
-
-      {/* Инструкция LM Studio */}
-      <div className="bg-sky-500/5 border border-sky-500/20 rounded-xl overflow-hidden">
-        <button
-          type="button"
-          onClick={() => setLmGuideOpen(v => !v)}
-          className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left hover:bg-sky-500/5 cursor-pointer"
-        >
-          <span className="flex items-center gap-2 text-sky-300 font-medium text-sm">
-            <Monitor className="w-4 h-4" /> Как настроить LM Studio (пошагово)
-          </span>
-          <ChevronDown className={`w-4 h-4 text-sky-400 transition-transform ${lmGuideOpen ? 'rotate-180' : ''}`} />
-        </button>
-        {lmGuideOpen && (
-          <div className="px-5 pb-5 text-sm text-ink-300 space-y-4 border-t border-sky-500/10 pt-4">
-            <p className="text-ink-400">
-              LM Studio 0.4+: сервер включается <strong className="text-ink-300">переключателем</strong> на вкладке Developer (не отдельная кнопка «Start Server»).
-              Адрес в <code className="text-sky-300">.env</code> должен быть <code className="text-sky-300">http://127.0.0.1:1234/v1</code> — без <code className="text-sky-300">/models</code> в конце.
-              После правки <code className="text-sky-300">.env</code> перезапустите <code className="text-sky-300">npm run dev</code>.
-            </p>
-
-            <div>
-              <h4 className="text-white font-medium mb-2">Шаг 1 — Скачать и установить</h4>
-              <ol className="list-decimal list-inside space-y-1 text-ink-400">
-                <li>Откройте <a href="https://lmstudio.ai" target="_blank" rel="noreferrer" className="text-sky-400 hover:underline">lmstudio.ai</a> → Download → установите как обычную программу.</li>
-                <li>Запустите LM Studio (иконка на рабочем столе или в меню Пуск).</li>
-              </ol>
-            </div>
-
-            <div>
-              <h4 className="text-white font-medium mb-2">Шаг 2 — Скачать модель</h4>
-              <ol className="list-decimal list-inside space-y-1 text-ink-400">
-                <li>Слева нажмите иконку <strong className="text-ink-300">поиска</strong> (Discover / Search).</li>
-                <li>Введите: <code className="text-sky-300">ministral-3-3b</code> или <code className="text-sky-300">mistralai/ministral-3-3b</code>.</li>
-                <li>Выберите модель → кнопка <strong className="text-ink-300">Download</strong> → дождитесь загрузки (несколько ГБ).</li>
-                <li>После загрузки модель появится в разделе <strong className="text-ink-300">My Models</strong> (мои модели).</li>
-              </ol>
-            </div>
-
-            <div>
-              <h4 className="text-white font-medium mb-2">Шаг 3 — Загрузить модель в память</h4>
-              <ol className="list-decimal list-inside space-y-1 text-ink-400">
-                <li>Слева откройте <strong className="text-ink-300">Chat</strong> (чат) или вкладку с моделями.</li>
-                <li>Вверху выберите загруженную модель <code className="text-sky-300">ministral-3-3b</code>.</li>
-                <li>Модель «подгрузится» в видеокарту/оперативку — это может занять 10–30 секунд.</li>
-              </ol>
-            </div>
-
-            <div>
-              <h4 className="text-white font-medium mb-2">Шаг 4 — Включить сервер (LM Studio 0.4)</h4>
-              <ol className="list-decimal list-inside space-y-1 text-ink-400">
-                <li>Если нет вкладки Developer: <strong className="text-ink-300">Settings</strong> (шестерёнка) → <strong className="text-ink-300">Developer</strong> → включите <strong className="text-ink-300">Developer Mode</strong>.</li>
-                <li>Слева в меню откройте <strong className="text-emerald-400">Developer</strong> (иконка с кодом / терминалом).</li>
-                <li>Вверху найдите переключатель <strong className="text-emerald-400">Start server</strong> или <strong className="text-emerald-400">Status</strong> → включите <strong className="text-ink-300">ON</strong>.</li>
-                <li>Рядом появится <code className="text-sky-300">Reachable at http://localhost:1234</code> — сервер работает.</li>
-                <li>Загрузите модель в чате или выберите её на вкладке Developer перед включением сервера.</li>
-                <li>Токен <code className="text-sky-300">sk-lm-…</code> → в <code className="text-sky-300">.env</code> как <code className="text-sky-300">LM_STUDIO_API_KEY</code> (у вас уже прописан).</li>
-                <li>Окно LM Studio не закрывайте во время синхронизации.</li>
-              </ol>
-            </div>
-
-            <div>
-              <h4 className="text-white font-medium mb-2">Шаг 5 — Запустить сайт и синхронизацию</h4>
-              <ol className="list-decimal list-inside space-y-1 text-ink-400">
-                <li>В папке проекта в терминале: <code className="text-sky-300">npm run dev</code></li>
-                <li>Откройте админку → Парсеры → нажмите ↻ у карточки LM Studio — статус должен стать <strong className="text-emerald-400">Активен</strong>.</li>
-                <li>Включите «Использовать при синхронизации» → запустите парсер.</li>
-              </ol>
-            </div>
-
-            <p className="text-ink-500 text-xs">
-              Проверка в браузере: откройте сайт через <code className="text-ink-400">localhost</code> (npm run dev), не через vercel.app.
-              Имя модели — скопируйте с вкладки Developer в <code className="text-ink-400">LM_STUDIO_MODEL</code>.
-              Альтернатива из терминала: <code className="text-ink-400">lms server start</code> (если установлен CLI LM Studio).
-            </p>
-          </div>
-        )}
-      </div>
+      )}
 
       <div className="bg-ink-800/40 border border-ink-700/50 rounded-xl p-5">
         <h2 className="font-serif text-lg font-bold text-white mb-1 flex items-center gap-2">
@@ -450,7 +269,7 @@ export default function ParsersPanel() {
         </h2>
         <p className="text-ink-400 text-sm mb-4">
           Сканируйте главную вики Game8 — каждый парсер получит свою страницу-источник автоматически.
-          ИИ (LM Studio) переводит записи на русский — только когда программа запущена на вашем ПК.
+          Перевод полей выполняется встроенными словарями без внешнего ИИ.
         </p>
 
         <label className="block mb-4">
@@ -537,7 +356,7 @@ export default function ParsersPanel() {
       </div>
 
       <div className="space-y-3">
-        {sections.map(sec => {
+        {(Array.isArray(sections) ? sections : []).map(sec => {
           const last = meta[sec.id];
           const isRunning = running === sec.id;
           const disc = discovered[sec.id];
@@ -622,7 +441,6 @@ export default function ParsersPanel() {
                 {log.status === 'ok' && <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />}
                 {log.status === 'skip' && <SkipForward className="w-4 h-4 text-ink-500 shrink-0 mt-0.5" />}
                 {log.status === 'error' && <AlertTriangle className="w-4 h-4 text-crimson-400 shrink-0 mt-0.5" />}
-                {log.status === 'ai' && <Sparkles className="w-4 h-4 text-violet-400 shrink-0 mt-0.5" />}
                 <span>
                   <span className="text-ink-300 font-mono text-xs">{log.section}</span>
                   {' — '}

@@ -108,5 +108,8 @@ export function mergeSiteSettingsSafe(s: SiteSettings | null | undefined): SiteS
       s.parserSources && typeof s.parserSources === 'object' ? s.parserSources : undefined,
     sectionCategories: normalizeSectionCategoriesRecord(s.sectionCategories as Record<string, unknown> | undefined),
     sectionDefinitions: Array.isArray(s.sectionDefinitions) ? s.sectionDefinitions : [],
+    pinnedGuildIds: Array.isArray(s.pinnedGuildIds)
+      ? s.pinnedGuildIds.map(id => trimText(id)).filter(Boolean)
+      : [],
   };
 }

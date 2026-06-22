@@ -86,4 +86,11 @@ if ($rsync) {
 }
 
 Write-Host "==> Готово. Проверьте сайт: https://$($env:VITE_SITE_URL -replace '^https?://','')" -ForegroundColor Green
+$siteUrl = if ($env:VITE_SITE_URL) { $env:VITE_SITE_URL.TrimEnd('/') } else { "https://wwm-wiki-nocthra.ru" }
+try {
+    $health = Invoke-WebRequest -Uri "$siteUrl/health.json" -UseBasicParsing -TimeoutSec 15
+    Write-Host "==> health.json: $($health.StatusCode)" -ForegroundColor Green
+} catch {
+    Write-Host "==> health.json недоступен (DNS или SSL?) — проверьте сайт вручную" -ForegroundColor Yellow
+}
 Write-Host "    На сервере: sudo nginx -t && sudo systemctl reload nginx" -ForegroundColor Gray

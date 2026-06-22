@@ -2,7 +2,6 @@ import path from 'path';
 import { PARSERS, SYNC_ORDER } from './registry.mjs';
 import { readJson, DATA, BUNDLED_DATA, UPLOADS, fetchMarkdown, archiveIdFromUrl, isServerless } from './lib/utils.mjs';
 import { discoverSourcesFromWiki, DEFAULT_WIKI_URL } from './lib/game8-discover.mjs';
-import { enrichPayloadWithAi } from './lib/ai-enrich.mjs';
 import { normalizePayloadForUi } from './lib/normalize-payload.mjs';
 
 import * as innerWaysMod from './inner-ways.mjs';
@@ -77,24 +76,12 @@ export async function runSyncSection(section, opts = {}) {
   });
 
   let payload = null;
-  let ai = null;
   if (!dryRun && !result?.skipped && !result?.error) {
     payload = readPayload(section);
     if (payload && isPayloadEmpty(payload)) payload = null;
 
     if (payload) {
-      const skipAi = section === 'riddles';
-      if (opts.useAi !== false && !skipAi) {
-        try {
-          const enriched = await enrichPayloadWithAi(section, payload, opts.onProgress);
-          payload = normalizePayloadForUi(section, enriched.payload);
-          ai = enriched.ai;
-        } catch (e) {
-          ai = { used: false, error: e.message || 'Ошибка ИИ' };
-          const { applyRuleBasedTranslation } = await import('./lib/translate-fields.mjs');
-          payload = normalizePayloadForUi(section, applyRuleBasedTranslation(payload));
-        }
-      } else if (section === 'riddles') {
+      if (section === 'riddles') {
         payload = normalizePayloadForUi(section, payload);
       } else {
         const { applyRuleBasedTranslation } = await import('./lib/translate-fields.mjs');
@@ -114,7 +101,6 @@ export async function runSyncSection(section, opts = {}) {
     payload,
     sourceUrl,
     discovered,
-    ai,
     note: cfg.note,
     requiresNetwork: Boolean(cfg.requiresNetwork),
   };

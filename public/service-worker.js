@@ -1,4 +1,4 @@
-const CACHE_NAME = 'wwm-wiki-v5';
+const CACHE_NAME = 'wwm-wiki-v6';
 
 /** Только статика изображений — HTML и JS никогда не кэшируем (ломает lazy-чанки после деплоя). */
 const IMAGE_CACHE = [
@@ -36,6 +36,18 @@ function cachePut(request, response) {
   void caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
 }
 
+/** Network fetch with cache fallback — promise never rejects (avoids uncaught Failed to fetch). */
+function networkFirstWithCacheFallback(request) {
+  return fetch(request)
+    .then((response) => {
+      if (response && response.ok) cachePut(request, response);
+      return response;
+    })
+    .catch(() =>
+      caches.match(request).then((cached) => cached || Response.error()),
+    );
+}
+
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   if (request.method !== 'GET') return;
@@ -43,17 +55,23 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(request.url);
   if (url.origin !== location.origin) return;
 
-  // HTML, JS, CSS — только сеть (иначе мобильные получают старые ссылки на чанки)
+  // Navigation, HTML, JS, CSS — не перехватываем: браузер сам грузит с сети без SW-ошибок.
   if (
+    request.mode === 'navigate' ||
+    request.destination === 'document' ||
+    request.destination === 'script' ||
+    request.destination === 'style' ||
     url.pathname === '/' ||
     url.pathname === '/index.html' ||
-    url.pathname.startsWith('/assets/')
+    url.pathname.startsWith('/assets/') ||
+    url.pathname.endsWith('.js') ||
+    url.pathname.endsWith('.css') ||
+    url.pathname.endsWith('.mjs')
   ) {
-    event.respondWith(fetch(request));
     return;
   }
 
-  // Картинки — cache-first
+  // Картинки и шрифты — cache-first, сеть с безопасным fallback
   if (
     request.destination === 'image' ||
     request.destination === 'font' ||
@@ -62,12 +80,8 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       caches.match(request).then((cached) => {
         if (cached) return cached;
-        return fetch(request).then((response) => {
-          cachePut(request, response);
-          return response;
-        });
+        return networkFirstWithCacheFallback(request);
       }),
     );
-    return;
   }
 });

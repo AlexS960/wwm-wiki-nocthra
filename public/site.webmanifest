@@ -1,10 +1,13 @@
 {
   "name": "WWM Вики Ру — Nocthra",
   "short_name": "WWM Вики",
-  "description": "Русскоязычная база знаний по Where Winds Meet",
+  "description": "Русскоязычная база знаний по Where Winds Meet: гайды, оружие, секты, билды, NPC",
   "lang": "ru",
+  "dir": "ltr",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "categories": ["games", "education"],
   "background_color": "#0a0a0f",
   "theme_color": "#c9a227",
   "icons": [

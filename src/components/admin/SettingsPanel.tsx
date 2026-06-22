@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Settings, Save, Check, AlertTriangle, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import ServerStatusPanel from './ServerStatusPanel';
 
 export default function SettingsPanel() {
   const { siteSettings, updatePmSettings, updateSiteSettings, purgeEmbeddedImagesFromDb } = useAuth();
@@ -18,6 +19,8 @@ export default function SettingsPanel() {
 
   return (
     <div className="space-y-6 animate-fadeIn max-w-2xl">
+      <ServerStatusPanel />
+
       <div className="bg-ink-800/50 border border-ink-700/30 rounded-xl p-5 space-y-4">
         <h3 className="text-gold-400 font-semibold text-sm flex items-center gap-2">
           <Settings className="w-4 h-4" /> Настройки сайта

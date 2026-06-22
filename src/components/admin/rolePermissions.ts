@@ -35,5 +35,5 @@ export const ROLE_PRESET_COLORS = ['#b0a696', '#d4a528', '#a882ff', '#4abf85', '
 export const PERM_GROUPS = [...new Set(ALL_ROLE_PERMISSIONS.map(p => p.group))];
 
 export function isSystemRole(id: string): boolean {
-  return ['user', 'editor', 'admin'].includes(id);
+  return ['user', 'editor', 'admin', 'moderator', 'guildmaster', 'banned'].includes(id);
 }

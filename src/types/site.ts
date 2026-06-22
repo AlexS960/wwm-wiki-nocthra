@@ -249,6 +249,8 @@ export interface SiteSettings {
   sectionCategories?: Record<string, SectionCategoryDef[]>;
   /** Пользовательские разделы вики (конструктор) */
   sectionDefinitions?: CustomSectionDefinition[];
+  /** ID гильдий, закреплённых вверху реестра */
+  pinnedGuildIds?: string[];
 }
 
 export type SectionFieldType =

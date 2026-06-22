@@ -1,7 +1,18 @@
+# WWM Wiki — robots.txt (Google, Яндекс, Bing)
 User-agent: *
 Allow: /
-
 Disallow: /admin
 Disallow: /staffchat
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+Disallow: /admin
+Disallow: /staffchat
+
+# Главное зеркало для Яндекса (без www)
+Host: wwm-wiki-nocthra.ru
 
 Sitemap: https://wwm-wiki-nocthra.ru/sitemap.xml

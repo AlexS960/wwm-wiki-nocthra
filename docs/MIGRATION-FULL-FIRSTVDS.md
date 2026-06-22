@@ -2,6 +2,8 @@
 
 Пошаговое руководство по переносу **фронтенда, базы данных, Realtime, Storage и API парсеров** с облачных Vercel/Supabase на свой VPS [FirstVDS](https://my.firstvds.ru/) и домен [REG.RU](https://www.reg.ru).
 
+> **Новичок в VPS/Docker/Supabase?** Подробное пошаговое руководство с объяснением каждой команды: **[SUPABASE-SELFHOST-BEGINNER-RU.md](./SUPABASE-SELFHOST-BEGINNER-RU.md)**.
+
 > **Статический деплой без БД:** если нужен только фронтенд на VPS, а Supabase остаётся в облаке — см. [DEPLOY-FIRSTVDS-REG.RU.md](./DEPLOY-FIRSTVDS-REG.RU.md).
 
 ---
